@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" ns="http://www.w3.org/ns/SMIL"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+
+    <!-- driver for the Z3986 "classic" profile subset of the W3C DAISY SMIL 3.0 Profile -->
+
+    <!-- TODO restrict tc nesting for classic --> <!-- TODO make src required -->
+    <include href="./mod/smil3-structure.rng"/>
+    <include href="./mod/smil3-metainformation.rng"/>
+    <include href="./mod/smil3-structurelayout.rng"/>
+    <include href="./mod/smil3-basiclayout.rng"/> <!-- TODO classic could specialize a simplified layout model, TODO force region[id=text] in schema, SCH or RNG to check that text@region refers to that -->
+    
+    <include href="./mod/smil3-mediaparam.rng">
+        <!-- allow head/paramgroup but not ref/param --> 
+        <define name="smil3.mediaobjects.content" combine="interleave">
+            <empty/>    
+        </define> 
+        <!-- subset param to the data type only (not object and ref) -->
+        <define name="param.value.choice">
+            <ref name="param.value.choice.data"/>
+        </define>
+    </include>     
+    
+    <include href="./mod/smil3-basicmedia.rng">
+        <!-- subset media objects -->
+        <define name="smil3.mediaobjects.class">
+            <choice>                
+                <ref name="smil3.audio"/>
+                <ref name="smil3.text"/>
+                <ref name="smil3.img"/>
+            </choice>    
+        </define>
+    </include>
+    
+    <include href="./mod/smil3-mediaclipping.rng">
+        <!-- redefine mediaclipping values to only allow npt syntax; no smpte -->
+        <define name="clipBegin.attrib.value">
+            <ref name="SMIL3.npt.datatype"/>
+        </define>
+        <define name="clipEnd.attrib.value">
+            <ref name="SMIL3.npt.datatype"/>
+        </define>
+    </include>   
+    
+    <include href="./mod/smil3-basictimecontainers.rng"/>
+    <!-- No excl: <include href="./mod/smil3-basicexcltimecontainers.rng"/> -->
+    <!-- No basiccontentcontrol: <include href="./mod/smil3-basiccontentcontrol.rng"/> -->
+    
+    <include href="./mod/smil3-basiclinking.rng">
+        <!-- allow a but not area -->
+        <define name="smil3.timecontainers.content.class" combine="choice">
+            <ref name="smil3.a"/>
+        </define>
+    </include>
+    
+    <include href="./mod/smil3-basicinlinetiming.rng"/>
+    <!-- No subregionlayout: <include href="./mod/smil3-subregionlayout.rng"/> -->
+    <!-- No mediaaccessibility?: <include href="./mod/smil3-mediaaccessibility.rng"/> -->
+    <include href="./mod/smil3-mediadescription.rng"/>
+    <!-- No skipcontentcontrol: <include href="./mod/smil3-skipcontentcontrol.rng"/> -->
+    <include href="./mod/z3986-datatypes.rng"/>
+
+</grammar>

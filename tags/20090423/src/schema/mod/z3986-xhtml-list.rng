@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+    <x:h1>Z3986 List Module</x:h1>
+    <x:p>This module is the Z39.86 revised XHTML2 List Module.</x:p>
+    
+    <include href="xhtml-list-2.rng">
+    
+      <!-- require di -->
+      <define name="xhtml.dl.content">
+        <ref name="xhtml.dl.content.di.required" />
+      </define>    
+      
+      <!-- stricten up di model -->
+      <define name="xhtml.di.content">            
+        <ref name="xhtml.dt"/>        
+        <oneOrMore>
+          <ref name="xhtml.dd"/>
+        </oneOrMore>
+      </define>         
+             	            
+    </include>
+    
+    <!-- allow contributions of siblings to dl -->
+    <define name="xhtml.dl.content" combine="interleave">
+      <ref name="z3986.Lists.extra.model"/>
+    </define>
+    
+    <!-- allow contributions of siblings to di -->
+    <define name="xhtml.di.content" combine="interleave">
+      <ref name="z3986.Lists.extra.model"/>
+    </define>
+    
+    <!-- allow contributions of siblings to ul -->
+    <define name="xhtml.ul.content" combine="interleave">
+      <ref name="z3986.Lists.extra.model"/>
+    </define>
+    
+    <!-- allow contributions of siblings to ol -->
+    <define name="xhtml.ol.content" combine="interleave">
+      <ref name="z3986.Lists.extra.model"/>
+    </define>
+          
+    <define name="xhtml.Structural.nosection.class" combine="choice">      
+      <ref name="xhtml.List.class"/>        
+    </define>
+         
+    <!-- slot for contributing siblings to listitems 
+    	(eg children of dl, di, ol, and ul) -->    	    
+    <define name="z3986.Lists.extra.class">
+      <choice>
+    	<notAllowed/>
+      </choice> 	
+    </define>
+    
+    <define name="z3986.Lists.extra.model">
+      <zeroOrMore>        
+        <ref name="z3986.Lists.extra.class"/>        
+      </zeroOrMore>
+    </define>
+    
+</grammar>  

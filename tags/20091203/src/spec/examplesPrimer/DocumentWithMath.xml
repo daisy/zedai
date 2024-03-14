@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://www.daisy.org/z3986/2010/" 
+    xmlns:m="http://www.w3.org/1998/Math/MathML"
+    xmlns:z3986dec="http://www.daisy.org/z3986/2010/vocab/decl/#"
+    xml:lang="en">
+    <head>
+        <meta rel="z3986dec:profile" 
+            resource="http://www.daisy.org/z3986/2010/auth/profiles/book/1.0/">
+            <meta rel="z3986dec:feature" 
+            resource="http://www.daisy.org/z3986/2010/auth/features/mathml/1.0/"/>
+        </meta>
+        <mods xmlns="http://www.loc.gov/mods/v3" version="3.3">
+            <originInfo>
+                <publisher>DAISY Consortium</publisher>
+                <dateCreated>2009-05-29</dateCreated>
+            </originInfo>
+            <titleInfo>
+                <title>The Pythagorean Theorum</title>
+            </titleInfo>
+            <identifier type="uid">example4</identifier>
+        </mods>
+    </head>
+    <body>
+        <frontmatter>
+            <section>
+                <h>The Pythagorean Theorum</h>
+            </section>
+        </frontmatter>
+        <bodymatter>
+            <section>
+                <h>The Pythagorean Theorum</h>
+                <p>Pythagorus stated: 
+                    <m:math>
+                        <m:mi>c</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:msqrt>
+                            <m:msup>
+                                <m:mi>a</m:mi>
+                                <m:mn>2</m:mn>
+                            </m:msup>
+                            <m:mo>+</m:mo>
+                            <m:msup>
+                                <m:mi>b</m:mi>
+                                <m:mn>2</m:mn>
+                            </m:msup>
+                        </m:msqrt>
+                    </m:math>
+                </p>
+            </section>
+        </bodymatter>    
+    </body>
+</document>

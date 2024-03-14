@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="word">The char module</title>
+        <annotation annotates="/">
+            <para role="desc-main">This module defines the {[[#z3986.char]]} element for inserting unique character data into a document.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3986-global-classes.rng"/>
+                <member xlink:href="z3986-datatypes.rng"/>
+                <member xlink:href="z3986-object.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2011-03-04</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="z3986.char" xml:id="z3986.char">
+            <element name="char">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="char">The {char} element</title>
+                    <para role="desc-main">The {char} element represents a single instance of a special character or a character with no Unicode equivalent.</para>
+                    <para role="desc-sub">The {char} element can contain either a single character or a {[[#z3986.object.text object]]} tag, for characters and symbols that require special typesetting or display (e.g. ornamented initials at the start of chapters).</para>
+                    <synopsis role="def-context">{[[#z3986.Text.class]]}</synopsis>
+                    <synopsis role="def-content" condition="fixed">{(text | [[#z3986.object.text]])?}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Text.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.char.attlist"/>
+                <ref name="z3986.char.content"/>
+            </element>
+        </define>
+        <define name="z3986.char.attlist" combine="interleave">
+            <ref name="z3986.Text.attrib"/>
+        </define>
+        <define name="z3986.char.content" xml:id="z3986.char.content">
+            <choice>
+                <ref name="Character.datatype"/>
+                <ref name="z3986.char.class"/>
+            </choice>
+        </define>
+        <define name="z3986.char.class" combine="choice">
+            <notAllowed/>
+        </define>
+    </div>
+    <div>
+        <a:documentation>char - default content model contribution</a:documentation>
+        <define name="z3986.Text.core.class" combine="choice">
+            <ref name="z3986.char"/>
+        </define>
+    </div>
+</grammar>

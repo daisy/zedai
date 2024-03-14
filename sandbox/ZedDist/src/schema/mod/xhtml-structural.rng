@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+            
+    <define name="xhtml.Structural.class">
+        <choice>
+            <ref name="xhtml.address"/>
+            <ref name="xhtml.blockquote"/>
+            <ref name="xhtml.div"/>
+            <ref name="xhtml.p"/>
+            <ref name="xhtml.pre"/>            
+        </choice>
+    </define>
+    
+    <define name="xhtml.Structural.attlist" combine="interleave">
+        <ref name="xhtml.Core.attrib"/>
+        <ref name="xhtml.Core.contrib.attrib"/>
+        <ref name="xhtml.I18n.attrib"/>
+    </define>
+    
+    <define name="xhtml.div">
+        <element name="div">
+            <ref name="xhtml.div.attlist"/>
+            <ref name="xhtml.Flow.model"/>
+        </element>
+    </define>
+    
+    <define name="xhtml.div.attlist">
+        <ref name="xhtml.Structural.attlist"/>
+    </define>
+    
+    <define name="xhtml.p">
+        <element name="p">
+            <ref name="xhtml.p.attlist"/>
+            <ref name="xhtml.Text.model"/>
+        </element>
+    </define>
+    
+    <define name="xhtml.p.attlist">
+        <ref name="xhtml.Structural.attlist"/>
+    </define>
+    
+    <define name="xhtml.address">
+        <element name="address">
+            <ref name="xhtml.address.attlist"/>
+            <ref name="xhtml.Text.model"/>
+        </element>
+    </define>
+    
+    <define name="xhtml.address.attlist">
+        <ref name="xhtml.Structural.attlist"/>
+    </define>
+    
+    <define name="xhtml.blockquote">
+        <element name="blockquote">
+            <ref name="xhtml.blockquote.attlist"/>
+            <ref name="xhtml.Structural.model"/>
+        </element>
+    </define>
+    
+    <define name="xhtml.blockquote.attlist">
+        <ref name="xhtml.Structural.attlist"/>
+        <optional>
+            <attribute name="cite">
+                <ref name="URI.datatype"/>
+            </attribute>
+        </optional>
+    </define>
+    
+    <define name="xhtml.pre">
+        <element name="pre">
+            <ref name="xhtml.pre.attlist"/>
+            <ref name="xhtml.Text.model"/>
+        </element>
+    </define>
+    
+    <define name="xhtml.pre.attlist">
+        <ref name="xhtml.Structural.attlist"/>
+        <optional>
+            <attribute name="xml:space">
+                <value>preserve</value>
+            </attribute>
+        </optional>
+    </define>
+                   
+</grammar>

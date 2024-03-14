@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z38.86 pagebreak module</x:h1>
+
+  <div>
+    <x:h2>The pagebreak element</x:h2>
+
+    <x:div id="z3986.pagebreak">
+      <x:p class="description">The <x:code>pagebreak</x:code> element represents the
+      locus of a page break in a print source.</x:p>
+    </x:div>
+
+    <x:div id="z3986.pagebreak.value.attrib">
+        The <x:code>value</x:code> attribute is used to hold information about the
+        numbering of <strong>the page following immediately after the page break.</strong>.
+        The attribute value is not restricted to a numeric value, but may be any string.
+    </x:div>
+
+    <define name="z3986.pagebreak">
+      <element name="pagebreak">
+        <ref name="z3986.pagebreak.attlist"/>
+        <ref name="z3986.pagebreak.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.pagebreak.attlist" combine="interleave">
+      <ref name="z3986.Text.attrib"/>
+      <attribute name="value">
+        <text/>
+      </attribute>
+    </define>
+
+    <define name="z3986.pagebreak.content">
+      <empty/>
+    </define>
+
+  </div>
+
+  <div>
+    <x:h2>The pagebreak element - default content model contribution</x:h2>
+
+    <define name="z3986.Text.class" combine="choice">
+      <ref name="z3986.pagebreak"/>
+    </define>
+
+    <define name="z3986.Structural.class" combine="choice">
+      <ref name="z3986.pagebreak"/>
+    </define>
+    
+    <define name="z3986.table.extra.class" combine="choice">
+      <ref name="z3986.pagebreak"/>
+    </define>
+
+    <define name="z3986.list.extra.class" combine="choice">
+      <ref name="z3986.pagebreak"/>
+    </define>
+
+    <!-- allow pagebreak before first heading in strict section model -->
+    <define name="z3986.section.strict.prehead.extra" combine="choice">
+      <optional>
+        <ref name="z3986.pagebreak"/>
+      </optional>
+    </define> 
+
+    <define name="linegroup.content.extra.class" combine="choice">
+      <ref name="z3986.pagebreak"/>
+    </define>  
+
+    <define name="z3986.toc.extra.class" combine="choice">
+      <ref name="z3986.pagebreak"/>
+    </define>
+    
+    <define name="z3986.verse.content.class" combine="choice">
+      <ref name="z3986.pagebreak"/>
+    </define>
+    
+    <define name="z3986.index.extra.class" combine="choice">
+      <ref name="z3986.pagebreak"/>
+    </define>
+    
+    <define name="z3986.bibliography.extra.class" combine="choice">
+      <ref name="z3986.pagebreak"/>
+    </define>
+    
+    <define name="z3986.glossary.extra.class" combine="choice">
+      <ref name="z3986.pagebreak"/>
+    </define>
+    
+    <define name="z3986.glossary.entry.extra.class" combine="choice">
+      <ref name="z3986.pagebreak"/>
+    </define>
+    
+  </div>
+
+</grammar>

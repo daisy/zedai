@@ -1,0 +1,1081 @@
+<project name="zednext-common" xmlns:antcontrib="antlib:net.sf.antcontrib">
+	<tstamp />	
+	<property name="z3986.part.a.path.segment" value="auth" />
+	
+	<property name="z3986.part.a.core.namespace" value="http://www.daisy.org/ns/z3986/authoring/" />
+	
+	<!-- common directories -->
+	<property name="dir.build" value="${basedir}/build" />
+	<property name="dir.build.vocab" value="${dir.build}/vocab" />
+	<property name="dir.build.vocab.profiles" value="${dir.build.vocab}/profiles" />
+	<property name="dir.build.auth" value="${dir.build}/${z3986.part.a.path.segment}" />
+	<property name="dir.build.auth.profiles" value="${dir.build.auth}/profiles" />
+	<property name="dir.build.auth.features" value="${dir.build.auth}/features" />
+	<property name="dir.build.dist" value="${dir.build}/dist" />
+	
+	<property name="dir.build.schema" value="${dir.build}/schema" />
+	
+	<property name="dir.temp" value="${basedir}/temp" />
+	<property name="dir.util" value="${basedir}/util" />
+	<property name="dir.util.java" value="${dir.util}/java" />
+	<property name="dir.util.rng" value="${dir.util}/rng" />
+	<property name="dir.util.web" value="${dir.util}/web" />
+	<property name="dir.util.rdf" value="${dir.util}/rdf" />
+	<property name="dir.test" value="${basedir}/test" />
+	<property name="dir.lib" value="${basedir}/lib" />
+		
+	<property name="dir.src" value="${basedir}/src" />
+	<property name="dir.src.rdf" value="${dir.src}/rdf" />
+	<property name="dir.src.rdf.profiles" value="${dir.src.rdf}/profiles" />
+	<property name="dir.src.rd" value="${dir.src}/rd" />
+	<property name="dir.src.spec" value="${dir.src}/spec" />
+	<property name="dir.src.schema" value="${dir.src}/schema" />	
+	<property name="dir.src.schema.preprocessed" value="${dir.temp}/all-src-rng-preprocessed"/>
+	<property name="dir.src.schema.preprocessed.xsd" value="${dir.temp}/all-src-rng-preprocessed-pre-xsd"/>
+	<property name="dir.src.schema.postprocessed" value="${dir.temp}/all-src-rng-postprocessed"/>
+	<property name="dir.src.doc" value="${dir.src}/doc" />
+	<property name="dir.src.doc.snippets" value="${dir.src.doc}/snippets" />
+	<property name="dir.src.doc.longdescs" value="${dir.src.doc}/longdescs" />
+	<property name="dir.src.spec.examples" value="${dir.src.spec}/examples" />
+	
+	<!-- online -->
+	<property name="www.base.uri" value="http://www.daisy.org/z3986/2011/" />
+	<property name="www.base.uri.vocab" value="${www.base.uri}vocab" />
+	<property name="www.base.uri.ai.profiles" value="${www.base.uri}auth/profiles/" />
+	<property name="www.base.uri.ai.features" value="${www.base.uri}auth/features/" />
+	
+	<!-- rdfa profile -->
+	<property name="rdfa.profiles" value="${www.base.uri.vocab}/profiles" />
+	<property name="rdfa.profiles.default" value="${rdfa.profiles}/default" />
+	<property name="rdfa.profiles.periodicals" value="${rdfa.profiles}/periodicals" />
+	
+	<!-- common prefixes -->
+	<property name="z3986.part.a.prefix" value="z3986a" />		
+	<property name="z3986.part.a.nicename.prefix" value="Z39.86-201x Authoring and Interchange " />
+	<property name="z3986.part.a.identity.uri" value="${www.base.uri}${z3986.part.a.path.segment}/" />
+
+	<!-- specs: docbook source paths -->
+	<property name="spec.part-a.docbook.name" value="Z3986-2011A" />
+	<property name="spec.part-a.docbook.path" value="${dir.src.spec}/${spec.part-a.docbook.name}.xml" />
+	
+	<!-- specs: output paths -->
+	<property name="spec.part-a.output.path" value="${dir.build}/${spec.part-a.docbook.name}.html" />
+	<property name="spec.part-a.primer.path" value="http://www.daisy.org/zw/Z39.86_Authoring_and_Interchange_Framework_Primer" />
+	
+	<!-- vocabs -->
+	<property name="vocab-rdfa-localname-rd" value="z3986-rd-vocab.html"/>
+    <property name="vocab-n3-localname-rd" value="z3986-rd-vocab.n3"/>
+    <property name="vocab-rdfxml-localname-rd" value="z3986-rd-vocab.xml"/>
+    <property name="dir.build.vocab.rd" value="${dir.build.vocab}/resourcedirectory"/>
+    <property name="vocab.www.uri.rd" value="${www.base.uri.vocab}/resourcedirectory/"/>
+	
+	<property name="vocab-rdfa-localname-decl" value="z3986-decl-vocab.html"/>
+	<property name="vocab-n3-localname-decl" value="z3986-decl-vocab.n3"/>
+	<property name="vocab-rdfxml-localname-decl" value="z3986-decl-vocab.xml"/>
+	<property name="dir.build.vocab.decl" value="${dir.build.vocab}/decl"/>
+	<property name="vocab.www.uri.decl" value="${www.base.uri.vocab}/decl/"/>
+	
+	<property name="vocab-rdfa-localname-structure" value="z3986-structure-vocab.html"/>
+	<property name="vocab-n3-localname-structure" value="z3986-structure-vocab.n3"/>
+	<property name="vocab-rdfxml-localname-structure" value="z3986-structure-vocab.xml"/>
+	<property name="dir.build.vocab.structure" value="${dir.build.vocab}/structure"/>
+	<property name="vocab.www.uri.structure" value="${www.base.uri.vocab}/structure/"/>
+	
+	<property name="vocab-rdfa-localname-periodicals" value="z3986-periodicals-vocab.html"/>
+	<property name="vocab-n3-localname-periodicals" value="z3986-periodicals-vocab.n3"/>
+	<property name="vocab-rdfxml-localname-periodicals" value="z3986-periodicals-vocab.xml"/>
+	<property name="dir.build.vocab.periodicals" value="${dir.build.vocab}/periodicals"/>
+	<property name="vocab.www.uri.periodicals" value="${www.base.uri.vocab}/periodicals/"/>
+	
+	<!-- rdfa profiles -->
+	<property name="vocab-rdfa-profile-default" value="z3986-default-profile.html"/>
+	<property name="vocab-rdfa-profile-periodicals" value="z3986-periodicals-profile.html"/>
+	
+	<property name="archive.exclude.list" value=".htaccess,.DS_Store,.localized"/>
+	
+	<path id="build.classpath">
+		<fileset dir="${dir.lib}" includes="**/*.jar" />	
+	    <pathelement path="${java.class.path}"/>
+	    <pathelement path="${dir.util}/java" />	      
+	</path>
+
+	<target name="build-main-schema-pool" 
+		depends="clean-build-schema-dir, build-vocab-rng-enums, preprocess-src-rng-schemas, postprocess-src-rng-schemas"
+		description="moves the main schema pool to build location, uses the postprocessed fileset">
+		<copy todir="${dir.build.schema}/">
+			<fileset dir="${dir.src.schema.postprocessed}" excludes="**/_*" />
+		</copy>
+		<build-htaccess-plusindexes dest-dir="${dir.build}/schema/"/>
+		<build-htaccess-plusindexes dest-dir="${dir.build}/schema/mod/"/>
+	</target>
+		
+	<target name="build-vocab-rng-enums" 
+		depends="compile-util-java-classes, build-vocabs" unless="skip-vocab-enums">
+		
+		<!-- structure vocab -->
+		<build-vocab-rng-enum  
+			n3-in="${dir.src.rdf}/z3986-structure.n3" 
+			rng-out="${dir.src.schema}/mod/z3986-vocab-contrib-structure.rng" />
+		
+		<!-- periodicals vocab -->
+		<build-vocab-rng-enum  
+			n3-in="${dir.src.rdf}/z3986-periodicals.n3" 
+			rng-out="${dir.src.schema}/mod/z3986-vocab-contrib-periodicals.rng" />
+		
+	</target>
+	
+	<!--
+	<target name="vocab-enums-uptodate">		
+		<uptodate property="vocab-enum-build-not-required" 
+			srcfile="${dir.src.rdf}/z3986-structure.n3" 
+			targetfile="${dir.src.schema}/mod/z3986-vocab-contrib-structure.rng" />
+	</target> -->
+	
+	<macrodef name="build-vocab-rng-enum">
+		<attribute name="n3-in"/> 			<!-- the n3 source to use -->
+		<attribute name="rng-out"/> 		<!-- where to store the generated rng -->
+		<sequential>			
+			<!-- get the n3 to rdf-xml (we cant use the jena-n3-to-rdfxml def
+				since it cleans out all asocial annotations) -->
+			<property name="vocab-enum-rdf-xml-temp" value="${dir.temp}/vocab/vocab-enum-rdfxml-temp.xml"/>
+			<java output="${vocab-enum-rdf-xml-temp}" classname="jena.rdfcopy" fork="true" failonerror="true" maxmemory="512m">			
+				<arg value="@{n3-in}"/>
+				<arg value="N3"/>			
+				<arg value="RDF/XML"/>						
+				<classpath refid="build.classpath" />
+			</java>
+			<!-- call the generator class -->
+			<java classname="org.daisy.z3986.rng.RNGVocabEnumGenerator" fork="true" failonerror="true" maxmemory="512m">			
+				<arg value="${vocab-enum-rdf-xml-temp}"/>
+				<arg value="@{rng-out}"/>								
+				<classpath refid="build.classpath" />
+			</java>
+		</sequential>		
+	</macrodef>
+		
+	<!-- <target name="vocabs-uptodate">		
+		<uptodate property="vocab-build-not-required" 
+			srcfile="${dir.src.rdf}/z3986-rd.n3" 
+			targetfile="${dir.build.vocab.rd}/${vocab-n3-localname-rd}" />		
+		<uptodate property="vocab-build-not-required" 
+			srcfile="${dir.src.rdf}/z3986-decl.n3" 
+			targetfile="${dir.build.vocab.decl}/${vocab-n3-localname-decl}" />		
+		<uptodate property="vocab-build-not-required" 
+			srcfile="${dir.src.rdf}/z3986-structure.n3" 
+			targetfile="${dir.build.vocab.structure}/${vocab-n3-localname-structure}" />		
+		
+		<echo level="debug" message="vocabs up-to-date: ${vocab-build-not-required}"/>
+	</target> -->
+	
+	<target name="build-vocabs" depends="compile-util-java-classes">
+			
+			<clean dir="${dir.build.vocab}"/>
+			<clean dir="${dir.temp}/vocab/"/>
+		
+			<!-- periodicals vocabulary -->		
+			<build-triple-rdf output-dir="${dir.build.vocab.periodicals}" output-n3-localname="${vocab-n3-localname-periodicals}"
+				output-rdfa-localname="${vocab-rdfa-localname-periodicals}" output-rdfxml-localname="${vocab-rdfxml-localname-periodicals}"
+				source-n3="${dir.src.rdf}/z3986-periodicals.n3" vocab-canonical-uri="${vocab.www.uri.periodicals}"
+				output-revhistory-localname="history-${vocab-rdfa-localname-periodicals}" source-revhistory="${dir.src.rdf}/z3986-periodicals.rev" />
+		
+			<!-- rd vocabulary -->		    
+			<build-triple-rdf output-dir="${dir.build.vocab.rd}" output-n3-localname="${vocab-n3-localname-rd}"
+				output-rdfa-localname="${vocab-rdfa-localname-rd}" output-rdfxml-localname="${vocab-rdfxml-localname-rd}"
+				source-n3="${dir.src.rdf}/z3986-rd.n3" vocab-canonical-uri="${vocab.www.uri.rd}"
+				output-revhistory-localname="history-${vocab-rdfa-localname-rd}" source-revhistory="${dir.src.rdf}/z3986-rd.rev"/>
+					
+			<!-- decl vocabulary -->								
+			<build-triple-rdf output-dir="${dir.build.vocab.decl}" output-n3-localname="${vocab-n3-localname-decl}"
+				output-rdfa-localname="${vocab-rdfa-localname-decl}" output-rdfxml-localname="${vocab-rdfxml-localname-decl}"
+				source-n3="${dir.src.rdf}/z3986-decl.n3" vocab-canonical-uri="${vocab.www.uri.decl}"
+				output-revhistory-localname="history-${vocab-rdfa-localname-decl}" source-revhistory="${dir.src.rdf}/z3986-decl.rev"/>
+			
+			<!-- structure vocabulary -->		
+			<build-triple-rdf output-dir="${dir.build.vocab.structure}" output-n3-localname="${vocab-n3-localname-structure}"
+				output-rdfa-localname="${vocab-rdfa-localname-structure}" output-rdfxml-localname="${vocab-rdfxml-localname-structure}"
+				source-n3="${dir.src.rdf}/z3986-structure.n3" vocab-canonical-uri="${vocab.www.uri.structure}"
+				output-revhistory-localname="history-${vocab-rdfa-localname-structure}" source-revhistory="${dir.src.rdf}/z3986-structure.rev"/>
+													
+			<property name="vocab-index-dest" value="${dir.build.vocab}/index.html"/>
+			<saxon-xslt in="${dir.util}/xhtml-rdfa-skeleton.xml" 
+				style="${dir.util.web}/build-vocab-index.xsl" 
+				out="${vocab-index-dest}">
+				<param name="core-list" expression="decl/${vocab-rdfa-localname-decl}, structure/${vocab-rdfa-localname-structure}, resourcedirectory/${vocab-rdfa-localname-rd}" />
+				<param name="additional-list" expression="periodicals/${vocab-rdfa-localname-periodicals}" />
+				<param name="output-uri" expression="${vocab-index-dest}" />
+			</saxon-xslt>
+		
+			<build-htaccess dest-dir="${dir.build.vocab}" index-name="index.html"/>
+			
+			<!-- move the profile documents -->
+			<copy todir="${dir.build.vocab.profiles}/">
+				<fileset dir="${dir.src.rdf.profiles}" excludes="**/_*" />
+			</copy>
+			
+			<for param="profile-dir">
+				<path>
+					<dirset dir="${dir.build.vocab.profiles}" includes="**/*"/>
+				</path>
+				<sequential>
+					<for param="profile">
+						<path>
+							<fileset dir="@{profile-dir}" includes="**/z3986*.html"/>
+						</path>
+						<sequential>
+							<propertyregex override="yes" property="relpath" input="@{profile}" regexp=".*[\\/](.*\.html)" select="\1" casesensitive="false" />
+							<build-htaccess dest-dir="@{profile-dir}" index-name="${relpath}"/>
+						</sequential>
+					</for>
+				</sequential>
+			</for>
+		
+	</target>
+	
+	<macrodef name="build-triple-rdf" description="generates n3, RDF/XML and XHTML+RDFa from an n3 source">
+			<attribute name="output-dir"/>
+			<attribute name="source-n3"/>
+			<attribute name="source-revhistory"/>
+			<attribute name="output-n3-localname"/>
+			<attribute name="output-rdfa-localname"/>
+			<attribute name="output-rdfxml-localname"/>
+			<attribute name="output-revhistory-localname"/>
+			<attribute name="vocab-canonical-uri"/>
+			
+			<sequential>
+				<!-- create the output directory -->
+				<mkdir dir="@{output-dir}" />
+				
+				<mkdir dir="${dir.temp}/vocab/"/>
+				
+				<!-- create a temp src n3 file. (note, now that we are not modding dates, this step is probably unnecessary) -->				
+				<property name="temp.n3.dateModified.@{output-n3-localname}" value="${dir.temp}/vocab/datemod-@{output-n3-localname}"/>				
+				<n3-modifier in="@{source-n3}" out="${temp.n3.dateModified.@{output-n3-localname}}" rewritedate="false" dropjena="false" dropwikisyntax="false"/>
+										
+				<!-- convert the n3 to RDF/XML as a source for conversion to RDFa -->
+				<!-- this still has wiki links in it -->
+				<property name="temp.rdfxml.dateModified.@{output-rdfxml-localname}" value="${dir.temp}/vocab/datemod-@{output-rdfxml-localname}"/>
+				<jena-n3-to-rdfxml in="${temp.n3.dateModified.@{output-n3-localname}}" 
+					out="${temp.rdfxml.dateModified.@{output-rdfxml-localname}}"
+					vocab-uri="@{vocab-canonical-uri}"/>
+						
+				<!-- convert the  RDF/XML to RDFa -->
+				<saxon-xslt in="${temp.rdfxml.dateModified.@{output-rdfxml-localname}}" 
+						out="${dir.temp}/vocab/@{output-rdfa-localname}" 
+						style="${dir.util}/rdf/rdfxml-to-rdfa.xslt">
+						<param name="vocab-uri" expression="@{vocab-canonical-uri}" />
+						<param name="vocab-as-n3" expression="@{output-n3-localname}" />
+						<param name="vocab-as-rdfxml" expression="@{output-rdfxml-localname}" />
+						<param name="vocab-revision-history" expression="@{output-revhistory-localname}" />
+				</saxon-xslt>
+						
+				<!-- add toc to the rdfa and place in final destination -->
+				<saxon-xslt in="${dir.temp}/vocab/@{output-rdfa-localname}" 
+						out="@{output-dir}/@{output-rdfa-localname}" 
+						style="${dir.util}/xsl/toc.xsl">					
+				</saxon-xslt>
+				
+				<!-- create the revhistory document and place alongside rdfa in dest dir -->
+				<saxon-xslt in="@{source-revhistory}" 
+							out="@{output-dir}/@{output-revhistory-localname}" 
+							style="${dir.util}/rdf/rev-history.xsl">	
+					<param name="rdfa-vocab" expression="@{output-dir}/@{output-rdfa-localname}"/>
+				</saxon-xslt>
+				
+				<!-- build and final-place an n3 using the correctly dated n3 created above, stripping out 'jena:' lines and wiki links -->
+				<n3-modifier in="${temp.n3.dateModified.@{output-n3-localname}}" out="@{output-dir}/@{output-n3-localname}" dropjena="true" dropwikisyntax="true" rewritedate="false"/>
+									
+				<!-- build and final-place an RDF/XML based on the n3 created in the step above (no jena: no wikilinks) -->
+				<n3-modifier in="${temp.n3.dateModified.@{output-n3-localname}}" out="${dir.temp}/vocab/rdfxmlsrc-@{output-n3-localname}" dropjena="false" dropwikisyntax="true" rewritedate="false"/>
+				<jena-n3-to-rdfxml in="${dir.temp}/vocab/rdfxmlsrc-@{output-n3-localname}" 
+								out="@{output-dir}/@{output-rdfxml-localname}"
+								vocab-uri="@{vocab-canonical-uri}"/>
+				
+				<!-- build htaccess -->
+				<build-htaccess dest-dir="@{output-dir}" index-name="@{output-rdfa-localname}"/>
+
+			</sequential>
+	</macrodef>
+	
+	<macrodef name="jena-n3-to-rdfxml" description="convert N3 to RDF/XML using jena.rdfcopy">
+		<attribute name="in" />
+		<attribute name="out" />
+		<attribute name="vocab-uri" /> <!-- the canonical uri of the vocab being converted -->
+		<sequential>
+			<property name="jena.intermediary" value="${dir.temp}/vocab/jena-intermediary.xml"/>
+			<java output="${jena.intermediary}" classname="jena.rdfcopy" fork="true" failonerror="true" maxmemory="512m">			
+				<arg value="@{in}"/>
+				<arg value="N3"/>			
+				<arg value="RDF/XML"/>						
+				<classpath refid="build.classpath" />
+			</java>
+			<saxon-xslt in="${jena.intermediary}" out="@{out}" 
+				style="${dir.util.rdf}/jena-rdf-fix.xslt">
+				<param name="vocab-uri" expression="@{vocab-uri}"/>
+			</saxon-xslt>
+		</sequential>
+	</macrodef>
+				
+	<macrodef name="jena-rdfxml-to-n3" description="convert RDF/XML to N3 using jena.rdfcopy">
+		<attribute name="in" />
+		<attribute name="out" />
+		<sequential>
+			<java output="@{out}" classname="jena.rdfcopy" fork="true" failonerror="true" maxmemory="512m">			
+				<arg value="@{in}"/>
+				<classpath refid="build.classpath" />
+			</java>
+		</sequential>
+	</macrodef>
+	
+	<macrodef name="n3-modifier" description="modify n3 documents" >
+		<attribute name="in" />
+		<attribute name="out" />
+		<attribute name="rewriteDate" />
+		<attribute name="dropJena" />
+		<attribute name="dropWikiSyntax" />
+		<sequential>														
+			<java classname="org.daisy.z3986.n3.N3Modifier" fork="true" failonerror="true" maxmemory="512m">			
+				<arg value="@{in}"/>
+				<arg value="@{out}"/>	
+				<arg value="@{rewriteDate}" />
+				<arg value="@{dropJena}" />
+				<arg value="@{dropWikiSyntax}" />
+				<classpath refid="build.classpath" />															
+			</java>			
+		</sequential>
+	</macrodef>
+	
+	<macrodef name="copy-fileset-list" 
+			description="copies a fileset listed in xml as produced by build-rng-schema-fileset-list">
+		
+		<attribute name="in-fileset"/>
+		<attribute name="output-dir"/>
+		<attribute name="machinename"/>
+		
+		<sequential>
+			<!-- path fix for windows -->
+			<path id="tmp" path="@{output-dir}" />
+			<pathconvert targetos="unix" property="temp-destparam-@{machinename}" refid="tmp">
+				<map from="" to="file:///" />
+			</pathconvert>			
+			<saxon-xslt in="@{in-fileset}" style="${dir.util}/xml-fileset-copy.xsl" out="${dir.temp}/temp-@{machinename}.xml">
+				<param name="destination-dir" expression="${temp-destparam-@{machinename}}/" />
+			</saxon-xslt>			
+			<!-- ?? <copy file="${normative.schema.path}" tofile="${dest.normative.schema.path}" /> -->
+			<delete file="${dir.temp}/temp-{@machinename}.xml" />
+		</sequential>	
+		
+	</macrodef>
+				
+	<target name="preprocess-src-rng-schemas-xsd"
+			depends="preprocess-src-rng-schemas"
+	    	description="builds a copy of all src rng files, run through
+	    	   			rng-xsd-preprocess.xsl, to prep them for trang.">
+
+		<property name="xsd-preprocess-use-mathml-dummy" value="true"/>
+		
+		<saxon-xslt style="${dir.util.rng}/rng-xsd-preprocess.xsl"
+	    	basedir="${dir.src.schema.preprocessed}" destdir="${dir.src.schema.preprocessed.xsd}"
+	    	includes="**/*.rng" extension=".rng">		
+			
+			<!-- NOTE: if replace-mathml-include-with-dummy is true, then
+			the reference to the mathmlfeature will be replaced by a single-element
+			dummy "math" element in the mathml namespace, the subsequent trang task must
+			then copy over a replacement real mathml xsd. -->
+			<param name="replace-mathml-include-with-dummy" expression="${xsd-preprocess-use-mathml-dummy}" />
+			
+		</saxon-xslt>
+		
+	</target>
+	
+	<target name="postprocess-src-rng-schemas"
+				depends="preprocess-src-rng-schemas"
+		    	description="post-process rng schemas, turn chosen RDF into a:documentation,
+							remove wiki markup">
+
+			<saxon-xslt style="${dir.util.rng}/rng-rng-postprocess.xsl"
+		    	basedir="${dir.src.schema.preprocessed}" destdir="${dir.src.schema.postprocessed}"
+		    	includes="**/*.rng" extension=".rng" >
+			</saxon-xslt>	
+			<pretty-print-rng dir="${dir.src.schema.postprocessed}" prune-namespaces="true"/>
+	</target>
+			
+	<target name="preprocess-src-rng-schemas" depends="build-vocab-rng-enums"
+			description="preprocess the RNG, adding autogenerated stuff. The dest dir of this task
+						should be used as schema src dir of all other targets that read the schema sources.">
+		
+		<clean dir="${dir.src.schema.preprocessed}"/>
+		<fileset id="fileset-all-src-rng-schemas" dir="${dir.src.schema}" includes="**/*.rng" excludes="**/_*" />
+		<pathconvert property="list-all-src-rng-schemas" pathsep="," refid="fileset-all-src-rng-schemas">
+			<map from="" to="file:///" />
+		</pathconvert>	
+		<saxon-xslt basedir="${dir.src.schema}" 
+					destdir="${dir.src.schema.preprocessed}"
+					style="${dir.util.rng}/rng-rng-preprocess.xsl"
+					includes="**/*.rng" excludes="**/_*" extension=".rng">
+			<param name="schema-list" expression="${list-all-src-rng-schemas}" />
+		</saxon-xslt>
+	</target>
+	
+	<target name="validate-src-rng-schemas" description="validates all schemas in src dir
+		  	against the RelaxNG schema for RelaxNG">
+		<validate-rng 
+				fileset-dir="${dir.src.schema}" 
+				fileset-includes="**/*.rng"
+				schema="${dir.util.rng}/relaxng.rng"/>
+	</target>
+	
+	<target name="validate-snippets">		
+		<property name="ai-snippets-schema" value="${dir.src.doc.snippets}/ai-snippets.rng"/>
+		<validate-rng 
+				fileset-dir="${dir.src.doc.snippets}" 
+				fileset-includes="*snippets.xml" 
+				schema="${ai-snippets-schema}"/>
+	</target>	
+		
+	<target name="validate-longdescs">		
+		<property name="ai-longdescs-schema" value="${dir.src.doc.longdescs}/ai-longdescs.rng"/>
+		<validate-rng 
+				fileset-dir="${dir.src.doc.longdescs}" 
+				fileset-includes="*longdescs.xml" 
+				schema="${ai-longdescs-schema}"/>
+	</target>
+	
+	<macrodef name="validate-spec-examples">		
+		<attribute name="examples-schema"/>
+		<attribute name="examples-file-match"/>
+		<sequential>
+			<validate-rng 
+				fileset-dir="${dir.src.spec.examples}" 
+				fileset-includes="@{examples-file-match}" 
+				schema="@{examples-schema}"/>
+		</sequential>
+	</macrodef>
+	
+	<macrodef name="validate-rng">
+		<attribute name="fileset-dir" />
+		<attribute name="fileset-includes" />
+		<attribute name="schema" />
+		<sequential>
+			<echo level="info">Validating @{fileset-dir}/@{fileset-includes} against @{schema} ...</echo>
+			<jing rngfile="@{schema}" failonerror="true">
+				<fileset dir="@{fileset-dir}" includes="@{fileset-includes}"/>
+			</jing>
+		</sequential>
+	</macrodef>	
+	
+	<macrodef name="validate-rng-msv">
+		<attribute name="schema"/>
+		<attribute name="file"/>
+		<sequential>
+			<java jar="lib/msv.jar" fork="true" failonerror="false" maxmemory="512m">			
+				<arg value="@{schema}"/>
+				<arg value="@{file}"/>
+				<classpath refid="build.classpath" />
+			</java>
+		</sequential>
+	</macrodef>
+	
+	<macrodef name="validate-xsd">
+		<attribute name="fileset-dir" />
+		<attribute name="fileset-includes" />
+		<attribute name="schema" />
+		<attribute name="namespace" />
+		<attribute name="failonerror" />
+		<sequential>			
+			<schemavalidate warn="true" disabledtd="true" failonerror="@{failonerror}" fullchecking="true">
+				<schema namespace="@{namespace}" file="@{schema}" />
+				<fileset dir="@{fileset-dir}" includes="@{fileset-includes}" />
+			</schemavalidate>
+		</sequential>	
+	</macrodef>
+
+	<macrodef name="build-simplified-rng-jing-s"> 
+		<attribute name="in"/>
+		<attribute name="out"/>		
+		<sequential>
+			<java jar="${dir.lib}/jing.jar" output="@{out}" fork="true" failonerror="true" maxmemory="1024m">
+				<arg value="-s" />
+				<arg value="@{in}" />
+				<classpath refid="build.classpath"/>				
+			</java>
+		</sequential>
+	</macrodef>			
+	
+	<macrodef name="build-simplified-rng-quasi">
+		<attribute name="in"/>
+		<attribute name="out"/>
+		<attribute name="verbose"/>
+		<attribute name="debug"/>
+		<sequential>
+			<java classname="org.daisy.z3986.rng.RNGQuasiSimplifier" fork="true" failonerror="true" maxmemory="1024m">			
+				<arg value="@{in}"/>
+				<arg value="@{out}"/>
+				<arg value="@{verbose}"/>
+				<arg value="@{debug}"/>
+				<classpath refid="build.classpath"/>					
+			</java>	
+		</sequential>
+	</macrodef>
+					
+	<macrodef name="build-rnc">
+		<attribute name="in"/>
+		<attribute name="out"/>
+		<sequential>
+			<!-- trang to rnc -->
+			<java jar="${dir.lib}/trang.jar" fork="true" failonerror="true" maxmemory="512m">
+				<arg value="@{in}" />
+				<arg value="@{out}" />
+				<classpath refid="build.classpath" />
+			</java>
+		</sequential>
+	</macrodef>
+		
+	<macrodef name="extract-sch">
+		<attribute name="in"/> 					<!-- single file rng with inline sch islands (although xsl actually seems to cover includes) -->
+		<attribute name="out"/> 				<!-- result -->
+		<attribute name="nicename"/> 			<!-- nicename of the grammar to which the sch applies -->
+		<attribute name="version"/> 			<!-- version of the grammar to which the sch applies -->
+		<sequential>
+			<saxon-xslt in="@{in}" 
+				style="${dir.util.rng}/rng-extract-iso-schematron.xsl" 
+				out="@{out}">
+				<param name="niceName" expression="@{nicename}" /> 	
+				<param name="version" expression="@{version}" /> 	
+			</saxon-xslt> 
+		</sequential>
+	</macrodef>
+	
+	<macrodef name="build-nvdl">
+		<attribute name="in"/> 					<!-- single file rng with inline sch islands (although xsl actually seems to cover includes) -->
+		<attribute name="out"/> 				<!-- result -->
+		<attribute name="machinename"/> 			<!-- machine name of the grammar -->
+		<attribute name="version"/> 			<!-- version of the grammar -->
+		<sequential>
+			<saxon-xslt in="@{in}" 
+				style="${dir.util.rng}/build-nvdl.xsl" 
+				out="@{out}">
+				<param name="profile" expression="@{machinename}" /> 	
+				<param name="version" expression="@{version}" /> 	
+			</saxon-xslt> 
+		</sequential>
+	</macrodef>
+	
+	<macrodef name="build-xsd-from-simplified-rng">
+		<attribute name="in"/> 				<!-- a simplified rng, created from rng-xsd-preprocess.xsl -->
+		<attribute name="out"/> 			<!-- output xsd path and filename -->
+		<attribute name="machinename"/>
+		
+		<sequential>
+
+			<!-- trang to xsd -->
+			<java jar="${dir.lib}/trang.jar" fork="true" failonerror="true" maxmemory="512m">
+				<arg value="@{in}" />
+				<arg value="@{out}" />
+				<classpath refid="build.classpath" />
+			</java>
+															
+			<!-- post Trang fixup -->     
+			<trang-xsd-fixer in="@{out}" out="@{out}"/> 
+
+			<dirname file="@{out}" property="dir-@{machinename}"/>
+			
+			<!-- copy over the real mathml3 xsds, note that mathml3.xsd contains mods from the w3c source -->
+			<!-- TODO this should only be done when the profile supports the mathml feature -->
+			<copy overwrite="true" 
+				file="${dir.util}/xsd/mathml3.xsd" 
+				tofile="${dir-@{machinename}}/mathml.xsd" 
+				failonerror="true" />
+			
+			<copy overwrite="true" 
+				file="${dir.util}/xsd/mathml3-common.xsd" 
+				tofile="${dir-@{machinename}}/mathml3-common.xsd" 
+				failonerror="true" />
+			
+			<copy overwrite="true" 
+				file="${dir.util}/xsd/mathml3-presentation.xsd" 
+				tofile="${dir-@{machinename}}/mathml3-presentation.xsd" 
+				failonerror="true" />
+			
+			<copy overwrite="true" 
+				file="${dir.util}/xsd/mathml3-content.xsd" 
+				tofile="${dir-@{machinename}}/mathml3-content.xsd" 
+				failonerror="true" />
+			
+			<copy overwrite="true" 
+				file="${dir.util}/xsd/mathml3-strict-content.xsd" 
+				tofile="${dir-@{machinename}}/mathml3-strict-content.xsd" 
+				failonerror="true" />
+			
+			<!-- copy the xlink.xsd referenced from within the 'real' mods schema 
+					  this overwrites the xlink.xsd just generated by trang, and helps
+					  us avoid a plethora of problems
+					  Note - we have this from a special local version of the mods schema which
+					  replaces the online reference to the mets xlink xsd with a 
+					  
+					  local reference. the mets xlink xsd also declares a type attribute -->
+			<!-- 20091130 mg: letting the below xlink copy remain for now TODO check, used by <ref/> right? -->
+			<!--
+			<copy 
+				overwrite="true" 
+				file="${dir.util}/xsd/mets-xlink.xsd" 
+				tofile="${dir-@{machinename}}/xlink.xsd" failonerror="true" />
+			-->					
+		</sequential>
+	</macrodef>	
+
+	<macrodef name="build-profile-rng-schema-doc">
+			<attribute name="in"/>  <!-- in the quasi-simplified rng -->
+			<attribute name="dest-dir"/>
+			<attribute name="nicename"/>
+			<attribute name="machinename"/>
+			
+			<sequential>
+				<!-- path fix for windows -->
+				<path id="tmp1" path="${dir.src.doc}/namespaceList.xml" />
+				<pathconvert targetos="unix" property="nsList" refid="tmp1">
+					<map from="" to="file:///" />
+				</pathconvert>
+							
+				<path id="tmp2" path="${dir.src.doc}/doc-resources-profile-@{machinename}.xml" />
+				<pathconvert targetos="unix" property="docres-@{machinename}" refid="tmp2">
+					<map from="" to="file:///" />
+				</pathconvert>
+		
+				<property name="quasi-javaprocessed-@{machinename}" value="${dir.temp}/quasi-javaprocessed-@{machinename}.rng"/>
+				
+				<java classname="org.daisy.z3986.rng.SchemaDocPreProcessor" fork="true" failonerror="true" maxmemory="512m">			
+						<arg value="@{in}"/>
+						<arg value="${quasi-javaprocessed-@{machinename}}"/>
+						<arg value="${basedir}"/>
+						<classpath refid="build.classpath" />	
+				</java>
+				
+				<!-- generate schemadoc based on the new XSLT	-->				
+				<saxon-xslt 
+					in="${dir.temp}/quasi-javaprocessed-@{machinename}.rng" 
+					style="${dir.src.doc}/schemadoc2.xsl" 
+					out="${dir.temp}/dummy-schemadoc.xml">
+					<param name="rd-summary" expression="${ai.rd.summary.xml.path}" />
+					<param name="output-path" expression="@{dest-dir}/schemadoc/" />
+					<param name="profile-machine-name" expression="@{machinename}" />
+					<param name="debug" expression="0" />
+				</saxon-xslt> 
+				<delete file="${dir.temp}/dummy-schemadoc.xml"/>				
+				<copy file="${dir.src.doc}/schemadoc2-alt.css" tofile="@{dest-dir}/schemadoc/schemadoc.css" />
+				<build-htaccess dest-dir="@{dest-dir}/schemadoc/" index-name="index.html"/>
+				
+				<!-- <saxon-xslt 
+					in="${dir.temp}/quasi-javaprocessed-@{machinename}.rng" 
+					style="${dir.util.rng}/rng-topology.xsl" 
+					out="@{dest-dir}/sch-topology/@{machinename}-topology.html">       
+				</saxon-xslt> -->    
+			</sequential>
+		</macrodef>
+	
+	
+
+	<macrodef name="saxon9-cmd-xi-db-html" description="docbook-to-xhtml xinclude-enabled transform">
+		<attribute name="in" />
+		<attribute name="style" />
+		<attribute name="out" />
+		<sequential>
+			<java jar="${dir.lib}/saxon9.jar" fork="true" failonerror="true" maxmemory="1024m">
+				<classpath refid="build.classpath"/>
+				<arg value="-xi:on" />
+				<arg value="-s:@{in}"/>
+				<arg value="-xsl:@{style}"/>
+				<arg value="-o:@{out}"/>
+				<arg value="section.autolabel=1"/>
+				<arg value="toc.section.depth=4"/>
+				<arg value="section.label.includes.component.label=1"/>
+				<arg value="html.stylesheet=z3986.css"/>
+			</java>
+		</sequential>
+	</macrodef>	
+	
+	<macrodef name="xom-xincluder" description="run XInclude using XOM">		
+		<attribute name="in" />
+		<attribute name="out" />
+		<sequential>
+			<java classname="org.daisy.z3986.xom.XOMXIncluder" fork="true" failonerror="true" maxmemory="512m">			
+				<arg value="@{in}"/>
+				<arg value="@{out}"/>						
+				<classpath refid="build.classpath" />	
+			</java>			
+		</sequential>
+	</macrodef>
+	
+	<macrodef name="trang-xsd-fixer" description="cleanup of XSD after output from Trang">		
+		<attribute name="in" />
+		<attribute name="out" />
+		<sequential>
+			<java classname="org.daisy.z3986.xsd.XSDFixer" fork="true" failonerror="true" maxmemory="512m">			
+				<arg value="@{in}"/>
+				<arg value="@{out}"/>						
+				<classpath refid="build.classpath" />	
+			</java>			
+		</sequential>
+	</macrodef>	
+	
+	<macrodef name="absdef-expander" description="run the abstract definition expander, on docbook or xhtml sources">		
+		<attribute name="in" />
+		<attribute name="out" />
+		<attribute name="isCM" />
+		<sequential>
+			<java classname="org.daisy.z3986.AbstractDefExpander" fork="true" failonerror="true" maxmemory="512m">			
+				<arg value="${basedir}"/>
+				<arg value="@{in}"/>
+				<arg value="@{out}"/>	
+				<arg value="@{isCM}"/>	
+				<classpath refid="build.classpath" />	
+			</java>			
+		</sequential>
+	</macrodef>
+	
+	<macrodef name="example-expander" description="run the example expander on docbook sources">		
+		<attribute name="in" />
+		<attribute name="out" />
+		<sequential>
+			<java classname="org.daisy.z3986.SpecExampleExpander" fork="true" failonerror="true" maxmemory="512m">
+				<arg value="${basedir}"/>
+				<arg value="@{in}"/>
+				<arg value="@{out}"/>
+				<classpath refid="build.classpath" />	
+			</java>			
+		</sequential>
+	</macrodef>
+	
+	<target name="schema-pool-diagnostics">		
+		<java classname="org.daisy.z3986.rng.SchemaPoolDiagnostics" fork="true" failonerror="true" maxmemory="512m">
+			<arg value="${basedir}"/>						
+			<classpath refid="build.classpath" />	
+		</java>			
+	</target>
+	
+	<target name="schema-pool-diagnostics-info">		
+		<java classname="org.daisy.z3986.rng.SchemaPoolDiagnostics" fork="true" failonerror="true" maxmemory="512m">
+			<arg value="${basedir}"/>
+			<arg value="false"/>
+			<arg value="true"/>
+			<classpath refid="build.classpath" />	
+		</java>			
+	</target>
+	
+	<macrodef name="build-rng-schema-fileset-list" 
+			description="creates a schema fileset list in xml">	
+		<attribute name="in-rng-driver"/>
+		<attribute name="out-list"/>
+		<sequential>
+			<saxon-xslt in="@{in-rng-driver}" 
+				style="${dir.util.rng}/rng-fileset.xsl" 
+				out="@{out-list}" />
+		</sequential>	
+	</macrodef>
+	
+	<macrodef name="pretty-print-rng"
+		description="pretty print all *.rng files under @dir using XOM">
+		<attribute name="dir"/>
+		<attribute name="prune-namespaces"/>
+		<sequential>
+			<java classname="org.daisy.z3986.rng.PrettyPrinter" fork="true" failonerror="true" maxmemory="512m">
+				<arg value="@{dir}"/>
+				<arg value="@{prune-namespaces}"/>
+				<classpath refid="build.classpath" />	
+			</java>
+		</sequential>
+	</macrodef>
+	
+	<target name="compile-util-java-classes">
+		<javac srcdir="${dir.util.java}" destdir="${dir.util.java}" debug="on" source="1.5">
+			<classpath refid="build.classpath" />
+		</javac>
+	</target>
+	
+	<target name="clean-temp-dir">
+		<delete includeemptydirs="true" failonerror="false">
+		  <fileset dir="${dir.temp}" includes="**/*" />
+		</delete>	
+		<mkdir dir="${dir.temp}"/>
+	</target>
+	
+	<macrodef name="clean" description="clean a directory">
+		<attribute name="dir"/>
+		<sequential>
+			<delete failonerror="false" includeemptydirs="true">
+				<fileset dir="@{dir}" includes="**/*" />
+			</delete>
+			<mkdir dir="@{dir}" />
+		</sequential>
+	</macrodef>
+	
+	<target name="clean-build-dir" depends="clean-build-auth-dir, clean-build-dist-dir, clean-build-schema-dir">
+		<delete failonerror="false" includeemptydirs="true">
+			<fileset dir="${dir.build}" includes="**/*" />
+		</delete>
+		<mkdir dir="${dir.build}" />
+		<mkdir dir="${dir.build.auth}" />
+		<mkdir dir="${dir.build.dist}" />
+	</target>
+	
+	<target name="copy-www-css">
+		<copy file="${dir.util}/css/common.css" tofile="${dir.build}/z3986-2011.css" />
+	</target>	
+	
+	<target name="clean-build-auth-dir">
+			<delete failonerror="false" includeemptydirs="true">
+				<fileset dir="${dir.build.auth}" includes="**/*" />
+			</delete>
+			<mkdir dir="${dir.build.auth}" />
+	</target>
+	
+	<target name="clean-build-dist-dir">
+		<delete failonerror="false" includeemptydirs="true">
+			<fileset dir="${dir.build.dist}" includes="**/*" />
+		</delete>
+		<mkdir dir="${dir.build.dist}" />
+	</target>
+	
+	<target name="clean-build-schema-dir">
+		<delete failonerror="false" includeemptydirs="true">
+			<fileset dir="${dir.build.schema}" includes="**/*" />
+		</delete>
+		<mkdir dir="${dir.build.schema}" />
+	</target>
+			
+	<macrodef name="build-htaccess"
+		description="builds a htaccess with settable DirectoryIndex value">
+			<attribute name="dest-dir" />
+			<attribute name="index-name"/>
+			<sequential>
+				<echo file="@{dest-dir}/.htaccess"
+># effects subdirectories unless overridden
+DirectoryIndex @{index-name}	
+				</echo>
+			</sequential>
+	</macrodef> 
+
+	<macrodef name="build-htaccess-plusindexes"
+		description="build an htaccess whose only contents is the +Indexes option">
+		<attribute name="dest-dir" />
+		<sequential>
+			<echo file="@{dest-dir}/.htaccess" 
+>Options +Indexes
+			</echo>
+		</sequential>
+	</macrodef>
+				
+	<macrodef name="build-pf-version-index" 
+		description="builds a version index file for a profile or a feature">
+		<attribute name="nicename"/>
+		<attribute name="machinename"/>		 
+		<attribute name="part.prefix"/>
+		<attribute name="part.nicename.prefix"/>
+		<attribute name="version.list"/>
+		<attribute name="current.version"/>
+		<attribute name="pf.dest.dir"/> <!-- local build dir -->
+		<attribute name="www.base.path" /> <!-- base path, a la "/z3986/2011/auth/profiles/" and /z3986/2011/auth/features/ with leading and trailing separators -->
+				 		
+		<sequential>
+			<dirname file="@{pf.dest.dir}" property="index.dest.dir.@{machinename}"/>
+
+			<saxon-xslt in="${dir.util}/xhtml-rdfa-skeleton.xml" 
+				 style="${dir.util}/web/build-pf-version-index.xsl" 
+	    		  out="${index.dest.dir.@{machinename}}/index.html">
+				<param name="nicename" expression="@{nicename}"/>
+				<param name="machinename" expression="@{machinename}"/>				
+				<param name="part.prefix" expression="@{part.prefix}"/>
+				<param name="part.nicename.prefix" expression="@{part.nicename.prefix}"/>
+				<param name="version.list" expression="@{version.list}"/>
+				<param name="current.version" expression="@{current.version}"/>
+			</saxon-xslt>
+			
+			<mkdir dir="${index.dest.dir.@{machinename}}/current/"/>
+			
+			<echo file="${index.dest.dir.@{machinename}}/.htaccess"
+># effects subdirectories unless overridden
+Redirect 301 @{www.base.path}@{machinename}/current @{www.base.path}@{machinename}/@{current.version}				
+			</echo>	
+		</sequential>
+	</macrodef>
+
+	<macrodef name="build-profile-or-feature-dir-index" 
+		description="builds a profile or feature index (a la $root/auth/profiles/index.html)">
+		<attribute name="out"/>
+		<attribute name="list"/>
+		<attribute name="title"/>
+		<attribute name="nicename-prefix"/>
+		<sequential>
+			<saxon-xslt in="${dir.util}/xhtml-rdfa-skeleton.xml" 
+		  				style="${dir.util}/web/build-pf-index.xsl" 
+		    		  	out="@{out}/index.html">
+				<param name="list" expression="@{list}"/>
+				<param name="title" expression="@{title}"/>
+				<param name="output-uri" expression="@{out}/index.html"/>
+				<param name="nicename-prefix" expression="@{nicename-prefix}"/>
+			</saxon-xslt>
+			<!-- no need for a htaccess here: inherits from parent (build-main-index) -->
+		</sequential>
+	</macrodef>
+
+	<target name="build-main-index" description="builds the root index and a root htaccess">
+		<delete file="${dir.build}/index.html" quiet="true"/>
+		<delete file="${dir.build}/.htaccess" quiet="true"/>
+		<saxon-xslt in="${dir.util}/xhtml-rdfa-skeleton.xml" 
+			style="${dir.util}/web/build-index.xsl" 
+				out="${dir.build}/index.html">
+			<param name="ai-spec-path" expression="${spec.part-a.output.path}" />
+			<param name="ai-primer-path" expression="${spec.part-a.primer.path}" />
+		</saxon-xslt>
+		<echo file="${dir.build}/.htaccess"
+># effects subdirectories unless overridden
+DirectoryIndex index.html			
+Options -Indexes
+AddType application/xml rng
+AddType application/xml sch
+AddType application/xml xsd
+AddType application/xml nvdl
+		</echo>			
+	</target>
+	
+	<target name="test-schematron">
+		<schematron 
+			failonerror="false"
+			schema="${profile.build.dir.book}/resources/${z3986.part.a.prefix}-${profile.machinename.book}.sch"
+			file="${dir.test}/${z3986.part.a.prefix}/${profile.machinename.book}/valid/alice.xml"
+			outputdir="${dir.temp}"
+			querylanguagebinding="xpath2"
+			outputfilename="sch-test-result.xml"			
+		/>	
+	</target> 
+	
+	<target name="test-msv-and-jing">
+		<property name="rng-test-schema" 
+			value="${dir.src.schema}/${z3986.part.a.prefix}-${profile.machinename.book}.rng" />
+		<property name="rng-test-file" 
+			value="${dir.test}/${z3986.part.a.prefix}/${profile.machinename.book}/valid/book-valid-forms01.xml" />
+		
+		<echo>Validating ${rng-test-file}...</echo> 
+		<echo>using msv...</echo>
+		<validate-rng-msv 
+			schema="${rng-test-schema}"
+			file="${rng-test-file}"/>
+		
+		<echo>using jing...</echo>
+		<jing rngfile="${rng-test-schema}" failonerror="false" file="${rng-test-file}" />
+	</target>	
+	
+	<target name="test-xsd-conversion" 
+		depends="clean-temp-dir, compile-util-java-classes, 
+			preprocess-src-rng-schemas, preprocess-src-rng-schemas-xsd">
+		
+		<property name="dir.temp.test.xsd" value="${dir.temp}/test-xsd/"/>
+		<property name="test-xsd-machinename" value="book"/>
+		<property name="test-xsd-input-rng" value="${dir.src.schema.preprocessed.xsd}/z3986a-${test-xsd-machinename}.rng"/>		
+		<property name="test-xsd-output-rng" value="${dir.temp.test.xsd}/jing-s-out-${test-xsd-machinename}.rng"/>		
+		<property name="test-xsd-output-xsd" value="${dir.temp.test.xsd}/z3986a-${test-xsd-machinename}.xsd"/>
+		
+		<mkdir dir="${dir.temp.test.xsd}" />
+		
+		<build-simplified-rng-jing-s 						
+			in="${test-xsd-input-rng}"
+			out="${test-xsd-output-rng}" />
+		
+		<build-xsd-from-simplified-rng 			
+			in="${test-xsd-output-rng}"
+			out="${test-xsd-output-xsd}"
+			machinename="${test-xsd-machinename}" />
+										
+		<validate-xsd 
+			fileset-dir="${dir.test}/${z3986.part.a.prefix}/${test-xsd-machinename}/valid/"
+			fileset-includes="**/*.xml"
+			schema="${test-xsd-output-xsd}"
+			namespace="${z3986.part.a.core.namespace}"
+			failonerror="true" />
+		
+	</target>
+	
+	<target name="test-quasi-simplifier" 
+		depends="compile-util-java-classes, build-vocab-rng-enums, preprocess-src-rng-schemas">
+		<echo>Test quasi simplifier:</echo>
+		<build-simplified-rng-quasi 
+			in="${dir.src.schema.preprocessed}/${z3986.part.a.prefix}-${profile.machinename.book}.rng" 
+			out="${dir.temp}/quasi-simplifier-test.rng" 
+			verbose="true"
+			debug="true" />
+	</target>
+	
+	<target name="test-jing-simplifier" 
+		depends="build-vocab-rng-enums, preprocess-src-rng-schemas">
+		<build-simplified-rng-jing-s 
+			in="${dir.src.schema.preprocessed}/${z3986.part.a.prefix}-${profile.machinename.book}.rng" 
+			out="${dir.temp}/jing-simplifier-test.rng" />
+	</target>
+			
+	<taskdef name="jing" classname="com.thaiopensource.relaxng.util.JingTask">
+		<classpath>
+			<pathelement location="${dir.lib}/jing.jar" />
+		</classpath>
+	</taskdef>
+
+	<taskdef name="saxon-xslt" classname="net.sf.saxon.ant.AntTransform">
+		<classpath>
+			<pathelement location="${dir.lib}/saxon9.jar" />
+			<pathelement location="${dir.lib}/saxon9-ant.jar" />
+		</classpath>
+	</taskdef>
+	
+	<taskdef resource="net/sf/antcontrib/antlib.xml">
+		<classpath>
+		   <pathelement location="${lib.dir}/ant-contrib-10b3.jar"/>
+		</classpath>
+	</taskdef>
+	
+	<taskdef name="schematron" classname="com.schematron.ant.SchematronTask">
+		<classpath>
+			<path refid="build.classpath"/>
+		</classpath>		
+	</taskdef>	
+		
+	<xmlcatalog id="catalog">
+		<dtd publicId="http://www.hdlg.info/XML/filesystem.dtd" location="${dir.util}/cat/filesystem.dtd" />
+		<dtd publicId="-//W3C//DTD XHTML+RDFa 1.0//EN" location="${dir.util}/cat/xhtml-rdfa-1.dtd" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Base Element 1.0//EN" location="${dir.util}/cat/xhtml-base-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Ruby 1.0//EN" location="${dir.util}/cat/xhtml-ruby-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Forms 1.0//EN" location="${dir.util}/cat/xhtml-basic-form-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Legacy Markup 1.0//EN" location="${dir.util}/cat/xhtml-legacy-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Scripting 1.0//EN" location="${dir.util}/cat/xhtml-script-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Link Element 1.0//EN" location="${dir.util}/cat/xhtml-link-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML BIDI Override Element 1.0//EN" location="${dir.util}/cat/xhtml-bdo-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Lists 1.0//EN" location="${dir.util}/cat/xhtml-list-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Server-side Image Maps 1.0//EN" location="${dir.util}/cat/xhtml-ssismap-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Client-side Image Maps 1.0//EN" location="${dir.util}/cat/xhtml-csismap-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Metainformation 1.0//EN" location="${dir.util}/cat/xhtml-meta-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Document Structure 1.0//EN" location="${dir.util}/cat/xhtml-struct-1.mod" />
+		<entity publicid="-//W3C//ENTITIES XHTML Datatypes 1.0//EN" location="${dir.util}/cat/xhtml-datatypes-1.mod" />
+		<entity publicid="-//W3C//ENTITIES XHTML MetaAttributes 1.0//EN" location="${dir.util}/cat/xhtml-metaAttributes-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Style Sheets 1.0//EN" location="${dir.util}/cat/xhtml-style-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Editing Elements 1.0//EN" location="${dir.util}/cat/xhtml-edit-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Embedded Object 1.0//EN" location="${dir.util}/cat/xhtml-object-1.mod" />
+		<entity publicid="-//W3C//ENTITIES XHTML Modular Framework 1.0//EN" location="${dir.util}/cat/xhtml-framework-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Param Element 1.0//EN" location="${dir.util}/cat/xhtml-param-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Tables 1.0//EN" location="${dir.util}/cat/xhtml-table-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Hypertext 1.0//EN" location="${dir.util}/cat/xhtml-hypertext-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Presentation 1.0//EN" location="${dir.util}/cat/xhtml-pres-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Target 1.0//EN" location="${dir.util}/cat/xhtml-target-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Images 1.0//EN" location="${dir.util}/cat/xhtml-image-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Text 1.0//EN" location="${dir.util}/cat/xhtml-text-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Inline Style 1.0//EN" location="${dir.util}/cat/xhtml-inlstyle-1.mod" />
+		<entity publicid="-//W3C//ENTITIES XHTML+RDFa Document Model 1.0//EN" location="${dir.util}/cat/xhtml-rdfa-model-1.mod" />
+		<entity publicid="-//W3C//ENTITIES Symbols for XHTML//EN" location="${dir.util}/cat/xhtml-symbol.ent" />
+		<entity publicid="-//W3C//ENTITIES Special for XHTML//EN" location="${dir.util}/cat/xhtml-special.ent" />
+		<entity publicid="-//W3C//ENTITIES Latin 1 for XHTML//EN" location="${dir.util}/cat/xhtml-lat1.ent" />
+	</xmlcatalog>	
+	
+	<target name="schema-utils-jar" depends="compile-util-java-classes">
+	    <jar destfile="z3986-schema-utils.jar"
+	         basedir="${dir.util.java}"
+	         includes="**/*.class"
+	         />
+	 </target>
+		
+</project>

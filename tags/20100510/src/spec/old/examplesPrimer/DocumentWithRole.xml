@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://www.daisy.org/ns/z3986/authoring/" 
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:book="http://www.daisy.org/z3986/2010/vocab/book/#"
+    xmlns:z3986dec="http://www.daisy.org/z3986/2010/vocab/decl/#"
+    xml:lang="en">
+    <head>
+        <meta rel="z3986dec:profile" 
+            resource="http://www.daisy.org/z3986/2010/auth/profiles/book/1.0/"/>
+        <meta property="dcterms:identifier" content="daisy-z2010-role-001"/>
+        <meta property="dcterms:publisher" content="DAISY Consortium"/>
+        <meta property="dcterms:date" content="2005-07-27T13:50:05-05:00"/>                
+    </head>
+    <body>
+        <frontmatter>
+            <section role="titlepage">
+                <object xml:id="imgfpiece" role="frontispiece" src="fpiece.jpg" >
+                    A picture of Sir Henry Jowls with  his arm around the author                    
+                </object>
+                <caption ref="imgfpiece">Sir Henry Jowls with the author</caption>
+                
+                <title property="dcterms:title">
+                    <titlepart role="fulltitle">A true adventurer:</titlepart>
+                    <titlepart role="subtitle">The story of Sir Henry Jowls</titlepart>
+                </title>
+                <p>By his nephew, <name property="dc:creator">Jack Flanders</name></p>
+            </section>
+        </frontmatter>
+        <bodymatter>
+            <section role="chapter">
+                <h>Chapter 1</h>
+                <p>The story begins at Inverness ...</p>
+            </section>
+        </bodymatter>
+    </body>
+</document>

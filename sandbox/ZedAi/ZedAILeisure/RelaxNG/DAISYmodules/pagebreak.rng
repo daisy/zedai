@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <x:h1>The DAISY Pagebreak module</x:h1>
+
+
+    <define name="Daisy.pagebreak" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="pagebreak">
+            <ref name="Daisy.pagebreak.attlist" />
+            <ref name="Daisy.pagebreak.content" />
+        </element>
+    </define>
+
+    <define name="Daisy.pagebreak.attlist">
+        <optional>
+            <attribute name="value">
+                <text />
+            </attribute>
+        </optional>
+<!--        <ref name="Daisy.attlist" />-->
+    </define>
+
+    <define name="Daisy.pagebreak.content">
+        <empty />
+    </define>
+
+</grammar>

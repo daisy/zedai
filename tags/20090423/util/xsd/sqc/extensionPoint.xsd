@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:element name="contribution">
+		<xsd:complextype>
+			<xsd:attribute name="fileExtension" type="xsd:string" use="required">
+				<xsd:annotation>
+					<xsd:documentation>
+						The "fileExtension" attribute of each &lt;contribution&gt; elment MUST be set to the extension file that SQC Plugin should now handle.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="options" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>
+						The optional "options" attribute provides SQC options when a file of fileExtension is being processed. 
+						Options have the same format and meaning as for the SQC command line program. Note however that some options are not relevant in Eclipse environment : 
+						"-r", "-reportAsXML".
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			
+		</xsd:complextype>
+	</xsd:element>
+</xsd:schema>		
+			

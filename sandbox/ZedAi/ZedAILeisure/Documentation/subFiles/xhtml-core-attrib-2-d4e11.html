@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Relax NG schema module</title>
+      <link rel="stylesheet" type="text/css" href="../css/ProfileDocumentation.css" />
+   </head>
+   <body>
+      <h1 class="title">The DAISY Leisure Profile</h1>
+      
+      
+      <h1 id="d5e3" class="xhtml">Core Attributes Module</h1>
+      
+      
+      
+      <h2 id="d5e8" class="xhtml">Core Attribute Collection</h2>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">class.attrib</span>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">class</span>
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="NMTOKENS.datatype.html">NMTOKENS.datatype</a></div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">id.attrib</span>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">xml:id</span>
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="ID.datatype.html">ID.datatype</a></div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">layout.attrib</span>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">layout</span>
+               
+               <div class="rng"><span class="rng">choice</span>:  A choice between at least one of:
+                  			
+                  
+                  <div class="rng"><span class="rng">value</span>: irrelevant
+                  </div>  
+                  
+                  <div class="rng"><span class="rng">value</span>: relevant
+                  </div>  
+                  
+               </div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">title.attrib</span>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">title</span>
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Text.datatype.html">Text.datatype</a></div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Core.attrib</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="id.attrib.html">id.attrib</a></div>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="class.attrib.html">class.attrib</a></div>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="layout.attrib.html">layout.attrib</a></div>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="title.attrib.html">title.attrib</a></div>
+         
+      </div>
+      
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Common.attrib</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Core.attrib.html">Core.attrib</a></div>
+         
+      </div>
+      
+      
+   </body>
+</html>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="docResources.rng" type="xml"?>
+<docResources xmlns="http://www.daisy.org/ns/z3986/2008/docResources/">
+
+  <include subDrURI="doc-resources-common.xml" />
+  <include subDrURI="doc-resources-feature-mathml.xml" />
+  <include subDrURI="doc-resources-feature-ssml.xml" />
+  <include subDrURI="doc-resources-feature-ruby.xml" />
+  <include subDrURI="doc-resources-feature-select.xml" />
+  <include subDrURI="doc-resources-feature-forms.xml" />
+  <include subDrURI="doc-resources-feature-rend.xml" />
+
+  <namespace nsURI="http://www.daisy.org/z3986/2010/" feature="no"
+    defaultDocURL="http://www.daisy.org/z3986/2010/auth/profiles/book/">
+    <element name="cover" descriptionURI="../schema/mod/z3986-cover.rng#z3986.cover"
+      descriptionInclude="yes"
+      additionalInfoURI="./additional-doc-prose/foobar.html#foo-additionalinfo"
+      shortSampleURI="./additional-doc-prose/foobar.html#foo-shortsample" />
+    <element name="frontcover" descriptionURI="../schema/mod/z3986-cover.rng#z3986.frontcover"
+      descriptionInclude="yes"
+      additionalInfoURI="./additional-doc-prose/foobar.html#foo-additionalinfo"
+      shortSampleURI="./additional-doc-prose/foobar.html#foo-shortsample" />
+    <element name="backcover" descriptionURI="../schema/mod/z3986-cover.rng#z3986.backcover"
+      descriptionInclude="yes"
+      additionalInfoURI="./additional-doc-prose/foobar.html#foo-additionalinfo"
+      shortSampleURI="./additional-doc-prose/foobar.html#foo-shortsample" />
+    <element name="spine" descriptionURI="../schema/mod/z3986-cover.rng#z3986.spine"
+      descriptionInclude="yes"
+      additionalInfoURI="./additional-doc-prose/foobar.html#foo-additionalinfo"
+      shortSampleURI="./additional-doc-prose/foobar.html#foo-shortsample" />
+    <element name="flaps" descriptionURI="../schema/mod/z3986-cover.rng#z3986.flaps"
+      descriptionInclude="yes"
+      additionalInfoURI="./additional-doc-prose/foobar.html#foo-additionalinfo"
+      shortSampleURI="./additional-doc-prose/foobar.html#foo-shortsample" />
+    <element name="frontmatter" descriptionURI="../schema/mod/z3986-book.rng#z3986.frontmatter"
+      descriptionInclude="yes"
+      additionalInfoURI="./additional-doc-prose/foobar.html#foo-additionalinfo"
+      shortSampleURI="./additional-doc-prose/foobar.html#foo-shortsample" />
+    <element name="section" context="frontmatter"
+      descriptionURI="../schema/mod/z3986-book.rng#z3986.section.frontmatter"
+      descriptionInclude="yes"
+      additionalInfoURI="./additional-doc-prose/foobar.html#foo-additionalinfo"
+      shortSampleURI="./additional-doc-prose/foobar.html#foo-shortsample" />
+    <element name="backmatter" descriptionURI="../schema/mod/z3986-book.rng#z3986.backmatter"
+      descriptionInclude="yes"
+      additionalInfoURI="./additional-doc-prose/foobar.html#foo-additionalinfo"
+      shortSampleURI="./additional-doc-prose/foobar.html#foo-shortsample" />
+    <element name="bodymatter" descriptionURI="../schema/mod/z3986-book.rng#z3986.bodymatter"
+      descriptionInclude="yes"
+      additionalInfoURI="./additional-doc-prose/foobar.html#foo-additionalinfo"
+      shortSampleURI="./additional-doc-prose/foobar.html#foo-shortsample" />
+    <element name="pageref" descriptionURI="../schema/mod/z3986-toc.rng#z3986.tocpageref"
+      additionalInfoURI="./additional-doc-prose/book-profile.html#pageref-long"
+      shortSampleURI="./additional-doc-prose/book-profile.html#pageref-short"
+      descriptionInclude="yes" />
+    <element name="toc" descriptionURI="../schema/mod/z3986-toc.rng#z3986.toc"
+      descriptionInclude="yes"
+      additionalInfoURI="./additional-doc-prose/foobar.html#foo-additionalinfo"
+      shortSampleURI="./additional-doc-prose/foobar.html#foo-shortsample" />
+    <element name="tocentry" descriptionURI="../schema/mod/z3986-toc.rng#z3986.tocentry"
+      additionalInfoURI="./additional-doc-prose/foobar.html#foo-additionalinfo"
+      shortSampleURI="./additional-doc-prose/foobar.html#foo-shortsample" descriptionInclude="yes" />
+    <element name="label" context="tocentry"
+      descriptionURI="../schema/mod/z3986-toc.rng#z3986.toclabel"
+      additionalInfoURI="./additional-doc-prose/foobar.html#foo-additionalinfo"
+      shortSampleURI="./additional-doc-prose/foobar.html#foo-shortsample" descriptionInclude="yes"
+     />
+  </namespace>
+
+
+
+</docResources>

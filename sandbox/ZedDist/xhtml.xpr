@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <meta>
+        <filters directoryPatterns="" filePatterns=""
+            positiveFilePatterns="" showHiddenFiles="false"/>
+        <options/>
+    </meta>
+    <projectTree name="xhtml.xpr">
+        <folder name="mod">
+            <file name="src/schema/mod/xhtml-attrib.rng"/>
+            <file name="src/schema/mod/xhtml-document.rng"/>
+            <file name="src/schema/mod/xhtml-heading.rng"/>
+            <file name="src/schema/mod/xhtml-hypertext.rng"/>
+            <file name="src/schema/mod/xhtml-image.rng"/>
+            <file name="src/schema/mod/xhtml-list.rng"/>
+            <file name="src/schema/mod/xhtml-model-loose.rng"/>
+            <file name="src/schema/mod/xhtml-model-strict.rng"/>
+            <file name="src/schema/mod/xhtml-object.rng"/>
+            <file name="src/schema/mod/xhtml-ruby.rng"/>
+            <file name="src/schema/mod/xhtml-section.rng"/>
+            <file name="src/schema/mod/xhtml-structural.rng"/>
+            <file name="src/schema/mod/xhtml-table.rng"/>
+            <file name="src/schema/mod/xhtml-table-basic.rng"/>
+            <file name="src/schema/mod/xhtml-text.rng"/>
+            <file name="src/schema/mod/z3986-datatypes.rng"/>
+        </folder>
+        <folder name="test">
+            <file name="test/test-xhtml-loose-01.html"/>
+            <file name="test/test-xhtml-strict-01.html"/>
+        </folder>
+        <file name="src/schema/xhtml-loose.rng"/>
+        <file name="src/schema/xhtml-strict.rng"/>
+    </projectTree>
+</project>

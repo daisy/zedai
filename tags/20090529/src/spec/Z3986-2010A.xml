@@ -1,0 +1,1468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="../../util/docbook/rng/docbook.rng" type="xml"?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>ANSI/NISO Z39.86-2010 Part A</title>
+    <subtitle>Z39.86 Authoring and Interchange Framework Specification</subtitle>
+    <info>
+        <releaseinfo>Public working draft</releaseinfo>
+        <pubdate>29 May 2009</pubdate>
+        <editor>
+            <personname>James Pritchett</personname>
+            <affiliation>
+                <orgname>Recording for the Blind &amp; Dyslexic</orgname>
+            </affiliation>
+            <email>jpritchett@rfbd.org</email>
+        </editor>
+        <editor>
+            <personname>Markus Gylling</personname>
+            <affiliation>
+                <orgname>DAISY Consortium</orgname>
+            </affiliation>
+            <email>mgylling@daisy.org</email>
+        </editor>
+
+        <abstract>
+            <title>Abstract</title>
+            <para>The Z39.86 Authoring and Interchange (Z39.86-AI) Framework is a means of defining
+                markup languages to represent different kinds of information resources (books,
+                periodicals, etc.), with the intent of producing documents suitable for
+                transformation into different universally accessible formats. It uses a modular,
+                extensible architecture to permit the creation of any number of document models,
+                each custom-tailored for a particular kind of information resource.</para>
+        </abstract>
+    </info>
+    <preface xml:id="introduction" conformance="informative">
+        <title>Introduction</title>
+        <para>The Z39.86 Authoring and Interchange (Z39.86-AI) Framework is a means of defining
+            markup languages to represent different kinds of information resources (books,
+            periodicals, etc.), with the intent of producing documents suitable for transformation
+            into different universally accessible formats.</para>
+        <section xml:id="introductionDesignGoals">
+            <title>Design goals</title>
+            <para>The Framework has been created with three major design goals in mind:</para>
+            <orderedlist>
+                <listitem>
+                    <para><emphasis>Extensibility.</emphasis> Because there are so many different
+                        kinds of information resources, each with its own unique needs, it is clear
+                        that no single markup language can fit all circumstances. Instead, the
+                        Framework is designed to be inherently extensible and customizable. The
+                        Framework specifies how to create a profile that can be used when
+                        representing a particular kind of information resource. If existing profiles
+                        do not meet the needs of a particular use case, an agency can create a
+                        wholly new profile, or can easily adapt an existing profile to better fit
+                        the immediate need. As new, specialized XML markup languages appear, they
+                        can easily be incorporated into profiles.</para>
+                </listitem>
+                <listitem>
+                    <para>
+                        <emphasis>Modularity.</emphasis> Framework profiles build their models in
+                        discrete schema modules, building on existing schemas where possible. The
+                        schema modules created for specific profiles, in turn, can be used within
+                        other Framework profiles, or even in completely unrelated markup languages.
+                        This reduces the amount of work required for creating profiles through
+                        reuse.</para>
+                    <para>In addition, specialized content types such as math or music can be
+                        defined as features: a coherent set of schema modules that is maintained
+                        separately from any profile. Features included in profiles can be identified
+                        individually, and instance documents declare whether they actually reference
+                        markup defined in those features. This allows both document authors and
+                        processing agents to negotiate support for these specialized constructs.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        <emphasis>Self-describing.</emphasis> The Framework defines mechanisms that
+                        allow the markup language to document itself, without need of independent
+                        specification documents. Each profile names a resource directory (expressed
+                        in <xref linkend="refRDFa"/>) that is a machine- and human-readable
+                        inventory of associated resources to help render and process content created
+                        using the profile. The Framework also makes heavy use of 
+                            <xref linkend="refRDFa"/>) within instance documents as a way of indicating the semantic function
+                        of elements in a way that is both machine- and human-readable.</para>
+                </listitem>
+            </orderedlist>
+        </section>
+        <section xml:id="introductionSpecDox">
+            <title>Specification documents</title>
+            <para>The Z39.86-2010 Part A specification defines the following:</para>
+            <orderedlist>
+                <listitem>
+                    <para>What a profile is and how it must be constructed</para>
+                </listitem>
+                <listitem>
+                    <para>What a feature is and how it must be constructed</para>
+                </listitem>
+                <listitem>
+                    <para>The requirements for a conforming document created using any given
+                        profile </para>
+                </listitem>
+                <listitem>
+                    <para>A set of predefined features that may be used with profiles</para>
+                </listitem>
+                <listitem>
+                    <para>A set of predefined profiles that may be used in creating documents</para>
+                </listitem>
+            </orderedlist>
+            <para>Separate from this specification document there are the following support
+                documents:</para>
+            <orderedlist>
+                <listitem>
+                    <para>A Framework primer document that gives an introduction to the design
+                        concepts and structures of profiles</para>
+                </listitem>
+                <listitem>
+                    <para>A guide to profile construction that gives more technically detailed
+                        information on how to create a new Framework profile.</para>
+                </listitem>
+            </orderedlist>
+        </section>
+    </preface>
+    <chapter xml:id="relationships" conformance="informative">
+        <title>Relationships to other specifications</title>
+        <para>This standard is based on the specific versions of the standards and specifications
+            referenced herein, which are used as defined except as noted by this document. Any
+            refinement or replacement of a referenced specification by a newer or different version
+            is not directly applicable to this standard. Conformance to this standard is based on
+            the versions of the standards and specifications in effect at the time of this
+            writing.</para>
+        <section xml:id="relationshipsZ39862010B">
+            <title>Relationship to Z39.86-2010 Part B</title>
+            <para>Z39.86-2010 Part B defines different end-user accessible formats for information
+                resources.  The procedures for defining markup languages and profiles given in this
+                specification are designed to create documents that are easily transformed into the
+                accessible formats described by Z39.86-2010 Part B.  However, this is not an
+                exclusive relationship.  Documents conforming to a Framework profile may be
+                transformed into many other formats not described by Z39.86-2010 Part B, and
+                accessible formats described by that specification may be created from documents in
+                formats not conforming to this specification.</para>
+        </section>
+        <section xml:id="relationshipsZ39862005">
+            <title>Relationship to Z39.86-2005</title>
+            <para>Z39.86-2010 Part A and B jointly form a functional expansion of the <citation
+                    linkend="refZ39862005">Z39.86-2005</citation> specification.  Z39.86-2010 Part A
+                represents an entirely new technical direction that supersedes
+                Section 4 <link xlink:href="http://www.niso.org/workrooms/daisy/Z39-86-2005.html#Text">“Content
+                Format for Text”</link> of Z39.86-2005.  As such, text content files compliant under
+                Z39.86-2005 will not be compliant under Z39.86-2010 and vice versa.</para>
+        </section>
+        <section xml:id="relationshipsMODS">
+            <title>Relationship to Metadata Object Description Schema (MODS)</title>
+            <para> This specification mandates that metadata be expressed in MODS XML following the
+                guidelines of <xref linkend="refMODS"/>, but the natural mechanism for expression of
+                metadata is RDFa. There is as yet no definitive RDF schema for MODS, although work
+                on one has been undertaken by the MODS maintenance committee. It is anticipated that
+                if the RDF schema is standardized in time that this specification will be updated to
+                refer to it instead. </para>
+        </section>
+        <section xml:id="relationshipsXML">
+            <title>Relationship to XML</title>
+            <para>The document types defined by Z39.86-2010 Part A inherit all constraints defined
+                by <citation linkend="refXML">Extensible Markup Language (XML) 1.0 (Fourth
+                    Edition)</citation>.</para>
+        </section>
+        <!--
+        <section xml:id="relationshipsUnicode">
+            <title>Relationship to Unicode</title>
+            <para>
+                <remark role="todo">Note that Unicode version is inherited from the version of XML
+                    we reference</remark>
+            </para>
+        </section>    
+-->
+        <section xml:id="relationshipsXHTML2">
+            <title>Relationship to XHTML2</title>
+            <para> The original intent of this specification was to adopt a core vocabulary from
+                    <xref linkend="refXHTML2"/> and build upon the compound document composition
+                principles defined by <xref linkend="refXHTMLMOD2"/>. At the time of this writing,
+                    <xref linkend="refXHTML2"/> and <xref linkend="refXHTMLMOD2"/>have not been made
+                W3C Recommendations, and their future direction is unclear. The Z39.86-2010 core
+                markup and related schema modules draw heavily on <xref linkend="refXHTML2"/>, even
+                though they currently use the Z39.86-2010 namespace. Should <xref
+                    linkend="refXHTML2"/> and <xref linkend="refXHTMLMOD2"/> move forward as
+                Recommendations, it is expected that these modules would change to the <xref
+                    linkend="refXHTML2"/> namespace, and that the composition principles would be
+                realigned with <xref linkend="refXHTMLMOD2"/>. </para>
+        </section>
+
+    </chapter>
+    <chapter xml:id="definitions" conformance="informative">
+        <title>Terms and definitions</title>
+        <variablelist>
+            <varlistentry>
+                <term>Profile</term>
+                <listitem>
+                    <para>An integrated markup model (element set and grammar) and associated RDF
+                        vocabulary designed to represent information resources of a particular
+                        type.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Markup model</term>
+                <listitem>
+                    <para>The markup vocabulary (i.e., the gamut of element and attribute names,
+                        notations, etc.) and grammar (i.e., the prescribed use of that vocabulary)
+                        as defined by a schema.  The markup model is the concrete representation in
+                        markup syntax of an abstract document model, and may be defined with varying
+                        levels of strict conformity.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Module</term>
+                <listitem>
+                    <para>An abstract unit within a markup model expressed as a schema fragment,
+                        used to consolidate markup declarations to increase the flexibility,
+                        modifiability, reuse and understanding of specific logical or semantic
+                        structures.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Feature</term>
+                <listitem>
+                    <para>A markup model and associated RDF vocabulary designed to represent a
+                        limited, highly-specialized set of content structures. Typically these will
+                        require specific behaviors in processing agents. Mathematical equations,
+                        chemistry formulas, and musical notations are examples of the kinds of
+                        content structures that might be addressed by a Z39.86-AI feature.  Features
+                        share the same general structure as profiles, but are more specialized and
+                        of narrower scope and are intended to be used as discrete components within
+                        profiles.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>RDF vocabulary</term>
+                <listitem>
+                    <para>An ontology that provides a mechanism to annotate elements or element
+                        content with machine-extractable semantic information about their nature or
+                        purpose. RDF vocabularies are expressed in RDF.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Resource directory</term>
+                <listitem>
+                    <para>A package of information regarding a profile or feature, including
+                        normative schemas, informative schemas, RDF vocabularies, documentation,
+                        stylesheets, or other associated resources. Resource directories are
+                        expressed in XHTML+RDFa (per <xref linkend="refRDFa"/>).</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Z39.86-AI document</term>
+                <listitem>
+                    <para>An XML document that conforms to a Z39.86-AI profile.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Processing Agent</term>
+                <listitem>
+                    <para>A software application that processes a Z39.86-AI document for some
+                        reason. Examples include, but are not limited to, authoring tools (XML
+                        editors, XML-enabled word processors), transformation pipelines, business
+                        transfer chains, end-user provisioning interfaces, and conformance
+                        validators.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </chapter>
+    <chapter xml:id="conformance" conformance="normative">
+        <title>Conformance definition</title>
+        <para>The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+            "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described
+            in <xref linkend="refRFC2119"/>.</para>
+        <section xml:id="conformanceProfile">
+            <title>Profile conformance</title>
+            <para>A conforming profile must meet all of the following criteria:</para>
+            <orderedlist>
+                <listitem>
+                    <para>It must define an identity URI that meets the requirements of <xref
+                            linkend="profilesURI"/>.</para>
+                </listitem>
+                <listitem>
+                    <para>The identity URI must resolve to a resource directory that meets the
+                        requirements of <xref linkend="resourcedirectoryReq"/>.</para>
+                </listitem>
+                <listitem>
+                    <para>The resource directory must identify at least one normative schema written
+                        in one of the languages identified in <xref
+                            linkend="profilesMarkupModelSchema"/>.</para>
+                </listitem>
+                <listitem>
+                    <para>The normative schema must meet all the requirements of <xref
+                            linkend="profilesMarkupModelReq"/>.</para>
+                </listitem>
+                <listitem>
+                    <para>If an RDF vocabulary is included as part of the profile (<remark
+                            role="todo"> see default vocab association in RD section</remark>), then
+                        it must meet the requirements of <xref
+                            linkend="profilesRDFReq"/>.</para>
+                </listitem>
+            </orderedlist>
+        </section>
+        <section xml:id="conformanceFeature">
+            <title>Feature conformance</title>
+            <para>A conforming feature must meet all of the following criteria:</para>
+            <orderedlist>
+                <listitem>
+                    <para>It must define an identity URI that meets the requirements
+                        of <xref linkend="featuresURI" />.</para>
+                </listitem>
+                <listitem>
+                    <para>The identity URI must resolve to a resource directory that meets the
+                        requirements of <xref linkend="resourcedirectoryReq"/>  </para>
+                </listitem>
+                <listitem>
+                    <para>The resource directory must identify at least one normative schema written
+                        in one of the languages identified in <xref
+                            linkend="profilesMarkupModelSchema"/>.</para>
+                </listitem>
+                <listitem>
+                    <para>The normative schema must meet all the requirements of <xref
+                        linkend="featuresMarkupModelReq"/>.</para>
+                </listitem>
+                <listitem>
+                    <para>If an RDF vocabulary is included as part of the feature, then
+                        it must meet the requirements of <xref linkend="featuresRDF"/>.</para>
+                </listitem>
+            </orderedlist>
+        </section>
+        <section xml:id="conformanceDocument">
+            <title>Document conformance</title>
+            <para>A document instance conforming to this specification must meet all of the
+                following criteria:</para>
+            <orderedlist>
+                <listitem>
+                    <para>It must be a well-formed XML Document as defined by <xref
+                        linkend="refXML"
+                        />.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>It must be namespace-valid as defined by <xref
+                        linkend="refXMLNamespaces"
+                        />.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>The start tag of the root element of the document must explicitly contain
+                        a <xref linkend="refXMLNamespaces"/>) compliant declaration for the
+                        Z39.86-AI Core namespace, as defined by <xref
+                            linkend="core"/>.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>It must include a reference to exactly one conforming profile, following
+                        the means identified in <xref
+                            linkend="documentsProfilesFeatures"/>.</para>
+                </listitem>
+                <listitem>
+                    <para>If it uses markup from any of the features included in the
+                        referenced profile, it must include a reference to those
+                        features used and only to those used, following the means
+                        identified in <xref linkend="documentsProfilesFeatures"/>.</para>
+                </listitem>
+                <listitem>
+                    <para>It must be valid to the normative schema(s) of the
+                        referenced profile.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>It must conform to any normative prose expressed (see <xref
+                        linkend="resourcedirectoryReq"/>) in the resource
+                        directories of the referenced profile and feature(s).</para>
+                </listitem>
+                <listitem>
+                    <para>It must contain metadata that meets all the requirements of <xref
+                            linkend="documentsMetadata"/>. </para>
+                </listitem>
+                <listitem>
+                    <para>It must perform CURIE prefix binding as defined in <xref
+                            linkend="documentsCURIE"/>.
+                    </para>
+                </listitem>
+            </orderedlist>
+        </section>
+        <section xml:id="conformanceProcessingAgent">
+            <title>Processing Agent conformance</title>
+            <para>A processing agent conforming to this specification must meet all of the following
+                criteria when processing Z39.86-AI documents:</para>
+            <orderedlist>
+                <listitem>
+                    <para>It must detect and handle profiles as specified in <xref
+                            linkend="profilesURIPA"/>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>It must detect and handle features as specified in <xref
+                            linkend="featuresURIPA"/>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>When processing a Z39.86-AI document, it must conform to any normative
+                        prose expressed (see <xref linkend="resourcedirectoryReq"/>) in the
+                        referenced profile's and used feature's resource directories. </para>
+                </listitem>
+                <listitem>
+                    <para>It must handle <code>role</code> attributes as specified in <xref
+                            linkend="profilesRolePA"/>. </para>
+                </listitem>
+                <listitem>
+                    <para>It must handle <code>RDFa</code> attributes as specified in <xref
+                            linkend="profilesRDFaPA"/>. </para>
+                </listitem>
+
+            </orderedlist>
+        </section>
+    </chapter>
+    <chapter xml:id="profiles">
+        <title>Profiles</title>
+        <section xml:id="profilesIntro" conformance="informative">
+            <title>Introduction</title>
+            <para>The goal of the Z39.86 Authoring and Interchange Framework is to define a modular,
+                extensible way of expressing information resources of all kinds as XML documents
+                suitable for transformation into different universally accessible formats.  Because
+                information resources are of myriad types, no one XML markup language can be
+                expected to be suitable for this task.  Therefore, the Framework is based on the
+                notion of document <emphasis>profiles</emphasis>:  different markup languages
+                suitable for particular information resource types, but which all follow the same
+                overall architecture and which share many common components.</para>
+            <para>Examples of profiles might include:</para>
+            <itemizedlist>
+                <listitem>
+                    <para>A book profile for printed books of all kinds (novels, nonfiction books,
+                        student textbooks, etc.)  </para>
+                </listitem>
+                <listitem>
+                    <para>A poetry profile </para>
+                </listitem>
+                <listitem>
+                    <para>A drama profile for plays of all kinds  </para>
+                </listitem>
+                <listitem>
+                    <para>A newsfeed profile for newspaper articles  </para>
+                </listitem>
+                <listitem>
+                    <para>A magazines and journals profile for all kinds of periodicals  </para>
+                </listitem>
+                <listitem>
+                    <para>A consumer medical information profile  </para>
+                </listitem>
+            </itemizedlist>
+            <para>By design, the Framework does not require any particular scope for a profile.  As
+                seen in the examples above, a profile can have a wide scope (such as a book profile)
+                or it can have a narrow scope (such as a consumer medical information profile).
+                 While this specification includes a number of generally-useful profiles, any number
+                of profiles may be created by any agency or individual to represent any kind of
+                information resource.  Profiles that conform to the criteria given in <xref
+                    linkend="conformanceProfile"/> are considered to be conforming profiles.</para>
+            <para>A profile consists of a markup model (element set and grammar, expressed as a
+                schema) and, optionally, a vocabulary of RDF properties. The RDF vocabulary is used
+                to provide <!-- more subtle --> semantic inflections on elements within the markup
+                model.  For example, a book profile might use roles defining such book structures as
+                “preface”, “introduction”, or “acknowledgements” in order to inflect a generic
+                “section” element.</para>
+            <para>Each profile has a unique URI associated with it, which serves as the profile's
+                identifier.  This URI resolves to a unique resource directory associated with the
+                profile.  This resource directory lists normative and informative resources that are
+                associated with the profile.</para>
+            <para>Profiles may also include features in their markup models.  Features themselves
+                consist of markup models, but are not designed to be complete markup languages in
+                their own right.  Instead, they are designed to be included as-is in any number of
+                profiles.  The scope of features is narrower:  they define markup suitable to
+                represent specific content structures, typically of a highly specialized nature
+                (such as math or music).  Typically, a profile's included features will not all be
+                used by every document created using that profile.  In order to simplify the burden
+                on processing agents, from their perspective features are
+                    <emphasis>optional</emphasis>, and documents declare which features are actually
+                used.</para>
+        </section>
+        <section xml:id="profilesURI" conformance="normative">
+            <title>Identity URI</title>
+            <para>Each profile must define a URI that serves as the unique identifier of the
+                profile. This URI must be valid with respect to <xref linkend="refRFC3986"/> and
+                with respect to the following EBNF specification:</para>
+            <programlisting><remark role="todo">review Identity URI EBNF, use constraintdef</remark>
+                identity ::= protocol, home, static, name, version
+                protocol ::= 'http://'
+                home ::= urisegment
+                static ::= /z3986/2010/auth/profiles/
+                name ::= urisegment, '/'
+                version ::= [0-9.]*, '/'
+                urisegment ::= [A-Za-z0-9./]*
+            </programlisting>
+            <para>The provider of a profile owns the identity URI, and must assure that the profile
+                identity URI resolves and has no public access restrictions. The profile identity
+                URI must resolve to the resource directory for the profile (see <xref
+                    linkend="resourcedirectory"/>).</para>
+            <para>The number of integer steps to use in the version segment is unspecified. Profile
+                providers should utilize this segment to signal major and minor profile version
+                changes.</para>
+            
+<section xml:id="profilesURIEx" conformance="informative">
+    <title>Profile identity URI example</title>
+    <para>An example profile identity URI is:
+                    <code>http://www.example.org/z3986/2010/auth/profiles/myProfile/1.0/</code></para>
+</section>            
+            <section xml:id="profilesURIPA" conformance="normative">
+                <title>Processing agents and profile identities</title>
+                <para>When comparing two profile identity URIs for equality, processing agents must
+                    follow the rules specified by <xref linkend="refRFC3986"/>. If a Z39.86-AI
+                    document declares a profile identity that a processing agent does not recognize
+                    or does not support, the processing agent must abort processing. If a Z39.86-AI
+                    document declares a version of a profile that a processing agent does not
+                    recognize or does not support, the processing agent may abort processing or may
+                    continue, using whatever fallback mechanisms are available.</para>
+            </section>
+        </section>
+        <section xml:id="profilesMarkupModel" conformance="normative">
+            <title>Markup model</title>
+            <section xml:id="profilesMarkupModelSchema">
+                <title>Schema</title>
+                <para>The markup model definition must be formally expressed using one or several
+                    (layered) normative schemas. One or several of the following schema types must
+                    be used:</para>
+                <itemizedlist>
+                    <listitem>
+                        <para>RelaxNG, version 1.0 <xref linkend="refRelaxNG"/></para>
+                    </listitem>
+                    <listitem>
+                        <para>NVDL,version 1.0 <xref linkend="refNVDL"/></para>
+                    </listitem>
+                    <listitem>
+                        <para>W3C XML Schema, version 1.0 <xref linkend="refXMLSchema"/></para>
+                    </listitem>
+                    <listitem>
+                        <para>ISO Schematron, version 1.0 <xref linkend="refSchematron"/></para>
+                    </listitem>
+                </itemizedlist>
+                <para>The mechanism with which a profile references schema(s) and defines which are
+                    normative is defined in <xref linkend="resourcedirectoryReq"/>.</para>
+            </section>
+            <section xml:id="profilesMarkupModelReq">
+                <title>Markup model requirements</title>
+                <para>The markup model as defined in the normative schema(s) must meet the following
+                    requirements:</para>
+                <itemizedlist>
+                    <listitem>
+                        <para>All elements included in the markup model must be bound to an
+                                <citation linkend="refXMLNamespaces">XML
+                            namespace</citation>. </para>
+                    </listitem>
+                    <listitem>
+                        <para>The markup model must meet the element model requirements defined in
+                                <xref linkend="coreModelElements"/>. </para>
+                    </listitem>
+                    <listitem>
+                        <para>The markup model must meet the attribute model requirement defined in
+                                <xref linkend="coreModelAttributes"/>. </para>
+                    </listitem>
+                    <listitem>
+                        <para>The markup model must not violate the datatype constraints defined in
+                                <xref linkend="coreModelDatatypes"/>. </para>
+                    </listitem>
+                    <listitem>
+                        <para>The markup model should enforce attributes from the Z39.86-2010 core
+                            namespace to use qualified names when used on elements that are not
+                            themselves from the Z39.86-2010 core namespace. <remark role="todo"
+                                >Note: this is not implemented yet in the schemas.</remark></para>
+                    </listitem>
+                    <!--
+                    <listitem>
+                        <para>The markup model must include all modules from the Z39.86-2010 core
+                        markup model (see <xref linkend="core"/>).</para>
+                        </listitem>
+                    -->
+                </itemizedlist>
+            </section>
+            <section xml:id="profilesMarkupModelFeatures" >
+                <title>Included features</title>
+                <para>The markup model of a profile may reference any number of Z39.86-AI features
+                    (as defined in <xref linkend="features"/>) by inclusion through the normative
+                    schema(s).  If a feature is included, then when constructing content models, the
+                    profile's markup model must only reference the elements identified by the
+                    feature as exposed elements. Profiles must not modify the internals of the
+                    feature except where allowed by the feature's normative specification. <remark
+                        role="todo">TODO - Identify exposed elements as a required property in
+                        feature resource directories</remark>
+                </para>
+            </section>
+        </section>
+        <section xml:id="profilesRDF">
+            <title>RDF vocabularies</title>
+            <section xml:id="rdfIntro" conformance="informative">
+                <title>Introduction</title>
+                <para>The Z39.86-AI Framework encourages the use of the XHTML <code>role</code>
+                    attribute (<xref linkend="refXHTMLRole"/>) to make semantic distinctions between
+                    the uses of similar content structures in different contexts. Rather than define
+                    different elements for "chapter" and "appendix", for example, a profile might
+                    use a generic "section" container and use the <code>role</code> attribute to
+                    carry the distinction of "chapter" versus "appendix."</para>
+                <para>Similarly, the use of the RDFa attribute collection (<xref
+                        linkend="refRDFa"/>) is encouraged to allow a generalised and extensible
+                    mechanism for expressing content metadata in machine readable form.</para>
+                <para>It is for this reason that all profiles must allow the <code>role</code>
+                    attribute, and should allow the RDFa attribute collection on all elements in
+                    the markup model (per <xref linkend="coreModelAttributes"/>).</para>
+            </section>
+            <section xml:id="profilesRDFReq" conformance="normative">
+                <title>RDF vocabulary requirements</title>
+                <para>A profile may define exactly one RDF vocabulary as the default
+                    vocabulary using the mechanism defined in
+                        <xref linkend="resourcedirectoryReq"/>. 
+                    All CURIEs that have no explicit prefix that occur in Z39.86-AI
+                    documents referencing the profile will be assumed to refer to
+                    properties in this default vocabulary, as defined by <xref
+                        linkend="refCURIE"/>. </para>
+                <para>A profile must not impose restrictions on the occurence of references to other
+                    vocabularies than the profile's default in Z39.86-AI documents.</para>
+                <!--
+                    <para>A profile may provide an enumeration of the CURIEs in its default vocabulary
+                        in it's normative schema(s). It is a conformance requirement that a profile does
+                        not enumerate default prefixed CURIEs that are not defined in its default vocabulary.
+                    </para> -->
+                <para> Profiles must use one of the following formats for expressing their RDF
+                    vocabularies: <itemizedlist>
+                        <listitem>
+                            <para> RDFa in XHTML, as defined by <xref linkend="refRDFa"/>. </para>
+                        </listitem>
+                        <listitem>
+                            <para> RDF Schema, as defined by <xref linkend="refRDFs"/>. </para>
+                        </listitem>
+                    </itemizedlist></para>
+            </section>
+            <section xml:id="profilesRolePA" conformance="normative">
+                <title>Processing agents and role CURIEs</title>
+                <para>If a processing agent claims support for a profile, it should natively
+                    recognize all role CURIEs of the default vocabulary of that profile. A
+                    processing agent may associate specialized behaviors with some or all of those
+                    role values.</para>
+                <para>A processing agent should support the dereferencing of unrecognized CURIEs in order
+                    to discover behavioral or other fallbacks.</para>
+                <para>If a processing agent does not support the dereferencing of unrecognized CURIEs,
+                    or if the vocabulary URI is inaccessible, then the processing agent must
+                    continue processing the document, basing its behavior on the carrying XML
+                    element alone.</para>
+                <para>If processing agent behavior associated with a role CURIE contradicts behavior
+                    associated with the carrying XML element, then the behavior associated with the
+                    element takes precedence.</para>
+            </section>
+
+            <section xml:id="profilesRDFaPA" conformance="normative">
+                <title>Processing agents and RDFa</title>
+                <para>
+                    <remark role="todo">TODO</remark>
+                </para>
+            </section>
+
+        </section>
+
+    </chapter>
+    <chapter xml:id="features">
+        <title>Features</title>
+        <section xml:id="featuresIntroduction" conformance="informative">
+            <title>Introduction</title>
+            <para>Certain kinds of content structures have highly specialized requirements for
+                representation and processing, but because of their limited scope within information
+                resources, do not merit a separate profile on their own.  Z39.86-AI
+                    <emphasis>features</emphasis> are designed to handle these kinds of structures.
+                 A classic example is that of mathematical equations.  There is specialized markup
+                available already to represent equations (MathML), but a separate “math profile”
+                would make no sense.  Instead, a “math feature” can be defined:  a markup model of
+                more limited scope that can be referenced as is by multiple profiles.</para>
+            <para>Features share the same general structure as profiles, but are more specialized
+                and of narrower scope. Just like profiles, features consist of a markup model, but
+                this model does not represent an entire document tree.  Also like profiles, each
+                feature has a unique URI associated with it, which serves as its identifier and
+                which resolves to a unique resource directory associated with the feature.</para>
+            <para>Typically, a feature will have very few elements within its markup model that are
+                suitable for direct reference within the content models defined by profiles.  These
+                    <emphasis>exposed elements</emphasis> are defined by the feature and provide for
+                consistent usage of the feature across profiles. <remark role="todo">TODO "Exposed
+                    elements" mechanism needs to be defined in spec prose, in the resource
+                    directory vocab, and added to resource directories</remark></para>
+            <para><remark role="todo">TODO Need a statement on how processing agents declare
+                support for features and profiles independendly of each other.</remark></para>
+        </section>
+        <section xml:id="featuresURI" conformance="normative">
+            <title>Identity URI</title>
+            <para>Each feature must define a URI that serves as the unique identifier of the
+                feature. This URI must meet all the requirements of a profile identity URI (as
+                defined in <xref linkend="profilesURI"/>), with the following change in the EBNF
+                specification:</para>
+            <programlisting>
+                static ::= /z3986/2010/auth/features/
+            </programlisting>
+            <para>The feature identity URI must resolve to the resource directory for the
+                feature.</para>
+            <section xml:id="featuresVersioning">
+                <title>Profile and feature versioning</title>
+                <para> The versioning of profiles and the features that they reference can be
+                    independent of one another. If a profile references a particular version of a
+                    feature, a newer version of that feature does not necessarily require a new
+                    version of the profile. The decision to issue a new version of the profile is up
+                    to the profile's maintainer, based on whatever criteria is appropriate (e.g., if
+                    backwards incompatible changes are introduced, such as the introduction of new elements
+                    or attributes, or changes to the host integration pattern of the feature). <remark role="todo"
+                        >This section shall be extended and possibly lifted up in the section hierarchy
+                    section</remark></para>
+            </section>
+            <section xml:id="featuresURIPA">
+                <title>Processing agents and feature identities</title>
+                <para>With regards to recognizing and responding to declared feature identities and
+                    versions, processing agents must meet all the requirements for profiles given in
+                        <xref linkend="profilesURIPA"/>. </para>
+            </section>
+        </section>
+        <section xml:id="featuresMarkupModel" conformance="normative">
+            <title>Markup model</title>
+            <section xml:id="featuresMarkupModelSchema">
+                <title>Schema</title>
+                <para>Features must use one or more of the same schema types as profiles for their
+                    normative schemas (as defined in <xref linkend="profilesMarkupModelSchema"
+                    />).</para>
+            </section>
+            <section xml:id="featuresMarkupModelReq">
+                <title>Markup model requirements</title>
+                <para>The markup model as defined in the normative schema(s) must meet the following
+                    requirements:</para>
+                <itemizedlist>
+                    <listitem>
+                        <para>All elements included in the markup model must be bound to an
+                                <citation linkend="refXMLNamespaces">XML
+                            namespace</citation>. </para>
+                    </listitem>
+                    <listitem>
+                        <para>The namespace of elements and attributes defined by feature must not
+                            be the <xref linkend="coreNamespace"/>. (Note however that a feature may
+                            reuse elements in the Z39.86-AI Core namespace in internal content
+                            models)</para>
+                    </listitem>
+                    <listitem>
+                        <para>The markup model must meet the attribute model constraints defined in
+                                <xref linkend="coreModelAttributes"/>. </para>
+                    </listitem>
+                    <listitem>
+                        <para>The markup model must not violate the datatype constraints defined in
+                                <xref linkend="coreModelDatatypes"/>. </para>
+                    </listitem>
+                </itemizedlist>
+            </section>
+        </section>
+        <section xml:id="featuresRDF" conformance="normative">
+            <title>RDF vocabularies</title>
+            <para>Features may define one or more RDF vocabularies, but must not
+                define a default vocabulary, as in any given
+                document they inherit the default
+                vocabulary (if any) of the host profile (see <xref linkend="profilesRDFReq"/>).
+            </para>
+            <para>RDF vocabularies for features must be expressed in the languages
+                defined for profiles in <xref linkend="profilesRDFReq" />.</para>
+        </section>
+    </chapter>
+    <chapter xml:id="resourcedirectory">
+        <title>Resource directories</title>
+        <section xml:id="profilesRDIntroduction" conformance="informative">
+            <title>Introduction</title>
+            <para>Profiles and features are fully-developed markup languages in their
+                own rights, and hence will require multiple documents to define them
+                normatively:  schemas, RDF vocabularies, possibly normative prose. 
+                Profile and feature users will also benefit from informative
+                resources, such as stylesheets, primers documents, etc.  Users, both
+                human and machine, need a way to locate these profile- and
+                feature-specific resources.  This specification uses XHTML+RDFa (as
+                defined in <xref linkend="refRDFa"/>) as the mechanism to associate a
+                collection of normative and informative resources with a profile or a
+                feature.  The XHTML+RDFa document used to collect the references to
+                these resources is called a <emphasis>resource directory</emphasis>.</para>
+            <para>As XHTML documents, resource directories are human-readable, and thus can serve as the
+                primary source of information for all users of a profile. Resource directories are
+                also machine-readable documents, and thus can be sources for the discovery and
+                retrieval of schemas, style sheets, RDF vocabularies and other types of resources
+                that are needed by processing agents.</para>
+            <para>Ideally, a resource directory will contain a rich variety of resources
+                useful to both human and machine users of profiles:  documentation, primers,
+                schemas, stylesheets for both rendering and transformation of documents, role
+                vocabularies, etc.</para>
+            <para>In order to facilitate interoperability of processing agents, this specification
+                defines a resource directory vocabulary <xref linkend="appendixRDVocab"/>. The
+                vocabulary contains properties that describe and identify resources associated with
+                profiles and features, and states how they are to be used. This set of terms may then be extended
+                further by the creators of specific profiles as needed. </para>
+        </section>
+        <section xml:id="resourcedirectoryReq" conformance="normative">
+            <title>Resource directory requirements</title>
+        <remark role="todo">Resource directory syntax requirements need a more
+            precise definition, possibly including a Schematron schema</remark>
+            <para>The resource directory for a profile or feature must be a document conforming to
+                the <xref linkend="refRDFa"/> specification, using properties from the <xref
+                    linkend="appendixRDVocab"/> as detailed below. </para>
+            <itemizedlist>
+                <listitem>
+                    <para>The resource directory must include a reference to at least one normative
+                        schema resource. The RDF property used to identify that resource must be
+                            <code>normative-schema</code>.</para>
+                </listitem>
+
+                <listitem>
+                    <para>The resource directory must include one or more references to relevant normative
+                        external specifications to which the profile or feature being described
+                        adheres. The RDF property used to identify that resource must be
+                            <code>specification-compliance</code>.</para>
+                </listitem>
+
+                <listitem>
+                    <para>In addition to a normative schema, a profile or feature may provide
+                        additional normative specification through prose. Such resources must be
+                        identified using the <code>normative-prose</code> property.</para>
+                </listitem>
+
+                <listitem>
+                    <para>The resource directory for a profile may identify one RDF vocabulary as
+                        the default. The RDF property used for that resource must be
+                            <code>default-vocabulary</code>. Resource directories for features must
+                        not contain the <code>default-vocabulary</code> property. </para>
+                </listitem>
+
+                <listitem>
+                    <para>It is recommended that the resource directory include at least one
+                        resource whose property is <code>reference</code> and which resolves to a
+                        human-readable description of the profile's or feature's purpose and
+                        structure.</para>
+                </listitem>
+
+                <listitem>
+                    <para>This specification allows properties from other vocabularies than the
+                            <xref linkend="appendixRDVocab"/> to be included in resource directory
+                        documents.</para>
+                </listitem>
+                <listitem><para>For profile resource directories, features included
+                    in the profile must be identified. Links to features in the resource directory are identified by the
+                    <code>feature</code> property.</para></listitem>
+            </itemizedlist>
+
+            <para>
+                <remark role="todo">The vocab should be extended to be able to express the target
+                    for normative prose: documents constraints, processing agents behavioral
+                    constraints. </remark>
+                <remark role="todo">The vocab should be extended to be able to express the
+                    equivalent of RDDL natures. </remark>
+                <remark role="todo">The vocab should be extended to be able to express
+                    transformation relationships (to and from the profile or feature being
+                    described).</remark>
+                <remark role="todo">Include a way to identify the exposed elements of
+                    a feature.</remark>
+                </para>
+        </section>
+        <section xml:id="resourcedirectoryExample" conformance="informative">
+            <title>Resource directory example</title>
+            <remark role="todo">Create a minimal example</remark>
+        </section>
+    </chapter>
+    <chapter xml:id="documents">
+        <title>Z39.86-AI documents</title>
+        <section xml:id="documentsProfilesFeatures" conformance="normative">
+            <title>Referencing profiles and features</title>
+            <para>A Z39.86-AI document must reference exactly one Z39.86-AI profile, and must be
+                valid with respect to the normative schema(s) for that profile.</para>
+            <para>Documents reference profiles via the <code>link</code> element defined in the
+                Z39.86-2010 core markup model, occurring as a child of the <code>head</code>
+                element, with the <code>rel</code> attribute value of <code>“z3986-profile”</code> and the
+                    <code>href</code> attribute value of the profile's identity URI.</para>
+            <para>If the referenced profile includes one or more features, then the document must
+                explicitly identify those features that are used within the document. A feature is
+                referenced via the <code>link</code> element as defined in the Z39.86-2010 core
+                markup model, occurring as a child of the <code>link</code> element that references
+                the profile.  In referencing features, the <code>rel</code> attribute must have the
+                value of <code>“z3986-feature”</code> and the <code>href</code> attribute must have the value of
+                the feature's identity URI.</para>
+            <para>This specification reserves the <code>rel</code> attribute values <code>z3986-profile</code> and
+                    <code>z3986-feature</code> for exclusive use as defined above.</para>
+            <section conformance="informative">
+                <title>Profile and feature reference example</title>
+                <para>The following is an example of a compliant profile and feature
+                    reference in the <code>head</code> element for a Z39.86-AI
+                    document. </para>
+                <programlisting><xi:include href="./examplesSpec/DocumentProfileFeatureReferenceExample.xml" parse="text" /></programlisting>
+            </section> 
+        </section>
+        <section xml:id="documentsCURIE" conformance="normative">
+            <title>Referencing RDF vocabularies</title>
+            <para>A Z39.86-AI document must perform CURIE prefix binding in the following
+                way:</para>
+            <itemizedlist>
+                <listitem>
+                    <para>The document must use default-prefixed CURIEs (i.e., CURIEs
+                        with no explicit prefix given) only for CURIEs referencing
+                        the default vocabulary of the profile (See <xref linkend="profilesRDFReq"/>)
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>Non-default CURIE prefixes must be declared using the <code>xmlns</code>
+                        attribute.</para>
+                    <para>
+                        <remark role="todo">Note: use of xmlns for this purpose pending
+                            change.</remark>
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </section>
+        <section xml:id="documentsCSS" conformance="informative">
+            <title>Referencing CSS Stylesheets</title>
+            <para>Z39.86-AI documents should reference CSS Stylesheets using the syntax defined in
+                    <xref linkend="refXMLStylesheet"/>.</para>
+            <para>
+                <remark role="todo">Possibility to reserve some values for @title</remark>
+            </para>
+        </section>
+        <!--
+        <section xml:id="documentsLinks">
+            <title>Document links</title>
+            <para>
+                <remark role="todo">Provide a list of all link/@rel values that processing agents
+                    must understand, which can occur in any Z39.86-AI document</remark>
+            </para>
+        </section>
+        -->
+        <section xml:id="documentsMetadata" conformance="normative">
+            <title>Document metadata</title>
+            <para>Z39.86-AI documents must identify document metadata using terms defined by the
+                    <citation linkend="refMODS">Metadata Object Description Schema</citation>
+                (MODS). To be complaint with this specification, a Z39.86-AI document must contain
+                exactly one <code>mods</code> element in its <code>head</code> element. The
+                    <code>mods</code> element must reference version 3.3 of the MODS standard both
+                in the XML namespace attribute and in the <code>version</code> attribute. </para>
+            <para>The following specific metadata requirements must be met by every conforming
+                Z39.86-AI document: <itemizedlist xml:id="documentsMetadataMinimalReqs"
+                    xreflabel="Minimal document metadata requirements">
+                    <listitem>
+                        <para>The <code>mods</code> container element must contain exactly one child
+                                <code>originInfo</code> element that describes the producer and
+                            creation date of the Z39.86-AI document. The producer's name must be
+                            included in a <code>publisher</code> child element and the date the
+                            document was created in a <code>dateCreated</code> child element. If the
+                            document producer is not the same as the producer of the original
+                            resource (e.g., book publisher), the description of the producer of the
+                            original resource should be described in a <code>originInfo</code>
+                            section nested inside of a top-level <code>relatedItem</code> element.
+                            In such a case, the <code>relatedItem</code> element must have its
+                                <code>type</code> attribute set to the controlled value <code>"original"</code>.
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>The <code>mods</code> container element must contain exactly one child
+                                <code>titleInfo</code> element, which must contain a child
+                                <code>title</code> element identifying the primary title of the
+                            document.</para>
+                    </listitem>
+                    <listitem>
+                        <para>The <code>mods</code> container element must contain at least one
+                            child <code>identifier</code> element giving a unique identifier for the
+                            document. The <code>identifier</code> must include a <code>type</code>
+                            attribute to identify the type of identifer used. </para>
+                    </listitem>
+                </itemizedlist></para>
+            <section xml:id="documentsMetadataExample" conformance="informative">
+                <title>Metadata example</title>
+                <para>The following is an example of the metadata in the <code>head</code> element
+                    of a Z39.86-AI document.</para>
+                <programlisting><xi:include href="examplesSpec/DocumentMetadataExample.xml" parse="text"/></programlisting>
+            </section>
+        </section>
+        <section xml:id="documentsMetadataInline" conformance="informative">
+            <title>Inline metadata</title>
+            <para>Metadata can also be expressed inline on elements using <xref
+                linkend="refRDFa" /> attributes. This
+                mechanism for specifying metadata is not a replacement for the requirements outlined
+                in <xref linkend="documentsMetadata"/> but an alternate means for layering
+                information into documents.</para>
+            <para>This specification does not mandate the use of any specific RDF vocabulary for
+                inlining metadata information. If producers create their own vocabularies, they
+                should make the vocabulary definitions publicly available to allow validation. </para>
+            <section xml:id="documentsMetadataInlineExample" conformance="informative">
+                <title>Inline Metadata example</title>
+                <para>The following is an example of the use of inline metadata in the body of a
+                    Z39.86-AI document. The example makes use of the publicly available Dublin Core
+                    RDF metadata properties.</para>
+                <programlisting><xi:include href="examplesSpec/DocumentMetadataInlineExample.xml" parse="text"/></programlisting>
+            </section>
+        </section>
+        <section xml:id="documentsXinclude" conformance="informative">
+            <title>Representing Z39.86-AI documents using multiple files</title>
+            <para> Logically, a Z39.86-AI document is a single XML Infoset as defined in <xref
+                    linkend="refXMLInfoset"/>. However, for authoring purposes it may be useful to
+                store the data in multiple physical files. By including the <code>xml:base</code>
+                attribute in all element attribute models, all conforming Z39.86-AI Framework
+                profiles are compatible with <xref linkend="refXInclude"/>, which provides a
+                convenient and standards-based way to do this. </para>
+        </section>
+    </chapter>
+    <chapter xml:id="core" conformance="normative">
+        <title>Z39.86-2010 core markup model</title>
+        <para>This section defines a collection of markup model constraints that are
+            referenced in whole or part by <xref linkend="profiles" /> and <xref
+                linkend="features" />.</para>
+        <remark role="todo">This section should be recast as, or accompanied by, an abstract RelaxNG
+            schema</remark>
+        <section>
+            <title>Core namespace URI</title>
+            <para xml:id="coreNamespace" xreflabel="Z39.86-AI Core namespace">The Z39.86-AI Core
+                namespace URI is <code>http://www.daisy.org/z3986/2010/</code>.</para>
+        </section>
+
+        <section xml:id="coreModelElements">
+            <title>Core markup element model requirements</title>
+
+            <para>Unless explicitly overriden, the elements defined in the list below are in the
+                    <xref linkend="coreNamespace"/>.</para>
+
+            <itemizedlist xml:id="coreModelElementsList"
+                xreflabel="Core Model Required Elements collection">
+                <listitem>
+                    <para>The root element must be <code>document</code>.</para>
+                </listitem>
+                <listitem>
+                    <para>The root element must have exactly two element children; first
+                            <code>head</code> then <code>body</code>.</para>
+                </listitem>
+                <listitem>
+                    <para>The head element must have one <code>link</code> child element that
+                        satisfies the requirements in <xref linkend="documentsProfilesFeatures"
+                        />.</para>
+                </listitem>
+                <listitem>
+                    <para>The head element must have one <code>mods</code> child element in the
+                        namespace <code>http://www.loc.gov/mods/v3</code> that satisfies the
+                        requirements in <xref linkend="documentsMetadata"/>.</para>
+                </listitem>
+            </itemizedlist>
+
+        </section>
+
+        <section xml:id="coreModelAttributes">
+            <title>Core markup attribute model requirements</title>
+            <para>All elements in the markup model must allow the following attributes to
+                occur:</para>
+            <remark role="todo">TODO qualify namespace URIs and datatypes below</remark>
+            <itemizedlist xml:id="coreModelRequiredAttributesList"
+                xreflabel="Core Model Required Attributes Collection">
+                <listitem>
+                    <para>The <code>xml:id</code> attribute (<xref linkend="refXMLID"/>)</para>
+                </listitem>
+                <listitem>
+                    <para>The <code>xml:base</code> attribute (<xref linkend="refXMLBase"/>)</para>
+                </listitem>
+                <listitem>
+                    <para>The <code>xml:lang</code> attribute (<xref linkend="refXML"/>)</para>
+                </listitem>
+                <listitem>
+                    <para>The <code>its:dir</code> attribute (<xref linkend="refITS"/>)</para>
+                </listitem>
+                <listitem>
+                    <para>The XHTML <code>role</code> attribute (<xref linkend="refXHTMLRole"
+                        />)</para>
+                </listitem>
+            </itemizedlist>
+
+            <para>All elements in the markup model should allow the following attributes to
+                occur:</para>
+            <itemizedlist>
+                <listitem>
+                    <para>The RDFa attribute collection (<xref linkend="refRDFa"
+                        />)</para>
+                </listitem>
+                <!--
+                <listitem>
+                    <para>The <code>class</code> attribute</para>
+                </listitem>
+                -->
+                <listitem>
+                    <remark role="todo">Note: adoption of XLink would mean an implicit expectation
+                        on a common linking expression form</remark>
+                </listitem>
+
+            </itemizedlist>
+            <para>
+                <remark role="todo">Issue: attribute requirements may need to be relaxed for
+                    features, because of their highly specialized nature. </remark>
+            </para>
+        </section>
+        <section conformance="normative" xml:id="coreModelDatatypes">
+            <title>Core markup model datatype constraints</title>
+            <para>The ID datatype (<xref linkend="refXSDID"/>) is reserved for use in the
+                    <code>xml:id</code> attribute. <remark role="todo">Note - this is not enforced
+                    at the moment - see MathML and MODS</remark>
+            </para>
+            <para>The CURIE datatype (<xref linkend="refCURIE"/>) is reserved as the unique means to
+                reference RDF Vocabulary properties<!-- from Z39.86-AI documents -->.</para>
+        </section>
+        <section conformance="informative">
+            <title>Core markup model example</title>
+            <para>The following example illustrates the Z39.86-AI Core markup model element
+                constraints in document form.</para>
+            <programlisting><xi:include href="examplesSpec/CoreMarkup.xml" parse="text"/></programlisting>
+        </section>
+        <!--
+            <para> There is certain markup elements that are considered so basic that they are
+            fundamental for any conforming Z39.86-AI profile. These have been defined as the
+            Z39.86-2010 core markup model. The resource directory for the Z39.86-2010 core is
+            located at <remark role="todo">Z39.86-AI core markup resource directory location
+            TBD</remark>. This resource directly functions just as for a Z39.86-AI feature, as
+            described in <xref linkend="profilesRD"/> and includes normative schema(s), normative
+            prose, usage guidelines, and other resources for the core. All references in this
+            specification to the Z39.86-2010 core refer to the latest version as found at the
+            resource directory URI above. </para> -->
+
+    </chapter>
+    <chapter xml:id="resources" conformance="informative">
+        <title>Related resources</title>
+        <section xml:id="resourcesIntroduction" >
+            <title>Introduction</title>
+            <para> There are a number of resources that have been created by the working group for
+                this specification that are designed to support development of profiles and features
+                by others. These resources are not considered a normative part of this specification
+                and support for them by processing agents is not mandated. </para>
+        </section>
+        <section xml:id="resourcesFeatures" >
+            <title>Features</title>
+            <para>The Z39.86 Maintenance Agency defines a number of features that will likely be useful
+                across a variety of profiles.</para>
+            <para>The catalog of features hosted and maintained by the Z39.86
+                Maintenance Agency is located at <link
+                    xlink:href="http://www.daisy.org/z3986/2010/auth/features/"
+                    >http://www.daisy.org/z3986/2010/auth/features/</link>.</para>
+        </section>
+        <section xml:id="resourcesProfiles" >
+            <title>Profiles</title>
+            <para> The Z39.86 Maintenance Agency defines a number of profiles that are considered to be
+                generally useful to document creators. These profiles have no special standing with
+                regards to the Framework specification, and their content should not be considered
+                in any way normative for that specification. </para>
+            <para>The catalog of profiles hosted and maintained by the Z39.86
+                Maintenance Agency is located at <link
+                    xlink:href="http://www.daisy.org/z3986/2010/auth/profiles/"
+                    >http://www.daisy.org/z3986/2010/auth/profiles/</link>.</para>
+        </section>
+    </chapter>
+    <bibliography conformance="normative">
+        <title>References</title>
+        <biblioentry xml:id="refCURIE">
+            <abbrev>CURIE</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/curie/"> CURIE Syntax 1.0 - A syntax for
+                    expressing Compact URIs</link>
+            </title>
+            <editor>
+                <personname>M. Birbeck, et al</personname>
+            </editor>
+            <date>16 January 2009 [DRAFT]</date>
+        </biblioentry>
+        <biblioentry xml:id="refSchematron">
+            <abbrev>ISOSchematron</abbrev>
+            <title>
+                <link
+                    xlink:href="http://standards.iso.org/ittf/PubliclyAvailableStandards/c040833_ISO_IEC_19757-3_2006(E).zip"
+                    >ISO/IEC 19757-3: Rule-based validation — Schematron</link>
+            </title>
+        </biblioentry>
+        <biblioentry xml:id="refITS">
+            <abbrev>ITS</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/its/">Internationalization Tag Set (ITS)
+                    Version 1.0</link>
+            </title>
+            <editor>
+                <personname>C. Lieske, et al.</personname>
+            </editor>
+            <date>3 April 2007</date>
+        </biblioentry>
+        <biblioentry xml:id="refMODS">
+            <abbrev>MODS</abbrev>
+            <title>
+                <link xlink:href="http://www.loc.gov/standards/mods/">Metadata Object Description
+                    Schema (MODS)</link>
+            </title>
+        </biblioentry>
+        <biblioentry xml:id="refNVDL">
+            <abbrev>NVDL</abbrev>
+            <title>
+                <link
+                    xlink:href="http://standards.iso.org/ittf/PubliclyAvailableStandards/c038615_ISO_IEC_19757-4_2006(E).zip"
+                    >ISO/IEC 19757-4: NVDL (Namespace-based Validation Dispatching Language)</link>
+            </title>
+        </biblioentry>
+        <!--
+        <biblioentry xml:id="refRDDL">
+            <abbrev>RDDL</abbrev>
+            <title>
+                <link xlink:href="http://www.rddl.org/">Resource Directory Description Language
+                    (RDDL)</link>
+            </title>
+            <editor>
+                <personname>J. Borden, T. Bray</personname>
+            </editor>
+            <date>1 March 2001</date>
+        </biblioentry>
+            -->
+        <biblioentry xml:id="refRDFa">
+            <abbrev>RDFa</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/rdfa-syntax/">RDFa in XHTML: Syntax and
+                    Processing</link>
+            </title>
+            <editor>
+                <personname>B. Adida, et al.</personname>
+            </editor>
+            <date>14 October 2008</date>
+        </biblioentry>
+        <biblioentry xml:id="refRDFs">
+            <abbrev>RDFS</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/rdf-schema/">RDF Vocabulary Description
+                    Language 1.0: RDF Schema</link>
+            </title>
+            <editor>
+                <personname>D. Brickley, et al.</personname>
+            </editor>
+            <date>10 February 2004</date>
+        </biblioentry>
+        <biblioentry xml:id="refRelaxNG">
+            <abbrev>RelaxNG1</abbrev>
+            <title>
+                <link
+                    xlink:href="http://standards.iso.org/ittf/PubliclyAvailableStandards/c052348_ISO_IEC_19757-2_2008(E).zip"
+                    >ISO/IEC 19757-2: Regular-grammar-based validation -- RELAX NG</link>
+            </title>
+            <date>3 December 2001</date>
+        </biblioentry>
+        <biblioentry xml:id="refRFC2119">
+            <abbrev>RFC2119</abbrev>
+            <title>
+                <link xlink:href="http://www.ietf.org/rfc/rfc2119.txt">Key words for use in RFCs to
+                    Indicate Requirement Levels (RFC2119)</link>
+            </title>
+            <date>March 1997</date>
+        </biblioentry>
+        <biblioentry xml:id="refRFC3986">
+            <abbrev>RFC3986</abbrev>
+            <title>
+                <link xlink:href="http://www.ietf.org/rfc/rfc3986.txt">Uniform Resource Identifier
+                    (URI): Generic Syntax</link>
+            </title>
+            <author>
+                <personname>Berners-Lee, et al.</personname>
+            </author>
+            <date>January 2005</date>
+        </biblioentry>
+        <biblioentry xml:id="refXHTML2">
+            <abbrev>XHTML2</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/xhtml2/">XHTML 2.0</link>
+            </title>
+            <author>
+                <personname>J. Axelsson, et al</personname>
+            </author>
+            <date>2009 [DRAFT]</date>
+        </biblioentry>
+        <biblioentry xml:id="refXHTMLMOD2">
+            <abbrev>XHTMLMOD2</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/MarkUp/2009/ED-xhtml-modularization2-20090123/"
+                    >Modularization of XHTML™ 2.0</link>
+            </title>
+            <author>
+                <personname>M. Birbeck, et al</personname>
+            </author>
+            <date>2009 [DRAFT]</date>
+        </biblioentry>
+        <biblioentry xml:id="refXHTMLRole">
+            <abbrev>XHTMLRole</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/xhtml-role/">XHTML Role Attribute
+                    Model</link>
+            </title>
+            <author>
+                <personname>M. Birbeck, et al.</personname>
+            </author>
+            <date>2008</date>
+        </biblioentry>
+        <biblioentry xml:id="refXInclude">
+            <abbrev>XInclude</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/xinclude/">XML Inclusions (XInclude) Version
+                    1.0 (Second Edition)</link>
+            </title>
+            <author>
+                <personname>J. Marsh, et al.</personname>
+            </author>
+            <date>15 November 2006</date>
+        </biblioentry>
+        <biblioentry xml:id="refXML">
+            <abbrev>XML</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/2006/REC-xml-20060816/">Extensible Markup
+                    Language (XML) 1.0 (Fourth Edition)</link>
+            </title>
+            <author>
+                <personname>T. Bray, et al</personname>
+            </author>
+            <date>November 2008</date>
+        </biblioentry>
+        <biblioentry xml:id="refXMLBase">
+            <abbrev>XMLBase</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/xmlbase/">XML Base (Second Edition)</link>
+            </title>
+            <date>28 January 2009</date>
+        </biblioentry>
+        <biblioentry xml:id="refXMLID">
+            <abbrev>XMLID</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/xml-id/">xml:id Version 1.0</link>
+            </title>
+            <date>9 September 2005</date>
+        </biblioentry>
+        <biblioentry xml:id="refXMLInfoset">
+            <abbrev>XMLInfoset</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/xml-infoset/">XML Information Set (Second
+                    Edition)</link>
+            </title>
+            <author>
+                <personname>J. Cowan, et al.</personname>
+            </author>
+            <date>4 February 2004</date>
+        </biblioentry>
+        <biblioentry xml:id="refXMLNamespaces">
+            <abbrev>XMLNAMES</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/REC-xml-names/">Namespaces in XML 1.0 (Second
+                    Edition)</link>
+            </title>
+            <date>16 August 2006</date>
+        </biblioentry>
+        <biblioentry xml:id="refXMLSchema">
+            <abbrev>XMLSchema</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/XML/Schema#dev">XML Schema:
+                    Specifications</link>
+            </title>
+        </biblioentry>
+        <biblioentry xml:id="refXMLStylesheet">
+            <abbrev>XMLSTYLE</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/xml-stylesheet/">Associating Style Sheets
+                    with XML documents Version 1.0</link>
+            </title>
+            <author>
+                <personname>James Clark</personname>
+            </author>
+            <date>29 June 1999</date>
+        </biblioentry>
+        <biblioentry xml:id="refXSDID">
+            <abbrev>ID</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/xmlschema-2/#ID">XML Schema Part 2: Datatypes
+                    Second Edition</link>
+            </title>
+            <author>
+                <personname>Paul V. Biron et. al.</personname>
+            </author>
+            <date>28 October 2004</date>
+        </biblioentry>
+
+        <biblioentry xml:id="refZ39862005">
+            <abbrev>Z3986-2005</abbrev>
+            <title>
+                <link xlink:href="http://www.niso.org/standards/resources/Z39-86-2005.html"
+                    >ANSI/NISO Z39.86-2005: Specifications for the Digital Talking Book</link>
+            </title>
+            <author>
+                <personname>M. Moodie, et al.</personname>
+            </author>
+            <date>2005</date>
+        </biblioentry>
+    </bibliography>
+    <acknowledgements>
+        <title>Acknowledgements</title>
+        <para> The following are the members of the Z39.86-2010 Authoring and Interchange Working
+            Group responsible for the creation of this specification: <bibliolist>
+                <bibliomixed>
+                    <personname>Markus Gylling</personname>, <title>Lead</title>, <orgname>DAISY
+                        Consortium</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Josh Altherr</personname>, <orgname>gh, LLC</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Ole Holst Andersen</personname>, <orgname>DBB</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Marisa DeMeglio</personname>, <orgname>DAISY Consortium</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Matt Garrish</personname>, <orgname>CNIB</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Boris Goldowsky</personname>, <orgname>CAST, Inc.</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Leona Holloway</personname>, <orgname>Vision Australia</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Kenny Johar</personname>, <orgname>Vision Australia</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Dennis Leas</personname>, <orgname>gh, LLC</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Sam Ogami</personname>, <orgname>California State
+                        University</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Stephen Phippen</personname>, <orgname>RNIB</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>James Pritchett</personname>, <orgname>Recording for the Blind
+                        &amp; Dyslexic</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Kathryn Randall</personname>, <orgname>Vision Australia</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Per Sennels</personname>, <orgname>Huseby kompetansesenter</orgname>
+                </bibliomixed>
+            </bibliolist>
+        </para>
+        <para> The metadata portion of the specification was created by a working group including
+            the following members: <bibliolist>
+                <bibliomixed>
+                    <personname>Matt Garrish</personname>, <title>Lead</title>,
+                        <orgname>CNIB</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Bob Axtell</personname>, <orgname>Library of Congress</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Wendy Taylor</personname>, <orgname>RNIB</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Christian Wallin</personname>, <orgname>DBB</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Marcus Westlind</personname>, <orgname>TPB</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Richard Wilson</personname>, <orgname>CNIB</orgname>
+                </bibliomixed>
+            </bibliolist>
+        </para>
+    </acknowledgements>
+    <appendix xml:id="appendixRDVocab" conformance="normative"
+        xreflabel="Z39.86 Resource Directory Vocabulary">
+        <title>Z39.86 Resource Directory Vocabulary</title>
+        <para>This appendix contains the property definitions of the Z39.86 Resource Directory
+            Vocabulary, whose online URI is <link
+                xlink:href="http://www.daisy.org/z3986/2010/vocab/resourcedirectory/"
+                >http://www.daisy.org/z3986/2010/vocab/resourcedirectory/</link></para>
+        <programlisting><xi:include href="../rdf/z3986-resourcedirectory-vocab.html" parse="text"/></programlisting>
+    </appendix>
+</book>

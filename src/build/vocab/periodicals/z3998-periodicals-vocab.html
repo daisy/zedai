@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"
+      prefix="      dcterms: http://purl.org/dc/terms/      owl: http://www.w3.org/2002/07/owl#      rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#      rdfs: http://www.w3.org/2000/01/rdf-schema#      xsd: http://www.w3.org/2001/XMLSchema       ">
+   <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+      <meta property="dcterms:modified" content="2012-12-19"/>
+      <meta property="dcterms:creator" content="kjohar"/>
+      <meta property="dcterms:creator" content="oha"/>
+      <meta property="dcterms:issued" content="2009-12-01"/>
+      <meta property="dcterms:publisher" content="DAISY Consortium"/>
+      <title>Z39.98-2012 Periodicals Vocabulary</title>
+      <link rel="stylesheet" type="text/css" href="../../z3998-2012.css"/>
+   </head>
+   <body>
+      <h1 property="dcterms:title">Z39.98-2012 Periodicals Vocabulary</h1>
+      <h2 id="toc">Table of Contents</h2>
+      <ul>
+         <li class="first">
+            <a href="#h_aboutthisvocabulary">About this vocabulary</a>
+         </li>
+         <li class="first">
+            <a href="#h_sections-blocks">Article and section types</a>
+         </li>
+         <li class="first">
+            <a href="#h_phrasal">Article content structures</a>
+         </li>
+         <li class="first">
+            <a href="#h_metadata">Article aggregation metadata</a>
+         </li>
+      </ul>
+      <div>
+         <h2 id="h_aboutthisvocabulary">About this vocabulary</h2>
+         <div property="dcterms:description">
+            <p>This RDF vocabulary contains terms for use primarily in the context of the NISO Z39.98-2012 
+ <a href="http://www.daisy.org/z3998/2012/auth/profiles/newsfeeds/">Newsfeeds Aggregator profile</a>. It defines terms for semantic inflection of document content, and terms for article-level metadata.</p>
+         </div>
+         <p id="vocab-forms">You are currently reading the normative <a href="http://www.w3.org/TR/rdfa-syntax/">W3C XHTML+RDFa</a> expression of this vocabulary. It is also available in informative <a href="z3998-periodicals-vocab.n3">Notation3</a> and <a href="z3998-periodicals-vocab.xml">RDF/XML</a> syntax versions.</p>
+         <p class="vocab-date">Document last modified: 2012-12-19. Refer to the <a href="history-z3998-periodicals-vocab.html">revision history</a> for details.</p>
+      </div>
+      <div id="vocab" class="vocabulary">
+   
+         <div id="sections-blocks" about="#sections-blocks" typeof="rdf:Bag">
+            <h2 id="h_sections-blocks" about="#sections-blocks" rev="dcterms:title">Article and section types</h2>
+            <dl about="#sections-blocks" rev="rdfs:member">
+      
+               <dt id="news" about="#news" typeof="rdf:Property">news</dt>
+               <dd about="#news" property="rdfs:comment" datatype="xsd:string">
+                  <p>An article or group of articles that contains current or recent news of either general interest or on a specific topic</p>
+               </dd>
+               <dt id="feature" about="#feature" typeof="rdf:Property">feature</dt>
+               <dd about="#feature" property="rdfs:comment" datatype="xsd:string">
+                  <p>An article which discusses a selected issue in-depth</p>
+               </dd>
+               <dt id="review" about="#review" typeof="rdf:Property">review</dt>
+               <dd about="#review" property="rdfs:comment" datatype="xsd:string">
+                  <p>An evaluation of a publication or other item.</p>
+               </dd>
+               <dt id="advertisement" about="#advertisement" typeof="rdf:Property">advertisement</dt>
+               <dd about="#advertisement" property="rdfs:comment" datatype="xsd:string">
+                  <p>An advertisement.</p>
+               </dd>
+               <dt id="editorial" about="#editorial" typeof="rdf:Property">editorial</dt>
+               <dd about="#editorial" property="rdfs:comment" datatype="xsd:string">
+                  <p>An article stating opinions or giving perspectives.</p>
+               </dd>
+               <dt id="commentary" about="#commentary" typeof="rdf:Property">commentary</dt>
+               <dd about="#commentary" property="rdfs:comment" datatype="xsd:string">
+                  <p>An article or posting containing commentary on a publication or other item.</p>
+               </dd>
+               <dt id="classifieds" about="#classifieds" typeof="rdf:Property">classifieds</dt>
+               <dd about="#classifieds" property="rdfs:comment" datatype="xsd:string">
+                  <p>Classified advertisements.</p>
+               </dd>
+               <dt id="weather" about="#weather" typeof="rdf:Property">weather</dt>
+               <dd about="#weather" property="rdfs:comment" datatype="xsd:string">
+                  <p>The weather forecast.</p>
+               </dd>
+               <dt id="sports" about="#sports" typeof="rdf:Property">sports</dt>
+               <dd about="#sports" property="rdfs:comment" datatype="xsd:string">
+                  <p>The sports section.</p>
+               </dd>
+            </dl>
+         </div>
+         <div id="phrasal" about="#phrasal" typeof="rdf:Bag">
+            <h2 id="h_phrasal" about="#phrasal" rev="dcterms:title">Article content structures</h2>
+            <dl about="#phrasal" rev="rdfs:member">
+      
+               <dt id="headline" about="#headline" typeof="rdf:Property">headline</dt>
+               <dd about="#headline" property="rdfs:comment" datatype="xsd:string">
+                  <p>The heading or title of an article</p>
+               </dd>
+               <dt id="byline" about="#byline" typeof="rdf:Property">byline</dt>
+               <dd about="#byline" property="rdfs:comment" datatype="xsd:string">
+                  <p>Indicates the names of the author(s) of an article or story, sometimes also giving credit for accompanying resources or information</p>
+               </dd>
+               <dt id="dateline" about="#dateline" typeof="rdf:Property">dateline</dt>
+               <dd about="#dateline" property="rdfs:comment" datatype="xsd:string">
+                  <p>Indicates the time and/or place where an article or story was reported, occurred or was written</p>
+               </dd>
+               <dt id="lead" about="#lead" typeof="rdf:Property">lead</dt>
+               <dd about="#lead" property="rdfs:comment" datatype="xsd:string">
+                  <p>An initial segment of an article introducing and/or summarizing the content</p>
+               </dd>
+               <dt id="deck" about="#deck" typeof="rdf:Property">deck</dt>
+               <dd about="#deck" property="rdfs:comment" datatype="xsd:string">
+                  <p>A teaser segment near the title of an article.</p>
+               </dd>
+               <dt id="kicker" about="#kicker" typeof="rdf:Property">kicker</dt>
+               <dd about="#kicker" property="rdfs:comment" datatype="xsd:string">
+                  <p>A lead-out segment at the end of an article.</p>
+               </dd>
+               <dt id="continuation" about="#continuation" typeof="rdf:Property">continuation</dt>
+               <dd about="#continuation" property="rdfs:comment" datatype="xsd:string">
+                  <p>A reference to another part of the publication which contains the continuation of the current article</p>
+               </dd>
+               <dd>
+                  <dl>
+                     <dt>Inherits from:</dt>
+                     <dd about="#continuation" rel="rdfs:subPropertyOf"
+                         resource="http://www.daisy.org/z3998/2012/vocab/structure/#continuation">
+                        <a href="http://www.daisy.org/z3998/2012/vocab/structure/#continuation">http://www.daisy.org/z3998/2012/vocab/structure/#continuation</a>
+                     </dd>
+                  </dl>
+               </dd>
+               <dt id="continuation-of" about="#continuation-of" typeof="rdf:Property">continuation-of</dt>
+               <dd about="#continuation-of" property="rdfs:comment" datatype="xsd:string">
+                  <p>A reference to a previous part of the publication that contains the initial part of the article that the current article is a continuation of</p>
+               </dd>
+               <dd>
+                  <dl>
+                     <dt>Inherits from:</dt>
+                     <dd about="#continuation-of" rel="rdfs:subPropertyOf"
+                         resource="http://www.daisy.org/z3998/2012/vocab/structure/#continuation-of">
+                        <a href="http://www.daisy.org/z3998/2012/vocab/structure/#continuation-of">http://www.daisy.org/z3998/2012/vocab/structure/#continuation-of</a>
+                     </dd>
+                  </dl>
+               </dd>
+            </dl>
+         </div>
+         <div id="metadata" about="#metadata" typeof="rdf:Bag">
+            <h2 id="h_metadata" about="#metadata" rev="dcterms:title">Article aggregation metadata</h2>
+            <p about="#metadata" rev="dcterms:description">This set of article metadata terms are intended for use in aggregation contexts to maintain information about the location of source content segments, and to describe intended locations in the aggregation being built.</p>
+            <dl about="#metadata" rev="rdfs:member">
+      
+      
+               <dt id="positionSequence" about="#positionSequence" typeof="rdf:Property">positionSequence</dt>
+               <dd about="#positionSequence" property="rdfs:comment" datatype="xsd:string">
+                  <p>Holds ordinal information about the article within its parent section/sub section. For example, a value of 2 means that the article is the second article in its parent section/sub section. Is only relevant in instances where the instance document is being used to deliver a single article, or a collection of articles for one or more publications.</p>
+               </dd>
+               <dt id="positionSection" about="#positionSection" typeof="rdf:Property">positionSection</dt>
+               <dd about="#positionSection" property="rdfs:comment" datatype="xsd:decimal">
+                  <p>Holds ordinal information about the parent section and or sub section(s) within a publication, that an article appears in. For example, a value of 1.2 means that an article appears in a section that is the first section in the publication, and a sub section that is the second subsection within the section;is only relevant in instances where the particular instance document is being used to deliver a single article, or a collection of articles for one or more publications.</p>
+                  <p>Datatype: <code>xsd:decimal</code>.</p>
+               </dd>
+               <dt id="positionPage" about="#positionPage" typeof="rdf:Property">positionPage</dt>
+               <dd about="#positionPage" property="rdfs:comment" datatype="xsd:integer">
+                  <p>Holds information about the page that the article appears on in the publication. Is only relevant in instances where the Feeds Profile document instance is being used to deliver a single article, or a collection of articles for one or more publications.</p>
+                  <p>Datatype: <code>xsd:integer</code>.</p>
+               </dd>
+               <dt id="revision" about="#revision" typeof="rdf:Property">revision</dt>
+               <dd about="#revision" property="rdfs:comment" datatype="xsd:string">
+                  <p>Holds revision information about the article. Is relevant in instances where the Feeds Profile instance document is being used to deliver a single article, or a collection of articles for one or more publications.</p>
+               </dd>
+               <dt id="destEdition" about="#destEdition" typeof="rdf:Property">destEdition</dt>
+               <dd about="#destEdition" property="rdfs:comment" datatype="xsd:string">
+                  <p>Holds information about an edition of a publication that the article is meant to appear in. Is only relevant in instances where the instance document is being used to deliver a single article, or a collection of articles for one or more publications; can appear more than once inside the Article head; each occurrence of destEdition holds information about a particular edition of a publication that the article is meant to appear in.</p>
+               </dd>
+               <dt id="destPublication" about="#destPublication" typeof="rdf:Property">destPublication</dt>
+               <dd about="#destPublication" property="rdfs:comment" datatype="xsd:string">
+                  <p>Holds information about a publication that the article is meant to appear in; is only relevant in contexts where the instance document is being used to deliver a single article, or a collection of articles for one or more publications; can appear more than once inside the Article head; each occurrence of destPublication holds information about a particular publication that the article is meant to appear in.</p>
+               </dd>
+               <dt id="sourceEdition" about="#sourceEdition" typeof="rdf:Property">sourceEdition</dt>
+               <dd about="#sourceEdition" property="rdfs:comment" datatype="xsd:string">
+                  <p>Holds information about an edition of a publication that the article is originally a part of; is only relevant in instances where the instance document is being used to deliver a single article, or a collection of articles for one or more publications; can appear more than once inside the Article head; each occurrence of sourceEdition holds information about a particular edition of a publication that the article is originally a part of.</p>
+               </dd>
+               <dt id="sourcePublication" about="#sourcePublication" typeof="rdf:Property">sourcePublication</dt>
+               <dd about="#sourcePublication" property="rdfs:comment" datatype="xsd:string">
+                  <p>Holds information about a publication that the article is originally a part of; is only relevant in contexts where the instance document is being used to deliver a single article, or a collection of articles for one or more publications; can appear more than once inside the Article head; each occurrence of sourcePublication holds information about a particular publication that the article is originally a part of.</p>
+               </dd>
+            </dl>
+         </div>
+      </div>
+   </body>
+</html>

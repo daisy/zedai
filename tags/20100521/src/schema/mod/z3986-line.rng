@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar  xmlns="http://relaxng.org/ns/structure/1.0"
+  ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+  
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="line">The line module</dcterms:title>
+      <dcterms:description>This module defines the {[[#z3986.ln]]}, {[[#z3986.lngroup]]} and {[[#z3986.lnum]]} elements for
+        representing individual lines and line groupings.</dcterms:description>      
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}" />
+      <dcterms:creator>Markus Gylling</dcterms:creator>      
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng" />
+    </rdf:Description>
+  </rdf:RDF>
+
+  <div>
+    <define name="z3986.ln">
+      <element name="ln">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="ln">The {ln} element</dcterms:title>
+            <dcterms:description>The {ln} element represents a single line of text.</dcterms:description>                                    
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.Phrase.class]]}</z:context>          
+            <z:content>{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+ &amp;amp; [[#z3986.lnum]]?}</z:content>            
+            <z:attlist>{[[#z3986.Phrase.attrib]]}</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.ln.attlist"/>
+        <ref name="z3986.ln.content"/>
+        <sch:rule context="default:ln">
+          <sch:assert test="not(descendant::default:ln)"
+            >The {ln} element must not have any {ln} element descendants.</sch:assert>          
+          <sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0"
+            >The {ln} element must neither be empty nor contain only whitespace.</sch:assert>          
+        </sch:rule>       
+      </element>
+    </define>
+
+    <define name="z3986.ln.attlist">
+      <ref name="z3986.Phrase.attrib"/>
+    </define>
+
+    <define name="z3986.ln.content">
+      <interleave>
+        <ref name="z3986.Phrase.Text.mix.model"/>
+        <optional>
+          <ref name="z3986.lnum"/>
+        </optional>
+      </interleave>
+    </define>
+    
+  </div>
+
+  <div>
+    
+    <define name="z3986.lnum">
+      <element name="lnum">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="lnum">The {lnum} element</dcterms:title>
+            <dcterms:description>The {lnum} element represents the line number of the parent {[[#z3986.ln]]}.</dcterms:description>
+            <z:info doc-only="true">Line numbers are a common convention in poetic works, legal texts and programming code.</z:info>
+            <z:context z:alterability="fixed">{[[#z3986.ln]]}</z:context>
+            <z:content>{(text | [[#z3986.Text.class]])+}</z:content>
+            <z:attlist>{[[#z3986.Text.attrib]]}</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="linenum.attlist"/>
+        <ref name="linenum.content"/>
+        <sch:rule context="default:lnum">
+          <sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0"
+            >The {lnum} element must neither be empty nor contain only whitespace.</sch:assert>          
+        </sch:rule>
+      </element>
+    </define>
+
+    <define name="linenum.attlist">
+      <ref name="z3986.Text.attrib"/>
+    </define>
+
+    <define name="linenum.content">
+      <ref name="z3986.Text.model"/>
+    </define>
+
+  </div>
+
+  <div>
+
+    <define name="z3986.lngroup">
+      <element name="lngroup">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="lngroup">The {lngroup} element</dcterms:title>
+            <dcterms:description>The {lngroup} element represents a group of [[#z3986.ln lines]].</dcterms:description>                                                         
+            <z:context>No default context.</z:context>          
+            <z:content z:alterability="The content model must allow {[[#z3986.ln ln]]} elements.">{[[#z3986.ln]]+}</z:content>            
+            <z:attlist>{[[#z3986.Block.attrib]]}</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="linegroup.attlist"/>
+        <ref name="linegroup.content"/>
+      </element>
+    </define>
+
+    <define name="linegroup.attlist">
+      <ref name="z3986.Block.attrib"/>
+    </define>
+
+    <define name="linegroup.content">
+      <interleave>
+        <oneOrMore>
+          <ref name="z3986.ln"/>
+        </oneOrMore>
+        <zeroOrMore>
+          <ref name="linegroup.content.extra.class"/>
+        </zeroOrMore>
+      </interleave>
+    </define>
+
+    <define name="linegroup.content.extra.class" combine="choice">
+      <ref name="z3986.Global.extra.class"/>
+    </define>
+
+  </div>
+  
+  <div>
+    <a:documentation>line - default content model contribution</a:documentation>
+    <define name="z3986.Phrase.core.class" combine="choice">
+      <ref name="z3986.ln"/>
+    </define>  
+    
+    <define name="z3986.table.td.Block.class" combine="choice">
+      <ref name="z3986.ln"/>
+    </define>  
+  </div>
+  
+  
+  
+</grammar>

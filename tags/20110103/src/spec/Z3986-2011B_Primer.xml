@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="../../util/docbook/rng/docbook.rng" type="xml"?>
+<book xmlns="http://docbook.org/ns/docbook"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:xi="http://www.w3.org/2001/XInclude">
+   <title>ANSI/NISO Z39.86-2011 Part B</title>
+   <subtitle>Z39.86 Distribution Framework:  Primer</subtitle>
+   <info>
+      <releaseinfo>Public working draft</releaseinfo>
+      <pubdate>21 May 2010</pubdate>
+      <annotation xml:id="editors">
+         <para>
+            <personname>Daniel Weck</personname>, <orgname>DAISY Consortium</orgname>
+            <email></email>
+         </para>
+         <para>
+            <personname>Markus Gylling</personname>, <orgname>DAISY Consortium</orgname>
+            <email>mgylling@daisy.org</email>
+         </para>
+         <para>
+            <personname>Matt Garrish</personname>, <orgname>Invited Expert</orgname>
+         </para>
+      </annotation>
+      <abstract>
+         <title>Abstract</title>
+         <para>The Z39.86-2011B Primer is a non-normative document that provides an
+            introduction to the technologies and concepts behind the Z39.86-2011
+            Distribution Framework.</para>
+      </abstract>
+   </info>
+   <preface>
+      <title>Introduction</title>
+      
+      <para>
+         It is safe to say that DTBs have passed the phase of their existence where they can still be 
+         called a new technology. DTBs are now ubiquitous, and the technologies they introduced, like the 
+         Navigation Control for XML Applications (NCX), have been adopted into other standards,
+         deeply entrenching the specification in the global publishing ecosystem.
+         Even the original expansion "Digital Talking Book" no longer truly encapsulates the breadth of DTBs as
+         an accessible format, but the acronym persists exactly because of the strong association
+         that people now make between it and all forms of accessible publishing.
+      </para>
+      
+      <para>
+         There is always room to improve and always the need to evolve the DTB specification to keep up
+         with the pace of technological change as the publishing industry moves more deeply into the digital
+         world, however. To keep relevant and to ensure users are still receiving the best possible reading 
+         experience, a new revision of the specification was undertaken by the DAISY Consortium. Some of 
+         the key issues that this new version of the specification addresses are as follows:
+      </para>
+      
+      <itemizedlist>
+         <listitem>
+            <para>
+               <emphasis>It brings greater distribution flexibility.</emphasis> The new specification allows multiple 
+               versions of a DTB to be distributed in a single release, so users can choose which format type
+               they prefer to read.
+            </para>
+         </listitem>
+         <listitem>
+            <para>
+               <emphasis>It brings greater production flexibility.</emphasis> The specification provides greater 
+               format diversity, so readers and developers are no longer saddled with SMIL synchronization support 
+               when they don't need or use it, for example.
+            </para>
+         </listitem>
+         <listitem>
+            <para>
+               <emphasis>It tightens the scope.</emphasis> The specification no longer
+               tries to be every accessible output in one. Part A of the specification replaces DTBook as a means 
+               of facilitating accessible text production and DTBs once again focus on their specific target audience.
+            </para>
+         </listitem>
+         <listitem>
+            <para>
+               <emphasis>It re-aligns the specification with standard technologies.</emphasis> Developers are
+               no longer required to create custom components to process non-standard technologies, such
+               as having to build custom browsers to display content. This change is expected both to simplify
+               the creation of new accessible readers and to facilitate the playback of DTBs in mainstream readers.
+            </para>
+         </listitem>
+      </itemizedlist>
+      
+      <para>
+         The <link xlink:href="Z3986-2011B.html">Z39.86 Distribution Framework specification</link> is not the 
+         optimal place to detail these and other changes
+         that have been implemented, which is where this primer document comes it. This documents represents
+         a simpler entry point into the technologies and concepts for readers who may be new to DTBs or who may 
+         produce or distribute DTB content but do not require an intimate understanding of all the requirements 
+         and restrictions outlined in the specification.
+      </para>
+      
+      <para>
+         The primer does not provide any new information that is not already in the specification, but endeavors
+         to present the information in a way that anyone with an interest in DTBs will be able to follow and
+         understand. References to the relevant sections in the specification have been included wherever possible.
+      </para>
+   </preface>
+   
+   <chapter xml:id="dtb">
+      <title>What is a DTB?</title>
+      
+      <para> A DTB, stripped bare, is nothing more than a collection of electronic resources.
+         When taken together, however, those resources allow a document to be rendered in 
+         one or more ways conducive to persons unable to read traditional print media. The use 
+         of the statement <emphasis>conducive to</emphasis> here is very much intentional, 
+         as DTBs are intended to be useful to all digital readers, whatever their abilities.
+      </para>
+      
+      <para>
+         Persons new to the accessibility field often arrive with the mistaken notion that a format 
+         that assists one segment of the population with reading must by necessity come burdened 
+         with aids and devices that would limit or exclude its use by another. Nothing could be farther
+         from the truth when it comes to DTBs, however. If anything, the technology was ahead of 
+         its time, providing a synchronized text and audio reading experience long before the audiobook 
+         and eBook revolution that's taken off in mainstream publishing in the last few years.
+      </para>
+      
+      <para>
+         There are no limits on what type of document a DTB can represent &#8212; books, 
+         magazines, articles from journals, a memo to employees, anything that can be written
+         can be converted to a DTB.
+      </para>
+      
+      <para> A DTB may be distributed as an audio-only publication (a structured "talking
+         book"), a text-only document (e.g. an EPUB document), or it may blend features of
+         both formats (synchronized text and audio). It may also layer video and SVG
+         graphics, thereby enabling a richer multimedia experience. This new version of the
+         specification also allows all of these formats to be combined and distributed in a
+         single publication unit, allowing end users and/or reading systems to pick the most
+         adequate consumption format. </para>
+      
+      <para> A DTB created in accordance with this standard makes possible a wide range of
+         features: </para>
+      
+      <itemizedlist>
+         <listitem>
+            <para>rapid, flexible navigation (hierarchical or flat-listed);</para>
+         </listitem>
+         <listitem>
+            <para>synchronized playback (e.g. text and audio narration, text and video sign
+               language, etc.);</para>
+         </listitem>
+         <listitem>
+            <para>bookmarking and highlighting;</para>
+         </listitem>
+         <listitem>
+            <para>keyword searching;</para>
+         </listitem>
+         <listitem>
+            <para>spelling of words on demand; and</para>
+         </listitem>
+         <listitem>
+            <para>user control over the presentation of selected items (e.g., footnotes,
+               page numbers, etc.).</para>
+         </listitem>
+      </itemizedlist>
+      
+      <para> Such features enable readers with visual and physical disabilities to access the
+         information in DTBs flexibly and efficiently, and allow sighted users with learning
+         or reading disabilities to receive the information through multiple senses. </para>
+   </chapter>
+   
+   
+   <chapter xml:id="dtbIntro_types">
+      <title>What are the DTB types?</title>
+      
+      <para>Each type of DTB presented in this document offers unique characteristics
+         dedicated to fulfilling specific operational requirements. However, there is also a
+         degree of functional overlap. In order to avoid redundant normative prose in this
+         specification, commonalities are described in independent sections that provide
+         generalized definitions applying to more than one type of DTB. In some cases, the
+         formal definition specific to a type of DTB may enforce particular restrictions to
+         the rules inherited from the generalized definition.</para>
+      
+      <para>This specification details four types of DTBs:</para>
+      
+      <variablelist>
+         <varlistentry>
+            <term>eBook</term>
+            <listitem>
+               <!-- <para> The eBook DTB represents a structured text document with rich
+                  navigation and all the features provided by the EPUB format. </para>-->
+               <para> The eBook DTB is defined in . </para>
+            </listitem>
+         </varlistentry>
+         
+         <varlistentry>
+            <term>Audio</term>
+            <listitem>
+               <!--<para> The Audio DTB represents a talking book and enables its most
+                  basic manifestation: a play list of audio files supported by
+                  mainstream playback devices. </para>-->
+               <para> The Audio DTB is defined in . </para>
+            </listitem>
+         </varlistentry>
+         
+         <varlistentry>
+            <term>Classic</term>
+            <listitem>
+               <!--<para> The Classic DTB will be familiar to users acquainted with earlier
+                  versions of the specification. It combines audio and text content,
+                  using a simplified subset of the SMIL standard to ensure fine-grain
+                  synchronization. </para>-->
+               <para> The Classic DTB is defined in . </para>
+            </listitem>
+         </varlistentry>
+         
+         <varlistentry>
+            <term>Pro</term>
+            <listitem>
+               <!--<para> The Pro DTB adds support for the video media type and by doing so
+                  provides a more complete multimedia reading experience to end-users,
+                  covering a broad range of use-cases such as captioned and structured
+                  movie clips, or synchronized sign-language and text books. </para>-->
+               <para> The Pro DTB is defined in . </para>
+            </listitem>
+         </varlistentry>
+      </variablelist>
+      
+   </chapter>
+   
+   <chapter xml:id="dtbContents">
+      <title>What's in a DTB?</title>
+      
+      <para> 
+         Although DTBs are made up of many resources, not all DTBs will contain the same types of resources.
+         It is true, for example, that every DTB provides navigation through the inclusion of an NCX file and contains 
+         a package file listing its contents, but with four types of DTBs it may confusing to understand why
+         other resources are included in some DTBs and not in others (even within a single DTB type).
+      </para>
+      
+      <para>
+         Following is a list of the various resources that you may encounter in a DTB, together with a description
+         of their purpose and in which DTB types the are found:
+      </para>
+      
+      <variablelist>
+         <varlistentry>
+            <term>Package file</term>
+            <listitem>
+               <para> The package file is an XML document that conforms to the Open
+                  Packaging Format (OPF) specification and contains
+                  administrative information about the DTB. </para>
+               <para> The package file defines the DTB-level metadata, lists the resources
+                  included in the package (the manifest) and defines the default reading
+                  order of the document (the spine). For more information, refer to . </para>
+               <para>You will find a package file in every compliant DTB.</para>
+            </listitem>
+         </varlistentry>
+         <varlistentry>
+            <term>Navigation control file</term>
+            <listitem>
+               <para>The DTB system supports global navigation &#8212; movement by structure 
+                  (chapter, section, subsection) and by other selected points such as pages, figures, or
+                  notes &#8212; through the Navigation Control file for XML applications (NCX) (refer to 
+                  ... for more detailed information). </para>
+               <para>You will find an NCX file in every compliant DTB.</para>
+            </listitem>
+         </varlistentry>
+         <varlistentry>
+            <term xml:id="overviewDTBContentSynchro">Synchronization files</term>
+            <listitem>
+               <para> To synchronize the different media files of a DTB during playback,
+                  this standard specifies the use of the World Wide Web Consortium's (W3C)
+                  Synchronized Multimedia Integration Language (SMIL), SMIL 3.0 version.
+                  The type of DTB determines the subset of SMIL features that are
+                  available. Refer to ... for more
+                  information. </para>
+               <para>
+                  SMIL synchronization is only found in the Classic and Pro DTB types.
+               </para>
+            </listitem>
+         </varlistentry>
+         <varlistentry>
+            <term>Content files</term>
+            <listitem>
+               <variablelist>
+                  <varlistentry>
+                     <term xml:id="overviewDTBContentText">Text data files</term>
+                     <listitem>
+                        <para> A DTB may include one or more documents containing the text data of
+                           the document in (X)HTML5 format. The textual content file enables
+                           properly-configured playback devices to spell words on demand, carry out
+                           keyword searches, and permit finely-grained navigation. It can also be
+                           accessed directly via refreshable Braille display, synthetic speech, or
+                           screen-enlarging software. </para>
+                     </listitem>
+                  </varlistentry>
+                  <varlistentry>
+                     <term>Audio files</term>
+                     <listitem>
+                        <para> A DTB may include human or synthetic speech recordings of the
+                           document embodied in audio files encoded in one of a specified group of
+                           audio formats. Refer to ... for more
+                           information about the allowed formats. </para>
+                     </listitem>
+                  </varlistentry>
+                  <varlistentry>
+                     <term>Image files</term>
+                     <listitem>
+                        <para> In addition to text and audio, DTBs may include images, <remark
+                           role="todo">videos</remark> and other multimedia formats that can be
+                           presented on players with visual displays. Refer to ... for more information about the allowed
+                           formats. </para>
+                     </listitem>
+                  </varlistentry>
+                  <varlistentry>
+                     <term>Video files</term>
+                     <listitem>
+                        <para>
+                           <remark role="todo">TODO</remark>
+                        </para>
+                     </listitem>
+                  </varlistentry>
+               </variablelist>
+            </listitem>
+         </varlistentry>
+         <varlistentry>
+            <term>Bookmark/highlight file</term>
+            <listitem>
+               <para> This standard supports user-set, exportable bookmarks and highlights
+                  to which text and audio notes can be applied. The format of these files
+                  is described in ... </para>
+            </listitem>
+         </varlistentry>
+         <varlistentry>
+            <term>Resource file</term>
+            <listitem>
+               <para> The resource file contains or references various text segments, audio
+                  clips, and/or images that provide alternative representations of
+                  navigational information &#8212; for example, feedback on the user's
+                  current location in the document. It supplies information normally
+                  presented in a print book via typographical clues. </para>
+            </listitem>
+         </varlistentry>
+         <varlistentry>
+            <term>Distribution information file</term>
+            <listitem>
+               <para> Given the typically large size of audio files, it is not uncommon for
+                  DTBs to span several physical media units. <remark role="todo">add
+                     link</remark> describes how the "distInfo" file maps the location of
+                  each SMIL file to a specific media unit, e.g., disk 1 of 3. It also
+                  explains how, when several books are distributed on the same media unit,
+                  the distInfo file stores information about each book for presentation to
+                  the reader. </para>
+            </listitem>
+         </varlistentry>
+         <varlistentry>
+            <term>Presentation styles</term>
+            <listitem>
+               <para> A DTB may also include one or more stylesheets (e.g. CSS) to control
+                  the presentation of text and image content in various media. </para>
+            </listitem>
+         </varlistentry>
+      </variablelist>
+      
+   </chapter>
+   
+</book>

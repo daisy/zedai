@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"
+         xmlns:s="http://purl.oclc.org/dsdl/schematron">
+
+  <x:h1>Z39.86 super- and subscript element module</x:h1>
+    
+  <div>
+    <x:h2>The sub element</x:h2>
+    <x:div id="z3986.sub">
+      <x:p class="description">
+        The <x:code>sub</x:code> element represents subscript text.    
+        <x:br/>
+        The <x:code>sub</x:code> element must not contain <x:code>sup</x:code> element descendants. 
+      </x:p>
+    </x:div>
+    
+    <define name="z3986.sub">
+      <element name="sub">        
+        <ref name="z3986.sub.attlist"/>
+        <ref name="z3986.sub.content"/>  
+      </element>    
+    </define>
+
+    <define name="z3986.sub.attlist">
+      <ref name="z3986.Text.attrib"/>
+    </define>
+    
+    <define name="z3986.sub.content">
+      <ref name="z3986.Text.base.model"/>
+    </define>  
+    
+  </div>  
+  
+  <div>
+    <x:h2>The sup element</x:h2>
+    <x:div id="z3986.sup">
+      <x:p class="description">
+        The <x:code>sup</x:code> element represents superscript text.    
+        <x:br/>
+        The <x:code>sup</x:code> element must not contain <x:code>sub</x:code> element descendants. 
+      </x:p>
+    </x:div>
+    
+    <define name="z3986.sup">
+      <element name="sup">        
+        <ref name="z3986.sup.attlist"/>
+        <ref name="z3986.sup.content"/>  
+      </element>    
+    </define>
+
+    <define name="z3986.sup.attlist">
+      <ref name="z3986.Text.attrib"/>
+    </define>
+    
+    <define name="z3986.sup.content">
+      <ref name="z3986.Text.base.model"/>
+    </define>  
+    
+  </div>   
+  
+  <div>
+    <x:h2>super- and subscript element module - default content model contribution</x:h2>
+    
+    <define name="z3986.Text.class" combine="choice">
+      <ref name="z3986.sub"/>
+    </define>
+    
+    <define name="z3986.Text.class" combine="choice">
+      <ref name="z3986.sup"/>
+    </define>
+    
+    <!-- contribute to inline code, which is specialized -->
+    <define name="z3986.code.text.class" combine="choice">
+      <ref name="z3986.sub"/>
+    </define>
+    
+    <!-- contribute to inline code, which is specialized -->
+    <define name="z3986.code.text.class" combine="choice">
+      <ref name="z3986.sup"/>
+    </define>
+  </div>
+
+  <div>
+    <x:h2>Z39.86 super- and subscript element module - Schematron Assertions</x:h2>
+    
+    <!-- ISO Schematron: The sub element must not contain sup element descendants. -->    
+    <s:rule context="default:sub">
+      <s:assert test="not(descendant::default:sup)">The sub element must not contain sup element descendants</s:assert>
+    </s:rule>
+    <!-- ISO Schematron: The sup element must not contain sub element descendants. -->    
+    <s:rule context="default:sup">
+      <s:assert test="not(descendant::default:sub)">The sup element must not contain sub element descendants</s:assert>
+    </s:rule>
+    
+    
+  </div>
+  
+</grammar>

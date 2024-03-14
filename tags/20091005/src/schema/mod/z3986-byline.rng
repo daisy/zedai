@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 byline element module</x:h1>
+    
+  <div>
+    <x:h2>The byline element</x:h2>
+    <x:div id="z3986.byline">
+      <x:p class="description">
+        The <x:code>byline</x:code> element on a newspaper or magazine article represents the name, 
+        and often the position, of the writer of the article. Bylines are traditionally placed 
+        between the headline and the text of the article, although some magazines place bylines 
+        at the bottom of the page.
+      </x:p>
+    </x:div>
+         
+    <define name="z3986.byline">
+      <element name="byline">        
+        <ref name="z3986.byline.attlist"/>
+        <ref name="z3986.byline.content"/>  
+      </element>    
+    </define>
+
+    <define name="z3986.byline.attlist">
+      <ref name="z3986.Text.attrib"/>
+    </define>
+    
+    <define name="z3986.byline.content">
+      <ref name="z3986.Text.base.model"/>
+    </define>  
+    
+  </div>  
+  
+</grammar>

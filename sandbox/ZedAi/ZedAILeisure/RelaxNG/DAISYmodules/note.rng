@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <x:h1>The DAISY Note module</x:h1>
+
+
+    <define name="Daisy.noteref" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="noteref">
+            <ref name="Daisy.noteref.attlist" />
+            <ref name="Daisy.noteref.content" />
+        </element>
+    </define>
+    <define name="Daisy.note" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="note">
+            <ref name="Daisy.note.attlist" />
+            <ref name="Daisy.note.content" />
+        </element>
+    </define>
+
+    <define name="Daisy.noteref.attlist">
+        <attribute name="ref">
+            <data type="IDREF" />
+        </attribute>
+    </define>
+
+    <define name="Daisy.note.attlist">
+        <attribute name="type">
+            <choice>
+                <!-- note at the bottom of the page containing the noteref -->
+                <value type="string">footnote</value>
+                <!-- note at the end of the section containing the noteref -->
+                <value type="string">endnote</value>
+                <!-- note at the end of the book -->
+                <value type="string">endsection</value>
+            </choice>
+        </attribute>
+    </define>
+
+    <define name="Daisy.noteref.content">
+        <text />
+    </define>
+
+    <define name="Daisy.note.content">
+        <empty />
+    </define>
+
+</grammar>

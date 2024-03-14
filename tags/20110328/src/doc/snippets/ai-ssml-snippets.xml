@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="ai-snippets.rng" type="xml"?>
+<snippets xmlns="http://www.daisy.org/ns/z3986/authoring/"
+    xmlns:ssml="http://www.w3.org/2001/10/synthesis">
+    
+    <!-- 
+        
+        Remains to be done:
+                                                        
+        ssml.prosody
+            ssml.pitch.attrib
+            ssml.contour.attrib
+            ssml.range.attrib            
+            ssml.duration.attrib
+            ssml.volume.attrib
+        
+        ssml.say-as
+            ssml.interpret-as.attrib
+                ssml.format.attrib
+                ssml.detail.attrib
+                                            
+        
+    
+    -->
+        
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--             SUB, ALIAS                     -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    
+    <!-- TODO get an example that doesnt conflate with abbr -->        
+    <snippet dest="doc" about="ssml.sub ssml.alias.attrib">        
+<p>The great toe, as <ssml:sub alias="professor">Prof.</ssml:sub> Owen remarks, which forms 
+    the fulcrum when standing or walking, is perhaps the most characteristic …</p>
+    </snippet>
+       
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                LEXICON                     -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet dest="doc" about="ssml.lexicon">
+<head>
+    …
+    <ssml:lexicon xml:id="pls_1" uri="lexicon.pls" type="application/pls+xml"/>
+    …
+</head>
+    </snippet>    
+    
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--               ONLANGFAILURE                -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->       
+    <snippet dest="doc" about="ssml.onlangfailure.attrib">
+<document ssml:onlangfailure="changevoice" xml:lang="en">
+    …
+</document>
+    </snippet>    
+       
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--               BREAK, STRENGTH              -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->   
+    <snippet dest="doc" about="ssml.break ssml.strength.attrib">
+<p>… </p>
+<transition />
+<ssml:break strength="strong"/>        
+<p>…</p>
+    </snippet>    
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--               BREAK, TIME                  -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet dest="doc" about="ssml.break ssml.time.attrib">
+<p>…</p>
+<transition />
+<ssml:break time="2s"/>
+<p>…</p>
+    </snippet>
+          
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--               PROSODY, RATE                -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->          
+    <snippet dest="doc" about="ssml.prosody ssml.rate.attrib">
+<p>The <ssml:prosody rate="slow"><name xml:lang="la">platysma myoides</name></ssml:prosody>, which is well 
+    developed on the neck, belongs to this system, but cannot be voluntarily brought into action.</p>
+    </snippet>
+              
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                   TOKEN                    -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->          
+    <snippet dest="doc" about="ssml.token">
+<!-- The Nanjing Changjiang River Bridge -->
+<name>
+    <ssml:token>南京市</ssml:token><ssml:token>长江大桥</ssml:token>
+</name>   
+    </snippet>   
+
+       
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--           PHONEME, PH, ALPHABET            -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->          
+    <snippet dest="doc" about="ssml.phoneme ssml.ph.attrib ssml.alphabet.attrib">
+<p>The <name><ssml:phoneme ph="g@l&quot;Qp@g@Uz" alphabet="x-SAMPA"
+    >Galapagos</ssml:phoneme></name> marine iguana.</p>                   
+    </snippet>
+
+
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                 @PH, @ALPHABET             -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->          
+    <snippet dest="doc" about="ssml.ph.ns.attrib ssml.alphabet.ns.attrib">
+<p>The <name ssml:ph="g@l&quot;Qp@g@Uz" ssml:alphabet="x-SAMPA"
+    >Galapagos</name> marine iguana.</p>                   
+    </snippet>
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                SAY-AS, INTERPRET-AS        -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - --> 
+    <snippet dest="doc" about="ssml.say-as ssml.interpret-as.attrib">
+<h>CHAPTER <ssml:say-as interpret-as="ordinal" >V</ssml:say-as>. LAWS OF VARIATION.</h>                   
+    </snippet>
+    
+    
+</snippets>

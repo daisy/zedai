@@ -1,0 +1,745 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      prefix="rd: http://www.daisy.org/z3998/2012/vocab/resourcedirectory/# dcterms: http://purl.org/dc/terms/"
+      lang="en-US"
+      xml:lang="en-US">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <title>Resource Directory for the Z39.98-2012 Authoring and Interchange Source Rendition Feature, version 1.0</title>
+        <link rel="stylesheet" type="text/css" href="../../../../z3998-2012.css"/>
+    </head>
+    <body>
+        <h1 property="dcterms:title">
+            <span class="titlesub">Resource directory for the Z39.98-2012 Authoring and Interchange </span>
+            <br/>Source Rendition Feature
+            <span class="titlesub">
+                <br/> version 1.0
+            </span>
+        </h1>
+      <h2 id="toc">Table of Contents</h2>
+      <ul>
+         <li class="first">
+            <a href="#h_introduction">Introduction</a>
+         </li>
+         <li class="first">
+            <a href="#h_normativereferences">Normative References</a>
+            <ul>
+               <li>
+                  <a href="#h_generaldocumentmodelrequirements">General document model requirements</a>
+               </li>
+               <li>
+                  <a href="#h_versioninformation">Version information</a>
+               </li>
+               <li>
+                  <a href="#h_identification">Identification</a>
+               </li>
+               <li>
+                  <a href="#h_specificationcompliance">Specification compliance</a>
+               </li>
+               <li>
+                  <a href="#h_normativeschemata">Normative schemata</a>
+               </li>
+               <li>
+                  <a href="#h_availablecomponents">Available components</a>
+               </li>
+               <li>
+                  <a href="#h_processingagentbehaviorrequirements">Processing agent behavior requirements</a>
+                  <ul>
+                     <li>
+                        <a href="#pa-reqs-supported">Feature supported</a>
+                     </li>
+                     <li>
+                        <a href="#pa-reqs-recognized">Feature recognized</a>
+                     </li>
+                     <li>
+                        <a href="#pa-reqs-notrecognized">Feature not recognized</a>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <a href="#h_featurecomponentdefinitions">Feature component definitions</a>
+                  <ul>
+                     <li>
+                        <a href="#h_thesourcerenditionfeature">The Source Rendition Feature</a>
+                        <ul>
+                           <li>
+                              <a href="#h_thelinebreakelement">The 
+                            linebreak element
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thesymbolattribute">The symbol attribute</a>
+                           </li>
+                           <li>
+                              <a href="#h_theorderedlistprefixattribute">The ordered list prefix attribute</a>
+                           </li>
+                           <li>
+                              <a href="#h_theunorderedlistprefixattribute">The unordered list prefix attribute</a>
+                           </li>
+                           <li>
+                              <a href="#h_thelistitemprefixattribute">The list item prefix attribute</a>
+                           </li>
+                           <li>
+                              <a href="#h_theprefixattribute">The prefix attribute</a>
+                           </li>
+                           <li>
+                              <a href="#h_thesourcerenditionfeature-implementations">The Source Rendition Feature - Implementations</a>
+                           </li>
+                        </ul>
+                     </li>
+                  </ul>
+               </li>
+            </ul>
+         </li>
+         <li class="first">
+            <a href="#h_informativereferences">Informative References</a>
+            <ul>
+               <li>
+                  <a href="#supporting-software">Supporting software</a>
+               </li>
+            </ul>
+         </li>
+         <li class="first">
+            <a href="#h_appendix1listingofmodulesinthenormativeschema">Appendix 1: Listing of modules in the normative schema</a>
+         </li>
+      </ul>
+        <div id="introduction">
+            <h2 id="h_introduction">Introduction</h2>
+            <p xmlns:xi="http://www.w3.org/2001/XInclude">The Source Rendition Feature provides the ability to represent a limited set of typographic properties of a source document using inline attributes.</p>
+            <p xmlns:xi="http://www.w3.org/2001/XInclude">Although it is expected that document authors will use generic styling mechanisms for representing the source document (primarily 
+                <a href="http://www.w3.org/TR/CSS2/">CSS</a>), this feature is provided for use when CSS alone may not be sufficient. 
+            </p>
+            <p xmlns:xi="http://www.w3.org/2001/XInclude">This feature makes use of names and values drawn from CSS where applicable for compatibility, but direct translation of the attributes and functionality to CSS is not guaranteed.</p>
+            <p id="maintenance-agency"> This feature is maintained by the 
+                <a href="http://www.daisy.org/z3998/advisory/" rel="rd:maintenance-agency">ANSI/NISO Z39.98 advisory committee</a> under the auspices of 
+                <a href="http://niso.org/">NISO</a>. 
+            </p>
+        </div>
+        <div id="normative-references">
+            <h2 id="h_normativereferences">Normative References</h2>
+            <p class="RFC2119">The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this section are to be interpreted as described in 
+                <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC2119</a>.
+            </p>
+            <div xmlns:xi="http://www.w3.org/2001/XInclude" class="rd-section">
+                <h3 id="h_generaldocumentmodelrequirements">General document model requirements</h3>
+                <p id="feature-ns">The namespace of all attribute components defined by this feature is: 
+                    <br/>
+                    <br/>
+                    <code>http://www.daisy.org/ns/z3998/authoring/features/rend/</code>
+                </p>
+            </div>
+            <div class="rd-section">
+                <h3 id="h_versioninformation">Version information</h3>
+                <p>This resource directory represents version 
+                    <code property="rd:version">1.0</code> of the Source Rendition feature:
+                </p>
+                <ul>
+                    <li>refer to the 
+                        <a href="z3998-rend-history.html">Version history</a> for the list of changes introduced in this release. 
+                    </li>
+                    <li id="version-listing"> refer to the 
+                        <a href="../index.html">Version index</a> for the list of all public releases of this feature. 
+                    </li>
+                </ul>
+                <p id="current-version"> This release may not be the most recently published (current) version of the Source Rendition feature. The current version should always be obtained from the static URI: 
+                    <a href="../current/" rel="rd:current-version-uri">http://www.daisy.org/z3998/2012/auth/features/rend/current/</a>
+                </p>
+            </div>
+            <div class="rd-section">
+                <h3 id="h_identification">Identification</h3>
+                <p>This feature must be identified as 
+                    <code property="rd:z3998-instance-name">rend</code> in Z39.98-AI document feature declarations.
+                </p>
+                <p id="identity-uri"> The canonical identity URI is: 
+                    <code rel="rd:token-identifier">http://www.daisy.org/z3998/2012/auth/features/rend/1.0/ </code>
+                </p>
+            </div>
+            <div class="rd-section">
+                <h3 id="h_specificationcompliance">Specification compliance</h3>
+                <p id="spec-ref"> This version of the feature is compliant with the 
+                    <a href="../../../../z3998-2012.html" rel="rd:specification-compliance">Z39.98-2012 Specification</a>. 
+                </p>
+            </div>
+            <div class="rd-section" property="rd:normative-schemata">
+                <h3 id="h_normativeschemata">Normative schemata</h3>
+                <p about="mod/z3998-feature-rend.rng"> The normative 
+                    <span property="rd:schema-type" content="rng">RelaxNG</span> schema for version 
+                    <code property="rd:version">1.0</code> of the Source Rendition feature is 
+                    <a href="mod/z3998-feature-rend.rng">z3998-feature-rend.rng</a>. 
+                </p>
+                <p>Note - this feature schema does not represent an entire document model; it is intended for inclusion in host profiles.</p>
+            </div>
+            <div id="markup-components">
+                <h3 id="h_availablecomponents">Available components</h3>
+                <p>This feature makes the following 
+                    <a href="http://www.daisy.org/z3998/2012/z3998-2012.html#featureConformance">components</a> available for inclusion in host profiles:
+                </p>
+                <ul xmlns:xi="http://www.w3.org/2001/XInclude">
+                    <li>
+                        <code>
+                            <a href="#z3998.rend.symbol.attrib">rend:symbol</a>
+                        </code>
+                    </li>
+                    <li>
+                        <code>
+                            <a href="#z3998.rend.list.ordered.prefix.attrib">rend:prefix</a>
+                        </code> (ordered 
+                        <code>list</code>) 
+                    </li>
+                    <li>
+                        <code>
+                            <a href="#z3998.rend.list.unordered.prefix.attrib">rend:prefix</a>
+                        </code>(unordered 
+                        <code>list</code>) 
+                    </li>
+                    <li>
+                        <code>
+                            <a href="#z3998.rend.list.item.prefix.attrib">rend:prefix</a>
+                        </code>(list 
+                        <code>item</code>) 
+                    </li>
+                    <li>
+                        <code>
+                            <a href="#z3998.rend.prefix.attrib">rend:prefix</a>
+                        </code>
+                    </li>
+                </ul>
+            </div>
+            <div class="rd-section" id="pa-reqs">
+                <h3 id="h_processingagentbehaviorrequirements">Processing agent behavior requirements</h3>
+                <p>This section defines processing agent behaviors that extend the default behaviors defined in 
+                    <a href="http://www.daisy.org/z3998/2012/z3998-2012.html#processingAgentConformance">Processing agent conformance definition</a>.
+                </p>
+                <div xmlns:xi="http://www.w3.org/2001/XInclude" class="rd-section">
+                    <h4 id="pa-reqs-supported">Feature supported</h4>
+                    <p id="pa-reqs-supported-activated">If the processing agent 
+                        <em>supports</em> this feature and the client has 
+                        <em>activated</em> processing of components defined by this feature, then the processing agent must process all encountered components defined by this feature in accordance with the semantics defined in 
+                        <a href="#absdef">definitions</a> below. 
+                    </p>
+                    <p id="pa-reqs-supported-deactivated">If the processing agent 
+                        <em>supports</em> this feature and the client has 
+                        <em>deactivated</em> processing of components defined by this feature, then the processing agent must employ the 
+                        <a href="#pa-reqs-recognized-ignore">Ignore</a> or 
+                        <a href="#pa-reqs-recognized-discard">Discard</a> behaviors as defined below. The 
+                        <code>Ignore</code> behavior is the default; the 
+                        <code>Discard</code> behavior must only be employed when client has explicitly instructed the processing agent to do so. 
+                    </p>
+                    <p class="note">(Note that a document transformation where all or some of the CSS-compatible expressions defined by this feature are moved to an external CSS stylesheet does 
+                        <em>not</em> comprise an example of the the 
+                        <code>Discard</code> behavior.) 
+                    </p>
+                </div>
+                <div xmlns:xi="http://www.w3.org/2001/XInclude" class="rd-section">
+                    <h4 id="pa-reqs-recognized">Feature recognized</h4>
+                    <p>If a processing agent 
+                        <em>recognizes but does not support</em> this feature, it must employ one of the following behaviors: 
+                    </p>
+                    <dl>
+                        <dt id="pa-reqs-recognized-abort">Abort</dt>
+                        <dd>
+                            <p>Upon encountering a document instance with this feature enabled, the processing agent issues a notification, and then aborts the processing.</p>
+                        </dd>
+                        <dt id="pa-reqs-recognized-ignore">Ignore</dt>
+                        <dd>
+                            <p>While traversing the document tree and encountering an attribute in the 
+                                <a href="#feature-ns">feature namespace</a>, the processing agent ignores the attribute, and continues the traversal. 
+                            </p>
+                        </dd>
+                        <dt id="pa-reqs-recognized-discard">Discard</dt>
+                        <dd>
+                            <p>While traversing the document tree and encountering an attribute in the 
+                                <a href="#feature-ns">feature namespace</a>, the processing agent 
+                                <em>discards</em> the attribute, and continues the traversal. 
+                            </p>
+                        </dd>
+                    </dl>
+                    <p xmlns="" xml:base="pa-reqs-recognized.xinc">The 
+                        <code>abort</code> behavior is the default; the 
+                        <code>ignore</code> and 
+                        <code>discard</code> behaviors must only be employed when the processing agent is explicitly instructed to do so by the client. 
+                        <br/>
+                        <br/> Processing agents that employ the 
+                        <code>ignore</code> or 
+                        <code>discard</code> behaviors should issue a notification. 
+                    </p>
+                </div>
+                <div class="rd-section">
+                    <h4 id="pa-reqs-notrecognized">Feature not recognized</h4>
+                    <p>If a processing agent 
+                        <em>does not recognize</em> this feature, it must, as dictated in 
+                        <a href="http://www.daisy.org/z3998/2012/z3998-2012.html#processingAgentConformance">Processing agent conformance definition</a>, abort processing and issue an error message.
+                    </p>
+                </div>
+            </div>
+            <h3 id="h_featurecomponentdefinitions">Feature component definitions</h3>
+            <p>The component definitions provided below follow the conventions used in 
+                <a href="../../../cm/">Core Modules</a>.
+            </p>
+            <div xmlns:xi="http://www.w3.org/2001/XInclude" class="rd-section" id="absdef">
+                <div id="z3998.feature-rend.module" class="module">
+                    <h4 id="h_thesourcerenditionfeature">The Source Rendition Feature</h4>
+                    <p class="desc-main">The Source Rendition Feature provides support for the representation of a limited set of typographic/stylistic properties of a source document.</p>
+                    <table id="z3998.feature-rend.module-elem-overview" class="overview">
+                        <caption>The Source Rendition Feature: Element overview</caption>
+                        <tr>
+                            <th>Name</th>
+                            <th>Default attribute model</th>
+                            <th>Default content model</th>
+                            <th>Default usage context</th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#z3998.rend.linebreak">rend:linebreak</a>
+                                </code>
+                            </th>
+                            <td>
+                                <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.attrib">Phrase.attrib</a>
+                            </td>
+                            <td>
+                                <code>empty</code>
+                            </td>
+                            <td>
+                                <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="z3998.feature-rend.module-attr-overview" class="overview">
+                        <caption>The Source Rendition Feature: Attribute overview</caption>
+                        <tr>
+                            <th>Name</th>
+                            <th>Default values</th>
+                            <th>Default usage context</th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#z3998.rend.symbol.attrib">rend:symbol</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>text</code>
+                            </td>
+                            <td>
+                                <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.transition">transition</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#z3998.rend.list.ordered.prefix.attrib">rend:prefix</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>'decimal' | 'decimal-leading-zero' | 'lower-alpha' | 'lower-greek' | 'lower-latin' | 'lower-roman' | 'upper-alpha' | 'upper-greek' | 'upper-latin' | 'upper-roman '</code>
+                            </td>
+                            <td>Ordered 
+                                <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.list">list</a>s
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#z3998.rend.list.unordered.prefix.attrib">rend:prefix</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>'none' | 'box' | 'check' | 'circle' | 'diamond' | 'disc' | 'hyphen' | 'square'</code>
+                            </td>
+                            <td>Unordered 
+                                <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.list">list</a>s
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#z3998.rend.list.item.prefix.attrib">rend:prefix</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>text</code>
+                            </td>
+                            <td>
+                                <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.list.item.block">item</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#z3998.rend.prefix.attrib">rend:prefix</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>text</code>
+                            </td>
+                            <td>
+                                <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.note">note</a> and 
+                                <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.annotation">annotation</a>
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="z3998.rend.linebreak" class="details">
+                        <h5 id="h_thelinebreakelement">The 
+                            <code>linebreak</code> element
+                        </h5>
+                        <p class="desc-main">The 
+                            <code>linebreak</code> element represents a forced line ending.
+                        </p>
+                        <p class="desc-sub">The 
+                            <code>
+                                <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.ln">ln</a>
+                            </code> element should be used whenever the text content represents discrete lines.
+                        </p>
+                        <table id="z3998.rend.linebreakdetails-table" class="details">
+                            <caption>The 
+                                <code>linebreak</code> element
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>rend:linebreak</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>
+                                    <code>http://www.daisy.org/ns/z3998/authoring/features/rend/</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default attribute model</th>
+                                <td>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.attrib">Phrase.attrib</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default content model</th>
+                                <td>
+                                    <code>empty</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This element must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="z3998.rend.symbol.attrib" class="details">
+                        <h5 id="h_thesymbolattribute">The symbol attribute</h5>
+                        <p class="desc-main">The 
+                            <code>rend:symbol</code> attribute specifies the textual symbol used to represent a context break in the source document.
+                        </p>
+                        <p class="desc-sub">As an alternative to 
+                            <code>rend:symbol</code>, the 
+                            <code>
+                                <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.src.attrib">src attribute</a>
+                            </code> may be used to include an image symbol. Note that allowed media types in the 
+                            <code>src</code> attribute are limited to the same set as the media types allowed on the 
+                            <code>object</code> element. The 
+                            <code>rend:symbol</code> and 
+                            <code>src</code> attributes must not occur simultaneously on the same element.
+                        </p>
+                        <table id="z3998.rend.symbol.attribdetails-table" class="details">
+                            <caption>The symbol attribute</caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>rend:symbol</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.transition">transition</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default value(s)</th>
+                                <td>
+                                    <code>text</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This attribute must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="z3998.rend.list.ordered.prefix.attrib" class="details">
+                        <h5 id="h_theorderedlistprefixattribute">The ordered list prefix attribute</h5>
+                        <p class="desc-main">The 
+                            <code>rend:prefix</code> attribute specifies the symbol used as prefixes to the 
+                            <code>item</code> children of an ordered 
+                            <code>list</code> in the source document.
+                        </p>
+                        <p class="desc-sub">The semantics of the allowed values of this attribute are defined by the 
+                            <a href="http://www.w3.org/TR/CSS2/generate.html#propdef-list-style-type">CSS list-style-type property</a>.
+                        </p>
+                        <p class="desc-sub">The value specified in 
+                            <code>rend:prefix</code> is inherited by any descendant 
+                            <code>list</code>s, unless such descendant 
+                            <code>list</code>s specify a 
+                            <code>rend:prefix</code> attribute themselves. In terms of the 
+                            <a href="http://www.w3.org/TR/CSS2/cascade.html#cascade">CSS cascade</a>, values provided here must be considered as of author origin.
+                        </p>
+                        <p class="desc-sub">For more specialized symbols than the ones supported by the 
+                            <code>rend:prefix</code> attribute on 
+                            <code>list</code>, the 
+                            <a href="#z3998.rend.list.item.prefix.attrib">rend:prefix attribute on item</a> can be used.
+                        </p>
+                        <table id="z3998.rend.list.ordered.prefix.attribdetails-table" class="details">
+                            <caption>The ordered list prefix attribute</caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>rend:prefix</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <th>Usage context</th>
+                                <td>Ordered 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.list">list</a>s
+                                </td>
+                            </tr>
+                            <tr class="alterability">
+                                <th>Usage context alterability</th>
+                                <td>This usage context is fixed, and must not be altered when activating this module.</td>
+                            </tr>
+                            <tr>
+                                <th>Value(s)</th>
+                                <td>
+                                    <code>'decimal' | 'decimal-leading-zero' | 'lower-alpha' | 'lower-greek' | 'lower-latin' | 'lower-roman' | 'upper-alpha' | 'upper-greek' | 'upper-latin' | 'upper-roman '</code>
+                                </td>
+                            </tr>
+                            <tr class="alterability">
+                                <th>Value alterability</th>
+                                <td>The defined value(s) or datatype(s) are fixed, and must not be altered when activating this module.</td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This attribute must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="z3998.rend.list.unordered.prefix.attrib" class="details">
+                        <h5 id="h_theunorderedlistprefixattribute">The unordered list prefix attribute</h5>
+                        <p class="desc-main">The 
+                            <code>rend:prefix</code> attribute specifies the symbol used as prefixes to the 
+                            <code>item</code> children of an unordered 
+                            <code>list</code> in the source document.
+                        </p>
+                        <p class="desc-sub">The semantics of the allowed values of this attribute are defined by the 
+                            <a href="http://www.w3.org/TR/CSS2/generate.html#propdef-list-style-type">CSS list-style-type property</a>.
+                        </p>
+                        <p class="desc-sub">The value specified in 
+                            <code>rend:prefix</code> is inherited by any descendant 
+                            <code>list</code>s, unless such descendant 
+                            <code>list</code>s specify a 
+                            <code>rend:prefix</code> attribute themselves. In terms of the 
+                            <a href="http://www.w3.org/TR/CSS2/cascade.html#cascade">CSS cascade</a>, values provided here must be considered as of author origin.
+                        </p>
+                        <p class="desc-sub">For more specialized symbols than the ones supported by the 
+                            <code>rend:prefix</code> attribute on 
+                            <code>list</code>, the 
+                            <a href="#z3998.rend.list.item.prefix.attrib">rend:prefix attribute on item</a> can be used.
+                        </p>
+                        <table id="z3998.rend.list.unordered.prefix.attribdetails-table" class="details">
+                            <caption>The unordered list prefix attribute</caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>rend:prefix</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <th>Usage context</th>
+                                <td>Unordered 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.list">list</a>s
+                                </td>
+                            </tr>
+                            <tr class="alterability">
+                                <th>Usage context alterability</th>
+                                <td>This usage context is fixed, and must not be altered when activating this module.</td>
+                            </tr>
+                            <tr>
+                                <th>Value(s)</th>
+                                <td>
+                                    <code>'none' | 'box' | 'check' | 'circle' | 'diamond' | 'disc' | 'hyphen' | 'square'</code>
+                                </td>
+                            </tr>
+                            <tr class="alterability">
+                                <th>Value alterability</th>
+                                <td>The defined value(s) or datatype(s) are fixed, and must not be altered when activating this module.</td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This attribute must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="z3998.rend.list.item.prefix.attrib" class="details">
+                        <h5 id="h_thelistitemprefixattribute">The list item prefix attribute</h5>
+                        <p class="desc-main">The 
+                            <code>rend:prefix</code> attribute specifies the symbol used as a prefix to the content of the list 
+                            <code>item</code> element.
+                        </p>
+                        <p class="desc-sub">The occurrence of this attribute results in the prefix inheritance, as set by the 
+                            <code>prefix</code> attribute on a 
+                            <code>list</code> ancestor, ceases to be active, for this 
+                            <code>item</code>, any following 
+                            <code>item</code> siblings, and any child 
+                            <code>list</code>s.
+                        </p>
+                        <p class="desc-sub">To specify prefix symbols common to multiple list items, see 
+                            <code>
+                                <a href="#z3998.rend.list.unordered.prefix.attrib">rend:prefix</a>
+                            </code> and 
+                            <code>
+                                <a href="#z3998.rend.list.ordered.prefix.attrib">rend:prefix</a>
+                            </code>.
+                        </p>
+                        <table id="z3998.rend.list.item.prefix.attribdetails-table" class="details">
+                            <caption>The list item prefix attribute</caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>rend:prefix</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <th>Usage context</th>
+                                <td>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.list.item.block">item</a>
+                                </td>
+                            </tr>
+                            <tr class="alterability">
+                                <th>Usage context alterability</th>
+                                <td>This usage context is fixed, and must not be altered when activating this module.</td>
+                            </tr>
+                            <tr>
+                                <th>Default value(s)</th>
+                                <td>
+                                    <code>text</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This attribute must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="z3998.rend.prefix.attrib" class="details">
+                        <h5 id="h_theprefixattribute">The prefix attribute</h5>
+                        <p class="desc-main">The 
+                            <code>rend:prefix</code> attribute specifies the characters or symbols that prefix an element.
+                        </p>
+                        <p class="desc-sub">This variant is intended for use where the attribute and its value carry no special semantics or processing requirements, such as for values that prefix notes and annotations.</p>
+                        <table id="z3998.rend.prefix.attribdetails-table" class="details">
+                            <caption>The prefix attribute</caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>rend:prefix</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.note">note</a> and 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.annotation">annotation</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default value(s)</th>
+                                <td>
+                                    <code>text</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This attribute must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="z3998.feature-rend.module-impl" class="impl">
+                        <h5 id="h_thesourcerenditionfeature-implementations">The Source Rendition Feature - Implementations</h5>
+                        <table>
+                            <tr>
+                                <th>Schema</th>
+                                <th>Language</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="http://www.daisy.org/z3998/2012/schema/mod/z3998-feature-rend.rng">z3998-feature-rend.rng</a>
+                                </td>
+                                <td>
+                                    <a href="http://www.daisy.org/z3998/2012/z3998-2012.html#refRelaxNG">RelaxNG</a>
+                                </td>
+                            </tr>
+                        </table>
+                        <p>Activation of this module depends on the 
+                            <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.linking.module">linking</a> and 
+                            <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.datatypes.module">datatypes</a> modules also being activated.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="informative-references">
+            <h2 id="h_informativereferences">Informative References</h2>
+            <div class="rd-section" property="rd:supporting-software">
+                <h3 id="supporting-software">Supporting software</h3>
+                <p>Refer to the 
+                    <a href="http://www.daisy.org/zw/ZedAI_UserPortal">Z39.98-AI community portal</a> for information on available software tools.
+                </p>
+            </div>
+        </div>
+        <div id="module-list">
+            <h2 id="h_appendix1listingofmodulesinthenormativeschema">Appendix 1: Listing of modules in the normative schema</h2>
+            <p> The below list represents the modules at the time of version 1.0 of this feature. </p>
+            <p class="RFC2119">The occurrence of the keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in documentation fields embedded in these modules are to be interpreted as described in 
+                <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC2119</a>.
+            </p>
+            <ul id="normative-schema-modules">
+                <li>
+                    <a href="./mod/z3998-feature-rend.rng" rel="rd:schema-module">z3998-feature-rend.rng</a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer">
+            <p id="docinfo"> This document is a 
+                <em>Z39.98-2012 Resource Directory</em>, compliant with 
+                <a href="http://www.w3.org/TR/rdfa-syntax/">XHTML+RDFa</a> using the 
+                <a href="../../../../vocab/resourcedirectory/">Z39.98-2012 Resource Directory Vocabulary</a>. 
+            </p>
+            <p>Document generated: 2014-10-21T08:36:16.791-04:00.</p>
+        </div>
+    </body>
+</html>

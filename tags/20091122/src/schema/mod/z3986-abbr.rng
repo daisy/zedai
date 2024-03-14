@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 abbreviations module</x:h1>
+    
+  <div>
+    <x:h2>The abbr element</x:h2>
+    <!--  TODO SCH abbr@for IDREF must point to an expansion element -->
+    <x:div id="z3986.abbr">
+      <x:p class="description">
+        The <x:code>abbr</x:code> element represents an abbreviation. 
+        <x:br/>
+        The expansion of the abbreviation is provided through the <x:code>expansion</x:code>
+        element. The <x:code>for</x:code> attribute on <x:code>abbr</x:code> must resolve to
+        an <x:code>expansion</x:code> element.
+        <x:br/>
+        The type of abbreviation can be provided using the <x:code>type</x:code> attribute.        
+      </x:p>
+  
+    </x:div>
+         
+    <define name="z3986.abbr">
+      <element name="abbr">        
+        <ref name="z3986.abbr.attlist"/>
+        <ref name="z3986.abbr.content"/>  
+      </element>    
+    </define>
+
+    <define name="z3986.abbr.attlist">
+      <ref name="z3986.Text.attrib"/>
+      <optional>
+      	<ref name="z3986.for.attrib"/>      	
+      </optional>
+  	  <optional>
+  		  <ref name="z3986.abbr.type.attrib"/>
+  	  </optional>	
+    </define>
+    
+    <define name="z3986.abbr.content">
+      <ref name="z3986.Text.base.model"/>   
+    </define>  
+  
+    <define name="z3986.abbr.type.attrib">          
+  	  <attribute name="type">  		
+  		<choice>
+	  		<value>acronym</value>
+	  		<value>initialism</value>
+  		</choice>	  		
+  	  </attribute>
+    </define>
+    
+  </div>  
+  
+  <div>
+    <x:h2>The abbr element - default content model contribution</x:h2>
+    
+    <define name="z3986.Text.class" combine="choice">
+      <ref name="z3986.abbr"/>
+    </define>
+  </div>
+  
+  <x:h2>Z39.86 expansion element</x:h2>  
+  <!--  TODO SCH expansion must not contain expansion descendants -->
+  <div>
+    <x:h2>The expansion element</x:h2>
+    <x:div id="z3986.expansion">
+      <x:p class="description">
+        The <x:code>expansion</x:code> element represents the expansion of
+        an abbreviation (<x:code>abbr</x:code>).
+        <x:br/>
+        Expansions that are not part of the document content can be placed in the document
+        head.
+        <x:br/>
+        The <x:code>expansion</x:code> element must not contain any expansion descendants.
+      </x:p>
+    </x:div>
+         
+    <define name="z3986.expansion">
+      <element name="expansion">        
+        <ref name="z3986.expansion.attlist"/>
+        <ref name="z3986.expansion.content"/>  
+      </element>    
+    </define>
+
+    <define name="z3986.expansion.attlist">
+      <ref name="z3986.Text.attrib"/>
+    </define>
+    
+    <define name="z3986.expansion.content">
+      <ref name="z3986.Text.model"/>    
+    </define>  
+    
+  </div>  
+  
+  <div>
+    <x:h2>The expansion element - default content model contribution</x:h2>
+    
+    <define name="z3986.head.class" combine="choice">
+      <ref name="z3986.expansion"/>    
+    </define>
+    
+    <define name="z3986.Text.class" combine="choice">
+      <ref name="z3986.expansion"/>    
+    </define>
+    
+  </div>
+      
+ </grammar> 

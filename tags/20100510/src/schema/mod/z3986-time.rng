@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+  
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="time">The time module</dcterms:title>
+      <dcterms:description>This module defines the {[[#z3986.time]]} element and the {[[#z3986.time.attrib]]} attribute for including dates and times in human- and machine-readable forms.</dcterms:description>      
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}" />
+      <dcterms:creator>Markus Gylling</dcterms:creator>      
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng" />
+      <dcterms:requires rdf:resource="z3986-datatypes.rng" />
+    </rdf:Description>
+  </rdf:RDF>
+
+  <div>
+
+    <define name="z3986.time">
+      <element name="time">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="time">The {time} element</dcterms:title>
+            <dcterms:description>The {time} element represents a calendar or clock-based statement of time.</dcterms:description>
+            <z:info>If the value of the {time} element is not in a machine-readable format, the {[[#z3986.time.attrib]]} 
+              attribute optionally allows the inclusion of an alternate representation.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>{[[#z3986.Phrase.class]]}</z:context>          
+            <z:content>{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</z:content>            
+            <z:attlist>{[[#z3986.Phrase.attrib]], [[#z3986.time.attrib]]?}</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.time.attlist"/>
+        <ref name="z3986.time.content"/>
+        <sch:rule context="default:time">
+          <sch:assert test="not(descendant::default:time)"
+            >The {time} element must not have {time} element descendants.</sch:assert>
+          <sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0"
+            >The {time} element must neither be empty nor contain only whitespace.</sch:assert>
+        </sch:rule>          
+      </element>
+    </define>
+
+    <define name="z3986.time.attlist">
+      <ref name="z3986.Phrase.attrib"/>
+      <optional>
+        <ref name="z3986.time.attrib"/>
+      </optional>
+    </define>
+
+    <define name="z3986.time.content">
+      <ref name="z3986.Phrase.Text.mix.model"/>
+    </define>
+
+    <define name="z3986.time.attrib">
+      <attribute name="time">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="time">The {time} attribute</dcterms:title>
+            <dcterms:description>The {time} attribute contains a calendar or clock-based statement of time expressed in machine-readable form.</dcterms:description>  
+            <z:info>When this attribute appears on the [[#z3986.time]] element, it contains an alternate rendition of the element's content.</z:info>
+            <z:info>The {time} attribute value must be valid to the {[[#Time.datatype]]} datatype.</z:info>
+            <z:context>{[[#z3986.time]]}</z:context>
+            <z:content fixed="true">{[[#Time.datatype]]}</z:content>            
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="Time.datatype"/>
+      </attribute>
+    </define>
+
+  </div>
+
+  <div>
+    <a:documentation>time - default content model contribution</a:documentation>
+
+    <define name="z3986.Phrase.core.class" combine="choice">
+      <ref name="z3986.time"/>
+    </define>
+
+  </div>
+
+</grammar>

@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<info xmlns="http://docbook.org/ns/docbook">
+		<title xreflabel="global-classes">The global classes module</title>
+		<annotation annotates="/" condition="required">
+			<para role="desc-main">This module defines the global named element and attribute classes</para>
+			<para role="desc-sub">The patterns defined in this module allow the dynamic creation of globally-available content models. When building a RelaxNG implementation of a Z39.98-AI profile, included modules contribute to the content models by injecting patterns into the classes.</para>
+			<para role="desc-sub">The principle of combining definitions used to create these classes is described in [[http://relaxng.org/tutorial-20011203.html#IDACAZR RELAX NG Tutorial Section 9.2]].</para>
+			<simplelist role="def-dependencies">
+				<member xlink:href="z3998-core-attrib.rng"/>
+				<member xlink:href="z3998-i18n-attrib.rng"/>
+				<member xlink:href="z3998-role-attrib.rng"/>
+				<member xlink:href="rdfa-attrib.rng"/>
+				<member xlink:href="z3998-datatypes.rng"/>
+			</simplelist>
+		</annotation>
+		<author>
+			<personname>Markus Gylling</personname>
+			<email>mgylling@daisy.org</email>
+		</author>
+		<copyright>
+			<year>2009</year>
+			<year>2010</year>
+			<year>2011</year>
+			<year>2012</year>
+			<holder>DAISY Consortium</holder>
+		</copyright>
+		<legalnotice>
+			<para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+			<para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+		</legalnotice>
+		<revhistory>
+			<revision>
+				<date>2012-12-19</date>
+				<authorinitials>MGy</authorinitials>
+				<revdescription>
+					<para>Initial version</para>
+				</revdescription>
+			</revision>
+		</revhistory>
+	</info>
+	
+	
+	<div xml:id="classes">
+		<div xml:id="Section.class">
+			<define name="z3998.Section.class" combine="choice" xml:id="z3998.Section.class">
+				<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+					<title xreflabel="Section.class">The Section element class</title>
+					<para role="desc-main">The set of elements which in the current profile are contributed to the [[#abstractDocumentModel_sectionLayer Section level]].</para>
+					<synopsis role="def-content">Fundamental member: {[[#z3998.section]]}</synopsis>
+				</annotation>
+				<choice>
+					<!-- <a:documentation>A supplier for z3998.Section.class. This class contains an informal 'minimal set' of section elements from the core module pool, including the fundamental member.</a:documentation> -->
+					<ref name="z3998.Section.core.class"/>
+					<!-- <a:documentation>A supplier for z3998.Section.class. This class contains members contributed from outside the core module pool (such as feature contributions).</a:documentation> -->
+					<ref name="z3998.Section.extern.class"/>
+				</choice>
+			</define>
+		</div>
+		
+		<div xml:id="Block.class">
+			<define name="z3998.Block.class" combine="choice" xml:id="z3998.Block.class">
+				<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+					<title xreflabel="Block.class">The Block element class</title>
+					<para role="desc-main">The set of elements which in the current profile are contributed to the [[#abstractDocumentModel_blockLayer Block level]].</para>
+					<synopsis role="def-content">Fundamental member: {[[#z3998.block]]}</synopsis>
+				</annotation>
+				<choice>
+					<!-- <a:documentation>A supplier for z3998.Block.class. This class contains all block elements from the core module pool that originate in the Block layer.</a:documentation> -->
+					<ref name="z3998.Block.core.class"/>
+					<!-- <a:documentation>A supplier for z3998.Block.class. This class contains all block elements from the core module pool that originate in a superordinate layer.</a:documentation> -->
+					<ref name="z3998.Block.variant.class"/>
+					<!-- <a:documentation>A supplier for z3998.Block.class. This class contains members contributed from outside the core module pool (such as feature contributions).</a:documentation> -->
+					<ref name="z3998.Block.extern.class"/>
+				</choice>
+			</define>
+		</div>
+		
+		<div xml:id="Phrase.class">
+			<define name="z3998.Phrase.class" combine="choice" xml:id="z3998.Phrase.class">
+				<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+					<title xreflabel="Phrase.class">The Phrase element class</title>
+					<para role="desc-main">The set of elements which in the current profile are contributed to the [[#abstractDocumentModel_phraseLayer Phrase level]].</para>
+					<synopsis role="def-content">Fundamental member: {[[#z3998.span]]}</synopsis>
+				</annotation>
+				<choice>
+					<ref name="z3998.span"/>
+					<!-- <a:documentation>A supplier for z3998.Phrase.class. This class contains all Phrase elements from the core module pool that originate in the Phrase layer.</a:documentation> -->
+					<ref name="z3998.Phrase.core.class"/>
+					<!-- <a:documentation>A supplier for z3998.Phrase.class. This class contains all Phrase elements from the core module pool that originate in a superordinate layer.</a:documentation> -->
+					<ref name="z3998.Phrase.variant.class"/>
+					<!-- <a:documentation>A supplier for z3998.Phrase.class. This class contains members contributed from outside the core module pool (such as feature contributions).</a:documentation> -->
+					<ref name="z3998.Phrase.extern.class"/>
+				</choice>
+			</define>
+		</div>
+		
+		<div xml:id="Text.class">
+			<define name="z3998.Text.class" combine="choice" xml:id="z3998.Text.class">
+				<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+					<title xreflabel="Text.class">The Text element class</title>
+					<para role="desc-main">The set of elements which in the current profile are contributed to the [[#abstractDocumentModel_textLayer Text level]].</para>
+					<synopsis role="def-content">Fundamental member: {[[#Characters.datatype]]}</synopsis>
+				</annotation>
+				<choice>
+					<!-- <a:documentation>A supplier for z3998.Text.class. This class contains all Text elements from the core module pool that originate in the Text layer.</a:documentation> -->
+					<ref name="z3998.Text.core.class"/>
+					<!-- <a:documentation>A supplier for z3998.Text.class. This class contains all Text elements from the core module pool that originate in a superordinate layer.</a:documentation> -->
+					<ref name="z3998.Text.variant.class"/>
+					<!-- <a:documentation>A supplier for z3998.Text.class. This class contains members contributed from outside the core module pool (such as feature contributions).</a:documentation> -->
+					<ref name="z3998.Text.extern.class"/>
+				</choice>
+			</define>
+		</div>
+	</div>
+	
+	
+	<div xml:id="attrib">
+		<define name="z3998.global.core.attrib" combine="interleave">
+			<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+				<title xreflabel="Global.attrib">Core global attributes</title>
+				<para role="desc-main">The set of global attributes whose properties do not change depending on the context in which they are used.</para>
+				<para role="desc-sub">This class defines the core set of attributes in the [[#z3998.global.attrib]] class and can be used to build specialized attribute models (for example, when an element requires a specialized set of role values).</para>
+				<para role="desc-sub">Attributes contributed to this set individually define a cardinality of 0..1 (optional) or 1 (required).</para>
+				<synopsis role="def-content">{[[#z3998.Core.attrib]]}, {[[#z3998.I18n.attrib]]} and {[[#Rdfa.attrib]]} </synopsis>
+			</annotation>
+			<ref name="z3998.Core.attrib"/>
+			<ref name="z3998.I18n.attrib"/>
+			<ref name="Rdfa.attrib"/>
+		</define>
+		
+		<define name="z3998.global.attrib" combine="interleave">
+			<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+				<title xreflabel="Global.attrib">Global attributes</title>
+				<para role="desc-main">The general purpose set of attributes which are allowed or required globally.</para>
+				<para role="desc-sub">This class includes the core set of global attributes plus the generalized forms of attributes that can be specialized depending on their context (e.g. {[[#z3998.role.attrib]]}).</para>
+				<para role="desc-sub doc-only">When a specialized version of a global attribute is needed, the [[#z3998.global.core.attrib]] class should be used to build a custom attribute model for the element.</para>
+				<para role="desc-sub">Attributes contributed to this set individually define a cardinality of 0..1 (optional) or 1 (required).</para>
+				<synopsis role="def-content">{[[#z3998.global.core.attrib]]} and {[[#z3998.role.attrib]]} </synopsis>
+			</annotation>
+			<ref name="z3998.global.core.attrib"/>
+			<optional>
+				<ref name="z3998.role.attrib"/>
+			</optional>
+		</define>
+		
+		<define name="z3998.Document.attrib" combine="interleave">
+			<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+				<title xreflabel="Document.attrib">Document attributes</title>
+				<para role="desc-main">The set of attributes which are allowed or required on the {[[#z3998.document]]}, {[[#z3998.head]]} and {[[#z3998.body elements]]}.</para>
+				<para role="desc-sub">Attributes contributed to this set individually define a cardinality of 0..1 (optional) or 1 (required).</para>
+				<synopsis role="def-content">{[[#z3998.global.attrib]]}</synopsis>
+			</annotation>
+			<ref name="z3998.global.attrib"/>
+			<ref name="z3998.Document.extern.attrib"/>
+		</define>
+		
+		<define name="z3998.Document.extern.attrib" combine="interleave">
+			<a:documentation>A pattern for external (to this module) contributions to the z3998.Document.attrib pattern.</a:documentation>
+			<empty/>
+		</define>
+		
+		<define name="z3998.Section.attrib" combine="interleave">
+			<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+				<title xreflabel="Section.attrib">Section attributes</title>
+				<para role="desc-main">The set of attributes which are allowed or required on elements in [[#z3998.Section.class]].</para>
+				<para role="desc-sub">Attributes contributed to this set individually define a cardinality of 0..1 (optional) or 1 (required).</para>
+				<synopsis role="def-content">{[[#z3998.global.attrib]]}</synopsis>
+			</annotation>
+			<ref name="z3998.global.attrib"/>
+			<ref name="z3998.Section.core.attrib"/>
+			<ref name="z3998.Section.extern.attrib"/>
+		</define>
+		
+		<define name="z3998.Section.core.attrib" combine="interleave">
+			<a:documentation>A pattern for Section-layer attributes from the core modules.</a:documentation>
+			<empty/>
+		</define>
+		<define name="z3998.Section.extern.attrib" combine="interleave">
+			<a:documentation>A pattern for Section-layer attribute contributions from external features and modules.</a:documentation>
+			<empty/>
+		</define>
+		
+		<define name="z3998.Section.noextern.attrib" combine="interleave">
+			<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+				<title xreflabel="Section.noextern.attrib">Section attributes (no externals)</title>
+				<para role="desc-main">The set of attributes which are allowed or required on elements in [[#z3998.Section.class]], excluding external contributions.</para>
+				<para role="desc-sub">Attributes contributed to this set individually define a cardinality of 0..1 (optional) or 1 (required).</para>
+				<synopsis role="def-content">{[[#z3998.global.attrib]]}</synopsis>
+			</annotation>
+			<ref name="z3998.global.attrib"/>
+			<ref name="z3998.Section.core.attrib"/>
+		</define>
+		
+		<define name="z3998.Block.attrib" combine="interleave">
+			<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+				<title xreflabel="Block.attrib">Block attributes</title>
+				<para role="desc-main">The set of attributes which are allowed or required on elements in [[#z3998.Block.class]].</para>
+				<para role="desc-sub">Attributes contributed to this set individually define a cardinality of 0..1 (optional) or 1 (required).</para>
+				<synopsis role="def-content">{[[#z3998.global.attrib]]}</synopsis>
+			</annotation>
+			<ref name="z3998.global.attrib"/>
+			<ref name="z3998.Block.core.attrib"/>
+			<ref name="z3998.Block.extern.attrib"/>
+		</define>
+		
+		<define name="z3998.Block.core.attrib" combine="interleave">
+			<a:documentation>A pattern for Block-layer attributes from the core modules.</a:documentation>
+			<empty/>
+		</define>
+		
+		<define name="z3998.Block.extern.attrib" combine="interleave">
+			<a:documentation>A pattern for Block-layer attribute contributions from external features and modules.</a:documentation>
+			<empty/>
+		</define>
+		
+		<define name="z3998.Block.noextern.attrib" combine="interleave">
+			<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+				<title xreflabel="Block.noextern.attrib">Block attributes (no externals)</title>
+				<para role="desc-main">The set of attributes which are allowed or required on elements in [[#z3998.Block.class]], excluding external contributions.</para>
+				<para role="desc-sub">Attributes contributed to this set individually define a cardinality of 0..1 (optional) or 1 (required).</para>
+				<synopsis role="def-content">{[[#z3998.global.attrib]]}</synopsis>
+			</annotation>
+			<ref name="z3998.global.attrib"/>
+			<ref name="z3998.Block.core.attrib"/>
+		</define>
+		
+		<define name="z3998.Phrase.attrib" combine="interleave">
+			<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+				<title xreflabel="Phrase.attrib">Phrase attributes</title>
+				<para role="desc-main">The set of attributes which are allowed or required on elements in [[#z3998.Phrase.class]].</para>
+				<para role="desc-sub">Attributes contributed to this set individually define a cardinality of 0..1 (optional) or 1 (required).</para>
+				<synopsis role="def-content">{[[#z3998.global.attrib]]}</synopsis>
+			</annotation>
+			<ref name="z3998.global.attrib"/>
+			<ref name="z3998.Phrase.core.attrib"/>
+			<ref name="z3998.Phrase.extern.attrib"/>
+		</define>
+		
+		<define name="z3998.Phrase.core.attrib" combine="interleave">
+			<a:documentation>A pattern for Phrase-layer attributes from the core modules.</a:documentation>
+			<empty/>
+		</define>
+		
+		<define name="z3998.Phrase.extern.attrib" combine="interleave">
+			<a:documentation>A pattern for Phrase-layer attribute contributions from external features and modules.</a:documentation>
+			<empty/>
+		</define>
+		
+		<define name="z3998.Phrase.noextern.attrib" combine="interleave">
+			<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+				<title xreflabel="Phrase.noextern.attrib">Phrase attributes (no externals)</title>
+				<para role="desc-main">The set of attributes which are allowed or required on elements in [[#z3998.Phrase.class]], excluding external contributions.</para>
+				<para role="desc-sub">Attributes contributed to this set individually define a cardinality of 0..1 (optional) or 1 (required).</para>
+				<synopsis role="def-content">{[[#z3998.global.attrib]]}</synopsis>
+			</annotation>
+			<ref name="z3998.global.attrib"/>
+			<ref name="z3998.Phrase.core.attrib"/>
+		</define>
+		
+		<define name="z3998.Text.attrib" combine="interleave">
+			<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+				<title xreflabel="Text.attrib">Text attributes</title>
+				<para role="desc-main">The set of attributes which are allowed or required on elements in [[#z3998.Text.class]].</para>
+				<para role="desc-sub">Attributes contributed to this set individually define a cardinality of 0..1 (optional) or 1 (required).</para>
+				<synopsis role="def-content">{[[#z3998.global.attrib]]}</synopsis>
+			</annotation>
+			<ref name="z3998.global.attrib"/>
+			<ref name="z3998.Text.core.attrib"/>
+			<ref name="z3998.Text.extern.attrib"/>
+		</define>
+		
+		<define name="z3998.Text.core.attrib" combine="interleave">
+			<a:documentation>A pattern for Text-layer attributes from the core modules.</a:documentation>
+			<empty/>
+		</define>
+		
+		<define name="z3998.Text.extern.attrib" combine="interleave">
+			<a:documentation>A pattern for Text-layer attribute contributions from external features and modules.</a:documentation>
+			<empty/>
+		</define>
+		
+		<define name="z3998.Text.noextern.attrib" combine="interleave">
+			<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+				<title xreflabel="Text.noextern.attrib">Text attributes (no externals)</title>
+				<para role="desc-main">The set of attributes which are allowed or required on elements in [[#z3998.Text.class]], excluding external contributions.</para>
+				<para role="desc-sub">Attributes contributed to this set individually define a cardinality of 0..1 (optional) or 1 (required).</para>
+				<synopsis role="def-content">{[[#z3998.global.attrib]]}</synopsis>
+			</annotation>
+			<ref name="z3998.global.attrib"/>
+			<ref name="z3998.Text.core.attrib"/>
+		</define>
+	</div>
+	
+	
+	<div xml:id="models">
+		<define name="z3998.Section.model" xml:id="z3998.Section.model">
+			<a:documentation>A standard Section model, expecting 1..n members of the Section class</a:documentation>
+			<interleave>
+				<oneOrMore>
+					<ref name="z3998.Section.class"/>
+				</oneOrMore>
+				<zeroOrMore>
+					<ref name="z3998.Global.extra.class"/>
+				</zeroOrMore>
+			</interleave>
+		</define>
+		<define name="z3998.Block.model" xml:id="z3998.Block.model">
+			<a:documentation>A standard Block model, expecting 1..n members of the Block class</a:documentation>
+			<oneOrMore>
+				<choice>
+					<ref name="z3998.Block.class"/>
+					<ref name="z3998.Global.extra.class"/>
+				</choice>
+			</oneOrMore>
+		</define>
+		<define name="z3998.Block.basic.model" combine="choice" xml:id="z3998.Block.basic.model">
+			<a:documentation>A basic Block model consisting of only archetypal elements the from class, such as blocks, paragraphs and lists</a:documentation>
+			<ref name="z3998.block"/>
+		</define>
+		<define name="z3998.Text.model" xml:id="z3998.Text.model">
+			<a:documentation>A standard Text model, expecting 1..n members of the Text class</a:documentation>
+			<a:documentation>Note that this includes the empty and whitespace-only model.</a:documentation>
+			<oneOrMore>
+				<choice>
+					<ref name="Characters.datatype"/>
+					<ref name="z3998.Text.class"/>
+					<ref name="z3998.Global.extra.class"/>
+				</choice>
+			</oneOrMore>
+		</define>
+		<define name="z3998.Phrase.Text.mix.model" xml:id="z3998.Phrase.Text.mix.model">
+			<a:documentation>A mix model for Phrase and Text.class, expecting 1..n members of the Text and Phrase classes.</a:documentation>
+			<a:documentation>Note that this includes the empty and whitespace-only model.</a:documentation>
+			<oneOrMore>
+				<choice>
+					<ref name="Characters.datatype"/>
+					<ref name="z3998.Text.class"/>
+					<ref name="z3998.Phrase.class"/>
+					<ref name="z3998.Global.extra.class"/>
+				</choice>
+			</oneOrMore>
+		</define>
+		<define name="z3998.Phrase.core.Text.mix.model" xml:id="z3998.Phrase.core.Text.mix.model">
+			<a:documentation>A mix model for Phrase.class (excluding variants) and Text.class, expecting 1..n members of the Text and Phrase classes.</a:documentation>
+			<a:documentation>Note that this includes the empty and whitespace-only model.</a:documentation>
+			<oneOrMore>
+				<choice>
+					<ref name="z3998.span"/>
+					<ref name="Characters.datatype"/>
+					<ref name="z3998.Text.class"/>
+					<ref name="z3998.Phrase.core.class"/>
+					<ref name="z3998.Phrase.extern.class"/>
+					<ref name="z3998.Global.extra.class"/>
+				</choice>
+			</oneOrMore>
+		</define>
+		<define name="z3998.Flow.choice.model" xml:id="z3998.Flow.choice.model">
+			<a:documentation>Defines a concrete content model consisting of an exclusive choice between one or more of the members of the Block.class or one or more of the members of the Phrase and Text classes.</a:documentation>
+			<choice>
+				<ref name="z3998.Block.model"/>
+				<ref name="z3998.Phrase.Text.mix.model"/>
+			</choice>
+		</define>
+		<define name="z3998.Flow.choice.noextern.model" xml:id="z3998.Flow.choice.noextern.model">
+			<choice>
+				<ref name="z3998.Block.noextern.model"/>
+				<ref name="z3998.Phrase.noextern.model"/>
+			</choice>
+		</define>
+		<define name="z3998.Section.noextern.model" xml:id="z3998.Section.noextern.model">
+			<group>
+				<oneOrMore>
+					<choice>
+						<ref name="z3998.Section.core.class"/>
+					</choice>
+				</oneOrMore>
+			</group>
+		</define>
+		<define name="z3998.Block.noextern.model" xml:id="z3998.Block.noextern.model">
+			<group>
+				<oneOrMore>
+					<choice>
+						<ref name="z3998.Block.core.class"/>
+						<ref name="z3998.Block.variant.class"/>
+					</choice>
+				</oneOrMore>
+			</group>
+		</define>
+		<define name="z3998.Phrase.noextern.model" xml:id="z3998.Phrase.noextern.model">
+			<group>
+				<oneOrMore>
+					<choice>
+						<ref name="z3998.span"/>
+						<ref name="z3998.Phrase.core.class"/>
+						<ref name="z3998.Phrase.variant.class"/>
+						<ref name="z3998.Text.core.class"/>
+						<ref name="z3998.Text.variant.class"/>
+						<ref name="Characters.datatype"/>
+					</choice>
+				</oneOrMore>
+			</group>
+		</define>
+		<define name="z3998.Text.noextern.model" xml:id="z3998.Text.noextern.model">
+			<group>
+				<oneOrMore>
+					<choice>
+						<ref name="z3998.Text.core.class"/>
+						<ref name="z3998.Text.variant.class"/>
+						<ref name="Characters.datatype"/>
+					</choice>
+				</oneOrMore>
+			</group>
+		</define>
+	</div>
+</grammar>

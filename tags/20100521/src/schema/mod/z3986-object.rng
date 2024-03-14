@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+<!-- TODO note XHTML inheritance -->
+<!-- TODO note specialization of ref -->
+<!-- TODO contstraint: fallback text and/or ext annotation -->
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="object">The object module</dcterms:title>
+      <dcterms:description>This module defines the {[[#z3986.object.block]]} element for including graphics, video and other external objects.</dcterms:description>   
+      <z:info>Three variants of the {object} element are defined for use in the [[#z3986.Block.class Block]], [[#z3986.Phrase.class Phrase]] and [[#z3986.Text.class Text]] classes respectively.</z:info>
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}" />
+      <dcterms:creator>Markus Gylling</dcterms:creator>      
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng"/>
+      <dcterms:requires rdf:resource="z3986-linking.rng"/>
+    </rdf:Description>
+  </rdf:RDF>
+
+  <div>    		
+    <define name="z3986.object.block">
+      <element name="object">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="object (block)">The {object} element (Block)</dcterms:title>
+            <dcterms:description z:inherit="z3986.object"/>
+            <z:info>The {Block} variant is an adaptation for use embedding objects that are intended to be offset from any surrounding block elements.</z:info>                                    
+            <z:info z:inherit="z3986.object"/>
+            <!-- TODO SCH add sch to test content model (only one object child, or other children (in core ns?)) -->
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.Block.class]]}</z:context>          
+            <z:content>{([[#z3986.Block.class]])+ | (text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</z:content>          
+            <z:attlist z:alterability="The attribute model must allow the {[[#z3986.src.attrib src]]} and {[[#z3986.srctype.attrib srctype]]} attributes.">{[[#z3986.src.attrib]], [[#z3986.srctype.attrib]]?, [[#z3986.Block.attrib]]}</z:attlist>
+            <z:specialization of="z3986.ref">This element is a specialization of the {[[#z3986.ref]]} element with the XLink behaviors {xlink:show="embed"} and {xlink:actuate="onLoad"}.</z:specialization>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.object.block.attlist"/>
+        <ref name="z3986.object.block.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.object.phrase">
+      <element name="object">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="object (phrase)">The {object} element (Phrase)</dcterms:title>
+            <dcterms:description z:inherit="z3986.object"/>
+            <z:info>The {Phrase} variant is an adaption for use embedding objects in phrasal constructs.</z:info>
+            <z:info z:inherit="z3986.object"/>
+            <z:context>{[[#z3986.Phrase.class]]}</z:context>          
+            <z:content>{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</z:content>          
+            <z:attlist z:alterability="The attribute model must allow the {[[#z3986.src.attrib src]]} and {[[#z3986.srctype.attrib srctype]]} attributes.">{[[#z3986.src.attrib]], [[#z3986.srctype.attrib]]?, [[#z3986.Phrase.attrib]]}</z:attlist>
+            <z:specialization of="z3986.ref">This element is a specialization of the {[[#z3986.ref]]} element with the XLink behaviors {xlink:show="embed"} and {xlink:actuate="onLoad"}.</z:specialization>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.object.phrase.attlist"/>
+        <ref name="z3986.object.phrase.content"/>        
+      </element>
+    </define>
+    
+    <define name="z3986.object.text">
+      <element name="object">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="object (text)">The {object} element (Text)</dcterms:title>
+            <dcterms:description z:inherit="z3986.object"/>
+            <z:info>The {Text} variant is an adaption for use representing character data.</z:info>                                    
+            <z:info z:inherit="z3986.object"/>
+            <z:context>{[[#z3986.Text.class]]}</z:context>          
+            <z:content>{(text | [[#z3986.Text.class]])+}</z:content>          
+            <z:attlist z:alterability="The attribute model must allow the {[[#z3986.src.attrib src]]} and {[[#z3986.srctype.attrib srctype]]} attributes.">{[[#z3986.src.attrib]], [[#z3986.srctype.attrib]]?, [[#z3986.Phrase.attrib]]}</z:attlist>
+            <z:specialization of="z3986.ref">This element is a specialization of the {[[#z3986.ref]]} element with the XLink behaviors {xlink:show="embed"} and {xlink:actuate="onLoad"}.</z:specialization>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.object.phrase.attlist"/>
+       <ref name="z3986.object.text.content"/>
+      </element>
+    </define>  
+
+    <define name="z3986.object.block.attlist">
+      <ref name="z3986.Block.attrib"/>
+      <ref name="z3986.Embed.attrib" />     
+    </define>
+    
+    <define name="z3986.object.phrase.attlist">
+      <ref name="z3986.Phrase.attrib"/>
+      <ref name="z3986.Embed.attrib" />     
+    </define>
+    
+    <define name="z3986.object.phrase.content">        
+      <ref name="z3986.Phrase.Text.mix.model" />  
+    </define>
+
+    <define name="z3986.object.block.content">        
+      <ref name="z3986.Flow.choice.model" />  
+    </define>
+
+    <define name="z3986.object.text.content">
+      <ref name="z3986.Text.model" />
+    </define>
+
+  </div>
+
+  <div>
+    <a:documentation>object - default content model contribution</a:documentation>  
+        
+    <define name="z3986.Text.core.base.class" combine="choice">
+      <ref name="z3986.object.text"/>
+    </define>
+    
+    <define name="z3986.Phrase.core.base.class" combine="choice">
+      <ref name="z3986.object.phrase"/>
+    </define>
+    
+    <define name="z3986.Block.core.base.class" combine="choice">
+      <ref name="z3986.object.block"/>
+    </define> 
+            
+  </div>
+  
+</grammar>

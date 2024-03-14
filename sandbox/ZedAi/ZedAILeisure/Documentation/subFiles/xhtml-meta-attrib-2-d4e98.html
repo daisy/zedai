@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Relax NG schema module</title>
+      <link rel="stylesheet" type="text/css" href="../css/ProfileDocumentation.css" />
+   </head>
+   <body>
+      <h1 class="title">The DAISY Leisure Profile</h1>
+      
+      
+      <h1 id="d15e3" class="xhtml">Metainformation Attributes Module</h1>
+      
+      
+      
+      <h2 id="d15e8" class="xhtml">Metadata Attribute Collection</h2>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">about.attrib</span>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">about</span>
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="URI.datatype.html">URI.datatype</a></div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">content.attrib</span>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">content</span>
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="CDATA.datatype.html">CDATA.datatype</a></div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">datatype.attrib</span>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">datatype</span>
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="QName.datatype.html">QName.datatype</a></div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">property.attrib</span>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">property</span>
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Property.datatype.html">Property.datatype</a></div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">rel.attrib</span>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">rel</span>
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="LinkTypes.datatype.html">LinkTypes.datatype</a></div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">rev.attrib</span>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">rev</span>
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="LinkTypes.datatype.html">LinkTypes.datatype</a></div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Metadata.attrib</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="about.attrib.html">about.attrib</a></div>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="content.attrib.html">content.attrib</a></div>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="datatype.attrib.html">datatype.attrib</a></div>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="property.attrib.html">property.attrib</a></div>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="rel.attrib.html">rel.attrib</a></div>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="rev.attrib.html">rev.attrib</a></div>
+         
+      </div>
+      
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Common.attrib</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Metadata.attrib.html">Metadata.attrib</a></div>
+         
+      </div>
+      
+      
+   </body>
+</html>

@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/features/select/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="select">The Content Selection Feature</title>
+        <annotation annotates="/">
+            <para role="desc-main">Provides a mechanism for defining alternate renditions of content fragments, and a mechanism for defining conditional expressions that allow runtime selection of these renditions.</para>
+            <para role="desc-sub">Two variants of the {select} element are available: one for use in a [[#z3986.Block.class Block]] context and a second for use in a [[#z3986.Phrase.class Phrase]] context.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3986-global-classes.rng"/>
+                <member xlink:href="z3986-core-attrib.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2011-03-28</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="z3986.select.phrase" xml:id="z3986.select.phrase">
+            <element name="select">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="sel:select (Phrase)">The select element (Phrase)</title>
+                    <para role="desc-main">Container for content selection declarations in a Phrase context.</para>
+                    <synopsis role="def-context">{[[#z3986.Phrase.class]]}</synopsis>
+                    <synopsis role="def-content" condition="fixed">{[[#z3986.when.phrase]]+, [[#z3986.otherwise.phrase]]}</synopsis>
+                    <synopsis role="def-attlist">{[[#xml.id.attrib]]?,[[#xml.base.attrib]]?}</synopsis>
+                </annotation>
+                <ref name="z3986.select.attlist"/>
+                <ref name="z3986.select.phrase.content"/>
+            </element>
+        </define>
+        <define name="z3986.select.block" xml:id="z3986.select.block">
+            <element name="select">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="sel:select (Block)">The select element (Block)</title>
+                    <para role="desc-main">Container for content selection declarations in a Block context.</para>
+                    <synopsis role="def-context">{[[#z3986.Block.class]]}</synopsis>
+                    <synopsis role="def-content" condition="fixed">{[[#z3986.when.block]]+, [[#z3986.otherwise.block]]}</synopsis>
+                    <synopsis role="def-attlist">{[[#xml.id.attrib]]?,[[#xml.base.attrib]]?}</synopsis>
+                </annotation>
+                <ref name="z3986.select.attlist"/>
+                <ref name="z3986.select.block.content"/>
+            </element>
+        </define>
+        <define name="z3986.select.phrase.content" xml:id="z3986.select.phrase.content">
+            <oneOrMore>
+                <ref name="z3986.when.phrase"/>
+            </oneOrMore>
+            <ref name="z3986.otherwise.phrase"/>
+        </define>
+        <define name="z3986.select.block.content" xml:id="z3986.select.block.content">
+            <oneOrMore>
+                <ref name="z3986.when.block"/>
+            </oneOrMore>
+            <ref name="z3986.otherwise.block"/>
+        </define>
+        <define name="z3986.select.attlist" xml:id="z3986.select.attlist">
+            <optional>
+                <ref name="xml.id.attrib"/>
+            </optional>
+            <optional>
+                <ref name="xml.base.attrib"/>
+            </optional>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.when.phrase" xml:id="z3986.when.phrase">
+            <element name="when">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="sel:when (Phrase)">The when element (Phrase)</title>
+                    <para role="desc-main">Container for a content fragment, associated with a selection condition.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.select.phrase]]}</synopsis>
+                    <synopsis role="def-content">{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</synopsis>
+                    <synopsis role="def-attlist">{[[#xml.id.attrib]]?, [[#z3986.expr.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.when.attlist"/>
+                <ref name="z3986.when.phrase.content"/>
+            </element>
+        </define>
+        <define name="z3986.when.block" xml:id="z3986.when.block">
+            <element name="when">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="sel:when (Block)">The when element (Block)</title>
+                    <para role="desc-main">Container for a content fragment, associated with a selection condition.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.select.block]]}</synopsis>
+                    <synopsis role="def-content">{[[#z3986.Block.class]]+}</synopsis>
+                    <synopsis role="def-attlist">{[[#xml.id.attrib]]?, [[#z3986.expr.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.when.attlist"/>
+                <ref name="z3986.when.block.content"/>
+            </element>
+        </define>
+        <define name="z3986.when.attlist" xml:id="z3986.when.attlist">
+            <optional>
+                <ref name="xml.id.attrib"/>
+            </optional>
+            <ref name="z3986.expr.attrib"/>
+        </define>
+        <define name="z3986.when.phrase.content" xml:id="z3986.when.phrase.content">
+            <a:documentation>Note that this content model must be set so that the result of replacing the entire select element with the content of one its when or otherwise children does not result in invalidity.</a:documentation>
+            <ref name="z3986.Phrase.Text.mix.model"/>
+        </define>
+        <define name="z3986.when.block.content" xml:id="z3986.when.block.content">
+            <a:documentation>Note that this content model must be set so that the result of replacing the entire select element with the content of one its when or otherwise children does not result in invalidity.</a:documentation>
+            <ref name="z3986.Block.model"/>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.otherwise.phrase" xml:id="z3986.otherwise.phrase">
+            <element name="otherwise">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="sel:otherwise (Phrase)">The otherwise element (Phrase)</title>
+                    <para role="desc-main">Container for a content fragment to be selected if none of the preceding {[[#z3986.when.phrase]]} conditions evaluated to true.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.select.phrase]]}</synopsis>
+                    <synopsis role="def-content">{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</synopsis>
+                    <synopsis role="def-attlist">{[[#xml.id.attrib]]?}</synopsis>
+                </annotation>
+                <ref name="z3986.otherwise.attlist"/>
+                <ref name="z3986.otherwise.phrase.content"/>
+                <sch:rule context="sel:otherwise">
+                    <sch:assert test="not(descendant::sel:select)">The {sel:otherwise} element must not have {sel:select} descendants.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="z3986.otherwise.block" xml:id="z3986.otherwise.block">
+            <element name="otherwise">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="sel:otherwise (Block)">The otherwise element (Block)</title>
+                    <para role="desc-main">Container for a content fragment to be selected if none of the preceding {[[#z3986.when.block]]} conditions evaluated to true.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.select.block]]}</synopsis>
+                    <synopsis role="def-content">{[[#z3986.Block.class]]+}</synopsis>
+                    <synopsis role="def-attlist">{[[#xml.id.attrib]]?}</synopsis>
+                </annotation>
+                <ref name="z3986.otherwise.attlist"/>
+                <ref name="z3986.otherwise.block.content"/>
+            </element>
+        </define>
+        <define name="z3986.otherwise.phrase.content" xml:id="z3986.otherwise.phrase.content">
+            <ref name="z3986.Phrase.Text.mix.model"/>
+        </define>
+        <define name="z3986.otherwise.block.content" xml:id="z3986.otherwise.block.content">
+            <ref name="z3986.Block.model"/>
+        </define>
+        <define name="z3986.otherwise.attlist" xml:id="z3986.otherwise.attlist">
+            <optional>
+                <ref name="xml.id.attrib"/>
+            </optional>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.expr.attrib" xml:id="z3986.expr.attrib">
+            <attribute name="expr">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="expr">The expr attribute</title>
+                    <para role="desc-main">The {expr} attribute contains a conditional expression.</para>
+                    <para role="desc-sub">Refer to the [[http://www.daisy.org/z3986/2011/auth/features/select/ Content Selection Feature]] for information on syntax and function set association.</para>
+                    <synopsis role="def-context">{[[#z3986.when.block]]} and {[[#z3986.when.phrase]]}</synopsis>
+                    <synopsis role="def-content" condition="fixed">{[[#z3986.select.ConditionalExpression.datatype]]}</synopsis>
+                </annotation>
+                <ref name="z3986.select.ConditionalExpression.datatype"/>
+            </attribute>
+        </define>
+        <define name="z3986.select.ConditionalExpression.datatype" xml:id="z3986.select.ConditionalExpression.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="ConditionalExpression">The Content selection feature {ConditionalExpression} datatype</title>
+                <para role="desc-main">A conditional expression, as defined in [[http://www.daisy.org/z3986/2011/auth/features/select/current/#conditionalexpression Conditional Expression]]</para>
+            </annotation>
+            <data type="string"/>
+        </define>
+    </div>
+    
+    <define name="z3986.select.selid.attrib" xml:id="z3986.select.selid.attrib">
+        <attribute name="selid" ns="http://www.daisy.org/ns/z3986/authoring/features/select/">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="sel:selid">The selid attribute</title>
+                <para role="desc-main">The {selid} attribute provides a mechanism for including ID values on elements that are repeated in more than one {select} condition.</para>
+                <para role="desc-sub">The {selid} allows a single NCNAME as its value.</para>
+                <para role="desc-sub">When processing a {select}, all {selid} attributes in the resulting output condition must be converted to {xml:id} attributes.</para>
+                <synopsis role="def-context">{global attribute}</synopsis>
+                <synopsis role="def-content" condition="fixed">{[[#NCName.datatype]]}</synopsis>
+            </annotation>
+            <ref name="NCName.datatype"/>
+        </attribute>
+    </define>
+    
+    <div>
+        <a:documentation>Z39.86 Content Selection feature - content model contribution</a:documentation>
+        <define name="z3986.Block.extern.class" combine="choice">
+            <ref name="z3986.select.block"/>
+        </define>
+        <define name="z3986.Phrase.extern.class" combine="choice">
+            <ref name="z3986.select.phrase"/>
+        </define>
+        <define name="z3986.global.core.attrib" combine="interleave">
+            <optional>
+                <ref name="z3986.select.selid.attrib"/>
+            </optional>
+        </define>
+    </div>
+</grammar>

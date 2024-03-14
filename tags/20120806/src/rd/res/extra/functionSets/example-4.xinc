@@ -1,0 +1,8 @@
+<sel:select xmlns:sel="http://www.daisy.org/ns/z3998/authoring/features/select/">
+    <sel:when expr="fs:featureSupported('http://www.example.com/z3998/2012/auth/features/foo/2.0/')">        
+        …
+    </sel:when>    
+    <sel:otherwise>
+        …
+    </sel:otherwise>
+</sel:select>

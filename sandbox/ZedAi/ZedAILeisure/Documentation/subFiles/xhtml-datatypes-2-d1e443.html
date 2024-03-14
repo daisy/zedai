@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Relax NG schema module</title>
+      <link rel="stylesheet" type="text/css" href="../css/ProfileDocumentation.css" />
+   </head>
+   <body>
+      <h1 class="title">The DAISY Leisure Profile</h1>
+      
+      
+      <h1 id="d29e3" class="xhtml">Datatypes Module</h1>
+      
+      
+      
+      <h2 id="d29e8" class="xhtml">Datatypes defined in XML 1.0</h2>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">CDATA.datatype</span>
+         
+         <div class="rng"><span class="rng">text</span>:  Zero or more text nodes. 
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">ID.datatype</span>
+         
+         <div class="rng"><span class="rng">data</span>: 
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">IDREF.datatype</span>
+         
+         <div class="rng"><span class="rng">data</span>: 
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">IDREFS.datatype</span>
+         
+         <div class="rng"><span class="rng">data</span>: 
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">NAME.datatype</span>
+         
+         <div class="rng"><span class="rng">data</span>: 
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">NMTOKEN.datatype</span>
+         
+         <div class="rng"><span class="rng">data</span>: 
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">NMTOKENS.datatype</span>
+         
+         <div class="rng"><span class="rng">data</span>: 
+         </div>
+         
+      </div>
+      
+      
+      
+      
+      <h2 id="d29e50" class="xhtml">Additional Datatypes</h2>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Character.datatype</span>
+         
+         <p>A single character, as per section 2.2 of [XML].</p>
+         
+         <div class="rng"><span class="rng">data</span>: 
+            
+            <div class="rng"><span class="rng">param</span>: 1
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Encodings.datatype</span>
+         
+         <p>A comma-separated list of 'charset's with optional q parameters,
+            as defined in section 14.2 of [RFC2616] as the field value of
+            the Accept-Charset request header.
+         </p>
+         
+         <div class="rng"><span class="rng">text</span>:  Zero or more text nodes. 
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">ContentTypes.datatype</span>
+         
+         <p>A list of media ranges with optional accept parameters,
+            as defined in section 14.1 of [RFC2616] as the field value
+            of the accept request header.
+         </p>
+         
+         <div class="rng"><span class="rng">text</span>:  Zero or more text nodes. 
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Coordinates.datatype</span>
+         
+         <p>Comma separated list of Lengths used in defining areas.</p>
+         
+         <div class="rng"><span class="rng">data</span>: 
+            
+            <div class="rng"><span class="text">The value must match the following regular expression:</span><code>(\d+|\d+(\.\d+)?%)(,\s*(\d+|\d+(\.\d+)?%))*</code></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Datetime.datatype</span>
+         
+         <p>Date and time information, as defined by the type dateTime
+            in [XMLSCHEMA].
+         </p>
+         
+         <div class="rng"><span class="rng">data</span>: 
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">HrefTarget.datatype</span>
+         
+         <p>Name used as destination for results of certain actions.</p>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="NMTOKEN.datatype.html">NMTOKEN.datatype</a></div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">LanguageCode.datatype</span>
+         
+         <p>A language code, as per [RFC3066].</p>
+         
+         <div class="rng"><span class="rng">data</span>: 
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">LanguageCodes.datatype</span>
+         
+         <p>A comma-separated list of language ranges.</p>
+         
+         <div class="rng"><span class="rng">text</span>:  Zero or more text nodes. 
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Length.datatype</span>
+         
+         <p>The value may be either in pixels or a percentage of the available
+            horizontal or vertical space. Thus, the value "50%" means half of
+            the available space.
+         </p>
+         
+         <div class="rng"><span class="rng">data</span>: 
+            
+            <div class="rng"><span class="text">The value must match the following regular expression:</span><code>(\d+|\d+(\.\d+)?%)</code></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">LocationPath.datatype</span>
+         
+         <p>A location path as defined in [XPATH].</p>
+         
+         <div class="rng"><span class="rng">text</span>:  Zero or more text nodes. 
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">LinkTypes.datatype</span>
+         
+         <p>The value is a QName.</p>
+         
+         <div class="rng"><span class="rng">choice</span>:  A choice between at least one of:
+            			
+            
+            <div class="rng"><span class="rng">value</span>: alternate
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: start
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: next
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: prev
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: up
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: contents
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: index
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: glossary
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: copyright
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: chapter
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: section
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: subsection
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: appendix
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: help
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: bookmark
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: meta
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: icon
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: p3pv1
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: profile
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: role
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: cite
+            </div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="QName.datatype.html">QName.datatype</a></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">MediaDesc.datatype</span>
+         
+         <p>A comma-separated list of media descriptors as described by [CSS].
+            The default is all.
+         </p>
+         
+         <div class="rng"><span class="rng">data</span>: 
+            
+            <div class="rng"><span class="text">The value must match the following regular expression:</span><code>[^,]+(,\s*[^,]+)*</code></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Number.datatype</span>
+         
+         <p>One or more digits (NUMBER).</p>
+         
+         <div class="rng"><span class="rng">data</span>: 
+            
+            <div class="rng"><span class="text">The value must match the following regular expression:</span><code>[0-9]+</code></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">spanNumber.datatype</span>
+         
+         <p>span: this attribute value must be an integer &gt; 0;
+            the default value is 1.
+         </p>
+         
+         <div class="rng"><span class="rng">data</span>: 
+            
+            <div class="rng"><span class="text">The value must match the following regular expression:</span><code>[0-9]+</code></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">QName.datatype</span>
+         
+         <p>An [XMLNS]-qualified name.</p>
+         
+         <div class="rng"><span class="rng">data</span>: 
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">QNames.datatype</span>
+         
+         <p>One or more white space separated QName values.</p>
+         
+         <div class="rng"><span class="rng">list</span>: 
+            
+            <div class="rng"><span class="rng">oneOrMore</span>:  One or more of: 
+               
+               <div class="rng"><span class="rng">data</span>: 
+               </div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">prefixedQName.datatype</span>
+         
+         <p>An [XMLNS]-qualified name.</p>
+         
+         <div class="rng"><span class="rng">data</span>: 
+            
+            <div class="rng"><span class="text">The value must match the following regular expression:</span><code>[\i-[:]][\c-[:]]*:[\i-[:]][\c-[:]]*</code></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Property.datatype</span>
+         
+         <p>The value is a QName.</p>
+         
+         <div class="rng"><span class="rng">choice</span>:  A choice between at least one of:
+            			
+            
+            <div class="rng"><span class="rng">value</span>: reference
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: description
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: generator
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: keywords
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: robots
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: title
+            </div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="prefixedQName.datatype.html">prefixedQName.datatype</a></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Role.datatype</span>
+         
+         <p>The value is a list of QNames.</p>
+         
+         <div class="rng"><span class="rng">list</span>: 
+            
+            <div class="rng"><span class="rng">oneOrMore</span>:  One or more of: 
+               
+               <div class="rng"><span class="rng">choice</span>:  A choice between at least one of:
+                  			
+                  
+                  <div class="rng"><span class="rng">value</span>: main
+                  </div>
+                  
+                  <div class="rng"><span class="rng">value</span>: secondary
+                  </div>
+                  
+                  <div class="rng"><span class="rng">value</span>: navigation
+                  </div>
+                  
+                  <div class="rng"><span class="rng">value</span>: banner
+                  </div>
+                  
+                  <div class="rng"><span class="rng">value</span>: contentinfo
+                  </div>
+                  
+                  <div class="rng"><span class="rng">value</span>: note
+                  </div>
+                  
+                  <div class="rng"><span class="rng">value</span>: seealso
+                  </div>
+                  
+                  <div class="rng"><span class="rng">value</span>: search
+                  </div>
+                  
+                  <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="prefixedQName.datatype.html">prefixedQName.datatype</a></div>
+                  
+               </div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Shape.datatype</span>
+         
+         <p>The shape of a region.</p>
+         
+         <div class="rng"><span class="rng">choice</span>:  A choice between at least one of:
+            			
+            
+            <div class="rng"><span class="rng">value</span>: default
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: rect
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: circle
+            </div>
+            
+            <div class="rng"><span class="rng">value</span>: poly
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Text.datatype</span>
+         
+         <p>Arbitrary textual data, likely meant to be human-readable.</p>
+         
+         <div class="rng"><span class="rng">text</span>:  Zero or more text nodes. 
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">URI.datatype</span>
+         
+         <p>A Uniform Resource Identifier Reference, as defined by the type
+            anyURI in [XMLSCHEMA].
+         </p>
+         
+         <div class="rng"><span class="rng">data</span>: 
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">URIs.datatype</span>
+         
+         <p>A space-separated list of URIs as defined above.</p>
+         
+         <div class="rng"><span class="rng">list</span>: 
+            
+            <div class="rng"><span class="rng">oneOrMore</span>:  One or more of: 
+               
+               <div class="rng"><span class="rng">data</span>: 
+               </div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      
+   </body>
+</html>

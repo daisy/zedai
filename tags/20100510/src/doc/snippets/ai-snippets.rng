@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/"
+         xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <!-- Snippets are short extracts from content models, without surrounding explanatory prose,
+    maximally accompanied by a dedicated title and caption (see below) 
+    
+    Must use the about and dest attributes on wrappers. @about can contain 
+    several IDs; these must map to the targets xml:id in the (preprocessed) RNGs 
+    (which is the same value as rng:define/@name) 
+    
+    Attributes that *may* be used on the wrapper: 
+    snippet-caption="the caption" 
+    snippet-title="the title"         
+    These attributes can have wiki markup; {code} and [[#link label*]] 
+  -->
+
+  <include href="../../schema/_z3986a-all.rng">
+    <start>
+      <element name="snippets">
+        <oneOrMore>
+          <ref name="snippet"/>
+        </oneOrMore>
+      </element>  
+    </start>        
+  </include>
+     
+  <define name="snippet">
+    <element name="snippet">
+        <ref name="snippet.attlist"/>
+        <ref name="snippet.content"/>
+    </element>  
+  </define>  
+
+  <define name="snippet.content">  
+     <choice>
+       <ref name="z3986.Section.model"/>
+       <ref name="z3986.Flow.choice.model"/>       
+       <ref name="z3986.h"/>
+       <ref name="z3986.toc"/>
+       <ref name="example.document"/>
+       <ref name="example.head"/>
+       <ref name="example.body"/>
+       <ref name="example.head.body"/>
+       <ref name="example.table"/>
+       <ref name="example.Block.model"/>
+     </choice>
+  </define>  
+
+  <define name="snippet.attlist">
+    <ref name="rdfa.about.attrib"/>  
+    <attribute name="dest">
+      <choice>        
+        <value>doc</value>
+        <value>absdef</value>
+        <value>any</value>
+      </choice>  
+    </attribute>
+    <optional><attribute name="snippet-title"/></optional>
+    <optional><attribute name="snippet-caption"/></optional>
+  </define>
+   
+  <define name="example.document">
+    <element name="document">
+      <ref name="z3986.document.attlist"/>
+      <text/> <!-- to allow ellipsis -->
+      <optional>
+        <ref name="example.head"/>
+      </optional>  
+      <text/> <!-- to allow ellipsis -->
+      <optional>
+        <ref name="example.body"/>
+      </optional>  
+      <text/> <!-- to allow ellipsis -->
+    </element>  
+  </define>  
+   
+  <define name="example.head.body">
+    <text/> <!-- to allow ellipsis -->
+    <ref name="example.head"/>
+    <text/> <!-- to allow ellipsis -->
+    <ref name="example.body"/>
+    <text/> <!-- to allow ellipsis -->
+  </define>
+  
+  <define name="example.head">
+    <element name="head">
+      <ref name="z3986.head.attlist"/>
+      <oneOrMore>
+        <choice>
+          <ref name="z3986.head.class"/>
+          <text/> <!-- to allow ellipsis -->
+        </choice>
+      </oneOrMore>
+    </element>  
+  </define>
+  
+  <define name="example.body">
+    <element name="body">
+      <ref name="z3986.body.attlist"/>
+      <interleave>
+        <oneOrMore>
+          <text/> <!-- to allow ellipsis -->
+        </oneOrMore>
+        <ref name="z3986.section.content"/>
+      </interleave>  
+    </element>
+  </define>
+  
+  <define name="example.Block.model">
+    <oneOrMore>
+      <choice>
+        <text/> <!-- to allow ellipsis -->
+        <ref name="z3986.Block.class"/>
+      </choice>
+    </oneOrMore>  
+  </define>
+  
+  <define name="example.table">
+    <element name="table">      
+      <ref name="z3986.table.attlist"/>
+      <interleave>
+        <ref name="z3986.table.content"/>
+        <text/> <!-- to allow ellipsis -->
+      </interleave>  
+    </element>
+  </define>
+  
+  <define name="z3986.toc.extra.class" combine="choice">
+    <text/>
+  </define>  
+  
+</grammar>

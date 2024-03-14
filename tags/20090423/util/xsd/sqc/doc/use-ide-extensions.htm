@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+       "http://www.w3.org/TR/html4/loose.dtd"> 
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="main.css" rel=stylesheet type="text/css">
+<title>Extending SQC Plugin to Handle Other Extensions</title>
+</head>
+<body>
+<h4><a name="extensions"></a>Extending SQC Plugin to Handle Other
+Extensions</h4>
+<p>By default, the SQC Plugin only processes files with "xsd", "wsdl" or
+"xfm" extension. In order to process files with other extensions,
+you would have to create a new plugin which provides extensions to
+the following extension points:</p>
+<ul>
+<li> <b>org.eclipse.ui.popupMenus</b> &#151; It is an extension
+point defined by Eclipse Workbench allowing you to add
+"Validate with SQC" item in the popup menu when a file with
+your extension is selected. Note that, in your plugin manifest,
+the "class" attribute of &lt;action&gt; element must be set to
+"com.ibm.etools.sketch.sqc.SQCAction"</li>
+<li> <b>com.ibm.etools.sketch.sqc.fileExtension</b> &#151; This extension
+point allows you to specify SQC options (as you would for
+<a href="use-commandline.htm">the command line</a> driver)
+to use to validate files of a given extension.</li>
+</ul>
+<p>The creation of this plugin only requires that you create a new
+plugin manifest file like
+<a href="pluginExtensionExample.xml">
+pluginExtensionExample.xml</a>. To install your new plugin,
+you will have to create a new directory, MyPluginDir say, in
+EclipseDirOrWSADDir/plugins (where EclipseDirOrWSADDir is the
+directory where Eclipse or WSAD has been installed). Then put the
+plugin manifest at <i>EclipseDirOrWSADDir</i>/plugins/MyPlugin/plugin.xml
+and restart Eclipse or WSAD.</p>
+</body>
+</html>

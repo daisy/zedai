@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+  xmlns:its="http://www.w3.org/2005/11/its"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="Core">The core attributes module</dcterms:title>
+      <dcterms:description>This module defines the [[#xml.id.attrib]], [[#xml.space.attrib]],
+        [[#xml.base.attrib]] and [[#z3986.class.attrib]] attributes that constitute the
+        core attributes collection that is available for all elements in a profile's core markup
+        model.</dcterms:description>
+      <z:info>The core attributes are all optional, but the module activation process provides a mechanism
+        to require some or all of the attributes.</z:info>
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}"/>
+      <dcterms:creator>Markus Gylling</dcterms:creator>
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:isRequiredBy rdf:resource="http://www.daisy.org/z3986/2011/auth/"/>
+      <dcterms:requires rdf:resource="z3986-datatypes.rng"/>
+    </rdf:Description>
+  </rdf:RDF>
+
+  <div>
+
+    <define name="xml.id.attrib">
+      <attribute name="xml:id">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="xml:id">The {xml:id} attribute</dcterms:title>
+            <dcterms:description>The {xml:id} attribute specifies a unique identifier for the
+            element.</dcterms:description>
+            <z:info>No two elements in an xml document can have the same {xml:id}, including inside components
+            that are appended to the primary document by xinclude statements or other means.</z:info>
+            <z:info>The semantics of this attribute are defined by [[#refXMLID]].</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>[[#z3986.Core.attrib]]</z:context>
+            <z:content>[[#ID.datatype]]</z:content>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="ID.datatype"/>
+      </attribute>
+    </define>
+
+  </div>
+
+  <div>
+
+    <define name="xml.space.attrib">
+      <attribute name="xml:space">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="xml:space">The {xml:space} attribute</dcterms:title>
+            <dcterms:description>The {xml:space} attribute indicates whether the whitespace within an element is significant.</dcterms:description>
+            <z:info>The semantics of this attribute are defined by [[#refXML]]. Refer to [[http://www.w3.org/TR/REC-xml/#sec-white-space White Space Handling]] for more information.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>{[[#z3986.Core.attrib]]}</z:context>
+            <z:content>{"default" | "preserve"}</z:content>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="xml.space.attrib.content"/>
+      </attribute>
+    </define>
+
+    <define name="xml.space.attrib.content">
+      <choice>
+        <value>default</value>
+        <a:documentation>Signals that applications' default white-space processing modes are
+          acceptable for this element.</a:documentation>
+        <value>preserve</value>
+        <a:documentation>Signals the intent that applications preserve white space for this element.</a:documentation>
+      </choice>
+    </define>
+
+  </div>
+
+  <div>
+
+    <define name="xml.base.attrib">
+      <attribute name="xml:base">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="xml:base">The {xml:base} attribute</dcterms:title>
+            <dcterms:description>The {xml:base} attribute specifies a base URI to use for resolving 
+              relative URI references, for instances where the base URI of the document or
+              external entity is not appropriate.</dcterms:description>
+            <z:info>The semantics and behaviors of this attribute are defined by
+              [[#refXMLBase]].</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>[[#z3986.Core.attrib]]</z:context>
+            <z:content>[[#URI.datatype]]</z:content>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="xml.base.attrib.content"/>
+      </attribute>
+    </define>
+
+    <define name="xml.base.attrib.content">
+      <ref name="URI.datatype"/>
+    </define>
+
+  </div>
+
+  <div>
+
+    <define name="z3986.class.attrib">
+      <attribute name="class">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="class">The {class} attribute</dcterms:title>
+            <dcterms:description>The {class} attribute provides the ability to express general classifying 
+              or commonality between elements.</dcterms:description>
+            <z:info>This attribute inherits all the fundamental properties of the (X)HTML {class}
+              attribute and is usable in the context of 
+              [[http://www.w3.org/Style/CSS/ CSS styling]].</z:info>
+            <z:info>The {class} attribute is not used to inflect semantics or structure on elements or their
+              contents. Refer to the {[[#z3986.role.attrib]]} attribute for more information on how to layer semantic meaning on elements.</z:info>
+            <z:context>[[#z3986.Core.attrib]]</z:context>
+            <z:content>[[#NMTOKENS.datatype]]</z:content>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="NMTOKENS.datatype"/>
+      </attribute>
+    </define>
+
+  </div>
+
+  <div>
+
+    <define name="z3986.Core.attrib" combine="interleave">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="z3986.Core.attrib">The Core attributes collection</dcterms:title>
+          <dcterms:description>A set of attributes, initially consisting of the [[#xml.id.attrib]],
+            [[#xml.space.attrib]], [[#xml.base.attrib]] and [[#z3986.class.attrib]]
+            attributes.</dcterms:description>
+        </rdf:Description>
+      </rdf:RDF>
+      <optional>
+        <ref name="xml.id.attrib"/>
+      </optional>
+      <optional>
+        <ref name="xml.space.attrib"/>
+      </optional>
+      <optional>
+        <ref name="xml.base.attrib"/>
+      </optional>
+      <optional>
+        <ref name="z3986.class.attrib"/>
+      </optional>
+      <ref name="z3986.Core.contrib.attrib"/>
+    </define>
+
+    <define name="z3986.Core.contrib.attrib" combine="interleave">
+      <a:documentation>A pattern for external (to this module) contributions to the
+        z3986.Core.attrib pattern.</a:documentation>
+      <empty/>
+    </define>
+
+    <define name="z3986.Core.attrib.xml.id.required" combine="interleave">
+      <a:documentation>A convenience pattern.</a:documentation>
+      <ref name="xml.id.attrib"/>
+      <optional>
+        <ref name="xml.space.attrib"/>
+      </optional>
+      <optional>
+        <ref name="xml.base.attrib"/>
+      </optional>
+      <optional>
+        <ref name="z3986.class.attrib"/>
+      </optional>
+      <ref name="z3986.Core.contrib.attrib"/>
+    </define>
+
+  </div>
+
+</grammar>

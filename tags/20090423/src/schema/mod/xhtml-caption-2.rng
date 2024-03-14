@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"         
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Caption Module</x:h1>
+
+  <div>
+    <x:h2>The caption element</x:h2>
+
+    <define name="xhtml.caption">
+      <element name="caption">
+        <ref name="xhtml.caption.attlist"/>
+        <ref name="xhtml.caption.content"/>        
+      </element>
+    </define>
+
+    <define name="xhtml.caption.attlist">
+      <ref name="xhtml.Common.attrib"/>
+    </define>
+
+    <define name="xhtml.caption.content">
+      <ref name="xhtml.Text.model"/>
+    </define>    
+    
+    <define name="xhtml.Text.class" combine="choice">
+      <ref name="xhtml.caption"/>
+    </define>
+        
+  </div>
+
+</grammar>

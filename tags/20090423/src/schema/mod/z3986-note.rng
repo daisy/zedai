@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml"
+	datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+	<x:h1>The Z3986 Note module</x:h1>
+
+	<div>
+		<x:h2>The note element</x:h2>
+
+		<x:div id="z3986.note">
+			<p class="description">
+				<em>Description: to be written ...</em>
+				<strong>(@id="z3986.note" in file z3986-note.rng)</strong>
+			</p>
+			<h2>Use of this element</h2>
+			<p>
+				<em>More info: to be written ...</em>
+				<strong>(@id="z3986.note" in file z3986-note.rng)</strong>
+			</p>
+		</x:div>
+		
+		<define name="z3986.note" ns="http://www.daisy.org/ns/z3986/2008/">
+			<element name="note">
+				<ref name="z3986.note.attlist"/>
+				<ref name="z3986.note.content"/>
+			</element>
+		</define>
+
+		<define name="z3986.note.content">
+			<ref name="xhtml.Flow.model"/>
+		</define>
+
+		<define name="z3986.note.attlist">
+			<ref name="xhtml.Common.attrib"/>
+			<!--
+	        <attribute name="type">
+	            <choice>	                
+	                <value type="string">endpage</value>	                
+	                <value type="string">endsection</value>	                
+	                <value type="string">endbook</value>
+	            </choice>
+	          </attribute>    
+	          -->
+		</define>
+
+	</div>
+
+	<div>
+		<x:h2>The noteref element</x:h2>
+
+		<x:div id="z3986.noteref">
+			<p class="description">A reference to a note</p>
+			<h2>Use of this element</h2>
+			<p>This element is used to place a note marker in the text.</p>
+		</x:div>
+		<x:div id="z3986.noteref.ref.attrib">
+			<p>The <span class="markup">ref</span> attribute is used to link the note reference to
+				the note. The attribute value must be identical to the value if the <span
+					class="markup">xml:id</span> attribute of the corresponding note. </p>
+		</x:div>
+		<define name="z3986.noteref" ns="http://www.daisy.org/ns/z3986/2008/">
+			<element name="noteref">
+				<ref name="z3986.noteref.attlist"/>
+				<ref name="z3986.noteref.content"/>
+			</element>
+		</define>
+
+		<define name="z3986.noteref.attlist">
+			<ref name="xhtml.Common.attrib"/>
+			<attribute name="ref">
+				<ref name="URI.datatype"/>
+			</attribute>
+		</define>
+
+		<define name="z3986.noteref.content">
+			<text/>
+		</define>
+	</div>
+
+	<define name="xhtml.Text.class" combine="choice">
+		<ref name="z3986.noteref"/>
+	</define>
+
+	<define name="xhtml.Structural.nosection.class" combine="choice">
+		<ref name="z3986.note"/>
+	</define>
+
+
+</grammar>

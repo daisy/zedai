@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+  ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="ssml-datatypes">The SSML Datatypes module</dcterms:title>
+      <dcterms:description>This module defines a set of datatypes related to SSML</dcterms:description>
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}"/>
+      <dcterms:creator>Markus Gylling</dcterms:creator>
+      <dcterms:issued>2009-12-21</dcterms:issued>
+    </rdf:Description>
+  </rdf:RDF>
+
+  <div xml:id="datatypes-ssml11">
+    <a:documentation>Datatypes defined in SSML 1.1</a:documentation>
+
+    <define name="SSML.PhoneticExpression.datatype">   
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="PhoneticExpression">The SSML {PhoneticExpression} datatype</dcterms:title>
+          <dcterms:description>A phonetic or phonemic expression.</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>      
+      <text/>
+    </define>
+    
+    <define name="SSML.alphabet.datatype">   
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="alphabet">The SSML {alphabet} datatype</dcterms:title>
+          <dcterms:description>The name of a pronounciation alphabet.</dcterms:description>
+          <z:info>The only valid values for this attribute are {ipa}, values defined in the 
+            [[http://www.w3.org/TR/speech-synthesis11/#S3.1.10.1 Pronunciation Alphabet Registry]] and vendor-defined strings of the form {x-organization} or {x-organization-alphabet}.</z:info>
+          <z:info>Consult [[http://www.w3.org/TR/speech-synthesis11/#S3.1.10 Speech Synthesis Markup Language (SSML) Version 1.1]] for further information.</z:info>
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>      
+      <choice>
+        <value>ipa</value>
+        <a:documentation>The pronunciation alphabet is [[http://web.uvic.ca/ling/resources/ipa/charts/unicode_ipa-chart.htm IPA]].</a:documentation>
+        <value>x-SAMPA</value>
+        <a:documentation>The pronunciation alphabet is [[http://www.phon.ucl.ac.uk/home/sampa/index.html X-SAMPA]].</a:documentation>
+        <text/>
+      </choice>
+    </define>
+    
+    <define name="SSML.RelativeChange.datatype">   
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="RelativeChange">The SSML {RelativeChange} datatype</dcterms:title>
+          <dcterms:description>A relative change expression, as defined in [[http://www.w3.org/TR/speech-synthesis11/#relative_values relative change]].</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>      
+      <text/> <!-- TODO regex -->
+    </define>
+    
+    <define name="SSML.PitchExpression.datatype">   
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="PitchExpression">The SSML {PitchExpression} datatype</dcterms:title>
+          <dcterms:description>A [[#SSML.Number.datatype]] followed by the string 'Hz'.</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>      
+      <text/> <!-- TODO regex -->
+    </define>
+    
+    <define name="SSML.Number.datatype">   
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="Number">The SSML {Number} datatype</dcterms:title>
+          <dcterms:description>A simple positive floating point value without exponentials, as defined in [[http://www.w3.org/TR/speech-synthesis11/#number_values Number]].</dcterms:description>
+          <z:info>Legal formats are "n", "n.", ".n" and "n.n" where "n" is a sequence of one or more digits.</z:info>
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>      
+      <text/> <!-- TODO regex, or xsd datatypes? -->
+    </define>
+    
+    <define name="SSML.PitchContour.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="PitchContour">The SSML {PitchContour} datatype</dcterms:title>
+          <dcterms:description>A pitch contour expression, as defined in [[http://www.w3.org/TR/speech-synthesis11/#pitch_contour pitch contour]].</dcterms:description>          
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>      
+      <text/> <!-- TODO regex -->
+    </define>  
+    
+    <define name="SSML.NonNegativePercentage.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="NonNegativePercentage">The SSML {NonNegativePercentage} datatype</dcterms:title>
+          <dcterms:description>An unsigned {[[#SSML.Number.datatype]]} immediately followed by "%", as defined in [[http://www.w3.org/TR/speech-synthesis11/#perc_values Non-negative percentage]].</dcterms:description>          
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>      
+      <text/> <!-- TODO regex -->
+    </define>
+
+    <define name="SSML.VolumeExpression.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="VolumeExpression">The SSML {VolumeExpression} datatype</dcterms:title>
+          <dcterms:description>A {[[#SSML.Number.datatype]]} preceded by "+" or "-" and immediately followed by "dB", as defined in [[http://www.w3.org/TR/speech-synthesis11/##S3.2.4 prosody Element]].</dcterms:description>          
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>      
+      <text/> <!-- TODO regex -->
+    </define>
+
+  </div>
+
+</grammar>

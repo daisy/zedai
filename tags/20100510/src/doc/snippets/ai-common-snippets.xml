@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="ai-snippets.rng" type="xml"?>
+<snippets xmlns="http://www.daisy.org/ns/z3986/authoring/" xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:its="http://www.w3.org/2005/11/its">
+
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                    ABBR                    -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+             
+    <snippet about="z3986.abbr" dest="doc">        
+<head>
+    …
+    <expansion xml:id="rn">Royal Navy</expansion>
+</head>    
+<body>       
+    …
+    <p> … a ten-gun brig, under the command of Captain Fitz Roy, 
+        <abbr ref="rn">R.N.</abbr>, sailed from Devonport … </p>
+    …  
+</body>
+    </snippet>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                       ANNOTATION                      -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    
+    <snippet about="z3986.annotation" dest="doc">
+<object xml:id="mnts" src="mnt_srmn.png"> … </object>    
+<annotation ref="mnts">The image depicts a woodcut of 
+    Mount Sarmiento as seen from the sea …</annotation>        
+    </snippet>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                        CAPTION                        -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    
+    <snippet about="z3986.caption" dest="doc">
+<object xml:id="mntsr" src="mnt_srmn.png"> … </object>    
+<caption ref="mntsr">MOUNT SARMIENTO.</caption>        
+    </snippet>    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                          CITE                         -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    
+    <snippet about="z3986.citation" dest="doc">
+<p>By his return he was critical of the Bible as history, and wondered why all 
+    religions should not be equally valid. <citation>Darwin 1958, pp. 85–96</citation></p>                
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                     DEFINITION, TERM                  -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <snippet about="z3986.definition z3986.term" dest="doc">
+<term ref="drw">Darwinism</term>:
+<definition xml:id="drw">A theory of biological evolution developed 
+  by <name>Charles Darwin</name> and others, stating that all species of 
+  organisms arise …</definition>
+    </snippet>
+    
+        
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                      DOCUMENT                         -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    
+    <snippet about="z3986.document" dest="doc">
+<document xmlns="http://www.daisy.org/ns/z3986/authoring/" xml:lang="en">
+    <head>…</head>
+    <body>…</body>
+</document>  
+    </snippet>
+
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--               EXPANSION                    -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.expansion" dest="doc">
+<expansion xml:id="abbr_HMS">His Majesty's Ship</expansion>
+    </snippet>
+
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                     H                      -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.h" dest="doc">
+<h>
+    On the Origin of Species by Means of Natural Selection or
+    the Preservation of Favoured races in the struggle for life.
+</h>
+    </snippet>    
+    
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                    HD                      -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.hd" dest="doc">
+<hd>NOTICE OF THE REMAINS OF A SPECIES OF EQUUS,</hd>
+<p>Found associated with the extinct Edentals and Toxodon at Punta Alta, in Bahia Blanca, 
+    and with the Mastodon and Toxodon at Santa Fé, in Entre Rios.</p>
+    </snippet>    
+    
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                   HPART                    -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.hpart" dest="doc">
+<h>
+    <hpart role="fulltitle">On the Origin of Species by Means of Natural Selection</hpart> or
+    <hpart role="subtitle">the Preservation of Favoured races in the struggle for life</hpart>.
+</h>
+    </snippet>
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                   LIST                     -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    
+    <snippet about="z3986.list z3986.list.item.block" dest="doc">                
+        <list type="ordered" start="17">
+            <item><p>Cytheræa — Closely related to, or identical with C. purpurascens.</p></item>
+            <item><p>Modiola — Same as recent kind (nov. spec.) living in the bay.</p></item>
+            <item><p>Nucula — Near to N. margaritacea.</p></item>
+        </list>
+    </snippet>
+    
+    <snippet about="z3986.list.phrase z3986.list.item.phrase" dest="doc">
+        <list type="unordered">
+            <item>Cytheræa — Closely related to, or identical with C. purpurascens.</item>
+            <item>Modiola — Same as recent kind (nov. spec.) living in the bay.</item>
+            <item>Nucula — Near to N. margaritacea.</item>
+        </list>
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                        NAME                           -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <snippet about="z3986.time z3986.name" dest="doc">    
+AFTER having been twice driven back by heavy south-western gales, Her Majesty's ship <name>Beagle</name>, 
+a ten-gun brig, under the command of Captain <name>Fitz Roy</name> …
+    </snippet>
+    
+            
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                   NOTE, NOTEREF                       -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->    
+    
+    <snippet about="z3986.note z3986.noteref" dest="doc">
+<p>THE following pages contain Extracts from LETTERS addressed 
+    to Professor HENSLOW<noteref ref="n2">2</noteref> by C. DARWIN, Esq. … </p>
+…  
+<note xml:id="n2">
+    <p>John Stevens Henslow (1796-1861), Cambridge clergyman, botanist and mineralogist. 
+        He became Darwin's scientific mentor when at Cambridge and received and 
+        preserved Darwin's Beagle specimens during the voyage.</p> 
+</note>
+    </snippet>
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                 OBJECT                     -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->    
+    <snippet about="z3986.object.block" dest="doc">
+<object xml:id="mnt" src="mouse.png">
+    <p>Drawing of a mouse very common on Quail Island.</p>
+</object>
+    </snippet>
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                 PARA                       -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.p" dest="doc">
+<p>Independently of these indications, the abundance and variety of the osseous 
+   remains of extinct Mammalia in South America … .</p>
+    </snippet>
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                    PAGEBREAK                          -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    
+    <snippet about="z3986.pagebreak" dest="doc">
+<pagebreak value="45" />
+    </snippet>
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                    QUOTE                   -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.quote.block" dest="doc">
+<quote>
+    <p>But with regard to the material world, we can at least go so far as this — we can perceive 
+    that events are brought about not by insulated interpositions of Divine power, exerted in 
+    each particular case, but by the establishment of general laws.</p>
+    <ln><citation>W. WHEWELL: Bridgewater Treatise.</citation></ln>
+</quote>
+    </snippet>    
+    
+    <snippet about="z3986.quote.phrase" dest="doc">
+<p>His only allusion to human evolution was the understatement that 
+   <quote>light will be thrown on the origin of man and his history</quote>.</p>       
+    </snippet>    
+        
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                     RUBY                   -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->    
+    <snippet about="its-ruby" dest="any">    
+<p>この本は <its:ruby>
+    <its:rb>慶応義塾大学</its:rb>
+    <its:rp>(</its:rp><its:rt>けいおうぎじゅくだいがく</its:rt><its:rp>)</its:rp>
+</its:ruby>の歴史を説明するものです。</p>
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                   SENTENCE                 -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.s" dest="doc">
+<p>
+    <s>No one ought to feel surprise at much remaining as yet 
+        unexplained in regard to the origin of species and varieties, 
+        if he makes due allowance for our profound ignorance in regard 
+        to the mutual relations of all the beings which live around us.</s>
+    <s>Who can explain why one species ranges widely and is very 
+        numerous, and why another allied species has a narrow range and is rare?</s>
+</p>
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                 SUBSCRIPT                  -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.sub" dest="doc">
+<p>
+    *<sub>*</sub>* The "Later Researches" may be had separately. 8vo. 15s.
+</p>
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                SUPERSCRIPT                 -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.sup" dest="doc">
+<p>
+    After a thousand generations, species (A) is supposed 
+    to have produced two fairly well-marked varieties, namely 
+    a<sup>1</sup> and m<sup>1</sup>.
+</p>
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                       SPAN                            -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->    
+    
+    <snippet about="z3986.span" dest="doc">
+In the sea around <span xml:lang="es">Tierra del Fuego</span>, and at no great distance from the land, 
+  I have seen narrow lines of water of a bright red colour …
+    </snippet>
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                       TABLE                            -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    
+    <snippet about="z3986.table" dest="doc">
+<caption ref="mylodon">ADMEASUREMENTS OF THE LOWER JAW OF MYLODON DARWINII.</caption>
+<table xml:id="mylodon">
+    <tr>
+        <th colspan="2">Inches</th>
+        <th>Lines</th>
+    </tr>
+    <tr>
+        <th>Length (as far as complete)</th>
+        <td>17</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <th>Depth of each ramus</th>
+        <td>4</td>
+        <td>9</td>
+    </tr>
+</table>        
+    </snippet>
+    
+    <snippet about="z3986.table.tr z3986.table.th z3986.table.td" dest="doc">
+<table>
+    <tr>
+        <th colspan="2">Inches</th>
+        <th>Lines</th>
+    </tr>
+    <tr>
+        <th>Length (as far as complete)</th>
+        <td>17</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <th>Depth of each ramus</th>
+        <td>4</td>
+        <td>9</td>
+    </tr>
+</table>
+    </snippet>
+    
+            
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                   TIME                     -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.time" dest="doc">
+I was so much impressed with these facts that I strongly insisted, in 
+<time time="1839">1839</time> and <time time="1845">-45</time>, on this 
+"law of the succession of types," —on "this wonderful relationship in 
+the same continent between the dead and the living."        
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                    TOC                     -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.toc z3986.toc.entry" dest="doc">
+        <toc>
+            <h>TABLE OF CONTENTS.</h>
+            <entry>
+                <label>CHAPTER I. — THE DARWIN FAMILY</label>
+                <ref>I</ref>
+            </entry>
+            <entry>
+                <label>CHAPTER II. — AUTOBIOGRAPHY</label>
+                <ref>26</ref>
+            </entry>
+            …
+        </toc>            
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                    WORD                    -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.w" dest="doc">
+<w>When</w> <w>on</w> <w>board</w> <w>H.M.S.</w> '<w>Beagle</w>',
+    </snippet>
+
+
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                 ATTRIBUTES                 -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--              TABLE ATTRIBUTES              -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    
+    
+    <snippet about="z3986.table.headers.attrib" dest="doc">
+<table>
+    <tr>
+        <th colspan="2" xml:id="inches">Inches</th>
+        <th xml:id="lines">Lines</th>
+    </tr>
+    <tr>
+        <th xml:id="length">Length (as far as complete)</th>
+        <td headers="length inches">17</td>
+        <td headers="length lines">6</td>
+    </tr>
+    <tr>
+        <th xml:id="depth">Depth of each ramus</th>
+        <td headers="depth inches">4</td>
+        <td headers="depth lines">9</td>
+    </tr>
+</table> 
+    </snippet>
+
+    <snippet about="z3986.table.colspan.attrib" dest="doc">
+<table>
+    <tr>
+        <th colspan="2">Inches</th>
+        <th>Lines</th>
+    </tr>
+    …
+</table>
+    </snippet>
+    
+    
+
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--               @XML:LANG                    -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    
+    <snippet about="xml.lang.attrib" dest="doc">
+In the sea around <name xml:lang="es">Tierra del Fuego</name>, and at no great distance from the land, 
+I have seen narrow lines of water of a bright red colour …
+    </snippet>
+
+</snippets>

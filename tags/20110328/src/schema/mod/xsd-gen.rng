@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:xsdp="http://www.daisy.org/ns/rng-preprocess/xsd" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title>XSD generation corrections</title>
+        <annotation annotates="/" condition="required">
+            <para role="desc-main">This module modifies class and content models to allow an XSD version of the schemas to be built.</para>
+        </annotation>
+    </info>
+    
+    <div xml:id="global-classes-xsds">
+        <div xml:id="classes">
+            <define name="z3986.Phrase.class.xsd" combine="choice" xsdp:replace="z3986.Phrase.class">
+                <choice>
+                    <ref name="z3986.span"/>
+                    <ref name="z3986.Phrase.core.class.xsd"/>
+                    <ref name="z3986.Phrase.extern.class.xsd"/>
+                </choice>
+            </define>
+            <define name="z3986.Text.class.xsd" combine="choice" xsdp:replace="z3986.Text.class">
+                <choice>
+                    <ref name="z3986.Text.core.class.xsd"/>
+                    <ref name="z3986.Text.extern.class.xsd"/>
+                </choice>
+            </define>
+        </div>
+        <div xml:id="models">
+            <define name="z3986.Phrase.Text.mix.model.xsd" xsdp:replace="z3986.Phrase.Text.mix.model">
+                <oneOrMore>
+                    <choice>
+                        <ref name="Characters.datatype"/>
+                        <ref name="z3986.Text.class.xsd"/>
+                        <ref name="z3986.Phrase.class"/>
+                        <ref name="z3986.Global.extra.class"/>
+                    </choice>
+                </oneOrMore>
+            </define>
+            <define name="z3986.Phrase.core.Text.mix.model.xsd" xsdp:replace="z3986.Phrase.core.Text.mix.model">
+                <oneOrMore>
+                    <choice>
+                        <ref name="Characters.datatype"/>
+                        <ref name="z3986.Text.class.xsd"/>
+                        <ref name="z3986.Phrase.core.class.xsd"/>
+                        <ref name="z3986.Global.extra.class"/>
+                    </choice>
+                </oneOrMore>
+            </define>
+            <define name="z3986.Flow.choice.model.xsd" xsdp:replace="z3986.Flow.choice.model">
+                <a:documentation>Defines a concrete content model consisting of an exclusive choice between one or more of the members of the Block.class or one or more of the members of the Phrase and Text classes.</a:documentation>
+                <choice>
+                    <oneOrMore>
+                        <choice>
+                            <ref name="z3986.Block.class"/>
+                        </choice>
+                    </oneOrMore>
+                    <ref name="z3986.Phrase.Text.mix.model.xsd"/>
+                </choice>
+            </define>
+            <define name="z3986.Phrase.noextern.xsd" xsdp:replace="z3986.Phrase.noextern.model">
+                <group>
+                    <oneOrMore>
+                        <choice>
+                            <ref name="z3986.span"/>
+                            <ref name="z3986.Phrase.core.class.xsd"/>
+                            <ref name="z3986.Text.core.class.xsd"/>
+                            <ref name="Characters.datatype"/>
+                        </choice>
+                    </oneOrMore>
+                </group>
+            </define>
+        </div>
+    </div>
+    
+    <div xml:id="element-xsds">
+        
+        <!-- abbr/expansion -->
+        
+        <define name="z3986.Phrase.core.class.xsd" combine="choice" xsdp:for="z3986.abbr">
+            <ref name="z3986.abbr"/>
+        </define>
+        
+        <define name="z3986.Phrase.core.class.xsd" combine="choice" xsdp:for="z3986.expansion">
+            <ref name="z3986.expansion"/>
+        </define>
+        
+        <!-- article -->
+        
+        <define name="z3986.article.section.content.xsd" xsdp:replace="z3986.article.section.content">
+            <interleave>
+                <optional>
+                    <ref name="z3986.h"/>
+                </optional>
+                <zeroOrMore>
+                    <ref name="z3986.article.body.body.class"/>
+                </zeroOrMore>
+            </interleave>
+            <zeroOrMore>
+                <ref name="z3986.article.section"/>
+            </zeroOrMore>
+        </define>
+        
+        <define name="z3986.article.body.content.xsd" xsdp:replace="z3986.article.body.content">
+            <interleave>
+                <ref name="z3986.h"/>
+                <zeroOrMore>
+                    <ref name="z3986.article.body.body.class"/>
+                </zeroOrMore>
+                <optional>
+                    <ref name="z3986.byline"/>
+                </optional>
+                <optional>
+                    <ref name="z3986.dateline"/>
+                </optional>
+            </interleave>
+            <zeroOrMore>
+                <ref name="z3986.article.section"/>
+            </zeroOrMore>
+        </define>
+        
+        <!-- aside -->
+        
+        <define name="z3986.section.Section.content.class.xsd" combine="choice" xsdp:replace="z3986.aside.section">
+            <notAllowed/>
+        </define>
+        
+        <!-- bibliography -->
+        
+        <define name="z3986.bibliography.model.xsd" xsdp:replace="z3986.bibliography.model">
+            <optional>
+                <ref name="z3986.h"/>
+            </optional>
+            <zeroOrMore>
+                <choice>
+                    <ref name="z3986.bibliography.entry"/>
+                    <ref name="z3986.bibliography.extra.class"/>
+                </choice>
+            </zeroOrMore>
+            <zeroOrMore>
+                <ref name="z3986.bibliography.section"/>
+            </zeroOrMore>
+        </define>
+        
+        <!-- char -->
+        
+        <define name="z3986.Text.core.class.xsd" combine="choice" xsdp:for="z3986.char">
+            <ref name="z3986.char"/>
+        </define>
+        
+        <!-- code -->
+        
+        <define name="z3986.code.block.content.xsd" xsdp:replace="z3986.code.block.content">
+            <oneOrMore>
+                <choice>
+                    <ref name="z3986.code.lngroup"/>
+                    <ref name="z3986.code.ln"/>
+                    <ref name="z3986.Global.extra.class"/>
+                </choice>
+            </oneOrMore>
+        </define>
+        
+        <!-- d -->
+        
+        <define name="z3986.Phrase.core.class.xsd" combine="choice" xsdp:for="z3986.d">
+            <ref name="z3986.d"/>
+        </define>
+        
+        <!-- covers -->
+        
+        <define name="z3986.spine.content.xsd" xsdp:replace="z3986.spine.content">
+            <choice>
+                <oneOrMore>
+                    <choice>
+                        <ref name="z3986.Block.class"/>
+                    </choice>
+                </oneOrMore>
+                <oneOrMore>
+                    <choice>
+                        <ref name="Characters.datatype"/>
+                        <ref name="z3986.Text.class.xsd"/>
+                        <ref name="z3986.Phrase.class.xsd"/>
+                    </choice>
+                </oneOrMore>
+            </choice>
+        </define>
+        
+        <!-- definition -->
+        
+        <define name="z3986.Phrase.core.class.xsd" combine="choice" xsdp:for="z3986.definition">
+            <ref name="z3986.definition"/>
+        </define>
+        
+        <!-- description -->
+        
+        <define name="z3986.Block.core.class.xsd" combine="choice" xsdp:for="z3986.description">
+            <ref name="z3986.description"/>
+        </define>
+        
+        <!-- emph -->
+        
+        <define name="z3986.Phrase.core.class.xsd" combine="choice" xsdp:for="z3986.emph">
+            <ref name="z3986.emph"/>
+        </define>
+        
+        <!-- features -->
+        
+        <define name="z3986.Phrase.extern.class.xsd" combine="choice" xsdp:for="z3986.forms.instance.content.temp">
+            <ref name="xforms.Core.Form.Controls"/>
+        </define>
+        
+        <define name="z3986.Text.extern.class.xsd" combine="choice" xsdp:for="its-ruby">
+            <ref name="its-ruby"/>
+        </define>
+        
+        <define name="z3986.Phrase.extern.class.xsd" combine="choice" xsdp:for="ssml.phoneme">
+            <choice>
+                <!-- <ref name="ssml.break"/> already in block, will cause UPA -->
+                <ref name="ssml.phoneme"/>
+                <ref name="ssml.prosody"/>
+                <ref name="ssml.say-as"/>
+                <ref name="ssml.sub"/>
+                <ref name="ssml.token"/>
+            </choice>
+        </define>
+        
+        <!-- glossary -->
+        
+        <define name="z3986.glossary.model.xsd" xsdp:replace="z3986.glossary.model">
+            <optional>
+                <ref name="z3986.h"/>
+            </optional>
+            <zeroOrMore>
+                <choice>
+                    <ref name="z3986.glossary.entry"/>
+                    <ref name="z3986.glossary.extra.class"/>
+                </choice>
+            </zeroOrMore>
+            <zeroOrMore>
+                <ref name="z3986.glossary.section"/>
+            </zeroOrMore>
+        </define>
+        
+        <define name="z3986.section.Section.content.class.xsd" combine="choice" xsdp:for="z3986.glossary">
+            <ref name="z3986.glossary"/>
+        </define>
+        
+        <!-- index -->
+        
+        <define name="z3986.index.entry.content.xsd" xsdp:replace="z3986.index.entry.content">
+            <ref name="z3986.Flow.choice.model"/>
+            <zeroOrMore>
+                <ref name="z3986.index.entry"/>
+            </zeroOrMore>
+        </define>
+        
+        <define name="z3986.index.model.xsd" xsdp:replace="z3986.index.model">
+            <optional>
+                <ref name="z3986.h"/>
+            </optional>
+            <zeroOrMore>
+                <choice>
+                    <ref name="z3986.index.entry"/>
+                    <ref name="z3986.index.extra.class"/>
+                </choice>
+            </zeroOrMore>
+            <zeroOrMore>
+                <ref name="z3986.index.section"/>
+            </zeroOrMore>
+        </define>
+        
+        <!-- lines -->
+        
+        <define name="z3986.Phrase.core.class.xsd" combine="choice" xsdp:for="z3986.ln">
+            <ref name="z3986.ln"/>
+        </define>
+        
+        <!-- linking -->
+        
+        <define name="z3986.Phrase.core.class.xsd" combine="choice" xsdp:for="z3986.ref">
+            <ref name="z3986.ref"/>
+        </define>
+        
+        <!-- meta -->
+        
+        <define name="z3986.meta.attlist.content.xsd" xsdp:replace="z3986.meta.attlist.content">
+            <ref name="z3986.meta.attlist.base"/>
+            <ref name="z3986.meta.content.base"/>
+        </define>
+        
+        <!-- name -->
+        
+        <define name="z3986.Phrase.core.class.xsd" combine="choice" xsdp:for="z3986.name">
+            <ref name="z3986.name"/>
+        </define>
+        
+        <!-- note -->
+        
+        <define name="z3986.Phrase.core.class.xsd" combine="choice" xsdp:for="z3986.noteref">
+            <ref name="z3986.noteref"/>
+        </define>
+        
+        <!-- num -->
+        
+        <define name="z3986.Phrase.core.class.xsd" combine="choice" xsdp:for="z3986.num">
+            <ref name="z3986.num"/>
+        </define>
+        
+        <!-- object -->
+        
+        <define name="z3986.object.block.content.xsd" xsdp:replace="z3986.object.block.content">
+            <choice>
+                <empty/>
+                <ref name="z3986.Flow.choice.model"/>
+            </choice>
+        </define>
+        
+        <define name="z3986.object.phrase.content.xsd" xsdp:replace="z3986.object.phrase.content">
+            <choice>
+                <empty/>
+                <ref name="z3986.Phrase.Text.mix.model"/>
+            </choice>
+        </define>
+        
+        <define name="z3986.object.text.content.xsd" xsdp:replace="z3986.object.text.content">
+            <choice>
+                <empty/>
+                <ref name="z3986.Text.model"/>
+            </choice>
+        </define>
+        
+        <define name="z3986.Block.core.class.xsd" combine="choice" xsdp:for="z3986.object.block">
+            <ref name="z3986.object.block"/>
+        </define>
+        
+        <!-- quote -->
+        
+        <define name="z3986.quote.block.content.xsd" xsdp:replace="z3986.quote.block.content">
+            <choice>
+                <oneOrMore>
+                    <choice>
+                        <ref name="z3986.Block.class"/>
+                    </choice>
+                </oneOrMore>
+                <ref name="z3986.Phrase.Text.mix.model"/>
+            </choice>
+        </define>
+        
+        <!-- sections -->
+        
+        <define name="z3986.section.Block.content.class.xsd" combine="choice" xsdp:replace="z3986.section.Block.content.class">
+            <choice>
+                <ref name="z3986.Block.class"/>
+            </choice>
+        </define>
+        
+        <define name="z3986.section.content.xsd" xsdp:replace="z3986.section.content">
+            <interleave>
+                <optional>
+                    <ref name="z3986.h"/>
+                </optional>
+                <zeroOrMore>
+                    <ref name="z3986.section.Block.content.class.xsd"/>
+                </zeroOrMore>
+                <zeroOrMore>
+                    <ref name="z3986.Global.extra.class"/>
+                </zeroOrMore>
+            </interleave>
+            <zeroOrMore>
+                <ref name="z3986.section.Section.content.class"/>
+            </zeroOrMore>
+        </define>
+        
+        <!-- sentence -->
+        
+        <define name="z3986.Phrase.core.class.xsd" combine="choice" xsdp:for="z3986.s">
+            <ref name="z3986.s"/>
+        </define>
+        
+        <!-- sub/sup -->
+        
+        <define name="z3986.Text.core.class.xsd" combine="choice" xsdp:for="z3986.sub">
+            <ref name="z3986.sub"/>
+        </define>
+        
+        <define name="z3986.Text.core.class.xsd" combine="choice" xsdp:for="z3986.sup">
+            <ref name="z3986.sup"/>
+        </define>
+        
+        <!-- table -->
+        
+        <define name="z3986.table.td.content.xsd" xsdp:replace="z3986.table.td.content">
+            <choice>
+                <oneOrMore>
+                    <ref name="z3986.Block.class"/>
+                </oneOrMore>
+                <ref name="z3986.Phrase.Text.mix.model"/>
+            </choice>
+        </define>
+        
+        <!-- term -->
+        
+        <define name="z3986.Phrase.core.class.xsd" combine="choice" xsdp:for="z3986.term">
+            <ref name="z3986.term"/>
+        </define>
+        
+        <!-- time -->
+        
+        <define name="z3986.Phrase.core.class.xsd" combine="choice" xsdp:for="z3986.time">
+            <ref name="z3986.time"/>
+        </define>
+        
+        <!-- toc -->
+        
+        <define name="z3986.toc.entry.main.xsd" xsdp:replace="z3986.toc.entry.main">
+            <ref name="z3986.Phrase.Text.mix.model"/>
+        </define>
+        
+        <define name="z3986.toc.content.xsd" xsdp:replace="z3986.toc.content">
+            <interleave>
+                <optional>
+                    <ref name="z3986.h"/>
+                </optional>
+                <ref name="z3986.toc.content.body"/>
+            </interleave>
+        </define>
+        
+        <!-- verse -->
+        
+        <define name="z3986.verse.content.base.xsd" xsdp:replace="z3986.verse.content.base">
+            <interleave>
+                <optional>
+                    <ref name="z3986.h"/>
+                </optional>
+                <zeroOrMore>
+                    <choice>
+                        <ref name="z3986.verse.content.class"/>
+                    </choice>
+                </zeroOrMore>
+            </interleave>
+            <zeroOrMore>
+                <ref name="z3986.verse.section"/>
+            </zeroOrMore>
+        </define>
+        
+        <!-- w -->
+        
+        <define name="z3986.Phrase.core.class.xsd" combine="choice" xsdp:for="z3986.w">
+            <ref name="z3986.w"/>
+        </define>
+        
+    </div>
+    
+</grammar>

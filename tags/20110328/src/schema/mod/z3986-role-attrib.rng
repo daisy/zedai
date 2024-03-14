@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
+	xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="role">The role module</title>
+        <annotation annotates="/" condition="required">
+            <para role="desc-main">This module defines the {[[#z3986.role.attrib]]} attribute for annotating elements with machine-extractable semantic information about their nature and purpose.</para>
+            <para role="desc-sub">The value of the role attribute is one or several {CURIE}s, each bound to an RDF property using the mechanism defined in [[#refRDFa11 CURIE]].</para>
+            <para role="desc-sub">The {role} attribute is optional on all applicable elements in a profile's core markup model by default. When this module is activated, however, it is possible to make the attribute locally or globally required.</para>
+            <para role="desc-sub">The attribute is not required on elements in a profile's core markup model if the given element does not require semantic inflections or if it already provides other means of expressing metadata annotations.</para>
+            <para role="desc-sub">When the role attribute is specified on an element, RDF triples are generated such that the current document constitutes the subject, the {CURIE} (role attribute value) the predicate, and the current element node the object.</para>
+            <para role="desc-sub">This module itself does not define a mechanism to declare prefixes of the used {CURIE}s; the mechanisms to do this are defined by [[#refRDFa11 RDFa]].</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3986-datatypes.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2011-03-28</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="z3986.role.attrib" xml:id="z3986.role.attrib">
+            <attribute name="role">
+            	<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    	<title xreflabel="role">The {role} attribute</title>
+                    	<para role="desc-main">The {role} attribute expresses a semantic inflection on the nature or purpose of its parent element.</para>
+                              <para role="desc-sub">The attribute takes as its value one or more whitespace separated CURIEs [[#refRDFa11]], that must be bound to one or more RDF vocabularies either through the default RDFa profile for the document or the {[[#rdfa.prefix.attrib]]} attribute.</para>
+                    	<para role="desc-sub spec-only">The {role} attribute is intended to be functionally compatible with the WAI-PF role attribute ([[#refROLE]]) in its expression of document metadata to improve the accessibility of documents marked up to Z39.86-AI profiles.</para>
+                    	<synopsis role="def-context">All [[#z3986.global-classes.module global attribute classes]]</synopsis>
+                    	<synopsis role="def-content">{[[#CURIEs.datatype]]}</synopsis>
+            	</annotation>
+            	<ref name="z3986.role.attrib.content"/>
+            	<sch:rule context="*[@role]">
+            		<sch:assert test="every $curie in tokenize(@role, '\s+') satisfies ( (every $prefix in substring-before($curie, ':') satisfies (key('rdfprefix', $prefix) or key('rdfprofile', $prefix) or $prefix='')))">The {role} attribute contains an undeclared CURIE prefix.</sch:assert>
+            	</sch:rule>
+            </attribute>
+        </define>
+        <define name="z3986.role.attrib.content" combine="choice">
+           <ref name="CURIEs.datatype"/>
+        </define>
+    </div>
+</grammar>

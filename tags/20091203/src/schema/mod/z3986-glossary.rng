@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 glossary module</x:h1>
+  
+  <div>
+    <x:h2>The glossary element</x:h2>
+    <x:div id="z3986.glossary">
+      <x:p class="description">Represents a glossary, typically located in the backmatter of print works.</x:p>
+      <!-- TODO is a specialization of section -->
+      <!-- TODO note that term@for is implied when nested inside entry -->
+      <!-- TODO SCH if entry/term contains @for, its values must resolve to definitions inside the same entry -->
+    </x:div>
+
+    <define name="z3986.glossary">
+      <element name="glossary">
+        <ref name="z3986.glossary.attlist"/>
+        <ref name="z3986.glossary.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.glossary.attlist">
+      <ref name="z3986.Structural.attrib"/>
+    </define>
+
+    <define name="z3986.glossary.content">
+      <ref name="z3986.glossary.model"/>
+    </define>
+
+    <define name="z3986.glossary.model">
+      <interleave>
+        <optional>
+          <ref name="z3986.h"/>
+        </optional>  
+        <zeroOrMore>
+          <choice>          
+            <ref name="z3986.glossary.extra.class"/>
+          </choice>
+        </zeroOrMore>
+      </interleave>  
+      <zeroOrMore>
+        <choice>
+          <ref name="z3986.glossary.entry"/>
+          <ref name="z3986.glossary.extra.class"/>
+        </choice>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="z3986.glossary.section"/>
+      </zeroOrMore>
+    </define>
+
+    <define name="z3986.glossary.extra.class" combine="choice">
+      <choice>
+        <ref name="z3986.hd"/>
+        <ref name="z3986.p"/>
+        <ref name="z3986.block.flow"/>
+      </choice>
+    </define>
+  </div>
+
+  <div>
+    <x:h2>The glossary section element</x:h2>
+    <define name="z3986.glossary.section">
+      <element name="section">
+        <ref name="z3986.glossary.attlist"/>
+        <ref name="z3986.glossary.model"/>
+      </element>
+    </define>
+  </div>
+  
+  <div>
+    <x:h2>The glossary entry element</x:h2>
+
+    <define name="z3986.glossary.entry">
+      <element name="entry">
+        <ref name="z3986.glossary.entry.attlist"/>
+        <ref name="z3986.glossary.entry.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.glossary.entry.attlist">
+      <ref name="z3986.Text.attrib"/>
+    </define>
+
+    <define name="z3986.glossary.entry.content">
+      <interleave>
+        <ref name="z3986.term"/>
+        <oneOrMore>
+          <ref name="z3986.definition"/>
+        </oneOrMore>
+        <zeroOrMore>
+          <ref name="z3986.glossary.entry.extra.class"/>
+        </zeroOrMore>  
+      </interleave>
+    </define>
+    
+    <define name="z3986.glossary.entry.extra.class" combine="choice">
+      <choice>
+        <empty/>
+      </choice>        
+    </define>
+  </div>
+
+  <div>
+    <x:h2>The glossary element - default content model contribution</x:h2>
+
+    <define name="z3986.backmatter.content.class" combine="choice">
+      <ref name="z3986.glossary"/>
+    </define>
+
+  </div>
+
+</grammar>

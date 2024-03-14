@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <title>Profile Documentation: The DAISY Leisure Profile</title>
+      <link rel="stylesheet" type="text/css" href="rng-doc.css"/>
+   </head>
+   <body>
+      <!-- HOW TO MARKUP DOCUMENTATION PROSE IN THIS DOCUMENT
+         Each piece of documentation must be placed in an
+         element with an id attribute with a value that corresponds with the fragment value of the docURI attribute
+         of the relevant attribute or element in the documentation resource file (docResource.xml).
+         
+         All children of such an element will be copied over
+         to the schema documentation file, and will constitute the main documentation of that element/attribute.
+         
+         Note that any children carrying a class attribute with the value "description" will not be copied.
+         Such elements should only be used for documentation of elements in the profile, and should give a very short description of 
+         the purpose of that element.
+         
+         -->
+
+      <!-- ATTRIBUTES -->
+      <div id="class"> This attribute assigns one or more class names to an element; the element may
+         be said to belong to these classes. A class name may be shared by several element
+         instances. <br/> Consult <a target="_blank"
+            href="http://www.w3.org/TR/xhtml2/mod-core.html#adef_core_class">XHTML Core Attributes
+            Module</a> for further information. </div>
+
+      <div id="xml-lang"> This attribute is used to identify the natural or formal language in which
+         the content is written.<br/> Consult <a target="_blank"
+            href="http://www.w3.org/TR/REC-xml/#sec-lang-tag">Extensible Markup Language (XML)
+            1.0</a> for further information. </div>
+      <div id="xml-id"> This attribute specifies the <em>unique identifier</em> of the element.<br/>
+         Consult <a target="_blank" href="http://www.w3.org/TR/xml-id/">xml:id Version 1.0</a> for
+         further information. </div>
+      <div id="dir"> This attribute allows the author to specify the direction of the element's text
+         content.<br/> Consult <a target="_blank"
+            href="http://www.w3.org/TR/xhtml2/mod-bidi.html#adef_bidi_dir">Bi-directional Text
+            Collection</a> for further information. </div>
+      <!-- ELEMENTS -->
+      <div id="em">
+         <p class="description">Emphasized text</p>
+      </div>
+
+      <div id="a">
+         <p class="description">An anchor</p>
+         <h2>Use of this element</h2>
+         <p>An anchor points to another place within the document (as identified by an ID
+            attribute), to another document, or to a specific point in another document. A link is
+            made up of a pair of anchors, with one being the "source" anchor, and the other being
+            the "destination" anchor.</p>
+
+         <p>When using an anchor to reference another location within the same document, the anchor
+            must include a pound sign (#) followed by the name of an identifier unique in that
+            document. When using a link to reference a location within a different document, the
+            href attribute must include the name of an external document or file, or the name of an
+            external file followed by a pound sign (#) followed by a unique identifier in the
+            external document. External links without the pound sign and unique identifier will open
+            the document and position the user at the beginning.</p>
+      </div>
+
+      <div id="abbr">
+         <p class="description">An abbreviation</p>
+         <h2>Use of this element</h2>
+         <p>A shortened form of a word. For example: amt for amount, rec'd for received, mlle. for mademoiselle, doz. for dozen, oz. for ounce, cwt for hundred-weight. </p>
+      </div>
+      <div id="blockcode">
+         <p class="description">A block of computer code</p>
+      </div>
+      <div id="blockquote">
+         <p class="description">A block of text represting a quotation</p>
+      </div>
+      <div id="caption">
+         <p class="description">A block of text associated with a table or an image</p>
+      </div>
+      <div id="cite">
+         <p class="description">A reference to some external resources, e.g. written text, information on the Web, or similar</p>
+      </div>
+      <div id="code">
+         <p class="description">A piece of computer code</p>
+      </div>
+      <div id="dd">
+         <p class="description">The definition part of an item in a definition list</p>
+      </div>
+      <div id="dt">
+         <p class="description">The term to be defined in a definition list</p>
+      </div>
+      <div id="di">
+         <p class="description">On item (the term to be defined, and the definition) in a definition list</p>
+      </div>
+      <div id="dl">
+         <p class="description">A definition list</p>
+      </div>
+      <div id="dfn">
+         <p class="description">Used to mark the first occurrence of a word or term that is defined somewhere in the text</p>
+      </div>
+      <div id="h">
+         <p class="description">A section heading, or a heading for a table of contents</p>
+      </div>
+      <div id="kbd">
+         <p class="description">Information to be entered into a computer using the keyboard</p>
+      </div>
+      <div id="l">
+         <p class="description">A single line of text</p>
+      </div>
+      <div id="li">
+         <p class="description">One item in an ordered or unordered list</p>
+      </div>
+      <div id="ol">
+         <p class="description">A ordered list</p>
+      </div>
+      <div id="ul">
+         <p class="description">A unordered list</p>
+      </div>
+      <div id="object">
+         <p class="description">A reference to an external object, e.g. a graphics file</p>
+      </div>
+      <div id="p">
+         <p class="description">A paragraph</p>
+      </div>
+      <div id="pre">
+         <p class="description">Preserved text</p>
+      </div>
+      <div id="section">
+         <p class="description">A section of a book</p>
+      </div>
+      
+      
+   </body>
+</html>

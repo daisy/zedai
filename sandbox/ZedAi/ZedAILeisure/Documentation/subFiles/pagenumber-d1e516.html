@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Relax NG schema module</title>
+      <link rel="stylesheet" type="text/css" href="../css/ProfileDocumentation.css" />
+   </head>
+   <body>
+      <h1 class="title">The DAISY Leisure Profile</h1>
+      
+      
+      <h1 id="d36e3" class="xhtml">The DAISY Pagenumber module</h1>
+      
+      
+      
+      
+      <h2 id="d36e8" class="xhtml">Definition</h2>
+      
+      <p> A number printed on a page of a document to uniquely identify it. Most contemporary books
+         are paginated consecutively and pages are generally accounted for in the pagination sequence
+         even if a number is not actually printed on the page. 
+      </p>
+      
+      
+      <h2 id="d36e14" class="xhtml">Markup</h2>
+      
+      <p>The intent of using markup to indicate page numbers is to provide direct navigation to a
+         page. It is strongly recommended that pages be individually and uniquely tagged in text
+         books, and recommended that wherever possible, they be included in all DTBs. All <span class="markup">pagenum</span> elements <em>must</em> have a unique <span class="markup">xml:id</span> attribute.
+      </p>
+      
+      
+      <p>Page numbers are marked with the <span class="markup">pagenum</span> element. There are
+         three types of pages which are distinguished in the markup through use of the <span class="markup">page</span> attribute. <span class="markup">page="normal"</span> is
+         used to indicate that the content of the number is the standard Arabic numeral used in the
+         body and rear matter of most books. <span class="markup">page="front"</span> is used to
+         mark the page numbers used in the front matter of most books (the content of the numbers is
+         very often roman numerals). <span class="markup">page="special"</span> is used to
+         indicate variant pagination schemes used in some books, for example hyphenated numbers often
+         used in appendices (A-1, A-2, etc.). <span class="markup">page="special"</span> is also
+         used to mark up pages without page numbers, for example, pages with photos which occur
+         between sequentially numbered pages.
+      </p>
+      
+      
+      <p>Pages that are unnumbered but are a part of the page number sequence, should be marked with
+         the correct page number in the sequence with the appropriate attribute, <span class="markup">page="normal"</span>, <span class="markup">page="front"</span>, or
+         <span class="markup">page="special"</span>.
+      </p>
+      
+      
+      <p>The <span class="markup">pagenum</span> element is not a required element. Electronic
+         documents are often produced without page numbers. Such documents, electronic or print,
+         should be produced without page numbers, exactly as they have been published.
+      </p>
+      
+      
+      
+      
+      
+      
+      <h2 id="d36e75" class="xhtml">Syntax</h2>
+      <pre> &lt;pagenum page="normal" xml:id="..."&gt;...&lt;/pagenum&gt;
+        &lt;pagenum page="front" xml:id="..."&gt;...&lt;/pagenum&gt; &lt;pagenum
+        page="special" xml:id="..."&gt;...&lt;/pagenum&gt; </pre>
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Daisy.pagenumber</span>
+         
+         <div class="rng"><span class="rng">element</span>: <span class="name">pagenum</span>
+            
+            <div class="rng"><span class="rng">choice</span>:  A choice between at least one of:
+               			
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Daisy.page.front.html">Daisy.page.front</a></div>
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Daisy.page.normal.html">Daisy.page.normal</a></div>
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Daisy.page.special.html">Daisy.page.special</a></div>
+               
+            </div>
+            
+            
+         </div>
+         
+      </div>
+      
+      
+      <p>There are three types of page numbering:</p>
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Daisy.page.front</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Core.attrib.html">Core.attrib</a></div>
+         
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Daisy.page.att.pagefront.html">Daisy.page.att.pagefront</a></div>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Daisy.page.front.content.html">Daisy.page.front.content</a></div>
+         
+      </div>
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Daisy.page.normal</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Core.attrib.html">Core.attrib</a></div>
+         
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Daisy.page.att.pagenormal.html">Daisy.page.att.pagenormal</a></div>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Daisy.page.normal.content.html">Daisy.page.normal.content</a></div>
+         
+      </div>
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Daisy.page.special</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Core.attrib.html">Core.attrib</a></div>
+         
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Daisy.page.att.pagespecial.html">Daisy.page.att.pagespecial</a></div>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Daisy.page.special.content.html">Daisy.page.special.content</a></div>
+         
+      </div>
+      
+      
+      <p>The <span class="markup">pagenum</span> element can carry an optional <span class="markup">xml:id</span> attribute and a mandatory <span class="markup">page</span> attribute. 
+      </p>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Daisy.page.att.pagefront</span>
+         
+         <div class="rng"><span class="rng">attribute</span>: <span class="name">page</span>
+            
+            <div class="rng"><span class="rng">value</span>: front
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Daisy.page.att.pagenormal</span>
+         
+         <div class="rng"><span class="rng">attribute</span>: <span class="name">page</span>
+            
+            <div class="rng"><span class="rng">value</span>: normal
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Daisy.page.att.pagespecial</span>
+         
+         <div class="rng"><span class="rng">attribute</span>: <span class="name">page</span>
+            
+            <div class="rng"><span class="rng">value</span>: special
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      <p>The content of the <span class="markup">pagenum</span> element depends on the type of
+         pagenumber: 
+      </p>
+      
+      <ul>
+         
+         <li>If the value of the <span class="markup">page</span> attribute is <span class="markup">front</span>, only roman numerals (either upper or lower case
+            versions of the letters i, v, x, l, c, d and m, in any order) are permitted. 
+         </li>
+         
+         <li>If the value of the <span class="markup">page</span> attribute is <span class="markup">normal</span>, only positive integers are permitted. 
+         </li>
+         
+         <li>If the value of the <span class="markup">page</span> attribute is <span class="markup">special</span>, any set of caharaters is permitted. 
+         </li>
+         
+      </ul>
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Daisy.page.front.content</span>
+         
+         <div class="rng"><span class="rng">choice</span>:  A choice between at least one of:
+            			
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="daisyUpperCaseRomanNumerals.html">daisyUpperCaseRomanNumerals</a></div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="daisyLowerCaseRomanNumerals.html">daisyLowerCaseRomanNumerals</a></div>
+            
+         </div>
+         
+      </div>
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Daisy.page.normal.content</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="daisyPositiveInteger.html">daisyPositiveInteger</a></div>
+         
+      </div>
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Daisy.page.special.content</span>
+         
+         <div class="rng"><span class="rng">text</span>:  Zero or more text nodes. 
+         </div>
+         
+      </div>
+      
+      
+      
+      
+      
+   </body>
+</html>

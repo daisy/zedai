@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+  ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+  xmlns:xsdp="http://www.daisy.org/ns/rng-preprocess/xsd">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="index">The index module</dcterms:title>
+      <dcterms:description>This module defines the {[[#z3986.index]]} element for structuring indices.</dcterms:description>      
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}" />
+      <dcterms:creator>Markus Gylling</dcterms:creator>   
+      <dcterms:creator>Matt Garrish</dcterms:creator>
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng"/>      
+      <dcterms:requires rdf:resource="z3986-headings.rng"/>       
+      <dcterms:requires rdf:resource="z3986-headings.rng"/>       
+      <dcterms:requires rdf:resource="z3986-p.rng"/>       
+      <dcterms:requires rdf:resource="z3986-block.rng"/>        
+    </rdf:Description>
+  </rdf:RDF>
+
+  <div>
+    
+    <define name="z3986.index">
+      <element name="index">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="index">The {index} element</dcterms:title>
+            <dcterms:description>The {index} element represents a topical reference section in a book.</dcterms:description>
+            <z:info doc-only="true">Indexes are typically located in the backmatter of printed works.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.Section.class]]}</z:context>          
+            <z:content>{[[#z3986.h]]?, [[#z3986.index.entry]]*, [[#z3986.index.section]]*}</z:content>          
+            <z:attlist>{[[#z3986.Section.attrib]]}</z:attlist>      
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.index.attlist"/>
+        <ref name="z3986.index.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.index.attlist">
+      <ref name="z3986.Section.attrib"/>
+    </define>
+
+    <define name="z3986.index.content">
+      <ref name="z3986.index.model"/>
+    </define>
+
+    <define name="z3986.index.model" xsdp:replace="z3986.index.model.xsd">
+      <interleave>
+        <optional>
+          <ref name="z3986.h"/>
+        </optional>  
+        <zeroOrMore>
+          <choice>
+            <ref name="z3986.index.extra.class"/>
+          </choice>
+        </zeroOrMore>
+      </interleave>  
+      <choice>
+        <group>
+          <oneOrMore>
+            <ref name="z3986.index.entry"/>
+            <zeroOrMore>
+              <choice>
+                <ref name="z3986.index.extra.class"/>
+              </choice>
+            </zeroOrMore>
+          </oneOrMore>  
+          <zeroOrMore>
+            <ref name="z3986.index.section"/>
+          </zeroOrMore>
+        </group> 
+        <group>
+          <zeroOrMore>
+            <ref name="z3986.index.entry"/>            
+          </zeroOrMore>  
+          <oneOrMore>
+            <ref name="z3986.index.section"/>
+          </oneOrMore>
+        </group>
+      </choice>
+    </define>
+
+    <define name="z3986.index.model.xsd">      
+      <optional>
+        <ref name="z3986.h"/>
+      </optional>
+      <zeroOrMore>
+        <choice>
+          <ref name="z3986.index.entry"/>
+          <ref name="z3986.index.extra.class"/>
+        </choice>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="z3986.index.section"/>
+      </zeroOrMore>
+    </define>
+
+    <define name="z3986.index.extra.class" combine="choice">
+      <choice>
+        <ref name="z3986.Block.core.base.class"/>
+        <ref name="z3986.Global.extra.class"/>
+      </choice>
+    </define>
+            
+  </div>
+
+  <div>
+    <define name="z3986.index.section">
+      <element name="section">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="section (index)">The index {section} element</dcterms:title>
+            <dcterms:description>The index {section} element represents a major structural division in an {[[#z3986.index]]}.</dcterms:description>      
+            <z:info>The index {section} element is a specialization of the {[[#z3986.section]]} element. It provides a content model to fit the unique requirements of index divisions.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>{[[#z3986.index]]}</z:context>          
+            <z:content>{[[#z3986.h]]?, [[#z3986.index.entry]]*, [[#z3986.index.section]]*}</z:content>          
+            <z:attlist>{[[#z3986.Section.attrib]]}</z:attlist>      
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.index.attlist"/>
+        <ref name="z3986.index.model"/>
+      </element>
+    </define>
+  </div>
+
+  <div>
+    <define name="z3986.index.entry">
+      <element name="entry">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="entry (index)">The index {entry} element</dcterms:title>
+            <dcterms:description>The index {entry} element represents a single entry in an {[[#z3986.index]]}, including all related child entries.</dcterms:description>      
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>{[[#z3986.index]]} and {[[#z3986.index.section]]}</z:context>          
+            <z:content>{(([[#z3986.Block.class]])+ | (text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+), [[#z3986.index.entry]]*}</z:content>          
+            <z:attlist>{[[#z3986.Block.attrib]]}</z:attlist>      
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.index.entry.attlist"/>
+        <ref name="z3986.index.entry.content"/>        
+        <sch:rule context="default:index//default:entry">
+          <!-- TODO SCH ?? each index//entry must contain at least one ref?. -->
+          <sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0"
+            >The {entry} element must neither be empty nor contain only whitespace.</sch:assert>
+        </sch:rule> 
+      </element>
+    </define>
+
+    <define name="z3986.index.entry.attlist">
+      <ref name="z3986.Block.attrib"/>
+    </define>
+
+    <define name="z3986.index.entry.content">        
+      <ref name="z3986.Flow.choice.model"/>
+      <zeroOrMore>
+        <ref name="z3986.index.entry"/>
+      </zeroOrMore>
+    </define>
+  </div>
+
+  <div>
+    <a:documentation>index - default content model contribution</a:documentation>
+    <define name="z3986.backmatter.content.class" combine="choice">
+      <ref name="z3986.index"/>
+    </define>  
+  </div>
+  
+  
+  
+
+</grammar>

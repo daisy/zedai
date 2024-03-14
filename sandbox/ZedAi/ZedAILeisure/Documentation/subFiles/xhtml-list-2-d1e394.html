@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Relax NG schema module</title>
+      <link rel="stylesheet" type="text/css" href="../css/ProfileDocumentation.css" />
+   </head>
+   <body>
+      <h1 class="title">The DAISY Leisure Profile</h1>
+      
+      
+      <h1 id="d22e3" class="xhtml">List Module</h1>
+      
+      
+      
+      <h2 id="d22e8" class="xhtml">The dl element</h2>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">dl</span>
+         
+         <div class="rng"><span class="rng">element</span>: <span class="name">dl</span>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="dl.attlist.html">dl.attlist</a></div>
+            
+            <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="label-in-list.html">label-in-list</a></div>
+               
+            </div>
+            
+            <div class="rng"><span class="rng">choice</span>:  A choice between at least one of:
+               			
+               
+               <div class="rng"><span class="rng">oneOrMore</span>:  One or more of: 
+                  
+                  <div class="rng"><span class="rng">choice</span>:  A choice between at least one of:
+                     			
+                     
+                     <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="dt.html">dt</a></div>
+                     
+                     <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="dd.html">dd</a></div>
+                     
+                  </div>
+                  
+               </div>
+               
+               <div class="rng"><span class="rng">oneOrMore</span>:  One or more of: 
+                  
+                  <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="di.html">di</a></div>
+                  
+               </div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">dl.attlist</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Common.attrib.html">Common.attrib</a></div>
+         
+      </div>
+      
+      
+      
+      
+      <h2 id="d22e50" class="xhtml">The di element</h2>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">di</span>
+         
+         <div class="rng"><span class="rng">element</span>: <span class="name">di</span>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="di.attlist.html">di.attlist</a></div>
+            
+            <div class="rng"><span class="rng">oneOrMore</span>:  One or more of: 
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="dt.html">dt</a></div>
+               
+            </div>
+            
+            <div class="rng"><span class="rng">zeroOrMore</span>:  Zero or more of: 
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="dd.html">dd</a></div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">di.attlist</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Common.attrib.html">Common.attrib</a></div>
+         
+      </div>
+      
+      
+      
+      
+      <h2 id="d22e79" class="xhtml">The dt element</h2>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">dt</span>
+         
+         <div class="rng"><span class="rng">element</span>: <span class="name">dt</span>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="dt.attlist.html">dt.attlist</a></div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Text.model.html">Text.model</a></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">dt.attlist</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Common.attrib.html">Common.attrib</a></div>
+         
+      </div>
+      
+      
+      
+      
+      <h2 id="d22e100" class="xhtml">The dd element</h2>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">dd</span>
+         
+         <div class="rng"><span class="rng">element</span>: <span class="name">dd</span>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="dd.attlist.html">dd.attlist</a></div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Flow.model.html">Flow.model</a></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">dd.attlist</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Common.attrib.html">Common.attrib</a></div>
+         
+      </div>
+      
+      
+      
+      
+      <h2 id="d22e122" class="xhtml">The label element</h2>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">label-in-list</span>
+         
+         <div class="rng"><span class="rng">element</span>: <span class="name">label</span>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="label.attlist.html">label.attlist</a></div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Text.model.html">Text.model</a></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">label.attlist</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Common.attrib.html">Common.attrib</a></div>
+         
+      </div>
+      
+      
+      
+      
+      <h2 id="d22e143" class="xhtml">The nl element</h2>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">nl</span>
+         
+         <div class="rng"><span class="rng">element</span>: <span class="name">nl</span>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="nl.attlist.html">nl.attlist</a></div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="label-in-list.html">label-in-list</a></div>
+            
+            <div class="rng"><span class="rng">oneOrMore</span>:  One or more of: 
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="li.html">li</a></div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">nl.attlist</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Common.attrib.html">Common.attrib</a></div>
+         
+      </div>
+      
+      
+      
+      
+      <h2 id="d22e169" class="xhtml">The ol element</h2>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">ol</span>
+         
+         <div class="rng"><span class="rng">element</span>: <span class="name">ol</span>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="ol.attlist.html">ol.attlist</a></div>
+            
+            <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="label-in-list.html">label-in-list</a></div>
+               
+            </div>
+            
+            <div class="rng"><span class="rng">oneOrMore</span>:  One or more of: 
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="li-in-ol.html">li-in-ol</a></div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">ol.attlist</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Common.attrib.html">Common.attrib</a></div>
+         
+      </div>
+      
+      
+      
+      
+      <h2 id="d22e198" class="xhtml">The ul element</h2>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">ul</span>
+         
+         <div class="rng"><span class="rng">element</span>: <span class="name">ul</span>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="ul.attlist.html">ul.attlist</a></div>
+            
+            <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="label-in-list.html">label-in-list</a></div>
+               
+            </div>
+            
+            <div class="rng"><span class="rng">oneOrMore</span>:  One or more of: 
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="li.html">li</a></div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">ul.attlist</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Common.attrib.html">Common.attrib</a></div>
+         
+      </div>
+      
+      
+      
+      
+      <h2 id="d22e227" class="xhtml">The li element</h2>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">li</span>
+         
+         <div class="rng"><span class="rng">element</span>: <span class="name">li</span>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="li.attlist.html">li.attlist</a></div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Flow.model.html">Flow.model</a></div>
+            
+         </div>
+         
+      </div>  
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">li.attlist</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Common.attrib.html">Common.attrib</a></div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">li-in-ol</span>
+         
+         <div class="rng"><span class="rng">element</span>: <span class="name">li</span>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="li-in-ol.attlist.html">li-in-ol.attlist</a></div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Flow.model.html">Flow.model</a></div>
+            
+         </div>
+         
+      </div>  
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">li-in-ol.attlist</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Common.attrib.html">Common.attrib</a></div>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="value.attrib.html">value.attrib</a></div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">value.attrib</span>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">value</span>
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Number.datatype.html">Number.datatype</a></div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      
+      
+      <h2 id="d22e277" class="xhtml">List Content Set</h2>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">List.class</span>
+         
+         <div class="rng"><span class="rng">choice</span>:  A choice between at least one of:
+            			
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="dl.html">dl</a></div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="nl.html">nl</a></div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="ol.html">ol</a></div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="ul.html">ul</a></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      
+   </body>
+</html>

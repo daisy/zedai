@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    
+    <!-- A maximally terse NCX for audiobooks. Supports page and heading 1-6 navigation. Text labels (no markup) required, image labels allowed -->
+    
+    <!-- TODO limit values of targetRole -->
+    <!-- TODO ability to point into audio files? clipBegin? -->
+    
+    <!-- import the components  -->
+    <include href="./mod/ncx-attrib.rng"/>
+    <include href="./mod/ncx-target.rng">
+        <define name="ncx.target.list.content">
+            <ref name="Text.nonEmpty.datatype" />
+        </define>   
+    </include>   
+    <include href="./mod/z3986-datatypes.rng"/>
+    
+    <define name="ncx.target.attlist" combine="interleave">
+        <!-- add specialized attributes to navTarget -->
+        <optional>
+            <attribute name="fragment" /> <!-- TODO w3c media fragment, separate attribute, or baked into @href -->
+        </optional>
+        <optional>
+            <ref name="ncx.dir.attrib" />
+        </optional>
+        <optional>
+            <ref name="ncx.label.img.attrib" />
+        </optional>            
+    </define>
+      
+    <!-- import the root and create the model -->
+    <include href="./mod/ncx-document.rng">
+        <define name="ncx.ncx.content">  
+            <oneOrMore>
+                <ref name="ncx.target.list"/>
+            </oneOrMore>    
+        </define>
+    </include>
+    
+</grammar>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 Structural Model module</x:h1>
+  <x:p>This is a content model definition module.</x:p>    
+        
+  <div>
+            
+    <x:h2>Z39.86 Structural class element set</x:h2>    
+    <x:p>Abstract choice pattern for elements in the Structural class.</x:p>
+    
+    <define name="z3986.Structural.class" combine="choice">
+      <choice>
+        <notAllowed/>
+      </choice>
+    </define>
+    
+        
+    <x:h2>Z39.86 Structural class attributes collection</x:h2>    
+    <x:p>Common attributes for elements in the Structural class.</x:p> 
+    
+    <define name="z3986.Structural.attrib" combine="interleave">
+      <ref name="z3986.Structural.contrib.attrib"/>
+    </define>
+    
+    <define name="z3986.Structural.contrib.attrib" combine="interleave">
+      <empty/>
+    </define>
+    
+        
+    <x:h2>Z39.86 Structural Model</x:h2>    
+    <x:p>Default concrete model pattern for the Structural class.</x:p>
+           
+    <define name="z3986.Structural.model">
+      <oneOrMore>
+        <choice>
+          <ref name="z3986.Structural.class"/>
+        </choice> 
+      </oneOrMore>   
+    </define>
+            
+  </div>
+
+</grammar>

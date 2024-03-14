@@ -1,0 +1,11 @@
+<sel:select xmlns:sel="http://www.daisy.org/z3986/2010/auth/features/select/#">
+      <sel:when expr="target:language('es')">
+            <p xml:lang="es">Considerando también esencial promover el desarrollo 
+                  de relaciones amistosas entre las naciones;</p>
+      </sel:when>
+      <sel:when expr="target:language('en')">
+            <p xml:lang="en">Whereas it is essential to promote the development 
+                  of friendly relations between nations,</p>
+      </sel:when>
+      <sel:otherwise />
+</sel:select>

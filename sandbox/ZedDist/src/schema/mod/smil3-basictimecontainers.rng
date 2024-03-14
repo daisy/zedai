@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+
+    <div>
+        <define name="smil3.timecontainers.class" combine="choice">
+            <choice>
+                <ref name="smil3.par"/>
+                <ref name="smil3.seq"/>
+            </choice>
+        </define>
+
+        <define name="smil3.timecontainers.attrib" combine="interleave">
+            <a:documentation>attributes common to all timecontainers</a:documentation>
+            <ref name="smil3.Core.attrib"/>
+        </define>
+        
+        
+        <define name="smil3.timecontainers.content.class" combine="choice">
+            <a:documentation>common timecontainer content class</a:documentation>
+            <choice>
+                <ref name="smil3.timecontainers.class"/>
+            </choice>
+        </define>
+        
+    </div>
+
+    <div>
+        <define name="smil3.par">
+            <element name="par">
+                <ref name="smil3.par.attlist"/>
+                <ref name="smil3.par.content"/>
+            </element>
+        </define>
+
+        <define name="smil3.par.attlist" combine="interleave">
+            <ref name="smil3.timecontainers.attrib"/>
+            <optional>
+                <ref name="smil3.fill.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.endsync.attrib"/>
+            </optional>
+        </define>
+
+        <define name="smil3.par.content">
+            <oneOrMore>
+                <choice>
+                    <ref name="smil3.par.content.class"/>
+                </choice>
+            </oneOrMore>
+        </define>
+
+        <define name="smil3.par.content.class" combine="choice">
+            <ref name="smil3.timecontainers.content.class"/>
+        </define>
+
+    </div>
+
+    <div>
+        <define name="smil3.seq">
+            <element name="seq">
+                <ref name="smil3.seq.attlist"/>
+                <ref name="smil3.seq.content"/>
+            </element>
+        </define>
+
+        <define name="smil3.seq.attlist" combine="interleave">
+            <ref name="smil3.timecontainers.attrib"/>
+            <optional>
+                <ref name="smil3.fill.attrib"/>
+            </optional>
+        </define>
+
+        <define name="smil3.seq.content">
+            <oneOrMore>
+                <choice>
+                    <ref name="smil3.seq.content.class"/>
+                </choice>
+            </oneOrMore>
+        </define>
+
+        <define name="smil3.seq.content.class" combine="choice">
+            <ref name="smil3.timecontainers.content.class"/>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.fill.attrib">
+            <attribute name="fill">
+                <choice>
+                    <value>remove</value>
+                    <a:documentation>Specifies that the element will not extend past the end of the
+                        last instance of the simple duration.</a:documentation>
+
+                    <value>freeze</value>
+                    <a:documentation>Specifies that the element will extend past the end of the last
+                        instance of the simple duration by "freezing" the element state at that
+                        point. The parent time container of the element determines how long the
+                        element is frozen (as described immediately below).</a:documentation>
+
+                    <value>hold</value>
+                    <a:documentation>Setting this to "hold" has the same effect as setting to
+                        "freeze", except that the element is always frozen to extend to the end of
+                        the simple duration of the parent time container of the element (independent
+                        of the type of time container). For profiles that support a layered layout
+                        model (e.g., SMIL 3.0 Language Profile), held elements (elements with
+                        fill="hold") will refresh their display area when a layer is added on top
+                        then later removed.</a:documentation>
+
+                    <value>transition</value>
+                    <a:documentation>Setting this to "transition" has the same effect as setting to
+                        "freeze", except that the element is removed at the end of the transition.
+                        This value is only allowed on elements with media directly associated with
+                        them. If specified on any other element (e.g. a time container element in
+                        the SMIL language profile), the attribute is ignored. See the SMIL
+                        Transitions module.</a:documentation>
+
+                    <value>auto</value>
+                    <a:documentation>The fill behavior for this element depends on whether the
+                        element specifies any of the attributes that define the simple or active
+                        duration: * If none of the attributes dur, end, repeatCount or repeatDur are
+                        specified on the element, then the element will have a fill behavior
+                        identical to that if it were specified as "freeze". * Otherwise, the element
+                        will have a fill behavior identical to that if it were specified as
+                        "remove".</a:documentation>
+
+                    <value>default</value>
+                    <a:documentation>The fill behavior for the element is determined by the value of
+                        the fillDefault attribute. This is the default value. If the application of
+                        fillDefault to an element would result in the element having a value of fill
+                        that is not allowed on that element, the element will instead have a fill
+                        value of "auto".</a:documentation>
+                </choice>
+            </attribute>
+        </define>
+
+        <define name="smil3.endsync.attrib">
+            <attribute name="endsync">
+                <choice>
+                    <value>first</value>
+                    <a:documentation>The par, excl, or media element's implicit duration ends with
+                        the earliest active end of all the child elements. This does not refer to
+                        the lexical first child, or to the first child to start, but rather refers
+                        to the first child to end its (first) active duration.</a:documentation>
+                    <value>last</value>
+                    <a:documentation>The par, excl, or media element's implicit duration ends with
+                        the last active end of the child elements. This does not refer to the
+                        lexical last child, or to the last child to start, but rather refers to the
+                        last active end of all children that have a resolved, definite begin time.
+                        If the time container has no children with a resolved begin time, the time
+                        container ends immediately. If child elements have multiple begin times, or
+                        otherwise restart, the child elements must complete all instances of active
+                        durations for resolved begin times (see The instance times lists). This is
+                        the default value for par and excl elements.</a:documentation>
+                    <value>all</value>
+                    <a:documentation>The par, excl, or media element's implicit duration ends when
+                        all of the child elements have ended their respective active durations.
+                        Elements with indefinite or unresolved begin times will keep the simple
+                        duration of the time container from ending. When all elements have completed
+                        the active duration one or more times, the parent time container may
+                        end.</a:documentation>
+                    <value>media</value>
+                    <a:documentation>The time container element's implicit duration ends when the
+                        intrinsic media duration of the element ends. This must be defined by a host
+                        language. If the time container element does not define an intrinsic media
+                        duration, the host language must define the simple duration for the element.
+                        This is the default value for media time container
+                        elements.</a:documentation>
+                    <ref name="NMTOKEN.datatype"/>
+                    <!-- TODO SCH The id must correspond to one of the 
+                        immediate timed children of the time container. -->
+                    <a:documentation>The par, excl, or media element time container's implicit
+                        duration ends when the specified child ends its (first) active duration. The
+                        id must correspond to one of the immediate timed children of the time
+                        container.</a:documentation>
+                </choice>
+            </attribute>
+        </define>
+    </div>
+
+</grammar>

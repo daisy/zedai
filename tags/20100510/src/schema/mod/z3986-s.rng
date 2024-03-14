@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+  
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="sent">The sentence module</dcterms:title>
+      <dcterms:description>This module defines the [[#z3986.s]] element for marking the component sentences that compose the document text.</dcterms:description>      
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}" />
+      <dcterms:creator>Markus Gylling</dcterms:creator>      
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng"/>
+    </rdf:Description>
+  </rdf:RDF>
+  
+  <div>
+    <define name="z3986.s">
+      <element name="s">   
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="s">The {s} element</dcterms:title>
+            <dcterms:description>The {s} element represents a grammatical and/or lexical sentence.</dcterms:description>      
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.Phrase.class]]}</z:context>          
+            <z:content>{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</z:content>          
+            <z:attlist>{[[#z3986.Phrase.attrib]]}</z:attlist>      
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.s.attlist"/>
+        <ref name="z3986.s.content"/>  
+        <sch:rule context="default:s">
+          <sch:assert test="not(descendant::default:s)"
+            >The {s} element must not have {s} element descendants.</sch:assert>
+          <sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0"
+            >The {s} element must neither be empty nor contain only whitespace.</sch:assert>
+        </sch:rule>
+      </element>    
+    </define>
+
+    <define name="z3986.s.attlist">
+      <ref name="z3986.Phrase.attrib"/>
+    </define>
+    
+    <define name="z3986.s.content">
+      <ref name="z3986.Phrase.Text.mix.model"/>    
+    </define>  
+      
+  </div>  
+  
+  <div>
+    <a:documentation>The sent element - default content model contribution</a:documentation>
+    
+    <define name="z3986.Phrase.core.class" combine="choice">
+      <ref name="z3986.s" />      
+    </define>
+    
+  </div>
+
+</grammar>

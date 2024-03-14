@@ -1,0 +1,725 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="../../../../src/schema/z3986a-genericdocument.rng" type="xml"?>
+<!-- xsi:schemaLocation="http://www.daisy.org/z3986/2011/ ../../../../build/auth/profiles/genericdocument/0.4/resources/z3986a-genericdocument.xsd" -->
+<document profile="http://www.daisy.org/z3986/2011/vocab/profiles/default/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xmlns:d="http://www.daisy.org/ns/z3986/authoring/"
+ xmlns:z3986="http://www.daisy.org/z3986/2011/vocab/decl/#"
+ xmlns:mods="http://www.loc.gov/mods/v3"
+ xmlns:its="http://www.w3.org/2005/11/its"
+ xmlns:my="http://www.daisy.org/ns/z3986/authoring/xforms/instance/"
+ xmlns:xforms="http://www.w3.org/2002/xforms/"
+ xmlns="http://www.daisy.org/ns/z3986/authoring/"
+ xml:lang="en">
+  <head>
+    <meta rel="z3986:profile" resource="http://www.daisy.org/z3986/2011/auth/profiles/genericdocument/0.5/">
+      <meta property="z3986:name" content="genericdocument"/>
+      <meta property="z3986:version" content="0.5"/>
+      
+      <meta rel="z3986:feature" resource="http://www.daisy.org/z3986/2011/auth/features/forms/0.4/">
+        <meta property="z3986:name" content="forms"/>
+        <meta property="z3986:version" content="0.4"/>
+      </meta>
+    </meta>
+    <meta property="dcterms:identifier" content="com.googlecode.zednext.gendocforms"/>
+    <meta property="dcterms:publisher" content="GH Braille"/>
+    <meta property="dcterms:modified" content="2010-03-27T15:50:05Z"/>    
+    
+    
+    <meta property="dcterms:title" content="Form W-4 Employee's Withholding Allowance Certificate"/>    
+    <!--Four seperate models are given, one for each worksheet or form.-->
+    <xforms:model xml:id="paworksheet">
+      <xforms:instance>
+        <my:form>
+          <my:worksheet>
+            <my:itema/>
+            <my:itemb/>
+            <my:itemc/>
+            <my:itemd/>
+            <my:iteme/>
+            <my:itemf/>
+            <my:itemg/>
+            <my:itemh/>
+          </my:worksheet>
+        </my:form>
+      </xforms:instance>
+      <xforms:bind nodeset="my:form/my:worksheet" relevant="false()"/>
+      <xforms:submission action="PersonalAllowancesWorksheet.xml" method="put" ref="/my:form" />
+    </xforms:model>
+    <xforms:model xml:id="formW4">
+      <xforms:instance>
+        <my:form>
+          <my:q1>
+            <my:fname/>
+            <my:lname/>
+            <my:homeaddr/>
+            <my:citystatezip/>
+          </my:q1>
+          <my:q2/>
+          <my:q3/>
+          <my:q4/>
+          <my:q5/>
+          <my:q6/>
+          <my:q7/>
+          <my:q8/>
+          <my:q9/>
+          <my:q10/>
+          <my:declare>
+            <my:signature/>
+            <my:date/>
+          </my:declare>
+        </my:form>
+      </xforms:instance>
+      <xforms:bind nodeset="my:form/my:q5" relevant="my:form/my:worksheet/my:itemh"
+        calculate="my:form/my:worksheet/my:itemh"/>
+      <xforms:submission action="FormW-4.xml" method="put" ref="/my:form" />
+    </xforms:model>
+    <xforms:model xml:id="daworksheet">
+      <xforms:instance>
+        <my:form>
+          <my:worksheet>
+            <my:q1/>
+            <my:q2/>
+            <my:q3/>
+            <my:q4/>
+            <my:q5/>
+            <my:q6/>
+            <my:q7/>
+            <my:q8/>
+            <my:q9/>
+            <my:q10/>
+          </my:worksheet>
+        </my:form>
+      </xforms:instance>
+      <xforms:bind nodeset="my:form/my:worksheet" relevant="false()"/>
+      <xforms:submission action="DeductionsAndAdjustmentsWorksheet.xml" method="put" ref="/my:form"
+/>
+    </xforms:model>
+    <xforms:model xml:id="tmjworksheet">
+      <xforms:instance>
+        <my:form>
+          <my:worksheet>
+            <my:q1/>
+            <my:q2/>
+            <my:q3/>
+            <my:q4/>
+            <my:q5/>
+            <my:q6/>
+            <my:q7/>
+            <my:q8/>
+            <my:q9/>
+          </my:worksheet>
+        </my:form>
+      </xforms:instance>
+      <xforms:bind nodeset="my:form/my:worksheet" relevant="false()"/>
+      <xforms:submission action="TwoEarnersWorksheet.xml" method="put" ref="/my:form" />
+    </xforms:model>
+  </head>
+  <body>
+    <pagebreak value="1" />
+    <h>Form W-4 (2009)</h>
+    <section>
+      <section>
+        <h>Purpose.</h>
+        <p>Complete Form W-4 so that your employer can withhold the correct federal income tax from
+          your pay. Consider completing a new Form W-4 each year and when your personal or financial 
+          situation changes.</p>
+      </section>
+      <section>
+        <h>Exemption from withholding.</h>
+        <p>If you are exempt, complete <emph>only</emph> lines 1, 2, 3, 4, and 7 and sign the form
+          to validate it. Your exemption for 2009 expires February 16, 2010. See Pub. 505, Tax 
+          Withholding and Estimated Tax.</p>
+        <p><emph>Note.</emph> You cannot claim exemption from withholding if (a) your income exceeds
+          $950 and includes more than $300 of unearned income (for example, interest and dividends) 
+          and (b) another person can claim you as a dependent on their tax return.</p>
+      </section>
+      <section>
+        <h>Basic instructions.</h>
+        <p>If you are not exempt, complete the <emph>Personal Allowances Worksheet</emph> below. The
+          worksheets on page 2 further adjust your withholding allowances based on itemized deductions, 
+          certain credits, adjustments to income, or two-earner/multiple job situations. Complete all 
+          worksheets that apply. However, you may claim fewer (or zero) allowances. For regular wages, 
+          withholding must be based on allowances you claimed and may not be a flat amount or 
+          percentage of wages.</p>
+      </section>
+      <section>
+        <h>Head of household.</h>
+        <p>Generally, you may claim head of household filing status on your tax return only if you
+          are unmarried and pay more than 50% of the costs of keeping up a home for yourself and your 
+          dependent(s) or other qualifying individuals. See Pub. 501, Exemptions, Standard Deduction, 
+          and Filing Information, for information.</p>
+      </section>
+      <section>
+        <h>Tax credits.</h>
+        <p>You can take projected tax credits into account in figuring your allowable number of
+          withholding allowances. Credits for child or dependent care expenses and the child tax credit 
+          may be claimed using the <emph>Personal Allowances Worksheet</emph> below. See Pub. 919, How 
+          Do I Adjust My Tax Withholding, for information on converting your other credits into 
+          withholding allowances.</p>
+      </section>
+      <section>
+        <h>Nonwage income.</h>
+        <p>If you have a large amount of nonwage income, such as interest or dividends, consider
+          making estimated tax payments using Form 1040-ES, Estimated Tax for Individuals. Otherwise, 
+          you may owe additional tax. If you have pension or annuity income, see Pub. 919 to find out 
+          if you should adjust your withholding on Form W-4 or W-4P.</p>
+      </section>
+      <section>
+        <h>Two earners or multiple jobs.</h>
+        <p>If you have a working spouse or more than one job, figure the total number of allowances
+          you are entitled to claim on all jobs using worksheets from only one Form W-4. Your 
+          withholding usually will be most accurate when all allowances are claimed on the Form W-4 
+          for the highest paying job and zero allowances are claimed on the others. See Pub. 919 for 
+          details.</p>
+      </section>
+      <section>
+        <h>Nonresident alien.</h>
+        <p>If you are a nonresident alien, see the Instructions for Form 8233 before completing this
+          Form W-4.</p>
+      </section>
+      <section>
+        <h>Check your withholding.</h>
+        <p>After your Form W-4 takes effect, use Pub. 919 to see how the amount you are having
+          withheld compares to your projected total tax for 2009. See Pub. 919, especially if your 
+          earnings exceed $130,000 (Single) or $180,000 (Married).</p>
+      </section>
+    </section>
+    <section>
+      <!--In this section, the <label>s are not necessarily semantically correct.  These should
+          contain the information that proceeds each <input>, however due to <label>'s restriction to
+          inline-only content, they must be kept out.-->
+      <h>Personal Allowances Worksheet (Keep for your records.)</h>
+      
+      <list>
+        <item>Enter "1" for <emph>yourself</emph> if no one else can claim you as a dependent
+          
+          <xforms:input ref="my:form/my:worksheet/my:itema" model="paworksheet">
+            <xforms:label>A</xforms:label>
+          </xforms:input>
+        </item>
+        <item>          
+          <p>Enter "1" if:</p>          
+          <list>
+            <item>You are single and have only one job; or</item>
+            <item>You are married, have only one job, and your spouse does not work; or</item>
+            <item>Your wages from a second job or your spouse's wages (or the total of both) are
+              $1,500 or less.</item>
+          </list>
+          <p>
+          <xforms:input ref="my:form/my:worksheet/my:itemb" model="paworksheet">
+            <xforms:label>B</xforms:label>
+          </xforms:input></p>
+        </item>
+        <item>Enter "1" for your <emph>spouse.</emph> But, you may choose to enter "-0-" if you are
+          married and have either a working spouse or more than one job. (Entering "-0-" may  help 
+          you avoid having too little tax withheld.)
+          <xforms:input ref="my:form/my:worksheet/my:itemc" model="paworksheet">
+            <xforms:label>C</xforms:label>
+          </xforms:input>
+        </item>
+        <item>Enter number of <emph>dependents</emph> (other than your spouse or yourself) you will
+          claim on your tax return
+          <xforms:input ref="my:form/my:worksheet/my:itemd" model="paworksheet">
+            <xforms:label>D</xforms:label>
+          </xforms:input>
+        </item>
+        <item>Enter "1" if you will file as <emph>head of household</emph> on your tax return (see
+          conditions under <emph>Head of household</emph> above)
+          <xforms:input ref="my:form/my:worksheet/my:iteme" model="paworksheet">
+            <xforms:label>E</xforms:label>
+          </xforms:input>
+        </item>
+        <item>Enter "1" if you have at least $1,800 of <emph>child or dependent care expenses</emph>
+          for which you plan to claim a credit (<emph>Note.</emph> Do <emph>not</emph> include 
+          child support payments. See Pub. 503, Child and Dependent Care Expenses, for details.)
+          <xforms:input ref="my:form/my:worksheet/my:itemf" model="paworksheet">
+            <xforms:label>F</xforms:label>
+          </xforms:input>
+        </item>
+        <item>
+          <p><emph>Child Tax Credit</emph> (including additional child tax credit). See Pub. 972,
+          Child Tax Credit, for more information.</p>
+          <list>
+            <item>If your total income will be less than $61,000 ($90,000 if married), enter "2" for
+              each eligible child; then less "1" if you have three or more eligible children.</item>
+            <item>If your total income will be between $61,000 and $84,000 ($90,000 and $119,000 if
+              married), enter "1" for each eligible child plus "1" <emph>additional</emph> if you 
+              have six or more eligible children.</item>
+          </list>
+          <p><xforms:input ref="my:form/my:worksheet/my:itemg" model="paworksheet">
+            <xforms:label>G</xforms:label>
+          </xforms:input></p>
+        </item>
+        <item>
+          <p>Add lines A through G and enter total here. (<emph>Note.</emph> This may be different
+            from the number of exemptions you claim on your tax return.)</p>
+          <p>For accuracy, <emph>complete all worksheets that apply.</emph></p>
+          <list>
+            <item>If you plan to <emph>itemize or claim adjustments to income</emph> and want to
+              reduce your withholding, see the <emph>Deductions and Adjustments Worksheet</emph> 
+              on page 2.</item>
+            <item>If you have <emph>more than one job</emph> or are <emph>married and you and your
+              spouse both work</emph> and the combined earnings from all jobs exceed $40,000 
+              ($25,000 if married), see the <emph>Two-Earners/Multiple Jobs Worksheet</emph> on 
+              page 2 to avoid having too little tax withheld.</item>
+            <item>If <emph>neither</emph> of the above situations applies, <emph>stop here</emph> and
+              enter the number from line H on line 5 of Form W-4 below.</item>
+          </list>
+          <p><xforms:input ref="my:form/my:worksheet/my:itemh" model="paworksheet">
+            <xforms:label>H</xforms:label>
+          </xforms:input></p>
+        </item>
+      </list>
+      <transition />
+    </section>
+    <section>
+      <h>Form W-4 Employee's Withholding Allowance Certificate 2009</h>
+      <p>CMB No. 1545-0074</p>
+      <p><name>Department of the Treasury</name></p>
+      <p><name>Internal Revenue Service</name></p>
+      <p>Whether you are entitled to claim a certain number of allowances or exemption from
+        withholding is subject to review by the IRS. Your employer may be required to send a copy 
+        of this form to the IRS.</p>
+      <list>
+        <item>
+          <xforms:input ref="my:form/my:q1/my:fname" model="formW4">
+            <xforms:label>Type or print your first name and middle initial.</xforms:label>
+          </xforms:input>
+          <xforms:input ref="my:form/my:q1/my:lname" model="formW4">
+            <xforms:label>Last name</xforms:label>
+          </xforms:input>
+          <xforms:input ref="my:form/my:q1/my:homeaddr" model="formW4">
+            <xforms:label>Home address (number and street or rural route)</xforms:label>
+          </xforms:input>
+          <xforms:input ref="my:form/my:q1/my:citystatezip" model="formW4">
+            <xforms:label>City or town, state, and ZIP code</xforms:label>
+          </xforms:input>
+        </item>
+        <item>
+          <xforms:input ref="my:form/my:q2">
+            <xforms:label>Your social security number</xforms:label>
+          </xforms:input>
+        </item>
+        <item>
+          <xforms:select1 ref="my:form/my:q3" model="formW4">
+            <xforms:label>Marital status</xforms:label>
+            <xforms:item>
+              <xforms:label>Single</xforms:label>
+              <xforms:value>single</xforms:value>
+            </xforms:item>
+            <xforms:item>
+              <xforms:label>Married</xforms:label>
+              <xforms:value>married</xforms:value>
+            </xforms:item>
+            <xforms:item>
+              <xforms:label>Married, but withhold at higher Single rate.</xforms:label>
+              <xforms:value>marriedexception</xforms:value>
+            </xforms:item>
+          </xforms:select1>
+          <emph>Note.</emph> If married, but legally separated, or spouse is a nonresident alien,
+            check the "Single" box.
+        </item>
+        <item>
+          <xforms:input ref="my:form/my:q5" model="formW4">
+            <xforms:label>Total number of allowances you are claiming (from line
+              <emph>H</emph> above <emph>or</emph> from the applicable worksheet on page 2)
+              </xforms:label>
+          </xforms:input>
+        </item>
+        <item>
+          <xforms:input ref="my:form/my:q6" model="formW4">
+            <xforms:label>Additional amount, if any, you want withheld from each
+              paycheck</xforms:label>
+          </xforms:input>
+        </item>
+        <item>
+          <p>I claim exemption from withholding for 2009, and I certify that I meet <emph>both</emph>
+          of the following conditions for exemption.</p>
+          <list>
+            <item>Last year I had a right to a refund of <emph>all</emph> federal income tax withheld
+              because I had no tax liability <emph>and</emph></item>
+            <item>This year I expect a refund of <emph>all</emph> federal income tax withheld because
+              I expect to have <emph>no</emph> tax liability.</item>
+          </list>
+          <p><xforms:input ref="my:form/my:q7" model="formW4">
+            <xforms:label>If you meet both conditions, write "Exempt" here</xforms:label>
+          </xforms:input></p>
+        </item>
+      </list>
+      <p>Under penalties of perjury, I declare that I have examined this certificate and to the best
+        of my knowledge and belief, it is true, correct, and complete.</p>
+      <p>
+        <xforms:input ref="my:form/my:declare/my:signature">
+          <xforms:label>Employee's signature (Form is not valid unless you sign it.)</xforms:label>
+        </xforms:input>
+        <xforms:input ref="my:form/my:declare/my:date">
+          <xforms:label>Date</xforms:label>
+        </xforms:input>
+      </p>
+      <p>(Employer: Complete lines 8 and 10 only if sending to the IRS.)</p>
+      <list>
+        <item>
+          <xforms:input ref="my:form/my:q8" model="formW4">
+            <xforms:label>Employer's name and address</xforms:label>
+          </xforms:input>
+        </item>
+        <item>
+          <xforms:input ref="my:form/my:q9" model="formW4">
+            <xforms:label>Office code (optional)</xforms:label>
+          </xforms:input>
+        </item>
+        <item>
+          <xforms:input ref="my:form/my:q10" model="formW4">
+            <xforms:label>Employer identification number (EIN)</xforms:label>
+          </xforms:input>
+        </item>
+      </list>
+      <p>For Privacy Act and Paperwork Reduction Act Notice, see page 2.</p>
+    </section>
+    <section>
+      <pagebreak value="2" />
+      <!--In this section, the <label>s are not necessarily semantically correct.  These should
+          contain the information that proceeds each <input>, however due to <label>'s restriction 
+          to inline-only content, they must be kept out.-->
+      <h>Deductions and Adjustments Worksheet</h>
+      <p><emph>Note.</emph> Use this worksheet only if you plan to it emize deductions, claim
+        certain credits, adjustments to income, or an additional standard deduction.</p>
+      <list>
+        <item>
+          Enter an estimate of y our 2009 itemized deductions. These include qualifying home
+          mortgage interest, charitable contributions, state and local taxes, medical expenses in 
+          excess of 7.5% of your income, and miscellaneous deductions. (For 2009, you may have to 
+          reduce your itemized deductions if your income is over $166,800 ($83,400 if married 
+          filing separately). See Worksheet 2 in Pub. 919 for details.)
+          <xforms:input ref="my:form/my:worksheet/my:q1" model="daworksheet">
+            <xforms:label>1</xforms:label>
+          </xforms:input>
+        </item>
+        <item>
+          <p>Enter:</p>
+          <list>
+            <item>$11,400 if married filing jointly or qualifying widow(er)</item>
+            <item>$8,350 if head of household</item>
+            <item>$5,700 if single or married filing separately</item>
+          </list>
+          <p><xforms:input ref="my:form/my:worksheet/my:q2" model="daworksheet">
+            <xforms:label>2</xforms:label>
+          </xforms:input></p>
+        </item>
+        <item>
+          <emph>Subtract</emph> line 2 from line 1. If zero or less, enter "-0-"
+          <xforms:input ref="my:form/my:worksheet/my:q3" model="daworksheet">
+            <xforms:label>3</xforms:label>
+          </xforms:input>
+        </item>
+        <item>
+          Enter an estimate of your 2009 adjustments to income and any additional standard
+          deduction. (Pub. 919)
+          <xforms:input ref="my:form/my:worksheet/my:q4" model="daworksheet">
+            <xforms:label>4</xforms:label>
+          </xforms:input>
+        </item>
+        <item>
+          <emph>Add</emph> lines 3 and 4 and enter the total. (Include any amount for credits from
+            Worksheet 8 in Pub. 919.)
+          <xforms:input ref="my:form/my:worksheet/my:q5" model="daworksheet">
+            <xforms:label>5</xforms:label>
+          </xforms:input>
+        </item>
+        <item>
+          Enter an estimate of your 2009 nonwage income (such as dividends or interest)
+          <xforms:input ref="my:form/my:worksheet/my:q6" model="daworksheet">
+            <xforms:label>6</xforms:label>
+          </xforms:input>
+        </item>
+        <item>
+          <emph>Subtract</emph> line 6 from line 5. If zero or less, enter "-0-"
+          <xforms:input ref="my:form/my:worksheet/my:q7" model="daworksheet">
+            <xforms:label>7</xforms:label>
+          </xforms:input>
+        </item>
+        <item>
+          <emph>Divide</emph> the amount on line 7 by $3,500 and enter the result here. Drop any
+            fraction
+          <xforms:input ref="my:form/my:worksheet/my:q8" model="daworksheet">
+            <xforms:label>8</xforms:label>
+          </xforms:input>
+        </item>
+        <item>
+          Enter the number from the <emph>Personal Allowances Worksheet,</emph> line H, page 1
+          <xforms:input ref="my:form/my:worksheet/my:q9" model="daworksheet">
+            <xforms:label>9</xforms:label>
+          </xforms:input>
+        </item>
+        <item>
+          <emph>Add</emph> lines 8 and 9 and enter the total here. If you plan to use the
+          <emph>Two-Earners/Multiple Jobs Worksheet,</emph> also enter this total on line 1 below. Otherwise,
+          <emph>stop here</emph> and enter this total on Form W-4, line 5, page 1
+          <xforms:input ref="my:form/my:worksheet/my:q10" model="daworksheet">
+            <xforms:label>10</xforms:label>
+          </xforms:input>
+        </item>
+      </list>
+    </section>
+    <section>
+      <h>Two-Earners/Multiple Jobs Worksheet (See <emph>Two earners or multiple jobs</emph> on page
+        1.)</h>
+      <p><emph>Note.</emph> Use this worksheet <emph>only</emph> if the instructions under line H on
+        page 1 direct you here.</p>
+      <list>
+        <item>
+          <xforms:input ref="my:form/my:worksheet/my:q1" model="tmjworksheet">
+            <xforms:label>Enter the number from line H, page 1 (or from line 10 above if you used
+              the <emph>Deductions and Adjustments Worksheet</emph>)</xforms:label>
+          </xforms:input>
+        </item>
+        <item>
+          <xforms:input ref="my:form/my:worksheet/my:q2" model="tmjworksheet">
+            <xforms:label>Find the number in <emph>Table 1</emph> below that applies to the
+              <emph>LOWEST</emph> paying job and enter it here. <emph>However,</emph> if you are 
+              married filing jointly and wages from the highest paying job are $50,000 or less, 
+              do not enter more than "3."</xforms:label>
+          </xforms:input>
+        </item>
+        <item>
+         
+          <xforms:input ref="my:form/my:worksheet/my:q3" model="tmjworksheet">
+            <xforms:label>If line 1 is <emph>more than or equal to</emph> line 2, subtract
+              line 2 from line 1. Enter the result here (if zero, enter "-0-") and on Form W-4, line 
+              5, page 1. <emph>Do not</emph> use the rest of this worksheet</xforms:label>
+          </xforms:input>
+          <emph>Note.</emph> If line 1 is <emph>less than</emph> line 2, enter "-0-" on Form W-4,
+            line 5, page 1. Complete lines 4-9 below to calculate the additional withholding amount 
+            necessary to avoid a year-end tax bill.
+        </item>
+        <item>
+         
+          <xforms:input ref="my:form/my:worksheet/my:q4" model="tmjworksheet">
+            <xforms:label>Enter the number from line 2 of this worksheet</xforms:label>
+          </xforms:input>
+        </item>
+        <item>
+         
+          <xforms:input ref="my:form/my:worksheet/my:q5" model="tmjworksheet">
+            <xforms:label>Enter the number from line 1 of this worksheet</xforms:label>
+          </xforms:input>
+        </item>
+        <item>
+         
+          <xforms:input ref="my:form/my:worksheet/my:q6" model="tmjworksheet">
+            <xforms:label><emph>Subtract</emph> line 5 from line 4</xforms:label>
+          </xforms:input>
+        </item>
+        <item>
+         
+          <xforms:input ref="my:form/my:worksheet/my:q7" model="tmjworksheet">
+            <xforms:label>Find the amount in <emph>Table 2</emph> below that applies to the
+              <emph>HIGHEST</emph> paying job and enter it here</xforms:label>
+          </xforms:input>
+        </item>
+        <item>
+         
+          <xforms:input ref="my:form/my:worksheet/my:q8" model="tmjworksheet">
+            <xforms:label><emph>Multiply</emph> line 7 by line 6 and enter the result here. This is
+              the additional annual withholding needed</xforms:label>
+          </xforms:input>
+        </item>
+        <item>
+         
+          <xforms:input ref="my:form/my:worksheet/my:q9" model="tmjworksheet">
+            <xforms:label>Divide line 8 by the number of pay periods remaining in 2009. For example,
+              divide by 26 if you are paid every two weeks and you complete this form in December 2008. 
+              Enter the result here and on Form W-4, line 6, page 1. This is the additional amount to 
+              be withheld from each paycheck</xforms:label>
+          </xforms:input>
+        </item>
+      </list>
+      <section>
+        <table xml:id="t1">          
+          <thead>
+            <tr>
+              <th colspan="2">Married Filing Jointly</th>
+              <th colspan="2">All Others</th>
+            </tr>
+            <tr>
+              <th>If wages from <emph>LOWEST</emph> paying job are-</th>
+              <th>Enter on line 2 above</th>
+              <th>If wages from <emph>LOWEST</emph> paying job are-</th>
+              <th>Enter on line 2 above</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>$0 - $4,500</td>
+              <td>0</td>
+              <td>$0 - $6,000</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>4,501 - 9,000</td>
+              <td>1</td>
+              <td>6,001 - 12,000</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>9,001 - 18,000</td>
+              <td>2</td>
+              <td>12,001 - 19,000</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>18,001 - 22,000</td>
+              <td>3</td>
+              <td>19,001 - 26,000</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td>22,001 - 26,000</td>
+              <td>4</td>
+              <td>26,001 - 35,000</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td>26,001 - 32,000</td>
+              <td>5</td>
+              <td>35,001 - 50,000</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td>32,001 - 38,000</td>
+              <td>6</td>
+              <td>50,001 - 65,000</td>
+              <td>6</td>
+            </tr>
+            <tr>
+              <td>38,001 - 46,000</td>
+              <td>7</td>
+              <td>65,001 - 80,000</td>
+              <td>7</td>
+            </tr>
+            <tr>
+              <td>46,001 - 55,000</td>
+              <td>8</td>
+              <td>80,001 - 90,000</td>
+              <td>8</td>
+            </tr>
+            <tr>
+              <td>55,001 - 60,000</td>
+              <td>9</td>
+              <td>90,001 - 120,000</td>
+              <td>9</td>
+            </tr>
+            <tr>
+              <td>60,001 - 65,000</td>
+              <td>10</td>
+              <td>120,001 and over</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <td>65,001 - 75,000</td>
+              <td>11</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>75,001 - 95,000</td>
+              <td>12</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>95,001 - 105,000</td>
+              <td>13</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>105,001 - 120,000</td>
+              <td>14</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>120,001 and over</td>
+              <td>15</td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        <caption ref="t1">Table 1</caption>
+        <table xml:id="t2">
+          <thead>
+            <tr>
+              <th colspan="2">Married Filing Jointly</th>
+              <th colspan="2">All Others</th>
+            </tr>
+            <tr>
+              <th>If wages from <emph>HIGHEST</emph> paying job are-</th>
+              <th>Enter on line 7 above</th>
+              <th>If wages from <emph>HIGHEST</emph> paying job are-</th>
+              <th>Enter on line 7 above</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>$0 - $65,000</td>
+              <td>$550</td>
+              <td>$0 - $35,000</td>
+              <td>$550</td>
+            </tr>
+            <tr>
+              <td>65,001 - 120,000</td>
+              <td>910</td>
+              <td>35,001 - 90,000</td>
+              <td>910</td>
+            </tr>
+            <tr>
+              <td>120,001 - 185,000</td>
+              <td>1,020</td>
+              <td>90,001 - 165,000</td>
+              <td>1,020</td>
+            </tr>
+            <tr>
+              <td>185,001 - 330,000</td>
+              <td>1,200</td>
+              <td>165,001 - 370,000</td>
+              <td>1,200</td>
+            </tr>
+            <tr>
+              <td>330,001 and over</td>
+              <td>1,280</td>
+              <td>370,001 and over</td>
+              <td>1,280</td>
+            </tr>
+          </tbody>
+        </table>
+        <caption ref="t2">Table 2</caption>
+      </section>
+    </section>
+    <section>
+      <h>Privacy Act and Paperwork Reduction Act Notice.</h>
+      <p>We ask for the information on this form to carry out the Internal Revenue laws of the
+        United States. The Internal Revenue Code requires this information under sections 3402(f)(2)(A) 
+        and 6109 and their regulations. Failure to provide a properly completed form will result in 
+        your being treated as a single person who claims no withholding allowances; providing 
+        fraudulent information may also subject you to penalties. Routine uses of this information 
+        include giving it to the Department of Justice for civil and criminal litigation, to cities, 
+        states, the District of Columbia, and U.S. commonwealths and possessions for use in 
+        administering their tax laws, and using it in the National Directory of New Hires. We may 
+        also disclose this information to other countries under a tax treaty, to federal and state 
+        agencies to enforce federal nontax criminal laws, or to federal law enforcement and 
+        intelligence agencies to combat terrorism.</p>
+      <p>You are not required to provide the information requested on a form that is subject to the
+        Paperwork Reduction Act unless the form displays a valid OMB control number. Books or records 
+        relating to a form or its instructions must be retained as long as their contents may become 
+        material in the administration of any Internal Revenue law. Generally, tax returns and return 
+        information are confidential, as required by Code section 6103.</p>
+      <p>The average time and expenses required to complete and file this form will vary depending
+        on individual circumstances. For estimated averages, see the instructions for your income 
+        tax return.</p>
+      <p>If you have suggestions for making this form simpler, we would be happy to hear from you.
+        See the instructions for your income tax return.</p>
+    </section>
+  </body>
+</document>

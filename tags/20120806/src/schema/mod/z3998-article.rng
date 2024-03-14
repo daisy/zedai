@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3998/authoring/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="article">The article module</title>
+        <annotation annotates="/">
+            <para role="desc-main">This module defines the [[#z3998.article]] element for the inclusion and embedding of articles.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3998-global-classes.rng"/>
+                <member xlink:href="z3998-meta.rng"/>
+                <member xlink:href="z3998-headings.rng"/>
+                <member xlink:href="z3998-byline.rng"/>
+                <member xlink:href="z3998-dateline.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <year>2012</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2012-12-19</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <define name="z3998.article" xml:id="z3998.article">
+        <element name="article">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="article">The {article} element</title>
+                <para role="desc-main">The {article} element represents an article in an electronic or print journal, magazine, news source or encyclopedia.</para>
+                <para role="desc-sub absdef-only">The simplest use for the {article} element is as a specialization of the {[[#z3998.section]]} element for reproducing full articles or extracts. It is additionally possible to include {[[#z3998.article.head]]} and {[[#z3998.article.body]]} children for more formally structured articles.</para>
+                <synopsis role="def-context">{[[#z3998.Section.class]]}</synopsis>
+                <synopsis role="def-content" condition="The content model must not allow more than one {[[#z3998.h h]]} element.">{[[#z3998.article.head]], [[#z3998.article.body]]} or {([[#z3998.h]] &amp;amp; [[#z3998.Block.class]]* &amp;amp; [[#z3998.byline]]? &amp;amp; [[#z3998.dateline]]?), [[#z3998.article.section]]*}</synopsis>
+                <synopsis role="def-attlist">{[[#z3998.Section.attrib]]}</synopsis>
+            </annotation>
+            <ref name="z3998.article.attlist"/>
+            <ref name="z3998.article.content"/>
+        </element>
+    </define>
+    <define name="z3998.article.attlist" xml:id="z3998.article.attlist">
+        <ref name="z3998.Section.attrib"/>
+    </define>
+    <define name="z3998.article.content" xml:id="z3998.article.content">
+        <ref name="z3998.article.document.model"/>
+    </define>
+    <define name="z3998.article.document.model" xml:id="z3998.article.document.model">
+        <a:documentation>The document-like model choice for article</a:documentation>
+        <ref name="z3998.article.head"/>
+        <ref name="z3998.article.body"/>
+    </define>
+    <define name="z3998.article.simple.model" xml:id="z3998.article.simple.model">
+        <a:documentation>The section-like model choice for article</a:documentation>
+        <ref name="z3998.article.body.content"/>
+    </define>
+    <define name="z3998.article.head" xml:id="z3998.article.head">
+        <element name="head">
+            <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="head (article)">The article {head} element</title>
+                <para role="desc-main">The article {head} element contains meta information about the complete or partial article contained in the enclosing {article} element.</para>
+                <para role="desc-sub">The meta information in the article {head} element is not document content in the context of Z39.98-AI documents, but may be used for display and other purposes when rendering documents into alternate formats.</para>
+                <synopsis role="def-context">{[[#z3998.article]]}</synopsis>
+                <synopsis role="def-content">{[[#z3998.meta]]+}</synopsis>
+                <synopsis role="def-attlist">{[[#z3998.Document.attrib]]}</synopsis>
+            </annotation>
+            <ref name="z3998.article.head.attlist"/>
+            <ref name="z3998.article.head.content"/>
+        </element>
+    </define>
+    <define name="z3998.article.head.attlist" xml:id="z3998.article.head.attlist">
+        <ref name="z3998.Document.attrib"/>
+    </define>
+    <define name="z3998.article.head.content" xml:id="z3998.article.head.content">
+        <oneOrMore>
+            <choice>
+                <ref name="z3998.article.head.class"/>
+            </choice>
+        </oneOrMore>
+    </define>
+    <define name="z3998.article.head.class" combine="choice">
+        <choice>
+            <!-- TODO expand meta for specialized values -->
+            <ref name="z3998.meta"/>
+        </choice>
+    </define>
+    <define name="z3998.article.body" xml:id="z3998.article.body">
+        <element name="body">
+            <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="body (article)">The article {body} element</title>
+                <para role="desc-main">The article {body} element contains the complete or partial content of the {[[#z3998.article]]}.</para>
+                <synopsis role="def-context">{[[#z3998.article]]}</synopsis>
+                <synopsis role="def-content">{([[#z3998.h]] &amp;amp; [[#z3998.Block.class]]* &amp;amp; [[#z3998.byline]]? &amp;amp; [[#z3998.dateline]]?), [[#z3998.article.section]]*}</synopsis>
+                <synopsis role="def-attlist">{[[#z3998.Document.attrib]]}</synopsis>
+            </annotation>
+            <ref name="z3998.article.body.attlist"/>
+            <ref name="z3998.article.body.content"/>
+        </element>
+    </define>
+    <define name="z3998.article.body.attlist" xml:id="z3998.article.body.attlist">
+        <ref name="z3998.Document.attrib"/>
+    </define>
+    <define name="z3998.article.body.content" xml:id="z3998.article.body.content">
+        <choice>
+            <group>
+                <interleave>
+                    <ref name="z3998.h"/>
+                    <oneOrMore>
+                        <ref name="z3998.article.body.body.class"/>
+                    </oneOrMore>
+                    <optional>
+                        <ref name="z3998.byline"/>
+                    </optional>
+                    <optional>
+                        <ref name="z3998.dateline"/>
+                    </optional>
+                </interleave>
+                <zeroOrMore>
+                    <ref name="z3998.article.section"/>
+                </zeroOrMore>
+            </group>
+            <group>
+                <interleave>
+                    <ref name="z3998.h"/>
+                    <zeroOrMore>
+                        <ref name="z3998.article.body.body.class"/>
+                    </zeroOrMore>
+                    <optional>
+                        <ref name="z3998.byline"/>
+                    </optional>
+                    <optional>
+                        <ref name="z3998.dateline"/>
+                    </optional>
+                </interleave>
+                <oneOrMore>
+                    <ref name="z3998.article.section"/>
+                </oneOrMore>
+            </group>
+        </choice>
+    </define>
+    <define name="z3998.article.body.body.class" combine="choice">
+        <choice>
+            <ref name="z3998.Block.class"/>
+            <ref name="z3998.Global.extra.class"/>
+        </choice>
+    </define>
+    <define name="z3998.article.section" xml:id="z3998.article.section">
+        <element name="section">
+            <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="section (article)">The article {section} element</title>
+                <para role="desc-main">The article {section} element represents a major structural division in an {[[#z3998.article]]}.</para>
+                <para role="desc-sub">The article {section} element is a specialization of the {[[#z3998.section]]} element. It provides a content model to fit the unique requirements of article divisions.</para>
+                <para role="desc-sub" xlink:role="inherit-common" xlink:href="z3998.section-h-note"/>
+                <synopsis role="def-context">{[[#z3998.article]]}</synopsis>
+                <synopsis role="def-content" condition="The content model must not allow more than one {[[#z3998.h h]]} element.">{([[#z3998.h]]? &amp;amp; [[#z3998.Block.class]]*), [[#z3998.article.section]]*}</synopsis>
+                <synopsis role="def-attlist">{[[#z3998.Section.attrib]]}</synopsis>
+            </annotation>
+            <ref name="z3998.article.section.attlist"/>
+            <ref name="z3998.article.section.content"/>
+        </element>
+    </define>
+    <define name="z3998.article.section.attlist" xml:id="z3998.article.section.attlist">
+        <ref name="z3998.Section.attrib"/>
+    </define>
+    <define name="z3998.article.section.content" xml:id="z3998.article.section.content">
+        <choice>
+            <group>
+                <interleave>
+                    <optional>
+                        <ref name="z3998.h"/>
+                    </optional>
+                    <oneOrMore>
+                        <ref name="z3998.article.body.body.class"/>
+                    </oneOrMore>
+                </interleave>
+                <zeroOrMore>
+                    <ref name="z3998.article.section"/>
+                </zeroOrMore>
+            </group>
+            <group>
+                <interleave>
+                    <optional>
+                        <ref name="z3998.h"/>
+                    </optional>
+                    <zeroOrMore>
+                        <ref name="z3998.article.body.body.class"/>
+                    </zeroOrMore>
+                </interleave>
+                <oneOrMore>
+                    <ref name="z3998.article.section"/>
+                </oneOrMore>
+            </group>
+        </choice>
+    </define>
+</grammar>

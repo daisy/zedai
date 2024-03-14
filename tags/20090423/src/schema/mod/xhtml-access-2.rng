@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Access Module</x:h1>
+
+  <div>
+    <x:h2>The access element</x:h2>
+
+    <define name="xhtml.access">
+      <element name="access">
+        <empty />
+        <ref name="xhtmlAccess.attlist"/>
+      </element>
+    </define>
+
+    <define name="xhtmlAccess.attlist">
+      <ref name="xhtml.Common.attrib"/>
+      <ref name="xhtmlAccess.activate.attrib"/>
+      <ref name="xhtmlAccess.key.attrib"/>
+      <ref name="xhtmlAccess.order.attrib"/>
+      <ref name="xhtmlAccess.targetid.attrib"/>
+      <ref name="xhtmlAccess.targetrole.attrib"/>
+    </define>
+    
+    <define name="xhtmlAccess.activate.attrib">
+      <optional>
+        <!-- a:defaultValue="false" -->
+        <attribute name="activate">
+          <choice>
+            <value>true</value>
+            <value>false</value>
+          </choice>
+        </attribute>
+      </optional>
+    </define>  
+
+    <define name="xhtmlAccess.key.attrib">    
+      <optional>
+        <attribute name="key">
+          <ref name="Characters.datatype"/>
+        </attribute>
+      </optional>
+    </define>      
+
+    <define name="xhtmlAccess.order.attrib">    
+      <optional>
+        <!-- a:defaultValue="document" -->
+        <attribute name="order">
+          <choice>
+            <value>document</value>
+            <value>list</value>
+          </choice>
+        </attribute>
+      </optional>    
+    </define>
+
+    <define name="xhtmlAccess.targetid.attrib">    
+      <optional>
+        <attribute name="targetid">
+          <ref name="IDREF.datatype"/>
+        </attribute>
+      </optional>    
+    </define>     
+
+    <define name="xhtmlAccess.targetrole.attrib">    
+      <optional>
+        <attribute name="targetrole">
+          <ref name="CURIEs.datatype"/>
+        </attribute>
+      </optional>
+    </define>      
+           
+  </div>
+
+  <define name="xhtml.head.misc" combine="choice">
+    <ref name="xhtml.access"/>
+  </define>
+
+</grammar>

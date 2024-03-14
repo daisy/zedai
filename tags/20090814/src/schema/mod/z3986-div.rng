@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 div element module</x:h1>
+    
+  <div>
+    <x:h2>The div element</x:h2>
+    <x:div id="z3986.div">
+      <x:p class="description">
+        The <x:code>div</x:code> element marks a block of text.
+      </x:p>
+    </x:div>
+         
+    <define name="z3986.div">
+      <element name="div">        
+        <ref name="div.attlist"/>
+        <ref name="div.content"/>  
+      </element>    
+    </define>
+
+    <define name="div.attlist">
+      <ref name="z3986.Structural.attrib"/>
+    </define>
+    
+    <define name="div.content">
+      <ref name="z3986.Structural.model"/>
+    </define>  
+    
+  </div>  
+  
+  <div>
+    <x:h2>The div element - default content model contribution</x:h2>
+    
+    <define name="z3986.Structural.class" combine="choice">
+      <ref name="z3986.div"/>
+    </define>
+    
+    <define name="z3986.covers.content.class" combine="choice">
+	  <ref name="z3986.div" />
+    </define>
+
+    <define name="z3986.spine.content.class" combine="choice">
+ 	  <ref name="z3986.div" />
+    </define>    
+   
+  </div>
+
+</grammar>

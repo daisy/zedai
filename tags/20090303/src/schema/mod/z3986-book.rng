@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+    xmlns:x="http://www.w3.org/1999/xhtml"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <x:h1>The Z3986 Book module</x:h1>
+
+    <define name="z3986.book" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="book">
+            <ref name="z3986.book.attlist"/>
+            <ref name="z3986.book.content"/>
+        </element>
+    </define>
+
+    <define name="z3986.book.attlist">
+        <ref name="Common.reduced.attrib" />
+    </define>
+
+    <define name="z3986.book.content">
+        <optional>
+            <ref name="z3986.cover" />
+        </optional>
+        <ref name="z3986.frontmatter" />
+        <ref name="z3986.bodymatter" />
+        <optional>
+            <ref name="z3986.backmatter" />
+        </optional>
+    </define>
+    
+    <define name="z3986.frontmatter" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="frontmatter">
+            <ref name="z3986.matter.attlist"/>
+            <ref name="z3986.frontmatter.content"/>
+        </element>
+    </define>
+    
+    <define name="z3986.bodymatter" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="bodymatter">
+            <ref name="z3986.matter.attlist"/>
+            <ref name="z3986.bodymatter.content"/>
+        </element>
+    </define>
+    
+    <define name="z3986.backmatter" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="backmatter">
+            <ref name="z3986.matter.attlist"/>
+            <ref name="z3986.backmatter.content"/>
+        </element>
+    </define>
+    
+    <define name="z3986.frontmatter.content">
+    	<interleave>
+			<!-- <zeroOrMore> ... advanced -->
+			<optional>
+	        	<ref name="z3986.toc" />
+	        </optional>	
+	      	<!-- </zeroOrMore>  ... advanced -->
+		<zeroOrMore>				
+    		<ref name="section.frontmatter" />	    							   
+		</zeroOrMore>   	      	 	
+      	</interleave>    
+    </define>
+    
+    <define name="section.frontmatter">
+    	<element name="section">
+    		<ref name="section.attlist"/>
+    		<ref name="section.frontmatter.model"/>
+    	</element>
+    </define>
+    
+    <define name="section.frontmatter.model">
+	    <oneOrMore>
+    		<choice>
+    			<ref name="z3986.attribution.class"/>
+				<ref name="Heading.class"/>
+				<ref name="Structural.class"/>
+				<ref name="List.class"/>
+			</choice>	
+		</oneOrMore>
+	</define>
+    
+    <define name="z3986.bodymatter.content">
+        <oneOrMore>
+        	<ref name="section" />
+        </oneOrMore>
+    </define>
+    
+    <define name="z3986.backmatter.content">    			
+		<oneOrMore>
+    		<ref name="section.loose" />	    							   
+		</oneOrMore>
+    </define>
+    
+    <define name="z3986.matter.attlist">
+    	<!-- <empty /> -->
+        <ref name="Common.reduced.attrib" />
+    </define>
+    
+</grammar>

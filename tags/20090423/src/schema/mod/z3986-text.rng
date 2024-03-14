@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <x:h1>The Z3986 Text module</x:h1>
+    
+    <div>
+    	<x:h2>The word element (w)</x:h2>
+    	<x:div id="z3986.word">
+    		<p class="description">
+    			<em>Description: to be written ...</em>
+    			<strong>(@id="z3986.word" in file z3986-text.rng)</strong>
+    		</p>
+    		<h2>Use of this element</h2>
+    		<p>
+    			<em>More info: to be written ...</em>
+    			<strong>(@id="z3986.word" in file z3986-text.rng)</strong>
+    		</p>
+    	</x:div>
+    	
+	    <define name="z3986.word" ns="http://www.daisy.org/ns/z3986/2008/">
+	        <element name="w">
+	            <ref name="z3986.word.attlist" />
+	            <ref name="z3986.word.content" />
+	        </element>
+	    </define>
+	    
+	    <define name="z3986.word.attlist">
+	    	<ref name="xhtml.Common.attrib"/>
+	    </define>
+	
+	    <define name="z3986.word.content">
+	        <ref name="z3986.Text.base.model"/>
+	    </define>
+	    
+	</div>
+	
+	<div>
+    	<x:h2>The date element (w)</x:h2>
+    	<x:div id="z3986.date">
+    		<p class="description">
+    			<em>Description: to be written ...</em>
+    			<strong>(@id="z3986.date" in file z3986-text.rng)</strong>
+    		</p>
+    		<h2>Use of this element</h2>
+    		<p>
+    			<em>More info: to be written ...</em>
+    			<strong>(@id="z3986.date" in file z3986-text.rng)</strong>
+    		</p>
+    	</x:div>
+    	
+	    <define name="z3986.date" ns="http://www.daisy.org/ns/z3986/2008/">
+	        <element name="date">
+	            <ref name="z3986.date.attlist" />
+	            <ref name="z3986.date.content" />
+	        </element>
+	    </define>
+	    
+	    <define name="z3986.date.attlist">
+	    	<ref name="xhtml.Common.attrib"/>
+	    </define>
+	
+	    <define name="z3986.date.content">
+	        <ref name="z3986.Text.base.model"/>
+	    </define>
+	    
+	</div>
+	
+    <div>
+    	<x:h2>The name element (w)</x:h2>
+    	<x:div id="z3986.name">
+    		<p class="description">
+    			<em>Description: to be written ...</em>
+    			<strong>(@id="z3986.name" in file z3986-text.rng)</strong>
+    		</p>
+    		<h2>Use of this element</h2>
+    		<p>
+    			<em>More info: to be written ...</em>
+    			<strong>(@id="z3986.name" in file z3986-text.rng)</strong>
+    		</p>
+    	</x:div>
+    	
+	    <define name="z3986.name" ns="http://www.daisy.org/ns/z3986/2008/">
+	        <element name="name">
+	            <ref name="z3986.name.attlist" />
+	            <ref name="z3986.name.content" />
+	        </element>
+	    </define>
+	    
+	    <define name="z3986.name.attlist">
+	    	<ref name="xhtml.Common.attrib"/>
+	    </define>
+	
+	    <define name="z3986.name.content">
+	        <ref name="z3986.Text.base.model"/>
+	    </define>
+	    
+	</div>
+	
+	<div>
+    	<x:h2>The place element (w)</x:h2>
+    	<x:div id="z3986.place">
+    		<p class="description">
+    			<em>Description: to be written ...</em>
+    			<strong>(@id="z3986.place" in file z3986-text.rng)</strong>
+    		</p>
+    		<h2>Use of this element</h2>
+    		<p>
+    			<em>More info: to be written ...</em>
+    			<strong>(@id="z3986.place" in file z3986-text.rng)</strong>
+    		</p>
+    	</x:div>
+    	
+	    <define name="z3986.place" ns="http://www.daisy.org/ns/z3986/2008/">
+	        <element name="place">
+	            <ref name="z3986.place.attlist" />
+	            <ref name="z3986.place.content" />
+	        </element>
+	    </define>
+	    
+	    <define name="z3986.place.attlist">
+	    	<ref name="xhtml.Common.attrib"/>
+	    </define>
+	
+	    <define name="z3986.place.content">
+	        <ref name="z3986.Text.base.model"/>
+	    </define>
+	    
+	</div>
+	
+    <div>
+    	<x:h2>The identifier element (w)</x:h2>
+    	<x:div id="z3986.identifier">
+    		<p class="description">
+    			<em>Description: to be written ...</em>
+    			<strong>(@id="z3986.identifier" in file z3986-text.rng)</strong>
+    		</p>
+    		<h2>Use of this element</h2>
+    		<p>
+    			<em>More info: to be written ...</em>
+    			<strong>(@id="z3986.identifier" in file z3986-text.rng)</strong>
+    		</p>
+    	</x:div>
+    	
+	    <define name="z3986.identifier" ns="http://www.daisy.org/ns/z3986/2008/">
+	        <element name="identifier">
+	            <ref name="z3986.identifier.attlist" />
+	            <ref name="z3986.identifier.content" />
+	        </element>
+	    </define>
+	    
+	    <define name="z3986.identifier.attlist">
+	    	<ref name="xhtml.Common.attrib"/>
+	    </define>
+	
+	    <define name="z3986.identifier.content">
+	        <ref name="z3986.Text.base.model"/>
+	    </define>
+	    
+	</div>	
+	
+	<!-- add word to the base Text class -->	    						
+	<define name="z3986.Text.base.class" combine="choice">
+		<ref name="z3986.word"/>
+	</define>
+	
+	<!-- add to the Text class -->	    						
+	<define name="xhtml.Text.class" combine="choice">
+	  <choice>
+		<ref name="z3986.date"/>
+		<ref name="z3986.name"/>
+		<ref name="z3986.place"/>
+		<ref name="z3986.identifier"/>
+	  </choice>	
+	</define>
+	
+	<!-- TODO dismiss? contribute to the object innermost model which is specialized -->
+	<define name="z3986.object.content.text.class" combine="choice">
+	  <choice>
+	    <ref name="z3986.word"/>
+	    <ref name="z3986.date"/>
+	    <ref name="z3986.name"/>
+	    <ref name="z3986.place"/>
+	    <ref name="z3986.identifier"/>
+	  </choice>
+	</define>
+		
+</grammar>

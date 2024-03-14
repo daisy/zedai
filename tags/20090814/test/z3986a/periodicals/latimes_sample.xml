@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://www.daisy.org/z3986/2010/" xml:lang="us-eng">
+    <head>
+        <link rel="profile" href="http://www.daisy.org/z3986/2010/ai/profiles/periodicals/1.0/"/>
+        <mods xmlns="http://www.loc.gov/mods/v3" version="3.3">
+            <titleInfo>
+                <title>Los Angeles Times</title>
+                <subtitle>latimes.com</subtitle>
+            </titleInfo>
+
+            <originInfo>
+                <typeOfResource>text/image</typeOfResource>
+                <publisher> Tribune Publishing Company Newspaper Daily </publisher>
+                <dateIssued>-2009</dateIssued>
+                <issuance>continuing</issuance>
+                <frequency>Daily</frequency>
+            </originInfo>
+            <originInfo>
+                <publisher>DAISY Consortium</publisher>
+                <dateCreated>2009-07-14</dateCreated>
+            </originInfo>
+            <identifier type="uid">1245882894</identifier>
+            <language>
+                <languageTerm type="code" authority="iso639-3">en</languageTerm>
+            </language>
+
+        </mods>
+    </head>
+    <body>
+        <frontmatter>
+            <toc>
+                <pagebreak value="A2" xml:id="A2"/>
+                <tocentry>
+                    <label>California</label>
+                    <pageref ref="A3-A8">A3-A8</pageref>
+                </tocentry>
+                <tocentry>
+                    <label>For the Record</label>
+                    <pageref ref="A4">A4</pageref>
+                </tocentry>
+                <tocentry>
+                    <label>Nation</label>
+                    <pageref ref="A9">A9</pageref>
+                </tocentry>
+                <tocentry>
+                    <label>World</label>
+                    <pageref ref="A12">A12</pageref>
+                </tocentry>
+                <tocentry>
+                    <label>Obituaries</label>
+                    <pageref ref="A15">A15</pageref>
+                </tocentry>
+                <tocentry>
+                    <label>Ask Amy</label>
+                    <pageref ref="D9">D9</pageref>
+                </tocentry>
+                <tocentry>
+                    <label>Baseball</label>
+                    <pageref ref="C4-7">C4-7</pageref>
+                </tocentry>
+                <tocentry>
+                    <label>Baseball</label>
+                    <pageref ref="C4-7">C4-7</pageref>
+                </tocentry>
+                <tocentry>
+                    <label>Book Review</label>
+                    <pageref ref="D9">D9</pageref>
+                </tocentry>
+
+            </toc>
+        </frontmatter>
+        <bodymatter>
+            <section role="frontpage">
+                <article>
+                    <h property="dc:title">
+                        <l>Mexico Under Siege</l>
+                        <l>Drug war has roused a 'wasp nest'</l>
+                    </h>
+                    <byline>President Calderon's offensive, in its third year, grows more daunting
+                        as the fight drags on and intensifies.</byline>
+                    <!-- wiki states that byline is the author? http://en.wikipedia.org/wiki/Byline-->
+                    <authorAnno>
+                        <p>Ken Ellingwood Reporting from Ciudad Juarez, Mexico</p>
+                        <p>Tracy Wilkinson Reporting from Mexico City</p>
+                    </authorAnno>
+                    <p>Riding in a Ford pickup with five gun-toting soldiers, he pulls over
+                        suspicious-looking cars, sets up impromptu roadblocks to search for drugs
+                        and weapons, and tends to the nuisance calls that make up a cop's life:
+                        robberies, street fights, fender benders.</p>
+                    <p>"I am an army lieutenant colonel," Resendiz said. "But now we're all
+                        police."</p>
+                    <p>Ciudad Juarez resembles a city under military occupation as President Felipe
+                        Calderon ratchets up his war against drug traffickers.</p>
+                    <p>Calderon launched the military offensive 10 days after assuming office in
+                        December 2006, saying it was necessary to restore government authority in
+                        parts of the country. Today, 2 1/2 years later, Calderon and Mexico face a
+                        stark reality: The longer and harder the war is prosecuted, the more complex
+                        and daunting it becomes.</p>
+                    <p>The offensive has exposed corruption so widespread that key institutions,
+                        from police forces to city halls, appear rotten to the core. And a battered
+                        society has grown increasingly worried about the effects of the massive
+                        military deployment on its democracy.</p>
+                    <p>A cascade of setbacks -- prison breakouts, kidnappings of federal officials,
+                        killing of priests -- has led to questions about whether Calderon was
+                        prepared for the breadth and depth of the problem.</p>
+                    <p>By disrupting the cartels' operations, the offensive intensified turf
+                        struggles among the traffickers. About 11,000 people, some of them
+                        bystanders, have died in the violence.</p>
+                    <p>"They hit a wasp nest, and the wasps are stinging," said Jose Luis Pineyro,
+                        an expert on national security at Mexico City's Autonomous Metropolitan
+                        University. "There definitely wasn't a well-structured plan to know what
+                        kind of threat they were confronting."</p>
+                    <p>Government forces have scored victories, almost all credited to the military:
+                        They've arrested more than <pagebreak value="A18"/> 66,000 suspects, seized
+                        tons of cocaine and marijuana, and intercepted guns, grenades, airplanes --
+                        even drug-laden, submarine-like vessels.</p>
+                    <p>But every success is offset quickly by a fresh surge in violence, sometimes
+                        in unexpected places such as the tourist magnet of Acapulco. No state has
+                        been spared bloodshed or scandal. To date, the government has not gone after
+                        major money-laundering operations, the fuel that keeps the cartels going,
+                        and none of the current leaders of the main cartels has been captured.</p>
+                    <p>"It's very hard to stop this trend," a senior military official in Ciudad
+                        Juarez said, speaking of the unyielding bloodshed. "We are fighting an enemy
+                        we don't know and don't see and only feel their results."</p>
+                    <p>The drug gangs appear as strong and as vicious as ever as they fight not just
+                        for smuggling routes but for shares of the growing domestic market. Mexican
+                        cartels are now the dominant force in an industry once led by Colombians. </p>
+                    <p>More than 45,000 troops have been deployed in these 2 1/2 years to hot spots
+                        across the nation. It's not just boots on the ground: Army generals and
+                        colonels have taken command of law enforcement in seven states and, from
+                        Juarez to Tijuana to Cancun, have supplanted civilian authority.</p>
+                    <p>Ciudad Juarez, a city of 1.3 million, remains the test case, embodying the
+                        reach of Calderon's strategy and its risks. The military buildup in Juarez
+                        came after months of extraordinary violence. About 1,600 people were killed
+                        last year, including more than 200 in November alone.</p>
+                    <p>In February, the police chief quit after several officers were shot dead and
+                        signs appeared threatening that more would be killed unless he stepped down.
+                        Other posters threatened the life of Mayor Jose Reyes Ferriz. The governor
+                        of the state, Chihuahua, was ambushed in the state capital. (He survived,
+                        but his bodyguard was killed.)</p>
+                    <p>Juarez officials appealed for federal help, and in March, Calderon's
+                        government sent 5,000 troops and 1,900 federal police officers -- adding to
+                        the 2,500 soldiers and police already there.</p>
+                    <h role="subtitle">Reliance on army</h>
+                    <p>A retired general, Julian Rivera Breton, was appointed public safety chief,
+                        and an active-duty colonel, Alfonso Cristobal Garcia Melgar, was installed
+                        as police director. In all, 30 current or former military officers now hold
+                        supervisory roles in the police department.</p>
+                </article>
+                <article>
+                    <object xml:id="img_1" src="images/beach.jpg" srctype="image/jpg">
+                        <p>Crystal Cove State Beach in Orange County with people in the ocean and
+                            sunbathing</p>
+                        <p role="photoCredits">Allen J. Schaben</p>
+                    </object>
+                    <h>At the White Water's Edge</h>
+                    <p role="caption">Visitors take to the frothy cool waves on a hot day at Crystal
+                        Cove State Beach in Orange County. It'll be mosty sunny today, with patchy
+                        fog along the cost. Some inland areas will see triple-digit temperatures.
+                            <strong>Weather, B8</strong></p>
+                </article>
+                <article>
+                    <h property="dc:title"> Health is their sisterly bond </h>
+                    <p role="byline"> For a group of African American women in L.A., bad habits and
+                        backsliding are out. They're learning how to grow old well. </p>
+                    <p role="authoranno">Maria L. Ganga</p>
+                    <p>Etta Cummings stood in the back of a small room filled with sympathetic
+                        faces. Her failing eyes were obscured by big, dark glasses. She leaned on
+                        her cane, clutched her bright caftan and prepared to take one very big
+                        step.</p>
+                    <p>"My name is Etta Cummings. I'm a diabetic. My diabetes is totally out of
+                        control. I didn't take it seriously for many, many years," she said by way
+                        of introduction. "By this time, my health started deteriorating, so I'm on
+                        the run to correct it."</p>
+                    <p>Heads nodded in support. Other women's stories poured forth. Of diabetes and
+                        struggles with weight. The difficulty of caregiving and the effort of
+                        exercise. The temptation of unhealthy food and the jettisoning of "toxic
+                        relationships." The fear of doctors and the burden of stress -- code, to
+                        many of those present, for depression.</p>
+                    <p>One Thursday evening each month, a dozen or so African American women in
+                        their 50s or older make their way to the third-floor lounge at Olympia
+                        Medical Plaza in Mid-Wilshire to learn how to grow old well. After half a
+                        century or more of putting other people first, of bad habits and
+                        backsliding, they have decided they want to change their lives and help one
+                        another do the same. </p>
+                    <p>For this sisterhood of the hopeful and health-minded, Cummings was both
+                        fellow striver and cautionary tale. The wiry 69-year-old had discovered a
+                        diabetic ulcer in her foot. She went to the doctor, she told the group
+                        during this, her first meeting, because she couldn't see the wound, couldn't
+                        bandage it, "but I could smell it."</p>
+                    <p>The fact that these women, a.k.a. Sisters Staying Healthy, meet each month to
+                        talk about dementia and brain fitness, menopause and sexual health, stress
+                        reduction and vegetarian cooking is unusual enough in an era in which
+                        Americans spend billions of dollars to <pagebreak value="A6"/> avoid aging
+                        altogether.</p>
+                    <p>But what they are trying to do is even harder because of who they are.
+                        African American women are among the least healthy women in America. Even in
+                        health-conscious Los Angeles, they have the highest death rates from all
+                        causes, but especially from heart disease, stroke, diabetes and cancer.</p>
+                    <p>"There is inequality in life expectancy," said Eleanor Brownn, the group's
+                        founder, champion, cheerleader and increasingly slender poster child. "It's
+                        not just the length of your life, but also, when you start looking at
+                        African Americans, we're sicker than everybody."</p>
+                    <p>But not if Brownn can do something about it.</p>
+                    <p>It was 2002 when Brownn put it all together. She was attending a women's
+                        health conference at UC San Francisco when a chart flashed on the big
+                        screen. "Life expectancy," it read, and the bar for African Americans was
+                        much shorter than for every other ethnicity. Frighteningly shorter. </p>
+                    <p>Brownn started thinking of all the people she knew who had died prematurely.
+                        Her co-worker, who died of lung cancer in her 50s.Her foster brother, who
+                        was 8 when he succumbed after a straightforward operation to correct a "lazy
+                        eye." Her beloved father, who died at 60 of bladder cancer. She heard her
+                        mother's voice questioning the care those loved ones had received from a
+                        white medical establishment.</p>
+                    <object xml:id="img_2" src="images/" srctype="image/jpg">
+                        <p>Eleanor Brownn</p>
+                        <p role="caption"><strong>Promoting Well-Being:</strong>Eleanor Brownn
+                            founded Life-Long: Sisters Staying Healthy after having an “aha!” moment
+                            at a women’s health conference in San Francisco.</p>
+                        <p role="photoCredits">Jake Stevens</p>
+                    </object>
+                    <p>Growing up in South Los Angeles, Brownn remembered finding a lump in her
+                        breast when she was 14, two months after her father's death, and waiting a
+                        year before telling anyone "because I was afraid to go to the doctor." She
+                        finally confided in her worried mother, but it took them another year to
+                        muster the trust topursue medical treatment. The lump was benign.</p>
+                    <p>And she thought about her first real job, as an outreach worker in the
+                        Hypertension Control Project in Watts. Brownn spent her days contacting
+                        African Americans who had been diagnosed with high blood pressure to make
+                        sure they were taking their medication and seeing the doctor for follow-up
+                        care.</p>
+                    <p>Most weren't.</p>
+                    <p> "They didn't trust the doctor," she said. "They knew they were sick. They
+                        didn't want to take the pills. They thought they were being experimented on.
+                        That's what resonates with me. I heard this over and over and over
+                        again."</p>
+                    <p>Brownn has focused her career as a community advocate on healthcare issues.
+                        But that "aha!" moment at UCSF made her realize that she needed to do more
+                        -- because that bar chart "meant lives lost."</p>
+                    <p>As she likes to point out, "The numbers speak for themselves."</p>
+                    <p>Life expectancy for black women is 75 years, according to "Death in the
+                        Golden State," a 2007 report by the Public Policy Institute of California.
+                        For white women, it's 80 years, Latinas, 83 and Asians, 85.</p>
+                    <quote role="callout">'It's not just the length of your life, but also, when you
+                        start looking at African Americans, we're sicker than everybody.' -Eleanor
+                        Brown, Founder of Life-Long: Sisters Staying Healthy</quote>
+                    <!-- how do we want to handle this? is it a callout or pullout http://en.wikipedia.org/wiki/Callout  -->
+                    <p>So a fewmonths after returning home from San Francisco, Brownn launched
+                        Life-Long: Sisters Staying Healthy with a small conference on black women's
+                        health. It has since become an annual event. Last November's conference,
+                        funded by public and private grants, brought together healthcare
+                        professionals, educators and 120 women. </p>
+                    <p> A year and a half ago, she started the monthly meetings at Olympia Medical
+                        Plaza -- part support group, part lecture series, part guided tour of
+                        healthful living in the second 50 years of life. No subject is off-limits.
+                        Few bodily functions go unmentioned.</p>
+                    <p>Brownn knows that helping African American women be as healthy as everyone
+                        else is a daunting task, that Sisters Staying Healthy is one very small
+                        step. But she also knows that "in our little circle, you can touch one
+                        person's life and that can make a difference." Brownn spreads the word via
+                        e-mail, website and chutzpah. She recruited one member on a flight between
+                        Sacramento and Los Angeles.</p>
+                    <p>Her target audience: midlife, middle-class African American women stretched
+                        to the limit with jobs and responsibilities. Brownn counts herself among
+                        them. She is 58, has a master's degree in gerontology and a condo in Culver
+                        City. She spent a decade caring for her ailing mother, who died at 79. She
+                        is single and has no children. </p>
+                    <p>Brownn will not divulge her weight through the years. But she is just under 5
+                        feet 2, and she once wore size 22. Six clothing sizes hang in her closet
+                        today. She eats like a diabetic, because she does not want to become one --
+                        nothing white, everything steamed. Chocolate hasn't passed her lips since
+                        1996.</p>
+                    <p>"This is sort of now or never," she admitted to the group at its May meeting.
+                        "Being connected to this group, I don't know if it's helping anybody else,
+                        but it's helping me. There's something about being accountable to other
+                        people and knowing that other people are going to be asking about you and
+                        want to see you do well."</p>
+                    <p>And how well is Brownn doing?</p>
+                    <p>"I'm wearing white pants in a size I haven't worn." She stops. A pause. A
+                        smile. "I don't think I wore this size at birth." The women laugh and clap.
+                        Brownn continues: "There are a lot of things going on in my life right now
+                        that aren't working. But you know, I feel healthy."</p>
+                    <p>"I'm Michelle Kemp, and I took that bold step to remove myself from a toxic
+                        work environment." "I'm Liz Smith, and I made a commitment to myself
+                        recently that I'm going to take better care of myself." "I'm Brigette Kidd,
+                        and this is my second meeting. This is great that I came today, because I
+                        was actually feeling a little low."</p>
+                    <p>That's how every session of Sisters Staying Healthy begins. It's the real
+                        heart of Brownn's effort: Who are you and what have you done to take care of
+                        yourself lately? Beyond the simple act of connection, beyond encouragement
+                        and support, telling their stories allows these women to share information
+                        in a way many never have before.</p>
+                    <p>"We come from families that work hard, and we don't talk about going to the
+                        doctor as a wellness program," Toni Laudermilk said. "We only go to the
+                        doctor when we're flat on our back. And when we come home, we don't talk
+                        about it. At least that's the kind of history most African Americans
+                        experience. Our parents didn't say, oh, you know, your grandmother had a
+                        double mastectomy."</p>
+                    <p>Laudermilk runs the Center for LifeLong Learners, a nonprofit after-school
+                        program in the West Adams neighborhood. Earlier this year she was diagnosed
+                        with acinic cell adenocarcinoma, a rare cancer of the salivary glands, and
+                        she has made her way regularly to Sisters Staying Healthy.</p>
+                    <p> Talking with Brownn and the other women made the stylish 62-year-old realize
+                        how important a family health history is and how little she knew about her
+                        relatives -- and, by extension, her own body. She called her real sisters
+                        and compared notes.</p>
+                    <p>Laudermilk knew that her mother's mother had had a double mastectomy, because
+                        she once walked in on the older woman dressing; no one ever said the reason
+                        was cancer. Laudermilk didn't find out until her 40s that her Uncle Buddy's
+                        missing leg had been amputated because of diabetes. </p>
+                    <p>And then there's the other side of the family. Her father killed himself. His
+                        brother killed his wife and committed suicide. The couple's babies spent two
+                        days in the apartment alone with the bodies. The older one killed himself in
+                        his 20s. The younger one grew up to be a recluse.</p>
+                    <p>"Something was really, really off," Laudermilk said. "Once again, there was
+                        never any conversation around it, so you know it's something I'll never have
+                        an answer to. It is something I wonder."</p>
+                    <p>Laudermilk's loved ones will have far fewer mysteries to unravel. Brownn gave
+                        her a health diary and extra copies to hand out to her book group.</p>
+                    <p>She is documenting her own condition. She's cataloging her husband's various
+                        medications and the ailments they address. She'll soon be sitting down with
+                        her daughter, Ch-a Mosley, and telling all. Families, she said, "need to
+                        learn how to talk about their health issues."</p>
+                    <p>And she's practicing just that, one Thursday evening each month.</p>
+                    <p>"My name is Toni Laudermilk," she began recently before segueing into
+                        menopause and weight gain, caring for an ailing mother and nurturing a
+                        marriage, keeping a nonprofit afloat in a recession.</p>
+                    <p>"It was all a bit much," she continued. "So I decided that I am slowly
+                        getting myself back together so I can play tennis again, play with the
+                        little senior ladies like I used to. I want to ski some more.</p>
+                    <p>"I am not dead yet."</p>
+                    <p>maria.laganga@latimes.com</p>
+                    <!-- how should we deal with this? -->
+                </article>
+            </section>
+            <section value="A2">
+                <!-- do we want to mark pages? as sections -->
+                <article>
+                    <h role="title">Iraqi teen can dream in L.A.</h>
+                    <p role="authoranno">Kurt Streeter</p>
+                    <object xml:id="img_3" src="images/kurtstreeter.jpg" srctype="image/jpg">
+                        <p>Bust drawing Kurt Streeter</p>
+                    </object>
+                    <p>Her words made my heart sink.</p>
+                    <p>"I want to go back," she said, speaking by phone from her home in a rough
+                        section of Baghdad. She was speaking of America. "I want to go back, as soon
+                        as I can."</p>
+                    <p>This was three summers ago. I wasn't sure, not until last month, not until I
+                        saw Marwa Naim walk once again through the doors at UCLA Medical Center,
+                        that her dream would ever become real. </p>
+                    <p>
+                        <i>I want to go back. . . .</i>
+                    </p>
+                </article>
+            </section>
+            <section value="A3">
+                <h>California</h>
+                <article>
+                    <h role="title">Between protection, deportation</h>
+                </article>
+            </section>
+            <section value="A4">
+                <article>
+                    <h role="title">UC Irvine archive feeling budget heat</h>
+                </article>
+            </section>
+            <section value="A9">
+                <h>The Nation</h>
+            </section>
+        </bodymatter>
+
+    </body>
+</document>

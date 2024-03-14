@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>I18N Attribute Module</x:h1>
+
+  <div>
+    <x:h2>I18N Attribute Collection</x:h2>
+
+    <define name="xml.lang.attrib">
+      <attribute name="xml:lang">
+        <ref name="LanguageCode.datatype"/>
+      </attribute>
+    </define>
+
+    <define name="xhtml.I18n.attrib">
+      <optional>
+        <ref name="xml.lang.attrib"/>
+      </optional>  
+    </define>
+  </div>
+
+  <define name="xhtml.Common.attrib" combine="interleave">
+    <ref name="xhtml.I18n.attrib"/>
+  </define>
+
+</grammar>

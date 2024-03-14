@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="../../../../src/schema/z3986a-newsfeeds.rng" type="xml"?>
+<html xmlns="http://www.w3.org/2002/06/xhtml2/" xml:lang="da"
+  xmlns:d="http://www.daisy.org/ns/z3986/2008/">
+  <head>
+    <!-- Replaced by mods stuff
+      <title>Weekendavisen den 4. december 2008</title>
+      <meta property="dc:title">Weekendavisen den 4. december 2008</meta>
+      <meta property="dc:date" datatype="xsd:date">04-12-2008</meta>
+      <meta property="d:edition">København</meta>
+    -->
+  </head>
+  <body>
+    <section>
+      <h>1. Sektion</h>
+      <d:article>
+        <head>
+          <meta property="d:positionSection">1</meta>
+          <meta property="d:positionSequence">1</meta>
+          <meta property="d:positionPage">1</meta>
+          <meta property="d:revision">1</meta>
+          <meta property="d:destEdition">København</meta>
+          <meta property="d:destEdition">Jylland</meta>
+          <meta property="d:destEdition">Øerne</meta>
+          <!-- Replaced by mods stuff
+            <meta property="dc:copyright">Weekendavisen 2008</meta>
+            <meta property="dc:subject">LEDER1</meta>
+            <meta property="dc:title">Løgnere</meta>
+            <meta property="dc:date" datatype="xsd:date">04-12-2008</meta>
+          -->
+        </head>
+        <body>
+          <h>Løgnere</h>
+          <d:dateline>04-12-2008</d:dateline>
+          <p>Article content...</p>
+        </body>
+      </d:article>
+      <d:article>
+        <head>
+          <meta property="d:positionSection">1</meta>
+          <meta property="d:positionSequence">2</meta>
+          <meta property="d:destEdition">København</meta>
+          <meta property="d:destEdition">Jylland</meta>
+          <meta property="d:destEdition">Øerne</meta>
+          <!-- Replaced by mods stuff
+            <meta property="dc:copyright">Weekendavisen 2008</meta>
+            <meta property="dc:subject">LEDERE2</meta>
+            <meta property="dc:title">Epokegørende</meta>
+            <meta property="dc:date" datatype="xsd:date">04-12-2008</meta>
+          -->
+        </head>
+        <body>
+          <h>Epokegørende</h>
+          <p>Article content...</p>
+        </body>
+      </d:article>
+    </section>
+    <section>
+      <h>Bøger</h>
+      <d:article>
+        <head>
+          <meta property="d:positionSection">2</meta>
+          <meta property="d:positionSequence">1</meta>
+          <meta property="d:kicker">Potter. J.K. Rowling er på Potter-stien igen med en på en gang
+            opfindsom og kedsommelig eventyrsamling.</meta>
+          <meta property="d:proofReader">FLEMMING GERTZ</meta>
+          <meta property="d:destEdition">København</meta>
+          <meta property="d:destEdition">Jylland</meta>
+          <meta property="d:destEdition">Øerne</meta>
+          <!-- Replaced by mods stuff
+            <meta property="dc:copyright">Weekendavisen 2008</meta>
+            <meta property="dc:subject">LIT-POTTER</meta>
+            <meta property="dc:title">Moralske fabler</meta>
+            <meta property="dc:date" datatype="xsd:date">04-12-2008</meta>
+          -->
+        </head>
+        <body>
+          <h>Moralske fabler</h>
+          <p>Article content...</p>
+          <object src="book.jpg">Et eksemplar af de af forfatteren håndskrevne og håndtegnede Barden
+            Beedles Eventyr, som Sotheby’s solgte for 20 millioner kroner sidste år.</object>
+        </body>
+      </d:article>
+      <d:article>
+        <head>
+          <meta property="d:positionSection">2</meta>
+          <meta property="d:positionSequence">3</meta>
+          <meta property="d:proofReader">FLEMMING GERTZ</meta>
+          <meta property="d:destEdition">København</meta>
+          <meta property="d:destEdition">Jylland</meta>
+          <meta property="d:destEdition">Øerne</meta>
+          <!-- Replaced by mods stuff
+            <meta property="dc:copyright">Weekendavisen 2008</meta>
+            <meta property="dc:subject">LIT-KRITIKDEC</meta>
+            <meta property="dc:title">Kritik</meta>
+            <meta property="dc:date" datatype="xsd:date">04-12-2008</meta>
+          -->
+        </head>
+        <body>
+          <h>Kritik</h>
+          <p>Article content...</p>
+        </body>
+      </d:article>
+      <d:article>
+        <head>
+          <meta property="d:positionSection">2</meta>
+          <meta property="d:positionSequence">3</meta>
+          <meta property="d:proofReader">FLEMMING GERTZ</meta>
+          <meta property="d:destEdition">København</meta>
+          <meta property="d:destEdition">Jylland</meta>
+          <meta property="d:destEdition">Øerne</meta>
+          <!-- Replaced by mods stuff
+            <meta property="dc:copyright">Weekendavisen 2008</meta>
+            <meta property="dc:subject">LIT-KRITIKDEC</meta>
+            <meta property="dc:title">Fodnote</meta>
+            <meta property="dc:date" datatype="xsd:date">04-12-2008</meta>
+            <meta property="dc:identifier">160612</meta>
+          -->
+        </head>
+        <body>
+          <h>Fodnote</h>
+          <d:byline>Af Niels Barfoed</d:byline>
+          <p>Article content...</p>
+        </body>
+      </d:article>
+    </section>
+    <section>
+      <h>Kultur</h>
+      <d:article>
+        <head>
+          <meta property="d:positionSection">3</meta>
+          <meta property="d:positionSequence">1</meta>
+          <meta property="d:kicker">Excesser. Jeff Koons på Versailles. Hvad ville Solkongen mon
+            have syntes om det? Her er det ikke folket, men kunstneren, der har fortrængt kongen fra
+            piedestalen.</meta>
+          <meta property="d:proofReader">FLEMMING GERTZ</meta>
+          <meta property="d:destEdition">København</meta>
+          <meta property="d:destEdition">Jylland</meta>
+          <meta property="d:destEdition">Øerne</meta>
+          <!-- Replaced by mods stuff
+            <meta property="dc:copyright">Weekendavisen 2008</meta>
+            <meta property="dc:subject">KUL-KOONS</meta>
+            <meta property="dc:title">Dybt barokt</meta>
+            <meta property="dc:date" datatype="xsd:date">04-12-2008</meta>
+          -->
+        </head>
+        <body>
+          <h>Dybt barokt</h>
+          <d:byline>Af Anders Ehlers Dam</d:byline>
+          <p>Article content...</p>
+          <object src="pinkpanther.jpg">Jeff Koons: Pink Panther.</object>
+        </body>
+      </d:article>
+    </section>
+    <section>
+      <h>Bagsiden</h>
+      <d:article>
+        <head>
+          <meta property="d:positionSection">4</meta>
+          <meta property="d:positionSequence">1</meta>
+          <meta property="d:destEdition">København</meta>
+          <!-- Replaced by mods stuff
+            <meta property="dc:copyright">Weekendavisen 2008</meta>
+            <meta property="dc:subject">VEJR</meta>
+            <meta property="dc:title">Vejret for København</meta>
+            <meta property="dc:date" datatype="xsd:date">04-12-2008</meta>
+          -->
+        </head>
+        <body>
+          <h>Vejret for København</h>
+          <p>Regn de kommende dage</p>
+          <object src="prognose.jpg">Femdøgnsprognose</object>
+        </body>
+      </d:article>
+    </section>
+  </body>
+</html>

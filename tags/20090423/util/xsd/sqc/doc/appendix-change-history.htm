@@ -1,0 +1,267 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+       "http://www.w3.org/TR/html4/loose.dtd"> 
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META name="GENERATOR" content="IBM WebSphere Studio">
+<link href="main.css" rel=stylesheet type="text/css">
+<title>Change History</title>
+</head>
+<body>
+<h2><a name="Change History"></a>Change History</h2>
+
+<table cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td class="C1"><table width="100%" cellspacing=1 cellpadding=4>
+
+<tr class="C6">
+<th width="20%">Version</th>
+<th width="80%">Changes</th>
+</tr>
+<tr class="C6">
+<td>
+<center>2.2<p> July 14, 2003</center>
+</td>
+<td>
+<ol>
+ 
+ <li> SchemaQualityChecker conforms to <a href="http://www.w3.org/2001/05/xmlschema-errata">XML Schema errata</a> as of June 1, 2003 </li>
+  <li> SchemaQualityChecker is now using Apache's XERCES-J version 2.4.0 </li> 
+  <li> SchemaQualityChecker can now run on JRE 1.4 </li> 
+  <li> Fix a bug related to name collision in redefined schemas</li>
+  <li> Fix a bug occuring in XML Schema importing other schema with null target namespace</li>
+  <li> Fix other minor bugs </li>
+</ol>
+
+</td>
+</tr>
+
+
+<tr class="C6">
+<td>
+<center>2.1.1<p> August 29, 2002</center>
+</td>
+<td>
+<ol>
+ 
+  <li> SchemaQualityChecker is now using Apache's XERCES-J version 2.1 </li> 
+
+</ol>
+
+</td>
+</tr>
+
+
+<tr class="C6">
+<td>
+<center>2.1<p> August 21, 2002</center>
+</td>
+<td>
+<ol>
+ 
+ <li> Added the implementation of  <a href="http://www.w3.org/2001/05/xmlschema-errata"/>XML Schema errata</a> published on June 8, 2002 
+	
+ </li>
+ <li> Added two new command line options : <a href="use-commandline.htm#reportLocWithoutPath">reportLocWithoutPath</a> and <a href="use-commandline.htm#fullProcessingDescAxis">fullProcessingDescAxis</a> 
+ <li> Fixed  the following bugs:
+	<ul><li> name collisions wrongly reported in some redefined schemas</li></ul>
+	<ul><li> xml namespace and "xml:*" are now directly recognized by SQC </li></ul>
+	<ul><li> ##other and ##local wrongly considered to overlap  </li></ul> 
+	<ul><li> an error in the handling of references to components with no target namespace </li></ul> 
+	<ul><li> a case of type restriction not detected </li></ul> 
+ </li>
+ <li> A visual progress meter appears when SQC is used under Eclipse / WebSphere Studio Application Developer </li>
+ <li> SchemaQualityChecker is now using Apache's XERCES-J version 2.0.2 </li> 
+ <li> The structure of the readme file was reorganized </li>
+</ol>
+
+</td>
+</tr>
+
+
+
+
+
+<tr class="C6">
+<td>
+<center>2.0<p> February 8, 2002</center>
+</td>
+<td>
+<ol>
+ 
+<li> Added the following features :
+	<ul><li> validation of embedded schemas (see options "-emb", "-xform" and "-wsdl").</li></ul>
+	<ul><li> SQC as an Eclipse or WSAD plugin. </li></ul>
+ </li>
+ <li> Fixed bugs that affected schemas using these features:
+	<ul><li>Identity constraints ( &lt;unique&gt;, &lt;key&gt; and &lt;keyref&gt;): now a keyref can refer to a &lt;unique&gt; or &lt;key&gt;; problems with xpath expressions containing the ".//" axis have been fixed.</li></ul>
+	<ul><li> xml namespace and "xml:*" are now directly recognized by SQC </li></ul>
+	<ul><li> errors on attribute declarations, previously not detected by SQC, are now reported </li></ul> 
+	<ul><li> errors on model group definitions, previously not detected by SQC, are now reported </li></ul> 
+	
+ </li>
+ <li> <a href="../../com.ibm.etools.sketch.sqc/QualityCheckerAPI/index.html">QualityChecker API</a> has been updated.</li> 
+ <li> SchemaQualityChecker is now using Apache's XERCES-J version 2.0.0 </li> 
+</ol>
+
+</td>
+</tr>
+
+<tr class="C6">
+<td>
+<center>1.2.1.003<p>September 17, 2001</center>
+</td>
+<td>
+<ol>
+<li>Fixed bugs that affected schemas using these features:
+<ul><li>Identity constraints ( &lt;unique&gt;, &lt;key&gt; and &lt;keyref&gt;)</li></ul>
+<ul><li>&lt;all&gt; group is used when extending a base type which has an &lt;all&gt; group as part of its content model. This error
+was not detected by the previous version.</li></ul> 
+</li>
+<li>Improved error messages that affected schemas improperly using these features:
+<ul><li>Facets of simple types</li></ul>
+<ul><li>"default" or "fixed" value for an element or an attribute declaration</li></ul>
+<ul><li>Reference to a top level schema component ( in case the reference does not have a prefix)</li></ul>
+</li>
+<li>Performance improvement of reference resolution in  schemas with import statements</li>
+<li>SchemaQualityChecker is now using Apache's XERCES-J version 1.4.3.</li>
+</ol>
+
+</td>
+</tr>
+
+
+<tr class="C6">
+<td>
+<center>1.2.004<p>August 15, 2001</center>
+</td>
+<td>
+<ol>
+<li>SchemaQualityChecker is now using Apache's XERCES-J version 1.4.2.</li>
+<li>schemaAnalysis output now includes attribute 'requireEachDocumentValid'.  Corresponding change made to DTD and Stylesheet.
+The default behavior of the tool is now 'entireSchemaValid', which is a change from previous versions.
+QualityChecker API has a new method to support setting which behavior is wanted.
+</li>
+<li>XMLSchemaQualityCheckerErrorReport.xsd, which is the schema for the XML output
+produced by the tool, is now part of the distribution.</li>
+<li>
+Improved checking:
+<ol type="a">
+<li>When a string uses in &lt;enumeration value=&gt; or &lt;attribute default=&gt; does match a regular expression given
+in a pattern facet, a message is issued.</li>
+<li>Warnings are issued if length, minLength or maxLength facet is not compatible with the expression given in a pattern facet</li>
+<li>Identity-definition constraints checks improved</li>
+<li>Ambiguous content model checks improved</li>
+<li>Type refinement checks improved</li>
+<li>Named Model definition not in a top component detected</li>
+<li>Duplicate enumeration values detected</li>
+<li>If a reference is undefined, and no prefix was given, and the problem would go away if one namespace prefix
+had been used, that prefix is now identified.</li>
+<li>XPath expressions that contain '//' are checked</li>
+<li>better checking of enumeration and max or min values for double, float, dateTime, time</li>
+</ol>
+</li>
+<li>
+Former errors changed to warnings:
+<ol type="a">
+<li>relative URIs used in targetNamespace or in wildcards are flagged with warnings</li>
+</ol>
+</li>
+<li>
+Fixed bugs from the previous version:
+<ol type="a">
+<li>&lt;group&gt; as a particle in a complexType but which does not have the ref attribute is now flagged.</li>
+<li>Better handling of types derived by union</li>
+</ol>
+</ol>
+</td>
+</tr>
+<tr class="C6">
+<td>
+<center>1.1.85<p>June 27, 2001</center>
+</td>
+<td>
+<ol>
+<li>SchemaQualityChecker is now using Apache's XERCES-J version 1.4.0.</li>
+<li>
+Fixed bugs from the previous version:
+<ol type="a">
+<li> &lt;annotation&gt;s in &lt;union&gt;s used to generate an 'unknown exception in Xerces' error.
+</li>
+<li> The '.bat' files included in SQC's distribution package have been modified to prevent a problem that occured when using SQC with Windows 98 (or lower). The problem consisted in SQC trying to validate all files in a directory instead of only the specified files. 
+</li>
+<li> 'minOccurs' attribute in &lt;all&gt; elements can now take the value '0' without an error being reported. 
+</li>
+<li> &lt;annotation&gt; elements now accept the attribute 'id'.
+</li>
+<li> Unprefixed names in xpath attributes are now treated as unqualified names.  This brings checking of identity-constraint definitions into agreement with the XML Schema spec.
+</li>
+<li> Some cases where a complexType was derived from a parent complexType, where the parent had &lt;complexContent&gt; but the derived type had &lt;simpleContent&gt; were formerly flagged by SQC as illegal, due to ambiguities in the Schema spec.  Legal uses of this kind of derivation are now permitted.   
+</li>
+<li> Dynamic loading of SAX Parser in Solaris 2.7 warning message is now avoided.
+</li>
+<li> &lt;annotation&gt; may now appear in &lt;simpleContent&gt; and &lt;complexContent&gt;
+</li>
+<li> No error reported when top level (global) anonymous types or elements were used in a schema.
+</li>
+<li> Incorrect error when foreign characters appeared in XPath expressions.</li>
+<li> Problem reported when a child of &lt;documentation&gt; or &lt;appinfo&gt; uses the Schema namespace (http//www.w3.org/2001/XMLSchema)
+and this child element is not defined in the XML Schema Specification.
+</li>
+<li> Erratic behavior while validating complex types with mixed content.
+</li>
+<li> Some problems with the interaction between derived types using the min|max Include|Exclude facets and  the attribute "final" were not reported.
+</li>
+<li> Incorrect error issued when a simple type declared with &quot;final=restriction&quot; was used as the type of another component.
+</li>
+<li> Incorrect ambiguous content model with &lt;any namespace="##other"/&gt;.
+</li>
+<li> Small error in the validation of language tag values.
+</li>
+<li> No detection of an ambiguous content model if a locally defined element is used when extending a type that has &lt;any namespace="##other"/&gt;.
+</li>
+
+</ol>
+</ol>
+</td>
+</tr>
+
+<tr class="C6">
+<td>
+<center>1.0.17<p>May 21, 2001</center>
+</td>
+<td>
+<ol>
+<li> SchemaQualityChecker now checks Schemas compatible with the May 2 W3C Recommendation specification.
+</li>
+<li> Fixed bugs from the previous version:
+<ol type="a">
+<li> Invalid base64Binary values were not detected.
+</li>
+<li> Some invalid XPath expressions were not detected.
+</li>
+<li> Incorrectly reported an error with a chain of extensions followed by a restriction allowing some
+elements from several of the ancestor types.
+</li>
+<li> Some error messages for XPath expressions were improved.
+</li>
+<li> URIs starting with unusual schema names.
+</li>
+<li> Restriction checking flaw eliminated.
+</li>
+</ol>
+<li>
+Added checker to verify that identity constraint (Key, KeyRef and Unique) definitions are consistent with the type of the element declaration where they appear.
+</li>
+<li>
+The default stylesheet used to view the error reports was updated.
+</li>
+</ol>
+</td>
+</tr>
+</table></td>
+</tr>
+
+</table>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>Version history of the Descriptions profile</title>
+        <link rel="stylesheet" type="text/css" href="../../../../z3986-2012.css"/>
+    </head>
+    <body>
+        <h1><span class="titlesub">Version history of the</span><br/> Descriptions profile</h1>
+        <div class="version-info" id="v1.0">
+            <h2>Version 1.0 (2012-12-19)</h2>
+            <p>First public release.</p>
+            <p>This release incorporates the following changes:</p>
+            <ul>
+                <li>the profile has been updated to comply to the RDFa 1.1 Core October 20, 2012 Editor's Draft:
+                    <ul>
+                        <li>the default RDFa profile has been renamed the initial context document;</li>
+                        <li>context documents are now located in the <code>/context</code> subdirectory of <code>/vocab</code> (previously they were in <code>/profiles</code>);</li>
+                        <li>the <code>profile</code> attribute has been removed and replaced by a <code>meta</code> element for declaring the initial context document URI;</li>
+                    </ul>
+                </li>
+                <li>a special RDFa processing context has also been included for elements that represent self-contained documents (i.e., that have a metadata and body container). Metadata expressed without an <code>about</code> attribute now applies to the nearest container element. An implicit <code>about</code> attribute association is made between the <code>meta</code> element and the cotainer element.</li>
+                <li>the <code>ref</code> and <code>xlink:href</code> attributes have been added to the <code>quote</code> element to allow a citation to be directly referenced;</li>
+                <li>the <code>address</code> element has been added for physical and virtual addresses;</li>
+                <li>a Phrase variant of the <code>note</code> element was added to allow notes and annotations to fall between lines of verse and other phrase contexts;</li>
+                <li>the <code>rend:linebreak</code> element has been added;</li>
+                <li>the DIAGRAM <code>description</code> feature has been incorporated;</li>
+                <li>various minor documentation fixes.</li>
+            </ul>
+        </div>
+        <div class="version-info" id="v0.1">
+            <h2>Version 1.0</h2>
+            <p>First public review release. Changes prior to this version are available through the <a href="http://code.google.com/p/zednext/">working group source code repository</a>.</p>
+        </div>    
+        <div class="version-info" id="v0.1">
+            <h2>Version 0.1</h2>
+            <p>First public review release. Changes prior to this version are available through the <a href="http://code.google.com/p/zednext/">working group source code repository</a>.</p>
+        </div>    
+    </body>    
+</html>    

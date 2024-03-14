@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="xlink">The XLink attributes module</dcterms:title>
+      <dcterms:description>This module defines the {[[#xlink.attrib]]} attributes collection, as
+        defined by W3C [[#refXLink]].</dcterms:description>
+      <z:info>Compliant Z39.86-AI processing agents must comply to the
+        [[http://www.w3.org/TR/xlink11/#app-reqs-simple Simple Conformance]] definition in XLink.</z:info>
+      <z:info>Note also that in its default state, the {[[#xlink.attrib]]} attribute collection does not include
+        the {xlink:role} and {xlink:arcrole} attributes, as the functionality of these attributes is
+        covered by the globally available {[[#Rdfa.attrib]]} and {[[#z3986.role.attrib]]}.</z:info>
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}"/>
+      <dcterms:creator>Markus Gylling</dcterms:creator>
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:rights>Copyright 1998-2010 W3C (MIT, ERCIM, Keio), All Rights Reserved. Permission to
+        use, copy, modify and distribute the XLink schema and its accompanying documentation for any
+        purpose and without fee is hereby granted in perpetuity, provided that the above copyright
+        notice and this paragraph appear in all copies.</dcterms:rights>
+      <dcterms:rightsHolder>World Wide Web Consortium (http://www.w3.org)</dcterms:rightsHolder>
+      <dcterms:requires rdf:resource="z3986-datatypes.rng"/>
+    </rdf:Description>
+  </rdf:RDF>
+
+  <define name="xlink.href.attrib">
+    <attribute name="href" ns="http://www.w3.org/1999/xlink">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="xlink:href">The XLink {href} attribute</dcterms:title>
+          <dcterms:description>Identifies a link target with a URI</dcterms:description>
+          <dcterms:isRequiredBy rdf:resource="."/>
+          <z:context>{[[#z3986.ref]]}</z:context>
+          <z:content>{[[#URI.datatype]]}</z:content>
+        </rdf:Description>
+      </rdf:RDF>
+      <ref name="URI.datatype"/>
+      <!-- TODO if xlink 1.1 this is LEIRI -->
+    </attribute>
+  </define>
+
+  <define name="xlink.type.attrib">
+    <attribute name="type" ns="http://www.w3.org/1999/xlink">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="xlink:type">The XLink {type} attribute</dcterms:title>
+          <dcterms:description>Identifies the XLink link type</dcterms:description>
+          <z:context>Co-occuring with {[[#xlink.href.attrib]]}</z:context>
+          <z:info>In any Z39.86-AI profile and as defined by XLink
+            [[http://www.w3.org/TR/xlink11/#app-reqs-simple Simple Conformance]], the
+            xlink type {simple} is the implied xlink type, and does therefore not need to be
+            expressed literally using the {[[#xlink.type.attrib]]} attribute.</z:info>
+          <z:content>{'simple'}</z:content>
+        </rdf:Description>
+      </rdf:RDF>
+      <value>simple</value>
+      <a:documentation>The XLink simple link type</a:documentation>
+    </attribute>
+  </define>
+
+  <define name="xlink.role.attrib">
+    <attribute name="role" ns="http://www.w3.org/1999/xlink">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="xlink:role">The XLink {role} attribute</dcterms:title>
+          <dcterms:description>Identifies the XLink role of the link</dcterms:description>
+          <z:context>Co-occuring with {[[#xlink.href.attrib]]}</z:context>
+          <z:content>{[[#URI.datatype]]}</z:content>
+        </rdf:Description>
+      </rdf:RDF>
+      <ref name="URI.datatype"/>
+    </attribute>
+  </define>
+
+  <define name="xlink.arcrole.attrib">
+    <attribute name="arcrole" ns="http://www.w3.org/1999/xlink">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="xlink:arcrole">The XLink {arcrole} attribute</dcterms:title>
+          <dcterms:description>Identifies the XLink arcrole of the link</dcterms:description>
+          <z:context>Co-occuring with {[[#xlink.href.attrib]]}</z:context>
+          <z:content>{[[#URI.datatype]]}</z:content>
+        </rdf:Description>
+      </rdf:RDF>
+      <ref name="URI.datatype"/>
+    </attribute>
+  </define>
+
+  <define name="xlink.title.attrib">
+    <attribute name="title" ns="http://www.w3.org/1999/xlink">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="xlink:title">The XLink {title} attribute</dcterms:title>
+          <dcterms:description>Identifies the XLink title of the link.</dcterms:description>
+          <z:context>Co-occuring with {[[#xlink.href.attrib]]}</z:context>
+          <z:content>{text}</z:content>
+        </rdf:Description>
+      </rdf:RDF>
+      <ref name="Characters.datatype"/>
+    </attribute>
+  </define>
+
+  <define name="xlink.show.attrib">
+    <attribute name="show" ns="http://www.w3.org/1999/xlink">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="xlink:show">The XLink {show} attribute</dcterms:title>
+          <dcterms:description>Identifies the XLink show behavior of the link</dcterms:description>
+          <z:context>Co-occuring with {[[#xlink.href.attrib]]}</z:context>
+          <z:content>{'new' | 'replace' | 'embed' | 'other' | 'none'}</z:content>
+        </rdf:Description>
+      </rdf:RDF>
+      <ref name="xlink.show.enumeration"/>
+    </attribute>
+  </define>
+
+  <define name="xlink.show.enumeration">
+    <choice>
+      <value>new</value>
+      <a:documentation>An application traversing to the ending resource should load it in a new
+        window, frame, pane, or other relevant presentation context.</a:documentation>
+      <value>replace</value>
+      <a:documentation>An application traversing to the ending resource should load the resource in
+        the same window, frame, pane, or other relevant presentation context in which the starting
+        resource was loaded.</a:documentation>
+      <value>embed</value>
+      <a:documentation>An application traversing to the ending resource should load its presentation
+        in place of the presentation of the starting resource.</a:documentation>
+      <value>other</value>
+      <a:documentation>The behavior of an application traversing to the ending resource is
+        unconstrained by XLink. The application should look for other markup present in the link to
+        determine the appropriate behavior.</a:documentation>
+      <value>none</value>
+      <a:documentation>The behavior of an application traversing to the ending resource is
+        unconstrained by this specification. No other markup is present to help the application
+        determine the appropriate behavior.</a:documentation>
+    </choice>
+  </define>
+
+  <define name="xlink.actuate.attrib">
+    <attribute name="actuate" ns="http://www.w3.org/1999/xlink">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="xlink:actuate">The XLink {actuate} attribute</dcterms:title>
+          <dcterms:description>Identifies the XLink actuate behavior of the
+            link</dcterms:description>
+          <z:context>Co-occuring with {[[#xlink.href.attrib]]}</z:context>
+          <z:content>{'onLoad' | 'onRequest' | 'other' | 'none'}</z:content>
+        </rdf:Description>
+      </rdf:RDF>
+      <ref name="xlink.actuate.enumeration"/>
+    </attribute>
+  </define>
+
+  <define name="xlink.actuate.enumeration">
+    <choice>
+      <value>onLoad</value>
+      <a:documentation>An application should traverse to the ending resource immediately on loading
+        the starting resource.</a:documentation>
+      <value>onRequest</value>
+      <a:documentation>An application should traverse from the starting resource to the ending
+        resource only on a post-loading event triggered for the purpose of
+        traversal.</a:documentation>
+      <value>other</value>
+      <a:documentation>The behavior of an application traversing to the ending resource is
+        unconstrained by this specification. The application should look for other markup present in
+        the link to determine the appropriate behavior.</a:documentation>
+      <value>none</value>
+      <a:documentation>The behavior of an application traversing to the ending resource is
+        unconstrained by this specification. No other markup is present to help the application
+        determine the appropriate behavior.</a:documentation>
+    </choice>
+  </define>
+
+  <define name="xlink.attrib">
+    <rdf:RDF>
+      <rdf:Description>
+        <dcterms:title z:short="xlink.attrib">The {XLink} attributes</dcterms:title>
+        <dcterms:description>The W3C [[#refXLink]] attributes
+          collection.</dcterms:description>
+        <dcterms:isRequiredBy rdf:resource="."/>
+        <z:context>{[[#z3986.ref]]}</z:context>
+        <z:content>{xlink.href.attrib, xlink.type.attrib?, xlink.title.attrib?, xlink.show.attrib?,
+          xlink.actuate.attrib?}</z:content>
+      </rdf:Description>
+    </rdf:RDF>
+    <interleave>
+      <ref name="xlink.href.attrib"/>
+      <optional>
+        <ref name="xlink.type.attrib"/>
+      </optional>
+      <optional>
+        <ref name="xlink.title.attrib"/>
+      </optional>
+      <optional>
+        <ref name="xlink.show.attrib"/>
+      </optional>
+      <optional>
+        <ref name="xlink.actuate.attrib"/>
+      </optional>
+    </interleave>
+  </define>
+
+</grammar>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z3986 Structural Module</x:h1>
+  <x:p>This module is a Z3986 revised version of the XHTML2 Structural module</x:p>
+    
+  <include href="xhtml-structural-2.rng">
+        
+    <!-- remove address -->
+    <define name="xhtml.address">
+      <notAllowed/>
+    </define>
+    
+    <!-- strictify section -->
+    <define name="xhtml.section.content">
+      <ref name="xhtml.section.strict.model"/>
+    </define>
+    
+    <!-- strictify blockcode -->
+    <define name="xhtml.blockcode.content">
+	  <choice>
+        <ref name="xhtml.Text.model"/>
+        <oneOrMore>
+		  <ref name="xhtml.div" />
+        </oneOrMore>		      	
+      </choice>
+    </define>
+
+    <!-- strictify blockquote -->
+	<define name="xhtml.blockquote.content">
+	  <ref name="xhtml.Flow.model"/>
+	</define>      
+
+
+    <!-- add @cite from hypertext to blockquote -->
+    <define name="xhtml.blockquote.attlist" combine="interleave">
+	  <optional>
+	    <ref name="xhtml.cite.attrib"/>
+	  </optional>  
+    </define>
+    
+    <!-- strictify p, add exclusive slot -->
+    <define name="xhtml.p.content">
+      <choice>
+      	<ref name="xhtml.Text.model"/>
+      	<oneOrMore>
+      	  <ref name="z3986.p.choice.extra.class"/>
+      	</oneOrMore>  
+      </choice>
+    </define>
+        
+    <!-- redefine flow model,
+      provide a slot for contributing more exclusive choices -->
+    <define name="xhtml.Flow.model">      
+        <choice>          
+            <oneOrMore>
+              <ref name="xhtml.Structural.nosection.class"/>
+              <ref name="xhtml.Text.model"/>              
+            </oneOrMore>            
+            <oneOrMore>     
+              <ref name="z3986.Flow.choice.extra.class"/>
+            </oneOrMore>  
+        </choice>      
+    </define>
+        
+  </include>
+  
+  <!-- define a strict section model -->      
+  <define name="xhtml.section.strict.model">  	              
+    <ref name="xhtml.section.strict.prehead.extra"/>              	    
+    <ref name="xhtml.Heading.class" />
+    <interleave>
+      <ref name="xhtml.section.strict.posthead.extra"/>
+      <zeroOrMore>
+        <ref name="xhtml.Structural.class"/>
+      </zeroOrMore>
+    </interleave>  
+  </define>
+           
+  <define name="xhtml.section.strict.prehead.extra">      
+    <notAllowed/>      
+  </define>
+  
+  <define name="xhtml.section.strict.posthead.extra">
+    <notAllowed/>
+  </define>
+
+  
+  <!-- define a 'loose' section, not requiring initial heading -->
+  <x:div id="z3986.section.loose">
+    <x:p class="description">
+      <x:em>Description: to be written ...</x:em>
+      <x:strong>(@id="z3986.section.loose" in file z3986-xhtml-structural.rng)</x:strong>
+    </x:p>
+    <x:h2>Use of this element</x:h2>
+    <x:p>
+      <x:em>More info: to be written ...</x:em>
+      <x:strong>(@id="z3986.section.loose" in file z3986-xhtml-structural.rng)</x:strong>
+    </x:p>
+  </x:div>
+  <define name="z3986.section.loose">
+    <element name="section">
+      <ref name="xhtml.section.attlist"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="xhtml.section.strict.prehead.extra"/>
+        </choice>
+      </zeroOrMore>      
+      <optional>
+        <ref name="xhtml.Heading.class"/>
+      </optional>
+      <oneOrMore>
+        <choice>          
+          <ref name="xhtml.Structural.nosection.class"/>
+          <ref name="z3986.section.loose"/>
+        </choice>
+      </oneOrMore>
+    </element>  
+  </define>
+  
+  <!-- allow contributions to the list of exclusive choices in
+  	the redefined xhtml.Flow.model -->  
+  <define name="z3986.Flow.choice.extra.class">
+    <notAllowed/>
+  </define>
+
+  <!-- allow contributions to the list of exclusive choices in
+  	the paragraph model -->    
+  <define name="z3986.p.choice.extra.class">
+    <notAllowed/>
+  </define>
+    
+  <!-- contribute to the object innermost model which is specialized -->
+  <define name="z3986.object.content.structural.class" combine="choice">    
+    <choice>
+    	<ref name="xhtml.p"/>
+    	<ref name="xhtml.div"/>
+    	<ref name="xhtml.blockcode"/>
+    </choice>    
+  </define>
+
+    
+</grammar>  

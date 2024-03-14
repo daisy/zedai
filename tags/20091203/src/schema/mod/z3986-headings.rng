@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+ xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>The Z3986 headings module</x:h1>
+
+  <div>
+    <x:h2>The h element</x:h2>
+    <x:div id="z3986.h">
+      <x:p class="description">
+        The <x:code>h</x:code> element represents a structural heading.
+      </x:p>
+    </x:div>
+    
+    <define name="z3986.h">
+      <element name="h">        
+        <ref name="h.attlist"/>
+        <ref name="h.content"/>  
+      </element>    
+    </define>
+    
+    <define name="h.attlist">
+      <ref name="z3986.Structural.attrib" />
+    </define>
+    
+    <define name="h.content">      
+      <oneOrMore>
+        <choice>
+          <text/>
+          <ref name="h.content.class"/>          
+        </choice>
+      </oneOrMore>                      
+    </define>  
+    
+    <define name="h.content.class" combine="choice">
+      <ref name="z3986.Text.class"/>   
+    </define>
+    
+  </div>
+  
+  <div>
+    <x:h2>The hpart element</x:h2>
+    <x:div id="z3986.hpart">
+      <x:p class="description">
+        The <x:code>hpart</x:code> element represents a segment of a structural heading.
+      </x:p>
+    </x:div>
+    
+    <define name="z3986.hpart">
+      <element name="hpart">        
+        <ref name="hpart.attlist"/>
+        <ref name="hpart.content"/>  
+      </element>     
+    </define>
+    
+    <define name="hpart.attlist">
+      <ref name="z3986.Text.attrib"/>
+    </define>
+    
+    <define name="hpart.content">
+      <ref name="z3986.Text.model"/>
+    </define>
+    
+    <define name="h.content.class" combine="choice">
+      <ref name="z3986.hpart"/>   
+    </define>
+    
+  </div>
+  
+  <div>
+    <x:h2>The h element - default content model contribution</x:h2>
+    
+    <define name="z3986.section.strict.head.slot" combine="interleave">
+      <ref name="z3986.h" />
+    </define>
+    
+    <!-- note: we dont contribute h to Structural.class in order
+      to allow profile or context local restrictions on its use (such as one per section,
+      and placement)-->  
+    
+    <!-- contribute h to the extra class of the default section -->
+    <define name="z3986.section.extra" combine="interleave">
+      <optional>
+        <ref name="z3986.h" />
+      </optional>
+    </define>
+       
+  </div>
+
+  <div>
+    <x:h2>The hd element</x:h2>
+    <x:div id="z3986.hd">
+      <x:p class="description">The <x:code>hd</x:code> element represents a free-floating
+        heading that is not associated with the hierarchical structure of the document. <x:br/>
+        The <x:code>for</x:code> attribute may be used to associate a <x:code>hd</x:code> with
+        a construct that it is a heading for.
+      </x:p>
+    </x:div>
+
+    <define name="z3986.hd">
+      <element name="hd">
+        <ref name="z3986.hd.attlist"/>
+        <ref name="z3986.hd.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.hd.attlist" combine="interleave">
+      <ref name="z3986.Structural.attrib"/>
+      <optional>
+        <ref name="z3986.for.attrib"/>
+      </optional>  
+    </define>
+
+    <define name="z3986.hd.content" combine="choice">
+      <ref name="z3986.Text.model"/>
+    </define>
+
+  </div>
+
+  <div>
+    <x:h2>The hd element - default content model contributions</x:h2>
+
+    <define name="z3986.Structural.class" combine="choice">
+      <ref name="z3986.hd"/>
+    </define>
+
+    <!-- contribute to tocentry sub which is specialized -->
+    <define name="z3986.tocentry.sub.class" combine="choice">
+      <ref name="z3986.hd"/>
+    </define>
+
+  </div>
+
+</grammar>

@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+       "http://www.w3.org/TR/html4/loose.dtd"> 
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META name="GENERATOR" content="IBM WebSphere Studio">
+<link href="main.css" rel=stylesheet type="text/css">
+<title>Download</title>
+</head>
+<body>
+<h2><a name="Download"></a>Download</h2>
+<h3><a name="Windows"></a>Windows 32-bit</h3>
+<ul>
+<li> Download SQC2.2.zip and unzip it (we hereafter call <i>SchemaQualityCheckerDir</i> the directory where SQC2.2.zip has been unzipped)</li>
+<li> Go to Command Prompt and run SchemaQualityChecker.bat using
+the following syntax:<br>
+&nbsp;&nbsp;SchemaQualityChecker [<i>-options</i>] <i>file1 file2 file3 ... fileN</i><br>
+(See section "<a href="use-commandline.htm">Command line parameters</a>"
+for more details)</li>
+<li> As a convenience, it is also permissible to use SQC:<br>
+&nbsp;&nbsp;SQC [<i>-options</i>] <i>file1 file2 file3 ... fileN</i></li>
+<li> The order in which the jar files are specified
+in the classpath declaration affects the behavior of the tool.
+When running SQC without using the bat files provided, the jar
+files in the classpath declaration should follow this order:<br>
+&nbsp;&nbsp;<i>SchemaQualityCheckerDir</i>; xmlParserAPIs.jar; xercesImpl.jar; xschemaREC.jar; xml4j.jar; mofrt.jar; regex4j.jar; mail.jar .
+</li>
+</ul>
+<h3><a name="Linux"></a>Linux</h3>
+<p> The application has not been formally tested in a Linux
+environment. However, we have received reports that it works fine if
+you add in your classpath all the jar files located in SQC2.2.zip
+and also the directory <i>SchemaQualityCheckerDir</i> where SQC
+was unzipped.</p>
+<p>A Linux shell script, named <i>SQC.sh</i> has been included in
+the distribution package. It has been tested in RedHat Linux 7.1
+using IBM's JDK.</p>
+<p>The order in which the jar files used by SQC are specified
+in the classpath declaration affects the behavior of the tool.
+When running SQC without using the scripts provided, the jar
+files in the classpath declaration should follow this order:<br>
+&nbsp;&nbsp;<i>SchemaQualityCheckerDir</i>; xmlParserAPIs.jar; xercesImpl.jar;
+xschemaREC.jar; xml4j.jar; mofrt.jar.</p>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<head>
+    <mods xmlns="http://www.loc.gov/mods/v3" version="3.3">
+        <titleInfo>
+            <title>World Cultures and Geography</title>
+        </titleInfo>
+
+        <name>
+            <namePart>Sarah Witham Bednarz</namePart>
+            <role>
+                <roleTerm type="text">author</roleTerm>
+            </role>
+        </name>
+
+        <name>
+            <namePart>Inés M. Miyares</namePart>
+            <role>
+                <roleTerm type="text">author</roleTerm>
+            </role>
+        </name>
+
+        <name>
+            <namePart>Mark C. Schug</namePart>
+            <role>
+                <roleTerm type="text">author</roleTerm>
+            </role>
+        </name>
+
+        <name>
+            <namePart>Charles S. White</namePart>
+            <role>
+                <roleTerm type="text">author</roleTerm>
+            </role>
+        </name>
+
+        <originInfo>
+            <publisher>DAISY Consortium</publisher>
+            <dateCreated>2005-01-14</dateCreated>
+            <version>3</version>
+            <dateModified>2005-07-27</dateModified>
+        </originInfo>
+
+        <relatedItem type="origin">
+            <originInfo>
+                <publisher>McDougal Littell</publisher>
+                <place>Evanston, Illinois</place>
+                <dateCreated>2003</dateCreated>
+            </originInfo>
+
+            <physicalDescription>
+                <form>Hardcover print</form>
+            </physicalDescription>
+        </relatedItem>
+
+        <identifier type="uid">daisy-dtbook2005-exemplar-01</identifier>
+        <identifier type="isbn10">0618168419</identifier>
+
+        <typeOfResource>text</typeOfResource>
+
+        <subject>Geography</subject>
+
+        <language>en</language>
+
+        <note type="description">Culture and geography textbook for highschool</note>
+    </mods>
+</head>

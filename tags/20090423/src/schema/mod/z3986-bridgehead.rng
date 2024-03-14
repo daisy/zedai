@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+	xmlns:x="http://www.w3.org/1999/xhtml">
+
+    <x:h1>The Z3986 Bridgehead module</x:h1>
+
+  <div>
+    <x:h2>The bridgehead element</x:h2>      
+    <x:div id="z3986.bridgehead">
+        <x:p class="description">The <x:code>bridgehead</x:code> element represents a free-floating 
+        heading that is not associated with the hierarchical structure of the document.
+        <x:br/> 
+        <x:code>bridgehead</x:code> should be used only when it is clear that use of 
+        the structural heading (<x:code>h</x:code>) is not appropriate.
+        </x:p>
+    </x:div>
+    
+    <define name="z3986.bridgehead" ns="http://www.daisy.org/ns/z3986/2008/">
+      <element name="bridgehead">
+        <ref name="z3986.bridgehead.attlist" />
+        <ref name="z3986.bridgehead.content" />
+      </element>
+    </define>
+
+    <define name="z3986.bridgehead.attlist" combine="interleave">
+        <ref name="xhtml.Common.attrib"/>
+    </define>		
+    
+	<define name="z3986.bridgehead.content" combine="choice">
+        <ref name="xhtml.Text.model"/>
+    </define>
+    
+  </div>
+  
+  <div>
+    <x:h2>The bridgehead element - content model contributions</x:h2>
+    
+    <!-- main contribution to xhtml.Structural.nosection.class --> 	 
+    <define name="xhtml.Structural.nosection.class" combine="choice">
+	  <ref name="z3986.bridgehead"/>
+	</define>
+	
+    <!-- contribute to the object innermost model which is specialized -->
+	<define name="z3986.object.content.structural.class" combine="choice">	  
+	  <ref name="z3986.bridgehead"/>	  
+	</define>
+			
+	<!-- contribute to tocentry sub which is specialized -->	
+	<define name="z3986.tocentry.sub.class" combine="choice">
+	  <ref name="z3986.bridgehead"/>
+	</define>
+	
+  </div>
+  	
+</grammar>

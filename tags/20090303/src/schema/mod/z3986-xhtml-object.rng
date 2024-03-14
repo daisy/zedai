@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z3986 Object Module</x:h1>
+  <x:p>This module is a wrapper around the XHTML2 Object Module.</x:p>
+  <x:p>It introduces the following major changes: </x:p>
+  <x:ul>
+  	<x:li>Tighten up content model of Object</x:li>
+  </x:ul>
+  
+  <!-- TODO: SCH: innermost of nested objects has text -->
+  
+  <!-- broken out to a module instead of in driver in order to 
+  		allow reuse between profiles -->
+
+  	<include href="xhtml-object-2.rng">
+
+    <define name="object">
+      <element name="object">
+        <ref name="object.attlist"/>
+        <optional>
+          <ref name="caption"/>
+        </optional>
+        <optional>
+          <ref name="standby"/>
+        </optional>
+        <zeroOrMore>
+          <ref name="param"/>
+        </zeroOrMore>
+        <!-- <ref name="Flow.model"/> -->
+        <ref name="Text.model"/>
+      </element>
+    </define>
+      
+  </include>  
+
+  <include href="xhtml-param-2.rng"/>
+
+  <include href="xhtml-embed-attrib-2.rng">
+      <!-- dont contribute embed to Common -->
+      <define name="Common.attrib" combine="interleave">
+    	<empty/>
+  	  </define>
+  </include>
+  
+  <!-- ... but contribute to object attlist --> 
+  <define name="object.attlist" combine="choice">
+    <ref name="Embedding.attrib"/>
+  </define>
+  
+  <!-- Allow object in block context -->
+  <define name="Structural.extra" combine="choice">
+    <ref name="object"/>
+  </define>
+  
+  <!-- Allow object in Text.reduced.class  
+  <define name="Text.reduced.class" combine="choice">
+    <ref name="object"/>
+  </define>
+  -->
+    
+</grammar>  

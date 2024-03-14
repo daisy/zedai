@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 Embedding attributes module</x:h1>
+    
+  <div>
+    <x:h2>The src attribute</x:h2>    
+    <x:div id="z3986.src.attrib">
+      <x:p>The <x:code>src</x:code> attribute... TODO (@id="z3986.TEMPLATE.attrib" in file z3986-TEMPLATE.attrib.rng) </x:p>       
+    </x:div>
+         
+    <define name="z3986.src.attrib">
+      <attribute name="src">        
+        <ref name="src.attrib.content"/>  
+      </attribute>    
+    </define>
+
+    <define name="src.attrib.content">
+      <ref name="URI.datatype"/>
+    </define>  
+    
+  </div>  
+  
+  <div>
+    <x:h2>The srctype attribute</x:h2>    
+    <x:div id="z3986.src.attrib">
+      <x:p>The <x:code>srctype</x:code> attribute... TODO (@id="z3986.TEMPLATE.attrib" in file z3986-TEMPLATE.attrib.rng) </x:p>       
+    </x:div>
+         
+    <define name="z3986.srctype.attrib">
+      <attribute name="srctype">        
+        <ref name="srctype.attrib.content"/>  
+      </attribute>    
+    </define>
+
+    <define name="srctype.attrib.content">
+      <ref name="ContentType.datatype"/>
+      <!-- TODO allow enumeration of allowed contenttypes, per profile -->
+    </define>  
+    
+  </div>  
+ 
+  <div>
+    <x:h2>The Embedding attributes collection - initial class declarations</x:h2>
+   
+    <define name="z3986.Embed.attrib" combine="interleave">
+      <ref name="z3986.src.attrib"/>
+      <optional>
+        <ref name="z3986.srctype.attrib"/>
+      </optional>      
+    </define>
+ 
+  </div>
+      
+</grammar>

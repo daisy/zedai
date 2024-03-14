@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    ns="http://www.daisy.org/z3986/2005/ncx/"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="target">The target module</title>
+        <annotation annotates="/">
+            <para role="desc-main">
+                This module defines the {target} element for referencing locations
+                in the content.
+            </para>
+            <para role="desc-sub">
+                Two variants of the {target} element are available: one for use building simple
+                lists of navigation points and a second for use in hierarchical tree structures.
+            </para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="ncx-attrib.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <author>
+            <personname>Matt Garrish</personname>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>
+                This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is 
+                available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">
+                    http://creativecommons.org/licenses/by/3.0/</link>
+            </para>
+            <para>
+                Full permission is granted to re-use this module and its associated documentation in any way 
+                and for any purpose provided the DAISY copyright notice and link to the Creative Commons license 
+                are retained. Modifications to the source are permitted so long as the author clearly indicates that 
+                the module is a derivation of the original.
+            </para>
+            <para>
+                The copyright holders make no representations about the suitability of this module for any purpose.
+                The module is provided "as is" without warranty of any kind, expressed or implied.
+            </para>
+            <para>
+                The Z3986 Advisory Committee is responsible for the maintenance of this module. All questions,
+                suggestions, bugs and other issues related to this module should be direct to the Committee. 
+                Contact information is available from the DAISY website at 
+                <link xlink:href="http://www.daisy.org">www.daisy.org</link>.
+            </para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2010-08-01</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    
+    <!-- TODO SCH no labels with same xml lang -->
+    
+    <define name="ncx.target.list">
+        <element name="target">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="target (list)">The {target} element (List)</title>
+                <para role="desc-main">The {target} element represents a single navigation target.</para>
+                <para role="desc-sub">
+                    The {List} variant is an adaptation for flattened lists of navigation points and does
+                    not allow the nesting of child {target} elements.
+                </para>
+                <para role="desc-sub">
+                    The required {[[#ncx.href.attrib]]} attribute expresses the navigation point as a URI by default.
+                </para>
+                <synopsis role="def-context">{[[#ncx.navmap]], [[#ncx.navlist]]}</synopsis>
+                <synopsis role="def-content">{[[#ncx.label]]*}</synopsis>
+                <synopsis role="def-attlist">{[[#ncx.href.attrib]]}, {[[#ncx.targetRole.attrib]]}?</synopsis>
+            </annotation>
+            <ref name="ncx.target.attlist"/>
+            <ref name="ncx.target.list.content"/>
+        </element>
+    </define>
+    
+    <define name="ncx.target.tree">
+        <element name="target">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="target (tree)">The {target} element (Tree)</title>
+                <para role="desc-main">The {target} element represents a single navigation target.</para>
+                <para role="desc-sub">
+                    The {Tree} variant is an adaptation for heirarchical lists of navigation points. It allows
+                    the nesting of child {target} elements to represent the various levels of navigation.
+                </para>
+                <para role="desc-sub">
+                    The required {[[#ncx.href.attrib]]} attribute expresses the navigation point as a URI by default.
+                </para>
+                <synopsis role="def-context">{[[#ncx.navmap]]}</synopsis>
+                <synopsis role="def-content">{[[#ncx.label]]*, [[#ncx.target.tree]]*}</synopsis>
+                <synopsis role="def-attlist">{[[#ncx.href.attrib]]}, {[[#ncx.targetRole.attrib]]}?</synopsis>
+            </annotation>
+            <ref name="ncx.target.attlist"/>
+            <ref name="ncx.target.tree.content"/>
+        </element>
+    </define>
+    
+    <define name="ncx.target.attlist" combine="interleave">                   
+        <ref name="ncx.Common.attrib"/>
+        <ref name="ncx.href.attrib"/>
+        <optional>
+            <ref name="ncx.targetRole.attrib"/>
+        </optional>    
+    </define>
+    
+    <define name="ncx.href.attrib">
+        <attribute name="href">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="href">The {href} attribute</title>
+                <para role="desc-main">The {href} attribute contains the actual link expression of its target.</para>
+                <para role="desc-sub">The default datatype of this attribute is xsd:anyURI. NCX Profile composers may override 
+                    this datatype.</para>
+                <synopsis role="def-context">{[[#ncx.target.tree]]}, {[[#ncx.target.list]]}</synopsis>
+                <synopsis role="def-content">[[http://www.daisy.org/z3986/2011/auth/cm/#URI.datatype URI]]</synopsis>
+            </annotation>
+            <ref name="ncx.target.href.attrib.content" />
+        </attribute>    
+    </define>    
+    
+    <define name="ncx.target.href.attrib.content">
+        <ref name="URI.datatype" />
+    </define>    
+            
+    <define name="ncx.target.list.content">
+        <ref name="ncx.target.label.slot"/>
+    </define>
+    
+    <define name="ncx.target.tree.content">
+        <ref name="ncx.target.label.slot"/>        
+        <zeroOrMore>
+            <ref name="ncx.target.tree" />
+        </zeroOrMore>
+    </define>
+    
+    <define name="ncx.target.label.slot">
+        <notAllowed />
+    </define>
+   
+</grammar>

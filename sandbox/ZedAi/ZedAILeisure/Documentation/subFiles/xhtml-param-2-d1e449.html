@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Relax NG schema module</title>
+      <link rel="stylesheet" type="text/css" href="../css/ProfileDocumentation.css" />
+   </head>
+   <body>
+      <h1 class="title">The DAISY Leisure Profile</h1>
+      
+      
+      <h1 id="d30e3" class="xhtml">Param Module</h1>
+      
+      
+      
+      <h2 id="d30e8" class="xhtml">The param element</h2>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">param</span>
+         
+         <div class="rng"><span class="rng">element</span>: <span class="name">param</span>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="param.attlist.html">param.attlist</a></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">param.attlist</span>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="id.attrib.html">id.attrib</a></div>
+            
+         </div>
+         
+         <div class="rng"><span class="rng">attribute</span>: <span class="name">name</span></div>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">value</span></div>
+            
+         </div>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">valuetype</span>
+               
+               <div class="rng"><span class="rng">choice</span>:  A choice between at least one of:
+                  			
+                  
+                  <div class="rng"><span class="rng">value</span>: data
+                  </div>
+                  
+                  <div class="rng"><span class="rng">value</span>: ref
+                  </div>
+                  
+                  <div class="rng"><span class="rng">value</span>: object
+                  </div>
+                  
+               </div>
+               
+            </div>
+            
+         </div>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">type</span>
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="ContentTypes.datatype.html">ContentTypes.datatype</a></div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      
+   </body>
+</html>

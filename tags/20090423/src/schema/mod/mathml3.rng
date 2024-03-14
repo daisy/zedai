@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+      This is the Mathematical Markup Language (MathML) 3.0, an XML
+      application for describing mathematical notation and capturing
+      both its structure and content.
+  
+      Copyright 1998-2008 W3C (MIT, ERCIM, Keio)
+  
+      Use and distribution of this code are permitted under the terms
+      W3C Software Notice and License
+      http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
+  
+  
+      Revision:   $Id: mathml3.rng,v 1.3 2008/11/15 22:00:48 dcarlis Exp $
+  
+     Update to MathML3 and Relax NG: David Carlisle and Michael Kohlhase
+-->
+<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns="http://relaxng.org/ns/structure/1.0">
+  <include href="mathml3-strict.rng">
+    <a:documentation>the core, strict Content MathML</a:documentation>
+  </include>
+  <include href="mathml3-pragmatic.rng">
+    <a:documentation>Content Expressions now allow pMathML in ci and csymbol</a:documentation>
+  </include>
+  <include href="mathml3-presentation.rng">
+    <a:documentation>Presentation Expressions allow Content Expressions mixed in everywhere</a:documentation>
+  </include>
+  <include href="mathml3-cds-pragmatic.rng">
+    <a:documentation>include the relevant content dictionaries</a:documentation>
+  </include>
+  <include href="mathml3-deprecated.rng">
+    <a:documentation>deprecated constucts</a:documentation>
+  </include>
+  <define name="ContInPres" combine="choice">
+    <ref name="ContExp"/>
+  </define>
+</grammar>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="I18n">The I18n module</title>
+        <annotation annotates="/" condition="required">
+            <para role="desc-main">This module defines the [[#xml.lang.attrib]], [[#its.dir.attrib]] and [[#its.translate.attrib]] attributes that constitute the I18n (Internationalization) attributes collection that is available for all elements in a profile's core markup model.</para>
+            <para role="desc-sub">The I18n attributes are all optional, but the module activation process provides a mechanism to require some or all of the attributes locally or globally.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3986-datatypes.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <legalnotice>
+            <para>Copyright 1998-2008 W3C (MIT, ERCIM, Keio), All Rights Reserved. Permission to use, copy, modify and distribute the ITS schema and its accompanying documentation for any purpose and without fee is hereby granted in perpetuity, provided that the above copyright notice and this paragraph appear in all copies.</para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2012-12-19</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="xml.lang.attrib" xml:id="xml.lang.attrib">
+            <attribute name="xml:lang">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="xml:lang">The {xml:lang} attribute</title>
+                    <para role="desc-main">The {xml:lang} attribute identifies the natural or formal language in which the content is written.</para>
+                    <para role="desc-sub">The semantics of this attribute are defined by [[#refXML]]. Refer to [[http://www.w3.org/TR/REC-xml/#sec-lang-tag Language Identification]] for more information.</para>
+                    <synopsis role="def-context">[[#z3986.I18n.attrib]]</synopsis>
+                    <synopsis role="def-content">[[#LanguageIdentifier.datatype]]</synopsis>
+                </annotation>
+                <ref name="xml.lang.attrib.content"/>
+            </attribute>
+        </define>
+        <define name="xml.lang.attrib.content" combine="choice">
+            <choice>
+                <ref name="LanguageIdentifier.datatype"/>
+            </choice>
+        </define>
+    </div>
+    <div>
+        <define name="its.dir.attrib" xml:id="its.dir.attrib">
+            <attribute name="dir" ns="http://www.w3.org/2005/11/its">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="its:dir">The {its:dir} attribute</title>
+                    <para role="desc-main">The {its:dir} attribute specifies the base writing direction of the content.</para>
+                    <para role="desc-sub">If omitted, the implicit value {ltr} (left-to-right) is assumed.</para>
+                    <para role="desc-sub">The semantics of this attribute are defined by [[#refITS]]. Refer to [[http://www.w3.org/TR/its/#directionality Directionality]] for more information.</para>
+                    <synopsis role="def-context">[[#z3986.I18n.attrib]]</synopsis>
+                    <synopsis role="def-content">{"ltr" | "rtl" | "lro" | "rlo"}</synopsis>
+                </annotation>
+                <ref name="its.dir.attrib.content"/>
+            </attribute>
+        </define>
+        <define name="its.dir.attrib.content" xml:id="its.dir.attrib.content">
+            <choice>
+                <value>ltr</value>
+                <a:documentation>The writing direction is left-to-right. This is the implicit value of this attribute.</a:documentation>
+                <value>rtl</value>
+                <a:documentation>The writing direction is right-to-left.</a:documentation>
+                <value>lro</value>
+                <a:documentation>The writing direction is left-to-right override.</a:documentation>
+                <value>rlo</value>
+                <a:documentation>The writing direction is right-to-left override.</a:documentation>
+            </choice>
+        </define>
+    </div>
+    <div>
+        <define name="its.translate.attrib" xml:id="its.translate.attrib">
+            <attribute name="translate" ns="http://www.w3.org/2005/11/its">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="its:translate">The {its:translate} attribute</title>
+                    <para role="desc-main">The {its:translate} attribute indicates whether the content of an element is translatable or not.</para>
+                    <para role="desc-sub">If omitted, the implicit value {yes} is assumed.</para>
+                    <para role="desc-sub">The semantics of this attribute are defined by [[#refITS]]. Refer to [[http://www.w3.org/TR/its/#trans-datacat Translate]] for more information.</para>
+                    <synopsis role="def-context">[[#z3986.I18n.attrib]]</synopsis>
+                    <synopsis role="def-content">{"yes" | "no"}</synopsis>
+                </annotation>
+                <ref name="its.translate.attrib.content"/>
+            </attribute>
+        </define>
+        <define name="its.translate.attrib.content" xml:id="its.translate.attrib.content">
+            <choice>
+                <value>yes</value>
+                <a:documentation>The content is translatable. This is the default value of this attribute.</a:documentation>
+                <value>no</value>
+                <a:documentation>The content is not translatable.</a:documentation>
+            </choice>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.I18n.attrib" combine="interleave">
+            <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="z3986.I18n.attrib">The I18n attributes collection</title>
+                <para role="desc-main">A set of attributes, initially consisting of the [[#xml.lang.attrib]], [[#its.dir.attrib]] and [[#its.translate.attrib]] attributes.</para>
+            </annotation>
+            <optional>
+                <ref name="xml.lang.attrib"/>
+            </optional>
+            <optional>
+                <ref name="its.dir.attrib"/>
+            </optional>
+            <optional>
+                <ref name="its.translate.attrib"/>
+            </optional>
+            <ref name="z3986.I18n.extern.attrib"/>
+        </define>
+        <define name="z3986.I18n.extern.attrib" combine="interleave">
+            <a:documentation>A pattern for external (to this module) contributions to the z3986.I18n.attrib pattern.</a:documentation>
+            <empty/>
+        </define>
+        <define name="z3986.I18n.attrib.xml.lang.required" combine="interleave">
+            <a:documentation>A convenience pattern.</a:documentation>
+            <ref name="xml.lang.attrib"/>
+            <optional>
+                <ref name="its.dir.attrib"/>
+            </optional>
+            <optional>
+                <ref name="its.translate.attrib"/>
+            </optional>
+            <ref name="z3986.I18n.extern.attrib"/>
+        </define>
+    </div>
+</grammar>

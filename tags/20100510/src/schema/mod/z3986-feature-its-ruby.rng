@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  ns="http://www.w3.org/2005/11/its"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="ruby">The ITS Ruby Feature</dcterms:title>
+      <dcterms:description>Provides support for Ruby Annotation markup as defined in the W3C
+        [[http://www.w3.org/TR/its/ Internationalization Tag Set (ITS) Version 1.0]].</dcterms:description>
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}"/>
+      <dcterms:creator>Markus Gylling</dcterms:creator>
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:rights>Copyright 1998-2008 W3C (MIT, ERCIM, Keio), All Rights Reserved. Permission to
+        use, copy, modify and distribute the ITS schema and its accompanying documentation for any
+        purpose and without fee is hereby granted in perpetuity, provided that the above copyright
+        notice and this paragraph appear in all copies.</dcterms:rights>
+      <dcterms:rightsHolder>World Wide Web Consortium (http://www.w3.org)</dcterms:rightsHolder>
+      <dcterms:requires rdf:resource="z3986-datatypes.rng"/>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng"/>
+    </rdf:Description>
+  </rdf:RDF>
+  
+  <div xml:id="its-ruby">
+    <define name="its-ruby">
+      <element name="ruby">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="its:ruby">The {its:ruby} element</dcterms:title>
+            <dcterms:description>The container for ruby markup declarations.</dcterms:description>
+            <z:info>The {its:ruby} element contains either [[http://www.w3.org/TR/ruby/#simple-ruby1 simple]] or
+              [[http://www.w3.org/TR/ruby/#complex complex]] ruby markup.</z:info>
+            <z:info>Refer to [[http://www.w3.org/TR/its/#ruby-annotation ITS Ruby]] for further
+              information.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>{[[#z3986.Text.class]]}</z:context>
+            <z:content>{([[#its-rb]], ([[#its-rt]] | ([[#its-rp]], [[#its-rt]], [[#its-rp]]))) |
+              ([[#its-rbc]], [[#its-rtc]], [[#its-rtc]]?)}</z:content>
+            <z:attlist>{[[#z3986.Phrase.attrib]]}</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <a:documentation>Ruby markup.</a:documentation>
+        <ref name="its-ruby.content"/>
+        <ref name="its-ruby.attlist"/>
+      </element>
+    </define>
+    
+    <define name="its-ruby.content">
+      <choice>
+        <ref name="its-ruby.content.simple"/>
+        <ref name="its-ruby.content.complex"/>
+      </choice>
+    </define>
+    
+    <define name="its-ruby.content.simple">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="ruby.simple">Simple Ruby</dcterms:title>
+          <dcterms:description>Simple ruby markup.</dcterms:description>
+          <z:content>{[[#its-rb]], ([[#its-rt]] | ([[#its-rp]], [[#its-rt]],
+            [[#its-rp]]))}</z:content>
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>
+      <ref name="its-rb"/>
+      <choice>
+        <ref name="its-rt"/>
+        <group>
+          <ref name="its-rp"/>
+          <ref name="its-rt"/>
+          <ref name="its-rp"/>
+        </group>
+      </choice>
+    </define>
+    
+    <define name="its-ruby.content.complex">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="ruby.complex">Complex Ruby</dcterms:title>
+          <dcterms:description>Complex ruby markup.</dcterms:description>
+          <z:content>{[[#its-rbc]], [[#its-rtc]], [[#its-rtc]]?}</z:content>
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>
+      <ref name="its-rbc"/>
+      <ref name="its-rtc"/>
+      <optional>
+        <ref name="its-rtc"/>
+      </optional>
+    </define>
+    
+    <define name="its-ruby.attlist">
+      <ref name="its-ruby.Common.attrib"/>
+    </define>
+    
+  </div>
+  
+  <div xml:id="its-rb">
+    <define name="its-rb">
+      <element name="rb">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="its:rb">The {its:rb} element</dcterms:title>
+            <dcterms:description>Contains the base text.</dcterms:description>
+            <z:info>Refer to [[http://www.w3.org/TR/its/#ruby-annotation ITS Ruby]] for further
+              information.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>{[[#its-ruby]]} and {[[#its-rbc]]}</z:context>
+            <z:content>{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</z:content>
+            <z:attlist>{[[#z3986.Phrase.attrib]]}</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="its-rb.content"/>
+        <ref name="its-rb.attlist"/>
+        <sch:rule context="its:rb">
+          <sch:assert test="not(descendant::its:ruby)">The {its:rb} element must not contain
+            {its:ruby} descendants.</sch:assert>
+        </sch:rule>
+      </element>
+    </define>
+    
+    <define name="its-rb.content">
+      <ref name="z3986.Phrase.Text.mix.model"/>
+    </define>
+    
+    <define name="its-rb.attlist">
+      <ref name="its-ruby.Common.attrib"/>
+    </define>
+  </div>
+  
+  <div xml:id="its:rt">
+    <define name="its-rt">
+      <element name="rt">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="its:rt">The {its:rt} element</dcterms:title>
+            <dcterms:description>Contains the ruby text.</dcterms:description>
+            <z:info>Refer to [[http://www.w3.org/TR/its/#ruby-annotation ITS Ruby]] for further
+              information.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>{[[#its-ruby]]} and {[[#its-rtc]]}</z:context>
+            <z:content>{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</z:content>
+            <z:attlist>{[[#z3986.Phrase.attrib]], [[#its.rbspan.attrib]]?}</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="its-rt.content"/>
+        <ref name="its-rt.attlist"/>
+        <sch:rule context="its:rt">
+          <sch:assert test="not(descendant::its:ruby)">The {its:rt} element must not contain
+            {its:ruby} descendants.</sch:assert>
+        </sch:rule>
+      </element>
+    </define>
+    
+    <define name="its-rt.content">
+      <ref name="z3986.Phrase.Text.mix.model"/>
+    </define>
+    
+    <define name="its-rt.attlist">
+      <ref name="its-ruby.Common.attrib"/>
+      <optional>
+        <ref name="its.rbspan.attrib"/>
+      </optional>
+    </define>
+    
+    <define name="its.rbspan.attrib">
+      <attribute name="rbspan">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="rbspan">The {rbspan} attribute</dcterms:title>
+            <dcterms:description>Allows an {its:rt} element to span multiple {its:rb} elements in
+              [[http://www.w3.org/TR/ruby/#complex complex ruby markup]].</dcterms:description>
+            <z:info>If omitted, the implicit value {1} is assumed..</z:info>
+            <z:info>Refer to [[http://www.w3.org/TR/its/#ruby-annotation ITS Ruby]] for further
+              information.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>{[[#its-rt]]}</z:context>
+            <z:content>{[[#NonNegativeInteger.datatype]]}</z:content>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="NonNegativeInteger.datatype"/>
+        <sch:rule context="its:rt[@rbspan]">
+          <sch:assert test="not(parent::its:ruby)">The {rbspan} attribute must not be used on the
+            {its:rt} element in simple ruby markup.</sch:assert>
+        </sch:rule>
+      </attribute>
+    </define>
+  </div>
+  <div xml:id="its-rbc">
+    <define name="its-rbc">
+      <element name="rbc">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="its:rbc">The {its:rbc} element</dcterms:title>
+            <dcterms:description>Container for {its:rb} elements in [[http://www.w3.org/TR/ruby/#complex
+              complex ruby markup]].</dcterms:description>
+            <z:info>Refer to [[http://www.w3.org/TR/its/#ruby-annotation ITS Ruby]] for further
+              information.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>{[[#its-ruby]]}</z:context>
+            <z:content>{[[#its-rb]])+}</z:content>
+            <z:attlist>{[[#z3986.Phrase.attrib]]}</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="its-rbc.content"/>
+        <ref name="its-rbc.attlist"/>
+      </element>
+    </define>
+    
+    <define name="its-rbc.content">
+      <oneOrMore>
+        <ref name="its-rb"/>
+      </oneOrMore>
+    </define>
+    
+    <define name="its-rbc.attlist">
+      <ref name="its-ruby.Common.attrib"/>
+    </define>
+  </div>
+  <div xml:id="its-rtc">
+    <define name="its-rtc">
+      <element name="rtc">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="its:rtc">The {its:rtc} element</dcterms:title>
+            <dcterms:description>Container for {its:rt} elements in [[http://www.w3.org/TR/ruby/#complex
+              complex ruby markup]].</dcterms:description>
+            <z:info>Refer to [[http://www.w3.org/TR/its/#ruby-annotation ITS Ruby]] for further
+              information.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>{[[#its-ruby]]}</z:context>
+            <z:content>{[[#its-rt]]+}</z:content>
+            <z:attlist>{[[#z3986.Phrase.attrib]]}</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="its-rtc.content"/>
+        <ref name="its-rtc.attlist"/>
+      </element>
+    </define>
+    
+    <define name="its-rtc.content">
+      <oneOrMore>
+        <ref name="its-rt"/>
+      </oneOrMore>
+    </define>
+    
+    <define name="its-rtc.attlist">
+      <ref name="its-ruby.Common.attrib"/>
+    </define>
+  </div>
+  
+  <div xml:id="its-rp">
+    <define name="its-rp">
+      <element name="rp">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="its:rp">The {its:rp} element</dcterms:title>
+            <dcterms:description>Ruby text beginning and end marker</dcterms:description>
+            <z:info>This element is used in the case of [[http://www.w3.org/TR/ruby/#simple-ruby1 simple ruby
+              markup]] to specify characters that denote the beginning and end of ruby text when
+              user agents do not have other ways to present ruby text distinctively from the base
+              text.</z:info>
+            <z:info>Refer to [[http://www.w3.org/TR/its/#ruby-annotation ITS Ruby]] for further
+              information.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>{[[#its-ruby]]}</z:context>
+            <z:content>{text}</z:content>
+            <z:attlist>{[[#z3986.Phrase.attrib]]}</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="its-rp.content"/>
+        <ref name="its-rp.attlist"/>
+      </element>
+    </define>
+    
+    <define name="its-rp.content">
+      <ref name="Characters.datatype"/>
+    </define>
+    
+    <define name="its-rp.attlist">
+      <ref name="its-ruby.Common.attrib"/>
+    </define>
+  </div>
+  
+  <define name="its-ruby.Common.attrib" combine="interleave">
+    <ref name="z3986.Phrase.attrib"/>
+  </define>
+  
+  <div>
+    <a:documentation>ITS Ruby Feature - default content model contribution</a:documentation>
+    <define name="z3986.Text.contrib.class">   
+      <ref name="its-ruby"/>
+    </define>
+  </div>
+     
+</grammar>

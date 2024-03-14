@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 Core attributes module</x:h1>
+    
+  <div>
+    <x:h2>The xml:id attribute</x:h2>
+    <x:div id="xml.id">
+      The <x:code>xml:id</x:code> attribute specifies a 
+      document-wide <x:em>unique identifier</x:em> of the element. <x:br/>
+      Consult <x:a href="http://www.w3.org/TR/xml-id/">xml:id Version 1.0</x:a> 
+      for further information. 
+    </x:div>
+              
+    <define name="xml.id.attrib">
+      <attribute name="xml:id">
+        <ref name="ID.datatype"/>
+      </attribute>
+    </define>
+    
+  </div>  
+  
+  <div>
+    <x:h2>The xml:id attribute - default content model contribution</x:h2>
+    
+    <define name="z3986.Core.attrib" combine="interleave">
+      <optional>
+        <ref name="xml.id.attrib"/>
+      </optional>  
+    </define>
+  </div>
+  
+  <div>
+    <x:h2>The xml:space attribute</x:h2>    
+    <x:div id="xml.space">    
+      The <x:code>xml:space</x:code> attribute is used to signal an intention 
+      that element white space should be preserved by applications.
+      <x:br/>
+      If not specified, the default value "default" is assumed.
+      <x:br/>
+      Consult <x:a href="http://www.w3.org/TR/2006/REC-xml-20060816/#sec-white-space">
+      Extensible Markup Language (XML) 1.0</x:a> for further information. 
+    </x:div>
+         
+    <define name="xml.space.attrib">
+      <attribute name="xml:space">        
+        <ref name="xml.space.attrib.content"/>
+      </attribute>    
+    </define>
+
+    <define name="xml.space.attrib.content">
+      <choice>    
+        <value>default</value>
+        <value>preserve</value>
+      </choice>
+    </define>  
+    
+  </div>  
+  
+  <div>
+    <x:h2>The xml:space attribute - default content model contribution</x:h2>
+    
+    <define name="z3986.Core.attrib" combine="interleave">
+      <optional>
+        <ref name="xml.space.attrib"/>
+      </optional>  
+    </define>
+        
+  </div>  
+  
+  
+  <div>
+    <x:h2>The xml:base attribute</x:h2>    
+    <x:div id="xml.base">    
+      The <x:code>xml:base</x:code> attribute is used to specify a base URI other 
+      than the base URI of the document or external entity.
+      <x:br/>
+      Consult <x:a href="http://www.w3.org/TR/xmlbase/">
+      XML Base</x:a> for further information. 
+    </x:div>
+         
+    <define name="xml.base.attrib">
+      <attribute name="xml:base">        
+        <ref name="xml.base.attrib.content"/>
+      </attribute>    
+    </define>
+
+    <define name="xml.base.attrib.content">
+      <ref name="URI.datatype"/>
+    </define>  
+    
+  </div>  
+  
+  <div>
+    <x:h2>The xml:base attribute - default content model contribution</x:h2>
+    
+    <define name="z3986.Core.attrib" combine="interleave">
+      <optional>
+        <ref name="xml.base.attrib"/>
+      </optional>  
+    </define>
+        
+  </div>
+  
+  <div>
+    <x:h2>The class attribute</x:h2>
+    <x:div id="z3986.class.attrib">
+      The Z39.86 <x:code>class</x:code> attribute inherits all fundamental 
+      properties of the XHTML <x:code>class</x:code> attribute. It is 
+      used for arbitrary grouping or classification of elements, usable for 
+      example in the context of 
+      <x:a href="http://www.w3.org/Style/CSS/">CSS styling</x:a>. 
+      <x:br/>  
+      <x:em>The class attribute is <x:strong>not</x:strong> used to inflect 
+      semantics on the content of elements.</x:em>
+    </x:div>
+         
+    <define name="z3986.class.attrib">
+      <attribute name="class">
+        <ref name="NMTOKENS.datatype"/>
+      </attribute>    
+    </define>
+    
+  </div>  
+  
+  <div>
+    <x:h2>The class attribute - default content model contribution</x:h2>
+    
+    <define name="z3986.Core.attrib" combine="interleave">
+      <optional>
+        <ref name="z3986.class.attrib"/>
+      </optional>  
+    </define>
+        
+  </div>
+  
+  <div>
+    <x:h2>The for attribute</x:h2>    
+    <x:div id="z3986.for.attrib">
+      <x:p>The <x:code>for</x:code> attribute provides a generic mechanism to establish 
+        a relationship between elements using the IDREFS datatype.</x:p>       
+    </x:div>
+    
+    <define name="z3986.for.attrib">
+      <attribute name="for">        
+        <ref name="for.attrib.content"/>  
+      </attribute>    
+    </define>
+    
+    <define name="for.attrib.content">
+      <ref name="IDREFS.datatype"/>    
+    </define>  
+    
+  </div>
+  
+  <div>
+    <x:h2>The Core attributes collection - initial class declarations</x:h2>
+    
+    <define name="z3986.Core.attrib" combine="interleave">
+      <ref name="z3986.Core.contrib.attrib"/>
+    </define>
+    
+    <define name="z3986.Core.contrib.attrib" combine="interleave">
+      <empty/>
+    </define>
+    
+  </div>
+  
+  <div>
+    <x:h2>The Core attributes collection - default content model contribution</x:h2>
+      
+    <define name="z3986.Text.attrib" combine="interleave">
+      <optional>
+        <ref name="z3986.Core.attrib"/>
+      </optional>
+    </define>
+    
+    <define name="z3986.Structural.attrib" combine="interleave">
+      <optional>
+        <ref name="z3986.Core.attrib"/>
+      </optional>  
+    </define>
+    
+  </div>
+</grammar>

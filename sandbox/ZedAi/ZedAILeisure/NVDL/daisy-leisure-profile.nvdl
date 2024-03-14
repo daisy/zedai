@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rules xmlns="http://purl.oclc.org/dsdl/nvdl/ns/structure/1.0"
+       startMode="root">
+
+  <!--  This example is intended to demonstrate how to
+        use NVDL to describe compound document constraints wthout
+	touching the (sub)schemas that are not DAISYs own.
+
+	It validates against the canonical W3C XHTML2 RNG, and expresses
+	further constraints (in the example, only one h per section) on 
+	the XHTML2 model using Schematron. It allows daisy pagenums to 
+	occur as children of xhtml:section and xhtml:p.
+  -->
+
+  <mode name="root">
+    <namespace ns="http://www.w3.org/2002/06/xhtml2/">
+      <validate schema="./daisy-xhtml2.sch">
+	<context path="section|p" useMode="body" />
+      </validate>
+      <validate schema="../../w3c/rng/xhtml2.rng"> 
+	<context path="section|p" useMode="body" />
+      </validate>
+    </namespace>
+  </mode>
+
+  <mode name="body">		   
+    <namespace ns="http://www.daisy.org/ns/z3986/2008/">
+
+      <validate schema="daisy-pagenum.rng" /> 
+    </namespace>
+  </mode>
+
+</rules>

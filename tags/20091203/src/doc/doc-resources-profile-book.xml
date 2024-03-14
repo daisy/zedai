@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="docResources.rng" type="xml"?>
+<docResources xmlns="http://www.daisy.org/ns/z3986/2008/docResources/">
+
+  <include subDrURI="doc-resources-common.xml" />
+  <include subDrURI="doc-resources-feature-mathml.xml" />
+  <include subDrURI="doc-resources-feature-ssml.xml" />
+  <include subDrURI="doc-resources-feature-ruby.xml" />
+  <include subDrURI="doc-resources-feature-select.xml" />
+  <include subDrURI="doc-resources-feature-forms.xml" />
+  <include subDrURI="doc-resources-feature-rend.xml" />
+
+  <namespace nsURI="http://www.daisy.org/z3986/2010/" feature="no"
+    defaultDocURL="http://www.daisy.org/z3986/2010/auth/profiles/book/">
+    <element name="head" descriptionURI="../schema/mod/z3986-document.rng#z3986.head"
+      shortSampleURI="./additional-doc-prose/book-profile.html#head-short"
+      descriptionInclude="yes"/>
+    <element name="body" descriptionURI="../schema/mod/z3986-document.rng#z3986.body"
+      shortSampleURI="./additional-doc-prose/book-profile.html#body-short"
+      descriptionInclude="yes"/>
+    <element name="cover" descriptionURI="../schema/mod/z3986-cover.rng#z3986.cover"
+      descriptionInclude="yes"/>
+    <element name="frontcover" descriptionURI="../schema/mod/z3986-cover.rng#z3986.frontcover"
+      descriptionInclude="yes"/>
+    <element name="backcover" descriptionURI="../schema/mod/z3986-cover.rng#z3986.backcover"
+      descriptionInclude="yes"/>
+    <element name="spine" descriptionURI="../schema/mod/z3986-cover.rng#z3986.spine"
+      descriptionInclude="yes"/>
+    <element name="flaps" descriptionURI="../schema/mod/z3986-cover.rng#z3986.flaps"
+      descriptionInclude="yes"/>
+    <element name="frontmatter" descriptionURI="../schema/mod/z3986-book.rng#z3986.frontmatter"
+      descriptionInclude="yes"/>
+    <element name="section" context="frontmatter"
+      descriptionURI="../schema/mod/z3986-book.rng#z3986.section.frontmatter"
+      descriptionInclude="yes"/>
+    <element name="backmatter" descriptionURI="../schema/mod/z3986-book.rng#z3986.backmatter"
+      descriptionInclude="yes"/>
+    <element name="bodymatter" descriptionURI="../schema/mod/z3986-book.rng#z3986.bodymatter"
+      descriptionInclude="yes"/>
+    <element name="pageref" descriptionURI="../schema/mod/z3986-toc.rng#z3986.tocpageref"
+      descriptionInclude="yes" />
+    <element name="toc" descriptionURI="../schema/mod/z3986-toc.rng#z3986.toc"
+      descriptionInclude="yes"/>
+    <element name="tocentry" descriptionURI="../schema/mod/z3986-toc.rng#z3986.tocentry"
+      descriptionInclude="yes" />
+    <element name="label" context="tocentry"
+      descriptionURI="../schema/mod/z3986-toc.rng#z3986.toclabel"
+      descriptionInclude="yes"/>
+  </namespace>
+
+</docResources>

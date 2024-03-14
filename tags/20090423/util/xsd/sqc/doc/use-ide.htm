@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+       "http://www.w3.org/TR/html4/loose.dtd"> 
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="main.css" rel=stylesheet type="text/css">
+<title>SQC as an Eclipse/WSAD</title>
+</head>
+<body>
+<img src="images/validate.jpg" width="274" height="550" align="right"/>
+<h2><a name="SQC as an Eclipse/WSAD"></a>SchemaQualityChecker as an Eclipse/WSAD Plugin</h2>
+<p>Install SQC as an <a href="http://www.eclipse.org"  target="_top"/>Eclipse</a> or
+<a href="http://www.ibm.com/software/ad/studioappdev/"  target="_top"/>WSAD</a>
+plugin as indicated at <a href="setup-install.htm">Installing
+SchemaQualityChecker as an Eclipse or WSAD Plugin</a>.</p>
+<p>Start Eclipse or WSAD. If you select one or more .xsd files
+and right click, the pop-up menu will show an item "Validate
+with SQC".  Click on this item and SchemaQualityChecker will start
+validating the selected schema files.</p>
+</p>After all the files have been processed, SchemaQualityChecker
+will create new directories called "SchemaAnalysis" in directories
+where the input schemas are located. "SchemaAnalysis" directories
+contain an error report file for each input schema. For more
+information see <a href="use-ide-output.htm">Eclipse/WSAD Output</a>.</p>
+<p><b>Notes:</b>
+<ol>
+<li>You can select one or more .wsdl files, or one or more .xfm
+files, and right click.  The pop-up menu will show an item "Validate
+with SQC".  Click on this item and SchemaQualityChecker will start
+validating the schemas inside the selected files.</li>
+<li>You can select one or more files with a given extension (.xsd
+.wsdl or .xfm) and right click to get the pop-up menu showing
+"Validate with SQC".</li>
+<li>To process files with other extensions, see
+<a href="use-ide-extensions.htm">Extending SQC Plugin to handle
+other extensions</a>.</li>
+<li>The pop-up menu for a file ending with extension
+.err.xml, .warn.xml or .clean.xml  will contain an action called
+"Revalidate with SQC".</li>
+</ol>
+</p>
+</body>
+</html>

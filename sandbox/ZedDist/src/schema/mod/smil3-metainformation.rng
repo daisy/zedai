@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+            
+    <div>
+        <define name="smil3.head.content" combine="interleave">
+            <zeroOrMore>
+                <ref name="smil3.meta"/>
+            </zeroOrMore>
+        </define>
+        <define name="smil3.Core.attrib">
+            <optional>
+                <ref name="smil3.label.attrib"/>
+            </optional>    
+        </define>    
+    </div>
+
+    <div>
+        <define name="smil3.meta">
+            <element name="meta">
+                <ref name="smil3.meta.attlist"/>
+                <empty/>
+            </element>
+        </define>
+
+        <define name="smil3.meta.attlist" combine="interleave">
+            <attribute name="name"/>
+            <attribute name="content"/>
+            <ref name="smil3.Core.attrib"/>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.label.attrib">            
+            <!-- Q: "specifies the name" s/b specifies the URI? -->
+            <!-- TODO define a schema for label-SMIL at Z3986 level -->
+            <attribute name="label">
+                <a:documentation>The label attribute specifies the name of a SMIL presentation that may
+                    be referenced by the user agent to provide additional information on the element to
+                    which this attribute is attached.</a:documentation>
+                <ref name="URI-SMIL.datatype"/>
+            </attribute>
+        </define>
+    </div>
+
+</grammar>

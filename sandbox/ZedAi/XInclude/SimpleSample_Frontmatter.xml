@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="file:/G:/eclipseProjects/zednext-trunk/build/z3986a-simplebook/z3986a-simplebook.rng" type="xml"?>
+ <!--
+     Sample ZedAI simple profile document using XInclude:  front matter chunk
+     jpritchett@rfbd.org
+     12 Jan 2009
+ -->
+ <!-- Namespaces are declared here so that this chunk can be edited by itself -->
+ <d:frontmatter xmlns="http://www.w3.org/2002/06/xhtml2/" xmlns:d="http://www.daisy.org/ns/z3986/2008/" xmlns:book="http://www.daisy.org/z3986/taxonomies/book#" xml:lang="en">
+            <section>
+                <h>About the author</h>
+                <p>Frederick P. Brooks, Jr., is Kenan Professor of Computer Science at the University of North Carolina at Chapel Hill. . . .</p>
+            </section>
+            <section role="book:titlepage">
+                <h>The Mythical Man-Month</h>
+                <h>Essays on Software Engineering</h>
+                <h>Anniversary Edition</h>
+                <d:creator>Frederick P. Brooks, Jr.</d:creator>
+                <p>University of North Carolina at Chapel Hill</p>
+                <d:publisher>Addison-Wesley</d:publisher>
+            </section>
+        </d:frontmatter>
+        

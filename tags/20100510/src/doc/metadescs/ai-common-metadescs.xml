@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="ai-metadescs.rng" type="xml"?>
+
+<article
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    
+    <title>ZedAI Element Meta Shared Descriptions</title>
+    
+    
+    
+    <!--
+                    ANNOTATION
+    -->
+    
+    <section about="z3986.annotation">
+        <para role="desc">
+            The {annotation} element represents an annotation that 
+            an author, editor, publisher, republisher, or other individual or agency has added to a document.
+        </para>
+        <para role="info">The {[[#z3986.ref.attrib]]} attribute identifies the specific element(s) being annotated by referencing
+            their {xml:id} values.</para>
+        <para role="info">All {annotation} elements must reference at least one element in a document. For annotations that apply to 
+            more than one element, use a space-separated list of {xml:id} values.</para>
+    </section>
+    
+    
+    
+    <!--
+                    CAPTION
+    -->
+    
+    <section about="z3986.caption">
+        <para role="desc">
+            The {caption} element represents a short explanation or description accompanying
+            a component of a publication. Captions most often occur in conjunction with illustrations, 
+            photographs, tables and diagrams.
+        </para>
+        <para role="info">The {[[#z3986.ref.attrib]]} attribute identifies the component(s) to which the
+            caption applies.</para>
+    </section>
+    
+    
+    
+    <!--
+                    CODE
+    -->
+    
+    <section about="z3986.code">
+        <para role="desc">
+            The {code} element is intended for general instances of code as found in
+            works of fiction and similar non-technical documents, which
+            includes computer programming code, commands and command input/output 
+            as well as representations of numeric and text coding systems, such as Morse code.
+        </para>
+        <para role="info">
+            For computer programming
+            books, manuals and specifications, specializing the {code} element or using
+            a computer markup feature is recommended.
+        </para>
+    </section>
+    
+    
+    <!--
+                    ITEM
+    -->
+    
+    <section about="z3986.list.item">
+        <para role="desc">
+            The {item} element represents a single item in a list.
+        </para>
+    </section>
+    
+    
+    <!--
+                    LIST
+    -->
+    
+    <section about="z3986.list">
+        <para role="desc">
+            The {list} element represents a simple list of items, either ordered or unordered.
+        </para>
+        <para role="info">
+            The optional {type} attribute specifies the HTML-style ordered and unordered nature of the list.
+            If omitted, the value {unordered} is assumed.
+        </para>
+        <para role="info">
+            By default, an unordered list is prefixed by bullets and an ordered list by numeric values.
+            To change this behavior, refer to the {rend:prefix} attribute.
+        </para>
+        <para role="info">The {list} element is not intended to structure semantically meaningful set of entries as found in indexes,
+            bibliographies and glossaries.</para>
+    </section>
+    
+    
+    <!--
+                    OBJECT
+    -->
+    
+    <section about="z3986.object">
+            <para role="desc">
+                The {object} element contains a reference to an external resource,
+                such a a graphic or video. 
+            </para>
+        
+            <para role="info">The formal behavior of the {object} element is defined by {[[http://www.w3.org/TR/xhtml11 XHTML 1.1]]}.</para>
+            <para role="info">The referenced resource may be an image, video, XML text, or other content, but its media type must be 
+                supported by the current profile and features in use. The optional {srctype} 
+                attribute carries an enumeration of the allowed media types.</para>
+        
+    </section>
+    
+    
+    <!--
+                    QUOTE
+    -->
+    
+    <section about="z3986.quote">
+        <para role="desc">The {quote} element represents a quotation from a real or fictitious source.</para>
+        
+        <para role="info">The {[[#z3986.role.attrib]]} attribute optionally expresses the semantic nature of the quote. For example, adding the value 
+                'epigraph' would indicate the quote represents an epigraph for the document or section it belongs to.</para>
+        
+    </section>
+    
+
+    <!--
+                    VERSE
+    -->
+    
+    <section about="z3986.verse">
+            <para role="desc">
+                The {verse} element represents a non-prose passage such as a poem, song, hymn etc., with
+                or without metrical structure.
+            </para>
+        
+    </section>
+    
+</article>

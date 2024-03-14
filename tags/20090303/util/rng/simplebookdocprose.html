@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Profile Documentation: The DAISY Leisure Profile</title>
+      <link rel="stylesheet" type="text/css" href="rng-doc.css" />
+   </head>
+   <body>
+      <!-- HOW TO MARKUP DOCUMENTATION PROSE IN THIS DOCUMENT
+         Each piece of documentation must be placed in an
+         element with an id attribute with a value that corresponds with the fragment value of the docURI attribute
+         of the relevant attribute or element in the documentation resource file (docResource.xml).
+         
+         All children of such an element will be copied over
+         to the schema documentation file, and will constitute the main documentation of that element/attribute.
+         
+         Note that any children carrying a class attribute with the value "description" will not be copied.
+         Such elements should only be used for documentation of elements in the profile, and should give a very short description of 
+         the purpose of that element.
+         
+         -->
+     
+      <!-- ATTRIBUTES -->
+      <div id="a-pagenum-value">
+         <p>The <span class="markup">value</span> attribute is used to hold information about the
+            numbering of <strong>the page following immediately after the page break.</strong>. The
+            attribute value is not restricted to a numeric value, but may be any string. </p>
+      </div>
+      <div id="a-noteref-ref">
+         <p>The <span class="markup">ref</span> attribute is used to link the note reference to the
+            note. The attribute value must be identical to the <span class="markup">xml:id</span>
+            attribute value of the corresponding note. </p>
+      </div>
+      <div id="a-pageref-ref">
+         <p><em>More info; to be written ... (@id=a-pageref-ref)</em></p>
+      </div>
+
+      <!-- ELEMENTS -->
+      <div id="noteref-noteref">
+         <p class="description"><em>Description: to be written ...</em> <strong>(@id="noteref-noteref")</strong></p>
+         <h2>Use of this element</h2>
+         <p>This element is used to place a note marker in the text.</p>
+      </div>
+      <div id="pagebreak-pagebreak">
+         <p class="description">A pagebreak in paper based information</p>
+         <h2  class="test" id="test">Use of this element</h2>
+         <p>For markup of a printed book, it is often useful or neccesary to retain information
+            about where in the text the actual pagebreaks occur. The <span class="markup"
+               >pagebreak</span> element can be used for this purpose. </p>
+         <p> The optional <span class="markup">value</span> attribute can be used to hold
+            information about the page number of the page following the pagebreak. Note that this
+            attribute may contain any string, not just an arabic number.</p>
+         <h2>Examples</h2>
+         <h3>Example 1</h3>
+         <pre>
+   &lt;p&gt;
+      "He has never since been what he might have been," said Mr. Jarndyce, "and now you
+      see him in his age with no one near him &lt;d:pagebreak /&gt;but his servant and his little yellow 
+      friend.  It's your throw, my dear!"
+   &lt;/p&gt;
+         </pre>
+         <h3>Example 2</h3>
+         <pre>
+   &lt;p&gt;
+      &lt;d:s&gt;Mr. Guppy went down on his knees.&lt;/d:s&gt;
+      &lt;d:s&gt;I was well behind my table and not much frightened.&lt;/d:s&gt;
+      &lt;d:pagebreak value="176" /&gt;
+      &lt;d:s&gt;I said, "Get up from that ridiculous position immediately, sir, or you
+      will oblige me to break my implied promise and ring the bell!".&lt;/d:s&gt;
+   &lt;/p&gt;
+         </pre>
+         <h3>Example 3</h3>
+         <pre>
+   &lt;p&gt;He looked piteously, but slowly rose and did so.&lt;/p&gt;
+   &lt;d:pagebreak value="22" /&gt;
+   &lt;p&gt;"Yet what a mockery it is, miss," he said with his hand upon his heart and shaking
+   his head at me in a melancholy manner over the tray, "to be stationed behind food at
+   such a moment.  The soul recoils from food at such a moment, miss."&lt;/p&gt;
+         </pre>
+      </div>
+      <div id="cover-cover">
+         <p class="description"><em>Description: to be written ...</em> <strong>(@id="cover-cover")</strong></p>
+         <h2>Use of this element</h2>
+         <p>This element is used to markup the book cover.</p>
+         <h2>Example</h2>
+         <pre>
+            &lt;d:cover&gt;
+               &lt;d:spine&gt;
+                  &lt;title&gt;The Forgotten Garden&lt;/title&gt;
+                  &lt;d:creator&gt;Kate Morton&lt;/d:creator&gt;
+                  &lt;d:publisher&gt;PAN&lt;/d:publisher&gt;
+               &lt;/d:spine&gt; 
+               
+               &lt;d:frontcover&gt;
+                  &lt;title&gt;The Forgotten Garden&lt;/title&gt;
+                  &lt;d:creator&gt;Kate Morton&lt;/d:creator&gt;
+                  &lt;d:publisher&gt;PAN&lt;/d:publisher&gt;
+                  
+                  &lt;p&gt;Winner of Richard &amp; Judy's Summer Read 2007&lt;/p&gt;                    
+                  &lt;p&gt;Author of The House at Riverton&lt;/p&gt;
+                  
+                  &lt;object src="frontcover.png"&gt;The frontcover picture shows [...]&lt;/object&gt;           
+               &lt;/d:frontcover&gt;
+               
+               &lt;d:backcover&gt;
+                  &lt;p&gt;Before her eyes the garden [...] entry once more ...&lt;/p&gt;
+                  &lt;p&gt;&lt;l&gt;&lt;strong&gt;1913&lt;/strong&gt;&lt;/l&gt;
+                     On the eve of the First World War [...] vanished without trace.
+                  &lt;/p&gt;
+                  &lt;p&gt;&lt;l&gt;&lt;strong&gt;1975&lt;/strong&gt;&lt;/l&gt;
+                     Now an old lady, Nell travels to [...] after all these years?
+                  &lt;/p&gt;
+                  &lt;p&gt;&lt;l&gt;&lt;strong&gt;2005&lt;/strong&gt;&lt;/l&gt;
+                     On Nell's death [...] all those decades before.
+                  &lt;/p&gt;
+               &lt;/d:backcover&gt;
+               
+               &lt;d:flaps&gt;
+                  &lt;section&gt;
+                     &lt;object src="author.png"&gt;
+                        &lt;caption&gt;Author's photograph by Russel Shakespeare&lt;/caption&gt; The photo,
+                        in colors, is of a woman sitting [...] &lt;/object&gt;                    
+                  &lt;/section&gt;           
+                  &lt;section&gt;
+                     &lt;blockquote cite="Guardian"&gt;Amusing, brisk and charming&lt;/blockquote&gt;
+                     &lt;blockquote cite="Sunday herald"&gt;Haddon floats [...] offbeat
+                        wit&lt;/blockquote&gt;
+                  &lt;/section&gt;
+               &lt;/d:flaps&gt; 
+            &lt;/d:cover&gt;
+            
+         </pre>
+      </div>
+      <div id="spine-spine">
+         <p class="description"><em>Description: to be written ...</em> <strong>(@id="spine-spine")</strong></p>
+         <h2>Use of this element</h2>
+         <p>This element is used to markup the spine of the book.</p>
+         <h2>Example</h2>
+         <pre>
+            &lt;d:spine&gt;
+               &lt;title&gt;The Forgotten Garden&lt;/title&gt;
+               &lt;d:creator&gt;Kate Morton&lt;/d:creator&gt;
+               &lt;d:publisher&gt;PAN&lt;/d:publisher&gt;
+            &lt;/d:spine&gt; 
+         </pre>
+      </div>
+      <div id="frontcover-frontcover">
+         <p class="description"><em>Description: to be written ...</em> <strong>(@id="frontcover-frontcover")</strong></p>
+         <h2>Use of this element</h2>
+         <p>This element is used to markup the front cover of the book.</p>
+         <h2>Example</h2>
+         <pre>
+            &lt;d:frontcover&gt;
+               &lt;title&gt;The Forgotten Garden&lt;/title&gt;
+               &lt;d:creator&gt;Kate Morton&lt;/d:creator&gt;
+               &lt;d:publisher&gt;PAN&lt;/d:publisher&gt;
+               
+               &lt;p&gt;Winner of Richard &amp; Judy's Summer Read 2007&lt;/p&gt;                    
+               &lt;p&gt;Author of The House at Riverton&lt;/p&gt;
+               
+               &lt;object src="frontcover.png"&gt;The frontcover picture shows [...]&lt;/object&gt;           
+            &lt;/d:frontcover&gt;
+         </pre>
+      </div>
+      <div id="backcover-backcover">
+         <p class="description"><em>Description: to be written ...</em> <strong>(@id="backcover-backcover")</strong></p>
+         <h2>Use of this element</h2>
+         <p>This element is used to markup the back cover of the book.</p>
+         <h2>Example</h2>
+         <pre>
+            &lt;d:backcover&gt;
+               &lt;p&gt;Before her eyes the garden [...] entry once more ...&lt;/p&gt;
+               &lt;p&gt;
+                  &lt;l&gt;&lt;strong&gt;1913&lt;/strong&gt;&lt;/l&gt;
+                  On the eve of the First World War [...] vanished without trace.
+               &lt;/p&gt;
+               &lt;p&gt;
+                  &lt;l&gt;&lt;strong&gt;1975&lt;/strong&gt;&lt;/l&gt;
+                  Now an old lady, Nell travels to [...] after all these years?
+               &lt;/p&gt;
+               &lt;p&gt;
+                  &lt;l&gt;&lt;strong&gt;2005&lt;/strong&gt;&lt;/l&gt;
+                  On Nell's death [...] all those decades before.
+               &lt;/p&gt;
+            &lt;/d:backcover&gt;
+         </pre>
+      </div>
+      <div id="backmatter-backmatter">
+         <p class="description"><em>Description: to be written ...</em> <strong>(@id="backmatter-backmatter")</strong></p>
+         <h2>Use of this element</h2>
+         <p><em>More info; to be written...</em></p>
+      </div>
+
+      <div id="bodymatter-bodymatter">
+         <p class="description"><em>Description: to be written ...</em> <strong>(@id="bodymatter-bodymatter")</strong></p>
+         <h2>Use of this element</h2>
+         <p><em>More info: to be written ...</em> <strong>(@id="bodymatter-bodymatter")</strong></p>
+      </div>
+      
+      <div id="book-book">
+         <p class="description"><em>Description: to be written ...</em> <strong>(@id="book-book")</strong></p>
+         <h2>Use of this element</h2>
+         <p><em>More info: to be written ...</em> <strong>(@id="book-book")</strong></p>
+      </div>
+      
+      <div id="bridgehead-bridgehead">
+         <p class="description"><em>Description: to be written ...</em> <strong>(@id="bridgehead-bridgehead")</strong></p>
+         <h2>Use of this element</h2>
+         <p><em>More info: to be written ...</em> <strong>(@id="bridgehead-bridgehead")</strong></p>
+      </div>
+      
+      <div id="contributor-contributor">
+         <p class="description"><em>Description: to be written ...</em> <strong>(@id="contributor-contributor")</strong></p>
+         <h2>Use of this element</h2>
+         <p><em>More info: to be written ...</em> <strong>(@id="contributor-contributor")</strong></p>
+      </div>
+      
+      <div id="copyright-copyright">
+         <p class="description"><em>Description: to be written ...</em> <strong>(@id="copyright-copyright")</strong></p>
+         <h2>Use of this element</h2>
+         <p><em>More info: to be written ...</em> <strong>(@id="copyright-copyright")</strong></p>
+      </div>
+      
+      <div id="creator-creator">
+         <p class="description"><em>Description: to be written ...</em> <strong>(@id="creator-creator")</strong></p>
+         <h2>Use of this element</h2>
+         <p><em>More info: to be written ...</em> <strong>(@id="creator-creator")</strong></p>
+      </div>
+      
+      <div id="date-date">
+         <p class="description"><em>Description: to be written ...</em> <strong>(@id="date-date")</strong></p>
+         <h2>Use of this element</h2>
+         <p><em>More info: to be written ...</em> <strong>(@id="date-date")</strong></p>
+      </div>
+      
+      <div id="flaps-flaps">
+         <p class="description"><em>Description: to be written ...</em> <strong>(@id="flaps-flaps")</strong></p>
+         <h2>Use of this element</h2>
+         <p><em>More info: to be written ...</em> <strong>(@id="flaps-flaps")</strong></p>
+      </div>
+      
+      <div id="frontmatter-frontmatter">
+         <p class="description"><em>Description: to be written ...</em> <strong>(@id="frontmatter-frontmatter")</strong></p>
+         <h2>Use of this element</h2>
+         <p><em>More info: to be written ...</em> <strong>(@id="frontmatter-frontmatter")</strong></p>
+      </div>
+      
+      <div id="note-note">
+         <p class="description"><em>Description: to be written ...</em> <strong>(@id="note-note")</strong></p>
+         <h2>Use of this element</h2>
+         <p><em>More info: to be written ...</em> <strong>(@id="note-note")</strong></p>
+      </div>
+      
+      <div id="pageref-pageref">
+         <p class="description"><em>Description: to be written ...</em> <strong>(@id="pageref-pageref")</strong></p>
+         <h2>Use of this element</h2>
+         <p><em>More info: to be written ...</em> <strong>(@id="pageref-pageref")</strong></p>
+      </div>
+      
+      <div id="publisher-publisher">
+         <p class="description"><em>Description: to be written ...</em> <strong>(@id="publisher-publisher")</strong></p>
+         <h2>Use of this element</h2>
+         <p><em>More info: to be written ...</em> <strong>(@id="publisher-publisher")</strong></p>
+      </div>
+      
+      <div id="s-s">
+         <p class="description"><em>Description: to be written ...</em> <strong>(@id="s-s")</strong></p>
+         <h2>Use of this element</h2>
+         <p><em>More info: to be written ...</em> <strong>(@id="s-s")</strong></p>
+      </div>
+      
+      <div id="toc-toc">
+         <p class="description"><em>Description: to be written ...</em> <strong>(@id="toc-toc")</strong></p>
+         <h2>Use of this element</h2>
+         <p><em>More info: to be written ...</em> <strong>(@id="toc-toc")</strong></p>
+      </div>
+      
+      <div id="tocentry-tocentry">
+         <p class="description"><em>Description: to be written ...</em> <strong>(@id="tocentry-tocentry")</strong></p>
+         <h2>Use of this element</h2>
+         <p><em>More info: to be written ...</em> <strong>(@id="tocentry-tocentry")</strong></p>
+      </div>
+      
+      <div id="w-w">
+         <p class="description"><em>Description: to be written ...</em> <strong>(@id="w-w")</strong></p>
+         <h2>Use of this element</h2>
+         <p><em>More info: to be written ...</em> <strong>(@id="w-w")</strong></p>
+      </div>
+      
+
+ <!--     <div id="bodymatter-bodymatter">
+         <p class="description"><em>More info; to be written...</em></p>
+         <h2>Use of this element</h2>
+         <p><em>More info; to be written...</em></p>
+      </div>
+
+      <div id="book-book">
+         <p class="description"><em>More info; to be written...</em></p>
+         <h2>Use of this element</h2>
+         <p><em>More info; to be written...</em></p>
+      </div>
+
+      <div id="bridgehead-bridgehead">
+         <p class="description"><em>More info; to be written...</em></p>
+         <h2>Use of this element</h2>
+         <p><em>More info; to be written...</em></p>
+      </div>
+
+      <div id="contributor-contributor">
+         <p class="description"><em>More info; to be written...</em></p>
+         <h2>Use of this element</h2>
+         <p><em>More info; to be written...</em></p>
+      </div>
+
+      <div id="copyright-copyright">
+         <p class="description"><em>More info; to be written...</em></p>
+         <h2>Use of this element</h2>
+         <p><em>More info; to be written...</em></p>
+      </div>
+
+      <div id="creator-creator">
+         <p class="description"><em>More info; to be written...</em></p>
+         <h2>Use of this element</h2>
+         <p><em>More info; to be written...</em></p>
+      </div>
+
+      <div id="date-date">
+         <p class="description"><em>More info; to be written...</em></p>
+         <h2>Use of this element</h2>
+         <p><em>More info; to be written...</em></p>
+      </div>
+
+      <div id="flaps-flaps">
+         <p class="description"><em>More info; to be written...</em></p>
+         <h2>Use of this element</h2>
+         <p><em>More info; to be written...</em></p>
+      </div>
+
+      <div id="frontmatter-frontmatter">
+         <p class="description"><em>More info; to be written...</em></p>
+         <h2>Use of this element</h2>
+         <p><em>More info; to be written...</em></p>
+      </div>
+
+      <div id="note-note">
+         <p class="description"><em>More info; to be written...</em></p>
+         <h2>Use of this element</h2>
+         <p><em>More info; to be written...</em></p>
+      </div>
+      <div id="a-type">
+         <p><em>More info; to be written...</em></p>
+      </div>
+      
+      <div id="pageref-pageref">
+         <p class="description"><em>More info; to be written...</em></p>
+         <h2>Use of this element</h2>
+         <p><em>More info; to be written...</em></p>
+      </div>
+
+      <div id="publisher-publisher">
+         <p class="description"><em>More info; to be written...</em></p>
+         <h2>Use of this element</h2>
+         <p><em>More info; to be written...</em></p>
+      </div>
+
+      <div id="s-s">
+         <p class="description"><em>More info; to be written...</em></p>
+         <h2>Use of this element</h2>
+         <p><em>More info; to be written...</em></p>
+      </div>
+
+      <div id="toc-toc">
+         <p class="description"><em>More info; to be written...</em></p>
+         <h2>Use of this element</h2>
+         <p><em>More info; to be written...</em></p>
+      </div>
+
+      <div id="tocentry-tocentry">
+         <p class="description"><em>More info; to be written...</em></p>
+         <h2>Use of this element</h2>
+         <p><em>More info; to be written...</em></p>
+      </div>
+
+      <div id="w-w">
+         <p class="description"><em>More info; to be written...</em></p>
+         <h2>Use of this element</h2>
+         <p><em>More info; to be written...</em></p>
+      </div>
+-->   </body>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Edit Attribute Module</x:h1>
+
+  <div>
+    <x:h2>Edit Collection</x:h2>
+
+    <define name="xhtml.edit.attrib">
+        <attribute name="edit">
+          <choice>
+            <value>inserted</value>
+            <value>deleted</value>
+            <value>changed</value>
+            <value>moved</value>
+          </choice>
+        </attribute>
+    </define>
+
+    <define name="xhtml.datetime.attrib">      
+        <attribute name="datetime">
+          <ref name="Datetime.datatype"/>
+        </attribute>
+    </define>
+
+    <define name="xhtml.Edit.attrib">
+      <optional>
+        <ref name="xhtml.edit.attrib"/>
+      </optional>
+      <optional>  
+        <ref name="xhtml.datetime.attrib"/>
+      </optional>  
+    </define>
+    
+  </div>
+
+  <define name="xhtml.Common.attrib" combine="interleave">
+    <ref name="xhtml.Edit.attrib"/>
+  </define>
+
+</grammar>

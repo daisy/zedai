@@ -1,0 +1,811 @@
+<project name="build-ai" default="build-ai-all" basedir=".">
+
+	<import file="common.xml"/>
+	
+	<!-- base dirs -->
+	<property name="build.ai.dir" value="${build.dir}/auth" />
+	<property name="test.z3986a.dir" value="${test.dir}/z3986a" />
+
+	<property name="css.basic.name" value="z3986a-basic.css" />
+	<property name="css.basic.path" value="${src.rd.dir}/res/general/${css.basic.name}" />
+	<property name="util.rngschema.reducer.xsl" value="${util.dir}/rng/rng-driver-reducer.xsl" />
+
+	<property name="temp.informative.schema.list" value="${temp.dir}/schema-list.xml" />
+	<property name="temp.schema.fileset.list" value="${temp.dir}/schema-fileset.xml" />
+	<property name="temp.simplified.rng.path" value="${temp.dir}/simplified.rng" />
+	<property name="temp.xsd.rng.src.dir" value="${temp.dir}/xsd-rng-src/" />
+
+	<!-- spec/primer: docbook source paths -->
+	<property name="spec.part-a.docbook.path" value="${src.spec.dir}/Z3986-2010A.xml" />
+	<property name="primer.part-a.docbook.path" value="${src.spec.dir}/Z3986-2010A_Primer.xml" />
+
+	<!-- feature names -->
+	<property name="feature.machinename.ssml" value="ssml" />
+	<property name="feature.nicename.ssml" value="SSML Integration Feature" />
+	<property name="feature.machinename.math" value="mathml" />
+	<property name="feature.nicename.math" value="MathML Feature" />
+	<property name="feature.machinename.ruby" value="its-ruby" />
+	<property name="feature.nicename.ruby" value="ITS Ruby Feature" />
+	<property name="feature.machinename.select" value="select" />
+	<property name="feature.nicename.select" value="Content Selection Feature" />
+	<property name="feature.machinename.forms" value="forms" />
+	<property name="feature.nicename.forms" value="Print Forms Feature" />
+	<property name="feature.machinename.rend" value="rend" />
+	<property name="feature.nicename.rend" value="Source Rendition Feature" />
+		
+	<propertyset id="feature-machinenames">
+		<propertyref prefix="feature.machinename."/>
+	</propertyset>
+
+	<!-- profile names -->
+	<property name="profile.nicename.book" value="Book Profile" />
+	<property name="profile.machinename.book" value="book" />
+	<property name="profile.nicename.newsfeeds" value="Newsfeed Aggregator Profile" />
+	<property name="profile.machinename.newsfeeds" value="newsfeeds" />
+	<property name="profile.nicename.genericdocument" value="Generic Document Profile" />
+	<property name="profile.machinename.genericdocument" value="genericdocument" />
+	<!--
+	<property name="profile.nicename.periodicals" value="Periodicals and Journals Profile" />
+	<property name="profile.machinename.periodicals" value="periodicals" />
+	-->
+	<propertyset id="profile-machinenames">
+		<propertyref prefix="profile.machinename."/>
+	</propertyset>
+
+	<!-- internal switches -->
+	<!-- <property name="switch.build.topology.doc" value="true" /> -->
+
+	<!-- version history (space separated, most current last) -->
+	<property name="profile.versionhistory.book" value="0.3 0.4 0.5" />
+	<property name="profile.versionhistory.newsfeeds" value="0.2 0.3 0.4" />
+	<property name="profile.versionhistory.genericdocument" value="0.2 0.3 0.4" />
+	<!-- <property name="profile.versionhistory.periodicals" value="0.1" /> -->
+	<property name="feature.versionhistory.ssml" value="0.1 0.2" />
+	<property name="feature.versionhistory.ruby" value="0.3 0.4" />
+	<property name="feature.versionhistory.math" value="0.1 0.2" />
+	<property name="feature.versionhistory.select" value="0.0 0.1" />
+	<property name="feature.versionhistory.forms" value="0.1 0.2" />
+	<property name="feature.versionhistory.rend" value="0.2 0.3" />
+
+	<!-- versions to build (aka current versions) -->
+	<property name="profile.version.book" value="0.5" />
+	<property name="profile.version.newsfeeds" value="0.4" />
+	<property name="profile.version.genericdocument" value="0.4" />
+	<!-- <property name="profile.version.periodicals" value="0.1" /> -->
+	<property name="feature.version.ssml" value="0.2" />
+	<property name="feature.version.ruby" value="0.4" />
+	<property name="feature.version.math" value="0.2" />
+	<property name="feature.version.select" value="0.1" />
+	<property name="feature.version.forms" value="0.2" />
+	<property name="feature.version.rend" value="0.3" />
+
+	<target name="build-ai-all" description="build all AI" depends="clean-build-dir-ai, validate-src-rng-schemas">
+								
+		<mkdir dir="${build.dir}" />
+		
+<!-- 	<antcall target="build-vocab-rng-enums" /> 20091122: stop integrating vocab enums to rng, at least for now-->
+
+		<antcall target="build-ai-profile-newsfeeds" />
+		<antcall target="build-ai-profile-book" />
+		<antcall target="build-ai-profile-genericdocument" />
+<!--	<antcall target="build-ai-profile-periodicals" /> -->
+
+		<antcall target="build-ai-feature-ssml"/>
+		<antcall target="build-ai-feature-ruby"/>
+		<antcall target="build-ai-feature-math"/>
+		<antcall target="build-ai-feature-select"/>
+		<antcall target="build-ai-feature-forms"/>
+		<antcall target="build-ai-feature-rend"/>
+
+		<antcall target="copy-schemas" />
+		<antcall target="build-vocabs" />
+		<copy file="${util.dir}/css/common.css" tofile="${build.dir}/z3986-2010.css" />
+		<antcall target="build-ai-dir-indices" />
+		<antcall target="build-main-index" />
+
+		<antcall target="build-ai-spec"/>
+
+	</target>
+	
+	<target name="build-vocab-rng-enums"
+		description="Render RNG enums from vocabs in /src/rdf/*.
+		Note - the rendered enums are put in src/schema/mod dir.">
+
+		<property name="enum.name.prefix" value="z3986-vocab"/>
+		<property name="base.vocab" value="${src.rdf.dir}/z3986-base-rdfa-vocab.html"/>
+		<property name="periodicals.vocab" value="${src.rdf.dir}/z3986-periodicals-rdfa-vocab.html"/>
+
+		<!-- aside roles from base vocab -->
+		<build-vocab-enum 	input-path="${base.vocab}"
+							output-filename="${enum.name.prefix}-base-aside"
+							nmtokens="sidebar notice warning practice"
+							mode="individual"
+							excludes=""
+							contrib-names="z3986.aside.role.attrib.content"
+							nicename="Aside properties"
+							pattern-name="base-aside" />
+
+		<!-- title roles from base vocab -->
+		<build-vocab-enum 	input-path="${base.vocab}"
+							output-filename="${enum.name.prefix}-base-title"
+							nmtokens="title-properties"
+							mode="descendant"
+							excludes=""
+							contrib-names="z3986.title.role.attrib.content"
+							nicename="Title properties"
+							pattern-name="base-title" />
+		
+		<!-- annotation roles from base vocab -->
+		<build-vocab-enum 	input-path="${base.vocab}"
+							output-filename="${enum.name.prefix}-base-anno"
+							nmtokens="annotation-properties"
+							mode="descendant"
+							excludes="annotation"
+							contrib-names="annotation.rdfa.property.attrib.content"
+							nicename="Annotation properties"
+							pattern-name="base-anno" />
+		
+		<!-- all other properties from base vocab -->
+		<build-vocab-enum 	input-path="${base.vocab}"
+							output-filename="${enum.name.prefix}-base"
+							nmtokens="general-properties frontmatter-properties backmatter-properties"
+							mode="descendant"
+							excludes="toc aside pagebreak bridgehead footnote"
+							contrib-names="xhtml.role.attrib.content"
+							nicename="Base properties"
+							pattern-name="base" />
+		
+		<!-- newsfeeds meta properties from periodicals vocab -->
+		<build-vocab-enum 	input-path="${periodicals.vocab}"
+							output-filename="${enum.name.prefix}-newsfeeds-meta"
+							nmtokens="meta-properties"
+							mode="descendant"
+							excludes=""
+							contrib-names="z3986.meta.rdfa.property.attrib.content"
+							nicename="Newsfeeds Aggregation Metadata properties"
+							pattern-name="newsfeeds-meta" />
+		
+		<!-- entire periodicals vocab -->
+		<build-vocab-enum 	input-path="${periodicals.vocab}"
+									output-filename="${enum.name.prefix}-periodicals"
+									nmtokens="periodicals-vocab"
+									mode="descendant"
+									excludes="meta-properties"
+									contrib-names="xhtml.role.attrib.content"
+									nicename="Periodicals properties"
+									pattern-name="periodicals" />
+	
+	</target>
+
+	<macrodef name="build-vocab-enum">
+		<attribute name="input-path"/>
+		<attribute name="output-filename"/>
+		<attribute name="nicename" />
+		<attribute name="mode" /> <!-- 'individual' or 'descendant' -->
+		<attribute name="excludes" /> <!-- list of props to excludes NMTOKENs -->
+		<attribute name="nmtokens"/> <!-- property id's in input vocab -->
+		<attribute name="pattern-name"/> <!-- rng name of choice pattern -->
+		<attribute name="contrib-names"/> <!-- rng name of defines to contribute to -->
+
+		<sequential>
+			<saxon-xslt in="@{input-path}" out="${src.schema.dir}/mod/@{output-filename}.rng" 
+				style="${util.dir}/rdf/rdfa-to-rng.xslt">
+				<param name="niceName" expression="@{nicename}" />
+				<param name="mode" expression="@{mode}" />
+				<param name="excludeList" expression="@{excludes}" />
+				<param name="includeList" expression="@{nmtokens}" />
+				<param name="contribList" expression="@{contrib-names}" />
+				<param name="patternName" expression="@{pattern-name}" />
+			</saxon-xslt>
+		</sequential>
+	</macrodef>
+
+	<target name="build-ai-dir-indices">
+		<property name="ai-features-index-title" value="${z3986.part.a.nicename.prefix}Feature Catalog" />
+		<property refid="feature-machinenames" name="features"/>
+		<build-profile-or-feature-dir-index out="${build.ai.dir}/features" 
+			list="${features}" title="${ai-features-index-title}" 
+				nicename-prefix="${z3986.part.a.nicename.prefix}"/>
+
+		<property name="ai-profiles-index-title" value="${z3986.part.a.nicename.prefix}Profile Catalog" />
+		<property refid="profile-machinenames" name="profiles"/>
+		<build-profile-or-feature-dir-index out="${build.ai.dir}/profiles" 
+			list="${profiles}" title="${ai-profiles-index-title}" 
+				nicename-prefix="${z3986.part.a.nicename.prefix}"/>
+
+	</target>
+
+	<target name="build-ai-feature-ssml">
+		<property name="version" value="${feature.version.ssml}" />
+		<property name="nicename" value="${feature.nicename.ssml}" />
+		<property name="machinename" value="${feature.machinename.ssml}" />
+		<property name="version.list"  value="${feature.versionhistory.ssml}" />
+		<antcall target="build-rng-feature-generic"/>
+	</target>
+
+	<target name="build-ai-feature-ruby">
+		<property name="version" value="${feature.version.ruby}" />
+		<property name="nicename" value="${feature.nicename.ruby}" />
+		<property name="machinename" value="${feature.machinename.ruby}" />
+		<property name="version.list"  value="${feature.versionhistory.ruby}" />
+		<antcall target="build-rng-feature-generic"/>
+	</target>
+
+	<target name="build-ai-feature-math">
+		<property name="version" value="${feature.version.math}" />
+		<property name="nicename" value="${feature.nicename.math}" />
+		<property name="machinename" value="${feature.machinename.math}" />
+		<property name="version.list"  value="${feature.versionhistory.math}" />
+		<antcall target="build-rng-feature-generic"/>
+	</target>
+
+	<target name="build-ai-feature-select">
+		<property name="version" value="${feature.version.select}" />
+		<property name="nicename" value="${feature.nicename.select}" />
+		<property name="machinename" value="${feature.machinename.select}" />
+		<property name="version.list"  value="${feature.versionhistory.select}" />
+		<antcall target="build-rng-feature-generic"/>	
+		
+		<!-- special for this feature: copy the function sets dir -->
+		<property name="functionSets.dir" value="${build.ai.dir}/features/${machinename}/functionSets"/>
+		<mkdir dir="${functionSets.dir}"/>
+		<saxon9-cmd-dbxi in="${src.rd.dir}/res/extra/functionSets/index.html" 
+					out="${functionSets.dir}/index.html" 
+					style="${util.dir}/xsl/toc.xsl"/>
+		<build-htaccess dest-dir="${functionSets.dir}" index-name="index.html"/>
+	</target>
+
+	<target name="build-ai-feature-forms">
+		<property name="version" value="${feature.version.forms}" />
+		<property name="nicename" value="${feature.nicename.forms}" />
+		<property name="machinename" value="${feature.machinename.forms}" />
+		<property name="version.list"  value="${feature.versionhistory.forms}" />
+		<antcall target="build-rng-feature-generic"/>
+	</target>
+
+	<target name="build-ai-feature-rend">
+		<property name="version" value="${feature.version.rend}" />
+		<property name="nicename" value="${feature.nicename.rend}" />
+		<property name="machinename" value="${feature.machinename.rend}" />
+		<property name="version.list"  value="${feature.versionhistory.rend}" />
+		<antcall target="build-rng-feature-generic"/>
+	</target>
+
+	<target name="build-ai-profile-book" depends="clean-temp-dir">
+		<build-ai-profile>
+			<specific-properties>
+				<!-- required -->
+				<property name="version" value="${profile.version.book}" />
+				<property name="nicename" value="${profile.nicename.book}" />
+				<property name="machinename" value="${profile.machinename.book}" />
+				<property name="version.list"  value="${profile.versionhistory.book}" />
+				<!-- omittable -->
+				<property name="default-vocab-uri" value="${src.rdf.dir}/z3986-base-rdfa-vocab.html" />
+				<property name="rng-reduce-math" value="true" />
+				<property name="rng-reduce-ssml" value="true" />
+				<property name="rng-reduce-ruby" value="true" />
+				<property name="rng-reduce-select" value="true" />
+				<property name="rng-reduce-forms" value="true" />
+				<property name="rng-reduce-rend" value="true" />
+				<property name="rng-reduce-all" value="true" />
+			</specific-properties>
+			<echo-generated-schemas>
+				<!-- render a file for build-rd.xsl to pick up -->
+				<echoxml file="${temp.informative.schema.list}">
+					<files>
+						<generated type="core-rng-simplified-full" uri="${dest.simplified.rng.path}" />
+						<generated type="core-xsd-converted" uri="${dest.xsd.path}" />
+						<generated type="core-rng-reduced" uri="${reduced-schema-base-name}-nomath.rng" feature-nicename="${feature.nicename.math}" />
+						<generated type="core-rng-reduced" uri="${reduced-schema-base-name}-noruby.rng" feature-nicename="${feature.nicename.ruby}" />
+						<generated type="core-rng-reduced" uri="${reduced-schema-base-name}-nossml.rng" feature-nicename="${feature.nicename.ssml}" />
+						<generated type="core-rng-reduced" uri="${reduced-schema-base-name}-noselect.rng" feature-nicename="${feature.nicename.select}" />
+						<generated type="core-rng-reduced" uri="${reduced-schema-base-name}-noforms.rng" feature-nicename="${feature.nicename.forms}" />
+						<generated type="core-rng-reduced" uri="${reduced-schema-base-name}-norend.rng" feature-nicename="${feature.nicename.rend}" />
+						<generated type="core-rng-reduced" uri="${reduced-schema-base-name}-nofeatures.rng" feature-nicename="#all" />
+					</files>
+				</echoxml>
+			</echo-generated-schemas>
+		</build-ai-profile>
+	</target>
+
+	<target name="build-ai-profile-genericdocument" depends="clean-temp-dir">
+		<build-ai-profile>
+			<specific-properties>
+				<!-- required -->
+				<property name="version" value="${profile.version.genericdocument}" />
+				<property name="nicename" value="${profile.nicename.genericdocument}" />
+				<property name="machinename" value="${profile.machinename.genericdocument}" />
+				<property name="version.list"  value="${profile.versionhistory.genericdocument}" />
+				<!-- omittable -->
+				<!-- Note - no default vocab here! -->
+				<property name="rng-reduce-math" value="true" />
+				<property name="rng-reduce-ssml" value="true" />
+				<property name="rng-reduce-ruby" value="true" />
+				<property name="rng-reduce-select" value="true" />
+				<property name="rng-reduce-forms" value="true" />
+				<property name="rng-reduce-all" value="true" />
+			</specific-properties>
+			<echo-generated-schemas>
+				<!-- render a file for build-rd.xsl to pick up -->
+				<echoxml file="${temp.informative.schema.list}">
+					<files>
+						<generated type="core-rng-simplified-full" uri="${dest.simplified.rng.path}" desc="A single RelaxNG schema with all optional features included" />
+						<generated type="core-xsd-converted" uri="${dest.xsd.path}" desc="A W3C XML (XSD) schema with all optional features included" />
+						<generated type="core-rng-reduced" uri="${reduced-schema-base-name}-nomath.rng" feature-nicename="${feature.nicename.math}" />
+						<generated type="core-rng-reduced" uri="${reduced-schema-base-name}-noruby.rng" feature-nicename="${feature.nicename.ruby}" />
+						<generated type="core-rng-reduced" uri="${reduced-schema-base-name}-nossml.rng" feature-nicename="${feature.nicename.ssml}" />
+						<generated type="core-rng-reduced" uri="${reduced-schema-base-name}-noselect.rng" feature-nicename="${feature.nicename.select}" />
+						<generated type="core-rng-reduced" uri="${reduced-schema-base-name}-noforms.rng" feature-nicename="${feature.nicename.forms}" />
+						<generated type="core-rng-reduced" uri="${reduced-schema-base-name}-nofeatures.rng" feature-nicename="#all" />
+					</files>
+				</echoxml>
+			</echo-generated-schemas>
+		</build-ai-profile>
+	</target>
+
+	<target name="build-ai-profile-newsfeeds" depends="clean-temp-dir">
+		<build-ai-profile>
+			<specific-properties>
+				<!-- required -->
+				<property name="version" value="${profile.version.newsfeeds}" />
+				<property name="nicename" value="${profile.nicename.newsfeeds}" />
+				<property name="machinename" value="${profile.machinename.newsfeeds}" />
+				<property name="version.list"  value="${profile.versionhistory.newsfeeds}" />
+				<!-- omittable -->
+				<property name="default-vocab-uri" value="${src.rdf.dir}/z3986-periodicals-rdfa-vocab.html" />
+				<property name="rng-reduce-ruby" value="true" />
+			</specific-properties>
+			<echo-generated-schemas>
+				<!-- render a file for build-rd.xsl to pick up -->
+				<echoxml file="${temp.informative.schema.list}">
+					<files>
+						<generated type="core-rng-simplified-full" uri="${dest.simplified.rng.path}" />
+						<generated type="core-xsd-converted" uri="${dest.xsd.path}" />
+						<generated type="core-rng-reduced" uri="${reduced-schema-base-name}-noruby.rng" feature-nicename="${feature.nicename.ruby}" />
+					</files>
+				</echoxml>
+			</echo-generated-schemas>
+		</build-ai-profile>
+	</target>
+
+	<!-- <target name="build-ai-profile-periodicals" depends="clean-temp-dir">
+		<build-ai-profile>
+			<specific-properties>
+				
+				<property name="version" value="${profile.version.periodicals}" />
+				<property name="nicename" value="${profile.nicename.periodicals}" />
+				<property name="machinename" value="${profile.machinename.periodicals}" />
+				<property name="version.list"  value="${profile.versionhistory.periodicals}" />
+				
+				<property name="default-vocab-uri" value="${src.rdf.dir}/z3986-periodicals-rdfa-vocab.html" />
+				<property name="rng-reduce-ruby" value="true" />
+			</specific-properties>
+			<echo-generated-schemas>
+				
+				<echoxml file="${temp.informative.schema.list}">
+					<files>
+						<generated type="core-rng-simplified-full" uri="${dest.simplified.rng.path}" />
+						<generated type="core-xsd-converted" uri="${dest.xsd.path}" />
+						<generated type="core-rng-reduced" uri="${reduced-schema-base-name}-noruby.rng" feature-nicename="${feature.nicename.ruby}" />
+					</files>
+				</echoxml>
+			</echo-generated-schemas>
+		</build-ai-profile>
+	</target> -->
+	
+	<macrodef name="build-ai-profile">
+		<element name="specific-properties"/>
+		<element name="echo-generated-schemas"/>
+		<sequential>
+			<specific-properties />
+			<property name="dest.dir" value="${build.ai.dir}/profiles/${machinename}/${version}" />
+			<property name="dest.resources.dir" value="${dest.dir}/resources" />
+			<property name="part.prefix" value="${z3986.part.a.prefix}" />
+			<property name="normative.schema.path" value="${src.schema.dir}/${part.prefix}-${machinename}.rng" />
+			<property name="doc.resources.path" value="${src.doc.dir}/doc-resources-profile-${machinename}.xml" />
+			<property name="dest.normative.schema.path" value="${dest.dir}/${part.prefix}-${machinename}.rng" />
+			<property name="rd.filename" value="${z3986.part.a.prefix}-profile-${machinename}.rd"/>
+			<property name="dest.simplified.rng.path" value="${dest.resources.dir}/${part.prefix}-${machinename}.single.rng" />
+			<property name="dest.xsd.path" value="${dest.resources.dir}/${part.prefix}-${machinename}.xsd" />
+			<property name="reduced-schema-base-name" value="${dest.dir}/${part.prefix}-${machinename}" />
+			<property name="base-identity-uri" value="${www.base.uri}auth/profiles/${machinename}/"/>
+			
+			<echo message="******** Building Profile: ${nicename} version ${version} ********** " />			
+			<antcall target="clean-dest-dir" />
+			<antcall target="build-rng-schema-fileset-list" />
+			<antcall target="copy-normative-schema" />
+			<antcall target="validate-dest-rng-schemas" />
+			<antcall target="validate-rng-test" />
+			<antcall target="build-simplified-rng" />
+			<antcall target="build-xsd"/>
+			<antcall target="build-rng-schema-doc"/>
+			<antcall target="build-reduced-rng-schemas"/>
+			<echo-generated-schemas />
+			<antcall target="build-rd"/>
+			<copy todir="${dest.resources.dir}">
+				<fileset dir="${src.rd.dir}/res/profiles/${machinename}/" />
+			</copy>
+			<copy failonerror="true" file="${css.basic.path}" tofile="${dest.resources.dir}/${css.basic.name}" />
+			<zip destfile="${dest.dir}/${part.prefix}-${machinename}-${version}.zip" 
+				basedir="${dest.dir}" excludes=".htaccess" />
+			<property name="tar" value="${temp.dir}/${part.prefix}-${machinename}-${version}.tar" />
+			<tar destfile="${tar}" basedir="${dest.dir}" excludes=".htaccess" />
+			<gzip src="${tar}" destfile="${dest.dir}/${part.prefix}-${machinename}-${version}.tar.gz" />
+
+			<antcall target="build-version-index" />
+			
+			<delete dir="${src.doc.dir}/tmp" failonerror="false" /> <!-- TODO temporary -->
+			
+		</sequential>
+	</macrodef>
+
+
+	<target name="build-rng-feature-generic" depends="clean-temp-dir">
+		<echo message="******** Building Feature: ${nicename} ********** " />
+
+		<property name="dest.dir" value="${build.ai.dir}/features/${machinename}/${version}" />
+		<property name="dest.resources.dir" value="${dest.dir}/resources" />
+		<property name="part.prefix" value="${z3986.part.a.prefix}" />
+		<property name="normative.schema.path" value="${src.schema.dir}/mod/z3986-feature-${machinename}.rng" />
+		<property name="dest.normative.schema.path" value="${dest.dir}/mod/z3986-feature-${machinename}.rng" />
+		<property name="rd.filename" value="z3986a-feature-${machinename}.rd"/>
+		<property name="base-identity-uri" value="${www.base.uri}auth/features/${machinename}/"/>
+
+		<antcall target="clean-dest-dir" />
+		<antcall target="build-rng-schema-fileset-list" />
+		<antcall target="copy-normative-schema" />
+		<antcall target="validate-dest-rng-schemas" />
+		<antcall target="build-rd"/>
+		<copy failonerror="false" todir="${dest.resources.dir}">
+			<fileset dir="${src.rd.dir}/res/features/${machinename}/" />
+		</copy>
+		
+		<antcall target="build-version-index" />
+	</target>
+
+	<target name="build-version-index" description="builds a version index file for a profile or a feature">
+		<dirname file="${dest.dir}" property="index.dest.dir"/>
+
+		<saxon-xslt in="${util.dir}/xhtml-rdfa-skeleton.xml" 
+			 style="${util.dir}/web/build-pf-version-index.xsl" 
+    		  out="${index.dest.dir}/index.html">
+			<param name="nicename" expression="${nicename}"/>
+			<param name="machinename" expression="${machinename}"/>
+			<param name="part.prefix" expression="${part.prefix}"/>
+			<param name="part.nicename.prefix" expression="${z3986.part.a.nicename.prefix}"/>
+			<param name="version.list" expression="${version.list}"/>
+			<param name="current.version" expression="${version}"/>
+		</saxon-xslt>
+		
+		<build-htaccess dest-dir="${index.dest.dir}" index-name="index.html"/>
+	</target>
+
+	<target name="copy-normative-schema" description="copies normative schema and used modules to dest dir">
+		<!-- path fix for windows -->
+		<path id="tmp" path="${dest.dir}" />
+		<pathconvert targetos="unix" property="destparam" refid="tmp">
+			<map from="" to="file:///" />
+		</pathconvert>
+		<saxon-xslt in="${temp.schema.fileset.list}" style="${util.dir}/xml-fileset-copy.xsl" out="${temp.dir}/temp.xml">
+			<param name="destination-dir" expression="${destparam}/" />
+		</saxon-xslt>
+		<copy tofile="${dest.normative.schema.path}" file="${normative.schema.path}"/>
+	</target>
+
+	<target name="build-rng-schema-doc">
+		<!-- path fix for windows -->
+		<path id="tmp1" path="${src.doc.dir}/namespaceList.xml" />
+		<pathconvert targetos="unix" property="nsList" refid="tmp1">
+			<map from="" to="file:///" />
+		</pathconvert>
+		<path id="tmp2" path="${doc.resources.path}" />
+		<pathconvert targetos="unix" property="dr" refid="tmp2">
+			<map from="" to="file:///" />
+		</pathconvert>
+
+		<saxon-xslt in="${temp.simplified.rng.path}" style="${src.doc.dir}/rng-doc.xsl" 
+			  out="${dest.dir}/schemadoc/index.html">
+			<param name="docTitle" expression="${nicename}" />
+			<param name="namespaceListURI" expression="${nsList}" />
+			<param name="docResourceURI" expression="${dr}" />
+		</saxon-xslt>
+
+		<copy file="${src.doc.dir}/rng-doc.css" tofile="${dest.dir}/schemadoc/rng-doc.css" />
+		<!-- <copy file="${util.dir}/css/common.css" tofile="${dest.dir}/schemadoc/rng-doc.css" />  -->
+	</target>
+
+
+	<target name="build-simplified-rng" description="uses Jing -s to create a simplified rng schema">
+		<java jar="${lib.dir}/jing.jar" fork="true" failonerror="true" maxmemory="256m">
+			<arg value="-s" />
+			<arg value="${normative.schema.path}" />
+			<arg value="${temp.simplified.rng.path}" />
+			<classpath>
+				<pathelement location="${lib.dir}/jing.jar" />
+				<pathelement path="${java.class.path}" />
+			</classpath>
+		</java>
+		<copy file="${temp.simplified.rng.path}" tofile="${dest.simplified.rng.path}"/>
+	</target>
+
+	<target name="build-xsd-rng-sources"
+    	 description="builds a copy of all rng files, run through
+    	   rng-xsd-preprocess.xsl, to prep them for trang.">
+
+		<saxon-xslt style="${util.dir}/rng/rng-xsd-preprocess.xsl"
+    		basedir="${src.schema.dir}" destdir="${temp.xsd.rng.src.dir}"
+    		includes="**/*.rng" extension=".rng">
+
+		</saxon-xslt>
+	</target>
+	
+	<target name="build-xsd" depends="build-xsd-rng-sources">
+		
+		<property name="simplified.rng.for.trang" value="${temp.xsd.rng.src.dir}/simplified.rng"/>
+
+		<!-- build the simplifed rng using the special rng set rendered
+		  by build-xsd-rng.sources -->
+		<java jar="${lib.dir}/jing.jar" fork="true" failonerror="true" maxmemory="256m">
+			<arg value="-s" />
+			<arg value="${temp.xsd.rng.src.dir}/${z3986.part.a.prefix}-${machinename}.rng" />
+			<arg value="${simplified.rng.for.trang}" />
+			<classpath>
+				<pathelement location="${lib.dir}/jing.jar" />
+				<pathelement path="${java.class.path}" />
+			</classpath>
+		</java>
+
+		<!-- trang to xsd -->
+		<java jar="${lib.dir}/trang.jar" fork="true" failonerror="true" maxmemory="256m">
+			<arg value="${simplified.rng.for.trang}" />
+			<arg value="${dest.xsd.path}" />
+			<classpath>
+				<pathelement location="${lib.dir}/trang.jar" />
+				<pathelement path="${java.class.path}" />
+			</classpath>
+		</java>
+		
+		<!-- compile the post-Trang fixup classes -->
+		<javac srcdir="${util.dir}/java" destdir="${util.dir}/java" debug="on" source="1.5">
+			<classpath>					
+				<pathelement path="${lib.dir}" />				
+				<pathelement path="${java.class.path}" />
+			</classpath>
+		</javac>
+		
+		<!-- post Trang fixup -->   
+		<trang-xsd-fixer 
+			in="${dest.xsd.path}" 
+			out="${dest.xsd.path}"/> 
+
+		<!-- temp replace with a dummy mathml.xsd TODO fix mathml in xsd -->
+		<copy overwrite="true" file="${util.dir}/xsd/mathml-any.xsd" tofile="${dest.resources.dir}/mathml.xsd" failonerror="true" />
+
+		<!-- replace the mods xsd created by trang with the 'real' one 
+		<copy overwrite="true" file="${src.schema.dir}/mod/mods-3-3.xsd" 
+			tofile="${dest.resources.dir}/v3.xsd" failonerror="true" /> -->
+		
+		<!-- copy the xlink.xsd referenced from within the 'real' mods schema 
+		  this overwrites the xlink.xsd just generated by trang, and helps
+		  us avoid a plethora of problems
+		  Note - we have a special local version of the mods schema which
+		  replaces the online reference to the mets xlink xsd with a 
+		  local reference. the mets xlink xsd also declares a type attribute -->
+		<!-- 20091130 mg: letting the below xlink copy remain for now TODO check, used by <ref/> right? -->
+		<copy overwrite="true" file="${util.dir}/xsd/mets-xlink.xsd" 
+			tofile="${dest.resources.dir}/xlink.xsd" failonerror="true" />
+		
+		<echo message="*** Validating sample instances against ${dest.xsd.path}" />
+		<!-- note failonerror=false, primarily because Flow.model in xsd is a subset of the rng 
+			TODO this is an issue since UPA errors will flow through-->
+		<schemavalidate disabledtd="true" failonerror="false" fullchecking="true">
+			<schema namespace="http://www.daisy.org/z3986/2010/" file="${dest.xsd.path}" />
+			<fileset dir="${test.dir}/z3986a/${machinename}/valid/" includes="**/*.xml" />
+		</schemavalidate>
+
+
+	</target>
+
+	<target name="build-rng-schema-fileset-list" 
+		description="creates a schema fileset list in xml">		
+		<saxon-xslt in="${normative.schema.path}" 
+			style="${util.dir}/rng/rng-fileset.xsl" 
+			out="${temp.schema.fileset.list}" />		
+	</target>
+
+	<target name="copy-schemas">
+		<mkdir dir="${build.dir}/schema/" />
+		<copy todir="${build.dir}/schema/">
+			<fileset dir="${src.dir}/schema/" excludes="**/_*" />
+		</copy>
+		<build-htaccess-plusindexes dest-dir="${build.dir}/schema/"/>
+		<build-htaccess-plusindexes dest-dir="${build.dir}/schema/mod/"/>
+	</target>
+
+	<target name="rng-to-topology-doc" if="switch.build.topology.doc">
+		<saxon-xslt in="${input-rng}" style="${util.dir}/rng/rng-topology.xsl" out="${output-html}">
+		</saxon-xslt>
+	</target>
+
+	<target name="validate-dest-rng-schemas" description="validates all schemas in dest dir
+	  against the RelaxNG schema for RelaxNG">
+		<jing rngfile="${util.dir}/rng/relaxng.rng">
+			<fileset dir="${dest.dir}" includes="**/*.rng" />
+		</jing>
+	</target>
+
+	<target name="validate-rng-test" description="validates given dest schema against
+      sample instances in /test/ dir">
+		<echo message="*** Validating sample instances against ${dest.normative.schema.path}" />
+		<jing failonerror="true" rngfile="${dest.normative.schema.path}">
+			<fileset dir="${test.dir}/z3986a/${machinename}/valid/" includes="**/*.xml" />
+		</jing>
+	</target>
+
+	<target name="build-rd" description="builds the resource directory 
+		instance for inparam profile or feature">
+
+		<property name="rd.src" value="${src.rd.dir}/${rd.filename}" />
+		<property name="rd.intermediate" value="${temp.dir}/${z3986.part.a.prefix}-${machinename}.html" />
+		<property name="rd.dest" value="${dest.dir}/${z3986.part.a.prefix}-${machinename}.html" />
+
+		<!-- fix xslt inparam to be a valid uri (else crash on windows) -->
+		<path id="tmp" path="${temp.schema.fileset.list}" />
+		<pathconvert targetos="unix" property="uriparam" refid="tmp">
+			<map from="" to="file:///" />
+		</pathconvert>
+
+		<condition property="hasVocab">
+			<not>
+			  <contains string="${default-vocab-uri}" substring="default-vocab-uri" />
+			</not>
+		</condition> 
+		
+		<saxon-xslt in="${rd.src}" style="${util.dir}/rd/build-rd.xsl" out="${rd.intermediate}">
+			<param name="nicename" expression="${nicename}" />
+			<param name="spec-nicename-prefix" expression="${z3986.part.a.nicename.prefix}" />
+			<param name="machinename" expression="${machinename}" />
+			<param name="version" expression="${version}" />
+			<param if="hasVocab" name="default-vocab-uri" expression="${default-vocab-uri}" />
+			<param name="schema-fileset" expression="${uriparam}" />
+			<param name="part-prefix" expression="${part.prefix}" />
+			<param name="normative-schema-uri" expression="${normative.schema.path}" />
+			<param name="informative-schema-list" expression="${temp.informative.schema.list}" />
+			<param name="base-identity-uri" expression="${base-identity-uri}" />
+		</saxon-xslt>
+
+		<saxon-xslt in="${rd.intermediate}" style="${util.dir}/xsl/toc.xsl" out="${rd.dest}" />
+		
+		<build-htaccess dest-dir="${dest.dir}" index-name="${z3986.part.a.prefix}-${machinename}.html"/>
+		
+		<!-- TODO validate the result -->
+	</target>
+
+	<target name="build-ai-spec" depends="validate-ai-spec-sources" description="validates and builds docbook 5 sources">
+		<delete file="${spec.part-a.output.path}" quiet="true" />
+		<delete file="${primer.part-a.output.path}" quiet="true"/>
+		<delete file="${build.dir}/z3986.css" quiet="true" />
+		
+		<!-- spec: create the HTML version of the docbook5 source -->
+		<saxon9-cmd-dbxi in="${spec.part-a.docbook.path}" out="${spec.part-a.output.path}" 
+			style="${util.dir}/docbook/xslt/ZedAI_docbook2xhtml.xsl"/>
+
+		<!-- primer: create the HTML version of the docbook5 source -->
+		<saxon9-cmd-dbxi in="${primer.part-a.docbook.path}" out="${primer.part-a.output.path}" 
+			style="${util.dir}/docbook/xslt/ZedAI_docbook2xhtml.xsl"/>
+
+		<!-- copy the docbook html css -->
+		<copy file="${util.dir}/docbook/html-css/docbook.css" tofile="${build.dir}/z3986.css" />
+
+	</target>
+
+	<target name="validate-ai-spec-sources" description="validate the docbook spec doc sources">
+		<jing rngfile="${util.dir}/docbook/rng/docbookxi.rng" file="${spec.part-a.docbook.path}" checkid="true" failonerror="true" />
+		<jing rngfile="${util.dir}/docbook/rng/docbookxi.rng" file="${primer.part-a.docbook.path}" checkid="true" failonerror="true" />
+	</target>
+
+	<target name="build-reduced-rng-schemas">
+		<antcall target="rng-reduce-math" />
+		<antcall target="rng-reduce-ruby" />
+		<antcall target="rng-reduce-ssml" />
+		<antcall target="rng-reduce-select" />
+		<antcall target="rng-reduce-forms" />
+		<antcall target="rng-reduce-rend" />
+		<antcall target="rng-reduce-all" />
+	</target>
+
+	<target name="rng-reduce-math" if="rng-reduce-math">
+		<saxon-xslt in="${normative.schema.path}" style="${util.rngschema.reducer.xsl}" out="${reduced-schema-base-name}-nomath.rng">
+			<param name="excludeList" expression="${feature.machinename.math}" />
+		</saxon-xslt>
+	</target>
+
+	<target name="rng-reduce-ruby" if="rng-reduce-ruby">
+		<saxon-xslt in="${normative.schema.path}" style="${util.rngschema.reducer.xsl}" out="${reduced-schema-base-name}-noruby.rng">
+			<param name="excludeList" expression="${feature.machinename.ruby}" />
+		</saxon-xslt>
+	</target>
+
+	<target name="rng-reduce-ssml" if="rng-reduce-ssml">
+		<saxon-xslt in="${normative.schema.path}" style="${util.rngschema.reducer.xsl}" out="${reduced-schema-base-name}-nossml.rng">
+			<param name="excludeList" expression="${feature.machinename.ssml}" />
+		</saxon-xslt>
+	</target>
+
+	<target name="rng-reduce-select" if="rng-reduce-select">
+		<saxon-xslt in="${normative.schema.path}" style="${util.rngschema.reducer.xsl}" out="${reduced-schema-base-name}-noselect.rng">
+			<param name="excludeList" expression="${feature.machinename.select}" />
+		</saxon-xslt>
+	</target>
+
+	<target name="rng-reduce-forms" if="rng-reduce-forms">
+		<saxon-xslt in="${normative.schema.path}" style="${util.rngschema.reducer.xsl}" out="${reduced-schema-base-name}-noforms.rng">
+			<param name="excludeList" expression="${feature.machinename.forms}" />
+		</saxon-xslt>
+	</target>
+
+	<target name="rng-reduce-rend" if="rng-reduce-rend">
+		<saxon-xslt in="${normative.schema.path}" style="${util.rngschema.reducer.xsl}" out="${reduced-schema-base-name}-norend.rng">
+			<param name="excludeList" expression="${feature.machinename.rend}" />
+		</saxon-xslt>
+	</target>
+
+	<target name="rng-reduce-all" if="rng-reduce-all">
+		<saxon-xslt in="${normative.schema.path}" style="${util.rngschema.reducer.xsl}" out="${reduced-schema-base-name}-nofeatures.rng">
+			<param name="excludeList" expression="${feature.machinename.ssml} ${feature.machinename.ruby} ${feature.machinename.math} ${feature.machinename.select} ${feature.machinename.forms} ${feature.machinename.rend}" />
+		</saxon-xslt>
+	</target>
+
+	<target name="clean-build-dir-ai" description="clean build dir ai">
+		<!-- since we are cohabitatet with dist, we cant do a catch-all delete -->
+		<!-- delete build/auth -->
+		<delete failonerror="false" includeemptydirs="true">
+			<fileset dir="${build.ai.dir}" />
+		</delete>
+		<mkdir dir="${build.ai.dir}" />
+		
+	</target>
+
+	<target name="clean-dest-dir" description="clean destination dir (subdir of build dir)">
+		<delete failonerror="false" includeemptydirs="true">
+			<fileset dir="${dest.dir}" />
+		</delete>
+		<mkdir dir="${dest.dir}" />
+	</target>
+
+	<target name="clean-temp-dir" description="clean temp dir">
+		<delete failonerror="false" includeemptydirs="true">
+			<fileset dir="${temp.dir}" />
+		</delete>
+		<mkdir dir="${temp.dir}" />
+	</target>
+
+	<target name="build-rng-vocab-enum" description="Builds a RelaxNG enumeration of 
+		RDFa vocabulary terms.">
+		<saxon-xslt in="${src.rdf.dir}/z3986-${machinename}-rdfa-vocab.html" 
+			style="${util.dir}/rdf/rdfa-to-rng.xslt" 
+			out="${src.schema.dir}/mod/z3986-${machinename}-vocab.rng">
+			<param name="name" expression="${machinename}" />
+			<xmlcatalog refid="catalog" />
+		</saxon-xslt>
+	</target>
+
+	<!--
+	<target name="validate-vocabs">		
+		<xmlvalidate failonerror="yes" warn="yes" >
+			<fileset dir="${rdf.dir}" includes="**/*rdfa*.html"/>
+			<xmlcatalog refid="catalog"/>
+		</xmlvalidate>	
+	</target>
+	-->
+
+	<target name="incelim">
+	  <saxon-xslt in="${src.schema.dir}/z3986a-book.rng" out="${temp.dir}/incelim/incelim.rng" 
+					style="${util.dir}/rng/incelim/incelim.xsl">
+					<param name="scope" expression="@{scope}" />
+					<param name="pattern.name" expression="@{pattern-name}" />
+				</saxon-xslt>
+	</target>
+
+	
+</project>

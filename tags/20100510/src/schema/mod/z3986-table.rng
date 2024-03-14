@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+  ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="table">The table module</dcterms:title>
+      <dcterms:description>This module defines the [[#z3986.table]] element and descendants for expressing tabular data and constructs.</dcterms:description>     
+      <z:info>The table element and its descendants inherit the semantics and behavior of the [[http://www.w3.org/TR/xhtml-modularization/abstract_modules.html#s_tablemodule XHTML Modularization 1.1 tables module]] unless otherwise specified.</z:info>
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}" />
+      <dcterms:creator>Markus Gylling</dcterms:creator>      
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng"/>
+      <dcterms:requires rdf:resource="z3986-datatypes.rng"/>
+    </rdf:Description>
+  </rdf:RDF>
+
+  <div>
+
+    <define name="z3986.table">
+      <element name="table">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="table">The {table} element</dcterms:title>
+            <dcterms:description>The {table} element represents a single instance of tabular data arranged in rows and columns.</dcterms:description>      
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.Block.class]]}</z:context>          
+            <z:content>{([[#z3986.table.col]]* | [[#z3986.table.colgroup]]*), (([[#z3986.table.thead]]?, [[#z3986.table.tbody]]+, [[#z3986.table.tfoot]]?) | [[#z3986.table.tr]]+)}</z:content>          
+            <z:attlist>{[[#z3986.Block.attrib]]}</z:attlist>      
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.table.attlist"/>
+        <ref name="z3986.table.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.table.attlist">
+      <ref name="z3986.Block.attrib"/>
+    </define>
+
+    <define name="z3986.table.content">      
+      <choice>
+        <zeroOrMore>
+          <ref name="z3986.table.col"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="z3986.table.colgroup"/>
+        </zeroOrMore>
+      </choice>
+      <choice>
+        <group>
+          <optional>
+            <ref name="z3986.table.thead"/>
+          </optional>          
+          <oneOrMore>
+            <ref name="z3986.table.tbody"/>
+          </oneOrMore>
+          <optional>
+            <ref name="z3986.table.tfoot"/>
+          </optional>
+        </group>
+        <oneOrMore>
+          <ref name="z3986.table.tr"/>
+        </oneOrMore>
+      </choice>
+    </define>
+
+  </div>
+
+  <div>       
+    <define name="z3986.table.col">
+      <element name="col">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="col">The {col} element</dcterms:title>
+            <dcterms:description>The {col} element defines the alignment properties for the cells in one or more columns. TODO</dcterms:description>      
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.table]]}</z:context>          
+            <z:content />          
+            <z:attlist>{[[#z3986.Block.attrib]], [[#z3986.table.col.span.attrib]]}</z:attlist>      
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.table.col.attlist"/>
+      </element>
+    </define>
+
+    <define name="z3986.table.col.attlist">
+      <ref name="z3986.Block.attrib"/>
+      <optional>
+        <ref name="z3986.table.col.span.attrib"/>
+      </optional>  
+    </define>
+    
+    <define name="z3986.table.col.span.attrib">            
+      <attribute name="span">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="span (col)">The {span} attribute (col)</dcterms:title>
+            <dcterms:description>The {span} attribute specifies the number of columns 
+              that share the {col} element's attributes.</dcterms:description>     
+            <z:info>If omitted, the implicit value {1} is assumed.</z:info> 
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.table.col]]}</z:context>          
+            <z:content>{[[#PositiveInteger.datatype]]}</z:content>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="PositiveInteger.datatype"/>
+      </attribute>      
+    </define>
+  </div>
+
+  <div>     
+    <define name="z3986.table.colgroup">
+      <element name="colgroup">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="colgroup">The {colgroup} element</dcterms:title>
+            <dcterms:description>Groups adjacent columns that are semantically related.</dcterms:description>      
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.table]]}</z:context>          
+            <z:content>{[[#z3986.table.col]]*}</z:content>          
+            <z:attlist>{[[#z3986.Block.attrib]], [[#z3986.table.colgroup.span.attrib]]?}</z:attlist>      
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.table.colgroup.attlist"/>
+        <ref name="z3986.table.colgroup.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.table.colgroup.attlist">
+      <ref name="z3986.Block.attrib"/>
+    </define>
+
+    <define name="z3986.table.colgroup.content">
+      <choice>      
+        <ref name="z3986.table.colgroup.span.attrib"/>      
+        <oneOrMore>
+          <ref name="z3986.table.col"/>
+        </oneOrMore>
+      </choice>  
+    </define>
+
+    <define name="z3986.table.colgroup.span.attrib">              
+      <attribute name="span">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="span (colgroup)">The {span} attribute (colgroup)</dcterms:title>
+            <dcterms:description>The {span} attribute specifies the number of columns in a {colgroup}.</dcterms:description>            
+            <z:info>If a {colgroup} element contains child {[[#z3986.table.col]]} 
+              elements, the span is determined instead from the number of child {col} elements and it is not valid
+              to append the {span} attribute.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.table.colgroup]]}</z:context>          
+            <z:content>{[[#PositiveInteger.datatype]]}</z:content>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="PositiveInteger.datatype"/>
+      </attribute>      
+    </define>
+    
+  </div>
+
+  <div>        
+    <define name="z3986.table.thead">
+      <element name="thead">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="thead">The {thead} element</dcterms:title>
+            <dcterms:description>The {thead} element represents the collection of {table} header rows.</dcterms:description>
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.table]]}</z:context>          
+            <z:content>{[[#z3986.table.tr]]+}</z:content>          
+            <z:attlist>{[[#z3986.Block.attrib]]}</z:attlist>      
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.table.thead.attlist"/>
+        <ref name="z3986.table.thead.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.table.thead.attlist">
+      <ref name="z3986.Block.attrib"/>
+    </define>
+
+    <define name="z3986.table.thead.content">
+      <oneOrMore>
+        <ref name="z3986.table.tr"/>
+      </oneOrMore>
+    </define>
+  </div>
+
+  <div>
+    <define name="z3986.table.tfoot">
+      <element name="tfoot">        
+          <rdf:RDF>
+            <rdf:Description>
+              <dcterms:title z:short="tfoot">The {tfoot} element</dcterms:title>
+              <dcterms:description>The {tfoot} element represents the collection of {table} footer rows.</dcterms:description> 
+              <z:info absdef-only="true">Note that contrary to the [[http://www.w3.org/TR/xhtml-modularization/abstract_modules.html#s_tablemodule XHTML Modularization 1.1 tables module {tfoot element}]], this element is placed following the {tbody} element.</z:info>
+              <dcterms:isRequiredBy rdf:resource="."/>                     
+              <z:context>{[[#z3986.table]]}</z:context>          
+              <z:content>{[[#z3986.table.tr]]+}</z:content>          
+              <z:attlist>{[[#z3986.Block.attrib]]}</z:attlist>      
+            </rdf:Description>
+          </rdf:RDF>
+        <ref name="z3986.table.tfoot.attlist"/>
+        <ref name="z3986.table.tfoot.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.table.tfoot.attlist">
+      <ref name="z3986.Block.attrib"/>
+    </define>
+
+    <define name="z3986.table.tfoot.content">
+      <oneOrMore>
+        <ref name="z3986.table.tr"/>
+      </oneOrMore>
+    </define>
+  </div>
+
+  <div>    
+    <define name="z3986.table.tbody">
+      <element name="tbody">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="tbody">The {tbody} element</dcterms:title>
+            <dcterms:description>The {tbody} element represents a collection of {table} body rows.</dcterms:description>   
+            <z:info>Multiple {tbody} elements are allowed to enable representation of sections of rows.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.table]]}</z:context>          
+            <z:content>{[[#z3986.table.tr]]+}</z:content>          
+            <z:attlist>{[[#z3986.Block.attrib]]}</z:attlist>      
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.table.tbody.attlist"/>
+        <ref name="z3986.table.tbody.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.table.tbody.attlist">
+      <ref name="z3986.Block.attrib"/>
+    </define>
+
+    <define name="z3986.table.tbody.content">
+      <oneOrMore>
+        <ref name="z3986.table.tr"/>
+      </oneOrMore>
+    </define>
+  </div>
+
+  <div>
+    <define name="z3986.table.tr">
+      <element name="tr">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="tr">The {tr} element</dcterms:title>
+            <dcterms:description>The {tr} element represents a single {table} row of data.</dcterms:description>   
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.table]]}, {[[#z3986.table.thead]]}, {[[#z3986.table.tbody]]} and {[[#z3986.table.tfoot]]}</z:context>          
+            <z:content>{(z3986.table.th | z3986.table.td)+}</z:content>          
+            <z:attlist>{[[#z3986.Block.attrib]]}</z:attlist>      
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.table.tr.attlist"/>
+        <ref name="z3986.table.tr.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.table.tr.attlist">
+      <ref name="z3986.Block.attrib"/>
+    </define>
+
+    <define name="z3986.table.tr.content">
+      <oneOrMore>
+        <choice>
+          <ref name="z3986.table.th"/>
+          <ref name="z3986.table.td"/>
+        </choice>
+      </oneOrMore>
+    </define>
+  </div>
+
+  <div>        
+    <define name="z3986.table.th">
+      <element name="th">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="th">The {th} element</dcterms:title>
+            <dcterms:description>The {th} element represents a single table cell containing header information.</dcterms:description>   
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.table.tr]]}</z:context>          
+            <z:content>{(z3986.Block.class)+ | (text | z3986.Text.class | z3986.Phrase.class)+}</z:content>          
+            <z:attlist>{[[#z3986.Block.attrib]], [[#z3986.table.th.abbr.attrib]]?, [[#z3986.table.colspan.attrib]]?, [[#z3986.table.headers.attrib]]?, [[#z3986.table.rowspan.attrib]]?, [[#z3986.table.scope.attrib]]?}</z:attlist>      
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.table.th.attlist"/>
+        <ref name="z3986.table.th.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.table.th.attlist">
+      <ref name="z3986.Cell.attrib"/>
+      <optional>
+        <ref name="z3986.table.th.abbr.attrib"/>
+      </optional>
+    </define>
+
+    <define name="z3986.table.th.abbr.attrib">
+      <attribute name="abbr">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="abbr">The {abbr} attribute</dcterms:title>
+            <dcterms:description>The {abbr} attribute specifies an abbreviated header value.</dcterms:description>      
+            <z:context>{[[#z3986.table.th]]}</z:context>          
+            <z:content>{[[#Characters.datatype]]}</z:content>          
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="Characters.datatype"/>
+      </attribute>
+    </define>
+
+    <define name="z3986.table.th.content">
+      <ref name="z3986.Flow.choice.model"/>
+    </define>
+
+  </div>
+
+  <div>       
+    <define name="z3986.table.td">
+      <element name="td">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="td">The {td} element</dcterms:title>
+            <dcterms:description>The {td} element represents a single table cell.</dcterms:description>   
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.table.tr]]}</z:context>          
+            <z:content>{(z3986.Block.class)+ | (text | z3986.Text.class | z3986.Phrase.class)+}</z:content>          
+            <z:attlist>{[[#z3986.Block.attrib]], [[#z3986.table.colspan.attrib]]?, [[#z3986.table.headers.attrib]]?, [[#z3986.table.rowspan.attrib]]?, [[#z3986.table.scope.attrib]]?}</z:attlist>      
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.table.td.attlist"/>
+        <ref name="z3986.table.td.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.table.td.attlist">
+      <ref name="z3986.Cell.attrib"/>
+    </define>
+
+    <define name="z3986.table.td.content">
+      <ref name="z3986.Flow.choice.model"/>
+    </define>
+  </div>
+
+  <div>
+    <a:documentation>Common attribute definitions</a:documentation>
+    
+    <define name="z3986.Cell.attrib">
+      <ref name="z3986.Block.attrib"/>      
+      <!-- <optional>
+        <ref name="z3986.table.axis.attrib"/>
+      </optional> -->
+      <optional>        
+        <ref name="z3986.table.colspan.attrib"/> 
+      </optional>
+      <optional>        
+        <ref name="z3986.table.rowspan.attrib"/>
+      </optional>      
+      <optional>
+        <ref name="z3986.table.headers.attrib"/>
+      </optional>
+      <optional>
+        <ref name="z3986.table.scope.attrib"/>
+      </optional>
+    </define>
+            
+    <!-- <define name="z3986.table.axis.attrib">
+      <attribute name="axis">
+        <ref name="Characters.datatype"/>
+      </attribute>
+    </define> -->
+        
+    <define name="z3986.table.colspan.attrib">
+      <attribute name="colspan">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="colspan">The {colspan} attribute</dcterms:title>
+            <dcterms:description>The {colspan} attribute specifies the number of columns spanned by the current cell.</dcterms:description>      
+            <z:info>The implicit value of this attribute is {1}. The value {0} indicates that the cell spans all 
+              columns from the current column to the last column of the {[[#z3986.table.colgroup]]} in which the cell is defined.</z:info>                                  
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.table.th]]} and {[[#z3986.table.td]]}</z:context>          
+            <z:content>{[[#NonNegativeInteger.datatype]]}</z:content>           
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="NonNegativeInteger.datatype"/>
+      </attribute>
+    </define>    
+     
+    <define name="z3986.table.rowspan.attrib">
+      <attribute name="rowspan">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="rowspan">The {rowspan} attribute</dcterms:title>
+            <dcterms:description>The {rowspan} attribute specifies the number of rows spanned by the current cell.</dcterms:description>
+            <z:info>The implicit value of this attribute is {1}. The value {0} indicates that the cell spans all rows 
+              from the current row to the last row of the current table section (rowgroup) in which the cell 
+              is defined (where the {[[#z3986.table.thead]]}, {[[#z3986.table.tbody]]}, and {[[#z3986.table.tfoot]]} 
+              elements are considered rowgroups).</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.table.th]]} and {[[#z3986.table.td]]}</z:context>          
+            <z:content>{[[#NonNegativeInteger.datatype]]}</z:content>           
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="NonNegativeInteger.datatype"/>
+      </attribute>
+    </define>
+     
+    <define name="z3986.table.scope.attrib">      
+        <attribute name="scope">
+          <rdf:RDF>
+            <rdf:Description>
+              <dcterms:title z:short="scope">The {scope} attribute</dcterms:title>
+              <dcterms:description>The {scope} attribute specifies the set of data cells for which the current header cell provides 
+                header information.</dcterms:description>      
+              <z:info>This attribute may be used in place of the {[[#z3986.table.headers.attrib]]} attribute, 
+                especially for simple tables.</z:info>                                  
+              <dcterms:isRequiredBy rdf:resource="."/>                     
+              <z:context>{[[#z3986.table.th]]} and {[[#z3986.table.td]]}</z:context>          
+              <z:content>{'row' | 'col' | 'rowgroup' | 'colgroup'}</z:content>           
+            </rdf:Description>
+          </rdf:RDF>
+          <choice>
+            <value>row</value>
+            <a:documentation>The current cell provides header information for the rest of the row that contains it.</a:documentation>
+            <value>col</value>
+            <a:documentation>The current cell provides header information for the rest of the column that contains it.</a:documentation>
+            <value>rowgroup</value>
+            <a:documentation>The header cell provides header information for the rest of the row group that contains it.</a:documentation>
+            <value>colgroup</value>
+            <a:documentation>The header cell provides header information for the rest of the column group that contains it.</a:documentation>
+          </choice>
+        </attribute>      
+    </define>
+        
+    <define name="z3986.table.headers.attrib">
+      <attribute name="headers">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="headers">The {headers} attribute</dcterms:title>
+            <dcterms:description>The {headers} attribute specifies the list of header cells that provide header information for the current data cell.</dcterms:description>
+            <z:info>This attribute requires a space separated list of valid {ID} references that resolves to {[[#z3986.table.th th]]} elements.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>{[[#z3986.table.th]]} and {[[#z3986.table.td]]}</z:context>          
+            <z:content>{[[#IDREFS.datatype]]}</z:content>           
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="IDREFS.datatype"/>
+        <!-- TODO SCH headers IDREF resolves to a th -->
+      </attribute>
+    </define>
+                
+  </div>
+
+  <div>
+    <a:documentation>The table element - content model specialization</a:documentation>
+  
+    <define name="z3986.table.tr.content" combine="interleave">
+      <a:documentation>interleave with table.extra</a:documentation>	  
+      <ref name="z3986.table.extra.model"/>	    
+	  </define>
+    
+    <define name="z3986.table.tr" combine="interleave">
+      <a:documentation>interleave with table.extra</a:documentation>	  
+      <ref name="z3986.table.extra.model"/>	    
+    </define>
+	
+   	<define name="z3986.table.extra.model">
+      <a:documentation>a class to contribute elements inside and outside tr</a:documentation>
+      <zeroOrMore>        
+          <ref name="z3986.table.extra.class"/>        
+      </zeroOrMore>
+    </define>
+		
+    <define name="z3986.table.extra.class" combine="choice">                    
+        <ref name="z3986.Global.extra.class"/>              
+    </define>
+		
+  </div>
+  
+  <div>
+    <a:documentation>The table element - minimal model</a:documentation>    
+    <define name="z3986.table.simple.content">      
+      <oneOrMore>
+        <ref name="z3986.table.tr"/>
+      </oneOrMore>
+    </define>    
+  </div>
+
+  <div>
+    <a:documentation>table - default content model contribution</a:documentation>
+
+    <define name="z3986.Block.core.class" combine="choice">
+      <ref name="z3986.table"/>
+    </define>
+               
+  </div>
+
+</grammar>

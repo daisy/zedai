@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="p">The paragraph module</title>
+        <annotation annotates="/">
+            <para role="desc-main">This module defines the {[[#z3986.p]]} element for distinguishing paragraphs of text.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3986-global-classes.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2011-01-03</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="z3986.p" xml:id="z3986.p">
+            <element name="p">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="p">The {p} element</title>
+                    <para role="desc-main">The {p} element represents a paragraph of text consisting of one or several sentences.</para>
+                    <para role="desc-sub">The {[[#z3986.class.attrib]]} attribute together with a CSS stylesheet should be used to retain any formatting information specific to a paragraph, such as first line indenting.</para>
+                    <para role="desc-sub doc-only">When print layout has to be strictly followed in converting a document to electronic format, paragraphs may be split by other elements such as full page images. Refer to the {[[#z3986.continuation.attrib]]} attribute for more information on how to indicate that two {p} elements actually constitute a single whole.</para>
+                    <synopsis role="def-context">{[[#z3986.Section.class]]}</synopsis>
+                    <synopsis role="def-content">{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Block.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.p.attlist"/>
+                <ref name="z3986.p.content"/>
+                <sch:rule context="default:p">
+                    <sch:assert test="normalize-space(.) or *">The {p} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="z3986.p.attlist" xml:id="z3986.p.attlist">
+            <ref name="z3986.Block.attrib"/>
+        </define>
+        <define name="z3986.p.content" xml:id="z3986.p.content">
+            <ref name="z3986.Phrase.Text.mix.model"/>
+        </define>
+    </div>
+    <div>
+        <a:documentation>p - default content model contribution</a:documentation>
+        <define name="z3986.Block.core.class" combine="choice">
+            <ref name="z3986.p"/>
+        </define>
+        <define name="z3986.Block.basic.model" combine="choice">
+            <ref name="z3986.p"/>
+        </define>
+    </div>
+</grammar>

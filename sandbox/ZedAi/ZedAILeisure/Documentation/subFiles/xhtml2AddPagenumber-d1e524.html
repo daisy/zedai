@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Relax NG schema module</title>
+      <link rel="stylesheet" type="text/css" href="../css/ProfileDocumentation.css" />
+   </head>
+   <body>
+      <h1 class="title">The DAISY Leisure Profile</h1>
+      
+      
+      <h1 id="d37e3" class="xhtml">The xhtml2 + pagenumber module</h1>
+      
+      
+      
+      <p>This module adds the <span class="markup">pagenum</span> element to the xhtml2 document
+         model.
+      </p>
+      
+      
+      <p>Allow pagenumber as a child of the <span class="markup">section</span> element.
+      </p>
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">section.model</span>
+         
+         <div class="rng"><span class="rng">zeroOrMore</span>:  Zero or more of: 
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Daisy.pagenumber.html">Daisy.pagenumber</a></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <p>Allow pagenumber as a child of the <span class="markup">p</span> element.
+      </p>
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">p.model</span>
+         
+         <div class="rng"><span class="rng">zeroOrMore</span>:  Zero or more of: 
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Daisy.pagenumber.html">Daisy.pagenumber</a></div>
+            
+         </div>
+         
+      </div>
+      
+      
+   </body>
+</html>

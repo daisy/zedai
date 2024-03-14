@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 definition element module</x:h1>
+    
+  <div>
+    <x:h2>The definition element</x:h2>
+    <x:div id="z3986.definition">
+      <x:p class="description">
+        The <x:code>definition</x:code> element represents an formal description of
+        the meaning of a word, term, phrase, or other construct.
+        <x:br/>
+        Definitions that are not part of the document content can be placed in the document
+        head.
+      </x:p>
+    </x:div>
+    
+    <define name="z3986.definition">
+      <element name="definition">        
+        <ref name="z3986.definition.attlist"/>
+        <ref name="z3986.definition.content"/>  
+      </element>    
+    </define>
+
+    <define name="z3986.definition.attlist">
+        <ref name="z3986.Text.attrib"/>
+    </define>
+       
+    <define name="z3986.definition.content">
+      <ref name="z3986.Text.model"/>    
+    </define>  
+    
+  </div>
+  
+  <div>
+    <x:h2>The definition element - default content model contribution</x:h2>
+        
+    <define name="z3986.Text.class" combine="choice">
+      <ref name="z3986.definition"/>    
+    </define>
+
+    <define name="z3986.head.class" combine="choice">
+      <ref name="z3986.definition"/>    
+    </define>
+
+  </div>
+
+</grammar>

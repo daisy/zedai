@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <div>
+        <define name="xhtml.section">
+            <element name="section">
+                <ref name="xhtml.section.attlist"/>
+                <!-- the default section is loose -->
+                <ref name="xhtml.section.content"/>
+            </element>
+        </define>
+
+        <define name="xhtml.section.attlist">
+            <ref name="xhtml.Structural.attlist"/>
+        </define>
+
+        <define name="xhtml.section.content">
+            <!-- the default section is loose -->
+            <oneOrMore>
+                <choice>
+                    <ref name="xhtml.Structural.class"/>
+                    <ref name="xhtml.Heading.class"/>
+                    <ref name="xhtml.section"/>
+                </choice>
+            </oneOrMore>
+        </define>
+    </div>
+
+    <define name="xhtml.section.1">
+        <element name="section">
+            <ref name="xhtml.section.attlist"/>
+            <ref name="xhtml.section.1.content"/>
+        </element>
+    </define>
+
+    <define name="xhtml.section.1.content">
+        <interleave>
+            <oneOrMore>
+                <choice>
+                    <ref name="xhtml.Structural.class"/>
+                    <ref name="xhtml.section.2"/>
+                </choice>
+            </oneOrMore>
+            <optional>
+                <ref name="xhtml.h1"/>
+            </optional>
+        </interleave>
+    </define>
+
+    <define name="xhtml.section.2">
+        <element name="section">
+            <ref name="xhtml.section.attlist"/>
+            <ref name="xhtml.section.2.content"/>
+        </element>
+    </define>
+
+    <define name="xhtml.section.2.content">
+        <interleave>
+            <oneOrMore>
+                <choice>
+                    <ref name="xhtml.Structural.class"/>
+                    <ref name="xhtml.section.3"/>
+                </choice>
+            </oneOrMore>
+            <optional>
+                <ref name="xhtml.h2"/>
+            </optional>
+        </interleave>
+    </define>
+
+    <define name="xhtml.section.3">
+        <element name="section">
+            <ref name="xhtml.section.attlist"/>
+            <ref name="xhtml.section.3.content"/>
+        </element>
+    </define>
+
+    <define name="xhtml.section.3.content">
+        <interleave>
+            <oneOrMore>
+                <choice>
+                    <ref name="xhtml.Structural.class"/>
+                    <ref name="xhtml.section.4"/>
+                </choice>
+            </oneOrMore>
+            <optional>
+                <ref name="xhtml.h3"/>
+            </optional>
+        </interleave>
+    </define>
+
+    <define name="xhtml.section.4">
+        <element name="section">
+            <ref name="xhtml.section.attlist"/>
+            <ref name="xhtml.section.4.content"/>
+        </element>
+    </define>
+
+    <define name="xhtml.section.4.content">
+        <interleave>
+            <oneOrMore>
+                <choice>
+                    <ref name="xhtml.Structural.class"/>
+                    <ref name="xhtml.section.5"/>
+                </choice>
+            </oneOrMore>
+            <optional>
+                <ref name="xhtml.h4"/>
+            </optional>
+        </interleave>
+    </define>
+
+    <define name="xhtml.section.5">
+        <element name="section">
+            <ref name="xhtml.section.attlist"/>
+            <ref name="xhtml.section.5.content"/>
+        </element>
+    </define>
+
+    <define name="xhtml.section.5.content">
+        <interleave>
+            <oneOrMore>
+                <choice>
+                    <ref name="xhtml.Structural.class"/>
+                    <ref name="xhtml.section.6"/>
+                </choice>
+            </oneOrMore>
+            <optional>
+                <ref name="xhtml.h5"/>
+            </optional>
+        </interleave>
+    </define>
+
+    <define name="xhtml.section.6">
+        <element name="section">
+            <ref name="xhtml.section.attlist"/>
+            <ref name="xhtml.section.6.content"/>
+        </element>
+    </define>
+
+    <define name="xhtml.section.6.content">
+        <interleave>
+            <oneOrMore>
+                <choice>
+                    <ref name="xhtml.Structural.class"/>
+                    <ref name="xhtml.section.6"/>
+                </choice>
+            </oneOrMore>
+            <optional>
+                <ref name="xhtml.h6"/>
+            </optional>
+        </interleave>
+    </define>
+
+</grammar>

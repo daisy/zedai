@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="ai-snippets.rng" type="xml"?>
+<snippets xmlns:rend="http://www.daisy.org/ns/z3986/authoring/features/rend/"
+    xmlns="http://www.daisy.org/ns/z3986/authoring/">
+       
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--               @rend:rend                   -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+           
+    <snippet about="z3986.rend.attrib" dest="doc">
+it follows that any being, if it vary however slightly in any manner profitable to itself, 
+under the complex and sometimes varying conditions of life, will have a better 
+chance of surviving, and thus be <emph rend:rend="font-style: italic">naturally selected</emph>.        
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--               @rend:symbol                 -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    
+    <snippet about="z3986.rend.symbol.attrib" dest="doc">
+<p>…</p>
+<separator rend:symbol="* * *"/>
+<p>…</p>
+    </snippet>
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--   @rend:prefix (ordered lists)             -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+        
+    <snippet about="z3986.rend.list.ordered.prefix.attrib" dest="doc">
+<list type="ordered" rend:prefix="upper-roman">
+    <item>…</item>
+</list>        
+    </snippet>
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--   @rend:prefix (unordered lists)           -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.rend.list.unordered.prefix.attrib" dest="doc">
+<list type="unordered" rend:prefix="diamond">
+    <item>…</item>
+</list>         
+    </snippet>
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--   @rend:prefix (list items)                -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.rend.list.item.prefix.attrib" dest="doc">
+<list>
+    <item rend:prefix="&#8594;">…</item>
+</list>        
+    </snippet>
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--   @rend:prefix (note)                      -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.rend.note.prefix.attrib" dest="doc">
+<note rend:prefix="&#8620;">
+    …
+</note>                
+    </snippet>
+      
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--   @rend:indent                             -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.rend.indent.attrib" dest="doc">
+<p rend:indent="2em">
+    …
+</p>                
+    </snippet>
+</snippets>

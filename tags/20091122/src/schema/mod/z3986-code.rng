@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml">
+
+	<x:h1>Z39.86 code element module</x:h1>
+
+	<div>
+		<x:h2>The code element</x:h2>
+		<x:div id="z3986.code">
+			<x:p class="description">
+				The <x:code>code</x:code>
+				element represents computer science code (statements or
+				declarations).
+				<x:br />
+				The <x:code>role</x:code>
+				attribute and the <x:code>RDF/a</x:code>
+				attribute collection can be used to describe the nature of the
+				element content.
+			</x:p>
+		</x:div>
+
+		<x:h3>The code element - text context </x:h3>
+
+		<define name="z3986.code.text">
+			<element name="code">
+				<ref name="z3986.code.text.attlist" />
+				<ref name="z3986.code.text.content" />
+			</element>
+		</define>
+
+		<define name="z3986.code.text.attlist">
+			<ref name="z3986.Text.attrib" />
+		</define>
+
+		<define name="z3986.code.text.content">
+			<oneOrMore>
+				<choice>
+					<text />
+					<ref name="z3986.code.text.class" />
+				</choice>
+			</oneOrMore>
+		</define>
+
+		<define name="z3986.code.text.class" combine="choice">
+			<ref name="z3986.Text.base.class" />
+		</define>
+
+
+		<x:h3>The code element - structural context </x:h3>
+
+		<define name="z3986.code.structural">
+			<element name="code">
+				<ref name="z3986.code.structural.attlist" />
+				<ref name="z3986.code.structural.content" />
+			</element>
+		</define>
+
+		<define name="z3986.code.structural.attlist">
+			<ref name="z3986.Structural.attrib" />
+		</define>
+
+		<define name="z3986.code.structural.content">
+			<choice>
+			  <ref name="z3986.code.text.content"/>
+			  <oneOrMore>
+			    <choice>
+			      <ref name="z3986.code.linegroup"/>
+			      <ref name="z3986.code.line"/>
+			    </choice>
+			  </oneOrMore>
+			</choice>
+		</define>
+
+        <define name="z3986.code.linegroup">
+   		  <element name="lgroup">
+   		    <ref name="z3986.code.linegroup.attlist"/>
+   		    <ref name="z3986.code.linegroup.content"/>
+   		  </element>
+		</define>
+	   
+	    <define name="z3986.code.linegroup.attlist">
+	      <ref name="z3986.Structural.attrib" />
+	    </define>
+	    
+   		<define name="z3986.code.linegroup.content">
+   		  <oneOrMore>
+   		    <ref name="z3986.code.line"/>
+   		  </oneOrMore>  
+   		</define>
+
+   		<define name="z3986.code.line">
+   		  <element name="l">
+   		    <ref name="z3986.code.line.attlist"/>
+   		    <ref name="z3986.code.line.content"/>
+   		  </element>
+		</define>
+	   
+	    <define name="z3986.code.line.attlist">
+	      <ref name="z3986.Text.attrib" />
+	    </define>
+	    
+   		<define name="z3986.code.line.content">
+   		  <interleave>
+   		    <optional>
+              <ref name="z3986.linenum"/>
+            </optional>  		
+   		    <ref name="z3986.code.text.content"/>
+   		  </interleave>  
+   		</define>
+ 
+	</div>
+
+	<div>
+		<x:h2>The code element - default content model contribution</x:h2>
+
+		<define name="z3986.Text.class" combine="choice">
+			<ref name="z3986.code.text" />
+		</define>
+
+		<define name="z3986.Structural.class" combine="choice">
+			<ref name="z3986.code.structural" />
+		</define>
+
+        <define name="z3986.covers.content.class" combine="choice">
+			<ref name="z3986.code.structural" />
+        </define>
+
+
+	</div>
+
+</grammar>

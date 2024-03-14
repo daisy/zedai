@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z3986 List Module</x:h1>
+  <x:p>This module is a wrapper around the XHTML2 List Module.</x:p>
+  <x:p>It introduces the following major changes: </x:p>
+  <x:ul>
+  	<x:li>require the use of di</x:li>
+  	<x:li>tighten up dd, li content model</x:li>
+  	<x:li>committing List.class to Structural.nosection.class</x:li>
+  	<x:li>define a lists.extra slot for contributing siblings to listitems</x:li>
+  </x:ul>
+  
+  <!-- broken out to a module instead of in driver in order to 
+  		allow reuse between profiles -->
+  
+    <include href="xhtml-list-2.rng">
+    
+	    <define name="dl">
+	      <element name="dl">
+	        <ref name="dl.attlist"/>
+        	<optional>
+          		<ref name="label-in-list"/>
+        	</optional>	        
+	        <oneOrMore>	          
+	          <ref name="di"/>
+	        </oneOrMore>
+	      </element>
+	    </define>    
+	    	    
+		<define name="di">
+			<ref name="lists.extra"/>
+			<element name="di">
+		        <ref name="di.attlist"/>
+		        <oneOrMore>
+		          <ref name="lists.extra"/>
+		          <ref name="dt"/>
+		        </oneOrMore>
+		        <oneOrMore>
+		          <ref name="dd"/>
+		        </oneOrMore>
+	      	</element>
+    	</define>	    
+	    
+    	<define name="dd">
+    		<ref name="lists.extra"/>
+      		<element name="dd">
+      		  <ref name="dd.attlist"/>
+	      	  <ref name="Flow.model"/>        		  
+      		</element>
+    	</define>   
+
+	    <define name="li">
+	      <ref name="lists.extra"/>
+	      <element name="li">
+	        <ref name="li.attlist"/>
+	      	<ref name="Flow.model"/>       		  
+	      </element>
+	    </define>  
+
+	    <define name="li-in-ol">
+	      <ref name="lists.extra"/>
+	      <element name="li">
+	        <ref name="li-in-ol.attlist"/>
+	      	<ref name="Flow.model"/>
+	      </element>
+	    </define>   
+    </include>      
+          
+    <define name="Structural.nosection.class" combine="choice">      
+        <ref name="List.class"/>        
+    </define>
+         
+    <!-- slot for contributing siblings to listitems 
+    	(eg children of dl, di, ol, ul and nl) -->    
+    <define name="lists.extra">
+    	<empty/>
+    </define>
+</grammar>  

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Role Attribute Module</x:h1>
+
+  <define name="xhtml.role.attrib">
+    <optional>
+      <attribute name="role">
+	    <ref name="role.content"/>        
+      </attribute>
+    </optional>
+  </define>
+
+  <define name="role.content" combine="choice">
+    <ref name="CURIEs.datatype"/>
+  </define>
+  
+  <define name="xhtml.Common.attrib" combine="interleave">
+    <ref name="xhtml.role.attrib"/>
+  </define>
+
+</grammar>

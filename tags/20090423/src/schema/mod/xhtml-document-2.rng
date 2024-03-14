@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Document Module</x:h1>
+
+  <start>
+    <ref name="xhtml.html"/>
+  </start>
+
+  <div>
+    <x:h2>The html element</x:h2>
+
+    <define name="xhtml.html">
+      <element name="html">
+        <ref name="xhtml.html.attlist"/>
+        <ref name="xhtml.head"/>
+        <ref name="xhtml.body"/>
+      </element>
+    </define>
+
+    <define name="xhtml.html.attlist">
+      <ref name="xhtml.Common.attrib"/>
+      <optional>
+        <ref name="xhtml.version.attrib"/>
+      </optional>
+    </define>
+
+    <define name="xhtml.version.attrib">      
+        <attribute name="version">
+          <ref name="CDATA.datatype"/>
+        </attribute>     
+    </define>
+  </div>
+
+  <div>
+    <x:h2>The head element</x:h2>
+
+    <define name="xhtml.head">
+      <element name="head">
+        <ref name="xhtml.head.attlist"/>
+        <ref name="xhtml.head.content"/>
+      </element>
+    </define>
+
+    <define name="xhtml.head.attlist">
+      <ref name="xhtml.Common.attrib"/>
+    </define>
+
+    <define name="xhtml.head.content">
+      <ref name="xhtml.title"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="xhtml.head.misc"/>
+        </choice>
+      </zeroOrMore>
+    </define>
+
+    <define name="xhtml.head.misc">
+      <notAllowed/>
+    </define>
+    
+  </div>
+
+  <div>
+    <x:h2>The title element</x:h2>
+
+    <define name="xhtml.title">
+      <element name="title">
+        <ref name="xhtml.title.attlist"/>
+        <ref name="xhtml.title.content"/>        
+      </element>
+    </define>
+
+    <define name="xhtml.title.attlist">
+      <ref name="xhtml.Common.attrib"/>
+    </define>
+
+    <define name="xhtml.title.content">    
+      <ref name="xhtml.Text.model"/>
+    </define> 
+    
+    <define name="xhtml.Text.class" combine="choice">
+      <ref name="xhtml.title"/>
+    </define>
+  </div>
+
+  <div>
+    <x:h2>The body element</x:h2>
+
+    <define name="xhtml.body">
+      <element name="body">
+        <ref name="xhtml.body.attlist"/>
+        <ref name="xhtml.body.content"/>        
+      </element>
+    </define>
+
+    <define name="xhtml.body.attlist">
+      <ref name="xhtml.Common.attrib"/>
+    </define>
+    
+    <define name="xhtml.body.content">    
+      <ref name="xhtml.Structural.model"/>
+    </define>
+      
+  </div>
+
+</grammar>

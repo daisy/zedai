@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.w3.org/2002/xforms/" xmlns="http://relaxng.org/ns/structure/1.0" 
+    xmlns:x="http://www.w3.org/1999/xhtml">
+    <x:h1>Z39.86 Print Forms Feature</x:h1>
+    <div>
+        <x:h2>W3C XForms 1.1 Module</x:h2>
+        <include href="xforms-nons-11.rng">
+            <!-- remove hint -->
+            <define name="xforms.hint" xml:id="xforms.hint">
+                <notAllowed/>
+            </define>
+            <!-- remove help -->
+            <define name="xforms.help" xml:id="xforms.help">
+                <notAllowed/>
+            </define>
+            <!-- remove alert -->
+            <define name="xforms.alert" xml:id="xforms.alert">
+                <notAllowed/>
+            </define>
+            <!-- remove upload -->
+            <define name="xforms.upload" xml:id="xforms.upload">
+                <notAllowed/>
+            </define>
+            <!-- remove filename -->
+            <define name="xforms.filename" xml:id="xforms.filename">
+                <notAllowed/>
+            </define>
+            <!-- remove trigger -->
+            <define name="xforms.trigger" xml:id="xforms.trigger">
+                <notAllowed/>
+            </define>
+            <!-- remove output -->
+            <define name="xforms.output" xml:id="xforms.output">
+                <notAllowed/>
+            </define>
+            <!-- remove submit -->
+            <define name="xforms.submit" xml:id="xforms.submit">
+                <notAllowed/>
+            </define>
+            <!-- remove mediatype -->
+            <define name="xforms.mediatype" xml:id="xforms.mediatype">
+                <notAllowed/>
+            </define>
+            <!-- remove switch -->
+            <define name="xforms.switch" xml:id="xforms.switch">
+                <notAllowed/>
+            </define>
+            <!-- remove all actions -->
+            <define name="xforms.Actions" xml:id="xforms.Actions">
+                <empty/>
+            </define>
+            <!-- override the xforms schemas any definition to circumvent attribute datatype collision error -->
+            <define name="xforms.instance.content" xml:id="xforms.instance.content">
+                <ref name="z3986.forms.instance.content.temp"/>
+            </define>
+            <define name="xforms.schema" xml:id="xforms.schema">
+                <notAllowed/>
+            </define>
+            <define name="xforms.repeat.content" xml:id="xforms.repeat.content">
+                <zeroOrMore>
+                    <choice>
+                        <!-- <ref name="xforms.Core.Form.Controls"/> -->
+                        <!-- remove core form controls as its contributed to UI.Inline.content below, if it remains we get UPA errors -->
+                        <ref name="xforms.Container.Form.Controls"/>
+                        <ref name="xforms.UI.Inline.content"/>
+                    </choice>
+                </zeroOrMore>
+            </define>
+            <define name="xforms.group.content" xml:id="xforms.group.content">
+                <optional>
+                    <ref name="xforms.label"/>
+                </optional>
+                <zeroOrMore>
+                    <choice>
+                        <!-- <ref name="xforms.Core.Form.Controls"/> -->
+                        <!-- remove core form controls as its contributed to UI.Inline.content below, if it remains we get UPA errors -->
+                        <ref name="xforms.Container.Form.Controls"/>
+                        <ref name="xforms.UI.Common.content"/>
+                        <ref name="xforms.UI.Inline.content"/>
+                    </choice>
+                </zeroOrMore>
+            </define>
+            <define name="xforms.UI.Inline.content" xml:id="xforms.UI.Inline.content">
+                <!-- TODO this should be fixed in the core schema -->
+                <oneOrMore>
+                    <choice>
+                        <text/>
+                        <ref name="xforms.UI.Inline.class"/>
+                    </choice>
+                </oneOrMore>
+            </define>
+            <!-- get a missing @src from msv on <instance> if this is not overridden -->
+            <define name="xforms.instance.attrib" combine="interleave">
+                <ref name="xforms.Common.attrib"/>
+                <optional>
+                    <attribute name="src">
+                        <ref name="URI.datatype"/>
+                    </attribute>
+                </optional>
+                <optional>
+                    <!-- note: instance@resource collides with rdf/a @resource -->
+                    <attribute name="resource">
+                        <ref name="URI.datatype"/>
+                    </attribute>
+                </optional>
+            </define>
+        </include>
+        <define name="xforms.Common.attrib" combine="interleave">
+            <ref name="z3986.Core.attrib"/>
+            <ref name="z3986.I18n.attrib"/>
+            <optional>
+                <ref name="z3986.role.attrib"/>
+            </optional>
+            <!-- <ref name="Rdfa.attrib" /> note: attribute name collisions-->
+        </define>
+        <define name="xforms.Linking.attrib" combine="interleave">
+            <!-- used to ref Embed.attrib here, but now that embed's allowed mimetypes is enumerated per profile, we cant. -->
+            <attribute name="src">
+                <ref name="URI.datatype"/>
+            </attribute>
+        </define>
+        <define name="xforms.UI.Inline.class" combine="choice">
+            <ref name="z3986.Phrase.class"/>
+        </define>
+    </div>
+    <div>
+        <x:h2>Z39.86 Print Forms Feature - content model contribution</x:h2>
+        <!-- Josh: check below -->
+        <define name="z3986.Phrase.extern.class" combine="choice">
+            <ref name="xforms.Core.Form.Controls"/>
+        </define>
+        <define name="z3986.Block.extern.class" combine="choice">
+            <ref name="xforms.Container.Form.Controls"/>
+        </define>
+        <define name="z3986.head.class" combine="choice">
+            <ref name="xforms.model"/>
+        </define>
+    </div>
+    <!-- <div> <x:h2>XForms 1.1 Repeat Attribute Collection</x:h2> <include href="xforms-repeat-attrib.rng" /> <define name="z3986.Core.extern.attrib" combine="interleave"> <ref name="xforms.Repeat.attrib" /> </define> </div> -->
+    <define name="z3986.forms.instance.content.temp" xml:id="z3986.forms.instance.content.temp">
+        <element>
+            <!-- TODO fix this, must allow any namespace -->
+            <nsName ns="http://www.daisy.org/ns/z3986/authoring/xforms/instance/"/>
+            <zeroOrMore>
+                <attribute>
+                    <nsName ns="http://www.daisy.org/ns/z3986/authoring/xforms/instance/"/>
+                </attribute>
+            </zeroOrMore>
+            <zeroOrMore>
+                <choice>
+                    <ref name="z3986.forms.instance.content.temp"/>
+                    <text/>
+                </choice>
+            </zeroOrMore>
+        </element>
+    </define>
+</grammar>

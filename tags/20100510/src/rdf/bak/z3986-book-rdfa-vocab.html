@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd"> -->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:docbook="http://docbook.org/ns/docbook"
+  xmlns:xhv="http://www.w3.org/1999/xhtml/vocab/#"
+  xmlns:x2="http://www.w3.org/TR/xhtml2/xhtml20_schema.html#"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+  xmlns:base="http://www.daisy.org/z3986/2010/vocab/print/#" version="XHTML+RDFa 1.0">
+  <head>
+    <title>Z39.86 Book Vocabulary</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="../../z3986-2010.css"/>
+  </head>
+  <body>
+    <h1>Z39.86 Book Vocabulary</h1>
+    <p class="informative">This vocabulary defines the following values for use in the
+        <code>role</code> attribute:</p>
+    <div id="book-vocab" class="vocabulary">
+      <dl>
+        <dt id="frontispiece" about="#frontispiece" typeof="rdf:Property">frontispiece</dt>
+        <dd about="#frontispiece" property="rdfs:comment" datatype="xs:string">A front-matter
+          illustration</dd>
+        <dt id="part" about="#part" typeof="rdf:Property">part</dt>
+        <dd about="#part" property="rdfs:comment" datatype="xs:string">A major structural section
+          of a book, typically encapsulating a set of related chapters</dd>
+        <dd>
+          <dl>
+            <dt>Inherited from:</dt>
+            <dd about="#part" rel="rdfs:subClassOf" resource="[base:section]">
+              <a href="http://www.daisy.org/z3986/2010/vocab/print/#section">The
+                  <code>section</code> property of the Z39.86 Print Republishing Base Vocabulary</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id="chapter" about="#chapter" typeof="rdf:Property">chapter</dt>
+        <dd about="#chapter" property="rdfs:comment" datatype="xs:string">A book chapter</dd>
+        <dd>
+          <dl>
+            <dt>Inherited from:</dt>
+            <dd about="#chapter" rel="rdfs:subClassOf" resource="[base:section]">
+              <a href="http://www.daisy.org/z3986/2010/vocab/print/#section">The
+                  <code>section</code> property of the Z39.86 Print Republishing Base Vocabulary</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id="subchapter" about="#subchapter" typeof="rdf:Property">subchapter</dt>
+        <dd about="#subchapter" property="rdfs:comment" datatype="xs:string">A book subchapter</dd>
+        <dd>
+          <dl>
+            <dt>Inherited from:</dt>
+            <dd about="#subchapter" rel="rdfs:subClassOf" resource="[base:section]">
+              <a href="http://www.daisy.org/z3986/2010/vocab/print/#section">The
+                  <code>section</code> property of the Z39.86 Print Republishing Base Vocabulary</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id="illustrationsList" about="#illustrationsList" typeof="rdf:Property"
+          >illustrationsList</dt>
+        <dd about="#illustrationsList" property="rdfs:comment" datatype="xs:string">A list of
+          illustrations</dd>
+        <dd>
+          <dl>
+            <dt>Inherited from:</dt>
+            <dd about="#illustrationsList" rel="rdfs:subClassOf" resource="[xhv:directory]">
+              <a href="http://www.w3.org/1999/xhtml/vocab/#directory">XHTML's <code>directory</code>
+                role</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id="tablesList" about="#tablesList" typeof="rdf:Property">tablesList</dt>
+        <dd about="#tablesList" property="rdfs:comment" datatype="xs:string">A list of tables</dd>
+        <dd>
+          <dl>
+            <dt>Inherited from:</dt>
+            <dd about="#tablesList" rel="rdfs:subClassOf" resource="[xhv:directory]">
+              <a href="http://www.w3.org/1999/xhtml/vocab/#directory">XHTML's <code>directory</code>
+                role</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id="preface" about="#preface" typeof="rdf:Property">preface</dt>
+        <dd about="#preface" property="rdfs:comment" datatype="xs:string">The preface</dd>
+        <dd>
+          <dl>
+            <dt>Related concepts:</dt>
+            <dd about="#preface" rel="rdfs:seeAlso" resource="[docbook:preface]">
+              <a href="http://www.oasis-open.org/docbook/documentation/reference/html/preface.html"
+                >DocBook's <code>preface</code> element</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id="publisherNote" about="#publisherNote" typeof="rdf:Property">publisherNote</dt>
+        <dd about="#publisherNote" property="rdfs:comment" datatype="xs:string">A note from the
+          publisher</dd>
+        <dd>
+          <dl>
+            <dt>Inherited from:</dt>
+            <dd about="#note" rel="rdfs:subClassOf" resource="[xhv:note]">
+              <a href="http://www.w3.org/1999/xhtml/vocab/#note">XHTML's <code>note</code> role</a>
+            </dd>
+          </dl>
+        </dd>
+        <dd>
+          <dl>
+            <dt>Related concepts:</dt>
+            <dd about="#publisherNote" rel="rdfs:seeAlso" resource="[docbook:note]">
+              <a href="http://www.oasis-open.org/docbook/documentation/reference/html/note.html"
+                >DocBook's <code>note</code> element</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id="editorialMethodNote" about="#editorialMethodNote" typeof="rdf:Property"
+          >editorialMethodNote</dt>
+        <dd about="#editorialMethodNote" property="rdfs:comment" datatype="xs:string">An
+          explanation of an editor’s method or a discussion of variant texts</dd>
+        <dd>
+          <dl>
+            <dt>Inherited from:</dt>
+            <dd about="#editorialMethodNote" rel="rdfs:subClassOf" resource="[xhv:note]">
+              <a href="http://www.w3.org/1999/xhtml/vocab/#note">XHTML's <code>note</code> role</a>
+            </dd>
+          </dl>
+        </dd>
+        <dd>
+          <dl>
+            <dt>Related concepts:</dt>
+            <dd about="#editorialMethodNote" rel="rdfs:seeAlso" resource="[docbook:note]">
+              <a href="http://www.oasis-open.org/docbook/documentation/reference/html/note.html"
+                >DocBook's <code>note</code> element</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id="previousEditionsList" about="#previousEditionsList" typeof="rdf:Property"
+          >previousEditionsList</dt>
+        <dd about="#previousEditionsList" property="rdfs:comment" datatype="xs:string">A list of
+          previous editions</dd>
+        <dt id="currentEdition" about="#currentEdition" typeof="rdf:Property">currentEdition</dt>
+        <dd about="#currentEdition" property="rdfs:comment" datatype="xs:string">Specifies the
+          edition (can be current or previous)</dd>
+        <dt id="previousEdition" about="#previousEdition" typeof="rdf:Property">previousEdition</dt>
+        <dd about="#previousEdition" property="rdfs:comment" datatype="xs:string">Specifies the
+          edition (can be current or previous)</dd>
+      </dl>
+    </div>
+  </body>
+</html>

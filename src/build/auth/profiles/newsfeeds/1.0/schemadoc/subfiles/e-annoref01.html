@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Schema Documentation: the annoref element</title>
+      <link href="../schemadoc.css" rel="stylesheet" type="text/css" />
+   </head>
+   <body>
+      <div class="top-banner">Schema Documentation - Newsfeed Aggregator Profile<span class="titlesub"><br /> version 1.0</span></div>
+      <!--Used to have a nav box with link to toc, and prev/next element. Not
+						included yet-->
+      <h1>The <span class="element">annoref</span> element
+      </h1>
+      <div class="elementInformation">
+         <div class="element-toc-container"><strong>On this page:</strong><ul class="element-toc">
+               <li id="link-to-main-menu"><a href="../index.html">Back to<br /> main menu</a></li>
+               <li class="h2"><a href="#d65e58">Usage Example</a></li>
+               <li class="h2"><a href="#d65e62">Allowed parents</a></li>
+               <li class="h2"><a href="#d65e212">Allowed children</a></li>
+               <li class="h2"><a href="#d65e315">Content model and additional requirements</a></li>
+               <li class="h2"><a href="#d65e521">Namespace</a></li>
+               <li class="h2"><a href="#schemadoc-longdesc">Usage Details</a></li>
+            </ul>
+         </div>
+         <div class="element-coreinfo">
+            <div class="main-description">
+               <p class="description ">The 
+                  <code>annoref</code> element represents a textual reference to an 
+                  <code>
+                     <a href="e-annotation01.html">annotation</a>
+                     </code>.
+                  
+               </p>
+               <p class="description ">Although not as common as with footnotes and endnotes, the content or location in the document being annotated may be noted
+                  by a text referent (e.g., a superscripted symbol).
+               </p>
+               <p class="description ">By default, the text content of the 
+                  <code>annoref</code> represents the link reference and is treated as document content. When superscripted numbers or symbols are instead used
+                  to identify the corresponding 
+                  <code>annotation</code>, the 
+                  <code>
+                     <a href="attributes.html#value01">value</a>
+                     </code> attribute should be used. The 
+                  <code>annoref</code> must be an empty element when attaching a 
+                  <code>value</code> attribute; it it not permitted to include text content and a 
+                  <code>value</code> attribute.
+                  
+               </p>
+               <p class="description ">The 
+                  <code>
+                     <a href="attributes.html#ref01">ref</a>
+                     </code> attribute is used to establish the link between the 
+                  <code>annoref</code> and its associated 
+                  <code>annotation</code>.
+                  
+               </p>
+               <p class="longdesc-link">Usage details available in the <a href="#schemadoc-longdesc">Usage Details</a> section.
+               </p>
+            </div>
+            <h2 id="d65e58">Usage Example</h2><pre>
+&lt;p&gt;…it created a great chasm between my step-mother and me.&lt;annoref ref="anno-04" value="4" /&gt;&lt;/p&gt;
+
+&lt;annotation xml:id="anno-04" by="translator"&gt;
+    This needs explanation. In Germany, even by strangers, children are universally addressed…
+&lt;/annotation&gt;        
+    </pre><h2 id="d65e62">Allowed parents</h2>
+            <p><a class="element" href="e-address02.html">address</a>, 
+               <a class="element" href="e-annoref01.html">annoref</a>, 
+               <a class="element" href="e-annotation01.html">annotation (<span class="element-variant">block</span> variant)</a>, 
+               <a class="element" href="e-annotation02.html">annotation (<span class="element-variant">phrase</span> variant)</a>, 
+               <a class="element" href="e-block01.html">block</a>, 
+               <a class="element" href="e-byline01.html">byline</a>, 
+               <a class="element" href="e-caption01.html">caption</a>, 
+               <a class="element" href="e-citation01.html">citation (<span class="element-variant">block</span> variant)</a>, 
+               <a class="element" href="e-citation02.html">citation (<span class="element-variant">phrase</span> variant)</a>, 
+               <a class="element" href="e-dateline01.html">dateline</a>, 
+               <a class="element" href="e-definition01.html">definition</a>, 
+               <a class="element" href="e-description01.html">description (<span class="element-variant">block</span> variant)</a>, 
+               <a class="element" href="e-description02.html">description (<span class="element-variant">phrase</span> variant)</a>, 
+               <a class="element" href="e-emph01.html">emph</a>, 
+               <a class="element" href="e-expansion01.html">expansion</a>, 
+               <a class="element" href="e-h01.html">h</a>, 
+               <a class="element" href="e-hd01.html">hd</a>, 
+               <a class="element" href="e-item01.html">item</a>, 
+               <a class="element" href="e-ln01.html">ln</a>, 
+               <a class="element" href="e-longdesc01.html">d:longdesc</a>, 
+               <a class="element" href="e-meta01.html">meta</a>, 
+               <a class="element" href="e-object01.html">object (<span class="element-variant">block</span> variant)</a>, 
+               <a class="element" href="e-object02.html">object (<span class="element-variant">phrase</span> variant)</a>, 
+               <a class="element" href="e-p01.html">p</a>, 
+               <a class="element" href="e-quote01.html">quote (<span class="element-variant">block</span> variant)</a>, 
+               <a class="element" href="e-quote02.html">quote (<span class="element-variant">phrase</span> variant)</a>, 
+               <a class="element" href="e-rb01.html">its:rb</a>, 
+               <a class="element" href="e-ref01.html">ref</a>, 
+               <a class="element" href="e-rt01.html">its:rt</a>, 
+               <a class="element" href="e-s01.html">s</a>, 
+               <a class="element" href="e-simplifiedLanguageDescription01.html">d:simplifiedLanguageDescription</a>, 
+               <a class="element" href="e-span01.html">span</a>, 
+               <a class="element" href="e-summary01.html">d:summary</a>, 
+               <a class="element" href="e-td01.html">td</a>, 
+               <a class="element" href="e-term01.html">term</a>, 
+               <a class="element" href="e-th01.html">th</a> and 
+               <a class="element" href="e-tour01.html">d:tour</a>
+               
+            </p>
+            <h2 id="d65e212">Allowed children</h2>
+            <p>This element <em>may</em> contain text.
+            </p>
+            <p>This element <em>may</em> contain the following children: <a class="element" href="e-abbr01.html">abbr</a>, 
+               <a class="element" href="e-address02.html">address</a>, 
+               <a class="element" href="e-annoref01.html">annoref</a>, 
+               <a class="element" href="e-code02.html">code</a>, 
+               <a class="element" href="e-definition01.html">definition</a>, 
+               <a class="element" href="e-emph02.html">emph (<span class="element-variant">text</span> variant)</a>, 
+               <a class="element" href="e-emph01.html">emph (<span class="element-variant">phrase</span> variant)</a>, 
+               <a class="element" href="e-expansion01.html">expansion</a>, 
+               <a class="element" href="e-ln01.html">ln</a>, 
+               <a class="element" href="e-name01.html">name</a>, 
+               <a class="element" href="e-num01.html">num</a>, 
+               <a class="element" href="e-object03.html">object (<span class="element-variant">text</span> variant)</a>, 
+               <a class="element" href="e-object02.html">object (<span class="element-variant">phrase</span> variant)</a>, 
+               <a class="element" href="e-ref01.html">ref</a>, 
+               <a class="element" href="e-ruby01.html">its:ruby</a>, 
+               <a class="element" href="e-s01.html">s</a>, 
+               <a class="element" href="e-span01.html">span (<span class="element-variant">phrase</span> variant)</a>, 
+               <a class="element" href="e-span02.html">span (<span class="element-variant">text</span> variant)</a>, 
+               <a class="element" href="e-sub01.html">sub</a>, 
+               <a class="element" href="e-sup01.html">sup</a>, 
+               <a class="element" href="e-term01.html">term</a>, 
+               <a class="element" href="e-time01.html">time</a> and 
+               <a class="element" href="e-w01.html">w</a>
+               
+            </p>
+            <h2 id="d65e315">Content model and additional requirements</h2>
+            <div class="element-content-model">
+               <div class="rng-required-attributes">required attributes: <a class="attribute" href="attributes.html#ref01">@ref</a>
+                  
+               </div>
+               <div class="rng-optional-attributes">optional attributes: <a class="attribute" href="attributes.html#about01">@about</a>, 
+                  <a class="attribute" href="attributes.html#by01">@by</a>, 
+                  <a class="attribute" href="attributes.html#class01">@class</a>, 
+                  <a class="attribute" href="attributes.html#content01">@content</a>, 
+                  <a class="attribute" href="attributes.html#continuation01">@continuation</a>, 
+                  <a class="attribute" href="attributes.html#datatype01">@datatype</a>, 
+                  <a class="attribute" href="attributes.html#desc01">@desc</a>, 
+                  <a class="attribute" href="attributes.html#dir01">@its:dir</a>, 
+                  <a class="attribute" href="attributes.html#translate01">@its:translate</a>, 
+                  <a class="attribute" href="attributes.html#property01">@property</a>, 
+                  <a class="attribute" href="attributes.html#rel01">@rel</a>, 
+                  <a class="attribute" href="attributes.html#resource01">@resource</a>, 
+                  <a class="attribute" href="attributes.html#rev01">@rev</a>, 
+                  <a class="attribute" href="attributes.html#role09">@role</a>, 
+                  <a class="attribute" href="attributes.html#typeof01">@typeof</a>, 
+                  <a class="attribute" href="attributes.html#value01">@value</a>, 
+                  <a class="attribute" href="attributes.html#base01">@xml:base</a>, 
+                  <a class="attribute" href="attributes.html#id01">@xml:id</a>, 
+                  <a class="attribute" href="attributes.html#lang01">@xml:lang</a> and 
+                  <a class="attribute" href="attributes.html#space01">@xml:space</a></div>
+               <div class="rng-choice"><span class="rng-term">a choice of</span>
+                  
+                  <div class="rng">either no content</div>
+                  
+                  <div class="rng">or <span class="rng-term">one or more of </span>
+                     
+                     <div class="rng"><span class="tng-term">a choice of </span><div class="rng">either one of the 24 elements: <a class="element" href="e-abbr01.html">abbr</a>, <a class="element" href="e-address02.html">address</a>, <a class="element" href="e-annoref01.html">annoref</a>, <a class="element" href="e-code02.html">code</a>, <a class="element" href="e-definition01.html">definition</a>, <a class="element" href="e-emph02.html">emph</a>, <a class="element" href="e-emph01.html">emph</a>, <a class="element" href="e-expansion01.html">expansion</a>, <a class="element" href="e-ruby01.html">its:ruby</a>, <a class="element" href="e-ln01.html">ln</a>, <a class="element" href="e-name01.html">name</a>, <a class="element" href="e-num01.html">num</a>, <a class="element" href="e-object03.html">object</a>, <a class="element" href="e-object02.html">object</a>, <a class="element" href="e-ref01.html">ref</a>, <a class="element" href="e-s01.html">s</a>, <a class="element" href="e-span01.html">span</a>, <a class="element" href="e-span02.html">span</a>, <a class="element" href="e-sub01.html">sub</a>, <a class="element" href="e-sup01.html">sup</a>, <a class="element" href="e-term01.html">term</a>, <a class="element" href="e-time01.html">time</a>, <a class="element" href="e-w01.html">w</a> or <a class="element" href="e-w01.html">w</a></div>
+                        <div class="rng">or text</div><span class="tng-term">end of choice</span></div>
+                     
+                  </div>
+                  <span class="rng-term">end of choice</span></div>
+               <div class="schematron-asserts-and-reports">Note that in addition to restrictions presented in the content model  above, 
+                  					use of this element must also respect the following requirements:
+                  <ul>
+                     <li>The 
+                        <code>value</code> attribute cannot be used on a non-empty 
+                        <code>annoref</code>.
+                        
+                     </li>
+                     <li>An empty 
+                        <code>annoref</code> element must include a 
+                        <code>value</code> attribute.
+                        
+                     </li>
+                     <li>The IDREF(s) in the 
+                        <code>ref</code> attribute must resolve to 
+                        <code>annotation</code>s.
+                        
+                     </li>
+                     <li>Superscripted referents should be included in a 
+                        <code>value</code> attribute, not as text content.
+                        
+                     </li>
+                  </ul>
+                  <div>Such requirements take precedence over any conflicting statements in the
+                     						content model or in the lists above of allowed children and parents.
+                  </div>
+               </div>
+            </div>
+            <h2 id="d65e521">Namespace</h2>
+            <p><span class="namespace">http://www.daisy.org/ns/z3998/authoring/</span></p>
+            <h2 id="schemadoc-longdesc">Usage Details</h2>
+            
+            <p> There are two means of tagging references to annotations. When a superscripted identifier is used, the 
+               <code>value</code> attribute is required: 
+               
+            </p>
+            
+            <div>
+               <pre xml:space="preserve">
+&lt;p&gt;…it created a great chasm between my step-mother and me.&lt;annoref ref="anno-04" value="4" /&gt;&lt;/p&gt;
+        </pre>
+               </div>
+            
+            <p> In the above example, the annotation identifier (the number 4) is no longer part of the document content, but can still be
+               output and repurposed by a processing agent. 
+            </p>
+            
+            <p> It is sometimes the case, however, that using one or more words in the content to link to the annotation is preferred to
+               a superscripted identifier. In this case, the 
+               <code>value</code> attribute is omitted and the text content of the 
+               <code>annoref</code> becomes the linkable text: 
+               
+            </p>
+            
+            <div>
+               <pre xml:space="preserve">
+&lt;p&gt;…it created a great chasm between &lt;annoref ref="anno-04"&gt;my step-mother and me&lt;/annoref&gt;.&lt;/p&gt;
+        </pre>
+               </div>
+            
+            <p> An additional benefit to tagging words instead of inserting superscripted referents is that a transformation process could
+               automatically remove the link from the words and instead insert superscripted numbers or symbols after the element when they
+               are needed. It would not be possible to do the reverse if only the superscripts have been tagged, however. 
+            </p>
+            
+            <p> It is illegal to use an empty element and omit a 
+               <code>value</code> attribute, as in the following example, as some text content is necessary to render the link: 
+               
+            </p>
+            
+            <div>
+               <pre xml:space="preserve">
+&lt;p&gt;…it created a great chasm between my step-mother and me.&lt;annoref ref="anno-04" /&gt;&lt;/p&gt;
+        </pre>
+               </div>
+            
+            <p> It is also illegal to use text content together with a 
+               <code>value</code> attribute, as it introduces ambiguity in how to format the output: 
+               
+            </p>
+            
+            <div>
+               <pre xml:space="preserve">
+&lt;p&gt;…it created a great chasm between &lt;annoref ref="anno-04" value="4"&gt;my step-mother and me&lt;/annoref&gt;.&lt;/p&gt;
+        </pre>
+               </div>
+            
+         </div>
+      </div>
+   </body>
+</html>

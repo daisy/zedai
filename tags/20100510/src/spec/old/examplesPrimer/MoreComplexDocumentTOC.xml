@@ -1,0 +1,12 @@
+<toc>
+    <h>Table of contents</h>
+    <entry>
+        <label>Chapter 1</label>
+        <ref ref="p1">1</ref>
+    </entry>
+    <entry>
+        <label>Chapter 2</label>
+        <ref ref="p3">3</ref>
+    </entry>
+    <pagebreak xml:id="pR2" value="ii" />
+</toc>

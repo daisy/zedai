@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar 
+  xmlns="http://relaxng.org/ns/structure/1.0" 
+  xmlns:x="http://www.w3.org/1999/xhtml"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+  <x:h1>The Z3986 Rendition Attribute module</x:h1>
+  <x:div id="z3986.rend.attrib">
+    <x:p>The Rendition (rend) attribute provides a means to indicate 
+     how the text within element in question was rendered or presented 
+     in the source text.
+    </x:p>  
+    <x:p>The value is a limited set of single CSS properties, provided primarily 
+    to allow efficient Braille transcription. 
+    For more elaborate expressions of source style capturing, authors must make
+    use of external CSS stylesheets.
+    </x:p>       
+  </x:div>
+
+  <define name="z3986.rend.attrib" ns="http://www.daisy.org/ns/z3986/2008/">
+    <attribute name="rend">
+      <ref name="z3986.rend.attrib.content"/>
+    </attribute>
+  </define>
+
+  <define name="z3986.rend.attrib.content" combine="choice">
+    <choice>
+      <value>text-decoration: underline</value>
+      <value>font-weight: bold</value>
+      <value>font-style: italic</value>
+    </choice>
+  </define>
+
+  <define name="xhtml.Text.attrib" combine="interleave">
+    <optional>
+      <ref name="z3986.rend.attrib"/>
+    </optional>  
+  </define>
+
+  <define name="xhtml.Structural.attrib" combine="interleave">
+    <optional>
+      <ref name="z3986.rend.attrib"/>
+    </optional>  
+  </define>
+
+</grammar>

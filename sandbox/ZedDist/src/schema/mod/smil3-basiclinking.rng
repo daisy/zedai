@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+
+    <a:documentation>This profile includes both timing and linking modules; however, the profile
+        authors have decided to explicitly exclude timing attributes on linking elements because it
+        introduces too much complexity. Both the a and area elements have an href attribute, whose
+        value must be a valid URI or XPointer [XPTR] fragment identifier. This profile adds the a
+        element to the content model of the par, seq, and excl elements of the Timing and
+        Synchronization Modules. It also adds these elements to the content model of the body
+        element of the Structure Module. </a:documentation>
+
+    <div>
+        <define name="smil3.linking.class" combine="choice">
+            <choice>
+                <ref name="smil3.a"/>
+                <ref name="smil3.area"/>
+            </choice>
+        </define>
+        <define name="smil3.timecontainers.content.class" combine="choice">
+            <ref name="smil3.linking.class"/>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.Linking.attrib" combine="interleave">
+            <a:documentation>common attributes to elements in the basiclinking
+                module</a:documentation>
+            <ref name="smil3.href.attrib"/>
+        </define>
+
+        <define name="smil3.href.attrib">
+            <attribute name="href">
+                <choice>
+                    <ref name="URI.datatype"/>
+                    <ref name="XPointer.datatype"/>
+                </choice>
+            </attribute>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.a">
+            <element name="a">
+                <ref name="smil3.a.attlist"/>
+                <ref name="smil3.a.content"/>
+            </element>
+        </define>
+
+        <define name="smil3.a.attlist" combine="interleave">
+            <ref name="smil3.Linking.attrib"/>
+            <ref name="smil3.Core.attrib"/>
+        </define>
+
+        <define name="smil3.a.content">
+            <oneOrMore>
+                <choice>
+                    <ref name="smil3.a.content.class"/>
+                </choice>
+            </oneOrMore>
+        </define>
+
+        <define name="smil3.a.content.class" combine="choice">
+            <choice>
+                <ref name="smil3.timecontainers.class"/>
+                <ref name="smil3.mediaobjects.class"/>
+            </choice>
+        </define>
+
+    </div>
+
+    <div>
+        <define name="smil3.area">
+            <element name="area">
+                <ref name="smil3.area.attlist"/>
+                <empty/>
+            </element>
+        </define>
+
+        <define name="smil3.area.attlist" combine="interleave">
+            <ref name="smil3.Core.attrib"/>
+            <ref name="smil3.Linking.attrib"/>
+            <optional>
+                <attribute name="tabindex">
+                    <ref name="NonNegativeInteger.datatype"/>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="accesskey"/>
+            </optional>
+            <optional>
+                <attribute name="target">
+                    <ref name="NMTOKEN.datatype"/>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="nohref">
+                    <value>nohref</value>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="shape">
+                    <ref name="Shape.datatype"/>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="coords">
+                    <ref name="Coordinates.datatype"/>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="sourcePlaystate">
+                    <choice>
+                        <value>play</value>
+                        <value>pause</value>
+                        <value>stop</value>
+                    </choice>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="destinationPlaystate">
+                    <choice>
+                        <value>play</value>
+                        <value>pause</value>
+                    </choice>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="show">
+                    <choice>
+                        <value>new</value>
+                        <value>pause</value>
+                        <value>replace</value>
+                    </choice>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="sourceLevel">
+                    <ref name="SMIL3.soundlevel.datatype"/>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="destinationLevel">
+                    <ref name="SMIL3.soundlevel.datatype"/>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="external">
+                    <choice>
+                        <value>true</value>
+                        <value>false</value>
+                    </choice>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="actuate">
+                    <choice>
+                        <value>onRequest</value>
+                        <value>onLoad</value>
+                    </choice>
+                </attribute>
+            </optional>
+        </define>
+    </div>
+
+</grammar>

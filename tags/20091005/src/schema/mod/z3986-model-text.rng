@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 Text Model module</x:h1>
+  <x:p>This is a content model definition module.</x:p> 
+    
+  <div>
+
+    <x:h2>Z39.86 Base Text class element set</x:h2>    
+    <x:p>
+      Abstract choice pattern for elements in the Base Text class.
+      This class is used where traditionally, only PCDATA has been allowed.
+    </x:p>
+
+    <define name="z3986.Text.base.class" combine="choice">
+      <choice>
+        <notAllowed/>
+      </choice>
+    </define>
+
+    <x:h2>Z39.86 Text class element set</x:h2>    
+    <x:p>
+      Abstract choice pattern for elements in the Text (aka inline) class.
+      This class inherits all members of z3986.Text.base.class.
+    </x:p>
+        
+    <define name="z3986.Text.class" combine="choice">
+      <ref name="z3986.Text.base.class"/>
+    </define>
+    
+            
+    <x:h2>Z39.86 Text class attributes collection</x:h2>    
+    <x:p>Common attributes for elements in the Text class.</x:p> 
+    
+    <define name="z3986.Text.attrib" combine="interleave">
+      <ref name="z3986.Text.contrib.attrib"/>
+    </define>
+
+    <define name="z3986.Text.contrib.attrib" combine="interleave">
+      <empty/>
+    </define>
+    
+    
+    <x:h2>Z39.86 Base Text Model</x:h2>    
+    <x:p>Default concrete model pattern for the Base Text class.</x:p>
+           
+    <define name="z3986.Text.base.model">
+      <oneOrMore>
+        <choice>
+          <text/>
+          <ref name="z3986.Text.base.class"/>
+        </choice> 
+      </oneOrMore>   
+    </define>
+ 
+        
+    <x:h2>Z39.86 Text Model</x:h2>    
+    <x:p>Default concrete model pattern for the Text class.</x:p>
+           
+    <define name="z3986.Text.model">
+      <oneOrMore>
+        <choice>
+          <text/>
+          <ref name="z3986.Text.class"/>
+        </choice> 
+      </oneOrMore>   
+    </define>
+    
+  </div>  
+
+</grammar>

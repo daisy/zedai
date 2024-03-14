@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml">
+
+    <x:h1>The DAISY Pagenumber module</x:h1>
+
+    <!--
+        ps: TODO: Decide whether id should be mandatory or not
+    -->
+
+    <x:h2>Definition</x:h2>
+    <x:p> A number printed on a page of a document to uniquely identify it. Most contemporary books
+        are paginated consecutively and pages are generally accounted for in the pagination sequence
+        even if a number is not actually printed on the page. </x:p>
+
+    <x:h2>Markup</x:h2>
+    <x:p>The intent of using markup to indicate page numbers is to provide direct navigation to a
+        page. It is strongly recommended that pages be individually and uniquely tagged in text
+        books, and recommended that wherever possible, they be included in all DTBs. All <x:span
+            class="markup">pagenum</x:span> elements <x:em>must</x:em> have a unique <x:span
+            class="markup">xml:id</x:span> attribute.</x:p>
+
+    <x:p>Page numbers are marked with the <x:span class="markup">pagenum</x:span> element. There are
+        three types of pages which are distinguished in the markup through use of the <x:span
+            class="markup">page</x:span> attribute. <x:span class="markup">page="normal"</x:span> is
+        used to indicate that the content of the number is the standard Arabic numeral used in the
+        body and rear matter of most books. <x:span class="markup">page="front"</x:span> is used to
+        mark the page numbers used in the front matter of most books (the content of the numbers is
+        very often roman numerals). <x:span class="markup">page="special"</x:span> is used to
+        indicate variant pagination schemes used in some books, for example hyphenated numbers often
+        used in appendices (A-1, A-2, etc.). <x:span class="markup">page="special"</x:span> is also
+        used to mark up pages without page numbers, for example, pages with photos which occur
+        between sequentially numbered pages.</x:p>
+
+    <x:p>Pages that are unnumbered but are a part of the page number sequence, should be marked with
+        the correct page number in the sequence with the appropriate attribute, <x:span
+            class="markup">page="normal"</x:span>, <x:span class="markup">page="front"</x:span>, or
+            <x:span class="markup">page="special"</x:span>.</x:p>
+
+    <x:p>The <x:span class="markup">pagenum</x:span> element is not a required element. Electronic
+        documents are often produced without page numbers. Such documents, electronic or print,
+        should be produced without page numbers, exactly as they have been published.</x:p>
+
+    <!--    <x:p>The <x:span class="markup">&lt;pagenum&gt;</x:span> element must be placed at the top
+        of a page, regardless of where the page number is located on the print page, so that the end
+        user will be positioned at the beginning of the page when he or she navigates to it. To
+        ensure accurate navigation, the markup at the beginning of a major structure (part, chapter,
+        section, etc.) must follow a precise order. The order should always be: level1-6 tag,
+        pagenum, heading. This will ensure that if end users navigate to the beginning of the major
+        structure (as marked by the level1-6 tag) and begin playback, they will hear both the page
+        number and the heading of the major structure. If they navigate to the page number, they
+        will still hear both page number and heading.</x:p>-->
+
+    <!--    <x:p>When pages are being included in a DTB, all pages, including blank ones, must be marked. In
+        a DTB with audio, the end user should receive aural confirmation of the existence of blank
+        pages, e.g., "Page 43, blank page." Pages that are part of the pagination sequence but have
+        no page number printed on them should be tagged and the page number included. Unnumbered
+        pages (those that are not included in the pagination sequence) should be tagged but no page
+        number should be included within the tag, allowing navigation by "next" and "previous" page
+        controls.</x:p>-->
+
+    <x:h2>Syntax</x:h2>
+    <x:pre> &lt;pagenum page="normal" xml:id="..."&gt;...&lt;/pagenum&gt;
+        &lt;pagenum page="front" xml:id="..."&gt;...&lt;/pagenum&gt; &lt;pagenum
+        page="special" xml:id="..."&gt;...&lt;/pagenum&gt; </x:pre>
+
+    <define name="Daisy.pagenumber" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="pagenum">
+            <choice>
+                <ref name="Daisy.page.front"/>
+                <ref name="Daisy.page.normal"/>
+                <ref name="Daisy.page.special"/>
+            </choice>
+            <!--                <ref name="pagenum.attlist"/>
+                <ref name="pagenum.content"/>-->
+        </element>
+    </define>
+
+    <x:p>There are three types of page numbering:</x:p>
+    <define name="Daisy.page.front">
+        <ref name="Core.attrib"/>
+        <!-- ps20081023: Replaced by Core.attrib
+            <optional>
+                <ref name="Daisy.page.att.id"/>
+            </optional>-->
+        <ref name="Daisy.page.att.pagefront"/>
+        <ref name="Daisy.page.front.content"/>
+    </define>
+    <define name="Daisy.page.normal">
+        <ref name="Core.attrib"/>
+        <!-- ps20081023: Replaced by Core.attrib
+                <optional>
+                <ref name="Daisy.page.att.id"/>
+                </optional>-->
+        <ref name="Daisy.page.att.pagenormal"/>
+        <ref name="Daisy.page.normal.content"/>
+    </define>
+    <define name="Daisy.page.special">
+        <ref name="Core.attrib"/>
+        <!-- ps20081023: Replaced by Core.attrib
+                <optional>
+                <ref name="Daisy.page.att.id"/>
+                </optional>-->
+        <ref name="Daisy.page.att.pagespecial"/>
+        <ref name="Daisy.page.special.content"/>
+    </define>
+
+    <x:p>The <x:span class="markup">pagenum</x:span> element can carry an optional <x:span
+            class="markup">xml:id</x:span> attribute and a mandatory <x:span class="markup"
+            >page</x:span> attribute. </x:p>
+    <!-- ps20081023: not used anymore
+        <define name="Daisy.page.att.id">
+            <attribute name="id"/>
+        </define>-->
+    <define name="Daisy.page.att.pagefront">
+        <attribute name="page">
+            <value type="string">front</value>
+        </attribute>
+    </define>
+    <define name="Daisy.page.att.pagenormal">
+        <attribute name="page">
+            <value type="string">normal</value>
+        </attribute>
+    </define>
+    <define name="Daisy.page.att.pagespecial">
+        <attribute name="page">
+            <value type="string">special</value>
+        </attribute>
+    </define>
+    <x:p>The content of the <x:span class="markup">pagenum</x:span> element depends on the type of
+        pagenumber: </x:p>
+    <x:ul>
+        <x:li>If the value of the <x:span class="markup">page</x:span> attribute is <x:span
+                class="markup">front</x:span>, only roman numerals (either upper or lower case
+            versions of the letters i, v, x, l, c, d and m, in any order) are permitted. </x:li>
+        <x:li>If the value of the <x:span class="markup">page</x:span> attribute is <x:span
+                class="markup">normal</x:span>, only positive integers are permitted. </x:li>
+        <x:li>If the value of the <x:span class="markup">page</x:span> attribute is <x:span
+                class="markup">special</x:span>, any set of caharaters is permitted. </x:li>
+    </x:ul>
+    <define name="Daisy.page.front.content">
+        <choice>
+            <ref name="daisyUpperCaseRomanNumerals"/>
+            <ref name="daisyLowerCaseRomanNumerals"/>
+        </choice>
+    </define>
+    <define name="Daisy.page.normal.content">
+        <ref name="daisyPositiveInteger"/>
+    </define>
+    <define name="Daisy.page.special.content">
+        <text/>
+    </define>
+
+
+    <!-- ps20081022: Replaced by the definitions above 
+        <define name="pagenum.attlist">
+            <ref name="Common.attrib"/>
+            <optional>
+            <attribute name="id"/>
+            </optional>
+            <attribute name="page">
+                <choice>
+                    <value>normal</value>
+                    <value>front</value>
+                    <value>special</value>
+                </choice>
+            </attribute>
+        </define>
+
+        <define name="pagenum.content">
+            <text/>
+        </define> -->
+
+</grammar>

@@ -1,0 +1,11 @@
+<section xml:id="conformanceStatements" xmlns="http://docbook.org/ns/docbook">
+    <title>Conformance statements</title>
+    <para>The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+        "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as
+        described in <xref linkend="refRFC2119"/>.</para>
+    <para>The normative and informative appendices to this specification are identified by the labels 
+        "(normative)" and "(informative)" in their titles, respectively. </para>
+    <para>
+        All examples in this specification are informative.
+    </para>
+</section>

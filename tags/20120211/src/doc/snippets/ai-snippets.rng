@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://www.daisy.org/ns/z3998/authoring/"
+         xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <!-- Snippets are short extracts from content models, without surrounding explanatory prose,
+    maximally accompanied by a dedicated title and caption (see below) 
+    
+    Must use the about and dest attributes on wrappers. @about can contain 
+    several IDs; these must map to the targets xml:id in the (preprocessed) RNGs 
+    (which is the same value as rng:define/@name) 
+    
+    Attributes that *may* be used on the wrapper: 
+    snippet-caption="the caption" 
+    snippet-title="the title"         
+    These attributes can have wiki markup; {code} and [[#link label*]] 
+  -->
+
+  <include href="../../schema/_z3998-all.rng">
+    <start>
+      <element name="snippets">
+        <oneOrMore>
+          <ref name="snippet"/>          
+        </oneOrMore>
+        <zeroOrMore>
+          <ref name="dummy"/>
+        </zeroOrMore>
+      </element>  
+    </start>        
+          
+    <define name="z3998.partitions">      
+      <optional>
+        <ref name="z3998.partitions.cover.slot"/>
+      </optional>
+      <optional>
+        <ref name="z3998.frontmatter"/>
+      </optional>
+      <optional>
+        <ref name="z3998.bodymatter"/>
+      </optional>  
+      <optional>
+        <ref name="z3998.backmatter"/>
+      </optional>
+    </define>          
+  
+    <define name="z3998.body.content">
+      <choice>
+        <ref name="z3998.partitions"/>
+        <ref name="z3998.section.content"/>
+      </choice>  
+    </define>
+  
+    <define name="z3998.document">
+      <element name="document">
+        <ref name="z3998.document.attlist.profileopt"/>
+        <text/><!-- to allow ellipsis -->
+        <optional>
+          <ref name="z3998.head"/>
+        </optional>  
+        <text/><!-- to allow ellipsis -->
+        <optional>  
+          <ref name="z3998.body"/>
+        </optional>  
+      </element>  
+    </define>
+  </include>
+	
+  <define name="z3998.document.attlist.profileopt">
+    <ref name="z3998.Core.attrib"/>
+    <ref name="z3998.I18n.attrib.xml.lang.required"/>
+    <optional>
+      <ref name="z3998.role.attrib"/>
+    </optional>
+    <optional>
+      <ref name="rdfa.prefix.attrib"/>
+    </optional>
+    <ref name="Rdfa.attrib"/>
+    <ref name="z3998.Document.extern.attrib"/>
+  </define>
+  
+  <define name="snippet">
+    <element name="snippet">
+        <ref name="snippet.attlist"/>
+        <ref name="snippet.content"/>
+    </element>  
+  </define>  
+
+  <define name="snippet.content" combine="choice">  
+     <choice>
+       <ref name="z3998.document"/>
+       <ref name="z3998.head"/>
+       <ref name="z3998.body"/>
+       <ref name="z3998.Section.model"/>
+       <ref name="z3998.Block.model"/>
+       <ref name="z3998.Block.extern.class"/>
+       <ref name="z3998.Text.model"/>
+       <ref name="z3998.Phrase.Text.mix.model"/>
+       <ref name="z3998.Flow.choice.model"/>  
+       <ref name="z3998.h"/>
+       <ref name="z3998.toc"/>
+       <ref name="z3998.cover"/>       
+       <ref name="z3998.glossary"/>
+       <ref name="z3998.index"/>
+       <ref name="z3998.lngroup"/>
+       <ref name="example.head.body"/>
+       <ref name="example.table"/>       
+       <ref name="z3998.feature.description.body"/>
+       <ref name="snippet.description.body.content"/>
+     </choice>
+  </define>  
+
+  <define name="snippet.attlist">
+    <ref name="rdfa.about.attrib"/>  
+    <attribute name="dest">
+      <choice>        
+        <value>doc</value>
+        <value>absdef</value>
+        <value>any</value>
+      </choice>  
+    </attribute>
+    <optional><attribute name="snippet-title"/></optional>
+    <optional><attribute name="snippet-caption"/></optional>
+  </define>
+   
+  <define name="dummy">
+    <element name="dummy">
+      <ref name="xml.id.attrib"/>
+    </element>  
+  </define>  
+   
+  <define name="z3998.Section.class" combine="choice">
+    <text/><!-- to allow ellipsis -->  
+  </define>
+  
+  <define name="z3998.Block.class" combine="choice">
+    <text/><!-- to allow ellipsis --> 
+  </define>
+  
+  <define name="z3998.Phrase.class" combine="choice">
+    <text/><!-- to allow ellipsis -->
+  </define>
+  
+  <define name="z3998.head.class" combine="choice">
+    <text/><!-- to allow ellipsis -->
+  </define>
+  
+  <define name="z3998.verse.content.class" combine="choice">
+    <text/><!-- to allow ellipsis -->
+  </define>
+  
+  <define name="z3998.toc.extended.entry.class" combine="choice">
+    <text/><!-- to allow ellipsis -->
+  </define>  
+  
+  <define name="z3998.cover.content" combine="interleave">
+    <text/><!-- to allow ellipsis -->
+  </define>
+  
+  <define name="z3998.glossary.model" combine="interleave">
+    <text/><!-- to allow ellipsis -->
+  </define>
+  
+  <define name="example.head.body">
+    <ref name="z3998.head"/>
+    <ref name="z3998.body"/>
+  </define>
+              
+  <define name="example.table">
+    <element name="table">      
+      <ref name="z3998.table.attlist"/>
+      <interleave>
+        <choice>
+          <ref name="z3998.table.content"/>
+          <ref name="z3998.table.tfoot"/>
+        </choice>
+        <text/> <!-- to allow ellipsis -->
+      </interleave>  
+    </element>
+  </define>
+      
+      
+  <define name="z3998.feature.description.body.tactile.content" combine="choice">
+    <text/><!-- to allow ellipsis -->
+  </define>
+  
+  <define name="z3998.feature.description.body.simplifiedImage.content" combine="choice">
+    <text/><!-- to allow ellipsis -->
+  </define>
+  
+  <define name="snippet.description.body.content">
+    <choice>
+      <ref name="z3998.feature.description.body.summary"/>
+      <ref name="z3998.feature.description.body.longdesc"/>
+      <ref name="z3998.feature.description.body.simplifiedLanguageDescription"/>
+      <ref name="z3998.feature.description.body.tactile"/>
+      <ref name="z3998.feature.description.body.simplifiedImage"/>
+    </choice>
+  </define>
+  
+  
+</grammar>

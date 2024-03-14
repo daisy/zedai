@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="namespaceList.rng" type="xml"?>
+<namespaces xmlns="http://www.daisy.org/ns/z3986/2008/namespacelist/">
+    <namespace prefix="d" owner="dc">http://www.daisy.org/ns/z3986/2008/</namespace>
+    <namespace prefix="x2" owner="w3c">http://www.w3.org/2002/06/xhtml2/</namespace>
+    <namespace prefix="xml" owner="w3c">http://www.w3.org/XML/1998/namespace</namespace>
+    <namespace prefix="x" owner="w3c">http://www.w3.org/1999/xhtml</namespace>
+    <namespace prefix="xsi" owner="w3c">http://www.w3.org/2001/XMLSchema-instance</namespace>
+    <namespace prefix="xs" owner="w3c">http://www.w3.org/2001/XMLSchema</namespace>
+</namespaces>

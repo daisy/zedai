@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" ns="http://www.daisy.org/z3986/2005/ncx/"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    
+    <define name="ncx.label">
+        <a:documentation>Provides a multimodal label for the parent element. The parent may allow
+        several labels to be provided - in this case each provided label must be unique among its label
+        siblings with respect to the value of the xml:lang attribute (given or inherited).</a:documentation>
+        <element name="label">
+            <ref name="ncx.label.attlist"/>
+            <ref name="ncx.label.content"/>
+        </element>
+    </define>
+    
+    <define name="ncx.label.attlist" combine="interleave">
+        <ref name="ncx.Common.attrib"/>
+        <optional>
+            <ref name="ncx.xml.lang.attrib"/>
+        </optional>
+    </define>
+    
+    <define name="ncx.label.content">
+        <ref name="ncx.label.text"/>
+        <optional>
+            <ref name="ncx.label.audio"/>
+        </optional>
+        <optional>
+            <ref name="ncx.label.image"/>
+        </optional>    
+    </define>
+    
+    <define name="ncx.label.text">
+        <element name="text">
+            <ref name="ncx.label.text.attlist"/>
+            <ref name="ncx.label.text.model" />
+        </element>            
+    </define>
+    
+    <define name="ncx.label.text.model">
+        <oneOrMore>
+            <choice>
+                <ref name="Text.nonEmpty.datatype"/>
+                <ref name="ncx.label.text.class" />
+            </choice>
+        </oneOrMore>
+    </define>    
+    
+    <define name="ncx.label.text.attlist">
+        <optional>
+            <ref name="ncx.dir.attrib"/>
+        </optional>
+    </define>
+        
+    <define name="ncx.label.text.class" combine="interleave">
+        <!-- this is a contribution point for inline markup -->
+        <text/>
+    </define>   
+    
+    <define name="ncx.label.audio">
+        <element name="audio">
+            <ref name="ncx.label.audio.attlist"/>
+            <empty/>
+        </element>
+    </define>
+    
+    <define name="ncx.label.audio.attlist" combine="interleave">
+        <ref name="ncx.src.attrib"/> <!-- TODO if w3c media fragment, clipBegin and clipEnd redundant -->
+        <optional>
+            <ref name="ncx.clipBegin.attrib"/>
+        </optional>
+        <optional>
+            <ref name="ncx.clipEnd.attrib"/>
+        </optional>    
+    </define>
+    
+    <define name="ncx.label.image">
+        <element name="image">
+            <ref name="ncx.label.image.attlist"/>
+            <empty/>
+        </element>    
+    </define>
+    
+    <define name="ncx.label.image.attlist" combine="interleave">
+        <ref name="ncx.src.attrib"/>
+    </define>
+        
+    <define name="ncx.clipBegin.attrib">
+        <attribute name="clipBegin" /> <!-- TODO clock pattern -->
+    </define>
+
+    <define name="ncx.clipEnd.attrib">
+        <attribute name="clipEnd" /> <!-- TODO clock pattern -->
+    </define>
+        
+    <define name="ncx.src.attrib">
+        <attribute name="src">
+            <ref name="URI.datatype"/> 
+        </attribute>
+    </define>    
+        
+</grammar>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="verse">The verse module</dcterms:title>
+      <dcterms:description>This module defines the {[[#z3986.verse]]} element for representing lines of verse embedded in prose
+        contexts.</dcterms:description>
+      <z:info>Two variants of the {verse} element are available: one for use in a [[#z3986.Section.class Section]] context and a second for use
+        in a [[#z3986.Block.class Block]] context.</z:info>
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}"/>
+      <dcterms:creator>Markus Gylling</dcterms:creator>
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-headings.rng"/>
+      <dcterms:requires rdf:resource="z3986-line.rng"/>
+      <dcterms:requires rdf:resource="z3986-separator.rng"/>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng"/>
+    </rdf:Description>
+  </rdf:RDF>
+
+  <div>
+    <define name="z3986.verse">
+      <element name="verse">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="verse (section)">The {verse} element (Section)</dcterms:title>
+            <dcterms:description z:inherit="z3986.verse"/>
+            <z:info>The {Section} variant is typically used for documents composed entirely of verse elements (e.g. books of poetry).</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>{[[#z3986.Section.class]]}</z:context>
+            <z:content>{([[#z3986.h]]? &amp;amp; ([[#z3986.ln]] | [[#z3986.lngroup]] | [[#z3986.separator]] | [[#z3986.hd]])*), [[#z3986.verse.section]]*}</z:content>
+            <z:attlist>{[[#z3986.Section.attrib]]}</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.verse.attlist"/>
+        <ref name="z3986.verse.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.verse.attlist">
+      <ref name="z3986.Section.attrib"/>
+    </define>
+
+    <define name="z3986.verse.content">
+      <ref name="z3986.verse.content.base"/>
+    </define>
+
+    <define name="z3986.verse.content.base">
+      <choice>
+        <group>
+          <interleave>
+            <optional>
+              <ref name="z3986.h"/>
+            </optional>
+            <oneOrMore>
+              <choice>
+                <ref name="z3986.verse.content.class"/>
+              </choice>
+            </oneOrMore>
+          </interleave>
+          <zeroOrMore>
+            <ref name="z3986.verse.section"/>
+          </zeroOrMore>
+        </group>
+        <group>
+          <interleave>
+            <optional>
+              <ref name="z3986.h"/>
+            </optional>
+            <zeroOrMore>
+              <choice>
+                <ref name="z3986.verse.content.class"/>
+              </choice>
+            </zeroOrMore>
+          </interleave>
+          <oneOrMore>
+            <ref name="z3986.verse.section"/>
+          </oneOrMore>
+        </group>
+      </choice>
+    </define>
+
+    <define name="z3986.verse.content.class" combine="choice">
+      <choice>
+        <ref name="z3986.ln"/>
+        <ref name="z3986.lngroup"/>
+        <ref name="z3986.separator"/>
+        <ref name="z3986.hd"/>
+        <ref name="z3986.Global.extra.class"/>
+      </choice>
+    </define>
+    
+  </div>
+
+  <div>
+
+    <define name="z3986.verse.section">
+      <element name="section">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="section (verse)">The verse {section} element</dcterms:title>
+            <dcterms:description>The {section} element represents a major structural division within a {[[#z3986.verse]]}.</dcterms:description>
+            <dcterms:isRequiredBy rdf:resource=""/>
+            <z:context>{[[#z3986.verse]]}</z:context>
+            <z:content>{([[#z3986.h]]? &amp;amp; ([[#z3986.ln]] | [[#z3986.lngroup]] | [[#z3986.separator]] | [[#z3986.hd]])*), [[#z3986.verse.section]]*}</z:content>
+            <z:attlist>{[[#z3986.Section.attrib]]}</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.verse.section.attlist"/>
+        <ref name="z3986.verse.section.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.verse.section.attlist">
+      <!-- expand out Section.attrib in order to allow
+        value suggestion injections on @role -->
+      <ref name="z3986.Core.attrib"/>
+      <ref name="z3986.I18n.attrib"/>
+      <optional>
+        <ref name="z3986.verse.role.attrib"/>
+      </optional>
+      <ref name="Rdfa.attrib"/>
+      <ref name="z3986.Block.contrib.attrib"/>
+    </define>
+
+    <define name="z3986.verse.role.attrib">
+      <attribute name="role">
+        <list>
+          <oneOrMore>
+            <ref name="z3986.verse.role.attrib.content.enum" />                        
+          </oneOrMore>  
+        </list>  
+      </attribute>  
+    </define>
+    
+    <define name="z3986.verse.role.attrib.content.enum" combine="choice">
+      <ref name="QName.datatype"/>
+    </define>
+
+    <define name="z3986.verse.section.content">
+      <ref name="z3986.verse.content.base"/>
+    </define>
+
+  </div>
+
+  <div>
+    <define name="z3986.verse.block">
+      <element name="verse">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="verse (block)">The {verse} element (Block)</dcterms:title>
+            <dcterms:description z:inherit="z3986.verse"/>
+            <z:info>The {Block} variant is typically used to embed verse elements within a document.</z:info>
+            <z:context>{[[#z3986.Block.class]]}</z:context>
+            <z:content>{([[#z3986.ln]] | [[#z3986.lngroup]] | [[#z3986.separator]] | [[#z3986.hd]])+}</z:content>
+            <z:attlist>{[[#z3986.Block.attrib]]}</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.verse.block.attlist"/>
+        <ref name="z3986.verse.block.content"/>
+      </element>
+    </define>
+    
+    <define name="z3986.verse.block.attlist">
+      <!-- expand out Block.attrib in order to allow
+        value suggestion injections on @role -->
+      <ref name="z3986.Core.attrib"/>
+      <ref name="z3986.I18n.attrib"/>
+      <optional>
+        <ref name="z3986.verse.block.role.attrib"/>
+      </optional>
+      <ref name="Rdfa.attrib"/>
+      <ref name="z3986.Block.contrib.attrib"/>
+    </define>
+    
+    <define name="z3986.verse.block.role.attrib">
+      <attribute name="role">
+        <list>
+          <oneOrMore>
+            <ref name="z3986.verse.block.role.attrib.content.enum" />                        
+          </oneOrMore>  
+        </list>  
+      </attribute>  
+    </define>
+    
+    <define name="z3986.verse.block.role.attrib.content.enum" combine="choice">
+      <ref name="QName.datatype"/>
+    </define>
+    
+    <define name="z3986.verse.block.content">
+      <oneOrMore>
+        <ref name="z3986.verse.content.class"/>
+      </oneOrMore>
+    </define>
+    
+  </div>
+    
+  <div>
+    <a:documentation>verse - default content model contribution</a:documentation>
+    
+    <define name="z3986.Section.core.class" combine="choice">
+      <ref name="z3986.verse"/>
+    </define>
+    
+    <define name="z3986.Block.core.class" combine="choice">
+      <ref name="z3986.verse.block"/>
+    </define>
+    
+  </div>
+  
+
+</grammar>

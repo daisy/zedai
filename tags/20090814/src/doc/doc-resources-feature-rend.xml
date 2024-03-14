@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="docResources.rng" type="xml"?>
+<docResources xmlns="http://www.daisy.org/ns/z3986/2008/docResources/">
+
+	<namespace nsURI="http://www.daisy.org/z3986/2010/auth/features/rend/"
+		defaultDocURL="http://www.daisy.org/z3986/2010/auth/features/rend/" feature="yes"
+		featureNicename="Source Rendition">
+ 
+       <attribute name="rend" descriptionURI="../schema/mod/z3986-rend-attrib.rng#z3986.rend.attrib" descriptionInclude="yes"/>
+       <attribute name="symbol" descriptionURI="../schema/mod/z3986-rend-attrib.rng#z3986.rend.symbol.attrib" descriptionInclude="yes"/>
+ 
+	</namespace>
+
+</docResources>

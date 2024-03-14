@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"  
+  ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="block">The block module</dcterms:title>
+      <dcterms:description>This module defines the {[[#z3986.block]]} element for grouping content.</dcterms:description>         
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}" />
+      <dcterms:creator>Markus Gylling</dcterms:creator>      
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng"/>
+    </rdf:Description>
+  </rdf:RDF>
+
+  <div>
+    <define name="z3986.block">
+      <element name="block">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="block">The {block} element</dcterms:title>
+            <dcterms:description>The {block} element establishes an association between a group of elements.</dcterms:description>      
+            <z:info>The {block} element differs and is subordinate to the {[[#z3986.section]]} element in that it is not used
+              to represent the structural outline of a document. The {block} element only establishes an association between its child elements; it is a semantically neutral element.</z:info>
+            <z:info>The {[[#z3986.role.attrib]]} attribute optionally expresses the semantic nature of the grouping.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.Block.class]]}</z:context>          
+            <z:content>{(z3986.Block.class)+ | (text | z3986.Text.class | z3986.Phrase.class)+}</z:content>          
+            <z:attlist>{[[#z3986.Block.attrib]]}</z:attlist>      
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.block.attlist"/>
+        <ref name="z3986.block.content"/>
+        <sch:rule context="default:block">
+          <sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0"
+            >The {block} element must neither be empty nor contain only whitespace.</sch:assert>
+        </sch:rule>
+      </element>
+    </define>
+
+    <define name="z3986.block.attlist">
+      <ref name="z3986.Block.attrib"/>
+    </define>
+
+    <define name="z3986.block.content">
+      <ref name="z3986.Flow.choice.model"/>
+    </define>
+         
+  </div>
+
+  <div>
+    <a:documentation>block - default content model contribution</a:documentation>
+    
+    <define name="z3986.Block.core.base.class" combine="choice">
+      <ref name="z3986.block"/>
+    </define>
+    
+  </div>
+  
+
+</grammar>

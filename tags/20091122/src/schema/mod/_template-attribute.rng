@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 TEMPLATE attribute module</x:h1>
+    
+  <div>
+    <x:h2>The TEMPLATE attribute</x:h2>    
+    <x:div id="z3986.TEMPLATE.attrib">
+      <x:p>The <x:code>TEMPLATE</x:code> attribute... TODO (@id="z3986.TEMPLATE.attrib" in file z3986-TEMPLATE.attrib.rng) </x:p>       
+    </x:div>
+         
+    <define name="z3986.TEMPLATE.attrib">
+      <element name="TEMPLATE">        
+        <ref name="TEMPLATE..attrib.content"/>  
+      </element>    
+    </define>
+
+    <define name="TEMPLATE.attrib.content">
+      <empty/>    
+    </define>  
+    
+  </div>  
+  
+  <div>
+    <x:h2>The TEMPLATE attribute - default content model contribution</x:h2>
+    
+    
+  </div>
+
+</grammar>

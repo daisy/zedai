@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+    xmlns:x="http://www.w3.org/1999/xhtml"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <x:h1>The DAISY Book module</x:h1>
+
+    <define name="Daisy.book" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="book">
+            <ref name="Daisy.book.attlist"/>
+            <ref name="Daisy.book.content"/>
+        </element>
+    </define>
+
+    <define name="Daisy.book.attlist">
+        <empty />
+    </define>
+
+    <define name="Daisy.book.content">
+        <ref name="Daisy.frontmatter" />
+        <ref name="Daisy.bodymatter" />
+        <optional>
+            <ref name="Daisy.backmatter" />
+        </optional>
+    </define>
+    
+    <define name="Daisy.frontmatter" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="frontmatter">
+            <ref name="Daisy.matter.attlist"/>
+            <ref name="Daisy.frontmatter.content"/>
+        </element>
+    </define>
+    <define name="Daisy.bodymatter" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="bodymatter">
+            <ref name="Daisy.matter.attlist"/>
+            <ref name="Daisy.bodybackmatter.content"/>
+        </element>
+    </define>
+    <define name="Daisy.backmatter" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="backmatter">
+            <ref name="Daisy.matter.attlist"/>
+            <ref name="Daisy.bodybackmatter.content"/>
+        </element>
+    </define>
+    
+    <define name="Daisy.frontmatter.content">
+        <empty />
+    </define>
+    <define name="Daisy.bodybackmatter.content">
+        <empty />
+    </define>
+    
+    <define name="Daisy.matter.attlist">
+        <empty />
+    </define>
+</grammar>

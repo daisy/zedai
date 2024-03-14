@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"         
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 Caption Module</x:h1>
+
+  <div>
+    <x:h2>The caption element</x:h2>
+	<x:div id="z3986.caption">
+		<x:p class="description">
+			The <x:code>caption</x:code> elements represents a title, 
+			short explanation, or description accompanying a component
+			of a publication. Captions are often used in conjunction with
+			illustrations, photographs, tables and diagrams.
+		</x:p>
+	</x:div>
+
+    <define name="z3986.caption">
+      <element name="caption">
+        <ref name="z3986.caption.attlist"/>
+        <ref name="z3986.caption.content"/>        
+      </element>
+    </define>
+
+    <define name="z3986.caption.attlist">
+      <ref name="z3986.Text.attrib"/>
+    </define>
+
+    <define name="z3986.caption.content">
+      <ref name="z3986.Text.model"/>
+    </define>    
+            
+  </div>
+
+</grammar>

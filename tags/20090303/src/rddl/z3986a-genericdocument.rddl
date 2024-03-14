@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:rddl="http://www.rddl.org/">
+		
+  <head>
+    <title>Resource Directory for the Z39.86-2010 Generic Document Profile</title>
+    <link href="res/xrd.css" type="text/css" rel="stylesheet"/>
+  </head>
+
+  <body>
+    <h1>Resource Directory for the Z39.86-2010 Generic Document Profile, version 0.2</h1> 
+    <p>The Z39.86-2010 Generic Document Profile can be used to represent a wide range of
+    documents, such that are not typically targeted by the more specific of the Z39.86-2010 profiles.</p>
+    
+    <p>Examples of generic documents include:</p>
+    <ul>
+    	<li>Organisation meeting minutes</li>
+    	<li>Schedules, proceedings</li>
+    	<li>Information leaflets</li>
+    	<li>Letters</li>
+    	<li>Documents off the web.</li> 
+    </ul>
+    
+    <p>The document model can be seen as a strictened version of the XHTML2 grammar. It only adds a few minor elements
+    to the XHTML2 document model. As such, this profile can be used as a template starting point for creators of more 
+    specific profiles.</p>
+    
+    <p>Maintenance agency information goes here.</p>
+    <p>This document is compliant with 
+	<a href="http://www.rddl.org">Resource Directory Description Language (RDDL)</a> 1.0, version February 18, 2002.</p>
+    <p>The canonical URI for this Resource Directory is <code>http://www.daisy.org/z3986/2010/genericdocument/1.0/</code>.</p>
+
+    <h2>Normative Resources</h2>
+       
+    <rddl:resource xlink:type="simple" id="spec"
+		xlink:title="Z3986-2010 Part A Specification"
+		xlink:role="http://www.w3.org/1999/xhtml"
+		xlink:arcrole="http://www.rddl.org/purposes.htm#normative-reference"
+		xlink:href="http://www.niso.org/a/deeplink">
+        <div class="resource">
+	  		<h3>Z3986-2010 Part A Specification</h3>
+	  		<p>This profile adhers to the  
+	  			<a href="http://www.niso.org/a/deeplink">Z3986-2010 Part A Specification</a>.</p>
+        </div>
+    </rddl:resource>
+
+    <rddl:resource xlink:type="simple" id="normative-schema-1"
+		xlink:title="Normative Schema"
+		xlink:role="http://relaxng.org/ns/structure/1.0"
+		xlink:arcrole="http://www.rddl.org/purposes#schema-validation"
+		xlink:href="./z3986a-genericdocument.rng">
+      	<div class="resource">
+			<h3>Normative Schema (RelaxNG)</h3>
+			<p>The normative schema for this profile is <a href="./z3986a-genericdocument.rng">z3986a-genericdocument.rng</a>.</p>
+      	</div>
+    </rddl:resource>
+
+    <p>The normative RelaxNG schema includes a number of modules:</p>    
+    <ul id="normative-schema-modules">
+		<!-- automatically inserted by build script-->		
+    </ul>
+
+    <h2>Informative Resources</h2>	
+
+    <rddl:resource
+		xlink:title="Prior Version"
+		xlink:role="http://www.rddl.org/"
+		xlink:arcrole="http://www.rddl.org/purposes#prior-version"
+		xlink:href="http://www.daisy.org/z3986/2010/genericdocument/0.9/">
+      	<div class="resource" id="prior-version">
+			<h3>Prior Version of this Directory</h3>
+			<p>The prior version of this Resource Directory is available at 
+			<a href="http://www.daisy.org/z3986/2010/genericdocument/0.9/">
+				http://www.daisy.org/z3986/2010/genericdocument/0.9/</a>.</p>
+      	</div>
+    </rddl:resource>
+
+    <rddl:resource xlink:type="simple" id="xsd" 
+		xlink:title="W3C XML Schema"
+        xlink:href="res/z3986a-genericdocument.xsd" 
+	   	xlink:arcrole="http://www.rddl.org/purposes#software-module"
+	   	xlink:role="http://www.w3.org/2001/XMLSchema">
+        <div class="resource">
+          <h3>W3C XML Schema</h3>
+          <p>A non-normative <a href="./res/z3986a-genericdocument.xsd">W3C XML Schema</a> 
+          	for use in software applications.</p> 
+        </div>
+    </rddl:resource>
+
+    <rddl:resource xlink:type="simple" id="rng-simplified" 
+		xlink:title="Single RelaxNG schema"
+        xlink:href="z3986a-genericdocument-single.rng" 
+	   	xlink:arcrole="http://www.rddl.org/purposes#software-module"
+	   	xlink:role="http://relaxng.org/ns/structure/1.0">
+        <div class="resource">
+          <h3>Single RelaxNG schema</h3>
+          <p>A non-normative <a href="./res/z3986a-genericdocument-single.rng">single file RelaxNG Schema</a> 
+          	for use in software applications.</p> 
+        </div>
+    </rddl:resource>
+
+    <rddl:resource xlink:type="simple" id="css" 
+       	xlink:title="CSS Stylesheet"
+        xlink:href="./res/z3986a-basic.css" 
+	   	xlink:role="http://www.isi.edu/in-notes/iana/assignments/media-types/text/css">
+        <div class="resource">
+        	<h3>CSS Stylesheet</h3>
+        	<p>A <a href="./res/z3986a-basic.css">CSS stylesheet</a> suitable for instance documents adhering to the Generic Document profile.</p> 
+        </div>
+    </rddl:resource>
+
+    <rddl:resource xlink:type="simple" id="xhtml2xslt"
+           xlink:title="XHTML2 XSLT Stylesheet"	   
+           xlink:arcrole="http://www.w3.org/2002/06/xhtml2/"
+           xlink:role="http://www.w3.org/1999/XSL/Transform"
+           xlink:href="simplebook2xhtml2.xsl">
+           <!-- see http://www.rddl.org/purposes/software, the arcrole is the destination namespace -->
+		   	<div class="resource">
+				<h3>XHTML2 XSLT Stylesheet</h3>
+             	<p>An <a href="./res/gendoc2xhtml2.xsl">XSLT</a> stylesheet for transforming documents 
+					conforming to the Generic Document profile into plain XHTML2.</p>
+	     		<p><em>@TODO http://www.rddl.org/purposes/software describes that arcrole is target namespace, how do we describe XSLTs 			that has this profile as the target?</em></p>
+           </div>
+    </rddl:resource>
+
+    <rddl:resource xlink:type="simple" id="oasis-catalog"
+           xlink:title="OASIS Catalog"
+           xlink:role="urn:oasis:names:tc:entity:xmlns:xml:catalog"
+           xlink:href="z3986-simplebook.soc">
+           <div class="resource">
+             <h3>OASIS Open Catalog</h3>
+	     <p>An <a href="z3986-simplebook.soc">OASIS Open Catalog Format catalog</a> 
+		for the Simple Book profile's normative schema and its modules.</p> 
+	   <p><em>@TODO autogenerate the catalog by parsing the driver</em></p> 
+           </div>
+    </rddl:resource>
+
+    <rddl:resource xlink:type="simple" id="zip"
+           xlink:role="http://www.isi.edu/in-notes/iana/assignments/media-types/application/zip"
+           xlink:arcrole="http://www.rddl.org/purposes#software-package"
+           xlink:href="z3986a-genericdocument-10.zip">
+           <div class="resource">
+             <h3>Zip Archive</h3>
+             <p>All local contents of this directory, zipped for
+				<a href="z3986a-genericdocument.zip">download</a>.</p> 
+           </div>
+    </rddl:resource>
+  </body>
+</html>

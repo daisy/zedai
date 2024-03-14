@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="ai-snippets.rng" type="xml"?>
+<snippets xmlns:rend="http://www.daisy.org/ns/z3998/authoring/features/rend/"
+    xmlns="http://www.daisy.org/ns/z3998/authoring/">
+       
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--               @rend:symbol                 -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    
+    <snippet about="z3998.rend.symbol.attrib" dest="doc">
+<p>…</p>
+<transition rend:symbol="* * *"/>
+<p>…</p>
+    </snippet>
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--   @rend:prefix (ordered lists)             -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+        
+    <snippet about="z3998.rend.list.ordered.prefix.attrib" dest="doc">
+<list type="ordered" rend:prefix="upper-roman">
+    <item>…</item>
+</list>        
+    </snippet>
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--   @rend:prefix (unordered lists)           -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3998.rend.list.unordered.prefix.attrib" dest="doc">
+<list type="unordered" rend:prefix="diamond">
+    <item>…</item>
+</list>         
+    </snippet>
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--   @rend:prefix (list items)                -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3998.rend.list.item.prefix.attrib" dest="doc">
+<list>
+    <item rend:prefix="&#8594;">…</item>
+</list>        
+    </snippet>
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--   @rend:prefix (note)                      -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3998.rend.note.prefix.attrib" dest="doc">
+<note rend:prefix="&#8620;">
+    …
+</note>                
+    </snippet>
+
+</snippets>

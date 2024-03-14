@@ -1,0 +1,13 @@
+<toc label="Usage">
+  <topic label="SQC as Eclipse/WSAD Plugin" href="doc/use-ide.htm">
+    <topic label="Eclipse/WSAD Output" href="doc/use-ide-output.htm"/>
+    <topic label="Other Extensions" href="doc/use-ide-extensions.htm"/>
+  </topic>
+  <topic label="SQC Help Plugin" href="doc/use-help.htm"/>
+  <topic label="SQC in Commandline" href="doc/use-commandline.htm">
+    <topic label="Commandline Output" href="doc/use-commandline-output.htm"/>
+  </topic>
+  <topic label="QualityChecker API" href="doc/use-qc-api.htm"/>
+  <topic label="Limitations and Known Problems" href="doc/use-limitations.htm"/>
+  <topic label="Sample Schemas" href="doc/use-samples.htm"/>
+</toc>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z3986 Profile Link Module</x:h1>
+<!-- NOT USED -->
+  <div>
+    <x:h2>The required Z39.86 profile link element</x:h2>
+
+    <define name="z3986.profile.link">
+      <element name="link">
+        <ref name="z3986.profile.attlist"/>
+      </element>
+    </define>
+
+    <define name="z3986.profile.attlist">
+      <attribute name="rel">
+      	<value>profile</value>
+      </attribute>	
+      <ref name="href.attrib" />
+    </define>
+  
+  </div>
+<!--
+  <define name="head.content" combine="interleave">
+    <ref name="z3986.profile.link"/>
+  </define>
+-->
+</grammar>

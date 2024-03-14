@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml"
+	datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+	<x:h1>The Z3986 Output Handling Module</x:h1>
+
+	<div>
+		<x:h2>The outputhandling Element</x:h2>
+
+		<define name="z3986.outputhandling" ns="http://www.daisy.org/ns/z3986/2008/">
+			<element name="outputhandling">
+				<ref name="z3986.outputhandling.attlist" />
+				<ref name="z3986.outputhandling.content" />
+			</element>
+		</define>
+
+		<define name="z3986.outputhandling.attlist">
+			<empty />
+		</define>
+
+		<define name="z3986.outputhandling.content">
+			<choice>
+				<oneOrMore>
+					<ref name="z3986.outputhandling.parameter" />
+				</oneOrMore>
+				<oneOrMore>
+					<ref name="z3986.outputhandling.group" />
+				</oneOrMore>
+				<group>
+					<oneOrMore>
+						<ref name="z3986.outputhandling.parameter" />
+					</oneOrMore>
+					<oneOrMore>
+						<ref name="z3986.outputhandling.group" />
+					</oneOrMore>
+				</group>
+			</choice>
+		</define>
+	</div>
+
+	<div>
+		<x:h2>The group element</x:h2>
+		<define name="z3986.outputhandling.group" ns="http://www.daisy.org/ns/z3986/2008/">
+			<element name="group">
+				<ref name="z3986.outputhandling.group.attlist" />
+				<ref name="z3986.outputhandling.group.content" />
+			</element>
+		</define>
+
+		<define name="z3986.outputhandling.group.attlist">
+			<ref name="id.attrib" />
+			<optional>
+				<attribute name="use">
+					<data type="IDREF" />
+				</attribute>
+			</optional>
+		</define>
+		<define name="z3986.outputhandling.group.content">
+			<oneOrMore>
+				<ref name="z3986.outputhandling.parameter" />
+			</oneOrMore>
+		</define>
+	</div>
+
+	<div>
+		<x:h2>The parameter element</x:h2>
+		<define name="z3986.outputhandling.parameter" ns="http://www.daisy.org/ns/z3986/2008/">
+			<element name="parameter">
+				<ref name="z3986.outputhandling.parameter.attlist" />
+				<ref name="z3986.outputhandling.parameter.content" />
+			</element>
+		</define>
+		<define name="z3986.outputhandling.parameter.attlist">
+			<attribute name="name">
+				<data type="NMTOKEN" />
+			</attribute>
+			<attribute name="value">
+				<text />
+			</attribute>
+			<attribute name="scope">
+				<data type="NMTOKENS" />
+			</attribute>
+		</define>
+
+		<define name="z3986.outputhandling.parameter.content">
+			<empty />
+		</define>
+	</div>
+
+	<!-- The family attribute is used to associate an element with a set of
+		output handling parameters
+	-->
+	<define name="family.attrib">
+		<attribute name="family">
+			<data type="IDREF" />
+		</attribute>
+	</define>
+
+	<!-- Make this attribute available to most elements in the profile -->
+	<define name="Common.attrib" combine="interleave">
+		<optional>
+			<ref name="family.attrib" />
+		</optional>
+	</define>
+</grammar>

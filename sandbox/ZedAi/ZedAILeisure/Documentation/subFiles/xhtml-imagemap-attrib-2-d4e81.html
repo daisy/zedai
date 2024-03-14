@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Relax NG schema module</title>
+      <link rel="stylesheet" type="text/css" href="../css/ProfileDocumentation.css" />
+   </head>
+   <body>
+      <h1 class="title">The DAISY Leisure Profile</h1>
+      
+      
+      <h1 id="d13e3" class="xhtml">Image Map Attributes Module</h1>
+      
+      
+      
+      <h2 id="d13e8" class="xhtml">Image Map Attributes Collection</h2>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">usemap.attrib</span>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">usemap</span>
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="URI.datatype.html">URI.datatype</a></div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">ismap.attrib</span>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">ismap</span>
+               
+               <div class="rng"><span class="rng">value</span>: ismap
+               </div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">shape.attrib</span>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">shape</span>
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Shape.datatype.html">Shape.datatype</a></div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">coords.attrib</span>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">coords</span>
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Coordinates.datatype.html">Coordinates.datatype</a></div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Map.attrib</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="usemap.attrib.html">usemap.attrib</a></div>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="ismap.attrib.html">ismap.attrib</a></div>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="shape.attrib.html">shape.attrib</a></div>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="coords.attrib.html">coords.attrib</a></div>
+         
+      </div>
+      
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Common.attrib</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Map.attrib.html">Map.attrib</a></div>
+         
+      </div>
+      
+      
+   </body>
+</html>

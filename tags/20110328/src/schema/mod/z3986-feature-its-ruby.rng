@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.w3.org/2005/11/its" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="ruby">The ITS Ruby Feature</title>
+        <annotation annotates="/">
+            <para role="desc-main">Provides support for Ruby Annotation markup as defined in the W3C [[http://www.w3.org/TR/its/ Internationalization Tag Set (ITS) Version 1.0]].</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3986-datatypes.rng"/>
+                <member xlink:href="z3986-global-classes.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <legalnotice>
+            <para>Copyright 1998-2008 W3C (MIT, ERCIM, Keio), All Rights Reserved. Permission to use, copy, modify and distribute the ITS schema and its accompanying documentation for any purpose and without fee is hereby granted in perpetuity, provided that the above copyright notice and this paragraph appear in all copies.</para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2011-03-28</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div xml:id="its-ruby">
+        <define name="its-ruby" xml:id="its-ruby">
+            <element name="ruby">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="its:ruby">The {its:ruby} element</title>
+                    <para role="desc-main">The container for ruby markup declarations.</para>
+                    <para role="desc-sub">The {its:ruby} element contains either [[http://www.w3.org/TR/ruby/#simple-ruby1 simple]] or [[http://www.w3.org/TR/ruby/#complex complex]] ruby markup.</para>
+                    <para role="desc-sub">Refer to [[http://www.w3.org/TR/its/#ruby-annotation ITS Ruby]] for further information.</para>
+                    <synopsis role="def-context">{[[#z3986.Text.class]]}</synopsis>
+                    <synopsis role="def-content">{([[#its-rb]], ([[#its-rt]] | ([[#its-rp]], [[#its-rt]], [[#its-rp]]))) | ([[#its-rbc]], [[#its-rtc]], [[#its-rtc]]?)}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Phrase.attrib]]}</synopsis>
+                </annotation>
+                <a:documentation>Ruby markup.</a:documentation>
+                <ref name="its-ruby.content"/>
+                <ref name="its-ruby.attlist"/>
+            </element>
+        </define>
+        <define name="its-ruby.content" xml:id="its-ruby.content">
+            <choice>
+                <ref name="its-ruby.content.simple"/>
+                <ref name="its-ruby.content.complex"/>
+            </choice>
+        </define>
+        <define name="its-ruby.content.simple" xml:id="its-ruby.content.simple">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="ruby.simple">Simple Ruby</title>
+                <para role="desc-main">Simple ruby markup.</para>
+                <synopsis role="def-content">{[[#its-rb]], ([[#its-rt]] | ([[#its-rp]], [[#its-rt]], [[#its-rp]]))}</synopsis>
+            </annotation>
+            <ref name="its-rb"/>
+            <choice>
+                <ref name="its-rt"/>
+                <group>
+                    <ref name="its-rp"/>
+                    <ref name="its-rt"/>
+                    <ref name="its-rp"/>
+                </group>
+            </choice>
+        </define>
+        <define name="its-ruby.content.complex" xml:id="its-ruby.content.complex">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="ruby.complex">Complex Ruby</title>
+                <para role="desc-main">Complex ruby markup.</para>
+                <synopsis role="def-content">{[[#its-rbc]], [[#its-rtc]], [[#its-rtc]]?}</synopsis>
+            </annotation>
+            <ref name="its-rbc"/>
+            <ref name="its-rtc"/>
+            <optional>
+                <ref name="its-rtc"/>
+            </optional>
+        </define>
+        <define name="its-ruby.attlist" xml:id="its-ruby.attlist">
+            <ref name="its-ruby.Common.attrib"/>
+        </define>
+    </div>
+    <div xml:id="its-rb">
+        <define name="its-rb" xml:id="its-rb">
+            <element name="rb">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="its:rb">The {its:rb} element</title>
+                    <para role="desc-main">Contains the base text.</para>
+                    <para role="desc-sub">Refer to [[http://www.w3.org/TR/its/#ruby-annotation ITS Ruby]] for further information.</para>
+                    <synopsis role="def-context">{[[#its-ruby]]} and {[[#its-rbc]]}</synopsis>
+                    <synopsis role="def-content">{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Phrase.attrib]]}</synopsis>
+                </annotation>
+                <ref name="its-rb.content"/>
+                <ref name="its-rb.attlist"/>
+                <sch:rule context="its:rb">
+                    <sch:assert test="not(descendant::its:ruby)">The {its:rb} element must not contain {its:ruby} descendants.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="its-rb.content" xml:id="its-rb.content">
+            <ref name="z3986.Phrase.Text.mix.model"/>
+        </define>
+        <define name="its-rb.attlist" xml:id="its-rb.attlist">
+            <ref name="its-ruby.Common.attrib"/>
+        </define>
+    </div>
+    <div xml:id="its:rt">
+        <define name="its-rt" xml:id="its-rt">
+            <element name="rt">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="its:rt">The {its:rt} element</title>
+                    <para role="desc-main">Contains the ruby text.</para>
+                    <para role="desc-sub">Refer to [[http://www.w3.org/TR/its/#ruby-annotation ITS Ruby]] for further information.</para>
+                    <synopsis role="def-context">{[[#its-ruby]]} and {[[#its-rtc]]}</synopsis>
+                    <synopsis role="def-content">{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Phrase.attrib]], [[#its.rbspan.attrib]]?}</synopsis>
+                </annotation>
+                <ref name="its-rt.content"/>
+                <ref name="its-rt.attlist"/>
+                <sch:rule context="its:rt">
+                    <sch:assert test="not(descendant::its:ruby)">The {its:rt} element must not contain {its:ruby} descendants.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="its-rt.content" xml:id="its-rt.content">
+            <ref name="z3986.Phrase.Text.mix.model"/>
+        </define>
+        <define name="its-rt.attlist" xml:id="its-rt.attlist">
+            <ref name="its-ruby.Common.attrib"/>
+            <optional>
+                <ref name="its.rbspan.attrib"/>
+            </optional>
+        </define>
+        <define name="its.rbspan.attrib" xml:id="its.rbspan.attrib">
+            <attribute name="rbspan">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="rbspan">The {rbspan} attribute</title>
+                    <para role="desc-main">Allows an {its:rt} element to span multiple {its:rb} elements in [[http://www.w3.org/TR/ruby/#complex complex ruby markup]].</para>
+                    <para role="desc-sub">If omitted, the implicit value {1} is assumed..</para>
+                    <para role="desc-sub">Refer to [[http://www.w3.org/TR/its/#ruby-annotation ITS Ruby]] for further information.</para>
+                    <synopsis role="def-context">{[[#its-rt]]}</synopsis>
+                    <synopsis role="def-content">{[[#NonNegativeInteger.datatype]]}</synopsis>
+                </annotation>
+                <ref name="NonNegativeInteger.datatype"/>
+                <sch:rule context="its:rt[@rbspan]">
+                    <sch:assert test="not(parent::its:ruby)">The {rbspan} attribute must not be used on the {its:rt} element in simple ruby markup.</sch:assert>
+                </sch:rule>
+            </attribute>
+        </define>
+    </div>
+    <div xml:id="its-rbc">
+        <define name="its-rbc" xml:id="its-rbc">
+            <element name="rbc">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="its:rbc">The {its:rbc} element</title>
+                    <para role="desc-main">Container for {its:rb} elements in [[http://www.w3.org/TR/ruby/#complex complex ruby markup]].</para>
+                    <para role="desc-sub">Refer to [[http://www.w3.org/TR/its/#ruby-annotation ITS Ruby]] for further information.</para>
+                    <synopsis role="def-context">{[[#its-ruby]]}</synopsis>
+                    <synopsis role="def-content">{[[#its-rb]])+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Phrase.attrib]]}</synopsis>
+                </annotation>
+                <ref name="its-rbc.content"/>
+                <ref name="its-rbc.attlist"/>
+            </element>
+        </define>
+        <define name="its-rbc.content" xml:id="its-rbc.content">
+            <oneOrMore>
+                <ref name="its-rb"/>
+            </oneOrMore>
+        </define>
+        <define name="its-rbc.attlist" xml:id="its-rbc.attlist">
+            <ref name="its-ruby.Common.attrib"/>
+        </define>
+    </div>
+    <div xml:id="its-rtc">
+        <define name="its-rtc" xml:id="its-rtc">
+            <element name="rtc">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="its:rtc">The {its:rtc} element</title>
+                    <para role="desc-main">Container for {its:rt} elements in [[http://www.w3.org/TR/ruby/#complex complex ruby markup]].</para>
+                    <para role="desc-sub">Refer to [[http://www.w3.org/TR/its/#ruby-annotation ITS Ruby]] for further information.</para>
+                    <synopsis role="def-context">{[[#its-ruby]]}</synopsis>
+                    <synopsis role="def-content">{[[#its-rt]]+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Phrase.attrib]]}</synopsis>
+                </annotation>
+                <ref name="its-rtc.content"/>
+                <ref name="its-rtc.attlist"/>
+            </element>
+        </define>
+        <define name="its-rtc.content" xml:id="its-rtc.content">
+            <oneOrMore>
+                <ref name="its-rt"/>
+            </oneOrMore>
+        </define>
+        <define name="its-rtc.attlist" xml:id="its-rtc.attlist">
+            <ref name="its-ruby.Common.attrib"/>
+        </define>
+    </div>
+    <div xml:id="its-rp">
+        <define name="its-rp" xml:id="its-rp">
+            <element name="rp">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="its:rp">The {its:rp} element</title>
+                    <para role="desc-main">Ruby text beginning and end marker</para>
+                    <para role="desc-sub">This element is used in the case of [[http://www.w3.org/TR/ruby/#simple-ruby1 simple ruby markup]] to specify characters that denote the beginning and end of ruby text when user agents do not have other ways to present ruby text distinctively from the base text.</para>
+                    <para role="desc-sub">Refer to [[http://www.w3.org/TR/its/#ruby-annotation ITS Ruby]] for further information.</para>
+                    <synopsis role="def-context">{[[#its-ruby]]}</synopsis>
+                    <synopsis role="def-content">{text}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Phrase.attrib]]}</synopsis>
+                </annotation>
+                <ref name="its-rp.content"/>
+                <ref name="its-rp.attlist"/>
+            </element>
+        </define>
+        <define name="its-rp.content" xml:id="its-rp.content">
+            <ref name="Characters.datatype"/>
+        </define>
+        <define name="its-rp.attlist" xml:id="its-rp.attlist">
+            <ref name="its-ruby.Common.attrib"/>
+        </define>
+    </div>
+    <define name="its-ruby.Common.attrib" combine="interleave">
+        <ref name="z3986.Phrase.attrib"/>
+    </define>
+    <div>
+        <a:documentation>ITS Ruby Feature - default content model contribution</a:documentation>
+        <define name="z3986.Text.extern.class" xml:id="z3986.Text.extern.class">
+            <ref name="its-ruby"/>
+        </define>
+    </div>
+</grammar>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"
+         ns="http://www.w3.org/2001/10/synthesis">
+
+  <x:h1>SSML token element module</x:h1>
+    
+  <div>
+    <x:h2>The token element</x:h2>
+    <x:div id="ssml.token">
+      <x:p class="description">
+        The <x:code>token</x:code> element allows the author to indicate its content is a 
+        token and to eliminate token (word) segmentation ambiguities 
+        of a synthesis processor.
+        <x:br/>
+        A synthesis processor should regard the Z39.86 word element (<x:code>w</x:code>)
+        as an alias of <x:code>token</x:code>.
+        <x:br/>
+        Consult <x:a href="http://www.w3.org/TR/speech-synthesis11/#S3.1.8.2"
+        >Speech Synthesis Markup Language (SSML) Version 1.1</x:a> 
+        for further information.         
+      </x:p>
+    </x:div>
+         
+    <define name="ssml.token">
+      <element name="token">        
+        <ref name="ssml.token.attlist"/>
+        <ref name="ssml.token.content"/>
+      </element>    
+    </define>
+
+    <define name="ssml.token.attlist" combine="interleave">
+      <ref name="z3986.I18n.attrib"/>
+      <ref name="z3986.Core.attrib"/>
+      <ref name="Rdfa.attrib"/>
+      <optional>
+        <ref name="xhtml.role.attrib"/>
+      </optional>  
+    </define>        
+    
+    <define name="ssml.token.content">
+      <ref name="z3986.Text.base.model"/>
+    </define>
+    
+  </div>  
+  
+  <div>
+    <x:h2>The token element - default content model contribution</x:h2>
+    
+    <define name="z3986.Text.class"  combine="choice">
+      <ref name="ssml.token"/>
+    </define>
+        
+  </div>
+
+</grammar>

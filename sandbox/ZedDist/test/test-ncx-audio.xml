@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="../src/schema/ncx-audio.rng" type="xml"?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" xml:lang="en">
+  <!-- TODO no way to point inside audio (would need @clip-begin) -->
+  <!-- TODO depth inferred from h1,h2 etc, enough or better with an @depth="Integer"? 
+  	targetRole values can be limited to pagebreak|h1...h6 -->
+  <target href="anAudioURI" targetRole="pagebreak" label-img="aURI">1</target>
+  <target href="anAudioURI" targetRole="h1" dir="ltr">Chapter 1</target>  
+  <target href="anAudioURI" targetRole="pagebreak">2</target>
+  <target href="anAudioURI" targetRole="h2" xml:id="bar">Chapter 1.1</target>
+  <target href="anAudioURI" targetRole="h3">Chapter 1.1.1</target>
+</ncx>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">  -->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" version="XHTML+RDFa 1.0">
+    <head>
+        <title>Z39.86 Periodicals Vocabulary</title>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+        <link rel="stylesheet" type="text/css" href="../../z3986-2010.css"/>
+    </head>
+    <body>
+      <h1>Z39.86 Periodicals Vocabulary</h1>
+      <p class="informative">These vocabulary item values take an <code>xsd:string</code> value unless otherwise specified.</p>
+      <div id="periodicals-vocab" class="vocabulary">
+        <div id="frontmatter-properties" about="#frontmatter-properties" typeof="rdf:Bag">
+          <h2>Frontmatter</h2>
+          <dl about="#frontmatter-properties" rev="rdfs:member">
+            <dt id="editionNumber" about="#editionNumber" typeof="rdf:Property">edition</dt>
+            <dd about="#editionNumber" property="rdfs:comment" datatype="xsd:string">Holds information about the edition of the publication being delivered by the particular Feeds profile instance document; is only relevant in instances where the particular Feeds profile instance document is being used to deliver an entire publication. </dd>
+            
+            <dt id="specialIssueTitle" about="#specialIssueTitle" typeof="rdf:Property">specialIssueTitle</dt>
+            <dd about="#specialIssueTitle" property="rdfs:comment" datatype="xsd:string">The title of a special issue</dd>
+
+            <dt id="specialIssueEditors" about="#specialIssueEditors" typeof="rdf:Property">specialIssueEditors</dt>
+            <dd about="#specialIssueEditors" property="rdfs:comment" datatype="xsd:string">Editors for a special issue</dd>
+
+            <dt id="coverIllustrationCaption" about="#coverIllustrationCaption" typeof="rdf:Property">coverIllustrationCaption</dt>
+            <dd about="#coverIllustrationCaption" property="rdfs:comment" datatype="xsd:string">Caption for the cover illustration</dd>
+
+            <dt id="coverIllustrationCredit" about="#coverIllustrationCredit" typeof="rdf:Property">coverIllustrationCredit</dt>
+            <dd about="#coverIllustrationCredit" property="rdfs:comment" datatype="xsd:string">Credit for the cover illustration</dd>
+
+            <dt id="masthead" about="#masthead" typeof="rdf:Property">masthead</dt>
+            <dd about="#masthead" property="rdfs:comment" datatype="xsd:string">A list, usually found on the editorial page of a newspaper or magazine, of the members of the newspaper's editorial board. If no editorial board exists, the masthead will often feature a list of top news staff members. Some mastheads also include information such as the publication's founding date, slogan, logo and contact information.</dd>
+
+            <dt id="editors" about="#editors" typeof="rdf:Property">editors</dt>
+            <dd about="#editors" property="rdfs:comment" datatype="xsd:string">The publication's editors</dd>
+
+            <dt id="staff" about="#staff" typeof="rdf:Property">staff</dt>
+            <dd about="#staff" property="rdfs:comment" datatype="xsd:string">The publication's staff</dd>
+
+            <dt id="editorialBoard" about="#editorialBoard" typeof="rdf:Property">editorialBoard</dt>
+            <dd about="#editorialBoard" property="rdfs:comment" datatype="xsd:string">A group of people, usually at a print publication, who dictate the tone and direction the publication's editorials will take</dd>
+
+            <dt id="subscriptionInformation" about="#subscriptionInformation" typeof="rdf:Property">subscriptionInformation</dt>
+            <dd about="#subscriptionInformation" property="rdfs:comment" datatype="xsd:string">Information about subscribing to the publication.</dd>
+
+            <dt id="correspondenceAddress" about="#correspondenceAddress" typeof="rdf:Property">correspondenceAddress</dt>
+            <dd about="#correspondenceAddress" property="rdfs:comment" datatype="xsd:string">An address for business/editorial correspondence</dd>
+
+            <dt id="advertisingPolicy" about="#advertisingPolicy" typeof="rdf:Property">advertisingPolicy</dt>
+            <dd about="#advertisingPolicy" property="rdfs:comment" datatype="xsd:string">The publication's advertising policy</dd>
+            
+            <dt id="issueCopyrightLine" about="#issueCopyrightLine" typeof="rdf:Property">issueCopyrightLine</dt>
+            <dd about="#issueCopyrightLine" property="rdfs:comment" datatype="xsd:string">The copyright line for the entire issue</dd>
+
+            <dt id="editorialPolicy" about="#editorialPolicy" typeof="rdf:Property">editorialPolicy</dt>
+            <dd about="#editorialPolicy" property="rdfs:comment" datatype="xsd:string">The publication's editorial policy</dd>
+          </dl>
+        </div>
+        
+        <div id="text-properties" about="#text-properties" typeof="rdf:Bag">
+          <h2>Text properties</h2>
+          <dl about="#text-properties" rev="rdfs:member">
+            
+            <dt id="positionSequence" about="#positionSequence" typeof="rdf:Property">positionSequence</dt>
+            <dd about="#positionSequence" property="rdfs:comment" datatype="xsd:string">Holds ordinal information about the article within its parent section/sub section. for example, a value of 2 means that the article is the second article in its parent section/sub section; is only relevant in instances where the Feeds Profile instance document is being used to deliver a single article, or a collection of articles for one or more publications.</dd>
+            <dd about="#positionSequence" property="rdfs:datatype" content="xsd:int">integer</dd>
+            
+            <dt id="positionSection" about="#positionSection" typeof="rdf:Property">positionSection</dt>
+            <dd about="#positionSection" property="rdfs:comment" datatype="xsd:string">Holds ordinal information about the parent section and or sub section(s) within a pubblication, that an article appears in. for example, a value of 1.2 means that an article appears in a section that is the first section in the publication, and a sub section that is the second subsection within the section;is only relevant in instances where the particular Feeds profile instance document is being used to deliver a single article, or a collection of articles for one or more publications. </dd>
+            <dd about="#positionSection" property="rdfs:datatype" content="xsd:decimal">decimal</dd>
+            
+            <dt id="kicker" about="#kicker" typeof="rdf:Property">kicker</dt>
+            <dd about="#kicker" property="rdfs:comment" datatype="xsd:string">Holds a piece of text that draws attention towards the article; is relevant in all contexts.</dd>
+
+            <dt id="positionPage" about="#positionPage" typeof="rdf:Property">positionPage</dt>
+            <dd about="#positionPage" property="rdfs:comment" datatype="xsd:string">Holds information about the page that the article appears on in the publication; is only relevant in instances where the Feeds Profile document instance is being used to deliver a single article, or a collection of articles for one or more publications.</dd>
+            <dd about="#positionPage" property="rdfs:datatype" content="xsd:int">integer</dd>
+
+            <dt id="revision" about="#revision" typeof="rdf:Property">revision</dt>
+            <dd about="#revision" property="rdfs:comment" datatype="xsd:string">Holds revision information about the article; is relevant in instances where the Feeds Profile instance document is being used to deliver a single article, or a collection of articles for one or more publications.</dd>
+            <dd about="#revision" property="rdfs:datatype" content="xsd:decimal">decimal</dd>
+
+            <dt id="destEdition" about="#destEdition" typeof="rdf:Property">destEdition</dt>
+            <dd about="#destEdition" property="rdfs:comment" datatype="xsd:string">Holds information about an edition of a publication that the article is meant to appear in; is only relevant in instances where the Feeds Profile instance document is being used to deliver a single article, or a collection of articles for one or more publications; can appear more than once inside the Article head; each occurrence of destEdition holds information about a particular edition of a publication that the article is meant to appear in.</dd>
+
+            <dt id="destPublication" about="#destPublication" typeof="rdf:Property">destPublication</dt>
+            <dd about="#destPublication" property="rdfs:comment" datatype="xsd:string">Holds information about a publication that the article is meant to appear in; is only relevant in contexts where the Feeds profile instance document is being used to deliver a single article, or a collection of articles for one or more publications; can appear more than once inside the Article head; each occurrence of destPublication holds information about a particular publication that the article is meant to appear in. </dd>
+            
+            <dt id="sourceEdition" about="#sourceEdition" typeof="rdf:Property">sourceEdition</dt>
+            <dd about="#sourceEdition" property="rdfs:comment" datatype="xsd:string">Holds information about an edition of a publication that the article is originally a part of; is only relevant in instances where the Feeds Profile instance document is being used to deliver a single article, or a collection of articles for one or more publications; can appear more than once inside the Article head; each occurrence of sourceEdition holds information about a particular edition of a publication that the article is originally a part of.</dd>
+
+            <dt id="sourcePublication" about="#sourcePublication" typeof="rdf:Property">sourcePublication</dt>
+            <dd about="#sourcePublication" property="rdfs:comment" datatype="xsd:string">Holds information about a publication that the article is originally a part of; is only relevant in contexts where the Feeds profile instance document is being used to deliver a single article, or a collection of articles for one or more publications; can appear more than once inside the Article head; each occurrence of sourcePublication holds information about a particular publication that the article is originally a part of. </dd>
+            
+            <dt id="authorAddress" about="#authorAddress" typeof="rdf:Property">authorAddress</dt>
+            <dd about="#authorAddress" property="rdfs:comment" datatype="xsd:string">The author's address</dd>
+
+            <dt id="authorEmail" about="#authorEmail" typeof="rdf:Property">authorEmail</dt>
+            <dd about="#authorEmail" property="rdfs:comment" datatype="xsd:string">The author's email address</dd>
+
+            <dt id="illustration" about="#illustration" typeof="rdf:Property">illustration</dt>
+            <dd about="#illustration" property="rdfs:comment" datatype="xsd:string">An illustration</dd>
+
+            <dt id="excerpt" about="#excerpt" typeof="rdf:Property">excerpt</dt>
+            <dd about="#excerpt" property="rdfs:comment" datatype="xsd:string">An excerpt</dd>
+
+            <dt id="tables" about="#tables" typeof="rdf:Property">tables</dt>
+            <dd about="#tables" property="rdfs:comment" datatype="xsd:string">Data tables</dd>
+
+            <dt id="targetOfBookReview" about="#targetOfBookReview" typeof="rdf:Property">targetOfBookReview</dt>
+            <dd about="#targetOfBookReview" property="rdfs:comment" datatype="xsd:string">The book being reviewed</dd>
+            
+            <dt id="continuation" about="#continuation" typeof="rdf:Property">continuation</dt>
+            <dd about="#continuation" property="rdfs:comment" datatype="xsd:string">Indicates a continuation (e.g. continued on page 7)</dd>
+
+            <dt id="newsHighlight" about="#newsHighlight" typeof="rdf:Property">newsHighlight</dt>
+            <dd about="#newsHighlight" property="rdfs:comment" datatype="xsd:string">A news highlight</dd>
+
+            <dt id="quote" about="#quote" typeof="rdf:Property">quote</dt>
+            <dd about="#quote" property="rdfs:comment" datatype="xsd:string">A quotation</dd>
+            
+          </dl>
+        </div>
+        
+        <div id="piece-properties" about="#piece-properties" typeof="rdf:Bag">
+          <h2>Piece properties</h2>
+          <dl about="#piece-properties" rev="rdfs:member">
+            <dt id="advertisement" about="#advertisement" typeof="rdf:Property">advertisement</dt>
+            <dd about="#advertisement" property="rdfs:comment" datatype="xsd:string">An advertisement</dd>
+            
+            <dt id="review" about="#review" typeof="rdf:Property">review</dt>
+            <dd about="#review" property="rdfs:comment" datatype="xsd:string">An evaluation of a publication or other item.</dd>
+            
+            <dt id="article" about="#article" typeof="rdf:Property">article</dt>
+            <dd about="#article" property="rdfs:comment" datatype="xsd:string">A nonfictional prose composition which is a stand-alone section of a larger written work.</dd>
+
+            <dt id="bookReview" about="#bookReview" typeof="rdf:Property">bookReview</dt>
+            <dd about="#bookReview" property="rdfs:comment" datatype="xsd:string">Book review</dd>
+
+            <dt id="bookNotes" about="#bookNotes" typeof="rdf:Property">bookNotes</dt>
+            <dd about="#bookNotes" property="rdfs:comment" datatype="xsd:string">Book notes</dd>
+
+            <dt id="commentary" about="#commentary" typeof="rdf:Property">commentary</dt>
+            <dd about="#commentary" property="rdfs:comment" datatype="xsd:string">A commentary</dd>
+
+            <dt id="editorial" about="#editorial" typeof="rdf:Property">editorial</dt>
+            <dd about="#editorial" property="rdfs:comment" datatype="xsd:string">An editorial</dd>
+
+            <dt id="survey" about="#survey" typeof="rdf:Property">survey</dt>
+            <dd about="#survey" property="rdfs:comment" datatype="xsd:string">A survey</dd>
+
+            <dt id="briefReport" about="#briefReport" typeof="rdf:Property">briefReport</dt>
+            <dd about="#briefReport" property="rdfs:comment" datatype="xsd:string">A brief report</dd>
+            
+            <dt id="feature" about="#feature" typeof="rdf:Property">feature</dt>
+            <dd about="#feature" property="rdfs:comment" datatype="xsd:string">A piece of writing which covers a selected issue in-depth</dd>
+
+            <dt id="opinion" about="#opinion" typeof="rdf:Property">opinion</dt>
+            <dd about="#opinion" property="rdfs:comment" datatype="xsd:string">An opinion piece</dd>
+            
+            <dt id="letterFromTheEditor" about="#letterFromTheEditor" typeof="rdf:Property">letterFromTheEditor</dt>
+            <dd about="#letterFromTheEditor" property="rdfs:comment" datatype="xsd:string">A letter from the editor</dd>
+          </dl>
+        </div>
+        
+        <div id="section-properties" about="#section-properties" typeof="rdf:Bag">
+          <h2>Section properties</h2>
+          <dl about="#section-properties" rev="rdfs:member">
+            <dt id="employmentOpportunities" about="#employmentOpportunities" typeof="rdf:Property">employmentOpportunities</dt>
+            <dd about="#employmentOpportunities" property="rdfs:comment" datatype="xsd:string">Announcements of employment opportunities</dd>
+            
+            <dt id="lettersToTheEditor" about="#lettersToTheEditor" typeof="rdf:Property">lettersToTheEditor</dt>
+            <dd about="#lettersToTheEditor" property="rdfs:comment" datatype="xsd:string">Letters sent to a publication about issues of concern to its readers. </dd>
+
+            <dt id="announcements" about="#announcements" typeof="rdf:Property">announcements</dt>
+            <dd about="#announcements" property="rdfs:comment" datatype="xsd:string">General announcements</dd>
+          
+            <dt id="classifieds" about="#classifieds" typeof="rdf:Property">classifieds</dt>
+            <dd about="#classifieds" property="rdfs:comment" datatype="xsd:string">Classified advertisements, typically brief and text-only.</dd>
+
+            <dt id="weather" about="#weather" typeof="rdf:Property">weather</dt>
+            <dd about="#weather" property="rdfs:comment" datatype="xsd:string">The local weather</dd>
+
+            <dt id="sport" about="#sport" typeof="rdf:Property">sport</dt>
+            <dd about="#sport" property="rdfs:comment" datatype="xsd:string">The sports section</dd>
+
+            <dt id="funPages" about="#funPages" typeof="rdf:Property">funPages</dt>
+            <dd about="#funPages" property="rdfs:comment" datatype="xsd:string">Contains comic strips, puzzles, and fun activities.</dd>        
+          </dl>
+        </div>
+        
+        <dl>
+          
+          <dt id="forthcomingArticlesList" about="#forthcomingArticlesList" typeof="rdf:Property">forthcomingArticlesList</dt>
+          <dd about="#forthcomingArticlesList" property="rdfs:comment" datatype="xsd:string">Titles of articles scheduled to appear in a forthcoming issue</dd>
+
+          <dt id="contributorNotes" about="#contributorNotes" typeof="rdf:Property">contributorNotes</dt>
+          <dd about="#contributorNotes" property="rdfs:comment" datatype="xsd:string">Notes on contributors</dd>
+          
+          <dt id="photoCredits" about="#photoCredits" typeof="rdf:Property">photoCredits</dt>
+          <dd about="#photoCredits" property="rdfs:comment" datatype="xsd:string">Photo credits</dd>
+
+          
+      </dl>
+    </div>
+  </body>
+</html>

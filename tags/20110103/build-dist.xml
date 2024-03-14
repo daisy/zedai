@@ -1,0 +1,119 @@
+<project name="build-dist" default="build-dist-all" basedir="." xmlns:antcontrib="antlib:net.sf.antcontrib">
+	
+	<import file="common.xml"/>
+	
+	<!-- base dirs -->
+	<property name="build.dist.dir" value="${dir.build}/dist" />
+	<property name="test.z3986b.dir" value="${test.dir}/z3986b" />	
+	<!-- spec: docbook source paths -->
+	<property name="spec.part-b.docbook.path" value="${dir.src.spec}/Z3986-2011B.xml" />
+	<!-- feature names -->
+	<property name="dist.feature.machinename.A" value="A" />
+	<property name="dist.feature.nicename.A" value="Feature A" />
+	<property name="dist.feature.machinename.B" value="B" />
+	<property name="dist.feature.nicename.B" value="B Feature" />
+	<propertyset id="dist-feature-machinenames">
+		<propertyref prefix="dist.feature.machinename."/>
+	</propertyset>
+	<!-- ncx names -->
+	<property name="ncx.part-b.docbook.path" value="${spec.part-b.docbook.path}" />
+	<property name="ncx.part-b.output.dir" value="${dir.build}/auth/ncx" />
+	<property name="ncx.part-b.output.filename" value="${ncx.part-b.docbook.name}.html" />
+	<property name="ncx.part-b.output.path" value="${ncx.part-b.output.dir}/${ncx.part-b.output.filename}" />
+	<!-- profile names -->
+	<property name="dist.profile.nicename.A" value="A Profile" />
+	<property name="dist.profile.machinename.A" value="A" />
+	<property name="dist.profile.nicename.B" value="B Profile" />
+	<property name="dist.profile.machinename.B" value="B" />
+	<propertyset id="dist-profile-machinenames">
+		<propertyref prefix="dist.profile.machinename."/>
+	</propertyset>
+	
+	<property name="dir.dist.spec.temp" value="${dir.temp}/spec-temp" />
+	<property name="dist.spec.temp.path" value="${dir.dist.spec.temp}/${spec.part-b.docbook.name}.xml" />
+	
+	<target name="build-dist-all"
+		description="build everything"
+		depends="clean-build-dir-dist,
+				build-main-schema-pool,
+				build-dist-spec,
+				build-main-index"/>
+	
+
+	
+	
+	<target name="spec-depends">
+		<antcall target="compile-util-java-classes"/>
+		<validate-spec-examples examples-schema="${dir.src.spec.examples}/dist-examples.rng" examples-file-match="dist*.xml" examples-file-exclude=""/>
+		<antcall target="validate-dist-spec-sources"/>
+		<antcall target="preprocess-src-rng-schemas"/>
+		<antcall target="copy-www-css"/>
+	</target>
+	
+	<target name="build-dist-spec" depends="spec-depends" description="validates and builds docbook 5 sources">
+		
+		<delete file="${spec.part-b.output.path}" quiet="true"/>
+		<delete file="${primer.part-b.output.path}" quiet="true"/>
+		<delete file="${dir.build}/z3986.css" quiet="true"/>
+		
+		<!-- copy xinc files -->
+		<copy todir="${dir.dist.spec.temp}/xinc">
+			<fileset dir="${dir.src.spec}/xinc" />
+		</copy>
+		
+		<!-- run xinclude on spec -->
+		<xom-xincluder in="${spec.part-b.docbook.path}" out="${dist.spec.temp.path}" />
+		
+		<xom-xincluder in="${primer.part-b.docbook.path}" out="${dir.dist.spec.temp}/${primer.part-b.docbook.name}.xml" />
+		
+		<!-- run example expander on spec -->
+		<example-expander in="${dist.spec.temp.path}" out="${dist.spec.temp.path}" />
+		<example-expander in="${dir.dist.spec.temp}/${primer.part-b.docbook.name}.xml" out="${dir.dist.spec.temp}/${primer.part-b.docbook.name}.xml" />
+		
+		<!-- run absdefexpander, also runs xinclude -->
+		<absdef-expander in="${dist.spec.temp.path}" out="${dist.spec.temp.path}" isCM="false" isDist="true" /> 
+		
+		<!-- validate the finalized docbook sources -->
+		<jing rngfile="${dir.util}/docbook/rng/docbookxi.rng" 
+			file="${dist.spec.temp.path}" checkid="true" failonerror="true" />
+		
+		<!-- transform spec to html in one pass -->
+		<saxon-xslt style="${dir.util}/docbook/xslt/ZedAI_docbook2xhtml.xsl"
+			basedir="${dir.dist.spec.temp}" 
+			destdir="${dir.build}"
+			includes="${spec.part-b.docbook.name}*.xml" extension=".html" >
+			<param name="section.autolabel" expression="1"/>
+			<param name="toc.section.depth" expression="2"/>
+			<param name="section.label.includes.component.label" expression="1"/>
+			<param name="html.stylesheet" expression="z3986.css"/>
+		</saxon-xslt>	
+		
+		<!-- copy the docbook html css -->
+		<copy file="${dir.util}/docbook/html-css/docbook.css" tofile="${dir.build}/z3986.css" />
+		
+		<!-- copy the img folder -->
+		<copy todir="${dir.build}/img">
+			<fileset dir="${dir.src.spec}/img"/>
+		</copy>
+		
+	</target>
+	
+	<target name="validate-dist-spec-sources" description="validate the docbook spec doc sources">
+		<jing rngfile="${dir.util}/docbook/rng/docbookxi.rng" file="${spec.part-b.docbook.path}" checkid="true" failonerror="true" />
+		<jing rngfile="${dir.util}/docbook/rng/docbookxi.rng" file="${primer.part-b.docbook.path}" checkid="true" failonerror="true" />
+	</target>
+	
+	<target name="clean-build-dir-dist" description="clean build dir dist">
+		<!-- since we are cohabitatet with ai, we cant do a catch-all delete -->
+		<!-- delete build/dist -->
+		<delete failonerror="false" includeemptydirs="true">
+			<fileset dir="${build.dist.dir}" />
+		</delete>
+		<!-- delete temp-->
+		<delete failonerror="false" includeemptydirs="true">
+			<fileset dir="${dir.temp}" />
+		</delete>
+		<mkdir dir="${build.dist.dir}" />			
+	</target>
+	
+</project>

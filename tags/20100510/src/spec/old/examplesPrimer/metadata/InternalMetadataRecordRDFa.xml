@@ -1,0 +1,31 @@
+<document xmlns="http://www.daisy.org/ns/z3986/authoring/" xml:lang="en-GB"
+    xmlns:dcterms="http://purl.org/dc/terms/" xmlns:z="http://www.daisy.org/z3986/2010/vocab/decl/#">
+    <head> 
+        … 
+        <meta rel="z:meta-record" resource=".">
+            <meta property="z:meta-record-type" about="." content="z:dcterms-rdfa"/>
+        </meta> 
+        … 
+    </head>
+    <body> 
+        … 
+        <frontmatter>
+            <section role="titlepage">
+                <h property="dcterms:title" role="fulltitle">
+                    <hpart role="title"> On the Origin of Species by Means of Natural
+                        Selection</hpart> or the 
+                    <hpart role="subtitle">Preservation of Favoured
+                        races in the struggle for life</hpart>. </h>
+                <block>
+                    <l>By <name property="dc:creator">Charles Darwin</name>, M.A.,</l> Fellow of the
+                    royal, geological, linnœan, etc., societies; author of 'journal of researches
+                    during h.m.s. Beagle's voyage round the world.' </block>
+                <block role="imprint">
+                    <place>LONDON</place>: <name>JOHN MURRAY</name>, <place>ALBEMARLE
+                    STREET</place>. <time>1859</time>. </block>
+                <block role="publisherNote">The right of Translation is reserved.</block>
+            </section> 
+            … 
+        </frontmatter>
+    </body>
+</document>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="docResources.rng" type="xml"?>
+<docResources xmlns="http://www.daisy.org/ns/z3986/2008/docResources/">
+    
+    <include subDrURI="doc-resources-common.xml"/>
+    <include subDrURI="doc-resources-feature-ssml.xml"/>
+    <include subDrURI="doc-resources-feature-ruby.xml"/>
+  
+    
+    <namespace nsURI="http://www.daisy.org/z3986/2010/" feature="no" defaultDocURL="http://www.daisy.org/z3986/2010">
+      <element name="article" docURI="../schema/mod/z3986-article.rng#z3986.article" include="yes" />
+      <element name="byline" docURI="../schema/mod/z3986-byline.rng#z3986.byline" include="yes" />
+      <element name="dateline" docURI="../schema/mod/z3986-dateline.rng#z3986.dateline" include="yes" />
+    </namespace>
+    
+</docResources>

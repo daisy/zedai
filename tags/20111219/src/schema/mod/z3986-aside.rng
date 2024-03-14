@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="aside">The aside module</title>
+        <annotation annotates="/">
+            <para role="desc-main">This module defines the {[[#z3986.aside]]} element for capturing supplementary information in documents.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3986-global-classes.rng"/>
+                <member xlink:href="z3986-datatypes.rng"/>
+                <member xlink:href="z3986-core-attrib.rng"/>
+                <member xlink:href="z3986-i18n-attrib.rng"/>
+                <member xlink:href="rdfa-attrib.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <year>2012</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2012-12-19</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+	<div>
+		<define name="z3986.aside.section" xml:id="z3986.aside.section">
+			<element name="aside">
+				<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+					<title xreflabel="aside (section)">The {aside} element (Section)</title>
+					<para role="desc-main" xlink:role="inherit-common" xlink:href="z3986.aside"/>
+					<para role="desc-sub">The {Section} variant is an adaptation for use with asides that contain structured content.</para>
+					<para role="desc-sub" xlink:role="inherit-common" xlink:href="z3986.aside"/>
+					<synopsis role="def-context">{[[#z3986.section]]}</synopsis>
+					<synopsis role="def-content">{[[#z3986.h]]?, (z3986.Section.model)+}</synopsis>
+					<synopsis role="def-attlist">{[[#z3986.Section.attrib]], [[#z3986.ref.attrib]]}</synopsis>
+				</annotation>
+				<ref name="z3986.aside.section.attlist"/>
+				<ref name="z3986.aside.section.content"/>
+				<sch:rule context="default:aside">
+					<sch:assert test="normalize-space(.) or *">The {aside} element must neither be empty nor contain only whitespace.</sch:assert>
+				</sch:rule>
+			</element>
+		</define>
+		<define name="z3986.aside.section.attlist" xml:id="z3986.aside.section.attlist">
+			<!-- this is Section.attrib expanded out to allow contributions to @role -->
+			<ref name="z3986.global.core.attrib"/>
+			<ref name="z3986.Section.extern.attrib"/>
+			<optional>
+				<ref name="z3986.aside.role.attrib"/>
+			</optional>
+		</define>
+		<define name="z3986.aside.role.attrib" xml:id="z3986.aside.role.attrib">
+			<attribute name="role">
+				<ref name="z3986.aside.role.attrib.content"/>
+			</attribute>
+		</define>
+		<define name="z3986.aside.role.attrib.content" combine="choice">
+			<choice>
+				<ref name="CURIEs.datatype"/>
+			</choice>
+		</define>
+		<define name="z3986.aside.section.content" xml:id="z3986.aside.section.content">
+			<optional>
+				<ref name="z3986.h"/>
+			</optional>
+			<ref name="z3986.Section.model"/>
+		</define>
+	</div>
+	<div>
+        <define name="z3986.aside" xml:id="z3986.aside">
+            <element name="aside">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="aside (block)">The {aside} element (Block)</title>
+                    <para role="desc-main" xlink:role="inherit-common" xlink:href="z3986.aside"/>
+                    <para role="desc-sub">The {Block} variant is an adaptation for use with asides that contain unstructured content.</para>
+                    <para role="desc-sub" xlink:role="inherit-common" xlink:href="z3986.aside"/>
+                    <synopsis role="def-context">{[[#z3986.Block.class]]}</synopsis>
+                    <synopsis role="def-content">{(z3986.Block.class)+ | (text | z3986.Text.class | z3986.Phrase.class)+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Block.attrib]], [[#z3986.ref.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.aside.attlist"/>
+                <ref name="z3986.aside.content"/>
+            </element>
+        </define>
+        <define name="z3986.aside.attlist" xml:id="z3986.aside.attlist">
+            <!-- this is Block.attrib expanded out to allow contributions to @role -->
+            <ref name="z3986.global.core.attrib"/>
+            <ref name="z3986.Block.extern.attrib"/>
+            <optional>
+                <ref name="z3986.aside.role.attrib"/>
+            </optional>
+        </define>
+        <define name="z3986.aside.content" xml:id="z3986.aside.content">
+            <ref name="z3986.Flow.choice.model"/>
+        </define>
+    </div>
+    <div>
+        <a:documentation>aside - default content model contribution</a:documentation>
+        <define name="z3986.section.Section.content.class" combine="choice">
+    	    <ref name="z3986.aside.section"/>
+        </define>
+        <define name="z3986.Block.core.class" combine="choice">
+            <ref name="z3986.aside"/>
+        </define>
+        <define name="z3986.index.extra.class" combine="choice">
+            <ref name="z3986.aside"/>
+        </define>
+        <define name="z3986.bibliography.extra.class" combine="choice">
+            <ref name="z3986.aside"/>
+        </define>
+        <define name="z3986.glossary.extra.class" combine="choice">
+            <ref name="z3986.aside"/>
+        </define>
+    </div>
+</grammar>

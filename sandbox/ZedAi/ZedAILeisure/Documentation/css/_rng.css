@@ -1,0 +1,85 @@
+/* rng_Def.css */
+
+/*
+   Some colors used:
+  light blue:         rgb(176,176,255)
+  very light blue:    rgb(215,215,255)
+ */
+
+/*
+    20081007: Per Sennels (ps): Created
+*/
+
+
+div.location {
+/*    padding:2mm;
+    background-color:rgb(200,200,220); */
+    margin-bottom:1em;
+    }
+
+
+div.element {
+    border:1pt solid rgb(200,200,255);
+    margin-bottom:1em;
+    clear:both;
+    }
+
+div.element-top {
+    background-color:rgb(220,220,255);
+    padding:1mm;
+    }
+
+div.attribute {
+    border:1pt solid rgb(255,200,200);
+    margin-bottom:1em;
+    }
+
+div.attribute-top {
+    background-color:rgb(255,220,220);
+    padding:1mm;
+    }
+div.element-content, div.attribute-content, div.pattern-content {
+    padding:1mm;
+    }
+
+div.pattern {
+    border:1pt solid rgb(240,200,255);
+    margin:1em 0 1em 0;
+    }
+
+div.pattern-top {
+    background-color:rgb(240,200,255);
+    padding:1mm;
+    }
+
+
+div.ref {
+/*    border-left:1em solid rgb(220,220,255); */
+    padding-left:2mm;
+    margin:1mm
+    }
+
+div.rng {
+    background-color:rgb(215,215,255);
+    font-family:courier, fixed, monospace;
+    border: rgb(196,196,255);
+    border-left:2pt solid;
+    border-right:1pt solid;
+    border-top:1pt solid;
+    border-bottom:1pt solid;
+    margin:3px 1mm 0 10mm;
+    padding:2pt 1pt 2pt 1mm;
+    }
+    
+span.rng {
+       font-weight:bold;
+       }
+
+span.text {
+    font-family:garamond, times, serif;
+    }
+    
+code {
+    color:rgb(150,120,60);
+    font-weight:bold;
+    }

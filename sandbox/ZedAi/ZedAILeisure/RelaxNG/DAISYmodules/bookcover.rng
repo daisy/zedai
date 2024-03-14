@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <x:h1>The DAISY Book cover module</x:h1>
+
+    <define name="Daisy.cover" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="cover">
+            <ref name="Daisy.cover.attlist" />
+            <ref name="Daisy.cover.content" />
+        </element>
+    </define>
+
+    <define name="Daisy.cover.attlist">
+        <empty />
+    </define>
+
+    <define name="Daisy.cover.content">
+        <optional>
+            <ref name="Daisy.spine" />
+        </optional>
+        <ref name="Daisy.frontcover" />
+        <optional>
+            <ref name="Daisy.flaps" />
+        </optional>
+        <ref name="Daisy.backcover" />
+    </define>
+
+    <define name="Daisy.spine" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="spine">
+            <ref name="Daisy.spine.attlist" />
+            <ref name="Daisy.spine.content" />
+        </element>
+    </define>
+    <define name="Daisy.frontcover" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="frontcover">
+            <ref name="Daisy.frontcover.attlist" />
+            <ref name="Daisy.frontcover.content" />
+        </element>
+    </define>
+    <define name="Daisy.backcover" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="backcover">
+            <ref name="Daisy.backcover.attlist" />
+            <ref name="Daisy.backcover.content" />
+        </element>
+    </define>
+    <define name="Daisy.flaps" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="flaps">
+            <ref name="Daisy.flaps.attlist" />
+            <ref name="Daisy.flaps.content" />
+        </element>
+    </define>
+
+    <define name="Daisy.spine.content">
+        <empty />
+    </define>
+    <define name="Daisy.spine.attlist">
+        <empty />
+    </define>
+    <define name="Daisy.frontcover.content">
+        <empty />
+    </define>
+    <define name="Daisy.frontcover.attlist">
+        <empty />
+    </define>
+    <define name="Daisy.backcover.content">
+        <empty />
+    </define>
+    <define name="Daisy.backcover.attlist">
+        <empty />
+    </define>
+    <define name="Daisy.flaps.content">
+        <empty />
+    </define>
+    <define name="Daisy.flaps.attlist">
+        <empty />
+    </define>
+
+
+    <!-- Various DAISY elements -->
+    <div>
+        <define name="Daisy.author" ns="http://www.daisy.org/ns/z3986/2008/">
+            <element name="author">
+                <ref name="Daisy.author.attlist" />
+                <ref name="Daisy.author.content" />
+            </element>
+        </define>
+        <define name="Daisy.author.content">
+            <text />
+        </define>
+        <define name="Daisy.author.attlist">
+            <empty />
+        </define>
+
+        <define name="Daisy.publisher" ns="http://www.daisy.org/ns/z3986/2008/">
+            <element name="publisher">
+                <ref name="Daisy.publisher.attlist" />
+                <ref name="Daisy.publisher.content" />
+            </element>
+        </define>
+        <define name="Daisy.publisher.content">
+            <text />
+        </define>
+        <define name="Daisy.publisher.attlist">
+            <empty />
+        </define>
+
+        <define name="Daisy.subtitle" ns="http://www.daisy.org/ns/z3986/2008/">
+            <element name="subtitle">
+                <ref name="Daisy.subtitle.attlist" />
+                <ref name="Daisy.subtitle.content" />
+            </element>
+        </define>
+        <define name="Daisy.subtitle.content">
+            <text />
+        </define>
+        <define name="Daisy.subtitle.attlist">
+            <empty />
+        </define>
+    </div>
+
+</grammar>

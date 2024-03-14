@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 for attribute module</x:h1>
+    
+  <div>
+    <x:h2>The for attribute</x:h2>    
+    <x:div id="z3986.for.attrib">
+      <x:p>The <x:code>for</x:code> attribute provides a generic mechanism to establish 
+      	a relationship between elements using the IDREFS datatype.</x:p>       
+    </x:div>
+         
+    <define name="z3986.for.attrib">
+      <attribute name="for">        
+        <ref name="for.attrib.content"/>  
+      </attribute>    
+    </define>
+
+    <define name="for.attrib.content">
+      <ref name="IDREFS.datatype"/>    
+    </define>  
+    
+  </div>  
+  
+  <div>
+    <x:h2>The for attribute - default content model contribution</x:h2>
+    <!-- none -->
+    
+  </div>
+
+</grammar>

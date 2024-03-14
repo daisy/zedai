@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="http://www.w3.org/MarkUp/style/xhtml2.css"?>
+<?oxygen RNGSchema="../RelaxNG/daisy-leisure-profile-driver.rng" type="xml"?>
+<!-- 
+    The sole purpose of this file is to demonstrate one possible markup of front matter
+    in a novel, so most of the book is NOT represented in this file.    
+-->
+<html xmlns="http://www.w3.org/2002/06/xhtml2/" xmlns:d="http://www.daisy.org/ns/z3986/2008/"
+    xml:lang="en">
+    <head>
+        <title>A Spot of Bother</title>
+        <meta property="title">An XHTML 2.0 test document</meta>
+        <meta property="reference">ZedAI-20081001</meta>
+    </head>
+    <d:book>
+        <d:frontmatter>
+            <d:bookcover>
+                <d:frontcover>
+                    <title>
+                        <l>The Complete Novels of</l>
+                        <l>Jane Austen</l>
+                    </title>
+                    <d:subtitle>Sense and Sensibility &#8226; Pride and Prejudice &#8226;
+                        Mansfield Park &#8226; Emma &#8226; Northanger Abbey &#8226;
+                        Persuasion &#8226; Lady Susan </d:subtitle>
+                    <object src="frontcover.png">The frontcover picture shows [...]</object>
+                </d:frontcover>
+                <d:spine>
+                    <object src="spine.png">A small picture on the top of the spine shows
+                        [...]</object>
+                    <title>
+                        <l>The Complete Novels of</l>
+                        <l>Jane Austen</l>
+                    </title>
+                    <object src="wordsworth.png">The Wordsworth logo</object>
+                    <p>Wordsworth Editions</p>
+                </d:spine>
+                <d:backcover>
+                    <p>
+                        <l>The Complete Novels of</l>
+                        <l>Jane Austen</l>
+                    </p>
+                    <p> Sense and Sensibility &#8226; Pride and Prejudice &#8226; Mansfield
+                        Park &#8226; Emma &#8226; Northanger Abbey &#8226; Persuasion
+                        &#8226; Lady Susan </p>
+                    <p>Jane Austen is without question, one of England's most [....] and enduring
+                        prose.</p>
+                    <p> Visit our website at <span href="http://www.wordsworht-editions.com"
+                            >www.wordsworht-editions.com</span>
+                    </p>
+                </d:backcover>
+            </d:bookcover>
+            <d:halftitle>The Complete Novels of Jane Austen</d:halftitle>
+
+            <d:titlepage>
+                <title>
+                    <l>The Complete Novels of</l>
+                    <l>Jane Austen</l>
+                </title>
+                <d:subtitle>Sense and Sensibility, Pride and Prejudice, Mansfield Park, Emma,
+                    Northanger Abbey, Persuasion &amp; Lady Susan </d:subtitle>
+                <object src="wordsworth.png">The Wordsworth logo</object>
+                <d:publisher>Wordsworth Editions</d:publisher>
+            </d:titlepage>
+            <d:copyrightinformation>
+                <d:pagebreak value="iv" />
+                <p>
+                    <l>In loving memories of</l>
+                    <l>Michael Trayler</l>
+                    <l>the founder of Wordsworth Editions</l>
+                </p>
+                <!-- very much the same kind of information as in
+                    "A Spot of Bother" (ASpotOfBother.xml), so take a look at that one, instead
+                -->
+            </d:copyrightinformation>
+            <d:toc>
+                <h>Contents</h>
+                <d:tocentry>
+                    <d:label>Sense and Sensibility</d:label>
+                    <d:pageref ref="p-1">1</d:pageref>
+                </d:tocentry>
+                <d:tocentry>
+                    <d:label>Pride and Prejudice</d:label>
+                    <d:pageref ref="p-233">233</d:pageref>
+                </d:tocentry>
+                <d:tocentry>
+                    <d:label>Mansfield Park</d:label>
+                    <d:pageref ref="p-473">473</d:pageref>
+                </d:tocentry>
+                <d:tocentry>
+                    <d:label>Emma</d:label>
+                    <d:pageref ref="p-769">769</d:pageref>
+                </d:tocentry>
+                <d:tocentry>
+                    <d:label>Northanger Abbey</d:label>
+                    <d:pageref ref="p-1071">1071</d:pageref>
+                </d:tocentry>
+                <d:tocentry>
+                    <d:label>Persuasion</d:label>
+                    <d:pageref ref="p-1223">1223</d:pageref>
+                </d:tocentry>
+                <d:tocentry>
+                    <d:label>Lady Susan</d:label>
+                    <d:pageref ref="p-1381">1381</d:pageref>
+                </d:tocentry>
+            </d:toc>
+        </d:frontmatter>
+        <d:bodymatter>
+            <section>
+                <d:pagebreak value="1" xml:id="p-1" />
+                <h>Sense and Sensibility</h>
+                <d:pagebreak value="2"/>
+                  
+                <section>
+                    <d:pagebreak value="3"/>
+                    <h1>Chapter 1</h1>
+                    <p>The family of Dashwood [...]</p>
+                    <!-- a lot of text -->
+                </section>
+                <!-- many more chapters -->
+            </section>
+            <!-- six more novels -->
+        </d:bodymatter>
+    </d:book>
+</html>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="index">The index module</title>
+        <annotation annotates="/">
+            <para role="desc-main">This module defines the {[[#z3986.index]]} element for structuring indices.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3986-global-classes.rng"/>
+                <member xlink:href="z3986-headings.rng"/>
+                <member xlink:href="z3986-p.rng"/>
+                <member xlink:href="z3986-block.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <author>
+            <personname>Matt Garrish</personname>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2011-03-04</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="z3986.index" xml:id="z3986.index">
+            <element name="index">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="index">The {index} element</title>
+                    <para role="desc-main">The {index} element represents a topical reference section in a book.</para>
+                    <para role="desc-sub">The {[[#z3986.index.entry entries]]} in an {index} may be grouped into {[[#z3986.index.section sections]]} by topic or alphabetic letter.</para>
+                    <synopsis role="def-context">{[[#z3986.Section.class]]}</synopsis>
+                    <synopsis role="def-content" condition="The content model must allow {[[#z3986.index.entry entry]]} elements and no more than one {[[#z3986.h h]]} element.">{[[#z3986.h]]?, [[#z3986.index.entry]]*, [[#z3986.index.section]]*}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Section.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.index.attlist"/>
+                <ref name="z3986.index.content"/>
+            </element>
+        </define>
+        <define name="z3986.index.attlist" xml:id="z3986.index.attlist">
+            <ref name="z3986.Section.attrib"/>
+        </define>
+        <define name="z3986.index.content" xml:id="z3986.index.content">
+            <ref name="z3986.index.model"/>
+        </define>
+        <define name="z3986.index.model" xml:id="z3986.index.model">
+            <interleave>
+                <optional>
+                    <ref name="z3986.h"/>
+                </optional>
+                <zeroOrMore>
+                    <choice>
+                        <ref name="z3986.index.extra.class"/>
+                    </choice>
+                </zeroOrMore>
+            </interleave>
+            <choice>
+                <group>
+                    <interleave>
+                        <oneOrMore>
+                            <ref name="z3986.index.entry"/>
+                        </oneOrMore>
+                        <zeroOrMore>
+                            <ref name="z3986.index.extended.entry.class"/>
+                        </zeroOrMore>
+                    </interleave>
+                    <zeroOrMore>
+                        <ref name="z3986.index.section"/>
+                    </zeroOrMore>
+                </group>
+                <group>
+                    <zeroOrMore>
+                        <ref name="z3986.index.entry"/>
+                    </zeroOrMore>
+                    <oneOrMore>
+                        <ref name="z3986.index.section"/>
+                    </oneOrMore>
+                </group>
+            </choice>
+        </define>
+        <define name="z3986.index.extra.class" xml:id="z3986.index.extra.class">
+            <choice>
+                <ref name="z3986.Block.basic.model"/>
+                <ref name="z3986.Global.extra.class"/>
+            </choice>
+        </define>
+        <define name="z3986.index.extended.entry.class" xml:id="z3986.index.extended.entry.class">
+            <choice>
+                <ref name="z3986.hd"/>
+                <ref name="z3986.Global.extra.class"/>
+            </choice>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.index.section" xml:id="z3986.index.section">
+            <element name="section">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="section (index)">The index {section} element</title>
+                    <para role="desc-main">The index {section} element represents a major structural division of an {[[#z3986.index]]}.</para>
+                    <para role="desc-sub">The index {section} element is a specialization of the {[[#z3986.section]]} element that provides a content model to fit the unique requirements of index divisions.</para>
+                    <para role="desc-sub" xlink:role="inherit-common" xlink:href="z3986.custom-content"/>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.index]]}</synopsis>
+                    <synopsis role="def-content" condition="The content model must allow {[[#z3986.index.entry entry]]} elements and no more than one {[[#z3986.h h]]} element.">{[[#z3986.h]]?, [[#z3986.index.entry]]*, [[#z3986.index.section]]*}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Section.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.index.attlist"/>
+                <ref name="z3986.index.model"/>
+            </element>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.index.entry" xml:id="z3986.index.entry">
+            <element name="entry">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="entry (index)">The index {entry} element</title>
+                    <para role="desc-main">The index {entry} element represents a single entry in an {[[#z3986.index]]}, including all related child entries.</para>
+                    <para role="desc-sub">The {[[#z3986.ref]]} element can be used to link page number references back to the corresponding location in the document.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.index]]} and {[[#z3986.index.section]]}</synopsis>
+                    <synopsis role="def-content">{(([[#z3986.Block.class]])+ | (text | [[#z3986.Text.class]] | Phrase.core.class | Phrase.extern.class)+), [[#z3986.index.entry]]*}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Block.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.index.entry.attlist"/>
+                <ref name="z3986.index.entry.content"/>
+                <sch:rule context="default:entry[ancestor::default:index]">
+                    <sch:assert test="normalize-space(.) or *">The {entry} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="z3986.index.entry.attlist" xml:id="z3986.index.entry.attlist">
+            <ref name="z3986.Block.attrib"/>
+        </define>
+        <define name="z3986.index.entry.content" xml:id="z3986.index.entry.content">
+            <ref name="z3986.Phrase.Text.mix.model"/>
+            <zeroOrMore>
+                <choice>
+                    <ref name="z3986.index.entry"/>
+                    <ref name="z3986.Global.extra.class"/>
+                </choice>
+            </zeroOrMore>
+        </define>
+    </div>
+    <div>
+        <a:documentation>index - default content model contribution</a:documentation>
+        <define name="z3986.backmatter.content.class" combine="choice">
+            <ref name="z3986.index"/>
+        </define>
+    </div>
+</grammar>

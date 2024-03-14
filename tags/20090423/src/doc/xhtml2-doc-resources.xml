@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="docResources.rng" type="xml"?>
+<docResources xmlns="http://www.daisy.org/ns/z3986/2008/docResources/"
+    xmlns:d="http://www.daisy.org/ns/z3986/2008/" xmlns:x2="http://www.w3.org/2002/06/xhtml2/">
+
+    <namespace nsURI="http://www.w3.org/2002/06/xhtml2/"
+        defaultDocURL="http://www.w3.org/TR/xhtml2/">
+        <element name="a" docURI="xhtml2-doc-prose.html#a" include="yes"/>
+        <element name="abbr" docURI="xhtml2-doc-prose.html#abbr" include="yes"/>
+        <element name="blockcode" docURI="xhtml2-doc-prose.html#blockcode" include="yes"/>
+        <element name="blockquote" docURI="xhtml2-doc-prose.html#blockquote" include="yes"/>
+        <element name="caption" docURI="xhtml2-doc-prose.html#caption" include="yes"/>
+        <element name="cite" docURI="xhtml2-doc-prose.html#cite" include="yes"/>
+        <element name="code" docURI="xhtml2-doc-prose.html#code" include="yes"/>
+        <element name="dd" docURI="xhtml2-doc-prose.html#dd" include="yes"/>
+        <element name="dt" docURI="xhtml2-doc-prose.html#dt" include="yes"/>
+        <element name="di" docURI="xhtml2-doc-prose.html#di" include="yes"/>
+        <element name="dl" docURI="xhtml2-doc-prose.html#dl" include="yes"/>
+        <element name="dfn" docURI="xhtml2-doc-prose.html#dfn" include="yes"/>
+
+        <element name="em" docURI="xhtml2-doc-prose.html#em" include="yes"/>
+        <element name="h" docURI="xhtml2-doc-prose.html#h" include="yes"/>
+        <element name="kbd" docURI="xhtml2-doc-prose.html#kbd" include="yes"/>
+        <element name="l" docURI="xhtml2-doc-prose.html#l" include="yes"/>
+        <element name="li" docURI="xhtml2-doc-prose.html#li" include="yes"/>
+        <element name="object" docURI="xhtml2-doc-prose.html#object" include="yes"/>
+        <element name="ol" docURI="xhtml2-doc-prose.html#ol" include="yes"/>
+        <element name="ul" docURI="xhtml2-doc-prose.html#ul" include="yes"/>
+        <element name="p" docURI="xhtml2-doc-prose.html#p" include="yes"/>
+        <element name="pre" docURI="xhtml2-doc-prose.html#pre" include="yes"/>
+        <element name="section" docURI="xhtml2-doc-prose.html#section" include="yes"/>
+
+
+
+        <attribute name="class" docURI="xhtml2-doc-prose.html#class" include="yes"/>
+        <attribute name="dir" docURI="http://www.w3.org/TR/xhtml2/mod-bidi.html#adef_bidi_dir"/>
+        <attribute name="href"
+            docURI="http://www.w3.org/TR/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_href"/>
+        <attribute name="hreflang"
+            docURI="http://www.w3.org/TR/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_hreflang"/>
+        <attribute name="hrefmedia"
+            docURI="http://www.w3.org/TR/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_hrefmedia"/>
+        <attribute name="hreftype"
+            docURI="http://www.w3.org/TR/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_hreftype"/>
+        <attribute name="role"
+            docURI="http://www.w3.org/TR/xhtml2/mod-roleAttribute.html#adef_roleAttribute_role"/>
+        <attribute name="value" context="x2:li"
+            docURI="http://www.w3.org/TR/xhtml2/mod-list.html#adef_list_value"/>
+        <!-- The xhtml2 object also carries a different value attribute -->
+    </namespace>
+
+    <!-- RDF/a stuff -->
+    <namespace nsURI="http://www.w3.org/2002/06/xhtml2/"
+        defaultDocURL="http://www.w3.org/TR/xhtml2/">
+        <attribute name="about" docURI="rdfa.html#about" include="yes"/>
+        <attribute name="content" docURI="rdfa.html#content" include="yes"/>
+        <attribute name="datatype" docURI="rdfa.html#datatype" include="yes"/>
+        <attribute name="property" docURI="rdfa.html#property" include="yes"/>
+        <attribute name="rel" docURI="rdfa.html#rel" include="yes"/>
+        <attribute name="rev" docURI="rdfa.html#rev" include="yes"/>
+    </namespace>
+
+    <namespace nsURI="http://www.w3.org/XML/1998/namespace"
+        defaultDocURL="http://www.w3.org/XML/1998/namespace">
+        <attribute name="id" docURI="xhtml2-doc-prose.html#xml-id" include="yes"/>
+        <attribute name="lang" docURI="xhtml2-doc-prose.html#xml-lang" include="yes"/>
+    </namespace>
+
+</docResources>

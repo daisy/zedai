@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Function Sets for the Z39.86-2010 Part A Content Selection Feature</title>
+    <link rel="stylesheet" type="text/css" href="../../../../z3986-2010.css"/>
+  </head>
+  <body>
+    <h1>Function Sets for the Z39.86-2010 Part A Content Selection Feature</h1>
+     
+    <div class="rd-section" id="target">
+      <h2>The Target Function Set</h2>
+      <p>The Target Function Set is used to select content based on intended properties of the output.</p>
+      
+      <p>The canonical URI of this function set is
+          <code>http://www.daisy.org/z3986/2010/auth/features/select/functionSets/#target</code>.</p>
+      <p>There are two functions in this set, the <code>format(arg)</code> function and the
+          <code>consumer(arg)</code> function:</p>
+      
+      <h3>The <code>format</code> function</h3>
+      <p> The <code>format(arg)</code> function describes the intended physical format of the
+        output. The function takes one argument, <code>arg</code>, which must match:</p>
+      <pre>
+          arg := 'BRAILLE' | 'LARGE_PRINT' | 'TALKING_BOOK' | 'EBOOK' | 'PRINT' | string
+          string := [A-Za-z0-9_]*
+      </pre>
+      
+      <p>An explanation of the allowed values follows:</p>
+      
+      <dl>
+      <dt>BRAILLE</dt>
+      <dt>Specifies that the output format is Braille. This function does not include the ability to 
+       specify different varieties (contracted, non-contracted, etc) varieties of Braille.</dt>
+      <dt>LARGE_PRINT</dt>
+      <dt>TODO</dt>
+      <dt>TALKING_BOOK</dt>
+      <dt>TODO</dt>
+      <dt>EBOOK</dt>
+      <dt>TODO</dt>
+      <dt>PRINT</dt>
+      <dt>Specifies that the output format is regular sized print (compare LARGE_PRINT). This value is 
+       typically used when producing content types such as PDF and XPS.
+      </dt>
+      </dl>
+      
+      <p>It is recommended to use arguments from the set of predefined values, but the possibility
+        to use any string as an argument allows for more specialized implementations of this
+        function.</p>
+      
+      <p>Example:</p>
+      <pre><xi:include href="./example-1.xinc" parse="text"/></pre>
+      
+      <h3>The <code>consumer</code> function</h3>
+      <p>The <code>consumer(arg)</code> function describes the intended consumer group of the
+        output. The function takes one argument, <code>arg</code>, which must match:</p>
+      <pre>
+          arg := 'BLIND' | 'LOW_VISION' | 'DYSLECTIC' | 'DEAF' | 'DEAFBLIND' | 'COGNITIVE' | string
+          string := [A-Za-z0-9_]*
+      </pre>
+      <p>It is recommended to use arguments from the set of predefined values, but the possibility
+        to use any string as an argument, allows for more specialized implementations of this
+        function.</p>
+      <p>Example:</p>
+      <pre><xi:include href="./example-2.xinc" parse="text"/></pre>
+
+      <h3>The <code>language</code> function</h3>
+      
+      <p>The <code>language(arg)</code> function describes the language of the
+        output. The function takes one argument, <code>language</code>, which must match the
+        <a href="http://www.w3.org/TR/xmlschema-2/#language">language datatype as defined in
+          XML Schema Part 2: Datatypes Second Edition</a>.
+      </p>
+      <p>All descendants of a <code>when</code> element which is using the <code>language(arg)</code> function
+      inherit the language given in the <code>when</code> parent, unless a descendant explicitly overrides
+      this inheritance using the <code>xml:lang</code> attribute. In other words, the <code>language(arg)</code> function
+      has the same semantics as <code>xml:lang</code> in terms of the language inheritance.</p>
+      <p>Example:</p>
+      <pre><xi:include href="./example-language.xinc" parse="text"/></pre>
+      
+      
+      
+    
+    </div>
+    
+    
+    <div class="rd-section" id="parameterTest">
+      <h2>The Parameter Test Function Set</h2>
+      <p>The Parameter Test Function Set is used to test whether a string, the <code>value</code> argument,
+        is equal to the value of the runtime <code>name</code> parameter. </p>
+      
+      <p>The canonical URI of this function set is
+          <code>http://www.daisy.org/z3986/2010/auth/features/select/functionSets/#parameterTest</code>.</p>
+      
+      <p>This function set contains one function, the <code>parameterTest(name,
+          value)</code> function. It takes two arguments, both strings:</p>
+      <ul>
+        <li>The <code>name</code> argument represents the name of a runtime parameter.</li>
+        <li>The <code>value</code> represents an arbitrary string.</li>
+      </ul>
+      <p>Example:</p>
+      <pre><xi:include href="./example-3.xinc" parse="text"/></pre>
+    </div>
+    
+    <div class="rd-section" id="featureSupported">
+      <h2>The Feature Supported Function Set</h2>
+      
+      <p>The Feature Supported Function Set is used to test whether a specific ANSI/NISO Z39.86-2010 Feature
+        is supported by the Processing Agent.</p>
+      
+      <p>There is one function in this set, the
+          <code>featureSupported(uri)</code> function. It takes one argument,
+          <code>uri</code>, which is a string equal to the canonical URI of a
+        ANSI/NISO Z39.86-2010 Feature.</p>
+      <p>The canonical URI of this function set is
+          <code>http://www.daisy.org/z3986/2010/auth/features/select/functionSets/#featureSupported</code>.</p>
+      <p>Example:</p>
+      <pre><xi:include href="./example-4.xinc" parse="text"/></pre>
+      <p>Note that since Feature URIs are versioned, this function can be used to test support for different versions of the 
+      same Feature.</p>
+      <p class="ednote">TODO featureSupportedFunctionSet: allow unversioned feature identifiers as
+        params?</p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+    xmlns:x="http://www.w3.org/1999/xhtml"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <x:h1>The DAISY Attributes module</x:h1>
+
+
+    <define name="Daisy.core.attributes">
+        <optional>
+            <attribute name="class">
+                <text />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="role">
+                <text />
+            </attribute>
+        </optional>
+    </define>
+    
+    <define name="Daisy.attlist">
+        <ref name="Daisy.core.attributes" />
+        <optional>
+            <attribute name="xml:id">
+                <data type="ID"/>
+            </attribute>
+        </optional>
+    </define>
+
+    
+</grammar>

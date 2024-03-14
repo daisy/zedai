@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="word">The word module</title>
+        <annotation annotates="/">
+            <para role="desc-main">This module defines the {[[#z3986.w]]} element for marking the component words that compose the document text.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3986-datatypes.rng"/>
+                <member xlink:href="z3986-core-attrib.rng"/>
+                <member xlink:href="z3986-i18n-attrib.rng"/>
+                <member xlink:href="rdfa-attrib.rng"/>
+                <member xlink:href="z3986-global-classes.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2011-01-03</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="z3986.w" xml:id="z3986.w">
+            <element name="w">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="w">The {w} element</title>
+                    <para role="desc-main">The {w} element represents a single, possibly compound, lexical word.</para>
+                    <para role="desc-sub">The {[[#z3986.role.attrib]]} attribute optionally expresses the semantic nature of the word. No implicit value is associated with the {w} element.</para>
+                    <synopsis role="def-context">{[[#z3986.Phrase.class]]}</synopsis>
+                    <synopsis role="def-content">{(text | z3986.Text.class)+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Phrase.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.w.attlist"/>
+                <ref name="z3986.w.content"/>
+                <sch:rule context="default:w">
+                    <sch:assert test="normalize-space(.) or *">The {word} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="z3986.w.attlist" combine="interleave">
+            <!-- expand out Phrase.attrib in order to allow value suggestion injections on @role -->
+            <ref name="z3986.global.core.attrib"/>
+            <optional>
+                <ref name="z3986.w.role.attrib"/>
+            </optional>
+            <ref name="z3986.Phrase.extern.attrib"/>
+        </define>
+        <define name="z3986.w.role.attrib" xml:id="z3986.w.role.attrib">
+            <attribute name="role">
+                <list>
+                    <oneOrMore>
+                        <ref name="z3986.w.role.attrib.content.enum"/>
+                    </oneOrMore>
+                </list>
+            </attribute>
+        </define>
+        <define name="z3986.w.role.attrib.content.enum" combine="choice">
+            <ref name="QName.datatype"/>
+        </define>
+        <define name="z3986.w.content" xml:id="z3986.w.content">
+            <oneOrMore>
+                <choice>
+                    <ref name="Characters.datatype"/>
+                    <ref name="z3986.w.class"/>
+                    <ref name="z3986.wpart"/>
+                </choice>
+            </oneOrMore>
+        </define>
+        <define name="z3986.w.class" combine="choice">
+            <ref name="z3986.Text.class"/>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.wpart" xml:id="z3986.wpart">
+            <element name="wpart">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="wpart">The {wpart} element</title>
+                    <para role="desc-main">The {wpart} element represents a segment of a word.</para>
+                    <para role="desc-sub">The {wpart} element is typically used to distinguish the parts of a word (root, stem and affix), compound word, portmanteau or homograph. It can also be used in grammatical contexts to identify morphemes, graphemes and other divisions and boundaries within a word.</para>
+                    <para role="desc-sub">The {wpart} element additionally can be used in place of soft hyphens to identify line ending break locations, if external formatting options are limited.</para>
+                    <para role="desc-sub">The {[[#z3986.role.attrib]]} attribute optionally expresses the semantic nature of the word part. No implicit value is associated with the {wpart} element.</para>
+                    <synopsis role="def-context" condition="fixed">[[#z3986.w]]</synopsis>
+                    <synopsis role="def-content">{(text | [[#z3986.Text.class]])+}</synopsis>
+                    <synopsis role="def-attlist">[[#z3986.Phrase.attrib]]</synopsis>
+                </annotation>
+                <ref name="z3986.wpart.attlist"/>
+                <ref name="z3986.wpart.content"/>
+                <sch:rule context="default:wpart">
+                    <sch:assert test="normalize-space(.) or *">The {wpart} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="z3986.wpart.attlist" xml:id="z3986.wpart.attlist">
+            <ref name="z3986.Phrase.attrib"/>
+        </define>
+        <define name="z3986.wpart.content" xml:id="z3986.wpart.content">
+            <oneOrMore>
+                <choice>
+                    <ref name="z3986.Text.model"/>
+                    <ref name="z3986.wpart"/>
+                </choice>
+            </oneOrMore>
+        </define>
+    </div>
+    <div>
+        <a:documentation>w - default content model contribution</a:documentation>
+        <define name="z3986.Phrase.core.class" combine="choice">
+            <ref name="z3986.w"/>
+        </define>
+        <define name="z3986.Phrase.core.class" combine="choice">
+            <ref name="z3986.w"/>
+        </define>
+    </div>
+</grammar>

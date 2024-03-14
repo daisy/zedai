@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="Core">The core attributes module</title>
+        <annotation annotates="/" condition="required">
+            <para role="desc-main">This module defines the [[#xml.id.attrib]], [[#xml.space.attrib]], [[#xml.base.attrib]] and [[#z3986.class.attrib]] attributes that constitute the core attributes collection that is available for all elements in a profile's core markup model.</para>
+            <para role="desc-sub">The core attributes are all optional, but the module activation process provides a mechanism to require some or all of the attributes.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3986-datatypes.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2011-03-04</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="xml.id.attrib" xml:id="xml.id.attrib">
+            <attribute name="xml:id">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="xml:id">The {xml:id} attribute</title>
+                    <para role="desc-main">The {xml:id} attribute specifies a unique identifier for the element.</para>
+                    <para role="desc-sub">No two elements in an xml document can have the same {xml:id}, including inside components that are appended to the primary document by xinclude statements or other means.</para>
+                    <para role="desc-sub">The semantics of this attribute are defined by [[#refXMLID]].</para>
+                    <synopsis role="def-context">[[#z3986.Core.attrib]]</synopsis>
+                    <synopsis role="def-content">[[#ID.datatype]]</synopsis>
+                </annotation>
+                <ref name="ID.datatype"/>
+            </attribute>
+        </define>
+    </div>
+    <div>
+        <define name="xml.space.attrib" xml:id="xml.space.attrib">
+            <attribute name="xml:space">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="xml:space">The {xml:space} attribute</title>
+                    <para role="desc-main">The {xml:space} attribute indicates whether the whitespace within an element is significant.</para>
+                    <para role="desc-sub">The semantics of this attribute are defined by [[#refXML]]. Refer to [[http://www.w3.org/TR/REC-xml/#sec-white-space White Space Handling]] for more information.</para>
+                    <synopsis role="def-context">{[[#z3986.Core.attrib]]}</synopsis>
+                    <synopsis role="def-content">{"default" | "preserve"}</synopsis>
+                </annotation>
+                <ref name="xml.space.attrib.content"/>
+            </attribute>
+        </define>
+        <define name="xml.space.attrib.content" xml:id="xml.space.attrib.content">
+            <choice>
+                <value>default</value>
+                <a:documentation>Signals that applications' default white-space processing modes are acceptable for this element.</a:documentation>
+                <value>preserve</value>
+                <a:documentation>Signals the intent that applications preserve white space for this element.</a:documentation>
+            </choice>
+        </define>
+    </div>
+    <div>
+        <define name="xml.base.attrib" xml:id="xml.base.attrib">
+            <attribute name="xml:base">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="xml:base">The {xml:base} attribute</title>
+                    <para role="desc-main">The {xml:base} attribute specifies a base URI to use for resolving relative URI references, for instances where the base URI of the document or external entity is not appropriate.</para>
+                    <para role="desc-sub">The semantics and behaviors of this attribute are defined by [[#refXMLBase]].</para>
+                    <synopsis role="def-context">[[#z3986.Core.attrib]]</synopsis>
+                    <synopsis role="def-content">[[#URI.datatype]]</synopsis>
+                </annotation>
+                <ref name="xml.base.attrib.content"/>
+            </attribute>
+        </define>
+        <define name="xml.base.attrib.content" xml:id="xml.base.attrib.content">
+            <ref name="URI.datatype"/>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.class.attrib" xml:id="z3986.class.attrib">
+            <attribute name="class">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="class">The {class} attribute</title>
+                    <para role="desc-main">The {class} attribute provides the ability to express general classifying or commonality between elements.</para>
+                    <para role="desc-sub">This attribute inherits all the fundamental properties of the (X)HTML {class} attribute and is usable in the context of [[http://www.w3.org/Style/CSS/ CSS styling]].</para>
+                    <para role="desc-sub">The {class} attribute is not used to inflect semantics or structure on elements or their contents. Refer to the {[[#z3986.role.attrib]]} attribute for more information on how to layer semantic meaning on elements.</para>
+                    <synopsis role="def-context">[[#z3986.Core.attrib]]</synopsis>
+                    <synopsis role="def-content">[[#NMTOKENS.datatype]]</synopsis>
+                </annotation>
+                <ref name="NMTOKENS.datatype"/>
+            </attribute>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.Core.attrib" combine="interleave">
+            <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="z3986.Core.attrib">The Core attributes collection</title>
+                <para role="desc-main">A set of attributes, initially consisting of the [[#xml.id.attrib]], [[#xml.space.attrib]], [[#xml.base.attrib]] and [[#z3986.class.attrib]] attributes.</para>
+            </annotation>
+            <optional>
+                <ref name="xml.id.attrib"/>
+            </optional>
+            <optional>
+                <ref name="xml.space.attrib"/>
+            </optional>
+            <optional>
+                <ref name="xml.base.attrib"/>
+            </optional>
+            <optional>
+                <ref name="z3986.class.attrib"/>
+            </optional>
+            <ref name="z3986.Core.extern.attrib"/>
+        </define>
+        <define name="z3986.Core.extern.attrib" combine="interleave">
+            <a:documentation>A pattern for external (to this module) contributions to the z3986.Core.attrib pattern.</a:documentation>
+            <empty/>
+        </define>
+        <define name="z3986.Core.attrib.xml.id.required" combine="interleave">
+            <a:documentation>A convenience pattern.</a:documentation>
+            <ref name="xml.id.attrib"/>
+            <optional>
+                <ref name="xml.space.attrib"/>
+            </optional>
+            <optional>
+                <ref name="xml.base.attrib"/>
+            </optional>
+            <optional>
+                <ref name="z3986.class.attrib"/>
+            </optional>
+            <ref name="z3986.Core.extern.attrib"/>
+        </define>
+    </div>
+</grammar>

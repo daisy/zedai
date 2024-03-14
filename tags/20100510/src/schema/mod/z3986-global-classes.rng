@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:dcterms="http://purl.org/dc/terms/" 
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+    xmlns:xsdp="http://www.daisy.org/ns/rng-preprocess/xsd">
+
+    <rdf:RDF>
+        <rdf:Description>
+            <dcterms:title z:short="global-classes">The global classes module</dcterms:title>
+            <dcterms:description>This module defines the global named element and attribute
+                classes</dcterms:description>
+            <z:info>The patterns defined in this module allow the dynamic creation of globally
+                available content models. When building a RelaxNG implementation of a Z39.86-AI Profile,
+                included modules contribute to the content models by injecting patterns into the classes.</z:info>
+            <z:info>The principle of combining definitions used to create these classes is described in
+                [[http://relaxng.org/tutorial-20011203.html#IDACAZR RELAX NG Tutorial Section 9.2]].</z:info>
+            <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+            <dcterms:license rdf:resource="{LICENSE_TODO}"/>
+            <dcterms:creator>Markus Gylling</dcterms:creator>
+            <dcterms:issued>2009-12-21</dcterms:issued>
+            <dcterms:isRequiredBy rdf:resource="http://www.daisy.org/z3986/2010/auth/"/>
+            <dcterms:requires rdf:resource="z3986-core-attrib.rng"/>
+            <dcterms:requires rdf:resource="z3986-i18n-attrib.rng"/>
+            <dcterms:requires rdf:resource="z3986-role-attrib.rng"/>
+            <dcterms:requires rdf:resource="rdfa-attrib.rng"/> 
+            <dcterms:requires rdf:resource="z3986-datatypes.rng"/>
+        </rdf:Description>
+    </rdf:RDF>
+
+    <div xml:id="classes">
+        
+        <div xml:id="Section.class">
+            <define name="z3986.Section.class" combine="choice">
+                <rdf:RDF>
+                    <rdf:Description>
+                        <dcterms:title z:short="Section.class">The Section element class</dcterms:title>
+                        <dcterms:description>The set of elements which in the current profile are contributed to the [[#abstractDocumentModel_sectionLayer Section level]].</dcterms:description>
+                        <z:content>Fundamental member: {[[#z3986.section]]}</z:content>
+                        <dcterms:isRequiredBy rdf:resource="."/>
+                    </rdf:Description>
+                </rdf:RDF>
+                <choice>
+                    <ref name="z3986.Section.core.base.class" />
+                    <ref name="z3986.Section.core.class" />
+                    <ref name="z3986.Section.contrib.class"/>
+                </choice>    
+            </define>
+            
+            <define name="z3986.Section.core.base.class" combine="choice">
+                <a:documentation>A supplier for z3986.Section.class. This class contains an informal 'minimal set' of section elements from the core module pool, including the fundamental member.</a:documentation>
+                <empty/>
+            </define>
+            <define name="z3986.Section.core.class" combine="choice">
+                <a:documentation>A supplier for z3986.Section.class. This class contains all section elements from the core module pool that aren't contributed to Section.core.base.class.</a:documentation>
+                <empty/>
+            </define>
+            <define name="z3986.Section.contrib.class" combine="choice">
+                <a:documentation>A supplier for z3986.Section.class. This class contains members contributed from outside the core module pool (such as feature contributions).</a:documentation>
+                <empty/>
+            </define>
+        </div>
+        
+        <div xml:id="Block.class">
+            <define name="z3986.Block.class" combine="choice">
+                <rdf:RDF>
+                    <rdf:Description>
+                        <dcterms:title z:short="Block.class">The Block element class</dcterms:title>
+                        <dcterms:description>The set of elements which in the current profile are contributed to the [[#abstractDocumentModel_blockLayer Block level]].</dcterms:description>
+                        <z:content>Fundamental member: {[[#z3986.block]]}</z:content>
+                        <dcterms:isRequiredBy rdf:resource="."/>
+                    </rdf:Description>
+                </rdf:RDF>
+                <choice>
+                    <ref name="z3986.Block.core.base.class" />
+                    <ref name="z3986.Block.core.class" />
+                    <ref name="z3986.Block.contrib.class"/>
+                </choice>
+            </define>
+            
+            <define name="z3986.Block.core.base.class" combine="choice">
+                <a:documentation>A supplier for z3986.Block.class. This class contains an informal 'minimal set' of block elements from the core module pool, including the fundamental member.</a:documentation>
+                <empty/>
+            </define>
+            <define name="z3986.Block.core.class" combine="choice">
+                <a:documentation>A supplier for z3986.Block.class. This class contains all block elements from the core module pool that aren't contributed to Block.core.base.class.</a:documentation>
+                <empty/>
+            </define>
+            <define name="z3986.Block.contrib.class" combine="choice">
+                <a:documentation>A supplier for z3986.Block.class. This class contains members contributed from outside the core module pool (such as feature contributions).</a:documentation>
+                <empty/>
+            </define>
+        </div>
+        
+        <div xml:id="Phrase.class">
+            <define name="z3986.Phrase.class" combine="choice">
+                <rdf:RDF>
+                    <rdf:Description>
+                        <dcterms:title z:short="Phrase.class">The Phrase element class</dcterms:title>
+                        <dcterms:description>The set of elements which in the current profile are contributed to the [[#abstractDocumentModel_phraseLayer Phrase level]].</dcterms:description>
+                        <z:content>Fundamental member: {[[#z3986.span]]}</z:content>
+                        <dcterms:isRequiredBy rdf:resource="."/>
+                    </rdf:Description>
+                </rdf:RDF>
+                <choice>
+                    <ref name="z3986.Phrase.core.base.class" />
+                    <ref name="z3986.Phrase.core.class" />
+                    <ref name="z3986.Phrase.contrib.class"/>
+                </choice>
+            </define>
+            
+            <define name="z3986.Phrase.core.base.class" combine="choice">
+                <a:documentation>A supplier for z3986.Phrase.class. This class contains an informal 'minimal set' of phrase elements from the core module pool, including the fundamental member.</a:documentation>
+                <empty/>
+            </define>
+            <define name="z3986.Phrase.core.class" combine="choice">
+                <a:documentation>A supplier for z3986.Phrase.class. This class contains all phrase elements from the core module pool that aren't contributed to Phrase.core.base.class.</a:documentation>
+                <empty/>
+            </define>
+            <define name="z3986.Phrase.contrib.class" combine="choice">
+                <a:documentation>A supplier for z3986.Phrase.class. This class contains members contributed from outside the core module pool (such as feature contributions).</a:documentation>
+                <empty/>
+            </define>
+        </div>
+        
+        <div xml:id="Text.class">
+            <define name="z3986.Text.class" combine="choice">
+                <rdf:RDF>
+                    <rdf:Description>
+                        <dcterms:title z:short="Text.class">The Text element class</dcterms:title>
+                        <dcterms:description>The set of elements which in the current profile are contributed to the [[#abstractDocumentModel_textLayer Text level]].</dcterms:description>
+                        <z:content>Fundamental member: {[[#Characters.datatype]]}</z:content>                    
+                        <dcterms:isRequiredBy rdf:resource="."/>
+                    </rdf:Description>
+                </rdf:RDF>
+                <choice>
+                    <ref name="z3986.Text.core.base.class" />
+                    <ref name="z3986.Text.core.class" />
+                    <ref name="z3986.Text.contrib.class"/>
+                </choice>    
+            </define>
+            
+            <define name="z3986.Text.core.base.class" combine="choice">
+                <a:documentation>A supplier for z3986.Text.class. This class contains an informal 'minimal set' of text elements from the core module pool.</a:documentation>
+                <empty/>
+            </define>
+            <define name="z3986.Text.core.class" combine="choice">
+                <a:documentation>A supplier for z3986.Text.class. This class contains all text elements from the core module pool that aren't contributed to Text.core.base.class.</a:documentation>
+                <empty/>
+            </define>
+            <define name="z3986.Text.contrib.class" combine="choice">
+                <a:documentation>A supplier for z3986.Text.class. This class contains members contributed from outside the core module pool (such as feature contributions).</a:documentation>
+                <empty/>
+            </define>
+        </div>
+        
+        <div xml:id="Global.extra.class">
+            <define name="z3986.Global.extra.class" combine="choice">
+                <a:documentation>A class for elements that cross-cut and/or deviate from the general layer model.</a:documentation>
+                <a:documentation>This class is referenced by the models defined in this module; any content model that does not make
+                use of these models must therefore explicitly reference this class in order to allow its members.</a:documentation>
+                <empty/>
+            </define>
+        </div>    
+    </div>
+
+    <div xml:id="attrib">
+        
+        <define name="z3986.global.attrib" combine="interleave">
+            <rdf:RDF>
+                <rdf:Description>
+                    <dcterms:title z:short="Global.attrib">Global attributes</dcterms:title>
+                    <dcterms:description>A set of attributes which are allowed or required globally.</dcterms:description>
+                    <z:info>Attributes contributed to this set individually define a cardinality of 0..1 (optional) or 1 (required).</z:info>
+                    <z:content>{[[#z3986.Core.attrib]]}, {[[#z3986.I18n.attrib]]}, {[[#z3986.role.attrib]]} and {[[#Rdfa.attrib]]} </z:content>
+                    <dcterms:isRequiredBy rdf:resource="."/>
+                </rdf:Description>
+            </rdf:RDF>
+            <ref name="z3986.Core.attrib"/>
+            <ref name="z3986.I18n.attrib"/>
+            <optional>
+                <ref name="z3986.role.attrib"/>
+            </optional>
+            <ref name="Rdfa.attrib"/>
+        </define>    
+        
+        <define name="z3986.Document.attrib" combine="interleave">
+            <rdf:RDF>
+                <rdf:Description>
+                    <dcterms:title z:short="Document.attrib">Document attributes</dcterms:title>
+                    <dcterms:description>A set of attributes which are allowed or required on the
+                        {[[#z3986.document]]}, {[[#z3986.head]]} and {[[#z3986.body elements]]}.</dcterms:description>
+                    <z:info>Attributes contributed to this set individually define a cardinality of
+                        0..1 (optional) or 1 (required).</z:info>
+                    <z:content>{[[#z3986.global.attrib]]}</z:content>
+                    <dcterms:isRequiredBy rdf:resource="."/>
+                </rdf:Description>
+            </rdf:RDF>
+            <ref name="z3986.global.attrib"/>
+            <ref name="z3986.Document.contrib.attrib"/>
+        </define>
+
+        <define name="z3986.Document.contrib.attrib" combine="interleave">
+            <a:documentation>A pattern for external (to this module) contributions to the
+                z3986.Document.attrib pattern.</a:documentation>
+            <empty/>
+        </define>
+
+        <define name="z3986.Section.attrib" combine="interleave">
+            <rdf:RDF>
+                <rdf:Description>
+                    <dcterms:title z:short="Section.attrib">Section attributes</dcterms:title>
+                    <dcterms:description>A set of attributes which are allowed or required on
+                        elements in [[#z3986.Section.class]].</dcterms:description>
+                    <z:info>Attributes contributed to this set individually define a cardinality of
+                        0..1 (optional) or 1 (required).</z:info>
+                    <z:content>{[[#z3986.global.attrib]]}</z:content>
+                    <dcterms:isRequiredBy rdf:resource="."/>
+                </rdf:Description>
+            </rdf:RDF>
+            <ref name="z3986.global.attrib"/>
+            <ref name="z3986.Section.contrib.attrib"/>
+        </define>
+
+        <define name="z3986.Section.contrib.attrib" combine="interleave">
+            <a:documentation>A pattern for external (to this module) contributions to the
+                z3986.Section.attrib pattern.</a:documentation>
+            <empty/>
+        </define>
+
+        <define name="z3986.Block.attrib" combine="interleave">
+            <rdf:RDF>
+                <rdf:Description>
+                    <dcterms:title z:short="Block.attrib">Block attributes</dcterms:title>
+                    <dcterms:description>A set of attributes which are allowed or required on
+                        elements in [[#z3986.Block.class]].</dcterms:description>
+                    <z:info>Attributes contributed to this set individually define a cardinality of
+                        0..1 (optional) or 1 (required).</z:info>
+                    <z:content>{[[#z3986.global.attrib]]}</z:content>
+                    <dcterms:isRequiredBy rdf:resource="."/>
+                </rdf:Description>
+            </rdf:RDF>
+            <ref name="z3986.global.attrib"/>
+            <ref name="z3986.Block.contrib.attrib"/>
+        </define>
+
+        <define name="z3986.Block.contrib.attrib" combine="interleave">
+            <a:documentation>A pattern for external (to this module) contributions to the
+                z3986.Block.attrib pattern.</a:documentation>
+            <empty/>
+        </define>
+
+        <define name="z3986.Phrase.attrib" combine="interleave">
+            <rdf:RDF>
+                <rdf:Description>
+                    <dcterms:title z:short="Phrase.attrib">Phrase attributes</dcterms:title>
+                    <dcterms:description>A set of attributes which are allowed or required on
+                        elements in [[#z3986.Phrase.class]].</dcterms:description>
+                    <z:info>Attributes contributed to this set individually define a cardinality of
+                        0..1 (optional) or 1 (required).</z:info>
+                    <z:content>{[[#z3986.global.attrib]]}</z:content>
+                    <dcterms:isRequiredBy rdf:resource="."/>
+                </rdf:Description>
+            </rdf:RDF>
+            <ref name="z3986.global.attrib"/>
+            <ref name="z3986.Phrase.contrib.attrib"/>
+        </define>
+
+        <define name="z3986.Phrase.contrib.attrib" combine="interleave">
+            <a:documentation>A pattern for external (to this module) contributions to the
+                z3986.Phrase.attrib pattern.</a:documentation>
+            <empty/>
+        </define>
+
+        <define name="z3986.Text.attrib" combine="interleave">
+            <rdf:RDF>
+                <rdf:Description>
+                    <dcterms:title z:short="Text.attrib">Text attributes</dcterms:title>
+                    <dcterms:description>A set of attributes which are allowed or required on
+                        elements in [[#z3986.Text.class]].</dcterms:description>
+                    <z:info>Attributes contributed to this set individually define a cardinality of
+                        0..1 (optional) or 1 (required).</z:info>
+                    <z:content>{[[#z3986.global.attrib]]}</z:content>
+                    <dcterms:isRequiredBy rdf:resource="."/>
+                </rdf:Description>
+            </rdf:RDF>
+            <ref name="z3986.global.attrib"/>
+            <ref name="z3986.Text.contrib.attrib"/>
+        </define>
+
+        <define name="z3986.Text.contrib.attrib" combine="interleave">
+            <a:documentation>A pattern for external (to this module) contributions to the
+                z3986.Text.attrib pattern.</a:documentation>
+            <empty/>
+        </define>
+
+    </div>
+
+    <div xml:id="models">
+
+        <define name="z3986.Section.model">
+            <a:documentation>A basic Section model, expecting 1..n members of the Section
+                class</a:documentation>
+            <oneOrMore>
+                <choice>
+                    <ref name="z3986.Section.class"/>
+                    <ref name="z3986.Global.extra.class" />
+                </choice>
+            </oneOrMore>
+        </define>
+
+        <define name="z3986.Block.model">
+            <a:documentation>A basic Block model, expecting 1..n members of the Block
+                class</a:documentation>
+            <oneOrMore>
+                <choice>
+                    <ref name="z3986.Block.class"/>
+                    <ref name="z3986.Global.extra.class" />
+                </choice>
+            </oneOrMore>
+        </define>
+       
+        <define name="z3986.Text.model">
+            <a:documentation>A basic Text model, expecting 1..n members of the Text
+                class</a:documentation>
+            <a:documentation>Note that this includes the empty and whitespace-only
+                model.</a:documentation>
+            <oneOrMore>
+                <choice>
+                    <ref name="Characters.datatype"/>
+                    <ref name="z3986.Text.class"/>
+                </choice>
+            </oneOrMore>
+        </define>
+
+        <define name="z3986.Phrase.Text.mix.model">
+            <a:documentation>A mix model for Phrase and Text.class, expecting 1..n members of the
+                Text and Phrase classes.</a:documentation>
+            <a:documentation>Note that this includes the empty and whitespace-only
+                model.</a:documentation>
+            <oneOrMore>
+                <choice>
+                    <ref name="Characters.datatype"/>
+                    <ref name="z3986.Text.class"/>
+                    <ref name="z3986.Phrase.class"/>
+                    <ref name="z3986.Global.extra.class" />
+                </choice>
+            </oneOrMore>
+        </define>
+
+        <define name="z3986.Flow.choice.model">
+            <a:documentation>Defines a concrete content model consisting of an exclusive choice
+                between one or more of the members of the Block.class or one or more
+                of the members of the Phrase and Text classes.</a:documentation>            
+                <choice>
+                    <ref name="z3986.Block.model"/>
+                    <ref name="z3986.Phrase.Text.mix.model"/>
+                </choice>
+        </define>
+
+    </div>
+
+</grammar>

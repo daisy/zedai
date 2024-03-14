@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+
+    <define name="xhtml.Structural.model">
+        <oneOrMore>
+            <choice>
+                <ref name="xhtml.Structural.class"/>
+            </choice>
+        </oneOrMore>
+    </define>
+
+    <define name="xhtml.Text.model">
+        <oneOrMore>
+            <choice>
+                <!-- TODO nonempty -->
+                <ref name="Text.nonEmpty.datatype"/>
+                <ref name="xhtml.Text.class"/>
+            </choice>
+        </oneOrMore>
+    </define>
+
+    <define name="xhtml.Flow.model">
+        <!-- strict: either inline or block -->
+        <choice>
+            <ref name="xhtml.Text.model"/>
+            <ref name="xhtml.Structural.model"/>
+        </choice>
+    </define>
+
+</grammar>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml">
+
+	<x:h1>Z39.86 Source Rendition Feature</x:h1>
+
+	<div>
+		<x:h2>Z39.86 Source Rendition Feature - modules</x:h2>
+
+		<include href="z3986-rend-attrib.rng" />
+
+	</div>
+
+	<div>
+		<x:h2>Z39.86 Source Rendition Feature - default content model contribution </x:h2>
+
+		<define name="z3986.separator.attlist" combine="interleave">
+			<optional>
+				<choice>
+					<ref name="z3986.rend.symbol.attrib" />
+					<ref name="z3986.Embed.attrib" />
+				</choice>
+			</optional>
+		</define>
+		
+		<define name="z3986.Text.contrib.attrib" combine="interleave">
+			<optional>
+				<ref name="z3986.rend.attrib" />
+			</optional>
+		</define>
+
+		<define name="z3986.Structural.contrib.attrib" combine="interleave">
+			<optional>
+				<ref name="z3986.rend.attrib" />
+			</optional>
+		</define>
+
+		<define name="z3986.Flow.contrib.attrib" combine="interleave">
+			<optional>
+				<ref name="z3986.rend.attrib" />
+			</optional>
+		</define>
+	</div>
+
+
+</grammar>

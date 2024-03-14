@@ -1,0 +1,914 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="ai-snippets.rng" type="xml"?>
+<snippets
+    xmlns="http://www.daisy.org/ns/z3986/authoring/"
+    xmlns:rend="http://www.daisy.org/ns/z3986/authoring/features/rend/"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:its="http://www.w3.org/2005/11/its">
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                    ABBR                    -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+             
+    <snippet about="z3986.abbr" dest="doc">        
+<head>
+    …
+    <expansion xml:id="rn">Royal Navy</expansion>
+</head>    
+<body>       
+    …
+    <p> … a ten-gun brig, under the command of Captain Fitz Roy, 
+        <abbr ref="rn">R.N.</abbr>, sailed from Devonport … </p>
+    …  
+</body>
+    </snippet>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                   ANNOTATION                      -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    
+    <snippet about="z3986.annotation z3986.annoref" dest="doc">
+<p>…it created a great chasm between my step-mother and me.<annoref ref="anno-04" value="4"/></p>
+
+<annotation xml:id="anno-04" by="translator">
+    This needs explanation. In Germany, even by strangers, children are universally addressed…
+</annotation>        
+    </snippet>
+
+    <snippet about="z3986.annotation.phrase z3986.ref.attrib" dest="doc">
+<verse>
+    <ln xml:id="bw_1">Famed was this Beowulf:
+        <annotation ref="bw_1">Not, of course, Beowulf the Great, hero of the epic.</annotation>
+    </ln>            
+    <ln>far flew the boast of him,</ln>
+</verse>
+    </snippet>
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                        ASIDE                           -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    
+    <snippet about="z3986.aside" dest="doc">
+<aside role="sidebar">
+    <hd>Quail Island</hd>
+    <p>Quail Island is located …</p>
+    <p>Darwin's travels would have brought him to the island …</p>
+</aside>
+    </snippet>
+    
+<snippet about="z3986.aside.section" dest="doc">
+<section>
+    <p>Refer to the sidebar <ref ref="qisland">Quail Island</ref> for more information.</p>
+    <aside xml:id="qisland" role="sidebar">
+        <h>Quail Island</h>
+        <section>
+            <h>About</h>
+            <p>Quail Island is located …</p>
+        </section>
+    </aside>
+</section>
+</snippet>
+	
+    <snippet about="z3986.toc.aside" dest="doc">
+<toc>
+    <entry>
+        Chapter 1
+        <ref>1</ref>
+        <block>
+            <aside role="marginalia" xml:id="c1_quizzes">
+                <hd>Quizzes</hd>
+                <toc>
+                    <entry>Quiz 1 <ref>14</ref></entry>
+                    <entry>Quiz 2 <ref>27</ref></entry>
+                </toc>
+            </aside>
+        </block>
+    </entry>
+    …
+</toc>
+    </snippet>
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                  BIBLIOGRAPHY                     -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <snippet about="z3986.bibliography z3986.bibliography.section" dest="doc">
+<bibliography>
+    <section>
+        <h>A</h>
+        <entry>
+            ABBOTT'S (REV. J.) Philip Musgrave; or, Memoirs of a Church of England 
+            Missionary in the North American Colonies. Post 8vo. 2s. 6d.
+        </entry>
+        <entry>
+            …
+        </entry>
+    </section>
+</bibliography>
+    </snippet>   
+    
+    <snippet about="z3986.bibliography.entry" dest="doc">
+<bibliography>
+    <entry>
+        ABBOTT'S (REV. J.) Philip Musgrave; or, Memoirs of a Church of England 
+        Missionary in the North American Colonies. Post 8vo. 2s. 6d.
+    </entry>
+</bibliography>
+    </snippet>   
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                       BLOCK                            -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    
+    <snippet about="z3986.block" dest="doc">
+<block xml:space="preserve" role="letter">
+    <ln>Alice's Right Foot, Esq.</ln>
+    <ln>    Hearthrug,</ln>
+    <ln>        Near the fender,</ln>
+    <ln>            (with Alice's love).</ln>
+</block>
+    </snippet>
+    
+    <snippet about="z3986.block.associate.attrib" dest="doc">
+<block role="figure" associate="quail-isle">
+    <hd>Figure 1 &#8212; Quail Island</hd>
+    <object src="qi.png" xml:id="quail-isle"/>
+    <caption>An image of the island from the sea.</caption>
+    <citation>Photo courtesy …</citation>
+</block>
+    </snippet>
+
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                       CAPTION                        -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    
+    <snippet about="z3986.caption" dest="doc">
+<object xml:id="mntsr" src="mnt_srmn.png"> … </object>    
+<caption ref="mntsr">MOUNT SARMIENTO.</caption>        
+    </snippet>    
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                         CHAR                           -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    
+    <snippet about="z3986.char z3986.object.text" dest="doc">
+<section role="chapter">
+    <h>Chapter I.</h>
+    <p><name><char><object src="init_A.png">A</object></char>lice</name> was beginning 
+        to get very tired …</p>
+</section>
+    </snippet>    
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                       CITATION                       -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    
+    <snippet about="z3986.citation" dest="doc">
+<p>By his return he was critical of the Bible as history, and wondered why all 
+    religions should not be equally valid. <citation>Darwin 1958, pp. 85–96</citation></p>                
+    </snippet>
+    
+    <snippet about="z3986.citation.block" dest="doc">
+<quote>
+    <p>By his return he was critical of the Bible as history, and wondered why all 
+    religions should not be equally valid.</p>
+    <citation>Darwin 1958, pp. 85–96</citation>
+</quote>
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                          CODE                         -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    
+    <snippet about="z3986.code.block z3986.code.lngroup" dest="doc">
+<code>
+    <lngroup>
+        <ln>public static void helloWorld() &#123;</ln>
+        <ln>    Console.Write("Hello World!");</ln>
+        <ln>&#125;</ln>
+    </lngroup>
+</code>
+    </snippet>
+    
+    <snippet about="z3986.code.phrase" dest="doc">
+Most programming books start with a simple <code>helloWorld()</code> example.
+    </snippet>
+    
+    <snippet about="z3986.code.ln" dest="doc">
+<ln>public static void helloWorld()</ln>
+    </snippet>    
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                          COLGROUP                         -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    
+    <snippet about="z3986.table.colgroup z3986.table.col" dest="doc">
+<table>
+   <colgroup>
+       <col span="2" class="center"/>
+       <col class="right"/>
+   </colgroup>
+    <colgroup span="4" class="result"/>
+   <tr>
+       <td>…</td>
+       <td>…</td>
+       <td>…</td>
+       <td>…</td>
+       <td>…</td>
+       <td>…</td>
+       <td>…</td>
+   </tr>
+</table>
+    </snippet>
+    
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                       COVERS                          -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->    
+    
+    <snippet about="z3986.cover" dest="doc">
+<cover>
+    <spine>…</spine>
+    <frontcover>…</frontcover>
+    <backcover>…</backcover>
+    <flaps>…</flaps>
+</cover>
+    </snippet>
+    
+    
+    <snippet about="z3986.spine" dest="doc">
+<cover>
+    <spine>
+        <block>
+            <ln>On the Origin of Species</ln>
+            <ln><name>Darwin</name>.</ln>
+        </block>
+        <block role="imprint">
+            <ln>
+                <name role="place">London</name>
+            </ln>
+            <ln>
+                <name>John Murray</name>
+            </ln>
+        </block>
+    </spine>
+    …
+</cover>
+    </snippet>
+
+    <snippet about="z3986.frontcover" dest="doc">
+<cover>
+    …
+    <frontcover>
+        <block role="covertitle">
+            <ln><name>Charles Darwin</name></ln>
+            <ln >Die Entstehung der Arten</ln>
+        </block>
+        <block role="publisher-logo">
+            <object src="pub-logo.png">
+                <p>KVA</p>
+            </object>
+        </block>
+        <block>
+            <ln>Alfred Kröner Verlag in Leipzig</ln>
+        </block>
+    </frontcover>
+    …
+</cover>
+    </snippet>
+    
+    <snippet about="z3986.backcover" dest="doc">
+<cover>    
+    …
+    <backcover>
+        <block>
+            <p>One of the most influential books …</p>
+            …
+        </block>
+        <block role="publisher-address">
+            <ln>Alfred Kröner Verlag</ln>
+            <ln>Leipzig, Germany</ln>
+        </block>
+        <block role="isbn">
+            <ln>ISBN-13: 976-000-0000-001</ln>
+        </block>
+    </backcover>
+    …
+</cover>
+    </snippet>
+    
+    <snippet about="z3986.flaps" dest="doc">
+<cover>
+    …
+    <flaps>
+        <block role="photograph">
+            <object src="author-pic.png"/>
+        </block>
+        <block role="biographical-note">
+            <p>Darwin was born in …</p>
+            <p>After attending …</p>
+        </block>
+    </flaps>
+</cover>
+    </snippet>
+    
+
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                       D                            -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->    
+    
+    <snippet about="z3986.d" dest="doc">
+<p><d>"What a curious feeling!"</d> said <name>Alice</name>, 
+    <d>"I must be shutting up like a telescope."</d></p>
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                     DEFINITION, TERM                  -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <snippet about="z3986.definition z3986.term" dest="doc">
+<term ref="drw">Darwinism</term>:
+<definition xml:id="drw">A theory of biological evolution developed 
+  by <name>Charles Darwin</name> and others, stating that all species of 
+  organisms arise …</definition>
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                     DESCRIPTION                         -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->    
+    
+    <snippet about="z3986.description z3986.desc.attrib" dest="doc">
+<object src="mouse.png" desc="mouse-desc"/>
+<description xml:id="mouse-desc" by="republisher" role="content">
+    <p>...</p>
+</description>
+    </snippet>
+    
+        
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--     DOCUMENT, BODY                                    -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    
+    <snippet about="z3986.document z3986.body" dest="doc">
+<document xmlns="http://www.daisy.org/ns/z3986/authoring/"
+    profile="http://www.daisy.org/z3986/2011/vocab/profiles/default/"
+    xml:lang="en">
+    <head>
+        …
+    </head>
+    <body>
+        …
+    </body>
+</document>
+    </snippet>
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--     HEAD, META                                        -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    
+    <snippet about="z3986.head z3986.meta" dest="doc">        
+<head xmlns:dcterms="http://purl.org/dc/terms" xmlns:z3986="http://www.daisy.org/z3986/2011/vocab/decl/#">
+    <meta rel="z3986:profile" resource="http://www.daisy.org/z3986/2011/auth/profiles/book/1.0"/>
+    <meta property="dcterms:identifier" content="int.daisy.book.12345" />
+    <meta property="dcterms:publisher" content="DAISY Consortium" />
+    <meta property="dcterms:date" content="2011-07-27T13:50:05-05:00" />
+</head>        
+    </snippet>
+    
+    
+
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--               EMPH                    -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.emph" dest="doc">
+it follows that any being, if it vary however slightly in any manner profitable to itself, 
+under the complex and sometimes varying conditions of life, will have a better 
+chance of surviving, and thus be <emph>naturally selected</emph>.
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--               EXPANSION                    -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.expansion" dest="doc">
+<expansion xml:id="abbr_HMS">His Majesty's Ship</expansion>
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--     FRONT/BODY/BACK MATTER    -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.frontmatter z3986.bodymatter z3986.backmatter" dest="doc">        
+<body>             
+    <frontmatter>
+        <section>
+            <h>Preface</h>
+            …
+        </section>
+    </frontmatter>
+    <bodymatter>
+        <section>
+            <h>Chapter 1</h>
+            …
+        </section>
+    </bodymatter>
+    <backmatter>
+        <bibliography>
+            <h>Bibliography</h>
+            <entry>…</entry>
+        </bibliography>
+    </backmatter>
+</body>        
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--               GLOSSARY                     -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    
+    <snippet about="z3986.glossary.block z3986.glossary.entry" dest="doc">
+<glossary>
+    <entry>
+        <term>Arroba</term>,
+        <definition>A weight equal to twenty-five pounds Spanish</definition>.
+    </entry>
+    …
+</glossary>
+    </snippet>   
+   
+    <snippet about="z3986.glossary z3986.glossary.section" dest="doc">
+<glossary>
+    <section>
+        <h>A</h>
+        <entry>
+            <term>Arroba</term>
+            <definition>A weight equal to twenty-five pounds Spanish</definition>.
+        </entry>
+        …
+    </section>
+    …
+</glossary>
+    </snippet>       
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                     H                      -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.h" dest="doc">
+<h>
+    On the Origin of Species by Means of Natural Selection or
+    the Preservation of Favoured races in the struggle for life.
+</h>
+    </snippet>    
+    
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                    HD                      -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.hd" dest="doc">
+<hd>NOTICE OF THE REMAINS OF A SPECIES OF EQUUS,</hd>
+<p>Found associated with the extinct Edentals and Toxodon at Punta Alta, in Bahia Blanca, 
+    and with the Mastodon and Toxodon at Santa Fé, in Entre Rios.</p>
+    </snippet>    
+    
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                   HPART                    -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.hpart" dest="doc">
+<h>
+    <hpart role="fulltitle">On the Origin of Species by Means of Natural Selection</hpart> or
+    <hpart role="subtitle">the Preservation of Favoured races in the struggle for life</hpart>.
+</h>
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                        INDEX                        -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    
+    <snippet about="z3986.index z3986.index.section" dest="doc">
+<index>
+    <section>
+        <h>A.</h>
+        <entry>ABERRANT groups, <ref>429</ref>.</entry>
+        <entry>…</entry>
+    </section>
+</index>
+    </snippet>   
+    
+    <snippet about="z3986.index.entry" dest="doc">
+<index>
+    <entry>ABERRANT groups, <ref>429</ref>.</entry>
+</index>
+    </snippet> 
+    
+
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                   LINES                     -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    
+    <snippet about="z3986.ln" dest="doc">
+<ln>Of Man's first disobedience, and the fruit</ln>
+    </snippet>
+    
+    <snippet about="z3986.lnum" dest="doc">
+<ln><lnum>1</lnum>Of Man's first disobedience, and the fruit</ln>
+    </snippet>
+    
+    <snippet about="z3986.lngroup" dest="doc">        
+<lngroup>
+    <ln><lnum>1</lnum>Of Man's first disobedience, and the fruit</ln>
+    <ln>Of that forbidden tree whose mortal taste</ln>
+    <ln>Brought death into the World, and all our woe,</ln>
+</lngroup>        
+    </snippet>
+
+    
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                   LIST                     -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    
+    <snippet about="z3986.list z3986.list.item.block z3986.list.start.attrib" dest="doc">                
+<list type="ordered" start="17">
+    <item><p>Cytheræa — Closely related to, or identical with C. purpurascens.</p></item>
+    <item><p>Modiola — Same as recent kind (nov. spec.) living in the bay.</p></item>
+    <item><p>Nucula — Near to N. margaritacea.</p></item>
+</list>
+    </snippet>
+    
+        
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                        NAME                           -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <snippet about="z3986.name" dest="doc">    
+AFTER having been twice driven back by heavy south-western gales, Her Majesty's ship <name>Beagle</name>, 
+a ten-gun brig, under the command of
+<name role="personal-name"><span role="name-title">Captain</span> <span role="family-name">Fitz Roy</span></name> …
+    </snippet>
+    
+            
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                   NOTE, NOTEREF                       -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->    
+    
+    <snippet about="z3986.note z3986.noteref" dest="doc">
+<p>THE following pages contain Extracts from LETTERS addressed 
+    to Professor HENSLOW<noteref ref="n2" value="2"/> by C. DARWIN, Esq. … </p>
+…  
+<note xml:id="n2">
+    <p>John Stevens Henslow (1796-1861), Cambridge clergyman, botanist and mineralogist. 
+        He became Darwin's scientific mentor when at Cambridge and received and 
+        preserved Darwin's Beagle specimens during the voyage.</p> 
+</note>
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                        NUM                           -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <snippet about="z3986.num" dest="doc">
+At this rate, on the above data, the denudation of the Weald must have 
+required <num>306,662,400</num> years;  or say 
+<num value="300,000,000">three hundred million</num> years.
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                 OBJECT                     -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->    
+    <snippet about="z3986.object.block z3986.src.attrib z3986.srctype.attrib" dest="doc">
+<object xml:id="mnt" src="mouse.png" srctype="image/png">
+    <p>Drawing of a mouse very common on Quail Island.</p>
+</object>
+    </snippet>
+
+    <snippet about="z3986.object.phrase" dest="doc">
+<p>
+    On the side of the mushroom was carved the next clue in the puzzle: 
+    <object xml:id="img_arrow" src="ne_arrow.png">…</object>.
+</p>
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                 PARA                       -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.p" dest="doc">
+<p>Independently of these indications, the abundance and variety of the osseous 
+   remains of extinct Mammalia in South America … .</p>
+    </snippet>
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                    PAGEBREAK                          -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    
+    <snippet about="z3986.pagebreak" dest="doc">
+<pagebreak value="45" />
+    </snippet>
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                    QUOTE                   -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.quote.block" dest="doc">
+<quote>
+    <p>But with regard to the material world, we can at least go so far as this — we can perceive 
+    that events are brought about not by insulated interpositions of Divine power, exerted in 
+    each particular case, but by the establishment of general laws.</p>
+    <citation>W. WHEWELL: Bridgewater Treatise.</citation>
+</quote>
+    </snippet>    
+    
+    <snippet about="z3986.quote.phrase" dest="doc">
+<p>His only allusion to human evolution was the understatement that 
+   <quote>light will be thrown on the origin of man and his history</quote>.</p>       
+    </snippet>    
+
+
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                     REF                   -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->    
+           
+    <snippet about="z3986.ref" dest="any">
+<index>
+    <entry>origin of fruit-trees, <ref ref="page29">29</ref>,  <ref ref="page39">39</ref>.</entry> 
+</index>
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                     RUBY                   -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->    
+    <snippet about="its-ruby" dest="any">    
+<p>この本は <its:ruby>
+    <its:rb>慶応義塾大学</its:rb>
+    <its:rp>(</its:rp><its:rt>けいおうぎじゅくだいがく</its:rt><its:rp>)</its:rp>
+</its:ruby>の歴史を説明するものです。</p>
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                   SECTIONS                 -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.section" dest="doc">
+<section role="chapter">
+    <h>
+        <hpart>CHAPTER I.</hpart>
+        <hpart>VARIATION UNDER DOMESTICATION.</hpart>
+    </h>
+    <p>…</p>
+</section>
+    </snippet>
+
+ 
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                   SENTENCE                 -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.s" dest="doc">
+<p>
+    <s>No one ought to feel surprise at much remaining as yet 
+        unexplained in regard to the origin of species and varieties, 
+        if he makes due allowance for our profound ignorance in regard 
+        to the mutual relations of all the beings which live around us.</s>
+    <s>Who can explain why one species ranges widely and is very 
+        numerous, and why another allied species has a narrow range and is rare?</s>
+</p>
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                   SEPARATOR                 -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.transition" dest="doc">
+<p>…walking proudly and silently past the people who knelt by the water's edge.</p>
+
+<transition rend:symbol="*"/>
+
+<p class="nonindent">A great fire, banked high and red, flamed in the grate and under the ivy-twined branches…</p>
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                 SUBSCRIPT                  -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.sub" dest="doc">
+<p>
+    *<sub>*</sub>* The "Later Researches" may be had separately. 8vo. 15s.
+</p>
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                SUPERSCRIPT                 -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.sup" dest="doc">
+<p>
+    After a thousand generations, species (A) is supposed 
+    to have produced two fairly well-marked varieties, namely 
+    a<sup>1</sup> and m<sup>1</sup>.
+</p>
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                       SPAN                            -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->    
+    
+    <snippet about="z3986.span" dest="doc">
+In the sea around <span xml:lang="es">Tierra del Fuego</span>, and at no great distance from the land, 
+  I have seen narrow lines of water of a bright red colour …
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                       TABLE                            -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    
+    <snippet about="z3986.table" dest="doc">
+<caption ref="mylodon">ADMEASUREMENTS OF THE LOWER JAW OF MYLODON DARWINII.</caption>
+<table xml:id="mylodon">
+    <tr>
+        <th colspan="2">Inches</th>
+        <th>Lines</th>
+    </tr>
+    <tr>
+        <th>Length (as far as complete)</th>
+        <td>17</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <th>Depth of each ramus</th>
+        <td>4</td>
+        <td>9</td>
+    </tr>
+</table>        
+    </snippet>
+    
+    <snippet about="z3986.table.tr z3986.table.th z3986.table.td" dest="doc">
+<table>
+    <tr>
+        <th colspan="2">Inches</th>
+        <th>Lines</th>
+    </tr>
+    <tr>
+        <th>Length (as far as complete)</th>
+        <td>17</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <th>Depth of each ramus</th>
+        <td>4</td>
+        <td>9</td>
+    </tr>
+</table>
+    </snippet>
+    
+    <snippet about="z3986.table.thead z3986.table.tbody" dest="doc">
+<table>
+    <thead>
+        <tr>
+            <th colspan="2">Inches</th>
+            <th>Lines</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Length (as far as complete)</th>
+            <td>17</td>
+            <td>6</td>
+        </tr>
+    </tbody>
+</table>
+    </snippet>
+    
+    <snippet about="z3986.tfoot" dest="doc">
+<table>
+    <tfoot>
+        <tr>
+            <td colspan="3">Total</td>
+            <td>$12,252</td>
+        </tr>
+    </tfoot>
+</table>
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                   TIME                     -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.time" dest="doc">
+I was so much impressed with these facts that I strongly insisted, in 
+<time time="1839">1839</time> and <time time="1845">-45</time>, on this 
+"law of the succession of types," —on "this wonderful relationship in 
+the same continent between the dead and the living."        
+    </snippet>
+    
+    
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                    TOC                     -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.toc" dest="doc">
+<toc>
+    <h>TABLE OF CONTENTS.</h>
+    <entry>
+        CHAPTER I. — THE DARWIN FAMILY
+        <ref>I</ref>
+    </entry>
+    <entry>
+        CHAPTER II. — AUTOBIOGRAPHY
+        <ref>26</ref>
+    </entry>
+    …
+</toc>            
+    </snippet>
+    
+    <snippet about="z3986.toc.block" dest="doc">
+<section>
+    <hd>CHAPTER I. VARIATION UNDER DOMESTICATION.</hd>
+    <toc>
+        <entry>
+            Causes of Variability
+            <ref>7</ref>
+        </entry>
+        <entry>
+            Effects of Habit
+            <ref>11</ref>
+        </entry>
+        …
+    </toc>
+    <p>WHEN we look to the individuals …</p>
+</section>
+    </snippet>
+    
+    <snippet about="z3986.toc.section" dest="doc">
+<toc>
+    <section role="backmatter">
+        <entry>
+            INDEX
+            <ref>491</ref>
+        </entry>
+    </section>
+</toc>
+    </snippet>
+    
+    <snippet about="z3986.toc.entry" dest="doc">
+<toc>
+    <entry>
+        CHAPTER I. VARIATION UNDER DOMESTICATION.
+        <ref>7-43</ref>
+        <block>
+            <p>Causes of Variability — Effects of Habit — Correlation of Growth — Inheritance — 
+                Character of Domestic Varieties — Difficulty of distinguishing between Varieties and Species.</p>
+        </block>
+    </entry>
+</toc>
+    </snippet>
+
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                    VERSE                   -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.verse" dest="doc">
+<verse>
+    <ln>O, never say that I was false of heart</ln>
+    …
+</verse>
+    </snippet>
+    
+    <snippet about="z3986.verse.section" dest="doc">
+<verse>
+    <section>
+        <ln>O, never say that I was false of heart,</ln>
+        <ln>…</ln>
+    </section>
+</verse>
+    </snippet>
+
+
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                    WORD                    -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <snippet about="z3986.w" dest="doc">
+<w>This</w> <w>Abstract</w>, <w>which</w> <w>I</w> <w>now</w> <w>publish</w>
+    </snippet>
+    
+    <snippet about="z3986.wpart" dest="doc">
+those <w><wpart role="root">near</wpart><wpart role="stem">est</wpart></w> to the axis
+    </snippet>
+    
+
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <!--                  DUMMIES                   -->
+    <!-- - - - - - - - - - -  - - - - - - - - - - - -->
+    <dummy xml:id="page29"/>
+    <dummy xml:id="page39"/>
+
+</snippets>

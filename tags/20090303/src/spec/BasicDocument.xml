@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="file:/G:/eclipseProjects/zednext-trunk/build/z3986a-simplebook/z3986a-simplebook.rng" type="xml"?>
+<html xmlns="http://www.w3.org/2002/06/xhtml2/" xmlns:d="http://www.daisy.org/ns/z3986/2008/"  xml:lang="en">
+    <head>
+        <link rel="profile" href="http://www.daisy.org/z3986/2010/simplebook/0.1/"/>
+    </head>
+    <d:book>
+        <d:frontmatter />
+        <d:bodymatter>
+            <section>
+                <h>Hello, world.</h>
+            </section>
+        </d:bodymatter>
+    </d:book>
+</html>

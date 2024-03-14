@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 annotation element module</x:h1>
+    
+  <div>
+    <x:h2>The annotation element</x:h2>
+    <x:div id="z3986.annotation">
+      <x:p class="description">
+        The <x:code>annotation</x:code> element represents an annotation that 
+        is added to the document by an author, editor, publisher, republisher, or 
+        other agency.
+        <x:br/>
+        The required <x:code>about</x:code> attribute contains a URI that references
+        the construct that is being annotated. 
+        <x:br/>
+        The required <x:code>property</x:code> attribute contains one or several
+        CURIEs that designates the origin of the annotation in terms of what agency 
+        contributed it. 
+      </x:p>
+    </x:div>
+  
+    <define name="z3986.annotation">
+      <element name="annotation">        
+        <ref name="z3986.annotation.attlist"/>
+        <ref name="z3986.annotation.content"/>  
+      </element>    
+    </define>
+
+    <define name="z3986.annotation.attlist">
+      <!-- specialized attlist since
+      @about and @property are required -->
+      
+      <ref name="rdfa.about.attrib"/>
+      <ref name="annotation.rdfa.property.attrib"/>
+      <optional>
+        <ref name="rdfa.content.attrib"/>
+      </optional>
+      <optional>
+        <ref name="rdfa.datatype.attrib"/>
+      </optional>
+      <optional>
+        <ref name="rdfa.typeof.attrib"/>
+      </optional>
+      <optional>
+        <ref name="rdfa.rel.attrib"/>
+      </optional>
+      <optional>
+        <ref name="rdfa.resource.attrib"/>
+      </optional>
+      <optional>
+        <ref name="rdfa.rev.attrib"/>
+      </optional>
+      <ref name="z3986.Core.attrib"/>
+      <ref name="z3986.I18n.attrib"/>
+      <ref name="z3986.Flow.contrib.attrib"/>
+      <optional>
+        <ref name="xhtml.role.attrib"/>
+      </optional>  
+    </define>
+    
+    <define name="annotation.rdfa.property.attrib">
+      <attribute name="property">
+         <ref name="annotation.rdfa.property.attrib.content"/>
+      </attribute>
+    </define>
+    
+    <define name="annotation.rdfa.property.attrib.content" combine="choice">
+      <choice>
+         <ref name="CURIEs.datatype"/>
+      </choice>
+    </define>
+    
+    <define name="z3986.annotation.content">
+      <ref name="z3986.Flow.model"/>    
+    </define>  
+    
+  </div>
+  
+  <div>
+    <x:h2>The annotation element - default content model contribution</x:h2>
+    
+    <define name="z3986.Structural.class" combine="choice">
+      <ref name="z3986.annotation"/>    
+    </define>
+    
+    <define name="z3986.Flow.class" combine="choice">
+      <ref name="z3986.annotation"/>    
+    </define>
+
+    <define name="z3986.covers.content.class" combine="choice">
+      <ref name="z3986.annotation"/>
+    </define>
+
+  </div>
+
+</grammar>

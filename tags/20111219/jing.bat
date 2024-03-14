@@ -1,0 +1,1 @@
+java -jar ./lib/jing.jar ./src/schema/z3986-genericdocument.rng ./test/z3986/genericdocument-valid-01.html

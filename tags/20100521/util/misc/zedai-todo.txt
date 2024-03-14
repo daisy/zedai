@@ -1,0 +1,97 @@
+==SPEC==
+* spec needs versioning def for vocabs? 
+* need a general informative statement about PAs having a pass-through mode for supported features due to the nature of pipelines. This would logically sit on top of the behavioral fallbacks that the Feature RDs define.
+* primer: Z39.86-2011 document sb Z39.86-AI document
+
+== WWW ==
+* replace RD css link with a link to SVN 
+
+== SAMPLE DOCS ==
+
+== SCHEMAS overarching ==
+* recheck all dcterms module requires fields (SchemaPoolDiagnostics)
+* assure consistent use of chameleon
+* need db:revhistory in module top-level RDF || todo need version identifiers inside schemas (modules, profile drivers and feature drivers)
+* consider allowing annotation in head (when they are not intended to be part of the document content generally)
+
+== MODULES ==
+* rend: we should consider merging z3986.rend.list.item.prefix.attrib and z3986.rend.note.prefix.attrib to one generalized define 
+* add NonEmptyString.datatype references to the attributes that should use it
+* document: take the notes from head re meta into an issue
+* annotation: possibly add a contributor attr to annotation instead of @role, generalize the -anno props by removing '-anno' (email to boris)
+* annotation: check that we get this right: An annotation has a default source and purpose (implicit values of role, and possible @contributor). 
+* annotation: add info on implied value of @role (which was, IIRC, 'content-description republisher-anno'), note possibly @contributor='republisher'
+* add prose in Embed.attrib that refers to xlink semantics (@src is a shortform for...)
+* <object> are we clear on the nature of innermost text vs annotation
+* assure comments are filtered out from modules at build time
+* test all sch patterns. bug warning: many matches that include @for assumes it contains a single IDREF
+* role: alternate triple pattern: subject = @id (or the xpath to the current node if there is no @id), predicate = the special XHTML Vocabulary term role, and that the object == the value of @role interpreted as (TERM | URIorCURIE)+ . 
+* write code to check for unused defines
+* <define name="z3986.name.extra.class" combine="choice">
+      <choice>
+        <ref name="z3986.span"/> <!-- TODO this needs to be fixed, this reopens Phrase.class, if anything a Text.class variant of span is needed -->
+      </choice>
+</define>
+
+== FEATURES ==
+* ruby: the feature-recognized behavior for ruby may be wrong (rely on <rp> if present?)
+* ruby: is in text.class but absdef claims allows phrase members?
+* make sure all feature RDs have "The namespace of all members of the Source Rendition feature element/attribute set is..."
+* Update xforms rng schema?
+* ssml: Really make x-SAMPA implicit default? SSML spec says that absence of @alphabet is processor-specific (we may want to avoid overriding that)
+* ssml: ?? make Text.class versions of phoneme and token, replacing the contrib to name.extra.class => no, the problem is the content model of name
+
+== PROFILES ==
+
+== CM =
+
+== SCHEMADOC ==
+* need snippets for more attributes
+* need longdesc for <name> to markup person-name; the example should use @typeof and @property; core.n3 contribs all these props to <name>, whereas the sample uses span for the subcomponents.
+* need longdesc for bibliography/entry, show how to add dcterms metadata to an entry
+
+
+== RDs ==
+
+== VOCABS ==
+* repopulate all role contribs (TODO: section, block, aside, notes, titles, ref (continuation))
+* deal with running headers issue (<meta>) as per list
+* vocab add: verso and recto, to help with running headers.
+* move the 'prefix' prop from rd vocab to decl?
+* no property for other pubs by this author (perhaps partially solved by block-level bibliography)
+
+
+== XSD ==
+* update XSD generation
+* copy over new MathML3 xsd when updating XSD generation (common.xml#build-xsd-from-simplified-rng)
+* copy over new XLink 1.1 xsd when updating XSD generation (common.xml#build-xsd-from-simplified-rng)
+
+
+== MORE SAMPLES IN /test/ ==
+http://darwin-online.org.uk/content/frameset?itemID=F9.1&viewtype=text&pageseq=1
+
+== LOW PRIO ==
+* update CSS to cover CMP and feature components
+* modules: how do recommend marking up addresses of different kinds?
+* vocabs: Note that the longdesc on <p> talks about pgroup. OTOH block@pgroup does not say anything more than a block with only p children
+* <definition>: should there be a block version of definition also?
+* spec: do we need something like: "PAs are not required to recognize role values that specify semantics identical to elements in CMP, eg not required to recognize <span role="cite"> as an equivalent to <cite>.
+* vocabs: option to establish a relation between CMP elements and core vocab: element section "is-a" core vocab #section, etc
+* table: th@abbr also on td?
+* list type="ordered" ==> these could be vocab properties instead
+* abbr @type: ==> these should be vocab properties instead, as the list is not finite
+* modules: make all occurrences of "implicit value" in module RDF a link to spec
+* modules: add more regexes for datatypes inc ssml:datatypes (perhaps port the html ones too, for dist)
+* RD: generate Oasis catalogs, add property 'oasis-catalog' in RD vocab
+* vocabs: add owl:sameAs to xhv, aria, etc (Marisa had these)
+* add ref to RDDL? GRDDL? in "relation to other specifications" to avoid "why dont you use that instead of RD" questions
+
+
+== NEEDED LONGDESCS ==
+the multiple facets of annotation
+the ref element (using it for both resolving and unresolving references, and re links for both IDREFs and URIs)
+object 
+
+
+== SPECIALIZATIONS ==
+

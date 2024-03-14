@@ -1,0 +1,295 @@
+<project name="zednext" default="build-all" basedir=".">
+<!-- TODO
+Copy rddl/res/profilename/* automatically as fileset	
+-->
+	<property name="z3986.part.a.prefix" value="z3986a"/>
+	<property name="lib.dir" value="lib"/>
+	<property name="build.dir" value="${basedir}/build"/>	
+	<property name="src.dir" value="${basedir}/src"/>
+	<property name="rddl.dir" value="${src.dir}/rddl"/>
+	<property name="schema.dir" value="${src.dir}/schema"/>
+	<property name="util.dir" value="${basedir}/util"/>
+	<property name="temp.dir" value="${basedir}/temp"/>
+	<property name="test.dir" value="${basedir}/test"/>
+	<property name="test.z3986a.dir" value="${test.dir}/z3986a"/>
+	
+	<property name="css.basic.name" value="z3986a-basic.css"/>
+	<property name="css.basic.path" value="${rddl.dir}/res/general/${css.basic.name}"/>
+	
+	<property name="schema.fileset.list" value="${temp.dir}/schema-fileset.xml"/>
+	<property name="simplified.rng.path" value="${temp.dir}/simplified.rng"/>
+
+	<target name="build-all" depends="clean-build-dir, clean-temp-dir" description="build everything">		
+		
+		<!-- TODO vocabs -->
+		
+		<!-- Generic Document Profile -->
+		<antcall target="build-rng-profile">
+			<param name="profile.name" value="genericdocument" />
+			<param name="profile.fullname" value="Z39.86 Generic Document Profile" />			
+		</antcall>
+				
+		<!-- Simple Book Profile -->
+		<antcall target="build-rng-profile">
+			<param name="profile.name" value="simplebook" />
+			<param name="profile.fullname" value="Z39.86 Simple Book Profile" />			
+		</antcall>
+
+		<!-- Advanced Book Profile -->
+		<antcall target="build-rng-profile">
+			<param name="profile.name" value="advancedbook" />
+			<param name="profile.fullname" value="Z39.86 Advanced Book Profile" />			
+		</antcall>
+		
+		<!-- Periodicals Profile -->
+		<antcall target="build-rng-profile">
+			<param name="profile.name" value="periodicals" />
+			<param name="profile.fullname" value="Z39.86 Periodicals Profile" />			
+		</antcall>
+		
+		<antcall target="build-spec" />
+						
+	</target>
+	
+	
+	<target name="build-rng-profile" 
+		depends="clean-temp-dir"
+		description="Builds a RelaxNG-based profile.
+		Parameters:
+			profile.name 		[technical name]
+			profile.fullname	[full human readable name]
+		">
+		
+		<echo message="***** Building Profile: ${profile.fullname} ***** "/>
+
+		<property name="dest.dir" value="${build.dir}/${z3986.part.a.prefix}-${profile.name}/" />
+		<property name="schema.path" value="${schema.dir}/${z3986.part.a.prefix}-${profile.name}.rng"/>		
+
+		<mkdir dir="${dest.dir}/res/"/>
+
+		<!-- build the RDDL -->
+		<antcall target="build-rddl">
+			<param name="profile.name" value="${profile.name}"/>
+			<param name="dest.dir" value="${dest.dir}"/>
+			<param name="schema.path" value="${schema.path}"/>
+		</antcall>
+		
+		<!-- copy modules -->
+		<antcall target="copy-modules" />
+		
+		<!-- validate the schemas in build dir -->
+		<antcall target="validate-build-schemas" />
+		
+		<!-- convert simplified rng to xsd -->
+		<antcall target="rng-to-xsd">
+			<param name="input-rng" value="${schema.path}"/>
+			<param name="output-xsd" value="${dest.dir}/res/${z3986.part.a.prefix}-${profile.name}.xsd"/>
+		</antcall>		
+
+		<!-- copy default css -->
+		<copy file="${css.basic.path}" tofile="${dest.dir}/res/${css.basic.name}" />
+		
+		<!-- copy rddl css -->
+		<copy file="${util.dir}/rddl/xrd.css" tofile="${dest.dir}/res/xrd.css" />
+		
+		<!-- copy the simplified rng -->
+		<copy file="${simplified.rng.path}" tofile="${dest.dir}/res/${z3986.part.a.prefix}-${profile.name}-single.rng" />
+		
+		<!-- copy any resources specific to this profile -->
+		<copy todir="${dest.dir}/res/">
+		  <fileset dir="${rddl.dir}/res/${profile.name}/"/>
+		</copy>
+		
+		<!-- build the profile schema documentation -->
+		<antcall target="build-rng-schema-doc">
+			<param name="dest.dir" value="${dest.dir}"/>
+			<param name="docTitle" value="${profile.fullname}"/>
+			<param name="namespacelistURI" value="namespaceList.xml" />
+			<param name="docResourceURI" value="docResources.xml" />
+		</antcall>	
+		
+		<!-- zip everything -->		
+		<zip destfile="${dest.dir}/${z3986.part.a.prefix}-${profile.name}.zip"
+			    basedir="${dest.dir}"		  	
+		/>				
+		
+		<!-- and finally the developer-oriented schema topology doc (not in zip) -->
+		<mkdir dir="${build.dir}/dev/${profile.name}-topology/"/>
+		<antcall target="rng-to-topology-doc">
+			<param name="input-rng" value="${schema.path}"/>
+			<param name="output-html" value="${build.dir}/dev/${profile.name}-topology/index.html"/>
+		</antcall>	
+
+	</target>	
+			
+	<target name="copy-modules">
+		<!-- path fix for windows -->
+	    <path id="tmp" path="${dest.dir}" />	    
+	    <pathconvert targetos="unix" property="destparam" refid="tmp">	      	    
+	    	<map from="" to="file:///"/>
+	    </pathconvert>
+		
+		<!-- use xslt to copy modules over -->
+		<saxon-xslt in="${schema.fileset.list}" 
+				  style="${util.dir}/xml-fileset-copy.xsl"
+		 			out="${temp.dir}/temp.xml">
+			<param name="destination-dir" expression="${destparam}/"/>
+		</saxon-xslt>
+	</target>
+	
+	<target name="build-rng-schema-doc">
+		<saxon-xslt in="${simplified.rng.path}" 
+					  style="${util.dir}/rng/rng-doc.xsl"
+			 			out="${dest.dir}/schemadoc/index.html">		
+			<param name="docTitle" expression="${docTitle}"/>
+			<param name="namespaceListURI" expression="${namespacelistURI}" />
+			<param name="docResourceURI" expression="${docResourceURI}" />
+		</saxon-xslt>
+		<copy file="${util.dir}/rng/rng-doc.css" tofile="${dest.dir}/schemadoc/rng-doc.css" />
+	</target>	
+
+		
+	<target name="rng-to-topology-doc">		
+		<saxon-xslt in="${input-rng}" 
+				  style="${util.dir}/rng/rng-topology.xsl"
+		 			out="${output-html}">			
+		</saxon-xslt>
+	</target>
+	
+	<target name="validate-build-schemas">
+		<!-- if rng, validate schemas towards relaxng relaxng -->
+		<jing rngfile="${util.dir}/rng/relaxng.rng">
+		    <fileset dir="${build.dir}" includes="**/*.rng"/>
+		</jing>
+				
+		<!-- run a pass on available valid instances in /test/ -->
+		<!-- get the schema -->
+		<fileset dir="${dest.dir}" id="builtschema">
+			<include name="z3986a-${profile.name}.rng"/>
+			<!-- TODO support any type assure only one  
+			<include name="z3986a-${profile.name}.xsd"/>			
+			<includesfile name="z3986a-${profile.name}.xsd"/>
+			<includesfile name="z3986a-${profile.name}.nvdl"/>
+			-->
+		</fileset>
+				
+		<property name="schema" refid="builtschema"/>
+		<echo message="*** Validating sample instances against ${schema}"/>	
+		<jing failonerror="false" rngfile="${dest.dir}/${schema}">
+		    <fileset dir="${test.dir}" includes="**/z3986a/${profile.name}-valid-*.*"/>			
+		</jing>
+		
+	</target>
+	
+	<target name="rng-to-xsd" depends="rng-to-simplified-rng" 
+		description="converts a simplified rng to xsd using trang, 
+			expects parameters 'input-rng' and 'output-xsd'">
+		<java jar="${lib.dir}/trang.jar" fork="true" failonerror="true" maxmemory="256m">			
+			<arg value="${simplified.rng.path}"/>
+			<arg value="${output-xsd}"/>			
+			<classpath>
+				<pathelement location="${lib.dir}/trang.jar"/>
+				<pathelement path="${java.class.path}"/>
+			</classpath>
+		</java>		
+	</target>
+	
+	<target name="rng-to-simplified-rng" 
+			description="uses Jing -s to create a simplified rng schema, 
+				expects parameter 'input-rng'">
+		
+		<java jar="${lib.dir}/jing.jar" fork="true" failonerror="true" maxmemory="256m">			
+			<arg value="-s"/>
+			<arg value="${input-rng}"/>
+			<arg value="${simplified.rng.path}"/>			
+			<classpath>
+				<pathelement location="${lib.dir}/jing.jar"/>
+				<pathelement path="${java.class.path}"/>
+			</classpath>
+		</java>		
+	</target>
+		
+	<target name="build-rddl" 
+		description="copies and builds the rddl instance for inparam profile,
+		expects inparams profile.name, dest.dir, schema.path">
+		
+		<antcall target="build-schema-fileset">
+			<param name="schema.path" value="${schema.path}"/>
+		</antcall>
+		
+		<property name="rddl.src" value="${rddl.dir}/${z3986.part.a.prefix}-${profile.name}.rddl"/>
+		<property name="rddl.dest" value="${dest.dir}/${z3986.part.a.prefix}-${profile.name}.html"/>
+		
+		<!-- fix xslt inparam to be a valid uri (else crash on windows) -->
+	    <path id="tmp" path="${schema.fileset.list}" />	    
+	    <pathconvert targetos="unix" property="uriparam" refid="tmp">
+	    	<map from="" to="file:///"/>
+	    </pathconvert>
+	    				
+		<!-- take the src rddl, insert the module list, and output to build dir -->
+		<saxon-xslt in="${rddl.src}" 
+				  style="${util.dir}/rddl/rddl-finalize.xsl"
+		 			out="${rddl.dest}">
+			<param name="schema-fileset" expression="${uriparam}"/>
+		</saxon-xslt>
+				
+		<!-- validate the result -->
+		<echo message="Validating output RDDL..."/>
+		<jing rngfile="${util.dir}/rddl/xhtml-rddl.rng" file="${rddl.dest}" checkid="true" />	
+
+	</target>
+
+	<target name="build-schema-fileset"
+		description="creates a schema fileset list in xml, 
+			expects a 'schema.path' parameter">
+					
+		<saxon-xslt in="${schema.path}" 
+			style="${util.dir}/rng/rng-fileset.xsl"
+		 	out="${schema.fileset.list}"
+		/>
+	</target>
+	
+	
+	<target name="build-spec" description="validates and builds docbook 5 sources">
+		<!-- TODO 
+			1. autogenerate the modules section, perhaps parts of the profiles section too
+			   Via an XSLT that moves from source, autogens, and puts to build/spec dir 
+			2. xslt on the output from 1 to XHTML, into build/spec 
+			3. validate both output files
+		-->		
+	</target>
+		
+	<target name="clean-build-dir" depends="make-build-dir" description="clean build dir">
+		<delete>
+			<fileset dir="${build.dir}" includes="**/*.*"/>
+		</delete>
+	</target>
+
+	<target name="clean-temp-dir" depends="make-temp-dir" description="clean temp dir">
+		<delete>
+			<fileset dir="${temp.dir}" includes="**/*.*"/>
+		</delete>
+	</target>
+		
+	<target name="make-build-dir">
+		<mkdir dir="${build.dir}"/>		
+	</target>
+
+	<target name="make-temp-dir">
+		<mkdir dir="${temp.dir}"/>
+	</target>
+		
+	<taskdef name="jing" classname="com.thaiopensource.relaxng.util.JingTask">
+		<classpath>
+			<pathelement location="${lib.dir}/jing.jar"/>
+		</classpath>
+	</taskdef>
+	
+	<taskdef name="saxon-xslt" classname="net.sf.saxon.ant.AntTransform">
+		<classpath>
+			<pathelement location="${lib.dir}/saxon9.jar"/>
+			<pathelement location="${lib.dir}/saxon9-ant.jar"/>
+		</classpath>		
+	</taskdef>
+
+</project>

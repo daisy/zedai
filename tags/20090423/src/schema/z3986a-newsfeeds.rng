@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://www.w3.org/2002/06/xhtml2/"
+         xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>RELAX NG driver for Z39.86-2010 Part A News Feed Aggregator Profile</x:h1>
+  
+  <div>
+    <x:h2>XHTML 2.0 modules</x:h2>
+        
+    <x:h3>XHTML 2.0 Common attributes collections (Z3986 subset)</x:h3>
+    <include href="./mod/z3986-xhtml-attribs.rng" />
+    
+    <x:h3>XHTML 2.0 Document module (Z3986 revised)</x:h3>
+    <include href="./mod/z3986-xhtml-document.rng">
+      <!-- redefine body content to be either sections or articles -->
+      <define name="xhtml.body.content">
+        <optional>
+          <ref name="xhtml.h"/>
+        </optional>
+        <choice>
+          <oneOrMore>
+            <ref name="xhtml.section"/>
+          </oneOrMore> 
+          <oneOrMore>
+            <ref name="z3986.article"/>
+          </oneOrMore>     
+        </choice>
+      </define>
+      <!-- nullify the contribution of x:title -->
+      <define name="xhtml.Text.class" combine="choice">
+        <notAllowed/>
+      </define>
+    </include>
+    
+    <x:h3>XHTML 2.0 Structural module (Z3986 revised)</x:h3>
+    <include href="./mod/z3986-xhtml-structural.rng">
+      <!-- redefine section to only allow sections or articles -->
+      <define name="xhtml.section.content">
+        <optional>
+          <ref name="xhtml.h"/>
+        </optional>      
+        <choice>
+          <oneOrMore>
+            <ref name="xhtml.section"/>
+          </oneOrMore> 
+          <oneOrMore>
+            <ref name="z3986.article"/>
+          </oneOrMore>     
+        </choice>
+      </define>
+      
+      <!-- remove elements not used in this profile -->
+      <define name="xhtml.blockcode">
+	    <notAllowed/>
+	  </define>
+
+      <define name="xhtml.pre">
+	    <notAllowed/>
+	  </define>
+
+    </include>  
+
+    <x:h3>XHTML 2.0 Text module (Z3986 revised)</x:h3>
+    <include href="./mod/z3986-xhtml-text.rng">
+      <!-- remove elements not used in this profile -->	
+	  <define name="xhtml.samp">
+	    <notAllowed/>
+	  </define>
+      <define name="xhtml.var">
+	    <notAllowed/>
+	  </define>	  
+      <define name="xhtml.kbd">
+	    <notAllowed/>
+	  </define>	  	
+    </include>
+    
+    <x:h3>XHTML 2.0 List module (Z3986 revised)</x:h3>    
+    <include href="./mod/z3986-xhtml-list.rng" />
+         
+    <x:h3>XHTML 2.0 Table module (Z3986 revised)</x:h3>    
+    <include href="./mod/z3986-xhtml-table.rng">
+      <!-- redefine table to the simplest possible -->
+      <define name="xhtml.table.content">
+        <ref name="xhtml.table.simple.content" />
+      </define>
+    </include>   
+    <!-- add table to article body 
+    <define name="z3986.article.body.body.class" combine="choice">
+      <ref name="xhtml.table"/>
+    </define> 
+    -->
+    
+    <x:h3>XHTML 2.0 Caption module</x:h3>    
+    <include href="./mod/xhtml-caption-2.rng" />
+    
+    <x:h3>Metainformation Module (Z3986 revised)</x:h3>
+    <include href="./mod/z3986-xhtml-meta.rng" />
+
+    <x:h3>Object Module (Z3986 revised)</x:h3>
+    <include href="./mod/z3986-xhtml-object.rng" />
+
+    <x:h3>Hypertext Module</x:h3>
+    <include href="./mod/z3986-xhtml-hypertext.rng" />    
+              
+  </div>
+
+  <div>
+    <x:h2>XHTML 2.0 Support modules</x:h2>
+    
+    <x:h3>XHTML Datatypes module</x:h3>
+    <include href="./mod/xhtml-datatypes-2.rng" />
+  </div>  
+  
+  <div>
+    <x:h2>Z3986 modules</x:h2>
+
+    <x:h3>Z3986 Article module</x:h3>
+    <include href="./mod/z3986-article.rng" />
+    
+    <x:h3>Z3986 Text module</x:h3>
+    <include href="./mod/z3986-text.rng" />
+
+    <x:h3>Z3986 Bridgehead module</x:h3>
+    <include href="./mod/z3986-bridgehead.rng" />
+
+    <x:h3>Z3986 Depth attribute module</x:h3>
+    <include href="./mod/z3986-depth.rng" />
+
+  </div>  
+  
+  <div x:id="ruby">
+    <x:h2>Ruby module</x:h2>
+    <include href="./mod/z3986-ruby.rng"/>
+  </div> 
+    
+</grammar>

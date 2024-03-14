@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xpath-default-namespace="http://www.w3.org/1999/xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	exclude-result-prefixes="xs">
+
+    <!-- builds an index vocab catalog. -->
+
+	<xsl:param name="list" as="xs:string"/>
+	<xsl:param name="output-uri" as="xs:string" />
+	
+	<!--  input list is a propertySet.toString -->
+	<xsl:variable name="xlist" as="xs:string*" select="tokenize(normalize-space($list),', ')" />
+	<xsl:variable name="title" as="xs:string">Z39.86-2010 RDF Vocabulary Catalog</xsl:variable>
+	
+    <xsl:template match="title">
+    	<title><xsl:value-of select="$title"/></title>
+    </xsl:template>
+
+    <xsl:template match="body">
+      <body>
+		<h1 property="dc:title"><xsl:value-of select="$title"/></h1>
+ 
+		<ul>
+			<xsl:for-each select="$xlist">				
+				<xsl:variable name="subdir" select="substring-before(.,'/')" />				
+				<xsl:variable name="href">./<xsl:value-of select="$subdir"/>/</xsl:variable>
+				<li><a id="{$subdir}" href="{$href}">		        
+			    	<xsl:variable name="subdoc" select="resolve-uri(.,translate($output-uri,'\','/'))" />					
+					<xsl:value-of select="document($subdoc)//head/title" />
+				    </a>
+				</li>
+			</xsl:for-each>
+		</ul>
+	
+		<div class="footer">
+		  <p>Document last updated: <xsl:value-of select="current-dateTime()"/></p>
+		</div>
+	  </body>
+	</xsl:template>
+
+    <xsl:template match="link[@rel='stylesheet']">
+      		<link rel="stylesheet" type="text/css" href="../z3986-2010.css" />
+	</xsl:template>	
+
+	<xsl:template match="*">
+		<xsl:copy>
+			<xsl:copy-of select="@*"/>
+			<xsl:apply-templates/>
+		</xsl:copy>
+	</xsl:template>
+
+	
+</xsl:stylesheet>

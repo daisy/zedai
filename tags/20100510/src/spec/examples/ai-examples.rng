@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/"
+         xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <!-- Snippets are short extracts from content models, without surrounding explanatory prose,
+    maximally accompanied by a dedicated title and caption (see below) 
+    
+    Must use the about and dest attributes on wrappers. @about can contain 
+    several IDs; these must map to the targets xml:id in the (preprocessed) RNGs 
+    (which is the same value as rng:define/@name) 
+    
+    Attributes that *may* be used on the wrapper: 
+    snippet-caption="the caption" 
+    snippet-title="the title"         
+    These attributes can have wiki markup; {code} and [[#link label*]] 
+  -->
+
+ 
+  <include href="../../doc/snippets/ai-snippets.rng">
+    <define name="snippet.content">  
+      <choice>
+        <ref name="z3986.Section.model"/>
+        <ref name="z3986.Flow.choice.model"/>
+        <ref name="head.example"/>
+        <ref name="bodymatter.example"/>
+        <ref name="z3986.document" />
+        <ref name="z3986.toc" />
+        <ref name="mods" />
+        <ref name="book.anymatter"/>
+      </choice>
+    </define>
+    
+    <define name="snippet.attlist">
+      <ref name="rdfa.about.attrib"/>  
+      <attribute name="dest">
+        <choice>        
+          <value>doc</value>
+          <value>absdef</value>
+          <value>spec</value> <!-- only used by doc/src/examples-->
+          <value>any</value>
+        </choice>  
+      </attribute>
+      <optional><attribute name="snippet-title"/></optional>
+      <optional><attribute name="snippet-caption"/></optional>
+    </define>
+    
+  </include>  
+     
+  <define name="head.example">
+    <text/> <!-- to allow ellipsis -->
+    <element name="head">
+      <ref name="z3986.head.attlist"/>
+      <interleave>
+        <text/> <!-- to allow ellipsis -->
+        <ref name="z3986.head.content" />
+      </interleave>  
+    </element>  
+    <text/> <!-- to allow ellipsis -->  
+  </define>
+
+  <define name="z3986.section.content" combine="interleave">
+    <text/> <!-- to allow ellipsis -->
+  </define>  
+  
+  <define name="z3986.body.content" combine="choice">
+    <ref name="z3986.book.content"/>
+  </define>
+  
+  <define name="bodymatter.example">
+    <element name="document">
+      <ref name="z3986.Document.attrib"/>
+      <text/> <!-- to allow ellipsis -->
+      <element name="body">
+        <ref name="z3986.Document.attrib"/>
+        <text/> <!-- to allow ellipsis -->
+        <ref name="z3986.bodymatter"/>
+      </element>          
+    </element>  
+  </define>  
+
+  <define name="mods">
+    <element name="mods" ns="http://www.loc.gov/mods/v3">
+      <attribute name="version" />
+      <zeroOrMore>
+        <ref name="anyModsElement"/>
+      </zeroOrMore>  
+    </element>  
+  </define>
+  
+  <define name="anyModsElement">
+    <element ns="http://www.loc.gov/mods/v3" >
+      <anyName />      
+      <zeroOrMore>
+        <choice>
+          <attribute name="version" />
+          <attribute name="type" />            
+          <text/>
+          <ref name="anyModsElement"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  
+  <define name="book.anymatter">
+    <element name="document">
+      <ref name="z3986.Document.attrib"/>      
+      <ref name="head.example"/>      
+      <ref name="book.body.example"/>
+    </element>  
+  </define>  
+  
+  <define name="book.body.example">
+    <interleave>
+      <text/> <!-- to allow ellipsis -->
+      <element name="body">
+        <text/>
+        <ref name="z3986.Document.attrib"/> 
+        <optional>
+          <element name="frontmatter">
+            <interleave>
+              <text/>
+              <ref name="z3986.frontmatter.content"/>
+            </interleave>
+          </element>
+        </optional>
+        <text/>
+        <optional>
+          <element name="bodymatter">
+            <interleave>
+              <text/>
+              <ref name="z3986.bodymatter.content"/>
+            </interleave>
+          </element>
+        </optional>
+        <text/>
+        <optional>
+          <element name="backmatter">
+            <interleave>
+              <text/>
+              <ref name="z3986.backmatter.content"/>
+            </interleave>
+          </element>
+        </optional>
+        <text/>
+      </element>  
+    </interleave>  
+      
+  </define>  
+  
+</grammar>

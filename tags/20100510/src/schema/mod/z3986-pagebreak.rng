@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+  ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="pagebreak">The pagebreak module</dcterms:title>
+      <dcterms:description>This module defines the [[#z3986.pagebreak]] element and the pagebreak {[[#z3986.pagebreak.value.attrib]]} attribute for retaining print page transition points.</dcterms:description>
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}" />
+      <dcterms:creator>Markus Gylling</dcterms:creator>      
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng"/>
+      <dcterms:requires rdf:resource="z3986-datatypes.rng"/> 
+    </rdf:Description>
+  </rdf:RDF>
+
+  <div>    
+    <define name="z3986.pagebreak">
+      <element name="pagebreak">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="pagebreak">The {pagebreak} element</dcterms:title>
+            <dcterms:description>The {pagebreak} element represents the location of a page break in a print source.</dcterms:description>                  
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.Block.class]]}, {[[#z3986.Phrase.class]]} and {[[#z3986.Section.class]]}</z:context>          
+            <z:content />          
+            <z:attlist>{[[#z3986.Phrase.attrib]], [[#z3986.pagebreak.value.attrib]]}</z:attlist>      
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.pagebreak.attlist"/>
+        <ref name="z3986.pagebreak.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.pagebreak.attlist" combine="interleave">
+      <ref name="z3986.Phrase.attrib"/>
+      <ref name="z3986.pagebreak.value.attrib"/>
+    </define>
+    
+    <define name="z3986.pagebreak.content">
+      <empty/>
+    </define>
+
+    <define name="z3986.pagebreak.value.attrib">
+      <attribute name="value">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="value">The pagebreak {value} attribute</dcterms:title>
+            <dcterms:description>The pagebreak {value} attribute provides the numbering of the page immediately following the {pagebreak} element.</dcterms:description>
+            <z:info>The {value} attribute allows any text string as an identifier to accommodate Arabic, roman and other sequencing conventions.</z:info>                  
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.pagebreak]]}</z:context>          
+            <z:content>{text}</z:content>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="Characters.datatype"/>
+      </attribute>
+    </define>
+
+  </div>
+
+  <div>
+    <a:documentation>pagebreak - default content model contribution</a:documentation>
+    
+    <define name="z3986.Global.extra.class" combine="choice">
+      <ref name="z3986.pagebreak"/>
+    </define>
+               
+  </div>
+
+</grammar>

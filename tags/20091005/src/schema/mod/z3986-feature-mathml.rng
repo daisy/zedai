@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 MathML Feature</x:h1>
+  <!-- TODO does MathML3 allow host languages to override @id and use xml:id? -->
+  <!-- TODO what would mathml3-cds-pragmatic and mathml3-pragmatic do for us? -->
+    
+  <div>
+    <x:h2>Z39.86 MathML feature - modules</x:h2>
+      
+    <include href="mathml3-strict.rng">
+      
+      <!-- defeat start -->        
+      <start combine="choice"><notAllowed/></start>
+      
+      <!-- override Common to make use of xml:id -->
+      <define name="MathML.Common.attrib">
+        <optional>
+	      <ref name="xml.id.attrib"/>
+        </optional>
+        <optional>
+          <attribute name="xref"/>
+        </optional>
+        <zeroOrMore>
+          <ref name="non-mathml-attribs"/>
+        </zeroOrMore>
+      </define>  
+    
+      <!-- override the any attrib hook -->
+      <define name="non-mathml-attribs">
+        <notAllowed/><!-- TODO
+        <ref name="xhtml.role.attrib"/>
+        <ref name="Rdfa.attrib"/> -->
+      </define>
+    
+      <!-- override the anyElement (or datatype conflicts) to use host grammar -->
+      <define name="anyElement">
+        <choice>
+          <ref name="z3986.Flow.class"/>     
+        </choice>
+      </define>
+    </include>
+    
+    <include href="mathml3-presentation.rng" />
+    <!-- 
+    <include href="mathml3-pragmatic.rng" />
+    <include href="mathml3-cds-pragmatic.rng" /> -->
+    
+    <define name="ContInPres" combine="choice">
+      <ref name="ContExp"/>
+    </define>
+         
+  </div>  
+  
+  <div>
+    <x:h2>Z39.86 MathML 3 Feature - default content model contribution</x:h2>
+    
+    <define name="z3986.Text.class" combine="choice">
+      <ref name="math"/>
+    </define>
+    
+    <define name="z3986.Structural.class" combine="choice">
+      <ref name="math"/>
+    </define>
+
+    <define name="z3986.covers.content.class" combine="choice">
+	  <ref name="math" />
+    </define>
+
+    <define name="z3986.spine.content.class" combine="choice">
+      <ref name="math" />
+    </define>
+
+    
+  </div>
+  
+</grammar>

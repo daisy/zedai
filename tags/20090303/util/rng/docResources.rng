@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/2008/docResources/"
+  xmlns="http://relaxng.org/ns/structure/1.0"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <start>
+    <ref name="docResources" />
+  </start>
+
+  <define name="docResources">
+    <element name="docResources">
+      <zeroOrMore>
+        <ref name="include" />
+      </zeroOrMore>
+      <oneOrMore>
+        <ref name="namespace" />
+      </oneOrMore>
+    </element>
+  </define>
+  
+  <define name="include">
+    <element name="include">
+      <ref name="include.attlist" />
+      <ref name="include.content" />
+    </element>
+  </define>
+  <define name="include.attlist">
+    <attribute name="subDrURI">
+      <data type="anyURI" />
+    </attribute>
+  </define>
+  <define name="include.content">
+    <empty />
+  </define>
+
+  <define name="namespace">
+    <element name="namespace">
+      <ref name="namespace.attlist" />
+      <ref name="namespace.content" />
+    </element>
+  </define>
+  <define name="namespace.attlist">
+    <attribute name="nsURI">
+      <data type="anyURI" />
+    </attribute>
+    <optional>
+      <attribute name="defaultDocURL">
+        <data type="anyURI" />
+      </attribute>
+    </optional>
+  </define>
+  <define name="namespace.content">
+    <interleave>
+      <zeroOrMore>
+        <ref name="element" />
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="attribute" />
+      </zeroOrMore>
+    </interleave>
+  </define>
+
+  <define name="element">
+    <element name="element">
+      <ref name="element.attlist" />
+      <ref name="element.content" />
+    </element>
+  </define>
+  <define name="element.attlist">
+    <ref name="ea.attlist" />
+  </define>
+  <define name="element.content">
+    <ref name="ea.content" />
+  </define>
+
+  <define name="attribute">
+    <element name="attribute">
+      <ref name="attribute.attlist" />
+      <ref name="attribute.content" />
+    </element>
+  </define>
+  <define name="attribute.attlist">
+    <ref name="ea.attlist" />
+    <optional>
+      <attribute name="context">
+        <data type="QName"></data>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attribute.content">
+    <ref name="ea.content" />
+  </define>
+
+
+  <define name="ea.content">
+    <empty />
+  </define>
+  <define name="ea.attlist">
+    <attribute name="name">
+      <data type="NCName" />
+      <!-- Sjekke dette -->
+    </attribute>
+    <attribute name="docURI">
+      <data type="anyURI" />
+    </attribute>
+    <optional>
+      <attribute name="include">
+        <choice>
+          <value>yes</value>
+          <value>no</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <!-- <element name="namespaces">
+      <oneOrMore>
+        <element name="namespace">
+          <attribute name="prefix">
+            <data type="NCName"/>
+          </attribute>
+          <data type="anyURI"/>
+        </element>
+      </oneOrMore>
+    </element>
+  </start>-->
+</grammar>

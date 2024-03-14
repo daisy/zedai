@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 quote element module</x:h1>
+    
+  <div>
+    <x:h2>The quote element</x:h2>
+    
+    <x:div id="z3986.quote">
+      <x:p class="description">
+        The <x:code>quote</x:code> element represents a quotation.
+        </x:p>
+     </x:div>
+    
+    <x:h3>The quote element - structural context</x:h3>
+         
+    <define name="z3986.quote.structural">
+      <element name="quote">        
+        <ref name="z3986.quote.structural.attlist"/>
+        <ref name="z3986.quote.structural.content"/>  
+      </element>    
+    </define>
+
+    <define name="z3986.quote.structural.attlist">
+      <ref name="z3986.Structural.attrib"/>
+    </define>
+    
+    <define name="z3986.quote.structural.content">
+      <ref name="z3986.Flow.model"/>
+    </define>  
+
+    <x:h3>The quote element - text context</x:h3>
+         
+    <define name="z3986.quote.text">
+      <element name="quote">        
+        <ref name="z3986.quote.text.attlist"/>
+        <ref name="z3986.quote.text.content"/>  
+      </element>    
+    </define>
+
+    <define name="z3986.quote.text.attlist">
+      <ref name="z3986.Text.attrib"/>
+    </define>
+    
+    <define name="z3986.quote.text.content">
+      <ref name="z3986.Text.model"/>
+    </define>
+    
+  </div>  
+  
+  <div>
+    <x:h2>The quote element - default content model contribution</x:h2>
+    
+    <define name="z3986.Text.class" combine="choice">
+      <ref name="z3986.quote.text"/>
+    </define>
+    
+    <define name="z3986.Structural.class" combine="choice">
+      <ref name="z3986.quote.structural"/>
+    </define>
+         
+  </div>
+
+</grammar>

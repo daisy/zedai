@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml"
+	datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
+	xmlns:s="http://purl.oclc.org/dsdl/schematron">
+
+	<x:h1>The Z3986 Note module</x:h1>
+
+	<div>
+		<x:h2>The note element</x:h2>
+		<x:div id="z3986.note">
+			<x:p class="description">
+				The <x:code>note</x:code> element represents a footnote or a rearnote. A note is always referred to 
+				by a <x:code>noteref</x:code>; this is what differentiates 
+				it from an <x:code>annotation</x:code>.<x:br/>
+				The <x:code>note</x:code> must be referenced from a <x:code>noteref</x:code>.<x:br/>
+				The <x:code>note</x:code> element must not contain <x:code>note</x:code> element descendants.
+			</x:p>
+		</x:div>
+        
+		<define name="z3986.note">
+			<element name="note">
+				<ref name="z3986.note.attlist"/>
+				<ref name="z3986.note.content"/>
+			</element>
+		</define>
+
+		<define name="z3986.note.content">
+			<ref name="z3986.Flow.model"/>
+		</define>
+
+		<define name="z3986.note.attlist">
+			<ref name="z3986.Structural.attrib"/>
+		</define>
+
+	</div>
+
+	<div>
+		<x:h2>The noteref element</x:h2>
+
+		<x:div id="z3986.noteref">
+			<p class="description">A reference to a <x:code>note</x:code>, typically occuring as a 
+				superscripted numeric reference within a flow of text.
+				The <x:code>noteref</x:code> must resolve to a <x:code>note</x:code> in the document.
+			</p>
+		</x:div>
+		<x:div id="z3986.noteref.for.attrib">
+			<x:p>The <span class="markup">for</span> attribute is used to link the note reference to
+				the note. The attribute value must be identical to the value if the <x:span
+					class="markup">xml:id</x:span> attribute of the referenced note.</x:p>
+		</x:div>
+		<define name="z3986.noteref">
+			<element name="noteref">
+				<ref name="z3986.noteref.attlist"/>
+				<ref name="z3986.noteref.content"/>
+			</element>
+		</define>
+
+		<define name="z3986.noteref.attlist">
+			<ref name="z3986.Text.attrib"/>
+			<ref name="z3986.for.attrib"/>
+		</define>
+
+		<define name="z3986.noteref.content">
+			<ref name="z3986.Text.base.model"/>
+		</define>
+	</div>
+
+  <div>
+    <x:h2>The note module - default content model contribution</x:h2>
+    
+	<define name="z3986.Text.class" combine="choice">
+		<ref name="z3986.noteref"/>
+	</define>
+
+	<define name="z3986.Structural.class" combine="choice">
+		<ref name="z3986.note"/>
+	</define>
+  </div>
+
+	<div>
+		<x:h2>The Z3986 Note module - Schematron Assertions</x:h2>
+
+		<!-- ISO Schematron: note must be referenced from a noteref -->
+		<s:rule context="default:note">
+			<s:assert test="some $noteref in //default:noteref satisfies current()/@xml:id eq $noteref/@for">The note must be referenced from a noteref</s:assert>
+		</s:rule>
+
+		<!-- ISO Schematron: noteref must resolve to note -->
+		<s:rule context="default:noteref">
+			<s:assert test="some $note in //default:note satisfies current()/@for eq $note/@xml:id">The noteref must resolve to a note in this document</s:assert>
+		</s:rule>
+		
+		<!-- ISO Schematron: note must not contain note descendants (but may contain noteref descendants) -->
+		<s:rule context="default:note">
+			<s:assert test="not(descendant::default:note)">The note element must not contain note element descendants</s:assert>
+		</s:rule>
+		
+	</div>
+	
+</grammar>

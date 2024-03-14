@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="ssml-datatypes">The SSML Datatypes module</title>
+        <annotation annotates="/">
+            <para role="desc-main">This module defines a set of datatypes related to SSML</para>
+            <simplelist role="def-dependencies"/>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2011-03-28</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div xml:id="datatypes-ssml11">
+        <a:documentation>Datatypes defined in SSML 1.1</a:documentation>
+        <define name="SSML.PhoneticExpression.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="PhoneticExpression">The SSML {PhoneticExpression} datatype</title>
+                <para role="desc-main">A phonetic or phonemic expression.</para>
+            </annotation>
+            <text/>
+        </define>
+        <define name="SSML.alphabet.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="alphabet">The SSML {alphabet} datatype</title>
+                <para role="desc-main">The name of a pronounciation alphabet.</para>
+                <para role="desc-sub">The only valid values for this attribute are {ipa}, values defined in the [[http://www.w3.org/TR/speech-synthesis11/#S3.1.10.1 Pronunciation Alphabet Registry]] and vendor-defined strings of the form {x-organization} or {x-organization-alphabet}.</para>
+                <para role="desc-sub">Consult [[http://www.w3.org/TR/speech-synthesis11/#S3.1.10 Speech Synthesis Markup Language (SSML) Version 1.1]] for further information.</para>
+            </annotation>
+            <choice>
+                <value>ipa</value>
+                <a:documentation>The pronunciation alphabet is [[http://web.uvic.ca/ling/resources/ipa/charts/unicode_ipa-chart.htm IPA]].</a:documentation>
+                <value>x-SAMPA</value>
+                <a:documentation>The pronunciation alphabet is [[http://www.phon.ucl.ac.uk/home/sampa/index.html X-SAMPA]].</a:documentation>
+                <text/>
+            </choice>
+        </define>
+        <define name="SSML.RelativeChange.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="RelativeChange">The SSML {RelativeChange} datatype</title>
+                <para role="desc-main">A relative change expression, as defined in [[http://www.w3.org/TR/speech-synthesis11/#relative_values relative change]].</para>
+            </annotation>
+            <data type="normalizedString">
+                <param name="pattern">[\-+]?([0-9]+(\.[0-9]*)?|\.[0-9]+)(%|st|Hz)</param>
+            </data>
+        </define>
+        <define name="SSML.PitchExpression.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="PitchExpression">The SSML {PitchExpression} datatype</title>
+                <para role="desc-main">A [[http://www.w3.org/TR/speech-synthesis11/#number_values number]] followed by the string 'Hz'.</para>
+            </annotation>
+            <data type="normalizedString">
+                <param name="pattern">[\-+]?([0-9]+(\.[0-9]*)?|\.[0-9]+)Hz</param>
+            </data>
+        </define>
+        <define name="SSML.PitchContour.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="PitchContour">The SSML {PitchContour} datatype</title>
+                <para role="desc-main">A pitch contour expression, as defined in [[http://www.w3.org/TR/speech-synthesis11/#pitch_contour pitch contour]].</para>
+            </annotation>
+            <data type="normalizedString">
+                <param name="pattern">\(([\-+]?([0-9]+(\.[0-9]*)?|\.[0-9]+)%), ?([\-+]?([0-9]+(\.[0-9]*)?|\.[0-9]+)Hz)\)(,\s*\(([\-+]?([0-9]+(\.[0-9]*)?|\.[0-9]+)%), ?([\-+]?([0-9]+(\.[0-9]*)?|\.[0-9]+)Hz)\))*</param>
+            </data>
+        </define>
+        <define name="SSML.NonNegativePercentage.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="NonNegativePercentage">The SSML {NonNegativePercentage} datatype</title>
+                <para role="desc-main">An unsigned [[http://www.w3.org/TR/speech-synthesis11/#number_values number]] immediately followed by "%", as defined in [[http://www.w3.org/TR/speech-synthesis11/#perc_values Non-negative percentage]].</para>
+            </annotation>
+            <data type="normalizedString">
+                <param name="pattern">([0-9]+(\.[0-9]*)?|\.[0-9]+)%</param>
+            </data>
+        </define>
+        <define name="SSML.VolumeExpression.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="VolumeExpression">The SSML {VolumeExpression} datatype</title>
+                <para role="desc-main">A [[http://www.w3.org/TR/speech-synthesis11/#number_values number]] preceded by "+" or "-" and immediately followed by "dB", as defined in [[http://www.w3.org/TR/speech-synthesis11/#S3.2.4 prosody Element]].</para>
+            </annotation>
+            <data type="normalizedString">
+                <param name="pattern">[\-+]?([0-9]+(\.[0-9]*)?|\.[0-9]+)dB|silent|((x-)?(loud|soft))|medium|default</param>
+            </data>
+        </define>
+    </div>
+</grammar>

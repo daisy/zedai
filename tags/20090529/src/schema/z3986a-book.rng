@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://www.daisy.org/z3986/2010/"
+         xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>RELAX NG driver for Z39.86-2010 Part A Book Profile</x:h1>
+  
+  <x:h2>Common Document Model Modules</x:h2>
+
+  <x:h3>Content Model Definitions</x:h3>
+  <include href="./mod/z3986-model-structural.rng" />    
+  <include href="./mod/z3986-model-text.rng" />
+  <include href="./mod/z3986-model-flow.rng" />    
+  
+  <x:h3>Common Elements</x:h3>
+  
+  <include href="./mod/z3986-document.rng">
+    <!-- redefine body content to that of book -->
+    <define name="z3986.body.content">
+      <ref name="z3986.book.content"/>
+    </define>
+  </include>
+  <include href="./mod/z3986-meta.rng"/>
+  <include href="./mod/z3986-link.rng"/>    
+  <include href="./mod/mods-33.rng"/>
+   
+  <include href="./mod/z3986-section.rng"/>
+  <include href="./mod/z3986-h.rng"/>
+  <include href="./mod/z3986-div.rng"/>
+  <include href="./mod/z3986-p.rng"/>
+  <include href="./mod/z3986-separator.rng"/>
+  <include href="./mod/z3986-list.rng"/><!-- TODO break lists to individual modules -->
+  <include href="./mod/z3986-table.rng"/>  
+
+  <include href="./mod/z3986-code.rng"/>    
+  <include href="./mod/z3986-quote.rng"/>
+  <include href="./mod/z3986-object.rng"/>
+  
+  <include href="./mod/z3986-note.rng"/>
+  <include href="./mod/z3986-annotation.rng"/>
+  <include href="./mod/z3986-aside.rng"/>  
+  <include href="./mod/z3986-bridgehead.rng"/>  
+  <include href="./mod/z3986-caption.rng"/>
+  <include href="./mod/z3986-poem.rng"/>  
+  
+  <include href="./mod/z3986-span.rng"/>
+  <include href="./mod/z3986-title.rng"/>
+  <include href="./mod/z3986-line.rng"/>    
+  <include href="./mod/z3986-pagebreak.rng"/> 
+  <include href="./mod/z3986-s.rng"/>
+  <include href="./mod/z3986-w.rng"/>
+  
+  <include href="./mod/z3986-abbr.rng"/>  
+  <include href="./mod/z3986-emph.rng" />
+   
+  <include href="./mod/z3986-date.rng"/>
+  <include href="./mod/z3986-name.rng"/>  
+  <include href="./mod/z3986-place.rng"/>
+  <include href="./mod/z3986-identifier.rng"/>
+  <include href="./mod/z3986-term.rng"/>
+  
+  <include href="./mod/z3986-d.rng"/>
+      
+  <include href="./mod/z3986-sub-sup.rng"/>
+            
+  <x:h3>Common Attributes</x:h3>  
+  <include href="./mod/z3986-core-attrib.rng"/>
+  <include href="./mod/z3986-i18n-attrib.rng"/>
+  <include href="./mod/its-translate-attrib.rng"/>
+  <include href="./mod/z3986-linking-attrib.rng"/>
+  <include href="./mod/z3986-embed-attrib.rng"/>
+  <include href="./mod/z3986-depth-attrib.rng"/>
+  <include href="./mod/rdfa-attrib.rng"/>    
+  <include href="./mod/xhtml-role-attrib.rng"/>    
+  
+  
+      
+  <x:h2>Profile Specific Modules</x:h2>  
+  <include href="./mod/z3986-book.rng"/>
+  <include href="./mod/z3986-toc.rng"/>  
+  <include href="./mod/z3986-cover.rng"/>
+      
+  <x:h2>Optional Feature Modules</x:h2>
+  
+  <div x:id="ssml" x:class="feature">
+    <x:h2>SSML Integration Feature</x:h2>
+    <include href="./mod/z3986-feature-ssml.rng"/>
+  </div>
+
+  <div x:id="its-ruby" x:class="feature">
+    <x:h2>ITS Ruby Feature</x:h2>
+    <include href="./mod/z3986-feature-its-ruby.rng"/>
+  </div>
+  
+  <div x:id="mathml" x:class="feature">
+    <x:h2>MathML 3 Feature</x:h2>
+    <include href="./mod/z3986-feature-mathml.rng"/>
+  </div> 
+
+  <div x:id="select" x:class="feature">
+    <x:h2>Content Selection Feature</x:h2>
+    <include href="./mod/z3986-feature-select.rng"/>
+  </div>
+
+  <div x:id="forms" x:class="feature">
+    <x:h2>Print Forms Feature</x:h2>
+    <include href="./mod/z3986-feature-forms.rng"/>
+  </div>
+  
+  <div x:id="rend" x:class="feature">
+    <x:h2>Source Rendition Feature</x:h2>
+    <include href="./mod/z3986-feature-rend.rng"/>
+  </div>
+  
+  <x:h2>CURIE Enumeration Modules</x:h2>
+  <include href="./mod/z3986-vocab-base.rng"/>
+  <include href="./mod/z3986-vocab-base-aside.rng"/>
+  <include href="./mod/z3986-vocab-base-title.rng"/>
+  <include href="./mod/z3986-vocab-base-anno.rng"/>      
+        
+  <x:h2>Support Modules</x:h2>
+  <include href="./mod/z3986-datatypes.rng" />
+  
+</grammar>

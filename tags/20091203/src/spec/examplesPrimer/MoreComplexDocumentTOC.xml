@@ -1,0 +1,12 @@
+<toc>
+    <h>Table of contents</h>
+    <tocentry>
+        <label>Chapter 1</label>
+        <pageref ref="p1">1</pageref>
+    </tocentry>
+    <tocentry>
+        <label>Chapter 2</label>
+        <pageref ref="p3">3</pageref>
+    </tocentry>
+    <pagebreak xml:id="pR2" value="ii" />
+</toc>

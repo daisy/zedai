@@ -1,0 +1,13 @@
+#summary Notes on the generation of RDF property enums
+
+= Introduction =
+
+The `build-vocab-rng-enums` target in common.xml generates RNG modules containing an enumeration of a set of properties from a given vocab. The intent is to provide a set of "suitable" decoration properties on a per-element basis in the concrete markup model, all to minimize the cost and error rate of semantic inflection.
+
+== Associating properties with elements ==
+In the vocabs, the property `http://www.daisy.org/ns/rdf/property#for` is set on either a Bag or an individual property. The value is a list of RNG names, that map to the element(s) for which the property or bag members are considered suitable.
+
+The `org.daisy.z3986.rng.RNGVocabEnumGenerator` class is used to render the enums. Note that
+ * the rendering is done to the `src` folder
+ * the following naming convention is used for all output `define`s: the string ".role.attrib.content.enum" is appended to the input ID. 
+ * therefore, the element that is subject to this injection needs to reference a define with that name in the appropriate spot (see z3986-annotation.rng for an example).

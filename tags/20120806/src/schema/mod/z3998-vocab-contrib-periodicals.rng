@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+    <define name="z3998.block.role.attrib.content.enum" combine="choice">
+        <choice>
+            <value>advertisement</value>
+            <a:documentation>An advertisement.</a:documentation>
+            <value>commentary</value>
+            <a:documentation>An article or posting containing commentary on a publication or other item.</a:documentation>
+        </choice>
+    </define>
+    <define name="z3998.article.role.attrib.content.enum" combine="choice">
+        <choice>
+            <value>review</value>
+            <a:documentation>An evaluation of a publication or other item.</a:documentation>
+            <value>editorial</value>
+            <a:documentation>An article stating opinions or giving perspectives.</a:documentation>
+            <value>feature</value>
+            <a:documentation>An article which discusses a selected issue in-depth</a:documentation>
+            <value>commentary</value>
+            <a:documentation>An article or posting containing commentary on a publication or other item.</a:documentation>
+            <value>news</value>
+            <a:documentation>An article or group of articles that contains current or recent news of either general interest or on a specific topic</a:documentation>
+        </choice>
+    </define>
+    <define name="z3998.section.role.attrib.content.enum" combine="choice">
+        <choice>
+            <value>classifieds</value>
+            <a:documentation>Classified advertisements.</a:documentation>
+            <value>advertisement</value>
+            <a:documentation>An advertisement.</a:documentation>
+            <value>weather</value>
+            <a:documentation>The weather forecast.</a:documentation>
+            <value>commentary</value>
+            <a:documentation>An article or posting containing commentary on a publication or other item.</a:documentation>
+            <value>news</value>
+            <a:documentation>An article or group of articles that contains current or recent news of either general interest or on a specific topic</a:documentation>
+            <value>sports</value>
+            <a:documentation>The sports section.</a:documentation>
+        </choice>
+    </define>
+</grammar>

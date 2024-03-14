@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://... xml:lang="en" xmlns:z3986="http://www.daisy.org/z3986/2010/vocab/decl/#">
+<head>
+<!-- metadata -->
+</head>
+
+<body>
+<frontmatter>
+<cover>
+<frontcover>
+<h>Rolling Stone</h>
+<...>Issue 685, December 2008</...>
+<p>$7.80 (GST INC), NZ $8.90 (GST INC)</p>
+<ul>
+<li>Bloc Party</li>
+<li>Snow Patrol</li>
+<li>The Killers</li>
+</ul>
+<p>The Dark Side of Pink:
+<blockquote>"Screw anybody who doesn't like it!"</blockquote>
+</p>
+<object src="images/RS685/1.png" srctype="image/png"></object>
+<p>Comedy Bonanza
+<ul>
+<li>Ricky Gervais</li>
+<li>Russell Brand</li>
+<li>Chris Rock</li>
+<li>Shane Warne<noteref ="n1">*</noteref></li>
+</ul>
+& 40 more!
+</p>
+<note xml:id="n1">* May not actually be a comedian. Is pretty funny though ...</note>
+<p><l>Special Report</l>
+<l>The most hated man in Aussie Rock & Roll</l>
+<byline>By Everett True</byline>
+</p>
+</frontcover>
+</cover>
+<pagebreak value="2"/>
+<section role="advertisment">
+<h>Corona Extra</h>
+<p>From where you'd rather be</p>
+<pagebreak value="4"/>
+<section role="advertisment">
+<h>Guitar Hero World Tour</h>
+<p>XBOX 360, Playstation 3, Playstation 2, Wii</p>
+<p>Join together for the definitive Rock & Roll Gaming experience.</p>
+<p>Available as
+<ul>
+<li>The complete band game - includes:</li>
+<ul>
+<li>Guitar Hero World Tour game</li>
+<li>Wireless guitar controller</li>
+<li>Wireless drum controller</li>
+<li>Microphone</li>
+</ul>
+<li>Solo guitar pack - includes:</li>
+<ul>
+<li>Guitar Hero World Tour game</li>
+<li>Wireless guitar controller</li>
+</ul>
+<li>Standalone game</li>
+</ul>
+<p>www.guitarhero.com</p>
+</section>
+<pagebreak value="6"/>
+<section role="advertisment">
+<h>Never hide</h>
+<p>Ray.Ban</p>
+<p>Genuine since 1937.</p>
+</section>
+<pagebreak value="7">
+<section>
+<h><l>RS685</l>
+<l>"All the News That Fits"</l></h>
+<object src="images/RS685/2.png" srctype="image/png">
+<caption>Bullwlinke: Neil Young in a classic shot by Henry Ditz. Both subject and snapper will be in Australia in coming months.</caption> 
+</object>
+<h>Come a Long Way</h>
+<p>They used to talk about the tyrrany of distance - Australin as the arse-end of the world, the island culture forgot. Well, it's not like that anymore, and the abundance of art and music going on over the next few months is proof. Festival season is in full swing, starting with the best of our local acts at Homebake on December 6th and leading into all the action on New Year's eve, a Neil Young-headlined Big Day Out and the first Australian All Tomorrow's Parties festival, curated by Nick Cave. Plus artists like Henry Diltz and Storm Thorgerson will be exhibiting works in coming months too.</p>
+<byline>Cover Photograph by Andrew MacPherson</byline>
+<toc>
+<tocentry>
+<label>Cover Story</label>
+<tocentry>
+<label>The Dark Side of Pink</label>
+<pageref ref="p42">42</pageref>
+<p>After divorcing her husband of two years, Carey Hart, Alecia Beth Moore (better known as Pink) travelled to Stockholm, Sweden, where she found the perfect environment to write her catchartic fifth album - ironically titled <em>Funhouse</em>. The outspoken singer talks about the emotionally draining process of writing the album, her political views (she was a Clinton supporter, but will vote for Obama), her dad, her first gig with Middle Ground (a band she fronted at 13), charitable artists and her favourite philosophy.</p>
+<byline>By Tiffany Bakker</byline>
+</tocentry>
+</tocentry>
+<tocentry>
+<label>Features</label>
+<tocentry>
+<label>Taking Care of Business</label>
+<pageref ref="48">48</pageref>
+<p><em>Quantum of Solace</em>, the 22nd official James Bond film, has Daniel Craig returning to the title role under the direction of Marc Forster and accompanied by beauties Olga Kurylenko and Gemma Arterton.</p>
+<byline>By David Michael</byline>
+</tocentry>
+<tocentry>
+<label>Henry Diltz's Life Through a Lens</label>
+<pageref ref="54">54</pageref>
+<p>The photographer tells the stories behind some of his most famous shots (fronm the cover of <em>Morrison Hotel</em> to Kurt Cobain and Blondie).</p>
+<byline>By Matt Coyte</byline>
+</tocentry>
+<tocenty>
+<label>The Funny Business>
+<pageref ref="59">59</pageref>
+<p>The greatest comedy stars tell it how it is. Chris Rock, Don Rickles, Tina Fey, Robin Williams, Sarah Silverman, Billy Crystal, Ricky Gervais, Russell Brand and many more ...</p>
+</tocentry>
+<tocentry>
+<label>American Warlord</label>
+<pageref ref="86">86</pageref>
+<p>After Chucky, an ordinary teenager from Orlando, went to live with his father Charles Taylor, one of Africa's most brutal dictators, he transformed into a merciless man and ended up as the first U.S. citizen on trial for torture abroad.</p>
+<byline>By Johnny Dwyer</byline>
+</tocentry>
+</tocentry>
+<tocentry>
+<label>Rock & Roll</label>
+<tocentry>
+<label>Guitar-Hero Summit</label>
+<pageref ref="13">13</pageref>
+<p>Jack White, the Edge and Jimmy Page got together to film the rock documentary <em>It Might Get Loud</em>, which features the trio talking shop and shredding tunes like "Whole Lotta Love".</p>
+</tocentry>
+<tocentry>
+<label>The Killers</label>
+<pageref ref="16">16</pageref>
+<p>Brandon Flowers spills the beans on their disco-tinted new album.</p>
+</tocentry>
+<tocentry>
+<label>Guy Ritchie</label>
+<pageref ref="26">26</pageref>
+<p>The British director returns to form (and to his beloved London underground) with his lates movie, <em>RockNRolla</em>.</p>
+<byline>By Joel McIver</p>
+</tocentry>
+</tocentry>
+<tocentry>
+<label>Q&A</label>
+<tocentry>
+<label>Paul Kelly talks about "Volume II"<label>
+<pageref ref="18">18</pageref>
+<p>Plus: Slash and <em>Rock Band</em>.</p>
+</tocentry>
+</tocentry>
+<tocentry>
+<label>On the Road</label>
+<tocentry>
+<label>My Bloody Valentine's Return</label>
+<pageref ref="22">22</pageref>
+<p>Plus: Martha Wainwright and Parkway Drive</p>
+</tocentry>
+</tocentry>
+<tocentry>
+<label>Movies</label>
+<tocentry>
+<label>"Body of Lies"</label>
+<pageref ref="110">110</pageref>
+<p>Plus: <em>How to Lose Friends and Alienate People</em>.</p>
+</tocentry>
+</tocentry>
+<tocentry>
+<label>National Affairs</label>
+<tocentry>
+<label>Is There Anything Left to Say About Music</label>
+<pageref ref="37">37</pageref>
+<p>While defending the value of music journalism, a British rock critic has made enemies of Silverchair and half of Australia.</p>
+<byline>By Everett True</byline>
+<object src="images/RS685/3.png" srctype="image/png"></object>
+</tocentry>
+</tocentry>
+<tocentry>
+<label>Letters</label>
+<pageref ref="8">8</pageref>
+</tocentry>
+<tocentry>
+<label>On Vynil</label>
+<pageref ref="103">103</pageref>
+</tocentry>
+<tocentry>
+<label>Top Ten</label>
+<pageref ref="114">114</pageref>
+</tocentry>
+</toc>
+</frontmatter>
+
+<bodymatter>
+<pagebreak value="8"/>
+<section>
+<h><l>Correspondence</l>
+<l>Love Letters & Advice</l></h>
+<article>
+<h>Editor's notes</h>
+<p>It's not often that you get the chance to celebrate a milestone in the life of a magazine that is as much a part of the fabric of popular culture as ROLLING STONE - and it's even rarer that you get to celebrate it with the man who started it all. In this age of media buy-outs  and surprise mergers, ROLLING STONE founder Jann S. Wenner remains as personally involved with the magazine that he started as humanly possible, even after 40 years in the hot seat. He proved this by passing up the opportunity to interview Barack Obama in person so he could kick start a new phase for ROLLING STONE Australia at our star-studded revival party.</p>
+<p>As anyone who saw Jann on <em>Enough Rope with Andrew Denton</em>, music channel Max or any of his numerous other TV appearances will confirm, Jann's enthusiasm for music and the magazine that unflinchingly covers it remains undiminished.</p>
+<p>Along with some of Australia's best loved musicians and industry types, Jann helped usher in a new chapter in ROLLING STONE's Australian story. With a newly invigorated focus on local issues and talent, and a brand new web site on the horizon, ROLLING STONE is better placed than ever to help out the music world - for fans and artists alike.</p>
+<p>I'd like to say a big thanks to Jann for gracing us with his presence, and everyone who performed, filmed and generally helped on the night, and to the talented team who put together ROLLING STONE Australia each month.</p>
+<byline>--Matt Coyte, Editor-in-chief</byline>
+</article>
+<article>
+<h>Deleted Scenes</h>
+<p>It was great to see Rolling Stone founder Jann Wenner interviewed on <em>Enough Rope</em>. I can't think of a better pairing, Denton (who in my opinion is one of our contry's best interviewers) interviewing one of America's finest journalists. Their lively banter was engaging and essential viewing but I thought it could have gone for longer. Any ideas on how I might get my hands on the unedited version? C'mon Auntie! Put together a Jann Wenner Redux for us hardcore fans. You could show it on ABC2!</p>
+<byline>Phil Graves, Canberra, ACT</p>
+</article>
+<article>
+<h>Taking it Easy</h>
+<p>Congratulations on your latest cover! (RS684). The Easybeats is one of Australia's most important (and underrated) bands. I'm glad you're educating the youngsters that think Sneaky Sound System or the Presets are the only Australian bands worth listening to. By the way, I thought the Living End did a fantastic job covering "Guitar Band" on the tribute album.</p>
+<byline>Stan Youts, Melbourne, Vic.</byline>
+</article>
+<article>
+<h>Blasphemer</h>
+<p>According to all Australian magazines, every time AC/DC releases a new album it is a masterpiece. They hav ebeen recording the same dull album over an dover again! I think Airbourne's debut is better than anything AC/DC has done in years.</p>
+<byline>Kenneth Williams, Sydney, NSW</byline>
+</article>
+<article>
+<h>Oasis vs. Even</h>
+<p>Why do you persist in printing articles on Oasis? ("Still Fixin' for a Fight", RS 684). They haven't released a decent tune since 1995! Readers looking for killer tunes with a retro influence should check out the new album from Even. Been out six months and you bastards still haven't reviewed it!</p>
+<byline>Tony Shaw, Sydney, NSW</byline>
+</article>
+<article>
+<h>We Know Where You Are</h>
+<p>I was shocked when I read the "Under My Skin" article (RS684). I'm still having nightmares about someone implanting a chip in me and being able to follow my every move. I find the idea of people being monitored way scary, and whether it is a chip in my arm or a bug in my mobile phone, I think it is the worst thing imaginable.</p>
+<byline>Linda Reed, Gold Coast, Qld.</byline>
+</article>
+<section>
+<h>Contact Us</h>
+<p>POST: Level 18, 66-68 Goulburn Street SYDNEY NSW 2000</p>
+<p>EMAIL: rsletters@acpmagazines.com.au</p>
+<p>Please include an address and telephone number. Letters may be edited.</p>
+<p>TO SUBSCRIBE ONLINE: www.rollingstone.magshop.com.au</p>
+<p>PHONE (toll free) 136 116</p>
+</section>
+<section>
+<!-- publication and contributor details, much of which may be metadata ... will also include many concepts in the "From CMOS Journals" section of Kate and Marisa's list -->
+</section>
+<pagebreak value ="9"/>
+<section role="advertisment">
+<h>Theres a new smoothie in town</h>
+<p>A delicious real fruit and dairy conmbo, RISE tastes great and fills you up.</p>
+<p>Choose from Mango, Banana & Honey or Berry Tropical.</p>
+<p>You'll find RISE keeping cool in a fridge near you. SHAKE IT UP & ENJOY.</p>
+</bodymatter>
+
+</body>
+</html>

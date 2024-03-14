@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:xsdp="http://www.daisy.org/ns/rng-preprocess/xsd"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="citation">The citation module</dcterms:title>
+      <dcterms:description>This module defines the {[[#z3986.citation]]} element for marking references
+        to other works.</dcterms:description>
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}"/>
+      <dcterms:creator>Markus Gylling</dcterms:creator>
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng"/>
+      <dcterms:requires rdf:resource="z3986-linking.rng"/>
+    </rdf:Description>
+  </rdf:RDF>
+
+  <div>
+    <define name="z3986.citation">
+      <element name="citation">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="citation">The {citation} element</dcterms:title>
+            <dcterms:description>The {citation} element represents an author's acknowledgment of the
+              original author and/or work of a directly or indirectly borrowed idea, quote or other
+              resource.</dcterms:description>
+            <z:info>Citations most often occur in conjunction with epigraphs, quotes, illustrations,
+              charts and diagrams.</z:info>
+            <z:info>The {citation} can be explicitly linked to the work being cited using the
+              {[[#z3986.ref]]} element, nested within the {citation} element. To reference a work that is
+              represented as an {entry} in a {[[#z3986.bibliography]]} of the current document, the
+              {[[#z3986.ref.attrib]]} attribute on the nested {ref} element must be used. To
+              reference resources other than {bibliography} entries, including resources external to
+              the current document, the {[[#xlink.href.attrib]]} attribute on the nested {ref} element
+              must be used.</z:info>
+            <z:info>The optional {[[#z3986.ref.attrib]]} attribute on the {citation} element is used to
+              establish an explicit association between the citation and the passage (epigraph, quote,
+              etc.) that constitutes the quotation. Note that no other means for establishing this association
+              is available; the placement of the {citation}, for example, does not imply the location of the
+              passage being cited.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>{[[#z3986.Phrase.class]]}</z:context>
+            <z:content>{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</z:content>
+            <z:attlist>{[[#z3986.Phrase.attrib]], ([[#z3986.ref.attrib]]|[[#xlink.attrib]])?}</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.citation.attlist"/>
+        <ref name="z3986.citation.content"/>
+        <sch:rule context="default:citation">
+          <sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0"
+            >The {citation} element must neither be empty nor contain only whitespace.</sch:assert>
+        </sch:rule>
+        <sch:rule context="default:citation//default:ref[@for]">
+          <sch:assert test="some $entry in //default:bibliography/default:entry satisfies current()/@for eq $entry/@xml:id "
+            >The {ref} attribute on the {ref} element when nested inside a {citation} element must refer to an {entry} in a {bibliography}.</sch:assert>
+        </sch:rule>
+      </element>
+    </define>
+
+    <define name="z3986.citation.attlist">
+      <ref name="z3986.Phrase.attrib"/>
+      <optional>
+        <choice>
+          <ref name="z3986.ref.attrib"/>
+          <ref name="xlink.attrib"/>
+        </choice>
+      </optional>
+    </define>
+
+    <define name="z3986.citation.content">
+      <ref name="z3986.Phrase.Text.mix.model"/>
+    </define>
+
+    <div>
+      <a:documentation>citation - default content model contribution</a:documentation>
+      <define name="z3986.Phrase.core.class" combine="choice">
+        <ref name="z3986.citation"/>
+      </define>
+    </div>
+
+  </div>
+
+</grammar>

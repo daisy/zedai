@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+  ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:xsdp="http://www.daisy.org/ns/rng-preprocess/xsd"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="section">The section module</dcterms:title>
+      <dcterms:description>This module defines the {[[#z3986.section]]} element that enables the
+      representation of structural divisions within a document.</dcterms:description>
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}"/>
+      <dcterms:creator>Markus Gylling</dcterms:creator>
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-headings.rng"/>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng"/>
+    </rdf:Description>
+  </rdf:RDF>
+
+  <div>
+    <define name="z3986.section">
+      <element name="section">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="section">The {section} element</dcterms:title>
+            <dcterms:description>The {section} element represents a structural division in a document.</dcterms:description>
+            <z:info>A structural division is defined as any grouping of content that
+              has significance to the hierarchy of the document, which can include major divisions like parts, sections, chapters, etc.
+              or minor divisions like author bios.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>As a parent to, or following on the sibling axis of members of [[#z3986.Block.class]]</z:context>
+            <z:content z:alterability="The content model must not allow more than one instance of the {[[#z3986.h]]} heading element.">{([[#z3986.h]]? &amp;amp; ([[#z3986.Block.class]])*), ([[#z3986.Section.class]])*}</z:content>
+            <z:attlist>[[#z3986.Section.attrib]]</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.section.attlist"/>
+        <ref name="z3986.section.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.section.attlist">
+      <ref name="z3986.Section.attrib"/>
+    </define>
+
+    <define name="z3986.section.content"> <!-- TODO xsdp:replace="z3986.section.content.xsd" -->
+      <choice>
+        <group>
+          <interleave>            
+            <ref name="z3986.h"/>            
+            <zeroOrMore>   
+              <ref name="z3986.Global.extra.class"/>
+            </zeroOrMore>  
+          </interleave>
+        </group>
+        <group>
+          <interleave>
+            <optional>
+              <ref name="z3986.h"/>
+            </optional>
+            <oneOrMore>
+                <ref name="z3986.section.Block.content.class"/>                  
+            </oneOrMore>
+            <zeroOrMore>
+              <ref name="z3986.Global.extra.class"/>                  
+            </zeroOrMore>
+          </interleave>          
+          <interleave>
+            <zeroOrMore>
+              <ref name="z3986.section.Section.content.class"/>               
+            </zeroOrMore>
+            <zeroOrMore>
+              <ref name="z3986.Global.extra.class"/>
+            </zeroOrMore>
+          </interleave> 
+        </group>
+        <group>
+          <interleave>
+            <optional>
+              <ref name="z3986.h"/>
+            </optional>
+            <zeroOrMore>
+              <ref name="z3986.Global.extra.class"/>
+            </zeroOrMore> 
+          </interleave>
+          <interleave>
+            <oneOrMore>
+              <ref name="z3986.section.Section.content.class"/>
+            </oneOrMore>
+            <zeroOrMore>
+              <ref name="z3986.Global.extra.class"/>
+            </zeroOrMore>
+          </interleave>  
+        </group>  
+      </choice>  
+    </define>  
+    
+    <define name="z3986.section.Section.content.class" combine="choice">      
+      <choice>
+        <!-- dont add Global.extra ref here as we need to be able to ascertain
+          that this class only contains section type elements -->
+        <ref name="z3986.Section.class"/>                   
+      </choice>  
+    </define>
+    
+    <define name="z3986.section.Block.content.class" combine="choice">
+      <choice>
+        <!-- dont add Global.extra ref here as we need to be able to ascertain
+          that this class only contains block type elements -->
+        <ref name="z3986.Block.class"/>        
+      </choice>  
+    </define>
+    
+<!--
+    <define name="z3986.section.content" xsdp:replace="z3986.section.content.xsd">
+      <choice>
+        <group>
+          <interleave>
+            <optional>
+              <ref name="z3986.h"/>
+            </optional>
+            <oneOrMore>
+              <choice>
+                <ref name="z3986.section.block.content"/>
+              </choice>
+            </oneOrMore>
+          </interleave>
+          <zeroOrMore>
+            <choice>
+              <ref name="z3986.Section.class"/>
+            </choice>
+          </zeroOrMore>
+          <zeroOrMore>
+            <ref name="z3986.section.extra"/>
+          </zeroOrMore>
+        </group>  
+        <group>
+          <interleave>
+            <optional>
+              <ref name="z3986.h"/>
+            </optional>
+            <zeroOrMore>
+              <choice>
+                <ref name="z3986.section.section.content" />
+              </choice>
+            </zeroOrMore>
+          </interleave>
+          <oneOrMore>
+            <choice>
+              <ref name="z3986.Section.class"/>
+            </choice>
+          </oneOrMore>
+          <zeroOrMore>
+            <ref name="z3986.section.extra"/>
+          </zeroOrMore>
+        </group>
+      </choice>
+    </define>
+-->
+
+  </div>
+
+  <div>
+    <a:documentation>section - default content model contribution</a:documentation>
+    <define name="z3986.Section.core.base.class" combine="choice">      
+      <ref name="z3986.section"/>
+    </define>  
+  </div>
+  
+</grammar>

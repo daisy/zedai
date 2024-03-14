@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" ns="http://www.daisy.org/z3986/2005/ncx/"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    
+    <!-- TODO SCH no labels with same xml lang -->
+    
+    <define name="ncx.target.list">
+        <a:documentation>Represents a single navigation target.</a:documentation>
+        <element name="target">
+            <ref name="ncx.target.attlist"/>
+            <ref name="ncx.target.list.content"/>
+        </element>
+    </define>
+    
+    <define name="ncx.target.tree">
+        <a:documentation>Represents a single navigation target.</a:documentation>
+        <element name="target">
+            <ref name="ncx.target.attlist"/>
+            <ref name="ncx.target.tree.content"/>
+        </element>
+    </define>
+    
+    <define name="ncx.target.attlist" combine="interleave">                   
+        <ref name="ncx.Common.attrib"/>
+        <ref name="ncx.href.attrib"/>
+        <optional>
+            <ref name="ncx.targetRole.attrib"/>
+        </optional>    
+    </define>
+    
+    <define name="ncx.href.attrib">
+        <a:documentation>Contains the actual link expression of this target. 
+            The default datatype of this attribute is xsd:anyURI; NCX Profile composers may override 
+            this datatype.</a:documentation>
+        <attribute name="href">
+            <ref name="ncx.target.href.attrib.content" />
+        </attribute>    
+    </define>    
+    
+    <define name="ncx.target.href.attrib.content">
+        <ref name="URI.datatype" />
+    </define>    
+            
+    <define name="ncx.target.list.content">
+        <ref name="ncx.target.label.slot"/>
+    </define>
+    
+    <define name="ncx.target.tree.content">
+        <ref name="ncx.target.label.slot"/>        
+        <zeroOrMore>
+            <ref name="ncx.target.tree" />
+        </zeroOrMore>
+    </define>
+    
+    <define name="ncx.target.label.slot">
+        <notAllowed />
+    </define>
+   
+</grammar>

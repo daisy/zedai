@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="citation">The citation module</title>
+        <annotation annotates="/">
+            <para role="desc-main">This module defines the {[[#z3986.citation]]} element for marking references to other works.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3986-global-classes.rng"/>
+                <member xlink:href="z3986-linking.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2011-01-03</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="z3986.citation.block" xml:id="z3986.citation.block">
+            <element name="citation">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="citation (block)">The {citation} element (Block)</title>
+                    <para role="desc-main" xlink:role="inherit-common" xlink:href="z3986.citation"/>
+                    <para role="desc-sub">The {Block} variant is an adaptation for use where the citation is offset from the quoted material.</para>
+                    <para role="desc-sub" xlink:role="inherit-common" xlink:href="z3986.citation"/>
+                    <synopsis role="def-context">{[[#z3986.Block.class]]}</synopsis>
+                    <synopsis role="def-content">{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</synopsis>
+                    <synopsis role="def-attlist" condition="The attribute model must allow either the {[[#z3986.ref.attrib ref]]} or {[[#xlink.attrib]]} attributes.">{[[#z3986.Phrase.attrib]], ([[#z3986.ref.attrib]]|[[#xlink.attrib]])?}</synopsis>
+                </annotation>
+                <ref name="z3986.citation.block.attlist"/>
+                <ref name="z3986.citation.block.content"/>
+            </element>
+        </define>
+        <define name="z3986.citation.block.attlist" xml:id="z3986.citation.attlist">
+            <ref name="z3986.Block.attrib"/>
+            <optional>
+                <choice>
+                    <ref name="z3986.ref.attrib"/>
+                    <ref name="xlink.attrib"/>
+                </choice>
+            </optional>
+        </define>
+        <define name="z3986.citation.block.content" xml:id="z3986.citation.content">
+            <ref name="z3986.Phrase.Text.mix.model"/>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.citation" xml:id="z3986.citation">
+            <element name="citation">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="citation (phrase)">The {citation} element (Phrase)</title>
+                    <para role="desc-main" xlink:role="inherit-common" xlink:href="z3986.citation"/>
+                    <para role="desc-sub">The {Phrase} variant is an adaptation for use where citations are included inline with the quoted material.</para>
+                    <para role="desc-sub" xlink:role="inherit-common" xlink:href="z3986.citation"/>
+                    <para role="desc-sub">Parentheses, brackets and other enclosing characters should be included within the {citation} element if they must be retained in the file. The use of CSS for appending these characters is recommended, however, for the flexibility it allows to change the characters depending on the desired output.</para>
+                    <synopsis role="def-context">{[[#z3986.Phrase.class]]}</synopsis>
+                    <synopsis role="def-content">{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</synopsis>
+                    <synopsis role="def-attlist" condition="The attribute model must allow the {[[#z3986.ref.attrib ref]]} and {[[#xlink.attrib]]} attributes as exclusive choices.">{[[#z3986.Phrase.attrib]], ([[#z3986.ref.attrib]]|[[#xlink.attrib]])?}</synopsis>
+                    <para role="def-specialization">This element is a specialization of the {[[#z3986.ref]]} element.</para>
+                </annotation>
+                <ref name="z3986.citation.attlist"/>
+                <ref name="z3986.citation.content"/>
+                <sch:rule context="default:citation">
+                    <sch:assert test="normalize-space(.) or *">The {citation} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+                <sch:rule context="default:citation//default:ref[@ref]">
+                    <sch:assert test="some $entry in //default:bibliography/default:entry satisfies current()/@ref eq $entry/@xml:id ">The {ref} attribute on the {ref} element must refer to an {entry} in a {bibliography} when nested inside a {citation} element.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="z3986.citation.attlist" xml:id="z3986.citation.attlist">
+            <ref name="z3986.Phrase.attrib"/>
+            <optional>
+                <choice>
+                    <ref name="z3986.ref.attrib"/>
+                    <ref name="xlink.attrib"/>
+                </choice>
+            </optional>
+        </define>
+        <define name="z3986.citation.content" xml:id="z3986.citation.content">
+            <ref name="z3986.Phrase.Text.mix.model"/>
+        </define>
+    </div>
+    <div>
+        <a:documentation>citation - default content model contribution</a:documentation>
+        <define name="z3986.Block.core.class" combine="choice">
+            <ref name="z3986.citation.block"/>
+        </define>
+        <define name="z3986.Phrase.variant.class" combine="choice">
+            <ref name="z3986.citation"/>
+        </define>
+    </div>
+</grammar>

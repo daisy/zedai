@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen SCHSchema="../../src/schema/_z3998-all.rng"?>
+<?oxygen RNGSchema="../../src/schema/_z3998-all.rng" type="xml"?>
+<?xml-stylesheet type="text/css" href="../../src/css/z3998-base.css"?>
+<document xmlns="http://www.daisy.org/ns/z3998/authoring/" xml:lang="en">
+    <head>
+        <meta property="null">head/meta text node content</meta>
+        <definition>head/definition text node content</definition>
+        <expansion>head/expansion text node content</expansion>
+    </head>
+    <body>
+        <h>Z39.98-AI CSS Test and Development</h>
+        <section>
+            <h>Headings and sections [depth 2]</h>
+            <p>This is a para in a section at depth 2</p>
+            <section>
+                <h>Headings and sections [depth 3]</h>
+                <p>This is a para in a section at depth 3.</p>
+                <hd>This is a hd at level 3.</hd>
+                <p>This is a para in a section at depth 3.</p>                
+                <section>
+                    <h>Headings and sections [depth 4]</h>
+                    <p>This is a para in a section at depth 4</p>
+                    <section>
+                        <h>Headings and sections [depth 5]</h>
+                        <p>This is a para in a section at depth 5</p>
+                        <section>
+                            <h>Headings and sections [depth 6]</h>
+                            <p>This is a para in a section at depth 6</p>
+                            <section>
+                                <h>Headings and sections [depth 7]</h>
+                                <p>This is a para in a section at depth 7</p>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <section>
+        <h>Lists</h>
+            <section>
+                <h>Lists not using the rend feature</h>
+                <p>Unordered flat list:</p>
+                <list type="unordered">
+                    <item>Unordered item one</item>
+                    <item>Unordered item two</item>
+                    <item>Unordered item three</item>
+                </list>
+                <p>Unordered nested list:</p>
+                <list type="unordered">
+                    <item>Unordered item one
+                        <list>
+                            <item>Unordered item one > one </item>
+                            <item>Unordered item one > two </item>
+                            <item>Unordered item one > three </item>
+                        </list>
+                    </item>
+                    <item>Unordered item two</item>
+                    <item>Unordered item three</item>
+                </list>
+                <p>Ordered flat list:</p>
+                <list type="ordered">
+                    <item>Ordered item one</item>
+                    <item>Ordered item two</item>
+                    <item>Ordered item three</item>
+                </list>
+                <p>Ordered nested list:</p>
+                <list type="ordered">
+                    <item>Ordered item one
+                        <list>
+                            <item>Ordered item one > one </item>
+                            <item>Ordered item one > two </item>
+                            <item>Ordered item one > three </item>
+                        </list>
+                    </item>
+                    <item>Ordered item two</item>
+                    <item>Ordered item three</item>
+                </list>
+            </section>
+        </section>
+        <section>
+            <h>Tables</h>
+            <p>Simple 2x2 table:</p> 
+            <table>
+                <tr><th>Header 1</th><th>Header 2</th></tr>
+                <tr><td>Row 1 cell 1</td><td>Row 1 cell 2</td></tr>
+            </table>
+            <p>Table with thead, tbody and tfoot:</p>
+            <table>
+                <thead>
+                    <tr><th>thead th 1</th><th>thead th 2</th><th>thead th 3</th></tr>
+                </thead>
+                <tfoot>
+                    <tr><th>tfoot th 1</th><th>tfoot th 2</th><th>tfoot th 3</th></tr>
+                </tfoot>
+                <tbody>
+                    <tr><td>tbody cell 1</td><td>tbody cell 2</td><td>tbody cell 2</td></tr>
+                </tbody>                
+            </table>
+            <p>Table where first td cell has colspan 2:</p>
+            <table>
+                <tr><th>Header 1</th><th>Header 2</th><th>Header 3</th></tr>
+                <tr><td colspan="2">data cell column 1+2</td><td>data cell column 3</td></tr>
+            </table>
+        </section>
+        <section>
+            <h>Generated content for pagebreak</h>
+            <p>A &lt;pagebreak/&gt; with the generated content seven: <pagebreak value="7"/>.</p>
+        </section>
+        <section>
+            <h>Object</h>
+            <p>A simple object element with no object children:</p>
+            <object src="./genericdocument/valid/valentin.jpg" srctype="image/jpeg">
+                <p>This is the fallback text for the image.</p>
+            </object>
+        </section>
+    </body>
+</document>

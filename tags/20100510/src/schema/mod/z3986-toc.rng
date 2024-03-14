@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+	ns="http://www.daisy.org/ns/z3986/authoring/"
+	xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	xmlns:dcterms="http://purl.org/dc/terms/"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+	xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+	xmlns:xsdp="http://www.daisy.org/ns/rng-preprocess/xsd">
+
+	<rdf:RDF>
+		<rdf:Description>
+			<dcterms:title z:short="toc">The table of contents module</dcterms:title>
+			<dcterms:description>This module defines the {[[#z3986.toc]]} element and descendants for representing tables of various content types.</dcterms:description>      			
+			<dcterms:publisher>DAISY Consortium</dcterms:publisher>
+			<dcterms:license rdf:resource="{LICENSE_TODO}" />
+			<dcterms:creator>Markus Gylling</dcterms:creator>      
+			<dcterms:issued>2009-12-21</dcterms:issued>
+			<dcterms:requires rdf:resource="z3986-global-classes.rng"/>
+			<dcterms:requires rdf:resource="z3986-headings.rng"/> 
+			<dcterms:requires rdf:resource="z3986-p.rng"/> 
+			<dcterms:requires rdf:resource="z3986-block.rng"/> 
+			<dcterms:requires rdf:resource="z3986-linking.rng"/>
+			<dcterms:requires rdf:resource="z3986-aside.rng"/>			
+		</rdf:Description>
+	</rdf:RDF>
+		
+	<div>
+		<define name="z3986.toc">
+			<element name="toc">
+				<rdf:RDF>
+					<rdf:Description>
+						<dcterms:title z:short="toc">The {toc} element</dcterms:title>
+						<dcterms:description>The {toc} element represents a single table of contents in a document.</dcterms:description>
+						<z:info>The term "table of contents" is a generalization encompassing all of tables of contents, tables of figures, tables of maps and similar guides to the contents of a document.</z:info>
+						<dcterms:isRequiredBy rdf:resource="."/>                     
+						<z:context>{[[#z3986.Section.class]]}</z:context>          
+						<z:content>{[[#z3986.h]]?, [[#z3986.toc.entry]]*, [[#z3986.toc.section]]*}</z:content>          
+						<z:attlist>{[[#z3986.Section.attrib]]}</z:attlist>      
+					</rdf:Description>
+				</rdf:RDF>
+				<ref name="z3986.toc.attlist"/>
+				<ref name="z3986.toc.content"/>
+			</element>
+		</define>
+
+		<define name="z3986.toc.attlist">
+			<ref name="z3986.Section.attrib"/>
+		</define>
+
+		<define name="z3986.toc.content" xsdp:replace="z3986.toc.content.xsd"> 
+			<interleave>
+				<optional>
+					<ref name="z3986.h"/>
+				</optional>
+				<zeroOrMore>
+					<ref name="z3986.toc.extra.class"/>
+				</zeroOrMore>
+			</interleave>
+			<choice>
+				<!-- TODO @Matt seems we can simplify this choice? -->
+				<group>					
+					<interleave>
+						<oneOrMore>
+							<ref name="z3986.toc.entry"/>
+						</oneOrMore>
+						<zeroOrMore>
+							<ref name="z3986.toc.extra.class"/>
+						</zeroOrMore>
+					</interleave>
+					<zeroOrMore>
+						<ref name="z3986.toc.section"/>
+					</zeroOrMore>
+				</group>
+				<group>					
+					<interleave>
+						<zeroOrMore>
+							<ref name="z3986.toc.entry"/>
+						</zeroOrMore>
+						<zeroOrMore>
+							<ref name="z3986.toc.extra.class"/>
+						</zeroOrMore>
+					</interleave>
+					<oneOrMore>
+						<ref name="z3986.toc.section"/>
+					</oneOrMore>
+				</group>
+			</choice>
+		</define>
+
+		<define name="z3986.toc.content.xsd">
+			<optional>
+				<ref name="z3986.h"/>
+			</optional>	
+			<zeroOrMore>
+				<ref name="z3986.toc.extra.class"/>
+				<ref name="z3986.toc.entry"/>
+			</zeroOrMore>
+			<zeroOrMore>
+				<ref name="z3986.toc.section"/>
+			</zeroOrMore>
+		</define>	
+
+		<define name="z3986.toc.extra.class" combine="choice">
+			<choice>
+				<ref name="z3986.toc.aside"/>
+				<ref name="z3986.Block.core.base.class"/>
+				<ref name="z3986.Global.extra.class"/>
+			</choice>				
+		</define>
+
+	</div>
+
+	<div>				
+		<define name="z3986.toc.entry">
+			<element name="entry">
+				<rdf:RDF>
+					<rdf:Description>
+						<dcterms:title z:short="entry (toc)">The toc {entry} element</dcterms:title>
+						<dcterms:description>The toc {entry} element represents a single entry in a {[[#z3986.toc table of contents]]}, including all related child entries.</dcterms:description>
+						<dcterms:isRequiredBy rdf:resource="."/>
+						<z:context>{[[#z3986.toc]]}</z:context>
+						<z:content>{[[#z3986.toc.label]], [[#z3986.ref]]?, [[#z3986.toc.entry]]*}</z:content>
+						<z:attlist>{[[#z3986.Block.attrib]]}</z:attlist>
+					</rdf:Description>
+				</rdf:RDF>
+				<ref name="z3986.toc.entry.attlist"/>
+				<ref name="z3986.toc.entry.content"/>
+				<!-- TODO SCH toc//entry must resolve to pagebreak (?) -->
+			</element>	
+		</define>	
+		
+		<define name="z3986.toc.entry.attlist">
+			<ref name="z3986.Block.attrib"/>
+		</define>
+		
+		<define name="z3986.toc.entry.content">
+			<ref name="z3986.toc.entry.main" />
+			<ref name="z3986.toc.entry.sub" />
+			<zeroOrMore>
+				<ref name="z3986.toc.entry" />
+			</zeroOrMore>
+		</define>
+		
+		<!-- the main toc content -->
+		<define name="z3986.toc.entry.main">
+			<ref name="z3986.toc.label" />
+			<optional>
+				<ref name="z3986.ref" />
+			</optional>
+		</define>
+		
+		<!-- other block level content within the tocentry -->
+		<define name="z3986.toc.entry.sub">
+			<zeroOrMore>
+				<ref name="z3986.toc.extra.class" />
+			</zeroOrMore>
+		</define>
+		
+		<define name="z3986.toc.label">
+			<element name="label">
+				<rdf:RDF>
+					<rdf:Description>
+						<dcterms:title z:short="label (toc)">The toc {label} element</dcterms:title>
+						<dcterms:description>The toc {label} element represents the text label of a table of contents {[[#z3986.toc.entry]]}.</dcterms:description>
+						<dcterms:isRequiredBy rdf:resource="."/>
+						<z:context>{[[#z3986.toc]]}</z:context>
+						<z:content>{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</z:content>
+						<z:attlist>{[[#z3986.Block.attrib]]}</z:attlist>
+					</rdf:Description>
+				</rdf:RDF>
+				<ref name="z3986.toc.label.attlist" />
+				<ref name="z3986.toc.label.content" />
+			</element>
+		</define>
+		
+		<define name="z3986.toc.label.attlist">
+			<ref name="z3986.Phrase.attrib" />
+		</define>
+		
+		<define name="z3986.toc.label.content">
+			<ref name="z3986.Phrase.Text.mix.model" />
+		</define>
+	</div>
+	
+	<div>				
+		<define name="z3986.toc.section">
+			<element name="section">
+				<rdf:RDF>
+					<rdf:Description>
+						<dcterms:title z:short="section (toc)">The toc {section} element</dcterms:title>
+						<dcterms:description>The toc {section} element represents a subdivision within a {[[#z3986.toc]] table of contents}.</dcterms:description>
+						<z:info>The toc {section} element is a specialization of the {[[#z3986.section]]} element. It provides a content model to fit the unique requirements of table of content divisions.</z:info>
+						<dcterms:isRequiredBy rdf:resource="."/>
+						<z:context>{[[#z3986.toc]]}</z:context>
+						<z:content>{[[#z3986.h]]?, [[#z3986.toc.entry]]*, [[#z3986.toc.section]]*}</z:content>
+						<z:attlist>{[[#z3986.Block.attrib]]}</z:attlist>
+					</rdf:Description>
+				</rdf:RDF>
+				<ref name="z3986.toc.attlist" />
+				<ref name="z3986.toc.content"/>				
+			</element>	
+		</define>	
+	</div>	
+
+	<div>
+				
+		<define name="z3986.toc.aside">
+			<element name="aside">
+				<rdf:RDF>
+					<rdf:Description>
+						<dcterms:title z:short="aside (toc)">The toc {aside} element</dcterms:title>
+						<dcterms:description>The toc {aside} element represents a separate block of information in a {[[#z3986.toc]] table of contents} from the main sections and entries.</dcterms:description>
+						<z:info>The toc {aside} element typically represents information in the margins of a print table of contents.</z:info>
+						<z:context>{[[#z3986.toc]]}</z:context>
+						<z:content>{(([[#z3986.Block.class]])+ | (text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+) &amp;amp; [[#z3986.toc]]?}</z:content>
+						<z:attlist>{[[#z3986.Block.attrib]]}</z:attlist>
+					</rdf:Description>
+				</rdf:RDF>
+				<ref name="z3986.toc.aside.attlist" />
+				<ref name="z3986.toc.aside.content" />
+			</element>
+		</define>
+		
+		<define name="z3986.toc.aside.attlist">
+			<ref name="z3986.Block.attrib" />
+		</define>
+		
+		<define name="z3986.toc.aside.content">
+			<interleave>
+				<ref name="z3986.aside.content" />
+				<zeroOrMore>
+					<ref name="z3986.toc" />
+				</zeroOrMore>
+			</interleave>
+		</define>
+	</div>
+	
+	<div>
+		<a:documentation>toc - default content model contribution</a:documentation>
+		
+		<define name="z3986.frontmatter.content" combine="interleave">
+			<zeroOrMore>
+				<ref name="z3986.toc" />
+			</zeroOrMore>
+		</define>
+		
+		<define name="z3986.section.extra" combine="interleave">
+			<zeroOrMore>
+				<ref name="z3986.toc" />
+			</zeroOrMore>
+		</define>
+		
+	</div>
+</grammar>

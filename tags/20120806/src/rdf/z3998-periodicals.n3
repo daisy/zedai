@@ -1,0 +1,220 @@
+@base  <http://www.daisy.org/z3998/2012/vocab/periodicals/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix jena: <http://www.daisy.org/ns/rdf/jena#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix zt:  <http://www.daisy.org/ns/rdf/property#> .
+@prefix structural:  <http://www.daisy.org/z3998/2012/vocab/structure/#> .
+@prefix : <#> .
+
+<> 
+  dcterms:title "Z39.98-2012 Periodicals Vocabulary" ;
+  dcterms:description "This RDF vocabulary contains terms for use primarily in the context of the NISO Z39.98-2012 [[http://www.daisy.org/z3998/2012/auth/profiles/newsfeeds/ Newsfeeds Aggregator profile]]. It defines terms for semantic inflection of document content, and terms for article-level metadata." ;
+  dcterms:publisher "DAISY Consortium" ;
+  dcterms:issued "2009-12-01" ;  
+  dcterms:creator "oha" ;
+  dcterms:creator "kjohar" ;
+  dcterms:modified "2012-12-19" .
+
+
+########################################
+########### article metadata ###########
+########################################
+  
+:metadata				a rdf:Bag ;
+						jena:bag-sort "40" ;
+						dcterms:title "Article aggregation metadata" ;
+						dcterms:description "This set of article metadata terms are intended for use in aggregation contexts to maintain information about the location of source content segments, and to describe intended locations in the aggregation being built." .
+					  
+					  
+:positionSequence		a rdf:Property ;
+						rdfs:label "positionSequence";
+						jena:prop-sort "10" ;
+						rdf:member :metadata ;
+						rdfs:datatype xsd:string ;
+						rdfs:comment "Holds ordinal information about the article within its parent section/sub section. For example, a value of 2 means that the article is the second article in its parent section/sub section. Is only relevant in instances where the instance document is being used to deliver a single article, or a collection of articles for one or more publications." .
+
+:positionSection		a rdf:Property ;
+						rdfs:label "positionSection";
+						jena:prop-sort "20" ;
+						rdf:member :metadata ;
+						rdfs:datatype xsd:decimal ;
+						rdfs:comment "Holds ordinal information about the parent section and or sub section(s) within a publication, that an article appears in. For example, a value of 1.2 means that an article appears in a section that is the first section in the publication, and a sub section that is the second subsection within the section;is only relevant in instances where the particular instance document is being used to deliver a single article, or a collection of articles for one or more publications." .
+
+:positionPage			a rdf:Property ;
+						rdfs:label "positionPage";
+						jena:prop-sort "30" ;
+						rdf:member :metadata ;
+						rdfs:datatype xsd:integer ;
+						rdfs:comment "Holds information about the page that the article appears on in the publication. Is only relevant in instances where the Feeds Profile document instance is being used to deliver a single article, or a collection of articles for one or more publications." .
+
+:revision				a rdf:Property ;
+						rdfs:label "revision";
+						jena:prop-sort "40" ;
+						rdf:member :metadata ;
+						rdfs:datatype xsd:string ;
+						rdfs:comment "Holds revision information about the article. Is relevant in instances where the Feeds Profile instance document is being used to deliver a single article, or a collection of articles for one or more publications." .
+
+:destEdition			a rdf:Property ;
+						rdfs:label "destEdition";
+						jena:prop-sort "50" ;
+						rdf:member :metadata ;
+						rdfs:datatype xsd:string ;
+						rdfs:comment "Holds information about an edition of a publication that the article is meant to appear in. Is only relevant in instances where the instance document is being used to deliver a single article, or a collection of articles for one or more publications; can appear more than once inside the Article head; each occurrence of destEdition holds information about a particular edition of a publication that the article is meant to appear in." .
+
+:destPublication		a rdf:Property ;
+						rdfs:label "destPublication";
+						jena:prop-sort "60" ;
+						rdf:member :metadata ;
+						rdfs:datatype xsd:string ;
+						rdfs:comment "Holds information about a publication that the article is meant to appear in; is only relevant in contexts where the instance document is being used to deliver a single article, or a collection of articles for one or more publications; can appear more than once inside the Article head; each occurrence of destPublication holds information about a particular publication that the article is meant to appear in." .
+
+
+:sourceEdition			a rdf:Property ;
+						rdfs:label "sourceEdition";
+						jena:prop-sort "70" ;
+						rdf:member :metadata ;
+						rdfs:datatype xsd:string ;
+						rdfs:comment "Holds information about an edition of a publication that the article is originally a part of; is only relevant in instances where the instance document is being used to deliver a single article, or a collection of articles for one or more publications; can appear more than once inside the Article head; each occurrence of sourceEdition holds information about a particular edition of a publication that the article is originally a part of." .
+
+:sourcePublication		a rdf:Property ;
+						rdfs:label "sourcePublication";
+						jena:prop-sort "80" ;
+						rdf:member :metadata ;
+						rdfs:datatype xsd:string ;
+						rdfs:comment "Holds information about a publication that the article is originally a part of; is only relevant in contexts where the instance document is being used to deliver a single article, or a collection of articles for one or more publications; can appear more than once inside the Article head; each occurrence of sourcePublication holds information about a particular publication that the article is originally a part of." .
+
+
+########################################
+############ sections/blocks ###########
+########################################
+  
+:sections-blocks		a rdf:Bag ;
+						jena:bag-sort "10" ;
+						dcterms:title "Article and section types" .
+						 
+:news					a rdf:Property ;
+						rdfs:label "news";
+						jena:prop-sort "10" ;
+						rdf:member :sections-blocks ;
+						zt:for "z3998.article z3998.section" ;
+						rdfs:comment "An article or group of articles that contains current or recent news of either general interest or on a specific topic" .
+  
+:feature				a rdf:Property ;
+						rdfs:label "feature";
+						jena:prop-sort "20" ;
+						rdf:member :sections-blocks ;
+						zt:for "z3998.article" ;
+						rdfs:comment "An article which discusses a selected issue in-depth" .
+
+:review					a rdf:Property ;
+						rdfs:label "review";
+						jena:prop-sort "30" ;
+						rdf:member :sections-blocks ;
+						zt:for "z3998.article" ;
+						rdfs:comment "An evaluation of a publication or other item." .
+
+:advertisement			a rdf:Property ;
+						rdfs:label "advertisement";
+						jena:prop-sort "40" ;
+						rdf:member :sections-blocks ;
+						zt:for "z3998.block z3998.section" ;
+						rdfs:comment "An advertisement." .
+
+:editorial				a rdf:Property ;
+						rdfs:label "editorial";
+						jena:prop-sort "50" ;
+						rdf:member :sections-blocks ;
+						zt:for "z3998.article" ;
+						rdfs:comment "An article stating opinions or giving perspectives." .
+						
+:commentary				a rdf:Property ;
+						rdfs:label "commentary";
+						jena:prop-sort "60" ;
+						rdf:member :sections-blocks ;
+						zt:for "z3998.article z3998.block z3998.section" ;
+						rdfs:comment "An article or posting containing commentary on a publication or other item." .
+												
+:classifieds 			a rdf:Property ;
+						rdfs:label "classifieds";
+						jena:prop-sort "70" ;
+						rdf:member :sections-blocks ;
+						zt:for "z3998.section" ;
+						rdfs:comment "Classified advertisements." .
+						
+:weather 				a rdf:Property ;
+						rdfs:label "weather";
+						jena:prop-sort "80" ;
+						rdf:member :sections-blocks ;
+						zt:for "z3998.section" ;
+						rdfs:comment "The weather forecast." .
+
+
+:sports 				a rdf:Property ;
+						rdfs:label "sports";
+						jena:prop-sort "90" ;
+						rdf:member :sections-blocks ;
+						zt:for "z3998.section" ;
+						rdfs:comment "The sports section." .
+
+						
+########################################
+################ phrasal ###############
+########################################
+  
+:phrasal				a rdf:Bag ;
+						jena:bag-sort "20" ;
+						dcterms:title "Article content structures" .
+						 
+:headline				a rdf:Property ;
+						rdfs:label "headline" ;
+						jena:prop-sort "10" ;
+						rdf:member :phrasal ;						
+						rdfs:comment "The heading or title of an article" .
+						
+:byline					a rdf:Property ;
+						rdfs:label "byline" ;
+						jena:prop-sort "20" ;
+						rdf:member :phrasal ;						
+						rdfs:comment "Indicates the names of the author(s) of an article or story, sometimes also giving credit for accompanying resources or information" .
+						 
+:dateline				a rdf:Property ;
+						rdfs:label "dateline" ;
+						jena:prop-sort "30" ;
+						rdf:member :phrasal ;						
+						rdfs:comment "Indicates the time and/or place where an article or story was reported, occurred or was written" .
+						 
+:lead					a rdf:Property ;
+						rdfs:label "lead" ;
+						jena:prop-sort "40" ;
+						rdf:member :phrasal ;						
+						rdfs:comment "An initial segment of an article introducing and/or summarizing the content" .
+   
+:deck					a rdf:Property ;
+						rdfs:label "deck";
+						jena:prop-sort "50" ;
+						rdf:member :phrasal ;						
+						rdfs:comment "A teaser segment near the title of an article." .
+
+:kicker					a rdf:Property ;
+						rdfs:label "kicker";
+						jena:prop-sort "60" ;
+						rdf:member :phrasal ;						
+						rdfs:comment "A lead-out segment at the end of an article." .
+
+   
+:continuation 			a rdf:Property ;
+						rdfs:label "continuation" ;
+						jena:prop-sort "70" ;
+						rdf:member :phrasal ;
+						rdfs:subPropertyOf structural:continuation ;
+						rdfs:comment "A reference to another part of the publication which contains the continuation of the current article" .
+					
+:continuation-of 		a rdf:Property ;
+						rdfs:label "continuation-of" ;
+						jena:prop-sort "80" ;
+						rdf:member :phrasal ;
+						rdfs:subPropertyOf structural:continuation-of;
+						rdfs:comment "A reference to a previous part of the publication that contains the initial part of the article that the current article is a continuation of" .

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+
+    <define name="smil3.region.content" combine="choice">
+        <oneOrMore>
+            <ref name="smil3.subregion"/>
+        </oneOrMore>
+    </define>
+
+    <define name="smil3.mediaobjects.attrib" combine="interleave">
+        <optional>
+            <ref name="smil3.layout.bottom.attrib"/>
+        </optional>
+        <optional>
+            <ref name="smil3.layout.height.attrib"/>
+        </optional>
+        <optional>
+            <ref name="smil3.layout.left.attrib"/>
+        </optional>
+        <optional>
+            <ref name="smil3.layout.right.attrib"/>
+        </optional>
+        <optional>
+            <ref name="smil3.layout.top.attrib"/>
+        </optional>
+        <optional>
+            <ref name="smil3.layout.width.attrib"/>
+        </optional>        
+    </define>
+
+    <define name="smil3.subregion">
+        <element name="region">
+            <ref name="smil3.subregion.attlist"/>
+            <ref name="smil3.region.content"/>
+        </element>
+    </define>
+
+    <define name="smil3.subregion.attlist" combine="interleave">
+        <optional>
+            <ref name="smil3.layout.backgroundColor.attrib"/>
+        </optional>
+        <optional>
+            <ref name="smil3.layout.backgroundOpacity.attrib"/>
+        </optional>
+        <optional>
+            <ref name="smil3.layout.fit.attrib"/>
+        </optional>
+        <optional>
+            <ref name="smil3.layout.height.attrib"/>
+        </optional>
+        <optional>
+            <ref name="smil3.layout.left.attrib"/>
+        </optional>
+        <optional>
+            <ref name="smil3.layout.right.attrib"/>
+        </optional>
+        <optional>
+            <ref name="smil3.layout.top.attrib"/>
+        </optional>
+        <optional>
+            <ref name="smil3.layout.bottom.attrib"/>
+        </optional>
+        <optional>
+            <ref name="smil3.layout.width.attrib"/>
+        </optional>
+        <optional>
+            <ref name="smil3.layout.z-index.attrib"/>
+        </optional>
+    </define>
+
+</grammar>

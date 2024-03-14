@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="../../../../src/schema/z3998-descriptions.rng" type="xml"?>
+<document xmlns="http://www.daisy.org/ns/z3998/authoring/" xml:lang="en"
+    xmlns:d="http://www.daisy.org/ns/z3998/authoring/features/description/">
+    <head>
+        <meta rel="z3998:profile" resource="http://www.daisy.org/z3998/2012/auth/profiles/description/0.1">
+            <meta property="z3998:name" content="description"/>
+            <meta property="z3998:version" content="0.1"/>
+        </meta>
+        <meta rel="z3998:rdfa-context" resource="http://www.daisy.org/z3998/2012/vocab/context/default/"/>
+        <meta property="dc:identifier" content="com.googlecode.zednext.placeholder"/>
+        <meta property="dc:publisher" content="DIAGRAM"/>
+        <meta property="dc:date" content="2010-03-27T15:50:05Z"/>
+    </head>
+    <body>
+        <h>Descriptions</h>
+        <d:description xml:id="watercycle-desc" xml:lang="en">
+            <d:head>
+                <meta property="dc:identifier" content="watercycle" />
+                <meta property="dc:language" content="en-US" />
+                <meta property="diagram:purpose">Illustrates the processes involved in the hydrologic cycle, including evaporation,  precipitation and the movement of water into and on the earth's surface.</meta>
+                
+                <meta property="diagram:targetAge" content="9-12" />
+                <meta property="diagram:targetGrade" content="4-7" />
+                <meta property="diagram:descriptionQuality" content="7" />
+                
+                <meta property="dc:creator" xml:id="author01">John Doe</meta>
+                <meta about="#author01" property="diagram:credentials">Ph.D. in Water Engineering</meta>
+                
+                <meta property="dc:rights" content="???" />
+                <meta property="dc:accessRights">This resource is for use by academic institutions only.</meta>
+                
+                <meta rel="diagram:currentVersion" resource="http://example.com/science/k12/water/cycle/current"/>
+                <meta rel="diagram:thisVersion" resource="http://example.com/science/k12/water/cycle/1.2/description.xml"/>
+                <meta rel="diagram:previousVersion" resource="http://example.com/science/k12/water/cycle/1.1/description.xml"/>
+                
+                <meta rel="diagram:alternateVersion" xml:id="alternateVersion01" resource="http://example.com/physics/k12/water/cycle/current">
+                    <meta property="dc:description">This diagram describes the details which comprise the hydrologic cycle.</meta>
+                </meta>
+                
+                <meta rel="diagram:repository" resource="http://example.com/diagram/repository/">
+                    <meta property="diagram:queryConcept" content="evaporation"/>
+                    <meta property="diagram:queryConcept" content="precipitation"/>
+                    <meta property="diagram:queryConcept" content="water purification"/>
+                </meta>
+                
+            </d:head>
+            <d:body>
+                <d:summary xml:id="summary">
+                    <p>Figure 1.1, The Hydrologic Cycle, shows the processes involved in the water cycle, including evaporation, formation of clouds, precipitation, condensation, infiltration and the paths taken by the water when it has been returned to the ground.</p>
+                </d:summary>
+                <d:longdesc xml:id="longdesc01">
+                    <p>The diagram shows the processes of evaporation, condensation, evapotranspiration, water storage in ice and snow, and precipitation. A large body of water (an ocean),  sky, earth surface and cross section of the earth structure are shown to illustrate the processes. The diagram also shows what happens to the water which has returned to the earth as precipitation, including surface runoff, infiltration of the water into the ground surface, percolation, ground water flow, and the movement of water flowing into an ocean. The water table and ground water flow are also shown.</p>
+                    <p>The parts of the diagram, from upper left, moving across the top to the right are: a mountain showing water storage as ice and snow, the sky, clouds and the sun; in the lower right and moving to the left across the bottom to the left are: the ocean…</p>
+                </d:longdesc>
+                <annotation ref="longdesc01" role="diagram:comment" by="teacher">
+                    <p>In the winter if it is below the freezing point, precipitation may take the form of snow rather than rain.</p>
+                </annotation>
+                <d:simplifiedLanguageDescription xml:id="simpledesc01">
+                    <p>The image shows the water cycle: how it forms clouds and is returned to the earth as rain, and how it goes into and moves over the earth's surface.</p>
+                </d:simplifiedLanguageDescription>
+                <d:tactile xml:id="tactile01">
+                    <object role="diagram:thermoform" src="http://example.com/tactiles/repository/water-cycle-therm.svg" srctype="image/svg+xml"/>
+                    <object role="diagram:swellpaper" src="http://example.com/tactiles/repository/water-cycle-swell.svg" srctype="image/svg+xml"/>
+                    <d:tour>
+                        <p>In the upper left corner of the tactile illustration,  the mountain covered with ice and snow is represented by…</p>
+                    </d:tour>
+                </d:tactile>
+                <d:simplifiedImage xml:id="alt-image">
+                    <object src="http://example.com/…/evaporation-lv.svg" srctype="image/svg+xml"/>
+                    <d:tour>
+                        <p>Moving front the top left corner of the image…</p>
+                    </d:tour>
+                </d:simplifiedImage>
+            </d:body>
+        </d:description>
+    </body>
+</document>

@@ -1,0 +1,12 @@
+<document xmlns="http://www.daisy.org/z3986/2010/"
+    xmlns:z3986dec="http://www.daisy.org/z3986/2010/vocab/decl/#" xml:lang="en-US">
+    <head>
+        <meta rel="z3986dec:profile"
+            resource="http://purl.oclc.org/z3986/2010/auth/profiles/sciencejournal/1.0/">
+            <meta rel="z3986dec:feature"
+                resource="http://www.daisy.org/z3986/2010/auth/features/mathematics/3.0/" />
+            <meta rel="z3986dec:feature"
+                resource="http://www.daisy.org/z3986/2010/auth/features/chemistry/1.1/" />
+        </meta>
+    </head>
+</document>

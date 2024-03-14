@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/distribution/"
+         xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <!-- Snippets are short extracts from content models, without surrounding explanatory prose,
+    maximally accompanied by a dedicated title and caption (see below) 
+    
+    Must use the about and dest attributes on wrappers. @about can contain 
+    several IDs; these must map to the targets xml:id in the (preprocessed) RNGs 
+    (which is the same value as rng:define/@name) 
+    
+    Attributes that *may* be used on the wrapper: 
+    snippet-caption="the caption" 
+    snippet-title="the title"         
+    These attributes can have wiki markup; {code} and [[#link label*]] 
+  -->
+
+  <include href="../../schema/mod/opf-20.rng">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+    <define name="OPF20.any-other-element">
+      <notAllowed/>
+    </define>
+    <define name="OPF20.package-element">
+      <element name="package" ns="http://www.idpf.org/2007/opf">
+        <attribute name="version">
+          <value>2.0</value>
+        </attribute>
+        <attribute name="unique-identifier">
+          <data type="string"/>
+        </attribute>
+        <ref name="OPF20.optional-id-attribute"/>
+        <ref name="OPF20.package-content"/>
+      </element>
+    </define>
+    <define name="OPF20.package-content">
+      <mixed>
+        <optional>
+          <ref name="OPF20.metadata-element"/>
+        </optional>
+        <optional>
+          <ref name="OPF20.manifest-element"/>
+        </optional>
+        <optional>
+          <ref name="OPF20.spine-element"/>
+        </optional>
+        <optional>
+          <ref name="OPF20.tours-element"/>
+        </optional>
+        <optional>
+          <ref name="OPF20.guide-element"/>
+        </optional>
+      </mixed>
+    </define>
+    <define name="OPF20.metadata-content" combine="choice">
+      <choice>
+        <interleave>
+          <ref name="OPF20.dc-metadata-element"/>
+          <optional>
+            <ref name="OPF20.x-metadata-element"/>
+          </optional>
+          <text/>
+        </interleave>
+        <interleave>
+          <oneOrMore>
+            <ref name="DC.title-element"/>
+          </oneOrMore>
+          <oneOrMore>
+            <ref name="DC.language-element"/>
+          </oneOrMore>
+          <oneOrMore>
+            <ref name="DC.identifier-element"/>
+          </oneOrMore>
+          <zeroOrMore>
+            <ref name="DC.optional-metadata-element"/>
+          </zeroOrMore>
+          <zeroOrMore>
+            <ref name="OPF20.meta-element"/>
+          </zeroOrMore>
+          <zeroOrMore>
+            <ref name="OPF20.any-other-element"/>
+          </zeroOrMore>
+          <text/>
+        </interleave>
+      </choice>
+    </define>
+  </include>
+  
+  <include href="../../schema/mod/ncx-document.rng">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+    <define name="ncx.ncx.content">
+      <interleave>
+        <choice>
+          <oneOrMore>
+            <ref name="ncx.target.list"/>
+          </oneOrMore>
+          <ref name="ncx.navmap"/>
+          <ref name="ncx.navlist"/>
+        </choice>
+        <text/>
+      </interleave>
+    </define>
+  </include>
+  
+  <include href="../../schema/mod/ncx-attrib.rng"/>
+  <include href="../../schema/mod/ncx-navMap.rng"/>
+  <include href="../../schema/mod/ncx-navList.rng"/>
+  
+  <include href="../../schema/mod/ncx-target.rng">
+    <define name="ncx.target.list.content">
+      <choice>
+        <oneOrMore>
+          <ref name="ncx.label"/>
+        </oneOrMore>
+        <ref name="NonEmptyString.datatype" />
+      </choice>
+    </define>
+    <define name="ncx.target.attlist" combine="interleave">
+      <optional>
+        <attribute name="fragment" />
+      </optional>
+      <optional>
+        <ref name="ncx.dir.attrib" />
+      </optional>
+      <optional>
+        <ref name="ncx.label.img.attrib" />
+      </optional>            
+    </define>
+  </include>
+  
+  <include href="../../schema/mod/ncx-label.rng"/>
+  
+  <include href="../../schema/mod/rdfa-attrib.rng"/>
+  <include href="../../schema/mod/z3986-core-attrib.rng"/>
+  <include href="../../schema/mod/z3986-datatypes.rng"/>
+  
+  <start combine="choice">
+    <element name="snippets">
+      <oneOrMore>
+        <ref name="snippet"/>          
+      </oneOrMore>
+      <zeroOrMore>
+        <ref name="dummy"/>
+      </zeroOrMore>
+    </element>  
+  </start>
+  
+  <define name="snippet">
+    <element name="snippet">
+      <ref name="snippet.attlist"/>
+      <ref name="snippet.content"/>
+    </element>  
+  </define>  
+  
+  <define name="snippet.content" combine="choice">  
+    <choice>
+      <ref name="ncx.ncx"/>
+      <ref name="OPF20.package-element"/>
+    </choice>
+  </define>
+  
+  <define name="snippet.attlist">
+    <ref name="rdfa.about.attrib"/>
+    <attribute name="dest">
+      <choice>
+        <value>doc</value>
+        <value>absdef</value>
+        <value>spec</value>
+        <!-- only used by doc/src/examples-->
+        <value>any</value>
+      </choice>
+    </attribute>
+    <optional>
+      <attribute name="snippet-title"/>
+    </optional>
+    <optional>
+      <attribute name="snippet-caption"/>
+    </optional>
+  </define>
+    
+    
+  <define name="dummy">
+    <element name="dummy">
+      <empty/>
+      <ref name="xml.id.attrib"/>
+    </element>  
+  </define>  
+  
+</grammar>

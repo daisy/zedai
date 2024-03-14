@@ -1,0 +1,109 @@
+/* _menu.css */
+/*
+   Some colors used:
+  light blue:         rgb(176,176,255)
+  very light blue:    rgb(215,215,255)
+ */
+#menu-container ul {
+/* border:dashed blue 1pt; */
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+#menu-container li {
+/* border:1pt solid green; */
+}
+#menu-container li:hover {
+}
+#menu-container li#item-selected {
+    background-color:rgb(176,176,255);
+}
+#menu-container a {
+    display:block;
+    padding-right:1mm;
+    text-decoration:none;
+    font-weight:bold;
+    color:#333366;
+    border-right:2mm solid rgb(215,215,255);
+    text-align:right;
+}
+#menu-container a:hover {
+    border-right:2mm solid rgb(176,176,255);
+}
+#menu-container li#item-selected a {
+    border-right:2mm solid rgb(176,176,255);
+}
+
+div#menu-and-info p {
+    padding:2mm 1mm 1mm 1mm;
+    font-size:60%;
+    color:#333366;
+    margin:0;
+/*    margin:0 0 0em 0;
+    padding:0 2mm 1mm 2mm;
+    background-color:rgb(215,215,255);
+    border:3px solid rgb(176,176,255);*/
+}
+/* element-menu */
+#element-menu {
+    font-size:80%;
+    margin-bottom:1em;
+}
+#element-menu a {
+    text-align:center;
+    display:inline-block;
+    width:8em;
+    text-decoration:none;
+    border:1pt solid rgb(176,176,255);
+    margin:0.4em 3px 0 1px;
+    padding:2pt;
+    color:#333366;
+    background-color:rgb(215,215,255);
+    font-weight:bold;
+}
+#element-menu a:hover {
+    background-color:rgb(176,176,255);
+}
+#element-menu a.selected-element {
+    background-color:rgb(176,176,255);
+}
+#pattern-menu {
+    font-size:80%;
+    margin-top:1.5em;
+}
+#pattern-menu-letters {
+    font-weight:bold;
+/* border:1px solid rgb(215,25,255); */
+    height:2em;
+}
+#pattern-menu-letters a {
+    text-align:center;
+    display:block;
+    float:left;
+    width:2em;
+    background-color:rgb(215,215,255);
+    margin-right:3px;
+    text-decoration:none;
+    color:#333366;
+}
+#pattern-menu-letters a:hover {
+    background-color:rgb(176,176,255);
+}
+div.pattern-group {
+    clear:both;
+/* border:1pt solid green; */
+    margin-bottom:0.5em;
+    line-height:1.8em;
+}
+div.pattern-group a {
+    text-align:center;
+    background-color:rgb(215,215,255);
+    margin:0 2px 2px 0px;
+    padding:1px 2px 1px 2px;
+    border:1px solid rgb(176,176,255);
+    text-decoration:none;
+    color:#333366;
+}
+div.pattern-group a.selected-pattern {
+    background-color:rgb(176,176,255);
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z3986 Table Module</x:h1>
+  <x:p>This module is a wrapper around the XHTML2 Table Module.</x:p>
+  <x:p>It introduces the following major changes: </x:p>
+  <x:ul>
+  	<x:li>Tighten up content model of td, th and summary</x:li>
+  </x:ul>
+  
+  <!-- broken out to a module instead of in driver in order to 
+  		allow reuse between profiles -->
+  
+    <include href="xhtml-table-2.rng">
+	   <define name="th">
+	      <element name="th">
+	        <ref name="th.attlist"/>
+	        <ref name="Flow.model"/>
+	      </element>
+	    </define>
+	
+	    <define name="td">
+	      <element name="td">
+	        <ref name="td.attlist"/>
+	        <ref name="Flow.model"/>
+	      </element>
+	    </define>
+	    
+	    <define name="summary">
+      		<element name="summary">
+        		<ref name="summary.attlist"/>
+        		<ref name="Flow.model"/>
+      		</element>
+    	</define>
+	    
+    </include>
+    
+</grammar>  

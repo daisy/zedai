@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 identifier element module</x:h1>
+    
+  <div>
+    <x:h2>The identifier element</x:h2>
+    <x:div id="z3986.identifier">
+      <x:p class="description">
+        The <x:code>identifier</x:code> element represents an identifier, e.g.
+        a formalized name for or reference to an entity.
+      <x:br/>
+        The <x:code>role</x:code> attribute or <x:code>RDF/a</x:code> attribute
+        collection can be used to provide details on the nature of the identifier.
+      </x:p>  
+    </x:div>
+         
+    <define name="z3986.identifier">
+      <element name="identifier">        
+        <ref name="z3986.identifier.attlist"/>
+        <ref name="z3986.identifier.content"/>  
+      </element>    
+    </define>
+
+    <define name="z3986.identifier.attlist">
+      <ref name="z3986.Text.attrib"/>
+    </define>
+    
+    <define name="z3986.identifier.content">
+      <ref name="z3986.Text.base.model"/>
+    </define>  
+    
+  </div>  
+
+  <div>
+    <x:h2>The identifier element - default content model contribution</x:h2>
+    
+    <define name="z3986.Text.class" combine="choice">
+      <ref name="z3986.identifier"/>    
+    </define>
+    
+  </div>
+
+</grammar>

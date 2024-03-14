@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="glossary">The glossary module</title>
+        <annotation annotates="/">
+            <para role="desc-main">This module defines the {[[#z3986.glossary]]} element for defining glossaries and other sections of definitions.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3986-global-classes.rng"/>
+                <member xlink:href="z3986-headings.rng"/>
+                <member xlink:href="z3986-p.rng"/>
+                <member xlink:href="z3986-block.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <author>
+            <personname>Matt Garrish</personname>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <year>2012</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2012-12-19</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="z3986.glossary" xml:id="z3986.glossary">
+            <element name="glossary">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="glossary (section)">The {glossary} element (Section)</title>
+                    <para role="desc-main" xlink:role="inherit-common" xlink:href="z3986.glossary"/>
+                    <para role="desc-sub">The {Section} variant is an adaptation for use including terms and definitions that have been grouped as a separate section in a work, and where the {glossary} contains structured groups of entries by topic, letter of the alphabet, etc.</para>
+                    <para role="desc-sub" xlink:role="inherit-common" xlink:href="z3986.glossary"/>
+                    <para role="desc-sub" xlink:role="inherit-common" xlink:href="z3986.custom-content"/>
+                    <synopsis role="def-context">{[[#z3986.Section.class]]}</synopsis>
+                    <synopsis role="def-content" condition="The content model must allow {[[#z3986.glossary.entry entry]]} elements and no more than one {[[#z3986.h h]]} element.">{[[#z3986.h]]?, [[#z3986.glossary.entry]]*, [[#z3986.glossary.section]]*}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Section.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.glossary.attlist"/>
+                <ref name="z3986.glossary.content"/>
+            </element>
+        </define>
+        <define name="z3986.glossary.attlist" xml:id="z3986.glossary.attlist">
+            <ref name="z3986.Section.attrib"/>
+        </define>
+        <define name="z3986.glossary.content" xml:id="z3986.glossary.content">
+            <ref name="z3986.glossary.model"/>
+        </define>
+        <define name="z3986.glossary.model" xml:id="z3986.glossary.model">
+            <interleave>
+                <optional>
+                    <ref name="z3986.h"/>
+                </optional>
+                <zeroOrMore>
+                    <choice>
+                        <ref name="z3986.glossary.extra.class"/>
+                    </choice>
+                </zeroOrMore>
+            </interleave>
+            <choice>
+                <group>
+                    <interleave>
+                        <oneOrMore>
+                            <ref name="z3986.glossary.entry"/>
+                        </oneOrMore>
+                        <zeroOrMore>
+                            <ref name="z3986.glossary.extended.entry.class"/>
+                        </zeroOrMore>
+                    </interleave>
+                    <zeroOrMore>
+                        <ref name="z3986.glossary.section"/>
+                    </zeroOrMore>
+                </group>
+                <group>
+                    <zeroOrMore>
+                        <ref name="z3986.glossary.entry"/>
+                    </zeroOrMore>
+                    <oneOrMore>
+                        <ref name="z3986.glossary.section"/>
+                    </oneOrMore>
+                </group>
+            </choice>
+        </define>
+    	<define name="z3986.glossary.extra.class" xml:id="z3986.glossary.extra.class">
+            <choice>
+                <ref name="z3986.Block.basic.model"/>
+                <ref name="z3986.Global.extra.class"/>
+            </choice>
+        </define>
+        <define name="z3986.glossary.extended.entry.class" xml:id="z3986.glossary.extended.entry.class">
+            <choice>
+                <ref name="z3986.hd"/>
+                <ref name="z3986.Global.extra.class"/>
+            </choice>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.glossary.block" xml:id="z3986.glossary.block">
+            <element name="glossary">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="glossary (block)">The {glossary} element (Block)</title>
+                    <para role="desc-main" xlink:role="inherit-common" xlink:href="z3986.glossary"/>
+                    <para role="desc-sub">The {Block} variant is an adaptation for use including terms and definitions that have been grouped within the body of a work.</para>
+                    <para role="desc-sub" xlink:role="inherit-common" xlink:href="z3986.glossary"/>
+                    <synopsis role="def-context" condition="The content model must allow {[[#z3986.glossary.entry entry]]} elements and no more than one {[[#z3986.h h]]} element.">{[[#z3986.Block.class]]}</synopsis>
+                    <synopsis role="def-content">{[[#z3986.glossary.entry]]*}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Block.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.glossary.block.attlist"/>
+                <ref name="z3986.glossary.block.content"/>
+            </element>
+        </define>
+        <define name="z3986.glossary.block.attlist" xml:id="z3986.glossary.block.attlist">
+            <ref name="z3986.Block.attrib"/>
+        </define>
+        <define name="z3986.glossary.block.content" xml:id="z3986.glossary.block.content">
+            <group>
+                <oneOrMore>
+                    <ref name="z3986.glossary.entry"/>
+                </oneOrMore>
+            </group>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.glossary.section" xml:id="z3986.glossary.section">
+            <element name="section">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="section (glossary)">The glossary {section} element</title>
+                    <para role="desc-main">The glossary {section} element represents a major structural division in a {[[#z3986.glossary]]}.</para>
+                    <para role="desc-sub">The glossary {section} element is a specialization of the {[[#z3986.section]]} element. It provides a content model to fit the unique requirements of glossary divisions.</para>
+                    <para role="desc-sub" xlink:role="inherit-common" xlink:href="z3986.section-h-note"/>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.glossary]]}</synopsis>
+                    <synopsis role="def-content" condition="The content model must allow {[[#z3986.glossary.entry entry]]} elements.">{[[#z3986.h]]?, [[#z3986.glossary.entry]]*, [[#z3986.glossary.section]]*}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Section.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.glossary.attlist"/>
+                <ref name="z3986.glossary.model"/>
+            </element>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.glossary.entry" xml:id="z3986.glossary.entry">
+            <element name="entry">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="entry (glossary)">The glossary {entry} element</title>
+                    <para role="desc-main">The glossary {entry} element represents a single unique entry in a {[[#z3986.glossary glossary]]}.</para>
+                    <para role="desc-sub">A glossary {entry} must contain one or more {[[#z3986.term]]} elements and either one or more {[[#z3986.definition]]} elements or one or more {[[#z3986.ref]]} elements pointing to a {definition}.</para>
+                    <para role="desc-sub">To facilitate the markup of glossaries, if an {entry} contains exactly one {term} and one {definition} an implicit association is assumed between them (i.e., the normal requirement to explicitly link the {term} to the {definition} by the {[[#z3986.ref.attrib ref]]} attribute does not apply). If the {entry} contains mutliple {term} or {definition} elements, then the explicit association of each is required.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.glossary]]}, {[[#z3986.glossary.block]]} and {[[#z3986.glossary.section]]}</synopsis>
+                    <synopsis role="def-content">{(z3986.Block.class)+ | (text | z3986.Text.class | z3986.Phrase.class)+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Block.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.glossary.entry.attlist"/>
+                <ref name="z3986.glossary.entry.content"/>
+                <sch:rule context="default:entry[ancestor::default:glossary]">
+                    <sch:assert test="descendant::default:term">Each {entry} element must contain at least one {term} element.</sch:assert>
+                    <sch:assert test="descendant::default:definition or descendant::default:ref">Each {entry} element must contain at least one {definition} or {ref} element.</sch:assert>
+                    <sch:report test="(count(descendant::default:term) &gt; 1 or count(descendant::default:definition) &gt; 1) and descendant::default:term[not(@ref)]">Each {term} element must explicitly reference its {definition}(s) when more than one {term} or {definition} are included in the {entry}.</sch:report>
+                    <sch:assert test="descendant::default:definition or descendant::default:ref[some $ref in tokenize(@ref, '\s+') satisfies //default:definition[@xml:id=$ref]]">Each {entry} element must contain at least one {definition} or reference to a {definition}.</sch:assert>
+                    <sch:assert test="normalize-space(.) or *">The {entry} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="z3986.glossary.entry.attlist" xml:id="z3986.glossary.entry.attlist">
+            <ref name="z3986.Block.attrib"/>
+        </define>
+        <define name="z3986.glossary.entry.content" xml:id="z3986.glossary.entry.content">
+            <ref name="z3986.Flow.choice.model"/>
+        </define>
+    </div>
+    <div>
+        <a:documentation>glossary - default content model contribution</a:documentation>
+        <define name="z3986.frontmatter.content.class" combine="choice">
+            <ref name="z3986.glossary"/>
+        </define>
+        <define name="z3986.section.Block.content.class" combine="choice">
+            <ref name="z3986.glossary.block"/>
+        </define>
+        <define name="z3986.section.Section.content.class" combine="choice">
+            <ref name="z3986.glossary"/>
+        </define>
+        <define name="z3986.backmatter.content.class" combine="choice">
+            <ref name="z3986.glossary"/>
+        </define>
+    </div>
+</grammar>

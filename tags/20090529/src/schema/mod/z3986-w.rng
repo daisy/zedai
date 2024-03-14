@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 word element module</x:h1>
+    
+  <div>
+    <x:h2>The w element</x:h2>
+    <x:div id="z3986.w">
+      <x:p class="description">
+        The <x:code>w</x:code> element represents a single written word.
+      </x:p>
+    </x:div>
+         
+    <define name="z3986.w">
+      <element name="w">        
+        <ref name="z3986.w.attlist"/>
+        <ref name="z3986.w.content"/>  
+      </element>    
+    </define>
+
+    <define name="z3986.w.attlist">
+      <ref name="z3986.Text.attrib"/>
+    </define>
+    
+    <define name="z3986.w.content">
+      <ref name="z3986.Text.base.model"/>
+    </define>  
+    
+  </div>  
+
+  <div>
+    <x:h2>The w element - default content model contribution</x:h2>
+    
+    <define name="z3986.Text.class" combine="choice">
+      <ref name="z3986.w"/>  
+    </define>
+    
+  </div>
+
+</grammar>

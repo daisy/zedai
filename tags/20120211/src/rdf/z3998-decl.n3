@@ -1,0 +1,135 @@
+@base  <http://www.daisy.org/z3998/2012/vocab/decl/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix jena: <http://www.daisy.org/ns/rdf/jena#> .
+@prefix : <#> .
+
+<> 
+  dcterms:title "Z39.98-2012 Instance Metadata Vocabulary" ;
+  dcterms:description "This RDF vocabulary is a normative part of [[http://www.daisy.org/z3998/2012/Z3998-2012.html NISO Z39.98-2012]]." ;
+  dcterms:publisher "DAISY Consortium" ;
+  dcterms:issued "2009-12-01" ;    
+  dcterms:creator "mgylling" ;
+  dcterms:modified "2010-05-21" .
+  
+
+########################################
+########## nature properties ###########
+########################################
+
+:nature-properties 	a rdf:Bag ;	
+					jena:bag-sort "10" ;
+					dcterms:title "Document Instance Nature Properties" ;
+					dcterms:description "The following properties are used to declare the Z39.98-2012 document instance nature in terms of which profile it adheres to, which optional features it makes use of and which RDFa document defines its default context. The properties must be used in the rel attribute of the meta element in the document instance head." .
+
+:profile			a rdf:Property ;
+					rdfs:label "profile";
+					jena:prop-sort "10" ;
+					rdf:member :nature-properties ;
+					rdfs:comment "The associated resource reference is the canonical URI of the profile this document instance adheres to, also resolving to its Resource Directory." .
+
+:feature			a rdf:Property ;
+					rdfs:label "feature";
+					jena:prop-sort "20" ;
+					rdf:member :nature-properties ;
+					rdfs:comment "The associated resource reference is the canonical URI of a feature used in this document instance, also resolving to its Resource Directory." .
+
+:rdfa-context		a rdf:Property ;
+					rdfs:label "rdfa-context";
+					jena:prop-sort "30" ;
+					rdf:member :nature-properties ;
+					rdfs:comment "The associated resource reference is the default RDFa context for this document instance." .
+
+
+########################################
+# profile reference properties         #
+########################################
+
+:profile-feature-properties a rdf:Bag ;	
+					jena:bag-sort "20" ;
+					dcterms:title "Profile and Feature Reference Properties" ;
+					dcterms:description "The following properties are used to fully identify a referenced profile or feature." .
+
+:name 				a rdf:Property ;
+					rdfs:label "name";
+					jena:prop-sort "10" ;
+					rdf:member :profile-feature-properties ;
+					rdfs:comment "The name that uniquely identifies the referenced profile or feature." .
+
+:version 			a rdf:Property ;
+					rdfs:label "version";
+					jena:prop-sort "20" ;
+					rdf:member :profile-feature-properties ;
+					rdfs:comment "The version number of the referenced profile or feature." .
+
+
+########################################
+# metadata record reference properties #
+########################################
+
+:meta-record-properties a rdf:Bag ;	
+					jena:bag-sort "30" ;
+					dcterms:title "Metadata Record Reference Properties" ;
+					dcterms:description "The following properties are used when referencing external metadata records from a Z39.98-2012 document instance. The properties must be used on attributes of the meta element in the document instance head element." .
+
+:meta-record 		a rdf:Property ;
+					rdfs:label "meta-record";
+					jena:prop-sort "10" ;
+					rdf:member :meta-record-properties ;
+					rdfs:comment "The referenced resource is a metadata record describing the document instance." .
+
+:meta-record-type 	a rdf:Property ;
+					rdfs:label "meta-record-type";
+					jena:prop-sort "20" ;
+					rdf:member :meta-record-properties ;
+					rdfs:comment "The referenced metadata record is of the given [[#meta-record-types type]]." .
+
+:meta-record-version a rdf:Property ;
+					rdfs:label "meta-record-version";
+					jena:prop-sort "30" ;
+					rdf:member :meta-record-properties ;
+					rdfs:comment "The referenced metadata record is expressed using the given version of the given [[#meta-record-type type]]." .
+
+
+
+########################################
+######## metadata record types #########
+########################################
+
+					
+:meta-record-types a rdf:Bag ;	
+					jena:bag-sort "40" ;
+					dcterms:title "Metadata Record Types" ;
+					dcterms:description "The following properties represent well-known metadata record types." .
+
+:mods 				a rdf:Property ;
+					rdfs:label "mods" ;
+					jena:prop-sort "10" ;
+					rdf:member :meta-record-types ;
+					rdfs:comment "The referenced metadata record is of the type [[http://www.loc.gov/standards/mods/ Metadata Object Description Schema]] (MODS)." .
+
+:onix-books 		a rdf:Property ;
+					rdfs:label "onix-books";
+					jena:prop-sort "20" ;
+					rdf:member :meta-record-types ;
+					rdfs:comment "The referenced metadata record is of the type [[http://www.editeur.org/ ONIX for Books]]." .
+
+:marc21-xml 		a rdf:Property ;
+					rdfs:label "marc21-xml";
+					jena:prop-sort "30" ;
+					rdf:member :meta-record-types ;
+					rdfs:comment "The referenced metadata record is of the type [[http://www.loc.gov/standards/marcxml/ MARC 21 XML]]." .
+
+:dcterms-rdf 		a rdf:Property ;
+					rdfs:label "dcterms-rdf";
+					jena:prop-sort "40" ;
+					rdf:member :meta-record-types ;
+					rdfs:comment "The referenced metadata record is an [[http://www.w3.org/TR/REC-rdf-syntax/ RDF XML]] record using properties from [[http://purl.org/dc/terms/]]." .
+
+:dcterms-rdfa 		a rdf:Property ;
+					rdfs:label "dcterms-rdfa" ;
+					jena:prop-sort "50" ;
+					rdf:member :meta-record-types ;
+					rdfs:comment "The referenced metadata record is an [[http://www.w3.org/TR/rdfa-syntax/ RDFa]] document using properties from [[http://purl.org/dc/terms/]]." .

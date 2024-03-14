@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Image Module -->
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+  
+  <define name="xhtml.Text.class" combine="choice">
+    <ref name="xhtml.img"/>
+  </define>
+  
+  <define name="xhtml.img">
+    <element name="img">
+      <ref name="xhtml.img.attlist"/>
+    </element>
+  </define>
+  
+  <define name="xhtml.img.attlist">
+    <ref name="xhtml.Common.attrib"/>
+    <attribute name="src">
+      <ref name="URI.datatype"/>
+    </attribute>
+    <attribute name="alt">
+      <ref name="Text.datatype"/>
+    </attribute>
+    <optional>
+      <attribute name="longdesc">
+        <ref name="URI.datatype"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="height">
+        <ref name="Length.datatype"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="width">
+        <ref name="Length.datatype"/>
+      </attribute>
+    </optional>
+  </define>
+  
+</grammar>

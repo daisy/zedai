@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+  xmlns:its="http://www.w3.org/2005/11/its"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="role">The role module</dcterms:title>
+      <dcterms:description>This module defines the {[[#z3986.role.attrib]]} attribute for annotating 
+        elements with machine-extractable semantic information about their nature and purpose.</dcterms:description>
+      <z:info>The value of the role attribute is one or several {QNames}, bound to one or several RDF properties
+        using the mechanism defined in [[#refCURIE CURIE]].</z:info>
+      <z:info>The {role} attribute is optional on all applicable elements in a profile's core
+        markup model by default. When this module is activated, however, it is possible to make the
+        attribute locally or globally required.</z:info>
+      <z:info>The attribute is not required on elements in a profile's core
+        markup model if the given element does not require semantic inflections or if it already provides other
+        means of expressing metadata annotations.</z:info>
+      <z:info>When the role attribute is specifed on an element, RDF triples are generated such that the current document
+        constitutes the subject, the QName (role attribute value) the predicate, and the current element node the object.</z:info> 
+      <z:info>This module itself does not define a mechanism to declare prefixes of the used
+        {QName}s; the mechanisms to do this are defined by [[#refRDFa RDFa]].</z:info>
+      <z:info>REMARK: this module is intended to be replaced by the W3C role attribute module as developed
+        by the PF WG.</z:info>
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}"/>
+      <dcterms:creator>Markus Gylling</dcterms:creator>
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:isRequiredBy rdf:resource="http://www.daisy.org/z3986/2010/auth/"/>
+      <dcterms:requires rdf:resource="z3986-datatypes.rng"/>
+    </rdf:Description>
+  </rdf:RDF>
+
+
+  <div>
+
+    <define name="z3986.role.attrib">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="role">The {role} attribute</dcterms:title>
+          <dcterms:description>The {role} attribute expresses a semantic inflection on the nature or purpose of its parent element.</dcterms:description>
+          <z:info>The allowed values are one or several QNames, bound to one or several RDF properties using the mechanism defined in [[#refCURIE CURIE]]. </z:info>
+          <dcterms:isRequiredBy rdf:resource="."/>
+          <z:context>All [[#z3986.global-classes.module global attribute classes]]</z:context>
+          <z:content>{[[#QNames.datatype]]}</z:content>
+        </rdf:Description>
+      </rdf:RDF>
+      <attribute name="role">
+        <ref name="z3986.role.attrib.content"/>
+      </attribute>
+    </define>
+
+    <define name="z3986.role.attrib.content" combine="choice">
+      <list>
+        <oneOrMore>
+          <ref name="QName.datatype"/>
+        </oneOrMore>  
+      </list>
+    </define>
+
+  </div>
+
+</grammar>

@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="../../../../src/schema/z3986a-book.rng" type="xml"?>
+<document xmlns="http://www.daisy.org/z3986/2010/" xml:lang="eng">
+    <head>
+        <link rel="z3986-profile" href="http://www.daisy.org/z3986/2010/auth/profiles/book/0.4/"/>
+        <!-- 
+        <meta typeof="mods:titleInfo">
+            <meta property="mods:titlePart" content="The Project Gutenberg EBook of"/>
+            <meta property="mods:title" content="The People's Common Sense Medical Adviser
+            in Plain English"/>
+            <meta property="mods:subTitle" content="Medicine Simplified, 54th ed., One Million, Six Hundred
+                and Fifty Thousand"/>
+        </meta>
+        <meta typeof="mods:name">
+            <meta property="mods:namePart" content="R. V. Pierce"/>
+            <meta property="mods:roleTerm" content="Author"/>
+        </meta>
+        <meta typeof="mods:relatedInfo">
+            <meta property="mods:type" content="origin"/>
+            <meta typeof="originInfo">
+                <meta property="mods:publisher" content="Produced by Kevin Handy, John Hagerson and the Online
+                    Distributed Proofreading Team at http://www.pgdp.net"/>
+                <meta property="mods:dateCaptured" content="May 28, 2006"/>
+                <meta property="mods:identifier" content="EBook #18467"/>
+                <meta property="mods:edition" content="Fifty-fourth"/>
+            </meta>
+        </meta>
+        <meta typeof="mods:originInfo">
+            <meta property="mods:publisher" content="DAISY Consortium"/>
+            <meta property="mods:dateCreated" content="21 May 2009"/>
+            <meta property="mods:version" content="1"/>
+        </meta>
+        <meta property="mods:typeOfResource" content="text"/>
+        <meta typeof="mods:physicalDescription">
+            <meta property="mods:form" content="EBook"/>
+        </meta>
+        <meta property="mods:subject" content="Reference"/>
+        <meta property="mods:language" content="en"/>
+         -->
+    </head>
+    <body>
+        <frontmatter>
+            <section role="annotation">
+                <p>This eBook is for the use of anyone anywhere at no cost and with almost no
+                    restrictions whatsoever. You may copy it, give it away or re-use it under the
+                    terms of the Project Gutenberg License included with this eBook or online at
+                    www.gutenberg.org</p>
+            </section>
+            <toc>
+                <h>TABLE OF CONTENTS</h>
+                <tocentry>
+                    <label>PREFACE TO THE PRESENT EDITION</label>
+                </tocentry>
+                <tocentry>
+                    <label>PREFACE_TO_THE_FIRST_EDITION</label>
+                </tocentry>
+                <tocentry>
+                    <label>INTRODUCTORY WORDS</label>
+                </tocentry>
+
+                <tocentry>
+                    <label>PART I</label>
+                    <tocentry>
+                        <label>CHAPTER I. BIOLOGY</label>
+                    </tocentry>
+                    <tocentry>
+                        <label>CHAPTER II. PHYSIOLOGICAL ANATOMY. THE BONES.</label>
+                    </tocentry>
+                    <tocentry>
+                        <label>CHAPTER III. PHYSIOLOGICAL ANATOMY. THE MUSCLES.</label>
+                    </tocentry>
+                    <tocentry>
+                        <label>CHAPTER IV. PHYSIOLOGICAL ANATOMY. THE DIGESTIVE ORGANS.</label>
+                    </tocentry>
+                    <tocentry>
+                        <label>CHAPTER V. PHYSIOLOGICAL ANATOMY. ABSORPTION.</label>
+                    </tocentry>
+                    <tocentry>
+                        <label>CHAPTER VI. PHYSICAL AND VITAL PROPERTIES OF THE BLOOD.</label>
+                    </tocentry>
+                    <tocentry>
+                        <label>CHAPTER VII. PHYSIOLOGICAL ANATOMY. CIRCULATORY ORGANS.</label>
+                    </tocentry>
+                    <tocentry>
+                        <label>CHAPTER VIII. PHYSIOLOGICAL ANATOMY. THE ORGANS OF
+                            RESPIRATION.</label>
+                    </tocentry>
+                    <tocentry>
+                        <label>CHAPTER IX. PHYSIOLOGICAL ANATOMY. THE SKIN.</label>
+                    </tocentry>
+                    <tocentry>
+                        <label>CHAPTER X. PHYSIOLOGICAL ANATOMY. SECRETION.</label>
+                    </tocentry>
+                    <tocentry>
+                        <label>CHAPTER XI. PHYSIOLOGICAL ANATOMY. EXCRETION.</label>
+                    </tocentry>
+                    <tocentry>
+                        <label>CHAPTER XII. PHYSIOLOGICAL ANATOMY. THE NERVOUS SYSTEM.</label>
+                    </tocentry>
+                    <tocentry>
+                        <label>CHAPTER XIII. THE SPECIAL SENSES. SIGHT.</label>
+                    </tocentry>
+                    <tocentry>
+                        <label>CHAPTER XIV. CEREBRAL PHYSIOLOGY.</label>
+                    </tocentry>
+                    <tocentry>
+                        <label>CHAPTER XV. THE HUMAN TEMPERAMENTS.</label>
+                    </tocentry>
+                    <tocentry>
+                        <label>CHAPTER XVI. MARRIAGE. LOVE.</label>
+                    </tocentry>
+                    <tocentry>
+                        <label>CHAPTER XVII. REPRODUCTION.</label>
+                    </tocentry>
+                </tocentry>
+
+                <tocentry>
+                    <label>PART II. HYGIENE.</label>
+
+                    <tocentry>
+                        <label>CHAPTER I. HYGIENE DEFINED.--PURE AIR.</label>
+                    </tocentry>
+                    <tocentry>
+                        <label>CHAPTER II. FOOD. BEVERAGES. ALCOHOLIC LIQUORS. CLOTHING.</label>
+                    </tocentry>
+                    <tocentry>
+                        <label>CHAPTER III. PHYSICAL EXERCISE. MENTAL CULTURE. SLEEP.
+                            CLEANLINESS.</label>
+                    </tocentry>
+                    <tocentry>
+                        <label>CHAPTER IV. HYGIENE OF THE REPRODUCTIVE ORGANS.</label>
+                    </tocentry>
+                    <tocentry>
+                        <label>CHAPTER V. PRACTICAL SUMMARY OF HYGIENE.</label>
+                    </tocentry>
+                </tocentry>
+
+                <tocentry>
+                    <label>PART III. RATIONAL MEDICINE.</label>
+
+                    <tocentry>
+                        <label>CHAPTER I. THE PROGRESS OF MEDICINE.</label>
+                    </tocentry>
+                    <tocentry>
+                        <label>CHAPTER II. REMEDIES FOR DISEASE.</label>
+                    </tocentry>
+                    <tocentry>
+                        <label>CHAPTER III. BATHS AND MOTION AS REMEDIAL AGENTS.</label>
+                    </tocentry>
+                    <tocentry>
+                        <label>CHAPTER IV. HYGIENIC TREATMENT OF THE SICK.</label>
+                    </tocentry>
+                </tocentry>
+
+                <tocentry>
+                    <label>PART IV. DISEASES AND THEIR REMEDIAL TREATMENT.</label>
+                </tocentry>
+
+                <tocentry>
+                    <label>INDEX</label>
+                </tocentry>
+
+                <tocentry>
+                    <label>FOOTNOTES</label>
+                </tocentry>
+            </toc>
+        </frontmatter>
+        <bodymatter>
+            <section role="titlePage">
+                <h>
+                    <l>THE PEOPLE'S COMMON SENSE MEDICAL ADVISER IN PLAIN ENGLISH:</l>
+                    <l>OR,</l>
+                    <l>MEDICINE SIMPLIFIED.</l>
+                </h>
+                <p>BY R.V. PIERCE, M.D.</p>
+                <p>ONE OF THE STAFF OF CONSULTING PHYSICIANS AND SURGEONS AT THE INVALIDS' HOTEL AND
+                    SURGICAL INSTITUTE, AND PRESIDENT OF THE WORLD'S DISPENSARY MEDICAL
+                    ASSOCIATION.</p>
+                <p>
+                    <emph>Carefully Revised by the Author, assisted by his full Staff of Associate
+                        Specialists in Medicine and Surgery, the Faculty of the Invalids' Hotel and
+                        Surgical Institute.</emph>
+                </p>
+                <p>Entered according to Act of Congress, in the year 1895, by the WORLD'S DISPENSARY
+                    MEDICAL ASSOCIATION, In the office of the Librarian of Congress, at Washington,
+                    D.C.</p>
+            </section>
+            <section role="dedication">
+                <h/>
+                <quote>
+                    <l>TO</l>
+                    <l>MY PATIENTS,</l>
+                    <l>WHO HAVE SOLICITED MY PROFESSIONAL SERVICES,</l>
+                    <l>FROM THEIR HOMES</l>
+                    <l>IN EVERY STATE, CITY, TOWN, AND ALMOST EVERY HAMLET,</l>
+                    <l>WITHIN THE AMERICAN UNION;</l>
+                    <l>ALSO TO THOSE DWELLING IN EUROPE, MEXICO, SOUTH AMERICA,</l>
+                    <l>THE EAST AND WEST INDIES, AND OTHER</l>
+                    <l>FOREIGN LANDS,</l>
+                    <l>I RESPECTFULLY DEDICATE</l>
+                    <l>THIS WORK.</l>
+                </quote>
+            </section>
+            <section role="preface">
+                <h/>
+                <section>
+                    <h>PREFACE TO THE PRESENT EDITION</h>
+                    <p>The popular favor with which former editions of this work have been received
+                        has required the production of such a vast number of copies, that the
+                        original electrotype plates from which it has heretofore been printed, have
+                        been completely worn out.</p>
+                    <p>The book has been re-produced in London, England, where six editions have
+                        already been necessary to supply the demand for it.</p>
+                    <p>In order to continue its publication to meet the demand which is still active
+                        in this country, it has been necessary, inasmuch as the original electrotype
+                        plates have become worn and useless, to re-set the work throughout. This has
+                        afforded the Author an opportunity to carefully revise the book and re-write
+                        many portions, that it may embody the latest discoveries and improvements in
+                        medicine and surgery. In performing this labor he has been greatly assisted
+                        by contributions and valuable aid kindly supplied by his staff of associate
+                        specialists in medicine and surgery who constitute the Faculty of the
+                        Invalids' Hotel and Surgical Institute.</p>
+                    <p>That part of the book treating of Diseases and Their Remedies will be found
+                        to be thoroughly reliable; the prescriptions recommended therein having all
+                        received the sanction and endorsement of medical gentlemen of rare
+                        professional attainments and mature experience.</p>
+                    <p role="byline">
+                        <l>THE AUTHOR.</l>
+                        <l>BUFFALO, N.Y., January, 1895.</l>
+                    </p>
+                </section>
+
+                <section>
+                    <h>PREFACE TO THE FIRST EDITION.</h>
+                    <p>Every family needs a COMMON SENSE MEDICAL ADVISER. The frequent inquiries
+                        from his numerous patients throughout the land, suggested to the Author the
+                        importance and popular demand for a reliable work of this kind.
+                        Consequently, he has been induced to prepare and publish an extensive
+                        dissertation on Physiology, Hygiene, Temperaments, Diseases and Domestic
+                        Remedies. It is for the interest and welfare of <emph>every</emph> person,
+                        not only to understand the means for the preservation of health, but also to
+                        know what remedies should be employed for the alleviation of the common
+                        ailments of life.</p>
+                    <p>The frequency of accidents of all kinds, injuries sustained by machinery,
+                        contusions, drowning, poisoning, fainting, etc., and also of sudden attacks
+                        of painful diseases, such as headache, affections of the heart and nerves,
+                        inflammation of the eye, ear and other organs, renders it necessary that
+                        non-professionals should possess sufficient knowledge to enable them to
+                        employ the proper means for speedy relief. To impart this important
+                        information is the aim of the author.</p>
+                    <p>Moreover, this volume treats of Human Temperaments, not only of their
+                        influence upon mental characteristics and bodily susceptibilities, but also
+                        of their vital and non-vital combinations, which transmit to the offspring
+                        either health, hardihood, and longevity, or feebleness, disease, and death.
+                        It clearly points out those temperaments which are compatible with each
+                        other and harmoniously blend, and also those which, when united in marriage,
+                        result in barrenness, or produce in the offspring imbecility, deformity, and
+                        idiocy. These matters are freely discussed from original investigations and
+                        clinical observations, thus rendering the work a true and scientific guide
+                        to marriage.</p>
+                    <p>While instruction is imparted for the care of the body, those diseases (alas
+                        how prevalent!) are investigated which are sure to follow as a consequence
+                        of certain abuses, usually committed through ignorance. That these ills do
+                        exist is evident from the fact that the Author is consulted by multitudes of
+                        unfortunate young men and women, who are desirous of procuring relief from
+                        the weaknesses and derangements incurred by having unwittingly violated
+                        physiological laws.</p>
+                    <p>Although some of these subjects may seem out of place in a work designed for
+                            <emph>every</emph> member of the family, yet they are presented in a
+                        style which cannot offend the most fastidious, and with a studied avoidance
+                        of all language that can possibly displease the chaste, or disturb the
+                        delicate susceptibilities of persons of either sex.</p>
+                    <p>This book should not be excluded from the young, for it is eminently adapted
+                        to their wants, and imparts information without which millions will suffer
+                        untold misery. It is a <emph>false</emph> modesty which debars the youth of
+                        our land from obtaining such information.</p>
+                    <p>As its title indicates, the Author aims to make this book a useful and
+                        practical Medical Adviser. He proposes to express himself in plain and
+                        simple language, and, so far as possible, to avoid the employment of
+                        technical words, so that all his readers may readily comprehend the work,
+                        and profit by its perusal. Written as it is amid the many cares attendant
+                        upon a practice embracing the treatment of thousands of cases annually, and
+                        therefore containing the fruits of a rich and varied experience, some excuse
+                        exists for any literary imperfections which the critical reader may
+                        observe.</p>
+                    <p role="byline">
+                        <l>THE AUTHOR.</l>
+                        <l>BUFFALO, N.Y., July, 1875.</l>
+                    </p>
+                </section>
+            </section>
+            <section>
+                <h>INTRODUCTORY WORDS.</h>
+                <p>Health and disease are physical conditions upon which pleasure and pain, success
+                    and failure, depend. Every <emph>individual</emph> gain increases public gain.
+                    Upon the health of its people is based the prosperity of a nation; by it every
+                    value is increased, every joy enhanced. Life is incomplete without the enjoyment
+                    of healthy organs and faculties, for these give rise to the delightful
+                    sensations of existence. Health is essential to the accomplishment of every
+                    purpose; while sickness thwarts the best intentions and loftiest aims. We are
+                    continually deciding upon those conditions which are either the source of joy
+                    and happiness or which occasion pain and disease. Prudence requires that we
+                    should meet the foes and obviate the dangers which threaten us, by turning all
+                    our philosophy, science, and art, into practical <emph>common sense</emph>.</p>
+                <p>The profession of medicine is no <emph>sinecure</emph>; its labors are constant,
+                    its toils unremitting, its cares unceasing. The physician is expected to meet
+                    the grim monster, "break the jaws of death, and pluck the spoil out of his
+                    teeth." <emph>His</emph> ear is ever attentive to entreaty, and within his
+                    faithful breast are concealed the disclosures of the suffering. Success may
+                    elate him, as conquest flushes the victor. Honors are lavished upon the brave
+                    soldiers who, in the struggle with the foe, have covered themselves with glory,
+                    and returned victorious from the field of battle; but how much more brilliant is
+                    the achievement of those who overwhelm disease, that common enemy of mankind,
+                    whose victims are numbered by millions! Is it meritorious in the physician to
+                    modestly veil his discoveries, regardless of their importance? If he have light,
+                    why hide it from the world? Truth should be made as universal and health-giving
+                    as sunlight. We say, give light to all who are in darkness, and a remedy to the
+                    afflicted everywhere.</p>
+                <p>We, as a people, are becoming idle, living in luxury and ease, and in the
+                    gratification of artificial wants. Some indulge in the use of food rendered
+                    unwholesome by bad cookery, and think more of gratifying a morbid appetite than
+                    of supplying the body with proper nourishment. Others devote unnecessary
+                    attention to the display of dress and a genteel figure, yielding themselves
+                    completely to the sway of fashion. Such intemperance in diet and dress manifests
+                    itself in the general appearance of the unfortunate transgressor, and exposes
+                    his folly to the world, with little less precision than certain vices signify
+                    their presence by a tobacco-tainted breath, beer-bloated body, rum-emblazoned
+                    nose, and kindred manifestations. They coddle themselves instead of practicing
+                    self-denial, and appear to think that the chief end of life is gratification,
+                    rather than useful endeavor.</p>
+                <p>I purpose to express myself candidly and earnestly on all topics relating to
+                    health, and appeal to the common sense of the reader for justification. Although
+                    it is my aim to simplify the work, and render it a practical common-sense guide
+                    to the farmer, mechanic, mariner, and day-laborer, yet I trust that it may not
+                    prove less acceptable to the scholar, in its discussion of the problems of Life.
+                    Not only does the method adopted in this volume of treating of the Functions of
+                    the Brain and Nervous System present many new suggestions, in its application to
+                    hygiene, the management of disease, generation and the development and
+                    improvement of man, but the conclusions correspond with the results of the
+                    latest investigations of the world's most distinguished <emph>savants</emph>. My
+                    object is to inculcate the facts of science rather than the theories of
+                    philosophy.</p>
+                <p>Unto us are committed important health trusts, which we hold, not merely in our
+                    own behalf, but for the benefit of others. If we discharge the obligations of
+                    our trusteeship, we shall enjoy present strength, usefulness, and length of
+                    days; but if we fail in their performance, then inefficiency, incapacity, and
+                    sickness, will follow, the sequel of which is pain and death. Let us, then,
+                    prove worthy of this generous commission, that we may enjoy the sweetest of all
+                    pleasures, the delicious fruitage of honest toil and faithful obedience.</p>
+            </section>
+            <section>
+                <h>
+                    <l>PART I.</l>
+                    <l>PHYSIOLOGY.</l>
+                </h>
+
+                <section>
+                    <h>
+                        <l>CHAPTER I.</l>
+                        <l>BIOLOGY.</l>
+                    </h>
+                    <p>In this chapter we propose to consider Life in its primitive manifestations.
+                            <emph>Biology</emph> is the science of living bodies, or the science of
+                        life. Every organ of a living body has a function to perform, and
+                            <emph>Physiology</emph> treats of these functions.</p>
+                    <p><emph>Function</emph> means the peculiar action of some particular organ or
+                        part. There can be no vital action without change, and no change without
+                        organs. Every living thing has a structure, and <emph>Anatomy</emph> treats
+                        of the structures of organized bodies. Several chapters of this work are
+                        devoted to <emph>Physiological Anatomy</emph>, which treats of the human
+                        organism and its functions.</p>
+                    <p>The beginning of life is called <emph>generation</emph>; its perpetuation,
+                            <emph>reproduction</emph>. By the former function, individual life is
+                        insured; by the latter, it is maintained. Since nutrition sustains life, it
+                        has been pertinently termed <emph>perpetual reproduction</emph>.</p>
+                    <p>LATENT LIFE is contained in a small globule, a mere atom of matter, in the
+                        sperm-cell. This element is something which, under certain conditions,
+                        develops into a living organism. The entire realm of nature teems with these
+                        interesting phenomena, thus manifesting that admirable adjustment of
+                        internal to external relations, which claims our profound attention. We are
+                        simply humble scholars, waiting on the threshold of nature's glorious
+                        sanctuary, to receive the interpretation of her divine mysteries.</p>
+                    <p>Some have conjectured that chemical and physical forces account for all the
+                        phenomena of life, and that organization is not the result of vital forces.
+                        Physical science cannot inform us what the beginning was, or how vitality is
+                        the result of chemical forces; nor can it tell us what transmutations will
+                        occur at the end of organized existence. This mysterious life-principle
+                        eludes the grasp of the profoundest scientists, and its presence in the
+                        world will ever continue to be an astonishing and indubitable testimony of
+                        Divine Power.</p>
+                    <p>The physical act of generation is accomplished by the union of two cells; and
+                        as this conjugation is known to be so generally indispensable to the
+                        organization of life, we may fairly infer that it is a universal necessity.
+                        Investigations with the microscope have destroyed the hypothesis of
+                        "spontaneous generation." These show us that even the minutest living forms
+                        are derived from a parent organization.</p>
+                    <p>GENERATION. So long as the vital principle remains in the sperm-cell, it lies
+                        dormant. That part of the cell which contains this principle is called the
+                            <emph>spermatozooen</emph>, which consists of a flattened body, having a
+                        long appendage tapering to the finest point. If it be remembered that a line
+                        is the one-twelfth part of an inch in length, some idea may be formed of the
+                        extreme minuteness of the body of a human spermatozooen, when we state that
+                        it is from 1/800 to 1/600 part of a line, and the filiform tail 1/50 of a
+                        line, in length. This life-atom, which can be discerned only with a powerful
+                        magnifying glass, is perfectly transparent, and moves about by executing a
+                        vibratile motion with its long appendage. Within this speck of matter are
+                        hidden the multifarious forces which, under certain favorable conditions,
+                        result in organization. Magnify this infinitesimal atom a thousand times,
+                        and no congeries of formative powers is perceived wherewith to work out the
+                        wonders of its existence. Yet it contains the principle, which is the
+                        contribution on the part of the male toward the generation of a new
+                        being.</p>
+                    <p>The <emph>ovum</emph> or germ-cell, is the special contribution on the part
+                        of the female for the production of another being. The human ovum, though
+                        larger than the spermatozooen, is also extremely small, measuring not more
+                        than from 1/20 to 1/10 of a line, or from 1/240 to 1/120 of an inch, in
+                        diameter.</p>
+                    <object xml:id="img_1" src="#">
+                        <caption>
+                            <l>[Illustration: Fig. 1.</l>
+                            <l>A. Human Spermatozooen magnified about 3,800 diameters.</l>
+                            <l>B. Vertical and lateral views of spermatozoa of man.</l>
+                            <l>C, D, E, F. Development of spermatozoa within the vesicles of
+                                evolution.</l>
+                            <l>G. Cell of the sponge resembling a spermatozooen.</l>
+                            <l>H. Vesicles of evolution from the seminal fluid of the dog in the
+                                parent cell</l>
+                            <l>I. Single vesicles of different sizes.</l>
+                            <l> J. Human spermatozooen forming in its cell.</l>
+                            <l>K. Rupture of the cell and escape of the spermatozooen.</l>
+                            <l>]</l>
+                        </caption>
+                        <annotation about="img_1" property="republisherAnno">TODO</annotation>
+                    </object>
+                    <p>The sperm and the germ-cells contain the primary elements of all organic
+                        structures, and both possess the special qualities and conditions by which
+                        they may evolve organic beings. Every cell is composed of minute grains,
+                        within which vital action takes place. The interior of a cell consists of
+                        growing matter; the exterior, of matter which has assumed its form and is
+                        less active.</p>
+                    <p>When the vital principle is communicated to it, the cell undergoes a rapid
+                        transformation. While this alteration takes place within the cell,
+                        deteriorating changes occur in the cell-wall. Although vital operations
+                        build up these structures, yet the animal and nervous functions are
+                        continually disintegrating, or wasting, them.</p>
+                    <p>Throughout the animal kingdom, germ-cells present the same external aspect
+                        when carefully examined with the microscope. No difference can be observed
+                        between the cells of the flowers of the oak and those of the apple, but the
+                        cells of the one always produce oak trees, while those of the other always
+                        produce apple trees. The same is true of the germs of animals, there being
+                        not the slightest apparent difference. We are unable to perceive how one
+                        cell should give origin to a dog, while another exactly like it becomes a
+                        man. For aught we know, the ultimate atoms of these cells are identical in
+                        physical character; at least we have no means of detecting any
+                        difference.</p>
+                    <p>SPECIES. The term species is generally used merely as a convenient name to
+                        designate certain assemblages of individuals having various striking points
+                        of resemblance. Scientific writers, as a rule, no longer hold that what are
+                        usually called <emph>species</emph> are constantly unvarying and
+                        unchangeable quantities. Recent researches point to the conclusion that
+                            <emph>all species vary more or less</emph>, and, in some instances, that
+                        the variation is so great that the limits of general specific distinctness
+                        are sometimes exceeded.</p>
+                    <p>Our space will not permit us to do more than merely indicate the two great
+                        fundamental ideas upon which the leading theories of the time respecting the
+                        origin of species are based. These are usually termed the doctrine of
+                        _Special Creation_ and the doctrine of _Evolution_. According to the
+                        doctrine of Special Creation, it is thought that species are practically
+                        immutable productions, each species having a _specific centre_ where it was
+                        originally created, and from which it spread over a certain area until its
+                        further progress was obstructed by unfavorable conditions. The advocates of
+                        the doctrine of Evolution hold, on the contrary, that species are not
+                        permanent and immutable, but that they are subject to modification, and that
+                        "the existing forms of life are descendants by true generation of
+                        pre-existing forms."<noteref ref="n1">[1]</noteref> Most naturalists are now
+                        inclined to admit the general truth of the theory of evolution, but they
+                        differ widely respecting the mode in which it occurred.</p>
+                    <note xml:id="n1">1. Darwin.</note>
+                    <section>
+                        <h>THE PROCESS OF GENERATION.</h>
+                        <p>The vital <emph>principle</emph>, represented in the
+                            <emph>sperm</emph>-cell by a spermatozooen, must be imparted to a
+                                <emph>germ</emph>-cell in order to effect impregnation. After
+                            touching each other, separate them immediately, and observe the result.
+                            If, with the aid of a powerful lens, we directly examine the
+                            spermatozooen, it will be perceived that, for a short time, it preserves
+                            its dimensions and retains all its material aspects. But it does not
+                            long withstand the siege of decay, and, having fulfilled its destiny,
+                            loses its organic characteristics, and begins to shrink.</p>
+                        <p>If we examine the fertilized germ, we discover unusual activity, the
+                            result of impregnation. Organic processes succeed one another with
+                            wonderful regularity, as if wrought out by inexplicable intelligence.
+                            Here begin the functions which constitute human physiology.</p>
+                        <p>Generation requires that a spermatozooen be brought into actual contact
+                            with a germ that fecundation may follow. If a spermatic cell, or
+                            spermatozooen, together with several unimpregnated ova, no matter how
+                            near to one another, if not actually touching, be placed on the concave
+                            surface of a watch-crystal, and covered with another crystal, keeping
+                            them warm, and even though the vapor of the ova envelops it, no
+                            impregnation will occur. Place the spermatozooen in contact with an
+                            ovum, and impregnation is instantly and perfectly accomplished. Should
+                            this vitalizing power be termed nerve-force, electricity, heat, or
+                            motion? It is known that these forces may be metamorphosed; for
+                            instance, nervous force may be converted into electricity, electricity
+                            into heat, and heat into motion, thus illustrating their affiliation and
+                            capability of transformation. But nothing is explained respecting the
+                            real nature of the vital principle, if we assert its identity with any
+                            of these forces; for who can reveal the true nature of any of these, or
+                            even of matter?</p>
+                    </section>
+
+                    <section>
+                        <h>ALTERNATE GENERATION.</h>
+                        <p>In several insect families, the species is not wholly represented in the
+                            adult individuals of both sexes, or in their development, but, to
+                            complete this series, supplementary individuals, as it were, of one or
+                            of several preceding generations, are required. The son may not resemble
+                            the father, but the grandfather, and in some instances, the likeness
+                            re-appears only in latter generations. Agassiz states: "Alternate
+                            generation was first observed among the Salpae. These are marine
+                            mollusks, without shells, belonging to the family Tunicata. They are
+                            distinguished by the curious peculiarity of being united together in
+                            considerable numbers so as to form long chains, which float in the sea,
+                            the mouth(<emph>m</emph>) however being free in each.</p>
+
+                        <object xml:id="img_2" src="#">
+                            <caption>[Illustration: Fig. 2. ]</caption>
+                            <annotation about="img_2" property="republisherAnno">TODO</annotation>
+                        </object>
+
+                        <object xml:id="img_3" src="#">
+                            <caption>[Illustration: Fig. 3. ]</caption>
+                            <annotation about="img_3" property="republisherAnno">TODO</annotation>
+                        </object>
+
+                        <p>"Fig. 2. The individuals thus joined in floating colonies produce eggs;
+                            but in each animal there is generally but one egg formed, which is
+                            developed in the body of the parent, and from which is hatched a little
+                            mollusk.</p>
+                        <p>"Fig. 3, which remains solitary, and differs in many respects from the
+                            parent. This little animal, on the other hand, does not produce eggs,
+                            but propagates, by a kind of budding, which gives rise to chains already
+                            seen in the body of their parent(a), and these again bring forth
+                            solitary individuals, etc."</p>
+                        <p>It therefore follows that generation in some animals require? two
+                            different bodies with intermediate ones, by means of which and their
+                            different modes of reproduction, a return to the original stock is
+                            effected.</p>
+                        <p>UNIVERSALITY OF ANIMALCULAR LIFE.--Living organisms are universally
+                            diffused over every part of the globe. The gentle zephyr wafts from
+                            flower to flower invisible, fructifying atoms, which quicken beauty and
+                            fragrance, giving the promise of a golden fruitage, to gladden and
+                            nourish a dependent world. Nature's own sweet cunning invests all living
+                            things constraining into her service chemical affinities, arranging the
+                            elements and disposing them for her own benefit, in such numberless ways
+                            that we involuntarily exclaim, <quote>"The course of Nature is the art
+                                of God."</quote> The microscope reveals the fact that matter
+                            measuring only 1/120000 of an inch diameter may be endowed with
+                            vitality, and that countless numbers of animalcules often inhabit a
+                            single drop of stagnant water. These monads do not vary in form, whether
+                            in motion or at rest. The life of one, even, is an inexplicable mystery
+                            to the philosopher. Ehrenberg writes: "Not only in the polar regions is
+                            there an uninterrupted development of active microscopic life, where
+                            larger animals cannot exist, but we find that those minute beings
+                            collected in the Antarctic expedition of Captain James Ross exhibit a
+                            remarkable abundance of unknown, and often most beautiful forms."</p>
+                        <p>Even the interior of animal bodies is inhabited by animalcules. They have
+                            been found in the blood of the frog and the salmon, and in the optic
+                            fluid of fishes. Organic beings are found in the interior of the earth,
+                            into which the industry of the miner has made extensive excavations,
+                            sunk deep shafts, and thus revealed their forms; likewise, the smallest
+                            fossil organisms form subterranean strata many fathoms deep. Not only do
+                            lakes and inland seas abound with life, but also, from unknown depths,
+                            in volcanic districts, arise thermal springs which contain living
+                            insects. Were we endowed with a microscopic eye, we might see myriads of
+                            ethereal voyagers wafted by on every breeze, as we now behold drifting
+                            clouds of aqueous vapor. While the continents of earth furnishes
+                            evidences of the universality of organic beings, recent observations
+                            prove that "animal life predominates amid the eternal night of the
+                            depths of the liquid ocean."</p>
+                    </section>
+                    <section>
+                        <h>THE ORIGIN OF LIFE.</h>
+                        <p>The ancients, rude in many of their ideas, referred the origin of life to
+                            divine determination. The thought was crudely expressed, but well
+                            represented, in the following verse:</p>
+                        <poem>
+                            <l>"Then God smites his hands together,</l>
+                            <l>And strikes out a soul as a spark,</l>
+                            <l>Into the organized glory of things.</l>
+                            <l>From the deeps of the dark."</l>
+                        </poem>
+                        <p>According to a Greek myth, Prometheus formed a human image from the dust
+                            of the ground, and then, by fire stolen from heaven, animated it with a
+                            living soul. Spontaneous generation once held its sway, and now the idea
+                            of natural evolution is popular. Some believe that the inpenetrable
+                            mystery of life is evolved from the endowments of nature, and build
+                            their imperfect theory on observations of her concrete forms and their
+                            manifestations, to which all our investigations are restricted. But
+                            every function indicates purpose, every organism evinces intelligent
+                            design, and <emph>all</emph> proclaim a Divine Power. Something cannot
+                            come out of nothing. With reason and philosophy, <emph>chance</emph> is
+                            an impossibility. We, therefore, accept the display of wisdom in nature
+                            as indicative of the designs of God. Thus "has He written His claims for
+                            our profoundest admiration and homage all over every object that He has
+                            made." If you ask: Is there any advantage in considering the phenomena
+                            of nature as the result of DIVINE VOLITION? we answer, that this belief
+                            corresponds with the universally acknowledged ideas of accountability;
+                            for, with a wise, and efficient Cause, we infer there is an intelligent
+                            creation, and the desire to communicate, guide and bless, is responded
+                            to by man, who loves, obeys, and enjoys. Nothing is gained by
+                            attributing to nature vicegerent forces. Is it not preferable to say
+                            that she responds to intelligent, loving Omnipotence? Our finiteness is
+                            illustrated by our initiation into organized being. Emerging from a
+                            rayless atom, too diminutive for the sight, we gradually develop and
+                            advance to the maturity of those <emph>conscious powers</emph>, the
+                            exercise of which furnishes indubitable evidence of our immortality. We
+                            are pervaded with invisible influences, which, like the needle of the
+                            compass trembling on its pivot, point us to immortality as our ultimate
+                            goal, where in the sunny clime of Love, even in a spiritual realm of joy
+                            and happiness, we may eternally reign with Him who is all in all.</p>
+                    </section>
+                </section>
+            </section>
+        </bodymatter>
+
+    </body>
+</document>

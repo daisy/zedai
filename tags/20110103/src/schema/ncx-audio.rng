@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    
+    <!-- A maximally terse NCX for audiobooks. Supports page and heading 1-6 navigation. Text labels (no markup) required, image labels allowed -->
+
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="toc">The audio ncx schema</title>
+        <annotation annotates="/">
+            <para role="desc-main">
+                This driver file represents the RelaxNG implementation of the 
+                Z39.86-2011 Audio-only NCX, and provides the schematic means
+                of validating conformant documents.
+            </para>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <legalnotice>
+            <para>This schema is licensed under the 
+                <link xlink:href="TODO">TODO</link> license.
+            </para>
+        </legalnotice>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <revhistory>
+            <revision>
+                <date>2011-01-03</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>
+                        Initial version.
+                    </para>
+                    <para>
+                        This revision history only reflects changes to the driver file, not to any of the
+                        modules included in it.
+                    </para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    
+    <!-- TODO limit values of targetRole -->
+    <!-- TODO ability to point into audio files? clipBegin? -->
+    
+    <!-- import the components  -->
+    <include href="./mod/ncx-attrib.rng"/>
+    <include href="./mod/ncx-target.rng">
+        <define name="ncx.target.list.content">
+            <ref name="NonEmptyString.datatype" />
+        </define>   
+    </include>   
+    <include href="./mod/z3986-datatypes.rng"/>
+    
+    <define name="ncx.target.attlist" combine="interleave">
+        <!-- add specialized attributes to navTarget -->
+        <optional>
+            <attribute name="fragment" /> <!-- TODO w3c media fragment, separate attribute, or baked into @href -->
+        </optional>
+        <optional>
+            <ref name="ncx.dir.attrib" />
+        </optional>
+        <optional>
+            <ref name="ncx.label.img.attrib" />
+        </optional>            
+    </define>
+      
+    <!-- import the root and create the model -->
+    <include href="./mod/ncx-document.rng">
+        <define name="ncx.ncx.content">  
+            <oneOrMore>
+                <ref name="ncx.target.list"/>
+            </oneOrMore>    
+        </define>
+    </include>
+    
+</grammar>

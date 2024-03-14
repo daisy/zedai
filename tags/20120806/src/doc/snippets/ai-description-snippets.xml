@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="ai-snippets.rng" type="xml"?>
+<snippets xmlns="http://www.daisy.org/ns/z3998/authoring/"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:d="http://www.daisy.org/ns/z3998/authoring/features/description/">
+       
+    <snippet dest="doc" about="z3998.feature.description z3998.feature.description.head">
+<d:description xml:lang="en" xmlns:d="http://www.daisy.org/ns/z3998/authoring/features/description/">
+    <d:head>
+        <meta property="dc:identifier" content="water-cycle"/>
+        <meta property="diagram:targetAge" content="9-12" />
+        <meta property="diagram:targetGrade" content="4-7" />
+    </d:head>
+    <d:body>
+        <d:longdesc>
+            …
+        </d:longdesc>
+    </d:body>
+</d:description>
+    </snippet>
+    
+    <snippet about="z3998.feature.description.body" dest="doc">
+<d:body>
+    <d:summary>…</d:summary>
+    <d:longdesc>…</d:longdesc>
+    <d:simplifiedLanguageDescription>…</d:simplifiedLanguageDescription>
+    <d:tactile>…</d:tactile>
+    <d:simplifiedImage>…</d:simplifiedImage>
+</d:body>
+    </snippet>
+    
+    <snippet about="z3998.feature.description.body.summary" dest="doc">
+<d:summary xml:id="summary">
+    <p>Figure 1.1, The Hydrologic Cycle, shows the processes involved in the water cycle, 
+        including evaporation, formation of clouds, precipitation, condensation, infiltration 
+        and the paths taken by the water when it has been returned to the ground.</p>
+</d:summary>
+    </snippet>
+    
+    <snippet about="z3998.feature.description.body.longdesc" dest="doc">
+<d:longdesc xml:id="longdesc01">
+    <p>The diagram shows the processes of evaporation, condensation, evapotranspiration, water 
+        storage in ice and snow, and precipitation…</p>
+    <p>The parts of the diagram, from upper left, moving across the top to the right are: a mountain 
+        showing water storage as ice and snow, the sky, clouds and the sun; in the lower right and 
+        moving to the left across the bottom to the left are: the ocean…</p>
+</d:longdesc>
+    </snippet>
+    
+    <snippet about="z3998.feature.description.body.simplifiedLanguageDescription z3998.feature.description.tour" dest="doc">
+<d:simplifiedLanguageDescription xml:id="simpledesc01">
+    <p>The image shows the water cycle: how it forms clouds and is returned to the earth as rain, 
+        and how it goes into and moves over the earth's surface.</p>
+</d:simplifiedLanguageDescription>
+    </snippet>
+    
+    <snippet about="z3998.feature.description.body.tactile" dest="doc">
+<d:tactile xml:id="tactile01">
+    <object src="http://example.com/tactiles/repository/water-cycle.svg" srctype="image/svg+xml"/>
+    <d:tour>
+        <p>In the upper left corner of the tactile illustration, the mountain covered with ice 
+            and snow is represented by…</p>
+    </d:tour>
+</d:tactile>
+    </snippet>
+    
+    <snippet about="z3998.feature.description.body.simplifiedImage" dest="doc">
+<d:simplifiedImage xml:id="alt-image">
+    <object src="http://example.com/…/evaporation.svg" srctype="image/svg+xml"/>
+    <d:tour>
+        <p>Moving front the top left corner of the image…</p>
+    </d:tour>
+</d:simplifiedImage>
+    </snippet>
+    
+</snippets>

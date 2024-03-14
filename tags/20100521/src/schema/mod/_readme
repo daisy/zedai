@@ -1,0 +1,153 @@
+1. Pattern Types
+1.1 
+
+2. Module Types
+
+2.1 Element or Attribute Definition Modules (*-*.rng)
+   Defines one or several elements or attributes, and 
+   default content models/values for those elements and
+   attributes.
+      
+   May also submit those defined elements or attributes
+   to externally defined content models. 
+   (See Content Model Definition Modules)
+
+2.2 Content Model Definition Modules (z3986-model-*.rng)
+   A Content Model Definition Module defines global
+   patterns (.class and .model).
+   
+   Does not define any elements or attributes, 
+   neither directly nor via includes.
+        
+2.3 Proxy Modules (z3986-proxy-*.rng)
+     Serves the purpose of importing several  
+     Element or Attribute Definition Modules or
+     Content Model Definition Modules, thereby
+     serving the only role of creating a logical
+     group (and also reducing the amount of includes
+     that needs to be done in a Schema Driver).
+     
+     Note - a proxy module never directly defines
+     any content model contributions (only through
+     the modules it imports).
+
+2.4 Feature modules (z3986-feature-*.rng)
+     Serves as inclusion schema for a feature.
+     
+     A feature may consist of several submodules, 
+     but there is always exactly one feature module
+     schema that governs the inclusion of those modules.
+     
+     When a feature module does not define its content
+     internally, it can be seen as a specialized version of
+     a proxy module.     
+     
+2.5 Enumeration Modules (z3986-enum-*.rng)
+    Contains shared enumerations.
+
+2.6 Vocabulary Enumeration Modules (z3986-vocab-*.rng)
+    A special form of Enumeration Modules, containing auto-generated
+    enumerations of CURIE values.    
+     
+2.7 Schema Driver
+     Brings together a set of Element or Attribute Definition Modules,
+     Content Model Definition Modules, Proxy and Enumeration Modules to create a
+     document model.
+     
+     May also override patterns that are defined in the imported modules.
+     
+3. On Module Interrelations
+
+When a module has a hard dependency on constructs of another module, that dependency
+is expressed using a direct reference to that construct (the <ref> element). By intent,
+this means that the schema will not compile unless the dependencies are included 
+(typically in the Schema Driver).
+ 
+Else, the <define> element is used to softly contribute to patterns. An Element or 
+Attribute Definition Module may contribute itself to several non-global patterns, 
+even such patterns that may or may not be actively used in the current profile. 
+ 
+ 
+ 
+4. On Attribute Lists
+
+Attribute lists are built using a pyramid approach. The three topmost lists are
+z3986.Text.attrib, z3986.Structural.attrib, and z3986.Flow.attrib.
+
+The underlying lists (each containing 1-n interleaved attribute definitions) are an 
+always known finite set, as defined below.
+
+Elements that need not specialize their attribute usage can reference one of the 
+topmost lists directly. Elements that need specialization would in its attlist 
+define "expand out" to the corresponding topmost lists direct child references, 
+omit the reference to one of the underlying lists, and then redefine it locally.
+
+The *contrib* lists are present to allow dynamic contributions to be possible
+even though a list is overridden. As an example: an element that needs to make
+xml:id required still imports Core.contrib, and only overrides the *known* attributes
+in the Core list.
+
+The underlying lists are:
+
+z3986.Core.attrib - list for universal attributes contributed by core modules 
+  (defined by the core module z3986-core-attrib.rng)
+  which in its turn references: 
+  z3986.Core.contrib.attrib - list for non-core contributions to 
+    the universal attributes collection
+
+z3986.I18n.attrib - list for internationalization attributes 
+  (defined by the core module z3986-i18n-attrib.rng)
+  which in its turn references: 
+  z3986.I18n.contrib.attrib - list for non-core contributions to 
+    the internationalization attributes collection
+
+z3986.Linking.attrib - list for the linking attributes 
+  (defined by the core module z3986-linking-attrib.rng)
+  which in its turn references
+  z3986.Linking.contrib.attrib - list for non-core contributions to 
+    the linking attributes collection
+
+z3986.Embed.attrib - list for the embed attributes 
+  (defined by the core module z3986-embed-attrib.rng)
+  which in its turn references
+  z3986.Embed.contrib.attrib - list for non-core contributions to 
+    the linking attributes collection
+
+Rdfa.attrib - the rdfa attribute collection. 
+ This has no contrib child list, as this is a finite collection already.
+
+xhtml.role.attrib - the role attribute. 
+ This has no contrib child list, as this is a finite collection already.
+
+z3986.Text.contrib.attrib - list for non-core contributions to 
+  the Text attributes collection
+
+z3986.Structural.contrib.attrib  - list for non-core contributions to 
+  the Structural attributes collection
+
+z3986.Flow.contrib.attrib - list for non-core contributions to 
+  the Flow attributes collection
+
+The result is that the topmost lists are built using the following direct children:
+z3986.Text.attrib:
+ z3986.Core.attrib
+ z3986.I18n.attrib
+ z3986.Linking.attrib
+ Rdfa.attrib
+ xhtml.role.attrib
+ z3986.Text.contrib.attrib
+ 
+z3986.Structural.attrib:
+ z3986.Core.attrib
+ z3986.I18n.attrib
+ Rdfa.attrib
+ xhtml.role.attrib
+ z3986.Structural.contrib.attrib
+
+z3986.Flow.attrib:
+ z3986.Core.attrib
+ z3986.I18n.attrib
+ Rdfa.attrib
+ xhtml.role.attrib 
+ z3986.Flow.contrib.attrib
+

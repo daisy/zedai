@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <meta>
+        <filters directoryPatterns="" filePatterns=""
+            positiveFilePatterns="" showHiddenFiles="false"/>
+        <options/>
+    </meta>
+    <projectTree name="zedai-rng.xpr">
+        <folder name="doc">
+            <folder name="additional-doc-prose">
+                <file
+                    name="../../src/doc/additional-doc-prose/book-profile.html"/>
+                <file
+                    name="../../src/doc/additional-doc-prose/common.html"/>
+                <file
+                    name="../../src/doc/additional-doc-prose/genericdocument-profile.html"/>
+                <file
+                    name="../../src/doc/additional-doc-prose/newsfeeds-profile.html"
+                />
+            </folder>
+            <file name="../../src/doc/docResources.rng"/>
+            <file name="../../src/doc/doc-resources-common.xml"/>
+            <file name="../../src/doc/doc-resources-feature-forms.xml"/>
+            <file name="../../src/doc/doc-resources-feature-mathml.xml"/>
+            <file name="../../src/doc/doc-resources-feature-rend.xml"/>
+            <file name="../../src/doc/doc-resources-feature-ruby.xml"/>
+            <file name="../../src/doc/doc-resources-feature-select.xml"/>
+            <file name="../../src/doc/doc-resources-feature-ssml.xml"/>
+            <file
+                name="../../src/doc/doc-resources-profile-basicbook.xml"/>
+            <file name="../../src/doc/doc-resources-profile-book.xml"/>
+            <file
+                name="../../src/doc/doc-resources-profile-genericdocument.xml"/>
+            <file
+                name="../../src/doc/doc-resources-profile-newsfeeds.xml"/>
+            <file
+                name="../../src/doc/doc-resources-profile-periodicals.xml"/>
+            <file name="../../src/doc/namespaceList.rng"/>
+            <file name="../../src/doc/namespaceList.xml"/>
+        </folder>
+        <folder name="mod">
+            <file name="../../src/schema/mod/_readme"/>
+            <file name="../../src/schema/mod/_template-attribute.rng"/>
+            <file name="../../src/schema/mod/_template-element.rng"/>
+            <file name="../../src/schema/mod/iana-lang-enum.rng"/>
+            <file name="../../src/schema/mod/its-ruby.rng"/>
+            <file name="../../src/schema/mod/its-translate-attrib.rng"/>
+            <file name="../../src/schema/mod/mathml3-cds-pragmatic.rng"/>
+            <file name="../../src/schema/mod/mathml3-common.rng"/>
+            <file name="../../src/schema/mod/mathml3-pragmatic.rng"/>
+            <file name="../../src/schema/mod/mathml3-presentation.rng"/>
+            <file name="../../src/schema/mod/mathml3-strict.rng"/>
+            <file name="../../src/schema/mod/rdfa-attrib.rng"/>
+            <file name="../../src/schema/mod/ssml-break.rng"/>
+            <file
+                name="../../src/schema/mod/ssml-onlangfailure-attrib.rng"/>
+            <file name="../../src/schema/mod/ssml-phoneme.rng"/>
+            <file name="../../src/schema/mod/ssml-phoneme-attrib.rng"/>
+            <file name="../../src/schema/mod/ssml-prosody.rng"/>
+            <file name="../../src/schema/mod/ssml-sayas.rng"/>
+            <file name="../../src/schema/mod/ssml-sub.rng"/>
+            <file name="../../src/schema/mod/ssml-token.rng"/>
+            <file name="../../src/schema/mod/xforms-nons-11.rng"/>
+            <file name="../../src/schema/mod/xforms-repeat-attrib.rng"/>
+            <file name="../../src/schema/mod/xlink.rng"/>
+            <file name="../../src/schema/mod/z3986-abbr.rng"/>
+            <file name="../../src/schema/mod/z3986-annotation.rng"/>
+            <file name="../../src/schema/mod/z3986-article.rng"/>
+            <file name="../../src/schema/mod/z3986-aside.rng"/>
+            <file name="../../src/schema/mod/z3986-bibliography.rng"/>
+            <file name="../../src/schema/mod/z3986-block.rng"/>
+            <file name="../../src/schema/mod/z3986-book.rng"/>
+            <file name="../../src/schema/mod/z3986-byline.rng"/>
+            <file name="../../src/schema/mod/z3986-caption.rng"/>
+            <file name="../../src/schema/mod/z3986-cite.rng"/>
+            <file name="../../src/schema/mod/z3986-code.rng"/>
+            <file name="../../src/schema/mod/z3986-core-attrib.rng"/>
+            <file name="../../src/schema/mod/z3986-cover.rng"/>
+            <file name="../../src/schema/mod/z3986-d.rng"/>
+            <file name="../../src/schema/mod/z3986-datatypes.rng"/>
+            <file name="../../src/schema/mod/z3986-dateline.rng"/>
+            <file name="../../src/schema/mod/z3986-definition.rng"/>
+            <file name="../../src/schema/mod/z3986-depth-attrib.rng"/>
+            <file name="../../src/schema/mod/z3986-document.rng"/>
+            <file name="../../src/schema/mod/z3986-embed-attrib.rng"/>
+            <file name="../../src/schema/mod/z3986-emph.rng"/>
+            <file name="../../src/schema/mod/z3986-feature-forms.rng"/>
+            <file name="../../src/schema/mod/z3986-feature-its-ruby.rng"/>
+            <file name="../../src/schema/mod/z3986-feature-mathml.rng"/>
+            <file name="../../src/schema/mod/z3986-feature-rend.rng"/>
+            <file name="../../src/schema/mod/z3986-feature-select.rng"/>
+            <file name="../../src/schema/mod/z3986-feature-ssml.rng"/>
+            <file name="../../src/schema/mod/z3986-glossary.rng"/>
+            <file name="../../src/schema/mod/z3986-headings.rng"/>
+            <file name="../../src/schema/mod/z3986-i18n-attrib.rng"/>
+            <file name="../../src/schema/mod/z3986-index.rng"/>
+            <file name="../../src/schema/mod/z3986-line.rng"/>
+            <file name="../../src/schema/mod/z3986-list.rng"/>
+            <file name="../../src/schema/mod/z3986-meta.rng"/>
+            <file name="../../src/schema/mod/z3986-model-flow.rng"/>
+            <file name="../../src/schema/mod/z3986-model-structural.rng"/>
+            <file name="../../src/schema/mod/z3986-model-text.rng"/>
+            <file name="../../src/schema/mod/z3986-name.rng"/>
+            <file name="../../src/schema/mod/z3986-note.rng"/>
+            <file name="../../src/schema/mod/z3986-object.rng"/>
+            <file name="../../src/schema/mod/z3986-p.rng"/>
+            <file name="../../src/schema/mod/z3986-pagebreak.rng"/>
+            <file name="../../src/schema/mod/z3986-place.rng"/>
+            <file name="../../src/schema/mod/z3986-quote.rng"/>
+            <file name="../../src/schema/mod/z3986-reference.rng"/>
+            <file name="../../src/schema/mod/z3986-role-attrib.rng"/>
+            <file name="../../src/schema/mod/z3986-s.rng"/>
+            <file name="../../src/schema/mod/z3986-section.rng"/>
+            <file name="../../src/schema/mod/z3986-separator.rng"/>
+            <file name="../../src/schema/mod/z3986-span.rng"/>
+            <file name="../../src/schema/mod/z3986-sub-sup.rng"/>
+            <file name="../../src/schema/mod/z3986-table.rng"/>
+            <file name="../../src/schema/mod/z3986-term.rng"/>
+            <file name="../../src/schema/mod/z3986-time.rng"/>
+            <file name="../../src/schema/mod/z3986-toc.rng"/>
+            <file name="../../src/schema/mod/z3986-verse.rng"/>
+            <file name="../../src/schema/mod/z3986-w.rng"/>
+        </folder>
+        <folder name="rd">
+            <folder name="res">
+                <folder name=".svn">
+                    <folder name="prop-base"/>
+                    <folder name="props"/>
+                    <folder name="text-base"/>
+                    <folder name="tmp">
+                        <folder name="prop-base"/>
+                        <folder name="props"/>
+                        <folder name="text-base"/>
+                    </folder>
+                    <file name="../../src/rd/res/.svn/all-wcprops"/>
+                    <file name="../../src/rd/res/.svn/entries"/>
+                </folder>
+                <folder name="extra">
+                    <folder name=".svn">
+                        <folder name="prop-base"/>
+                        <folder name="props"/>
+                        <folder name="text-base">
+                            <file
+                                name="../../src/rd/res/extra/.svn/text-base/readme.svn-base"
+                            />
+                        </folder>
+                        <folder name="tmp">
+                            <folder name="prop-base"/>
+                            <folder name="props"/>
+                            <folder name="text-base"/>
+                        </folder>
+                        <file
+                            name="../../src/rd/res/extra/.svn/all-wcprops"/>
+                        <file name="../../src/rd/res/extra/.svn/entries"
+                        />
+                    </folder>
+                    <folder name="functionSets">
+                        <folder name=".svn">
+                            <folder name="prop-base">
+                                <file
+                                    name="../../src/rd/res/extra/functionSets/.svn/prop-base/index.html.svn-base"
+                                />
+                            </folder>
+                            <folder name="props"/>
+                            <folder name="text-base">
+                                <file
+                                    name="../../src/rd/res/extra/functionSets/.svn/text-base/example-1.xinc.svn-base"/>
+                                <file
+                                    name="../../src/rd/res/extra/functionSets/.svn/text-base/example-2.xinc.svn-base"/>
+                                <file
+                                    name="../../src/rd/res/extra/functionSets/.svn/text-base/example-3.xinc.svn-base"/>
+                                <file
+                                    name="../../src/rd/res/extra/functionSets/.svn/text-base/example-4.xinc.svn-base"/>
+                                <file
+                                    name="../../src/rd/res/extra/functionSets/.svn/text-base/example-language.xinc.svn-base"/>
+                                <file
+                                    name="../../src/rd/res/extra/functionSets/.svn/text-base/index.html.svn-base"
+                                />
+                            </folder>
+                            <folder name="tmp">
+                                <folder name="prop-base"/>
+                                <folder name="props"/>
+                                <folder name="text-base"/>
+                            </folder>
+                            <file
+                                name="../../src/rd/res/extra/functionSets/.svn/all-wcprops"/>
+                            <file
+                                name="../../src/rd/res/extra/functionSets/.svn/entries"
+                            />
+                        </folder>
+                        <file
+                            name="../../src/rd/res/extra/functionSets/example-1.xinc"/>
+                        <file
+                            name="../../src/rd/res/extra/functionSets/example-2.xinc"/>
+                        <file
+                            name="../../src/rd/res/extra/functionSets/example-3.xinc"/>
+                        <file
+                            name="../../src/rd/res/extra/functionSets/example-4.xinc"/>
+                        <file
+                            name="../../src/rd/res/extra/functionSets/example-language.xinc"/>
+                        <file
+                            name="../../src/rd/res/extra/functionSets/index.html"
+                        />
+                    </folder>
+                    <file name="../../src/rd/res/extra/readme"/>
+                </folder>
+                <folder name="features">
+                    <folder name=".svn">
+                        <folder name="prop-base"/>
+                        <folder name="props"/>
+                        <folder name="text-base"/>
+                        <folder name="tmp">
+                            <folder name="prop-base"/>
+                            <folder name="props"/>
+                            <folder name="text-base"/>
+                        </folder>
+                        <file
+                            name="../../src/rd/res/features/.svn/all-wcprops"/>
+                        <file
+                            name="../../src/rd/res/features/.svn/entries"
+                        />
+                    </folder>
+                    <folder name="forms">
+                        <folder name=".svn">
+                            <folder name="prop-base">
+                                <file
+                                    name="../../src/rd/res/features/forms/.svn/prop-base/example01.jpg.svn-base"/>
+                                <file
+                                    name="../../src/rd/res/features/forms/.svn/prop-base/example02.jpg.svn-base"/>
+                                <file
+                                    name="../../src/rd/res/features/forms/.svn/prop-base/example03.jpg.svn-base"
+                                />
+                            </folder>
+                            <folder name="props"/>
+                            <folder name="text-base">
+                                <file
+                                    name="../../src/rd/res/features/forms/.svn/text-base/example01.jpg.svn-base"/>
+                                <file
+                                    name="../../src/rd/res/features/forms/.svn/text-base/example02.jpg.svn-base"/>
+                                <file
+                                    name="../../src/rd/res/features/forms/.svn/text-base/example03.jpg.svn-base"
+                                />
+                            </folder>
+                            <folder name="tmp">
+                                <folder name="prop-base"/>
+                                <folder name="props"/>
+                                <folder name="text-base"/>
+                            </folder>
+                            <file
+                                name="../../src/rd/res/features/forms/.svn/all-wcprops"/>
+                            <file
+                                name="../../src/rd/res/features/forms/.svn/entries"
+                            />
+                        </folder>
+                        <file
+                            name="../../src/rd/res/features/forms/example01.jpg"/>
+                        <file
+                            name="../../src/rd/res/features/forms/example02.jpg"/>
+                        <file
+                            name="../../src/rd/res/features/forms/example03.jpg"
+                        />
+                    </folder>
+                    <folder name="ssml">
+                        <folder name=".svn">
+                            <folder name="prop-base"/>
+                            <folder name="props"/>
+                            <folder name="text-base"/>
+                            <folder name="tmp">
+                                <folder name="prop-base"/>
+                                <folder name="props"/>
+                                <folder name="text-base"/>
+                            </folder>
+                            <file
+                                name="../../src/rd/res/features/ssml/.svn/all-wcprops"/>
+                            <file
+                                name="../../src/rd/res/features/ssml/.svn/entries"
+                            />
+                        </folder>
+                    </folder>
+                </folder>
+                <folder name="general">
+                    <folder name=".svn">
+                        <folder name="prop-base"/>
+                        <folder name="props"/>
+                        <folder name="text-base">
+                            <file
+                                name="../../src/rd/res/general/.svn/text-base/z3986a-basic.css.svn-base"
+                            />
+                        </folder>
+                        <folder name="tmp">
+                            <folder name="prop-base"/>
+                            <folder name="props"/>
+                            <folder name="text-base"/>
+                        </folder>
+                        <file
+                            name="../../src/rd/res/general/.svn/all-wcprops"/>
+                        <file
+                            name="../../src/rd/res/general/.svn/entries"
+                        />
+                    </folder>
+                    <file
+                        name="../../src/rd/res/general/z3986a-basic.css"
+                    />
+                </folder>
+                <folder name="profiles">
+                    <folder name=".svn">
+                        <folder name="prop-base"/>
+                        <folder name="props"/>
+                        <folder name="text-base"/>
+                        <folder name="tmp">
+                            <folder name="prop-base"/>
+                            <folder name="props"/>
+                            <folder name="text-base"/>
+                        </folder>
+                        <file
+                            name="../../src/rd/res/profiles/.svn/all-wcprops"/>
+                        <file
+                            name="../../src/rd/res/profiles/.svn/entries"
+                        />
+                    </folder>
+                    <folder name="book">
+                        <folder name=".svn">
+                            <folder name="prop-base"/>
+                            <folder name="props"/>
+                            <folder name="text-base"/>
+                            <folder name="tmp">
+                                <folder name="prop-base"/>
+                                <folder name="props"/>
+                                <folder name="text-base"/>
+                            </folder>
+                            <file
+                                name="../../src/rd/res/profiles/book/.svn/all-wcprops"/>
+                            <file
+                                name="../../src/rd/res/profiles/book/.svn/entries"
+                            />
+                        </folder>
+                    </folder>
+                    <folder name="genericdocument">
+                        <folder name=".svn">
+                            <folder name="prop-base"/>
+                            <folder name="props"/>
+                            <folder name="text-base">
+                                <file
+                                    name="../../src/rd/res/profiles/genericdocument/.svn/text-base/gendoc2xhtml2.xsl.svn-base"
+                                />
+                            </folder>
+                            <folder name="tmp">
+                                <folder name="prop-base"/>
+                                <folder name="props"/>
+                                <folder name="text-base"/>
+                            </folder>
+                            <file
+                                name="../../src/rd/res/profiles/genericdocument/.svn/all-wcprops"/>
+                            <file
+                                name="../../src/rd/res/profiles/genericdocument/.svn/entries"
+                            />
+                        </folder>
+                        <file
+                            name="../../src/rd/res/profiles/genericdocument/gendoc2xhtml2.xsl"
+                        />
+                    </folder>
+                    <folder name="newsfeeds">
+                        <folder name=".svn">
+                            <folder name="prop-base"/>
+                            <folder name="props"/>
+                            <folder name="text-base"/>
+                            <folder name="tmp">
+                                <folder name="prop-base"/>
+                                <folder name="props"/>
+                                <folder name="text-base"/>
+                            </folder>
+                            <file
+                                name="../../src/rd/res/profiles/newsfeeds/.svn/all-wcprops"/>
+                            <file
+                                name="../../src/rd/res/profiles/newsfeeds/.svn/entries"
+                            />
+                        </folder>
+                    </folder>
+                    <folder name="periodicals">
+                        <folder name=".svn">
+                            <folder name="prop-base"/>
+                            <folder name="props"/>
+                            <folder name="text-base"/>
+                            <folder name="tmp">
+                                <folder name="prop-base"/>
+                                <folder name="props"/>
+                                <folder name="text-base"/>
+                            </folder>
+                            <file
+                                name="../../src/rd/res/profiles/periodicals/.svn/all-wcprops"/>
+                            <file
+                                name="../../src/rd/res/profiles/periodicals/.svn/entries"
+                            />
+                        </folder>
+                    </folder>
+                </folder>
+            </folder>
+            <file name="../../src/rd/_readme"/>
+            <file name="../../src/rd/z3986a-feature-forms.rd"/>
+            <file name="../../src/rd/z3986a-feature-its-ruby.rd"/>
+            <file name="../../src/rd/z3986a-feature-mathml.rd"/>
+            <file name="../../src/rd/z3986a-feature-rend.rd"/>
+            <file name="../../src/rd/z3986a-feature-select.rd"/>
+            <file name="../../src/rd/z3986a-feature-ssml.rd"/>
+            <file name="../../src/rd/z3986a-profile-book.rd"/>
+            <file name="../../src/rd/z3986a-profile-genericdocument.rd"/>
+            <file name="../../src/rd/z3986a-profile-newsfeeds.rd"/>
+            <file name="../../src/rd/z3986a-profile-periodicals.rd"/>
+        </folder>
+        <folder name="rdf">
+            <file name="../../src/rdf/z3986-base-rdfa-vocab.html"/>
+            <file name="../../src/rdf/z3986-book-rdfa-vocab.html"/>
+            <file name="../../src/rdf/z3986-decl-rdfa-vocab.html"/>
+            <file name="../../src/rdf/z3986-periodicals-rdfa-vocab.html"/>
+            <file
+                name="../../src/rdf/z3986-resourcedirectory-vocab.html"
+            />
+        </folder>
+        <folder name="z3986a">
+            <folder name="basicbook">
+                <folder name="valid"/>
+            </folder>
+            <folder name="book">
+                <folder name="valid">
+                    <file
+                        name="../../test/z3986a/book/valid/1859_Origin_F373_003.jpg"/>
+                    <file name="../../test/z3986a/book/valid/alice.xml"/>
+                    <file
+                        name="../../test/z3986a/book/valid/book-valid-forms01.xml"/>
+                    <file
+                        name="../../test/z3986a/book/valid/origin-of-species.xml"/>
+                    <file
+                        name="../../test/z3986a/book/valid/peoples_common_sense_medical_adviser.xml"
+                    />
+                </folder>
+            </folder>
+            <folder name="genericdocument">
+                <folder name="valid">
+                    <file
+                        name="../../test/z3986a/genericdocument/valid/genericdocument-valid-01.xml"/>
+                    <file
+                        name="../../test/z3986a/genericdocument/valid/genericdocument-valid-02.xml"/>
+                    <file
+                        name="../../test/z3986a/genericdocument/valid/humanrights.xml"
+                    />
+                </folder>
+            </folder>
+            <folder name="newsfeeds">
+                <folder name="valid">
+                    <file
+                        name="../../test/z3986a/newsfeeds/valid/TheAdvertiserAtomic20081201.xml"
+                    />
+                </folder>
+            </folder>
+            <folder name="periodicals">
+                <folder name="valid"/>
+                <file
+                    name="../../test/z3986a/periodicals/latimes_sample.xml"/>
+                <file
+                    name="../../test/z3986a/periodicals/rolling_stone_sample.xml"
+                />
+            </folder>
+            <file name="../../test/z3986a/genericdocument-valid-01.html"/>
+            <file name="../../test/z3986a/simplebook-valid-01.xml"/>
+        </folder>
+        <file name="../../src/schema/z3986a-basicbook.rng"/>
+        <file name="../../src/schema/z3986a-book.rng"/>
+        <file name="../../src/schema/z3986a-genericdocument.rng"/>
+        <file name="../../src/schema/z3986a-newsfeeds.rng"/>
+    </projectTree>
+</project>

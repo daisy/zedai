@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:x="http://www.w3.org/1999/xhtml"
+  xmlns:s="http://purl.oclc.org/dsdl/schematron">
+
+  <x:h1>Z39.86 inline dialogue element module</x:h1>
+    
+  <div>
+    <x:h2>The d element</x:h2>
+    <x:div id="z3986.d">
+      <x:p class="description">
+        The <x:code>d</x:code> element represents inline level dialogue.
+        <x:br/>
+        The <x:code>d</x:code> element must not contain any <x:code>d</x:code> element descendants.        
+      </x:p>
+      <!-- TODO explain how to use meta dramatis as in alice -->
+      <!-- TODO SCH d@for must resolve to *[persona]? -->
+    </x:div>
+
+    <define name="z3986.d">
+      <element name="d">        
+        <ref name="z3986.d.attlist"/>
+        <ref name="z3986.d.content"/>  
+      </element>    
+    </define>
+
+    <define name="z3986.d.attlist">
+      <ref name="z3986.Text.attrib"/>
+      <optional>
+        <ref name="z3986.for.attrib"/>
+       </optional> 
+    </define>
+    
+    <define name="z3986.d.content">
+      <ref name="z3986.Text.model"/>    
+    </define>
+    
+  </div>
+  
+  <div>
+    <x:h2>The dialogue module - default content model contribution</x:h2>
+    
+    <define name="z3986.Text.class" combine="choice">
+      <ref name="z3986.d"/>    
+    </define>    
+    
+  </div>
+
+  <div>
+    <x:h2>Z39.86 inline dialogue element module - Schematron Assertions</x:h2>
+    
+    <!-- ISO Schematron: The <x:code>d</x:code> element must not contain any <x:code>d</x:code> element descendants. -->    
+    <s:rule context="default:d">
+      <s:assert test="not(descendant::default:d)">The d element must not contain d element descendants</s:assert>
+    </s:rule>
+  </div>
+  
+</grammar>

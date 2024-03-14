@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" 
+  "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd"> -->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+  version="XHTML+RDFa 1.0">
+  <head>
+    <title>Z39.86-2010 Instance Metadata Declaration Vocabulary</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="../../z3986-2010.css"/>
+  </head>
+  <body>
+    <h1>Z39.86-2010 Instance Metadata Declaration Vocabulary</h1>
+
+    <div id="nature-properties" about="#nature-properties" typeof="rdf:Bag">
+      <h2>Document Instance Nature Properties</h2>
+      <p>The following properties are used to declare the Z39.86-2010 document instance
+          <em>nature</em> in terms of which profile it adheres to, and which optional features it
+        makes use of. The properties must be used in the <code>rel</code> attribute of the
+          <code>meta</code> element in the document instance <code>head</code>.</p>
+
+      <dl>
+        <dt id="profile" about="#profile" typeof="rdf:Property">profile</dt>
+        <dd about="#profile" property="rdfs:comment" datatype="xs:string">The associated resource
+          reference is the canonical URI of the profile, also resolving to its Resource
+          Directory</dd>
+
+        <dt id="feature" about="#feature" typeof="rdf:Property">feature</dt>
+        <dd about="#feature" property="rdfs:comment" datatype="xs:string">The associated resource
+          reference is the canonical URI of the feature, also resolving to its Resource
+          Directory</dd>
+      </dl>
+
+    </div>
+
+    <div id="meta-record-properties" about="#meta-record-properties" typeof="rdf:Bag">
+      <h2>Metadata Record Reference Properties</h2>
+
+      <p>The following properties are used when referencing external metadata records from a
+        Z39.86-2010 document instance. The properties must be used on the <code>meta</code> element
+        in the document instance <code>head</code>.</p>
+
+      <dl>
+        <dt id="meta-record" about="#meta-record" typeof="rdf:Property">meta-record</dt>
+        <dd about="#meta-record" property="rdfs:comment" datatype="xs:string">The referenced
+          resource is an external metadata record.</dd>
+
+        <dt id="meta-record-type" about="#meta-record-type" typeof="rdf:Property"
+          >meta-record-type</dt>
+        <dd about="#meta-record-type" property="rdfs:comment" datatype="xs:string">The referenced
+          metadata record is of the given <a href="#meta-record-types">type</a>. </dd>
+
+        <dt id="meta-record-version" about="#meta-record-version" typeof="rdf:Property"
+          >meta-record-version</dt>
+        <dd about="#meta-record-version" property="rdfs:comment" datatype="xs:string">The
+          referenced metadata record is expressed using the given version of the given <a
+            href="#meta-record-type">type</a>.</dd>
+
+        <!-- example
+          <meta rel="z:meta-record" resource="metaRecord.xml" />
+          <meta property="z:meta-record-type" about="metaRecord.xml" content="z:mods" />
+          <meta property="z:meta-record-version" about="metaRecord.xml" content="3.3" />   
+          
+          and when nested
+          
+          <meta rel="z:meta-record" resource="metaRecord.xml">
+            <meta property="z:meta-record-type" about="metaRecord.xml" content="z:mods" />
+            <meta property="z:meta-record-version" about="metaRecord.xml" content="3.3" />
+          </meta>
+          
+        -->
+
+      </dl>
+    </div>
+
+    <div id="meta-record-types" about="#meta-record-types" typeof="rdf:Bag">
+      <h2>Metadata Record Types</h2>
+      <p>The following properties represent well-known metadata record types.</p>
+
+      <dl>
+        <dt id="mods" about="#mods" typeof="rdf:Property">mods</dt>
+        <dd about="#mods" property="rdfs:comment" datatype="xs:string">The referenced metadata
+          record is of the type <a href="http://www.loc.gov/standards/mods/">Metadata Object
+            Description Schema</a> (MODS).</dd>
+
+        <dt id="onix-books" about="#onix-books" typeof="rdf:Property">onix-books</dt>
+        <dd about="#onix-books" property="rdfs:comment" datatype="xs:string">The referenced
+          metadata record is of the type <a href="http://www.editeur.org/">ONIX for Books</a></dd>
+
+        <dt id="marc21-xml" about="#marc21-xml" typeof="rdf:Property">marc21-xml</dt>
+        <dd about="#marc21-xml" property="rdfs:comment" datatype="xs:string">The referenced
+          metadata record is of the type <a href="http://www.loc.gov/standards/marcxml/">MARC 21
+            XML</a>.</dd>
+
+        <dt id="dcterms-rdf" about="#dcterms-rdf" typeof="rdf:Property">dcterms-rdf</dt>
+        <dd about="#dcterms-rdf" property="rdfs:comment" datatype="xs:string">The referenced
+          metadata record is an <a href="http://www.w3.org/TR/REC-rdf-syntax/">RDF XML</a> record
+          using properties from <a href="http://purl.org/dc/terms/"
+          >http://purl.org/dc/terms/</a>.</dd>
+
+        <dt id="dcterms-rdfa" about="#dcterms-rdfa" typeof="rdf:Property">dcterms-rdfa</dt>
+        <dd about="#dcterms-rdfa" property="rdfs:comment" datatype="xs:string">The referenced
+          metadata record is an <a href="http://www.w3.org/TR/rdfa-syntax/">RDFa</a> document using
+          properties from <a href="http://purl.org/dc/terms/">http://purl.org/dc/terms/</a>.</dd>
+
+      </dl>
+
+    </div>
+
+  </body>
+</html>

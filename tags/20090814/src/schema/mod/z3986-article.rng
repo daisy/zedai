@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar 
+  xmlns="http://relaxng.org/ns/structure/1.0" 
+  xmlns:x="http://www.w3.org/1999/xhtml">
+  
+  <x:h1>Z3986 Article module</x:h1>
+  <x:div id="z3986.article">
+    <x:p class="description">
+    The <x:code>article</x:code> element represents an article in an electronic or print journal. It may also
+    be used to represent a component of a compendium.
+    <x:br/>
+    The <x:code>article</x:code> element is a specialization of the <x:code>section</x:code> element, 
+    and inherits all of its basic properties.
+    </x:p>
+  </x:div>  
+      
+  <define name="z3986.article">
+    <element name="article">
+      <ref name="z3986.article.attlist"/>
+      <ref name="z3986.article.content"/>
+    </element>  
+  </define>  
+
+  <define name="z3986.article.attlist">
+    <ref name="z3986.Structural.attrib"/>
+  </define>
+
+  <define name="z3986.article.content">
+    <optional>
+      <ref name="z3986.article.head"/>
+    </optional>  
+    <ref name="z3986.article.body"/>
+  </define>
+
+  <define name="z3986.article.head">
+    <element name="head">
+      <ref name="z3986.article.head.attlist" />
+      <ref name="z3986.article.head.content" />
+    </element>
+  </define>
+
+  <define name="z3986.article.head.attlist">
+      <ref name="z3986.Core.attrib"/>
+      <ref name="Rdfa.attrib"/>
+      <ref name="z3986.I18n.attrib"/>
+  </define>
+  
+  <define name="z3986.article.head.content">
+    <zeroOrMore>        
+      <choice>
+        <ref name="z3986.article.head.class"/>
+      </choice>
+    </zeroOrMore>
+   </define>
+ 
+   <define name="z3986.article.head.class" combine="choice">
+     <choice>
+       <!-- TODO expand meta for specialized values -->
+       <ref name="z3986.meta" />
+     </choice>
+   </define>
+
+  <define name="z3986.article.body">
+    <element name="body">
+      <ref name="z3986.article.body.attlist" />
+      <ref name="z3986.article.body.content" />
+    </element>
+  </define>
+
+  <define name="z3986.article.body.attlist">
+    <ref name="z3986.Structural.attrib"/>
+  </define>
+
+  <define name="z3986.article.body.content">
+    <ref name="z3986.h"/>
+    <interleave>
+      <optional>
+        <ref name="z3986.byline"/>
+      </optional>
+      <optional>
+        <ref name="z3986.dateline"/>
+      </optional>
+      <ref name="z3986.article.body.body.model"/>      
+    </interleave>
+  </define>
+    
+  <define name="z3986.article.body.body.model">
+    <oneOrMore>
+      <ref name="z3986.article.body.body.class"/>
+    </oneOrMore>
+  </define>  
+  
+  <define name="z3986.article.body.body.class">
+    <choice>
+      <ref name="z3986.Structural.class"/>
+      <ref name="z3986.article.section"/>
+    </choice>  
+  </define>
+  
+  <define name="z3986.article.section">    
+    <element name="section">
+      <ref name="z3986.section.attlist"/>
+      <ref name="z3986.article.section.content"/>
+    </element>    
+  </define>
+  
+  <define name="z3986.article.section.content">
+    <ref name="z3986.h"/>
+    <oneOrMore>
+      <ref name="z3986.article.body.body.class"/>
+    </oneOrMore>
+  </define>    
+        
+</grammar>

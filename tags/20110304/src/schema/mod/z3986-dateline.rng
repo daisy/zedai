@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="dateline">The dateline module</title>
+        <annotation annotates="/">
+            <para role="desc-main">This module defines the [[#z3986.dateline]] element for identifying when and where a work was produced.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3986-global-classes.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2011-03-04</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="z3986.dateline" xml:id="z3986.dateline">
+            <element name="dateline">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="dateline">The {dateline} element</title>
+                    <para role="desc-main">The {dateline} element represents the creation date and/or time of a news article, diary entry, poem, etc.</para>
+                    <para role="desc-sub">Datelines typically occur on their own line and include a date and location. For dates and times expressed within the narrative flow of a document, refer to the {[[#z3986.time]]} element.</para>
+                    <synopsis role="def-context">{[[#z3986.Block.class]]}</synopsis>
+                    <synopsis role="def-content">{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Block.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.dateline.attlist"/>
+                <ref name="z3986.dateline.content"/>
+                <sch:rule context="default:dateline">
+                    <sch:assert test="normalize-space(.) or *">The {dateline} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="z3986.dateline.attlist" xml:id="z3986.dateline.attlist">
+            <ref name="z3986.Block.attrib"/>
+        </define>
+        <define name="z3986.dateline.content" xml:id="z3986.dateline.content">
+            <ref name="z3986.Phrase.Text.mix.model"/>
+        </define>
+    </div>
+</grammar>

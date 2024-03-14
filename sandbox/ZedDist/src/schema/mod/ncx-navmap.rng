@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" ns="http://www.daisy.org/z3986/2005/ncx/"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <a:documentation>The NCX navMap represents a tree of targets. It is used to provide navigation
+        in contexts where the targets' nature has an hierarchical component.</a:documentation>
+    
+    <define name="ncx.navmap">
+        <element name="navMap">
+            <ref name="ncx.navmap.attlist"/>
+            <ref name="ncx.navmap.content"/>
+        </element>
+    </define>
+    
+    <define name="ncx.navmap.attlist" combine="interleave">
+        <ref name="ncx.Common.attrib"/>
+        <ref name="ncx.role.attrib"/>
+    </define>
+    
+    <define name="ncx.navmap.content">
+        <zeroOrMore>
+            <ref name="ncx.label"/>
+        </zeroOrMore>    
+        <oneOrMore>
+            <ref name="ncx.target.tree"/>
+        </oneOrMore>
+    </define>
+    
+</grammar>

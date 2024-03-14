@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="by">The by module</title>
+        <annotation annotates="/" condition="required">
+            <para role="desc-main">This module defines the {[[#z3986.by.attrib]]} attribute for identifying the contributor of an element.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3986-datatypes.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <year>2012</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2012-12-19</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="z3986.by.attrib" xml:id="z3986.by.attrib">
+            <attribute name="by">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="by">The {by} attribute</title>
+                    <para role="desc-main">The {by} attribute expresses the contributor of an element to the document source, such as the author, editor, a republisher, etc.</para>
+                    <para role="desc-sub">The {by} attribute allows a single CURIE as its value, which must be bound to an RDF property using the mechanism defined in [[#refRDFa11 CURIE]].</para>
+                    <para role="desc-sub">All descendants of an element that declares a {by} attribute value implicitly inherit that value. In the absence of an expressed relationship, the implicit value {author} is assumed.</para>
+                    <synopsis role="def-context">All [[#z3986.global-classes.module global attribute classes]]</synopsis>
+                    <synopsis role="def-content">{[[#CURIE.datatype]]}</synopsis>
+                </annotation>
+                <ref name="z3986.by.attrib.content"/>
+            </attribute>
+        </define>
+        <define name="z3986.by.attrib.content" combine="choice">
+            <list>
+                <oneOrMore>
+                    <ref name="z3986.by.attrib.role.attrib.content.enum"/>
+                </oneOrMore>
+            </list>
+        </define>
+        <define name="z3986.by.attrib.role.attrib.content.enum" combine="choice">
+            <ref name="CURIE.datatype"/>
+        </define>
+    </div>
+    
+    <div>
+        <a:documentation>Z39.86 by module - default content model contribution </a:documentation>
+        <define name="z3986.global.core.attrib" combine="interleave">
+            <optional>
+                <ref name="z3986.by.attrib"/>
+            </optional>
+        </define>
+    </div>
+</grammar>

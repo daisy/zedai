@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"
+         ns="http://www.w3.org/2001/10/synthesis">
+
+  <x:h1>SSML break element module</x:h1>
+    
+  <div>
+    <x:h2>The break element</x:h2>
+    <x:div id="ssml.break">
+      <x:p class="description">
+        The <x:code>break</x:code> element is an empty element that controls 
+        the pausing or other prosodic boundaries between tokens.
+        <x:br/>
+        Consult <x:a href="http://www.w3.org/TR/speech-synthesis11/#S3.2.3"
+        >Speech Synthesis Markup Language (SSML) Version 1.1</x:a> 
+        for further information.         
+      </x:p>
+    </x:div>
+         
+    <define name="ssml.break">
+      <element name="break">        
+        <ref name="ssml.break.attlist"/>
+        <empty/>
+      </element>
+    </define>
+
+    <define name="ssml.break.attlist" combine="interleave">
+      <optional>
+        <ref name="ssml.strength.attrib"/>
+      </optional>
+      <optional>
+        <ref name="ssml.time.attrib"/>
+      </optional>
+      <optional>
+        <ref name="xml.id.attrib"/>
+      </optional>       
+    </define>
+    
+    <define name="ssml.strength.attrib">
+      <attribute name="strength">
+        <choice>
+          <value>none</value>
+          <value>x-weak</value>
+          <value>weak</value>
+          <value>medium</value>
+          <value>strong</value>
+          <value>x-strong</value>
+        </choice>
+      </attribute>
+    </define>
+
+    <define name="ssml.time.attrib">
+      <attribute name="time">
+        <text/> <!-- TODO CSStimeValue.datatype -->
+      </attribute>
+    </define>
+    
+  </div>  
+  
+  <div>
+    <x:h2>The break element - default content model contribution</x:h2>
+    
+    <define name="z3986.Text.contrib.class" combine="choice">
+      <ref name="ssml.break"/>
+    </define>
+        
+  </div>
+
+</grammar>

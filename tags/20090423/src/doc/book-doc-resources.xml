@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="docResources.rng" type="xml"?>
+<docResources xmlns="http://www.daisy.org/ns/z3986/2008/docResources/"
+    xmlns:d="http://www.daisy.org/ns/z3986/2008/" xmlns:x2="http://www.w3.org/2002/06/xhtml2/">
+
+    <!-- Use the generic document schema documentation as a basis -->
+    <include subDrURI="genericdocument-doc-resources.xml"/>
+
+    <!-- Include MathML DRF -->
+    <include subDrURI="mathml-doc-resources.xml"/>
+    
+    <!-- Add documentation for elements and attributes specific to this profile -->
+    <namespace nsURI="http://www.daisy.org/ns/z3986/2008/" defaultDocURL="http://www.daisy.org">
+        <element name="annotation"
+            docURI="../schema/mod/z3986-annotation.rng#z3986.annotation" include="yes"/>
+        <attribute name="annoref"
+            docURI="../schema/mod/z3986-annotation.rng#z3986.annoref.attrib" include="yes"/>
+
+        <element name="box" docURI="../schema/mod/z3986-box.rng#z3986.box" include="yes"/>
+        <element name="box" context="d:tocentry"
+            docURI="../schema/mod/z3986-toc.rng#z3986.tocbox" include="yes"/>
+
+        <element name="pagebreak" docURI="../schema/mod/z3986-pagebreak.rng#z3986.pagebreak"
+            include="yes"/>
+        <element name="cover" docURI="../schema/mod/z3986-cover.rng#z3986.cover"
+            include="yes"/>
+        <element name="frontcover" docURI="../schema/mod/z3986-cover.rng#z3986.frontcover"
+            include="yes"/>
+        <element name="backcover" docURI="../schema/mod/z3986-cover.rng#z3986.backcover"
+            include="yes"/>
+        <element name="spine" docURI="../schema/mod/z3986-cover.rng#z3986.spine"
+            include="yes"/>
+        <element name="noteref" docURI="../schema/mod/z3986-note.rng#z3986.noteref"
+            include="yes"/>
+        <element name="flaps" docURI="../schema/mod/z3986-cover.rng#z3986.flaps"
+            include="yes"/>
+        <element name="frontmatter" docURI="../schema/mod/z3986-book.rng#z3986.frontmatter"
+            include="yes"/>
+        <element name="backmatter" docURI="../schema/mod/z3986-book.rng#z3986.backmatter"
+            include="yes"/>
+        <element name="bodymatter" docURI="../schema/mod/z3986-book.rng#z3986.bodymatter"
+            include="yes"/>
+        <element name="note" docURI="../schema/mod/z3986-note.rng#z3986.note" include="yes"/>
+        <element name="pageref" docURI="../schema/mod/z3986-toc.rng#z3986.tocpageref"
+            include="yes"/>
+        <element name="toc" docURI="../schema/mod/z3986-toc.rng#z3986.toc" include="yes"/>
+        <element name="tocentry" docURI="../schema/mod/z3986-toc.rng#z3986.tocentry"
+            include="yes"/>
+        <element name="label" context="d:tocentry"
+            docURI="../schema/mod/z3986-toc.rng#z3986.toclabel" include="yes"/>
+
+<!--  
+        <element name="contributor"
+            docURI="../schema/mod/z3986-attribution.rng#z3986.contributor" include="yes"/>
+        <element name="publisher"
+            docURI="../schema/mod/z3986-attribution.rng#z3986.publisher" include="yes"/>
+        <element name="copyright"
+            docURI="../schema/mod/z3986-attribution.rng#z3986.copyright" include="yes"/>
+        <element name="creator" docURI="../schema/mod/z3986-attribution.rng#z3986.creator"
+            include="yes"/>
+        <element name="date" docURI="../schema/mod/z3986-attribution.rng#z3986.date"
+            include="yes"/>
+-->
+        <attribute name="value" context="d:pagebreak"
+            docURI="../schema/mod/z3986-pagebreak.rng#z3986.pagebreak.value.attrib"
+            include="yes"/>
+        <attribute name="ref" context="d:noteref"
+            docURI="../schema/mod/z3986-note.rng#z3986.noteref.ref.attrib" include="yes"/>
+        <attribute name="ref" context="d:pageref"
+            docURI="../schema/mod/z3986-toc.rng#z3986.tocpageref.ref.attrib" include="yes"/>
+        <!--<attribute name="type" docURI="simplebook-doc-prose.html#a-type" include="yes"/>-->
+        <attribute name="rend" docURI="../schema/mod/z3986-rend.rng#z3986.rend.attrib"
+            include="yes"/>
+    </namespace>
+
+    <namespace nsURI="http://www.w3.org/2002/06/xhtml2/"
+        defaultDocURL="http://www.w3.org/TR/xhtml2/">
+        <element name="section" context="d:toc"
+        docURI="../schema/mod/z3986-toc.rng#z3986.section.toc" include="yes"/>
+        <element name="section" context="d:backmatter"
+            docURI="../schema/mod/z3986-xhtml-structural.rng#z3986.section.loose" include="yes"/>
+<!--        <element name="section" context="d:backmatter"
+            docURI="../schema/mod/z3986-book.rng#z3986.section.frontmatter" include="yes"/>
+        <element name="section" context="d:flaps"
+            docURI="../schema/mod/z3986-cover.rng#z3986.cover.section" include="yes"/>
+        <element name="section" context="d:backcover | d:flaps | d:frontcover | d:frontmatter"
+            docURI="../schema/mod/z3986-book.rng#z3986.section.frontmatter" include="yes"/>-->
+    </namespace>
+    
+    <namespace nsURI="http://www.daisy.org/ns/z3986/2008/dummy">
+        <element name="dummy" docURI="../schema/mod/z3986-dummy-feature.rng#z3986.dummy" include="yes"/>
+        <attribute name="revision" docURI="../schema/mod/z3986-dummy-feature.rng#z3986.revision.attrib" include="yes"/>
+    </namespace>
+</docResources>

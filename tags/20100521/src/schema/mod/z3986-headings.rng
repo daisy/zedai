@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="headings">The headings module</dcterms:title>
+      <dcterms:description>This module defines the {[[#z3986.h]]}, {[[#z3986.hd]]} and {[[#z3986.hpart]]} elements for 
+        representing headings and heading segments.</dcterms:description>      
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}" />
+      <dcterms:creator>Markus Gylling</dcterms:creator>      
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng" />
+      <dcterms:requires rdf:resource="z3986-datatypes.rng" />
+      <dcterms:requires rdf:resource="z3986-linking.rng" />
+    </rdf:Description>
+  </rdf:RDF>
+  
+  <div>    
+    <define name="z3986.h">
+      <element name="h">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="h">The {h} element</dcterms:title>
+            <dcterms:description>The {h} element represents a structural heading.</dcterms:description>   
+            <z:info>The {h} element is strongly associated with the {[[#z3986.section]]} element and its specializations. Each section typically
+              allows zero or one {h} element child.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context z:alterability="No element may allow more than one {h} element in its content model.">[[#z3986.Section.class]]</z:context>          
+            <z:content>{([[#z3986.hpart]] | text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</z:content>            
+            <z:attlist>[[#z3986.Block.attrib]]</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>        
+        <ref name="h.attlist"/>
+        <ref name="h.content"/>
+        <sch:rule context="default:h">          
+          <sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0"
+            >The {h} element must neither be empty nor contain only whitespace.</sch:assert>
+        </sch:rule>
+      </element>    
+    </define>
+    
+    <define name="h.attlist">
+      <ref name="z3986.Block.attrib" />
+    </define>
+    
+    <define name="h.content">    
+    	<oneOrMore>
+    	  <choice>
+    		<ref name="z3986.Phrase.class"/>
+    		<ref name="z3986.Text.class"/>
+    		<ref name="z3986.Global.extra.class"/>
+    		<ref name="Characters.datatype"/>
+    		<ref name="z3986.hpart"/>
+    	  </choice>	
+    	</oneOrMore>  
+    </define>  
+        
+  </div>
+  
+  <div>
+    
+    <define name="z3986.hpart">
+      <element name="hpart">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="hpart">The {hpart} element</dcterms:title>
+            <dcterms:description>The {hpart} element represents a segment of a structural heading.</dcterms:description>
+            <z:info>The {hpart} element is typically used to separate numeric identifiers from headings or to separate segments
+            of headings broken onto separate lines.</z:info>
+            <z:context z:alterability="fixed">[[#z3986.h]]</z:context>          
+            <z:content>{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</z:content>            
+            <z:attlist>[[#z3986.Phrase.attrib]]</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>        
+        <ref name="hpart.attlist"/>
+        <ref name="hpart.content"/>
+        <sch:rule context="default:hpart">          
+          <sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0"
+            >The {hpart} element must neither be empty nor contain only whitespace.</sch:assert>
+        </sch:rule>
+      </element>     
+    </define>
+    
+    <define name="hpart.attlist">
+      <ref name="z3986.Phrase.attrib"/>
+    </define>
+    
+    <define name="hpart.content">
+      <ref name="z3986.Phrase.Text.mix.model"/>
+    </define>
+        
+  </div>
+    
+  <div>
+
+    <define name="z3986.hd">      
+      <element name="hd">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="hd">The {hd} element</dcterms:title>
+            <dcterms:description>The {hd} element represents a free-floating heading that is not associated with the 
+              hierarchical structure of the document.</dcterms:description>    
+            <z:info>The {[[#z3986.ref.attrib]]} attribute may be used to associate an {hd} element with
+            	a construct that it acts as a heading for.</z:info>
+            <z:context>{[[#z3986.Block.class]]}</z:context>          
+            <z:content>{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</z:content>            
+            <z:attlist>{[[#z3986.Block.attrib]]}, {[[#z3986.ref.attrib]]?}</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.hd.attlist"/>
+        <ref name="z3986.hd.content"/>
+        <sch:rule context="default:hd">
+          <sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0"
+            >The {hd} element must neither be empty nor contain only whitespace.</sch:assert>
+        </sch:rule>
+      </element>
+    </define>
+
+    <define name="z3986.hd.attlist" combine="interleave">
+      <ref name="z3986.Block.attrib"/>
+      <optional>
+        <ref name="z3986.ref.attrib"/>
+      </optional>  
+    </define>
+
+    <define name="z3986.hd.content" combine="choice">
+      <ref name="z3986.Phrase.Text.mix.model"/>
+    </define>
+ 
+    <div>
+      <a:documentation>hd - default content model contribution</a:documentation>
+      
+      <define name="z3986.Block.core.base.class" combine="choice">
+        <ref name="z3986.hd"/>
+      </define>
+           
+    </div>
+    
+  </div>
+
+</grammar>

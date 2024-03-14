@@ -1,0 +1,7 @@
+*.rd files are containers for prose sections, that get 
+injected into resource directory documents built by
+util/rd/build-rd.xsl
+
+The position of the injection in the result document 
+is determined by using class or id attributes in the .rd
+file. Consult build.rd.xsl for details.

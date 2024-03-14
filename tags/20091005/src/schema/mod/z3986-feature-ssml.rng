@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 SSML Integration Feature</x:h1>
+    
+  <div>
+    <x:h2>Z39.86 SSML feature - modules</x:h2>
+    
+    <include href="ssml-break.rng"/>
+    <include href="ssml-onlangfailure-attrib.rng"/>    
+    <include href="ssml-phoneme-attrib.rng"/>
+    <include href="ssml-phoneme.rng"/>    
+    <include href="ssml-prosody.rng"/>
+    <include href="ssml-sayas.rng"/>
+    <include href="ssml-sub.rng"/>
+    <include href="ssml-token.rng"/> <!-- TODO or use only zed:w--> 
+    
+         
+    <x:h2>Z39.86 SSML feature - PLS lexicon linking</x:h2>
+    
+    <define name="z3986.link.rel.attrib.content.class" combine="choice">
+      <value>pls</value>
+    </define>     
+         
+  </div>  
+  
+</grammar>

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Relax NG schema module</title>
+      <link rel="stylesheet" type="text/css" href="../css/ProfileDocumentation.css" />
+   </head>
+   <body>
+      <h1 class="title">The DAISY Leisure Profile</h1>
+      
+      
+      <h1 id="d33e3" class="xhtml">Ruby Module in RELAX NG</h1>
+      
+      <pre>
+    Ruby Elements
+
+      ruby, rbc, rtc, rb, rt, rp
+
+    This module defines grammars to support ruby annotation markup.
+    This module is based on the W3C Ruby Annotation Specification:
+
+      http://www.w3.org/TR/ruby
+
+    Copyright ©2003 W3C® (MIT, ERCIM, Keio), All Rights Reserved.
+
+      Editor:   Masayasu Ishikawa &lt;mimasa@w3.org&gt;
+      Revision: $Id: ruby-1.rng,v 1.9 2004/07/21 09:46:41 mimasa Exp $
+
+    Permission to use, copy, modify and distribute this RELAX NG schema
+    for Ruby Annotation and its accompanying documentation for any purpose
+    and without fee is hereby granted in perpetuity, provided that the above
+    copyright notice and this paragraph appear in all copies. The copyright
+    holders make no representation about the suitability of this RELAX NG
+    schema for any purpose.
+
+    It is provided "as is" without expressed or implied warranty.
+    For details, please refer to the W3C software license at:
+
+      <a href="http://www.w3.org/Consortium/Legal/copyright-software">http://www.w3.org/Consortium/Legal/copyright-software</a>
+  </pre>
+      
+      
+      <h2 id="d33e14" class="xhtml">patterns for the content model of the ruby element</h2>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Ruby.content.simple</span>
+         
+         <p>Content model of simple ruby</p>
+         
+         <div class="rng"><span class="rng">group</span>: 
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="rb.html">rb</a></div>
+            
+            <div class="rng"><span class="rng">choice</span>:  A choice between at least one of:
+               			
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="rt-simple.html">rt-simple</a></div>
+               
+               <div class="rng"><span class="rng">group</span>: 
+                  
+                  <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="rp.html">rp</a></div>
+                  
+                  <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="rt-simple.html">rt-simple</a></div>
+                  
+                  <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="rp.html">rp</a></div>
+                  
+               </div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Ruby.content.complex</span>
+         
+         <p>Content model of complex ruby</p>
+         
+         <div class="rng"><span class="rng">group</span>: 
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="rbc.html">rbc</a></div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="rtc.html">rtc</a></div>
+            
+            <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="rtc.html">rtc</a></div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Ruby.content</span>
+         
+         <p>Simple ruby is used by default</p>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Ruby.content.simple.html">Ruby.content.simple</a></div>
+         
+      </div>
+      
+      
+      
+      
+      <h2 id="d33e71" class="xhtml">Ruby Elements</h2>
+      
+      
+      <h3 id="d33e74" class="xhtml">ruby element</h3>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">ruby</span>
+         
+         <div class="rng"><span class="rng">element</span>: <span class="name">ruby</span>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Ruby.content.html">Ruby.content</a></div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Ruby.common.attrib.html">Ruby.common.attrib</a></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <h3 id="d33e87" class="xhtml">rbc (ruby base component) element</h3>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">rbc</span>
+         
+         <div class="rng"><span class="rng">element</span>: <span class="name">rbc</span>
+            
+            <div class="rng"><span class="rng">oneOrMore</span>:  One or more of: 
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="rb.html">rb</a></div>
+               
+            </div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Ruby.common.attrib.html">Ruby.common.attrib</a></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <h3 id="d33e104" class="xhtml">rtc (ruby text component) element</h3>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">rtc</span>
+         
+         <div class="rng"><span class="rng">element</span>: <span class="name">rtc</span>
+            
+            <div class="rng"><span class="rng">oneOrMore</span>:  One or more of: 
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="rt-complex.html">rt-complex</a></div>
+               
+            </div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Ruby.common.attrib.html">Ruby.common.attrib</a></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <h3 id="d33e120" class="xhtml">rb (ruby base) element</h3>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">rb</span>
+         
+         <div class="rng"><span class="rng">element</span>: <span class="name">rb</span>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="NoRuby.content.html">NoRuby.content</a></div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Ruby.common.attrib.html">Ruby.common.attrib</a></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <h3 id="d33e133" class="xhtml">rt (ruby text) element</h3>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">rt-simple</span>
+         
+         <p>grammar for simple ruby</p>
+         
+         <p>rbspan attribute is not allowed in simple ruby</p>
+         
+         <div class="rng"><span class="rng">element</span>: <span class="name">rt</span>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="NoRuby.content.html">NoRuby.content</a></div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Ruby.common.attrib.html">Ruby.common.attrib</a></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">rt-complex</span>
+         
+         <p>grammar for complex ruby</p>
+         
+         <div class="rng"><span class="rng">element</span>: <span class="name">rt</span>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="NoRuby.content.html">NoRuby.content</a></div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Ruby.common.attrib.html">Ruby.common.attrib</a></div>
+            
+            <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+               
+               <div class="rng"><span class="rng">attribute</span>: <span class="name">rbspan</span>
+                  
+                  <div class="rng"><span class="rng">data</span>: 
+                     
+                     <div class="rng"><span class="text">The value must match the following regular expression:</span><code>[1-9][0-9]*</code></div>
+                     
+                  </div>
+                  
+               </div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <h3 id="d33e178" class="xhtml">rp (ruby parenthesis) element</h3>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">rp</span>
+         
+         <div class="rng"><span class="rng">element</span>: <span class="name">rp</span>
+            
+            <div class="rng"><span class="rng">text</span>:  Zero or more text nodes. 
+            </div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Ruby.common.attrib.html">Ruby.common.attrib</a></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      
+      
+      <h2 id="d33e194" class="xhtml">Ruby Common Attributes</h2>
+      
+      
+      <p>Ruby elements are intended to have common attributes of its
+         parent markup language. The pattern "Common.attrib" MUST be
+         defined to integrate this module.
+      </p>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Ruby.common.attrib</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Common.attrib.html">Common.attrib</a></div>
+         
+      </div>
+      
+      
+      
+      
+      <p>Content models of the rb and the rt elements are intended to
+         allow other inline-level elements of its parent markup language,
+         but it should not include ruby descendent elements. This RELAX NG
+         module itself doesn't check nesting of ruby elements.
+         The patterns "Inline.class" and "Inline.model" MUST be defined
+         to integrate this module.
+      </p>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Inline.class</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="ruby.html">ruby</a></div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">NoRuby.content</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Inline.model.html">Inline.model</a></div>
+         
+      </div>
+      
+      
+      
+   </body>
+</html>

@@ -1,0 +1,174 @@
+@base  <http://www.daisy.org/z3998/2012/vocab/resourcedirectory/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix jena: <http://www.daisy.org/ns/rdf/jena#> .
+@prefix : <#> .
+
+<> 
+  dcterms:title "Z39.98-2012 Resource Directory Vocabulary" ;
+  dcterms:description "This RDF vocabulary is a normative part of NISO Z39.98-2012(http://www.daisy.org/z3998/2012/z3998-2012.html). It defines a set of properties for use in the Z39.98-2012 Resource Directory document type." ;
+  dcterms:publisher "DAISY Consortium" ;
+  dcterms:issued "2009-12-01" ;
+  dcterms:creator "mgylling" ;
+  dcterms:modified "2012-12-19" .
+  
+  
+########################################
+###### nature/identity properties ######
+########################################
+
+:nature-identity    a rdf:Bag ;
+     dcterms:title "Nature and Identity" .
+
+:reference    a rdf:Property ;
+     rdfs:label "reference" ;
+     rdf:member :nature-identity ;
+     dcterms:description "A human-readable description of the purpose and structure of the entity described by this directory" .
+
+:token-identifier   a rdf:Property ;
+     rdfs:label "token-identifier" ;
+     rdf:member :nature-identity ;
+     dcterms:description "A canonical string identifier for the entity described by this directory" .
+
+:maintenance-agency a rdf:Property ;
+     rdfs:label "maintenance-agency" ;
+     rdf:member :nature-identity ;
+     dcterms:description "The identity of agency responsible for maintaining the entity described by this directory" .
+
+:specification-compliance a rdf:Property ;
+     rdfs:label "specification-compliance" ;
+     rdf:member :nature-identity ;
+     dcterms:description "A reference to a specification which the entity described by this directory conforms to" .
+
+:version            a rdf:Property ;
+     rdfs:label "version" ;
+     rdf:member :nature-identity ;
+     dcterms:description "A version identifier for the entity described by this directory" .
+     
+:current-version-uri a rdf:Property ;
+     rdfs:label "current-version-uri" ;
+     rdf:member :nature-identity ;
+     dcterms:description "A URI resolving to the resource directory of the most recently published (current) version of the entity described by this directory" .
+
+:version-history    a rdf:Property ;
+     rdfs:label "version-history" ;
+     rdf:member :nature-identity ;
+     dcterms:description "A reference to list of URIs that contains all available versions of the entity described by this directory" .
+
+
+########################################
+### instance conformance properties ####
+########################################
+
+:instance-conformance a rdf:Bag ;
+     dcterms:title "Instance Conformance" ;
+     dcterms:description "Resources related to testing whether instances satisfies the constraints expressed in this directory" .
+
+:normative-schemata   a rdf:Property ;
+     rdfs:label "normative-schemata" ;
+     rdf:member :instance-conformance ;
+     dcterms:description "The normative schema(ta) for validation of instances satisfying the constraints expressed in this directory" .
+
+:normative-prose   a rdf:Property ;
+     rdfs:label "normative-prose" ;
+     rdf:member :instance-conformance ;
+     dcterms:description "Normative prose regarding the application of the entity described by this directory" .
+     
+:schema-documentation a rdf:Property ;
+     rdfs:label "schema-documentation" ;
+     rdf:member :instance-conformance ;
+     dcterms:description "Human-readable documentation of a schema" .
+     
+:prefix    a rdf:Property ;
+     rdfs:label "prefix" ;
+     rdf:member :instance-conformance ;
+     dcterms:description "A prefix functioning as a symbolical short form for a URI" .
+     
+:conformance    a rdf:Property ;
+     rdfs:label "conformance" ;
+     rdf:member :instance-conformance ;
+     dcterms:description "The conformance requirement of a resource: normative or informative" .
+     
+:schema-type    a rdf:Property ;
+     rdfs:label "format" ;
+     rdf:member :instance-conformance ;
+     dcterms:description "The language in which a schema is expressed" .
+
+     
+     
+########################################
+#### instance conformance: profiles ####
+########################################
+
+          
+:instance-conformance-profile a rdf:Bag ;
+     rdf:member :instance-conformance ;
+     dcterms:title "Instance Conformance (Z39.98-2012 Profile Specific)" ;
+     dcterms:description "Resources related to testing whether instances satisfies the constraints expressed in this directory" .
+
+:z3998-feature   a rdf:Property ;
+     rdfs:label "z3998-feature" ;
+     rdf:member :instance-conformance-profile ;
+     dcterms:description "A Feature supported by the Profile" .
+
+:z3998-instance-name   a rdf:Property ;
+     rdfs:label "z3998-instance name" ;
+     rdf:member :instance-conformance-profile ;
+     dcterms:description "The name by which a profile or feature must be identified in Z39.98-AI document declarations." .
+
+:z3998-rdfa-context a rdf:Property ;
+     rdfs:label "z3998-rdfa-context" ;
+     rdf:member :instance-conformance-profile ;
+     dcterms:description "The canonical URI of the RDFa initial context document" .
+
+#:z3998-default-vocab a rdf:Property ;
+#     rdfs:label "z3998-default-vocab" ;
+#     jena:prop-sort "30" ;
+#     rdf:member :instance-conformance-profile ;
+#     dcterms:description "The profile's default RDF vocabulary" .
+
+########################################
+############## auxilliary ##############
+########################################
+
+
+:auxiliary    a rdf:Bag ;
+     dcterms:title "Auxiliary Resources" .
+
+:examples    a rdf:Property ;
+     rdfs:label "examples" ;
+     rdf:member :auxiliary ;
+     dcterms:description "Examples of instances satisfying the constraints expressed in this directory" .
+
+:informative-schema-alt a rdf:Property ;
+     rdfs:label "informative-schema-alt" ;
+     rdf:member :auxiliary ;
+     dcterms:description "An informative schema, alternative to normative schemas(#normative-schemata), for validation of instances satisfying the constraints expressed in this directory" .
+
+:informative-schema-add a rdf:Property ;
+     rdfs:label "informative-schema-add" ;
+     rdf:member :auxiliary ;
+     dcterms:description "An informative schema, for use in addition to normative schemas(#normative-schemata)" .
+
+:schema-module   a rdf:Property ;
+     rdfs:label "module" ;
+     rdf:member :auxiliary ;     
+     dcterms:description "A subcomponent of a schema" .
+    
+:default-css    a rdf:Property ;
+     rdfs:label "default-css" ;
+     rdf:member :auxiliary ;
+     dcterms:description "A cascading stylesheet suitable for use in instances satisfying the constraints expressed in this directory" .
+
+:supporting-software a rdf:Property ;
+     rdfs:label "supporting-software" ;
+     rdf:member :auxiliary ;
+     dcterms:description "Software that supports the entity described by this directory or instances satisfying the constraints expressed herein" .
+
+:archive    a rdf:Property ;
+     rdfs:label "archive" ;
+     rdf:member :auxiliary ;
+     dcterms:description "A downloadable archive of documents and resources referenced from this directory" .
+                   

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="docResources.rng" type="xml"?>
+<docResources xmlns="http://www.daisy.org/ns/z3986/2008/docResources/"
+    xmlns:d="http://www.daisy.org/ns/z3986/2008/"
+    xmlns:x2="http://www.w3.org/2002/06/xhtml2/">
+    
+    <!-- Include the xhtml 2 schema documentation -->
+    <include subDrURI="xhtml2-doc-resources.xml"/>
+    
+    <!-- Add the the special elements defined by the ZedAI group -->
+    <namespace nsURI="http://www.daisy.org/ns/z3986/2008/" defaultDocURL="http://www.daisy.org">
+        <element name="s" docURI="../schema/mod/z3986-text.rng#z3986.sentence" include="yes" />
+        <element name="w" docURI="../schema/mod/z3986-text.rng#z3986.word" include="yes" />
+        <element name="aside" docURI="../schema/mod/z3986-aside.rng#z3986.aside" include="yes" />
+        <element name="bridgehead" docURI="../schema/mod/z3986-bridgehead.rng#z3986.bridgehead" include="yes" />
+    </namespace>
+    
+</docResources>

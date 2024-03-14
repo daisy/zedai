@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:zt="http://www.daisy.org/ns/rdf/property#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:dcterms="http://purl.org/dc/terms/">
+   <rdf:Description rdf:about="http://www.daisy.org/z3998/2012/vocab/decl/">
+      <dcterms:modified>2010-05-21</dcterms:modified>
+      <dcterms:creator>mgylling</dcterms:creator>
+      <dcterms:issued>2009-12-01</dcterms:issued>
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:description>This RDF vocabulary is a normative part of NISO Z39.98-2012(http://www.daisy.org/z3998/2012/z3998-2012.html).</dcterms:description>
+      <dcterms:title>Z39.98-2012 Instance Metadata Vocabulary</dcterms:title>
+  </rdf:Description>
+   <rdf:Bag rdf:ID="nature-properties">
+      <dcterms:title>Document Instance Nature Properties</dcterms:title>
+      <dcterms:description>The following properties are used to declare the Z39.98-2012 document instance nature in terms of which profile it adheres to, which optional features it makes use of and which RDFa document defines its default context. The properties must be used in the rel attribute of the meta element in the document instance head.</dcterms:description>
+      <rdf:Description rdf:about="#profile" rdf:ID="profile">
+         <rdfs:label>profile</rdfs:label>
+         <rdfs:comment>The associated resource reference is the canonical URI of the profile this document instance adheres to, also resolving to its Resource Directory.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#feature" rdf:ID="feature">
+         <rdfs:label>feature</rdfs:label>
+         <rdfs:comment>The associated resource reference is the canonical URI of a feature used in this document instance, also resolving to its Resource Directory.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#rdfa-context" rdf:ID="rdfa-context">
+         <rdfs:label>rdfa-context</rdfs:label>
+         <rdfs:comment>The associated resource reference is the default RDFa context for this document instance.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+   </rdf:Bag>
+   <rdf:Bag rdf:ID="profile-feature-properties">
+      <dcterms:title>Profile and Feature Reference Properties</dcterms:title>
+      <dcterms:description>The following properties are used to fully identify a referenced profile or feature.</dcterms:description>
+      <rdf:Description rdf:about="#name" rdf:ID="name">
+         <rdfs:label>name</rdfs:label>
+         <rdfs:comment>The name that uniquely identifies the referenced profile or feature.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#version" rdf:ID="version">
+         <rdfs:label>version</rdfs:label>
+         <rdfs:comment>The version number of the referenced profile or feature.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+   </rdf:Bag>
+   <rdf:Bag rdf:ID="meta-record-properties">
+      <dcterms:title>Metadata Record Reference Properties</dcterms:title>
+      <dcterms:description>The following properties are used when referencing external metadata records from a Z39.98-2012 document instance. The properties must be used on attributes of the meta element in the document instance head element.</dcterms:description>
+      <rdf:Description rdf:about="#meta-record" rdf:ID="meta-record">
+         <rdfs:label>meta-record</rdfs:label>
+         <rdfs:comment>The referenced resource is a metadata record describing the document instance.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#meta-record-type" rdf:ID="meta-record-type">
+         <rdfs:label>meta-record-type</rdfs:label>
+         <rdfs:comment>The referenced metadata record is of the given type(#meta-record-types).</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#meta-record-version" rdf:ID="meta-record-version">
+         <rdfs:label>meta-record-version</rdfs:label>
+         <rdfs:comment>The referenced metadata record is expressed using the given version of the given type(#meta-record-type).</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+   </rdf:Bag>
+   <rdf:Bag rdf:ID="meta-record-types">
+      <dcterms:title>Metadata Record Types</dcterms:title>
+      <dcterms:description>The following properties represent well-known metadata record types.</dcterms:description>
+      <rdf:Description rdf:about="#mods" rdf:ID="mods">
+         <rdfs:label>mods</rdfs:label>
+         <rdfs:comment>The referenced metadata record is of the type Metadata Object Description Schema(http://www.loc.gov/standards/mods/) (MODS).</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#onix-books" rdf:ID="onix-books">
+         <rdfs:label>onix-books</rdfs:label>
+         <rdfs:comment>The referenced metadata record is of the type ONIX for Books(http://www.editeur.org/).</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#marc21-xml" rdf:ID="marc21-xml">
+         <rdfs:label>marc21-xml</rdfs:label>
+         <rdfs:comment>The referenced metadata record is of the type MARC 21 XML(http://www.loc.gov/standards/marcxml/).</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#dcterms-rdf" rdf:ID="dcterms-rdf">
+         <rdfs:label>dcterms-rdf</rdfs:label>
+         <rdfs:comment>The referenced metadata record is an RDF XML(http://www.w3.org/TR/REC-rdf-syntax/) record using properties from http://purl.org/dc/terms/.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#dcterms-rdfa" rdf:ID="dcterms-rdfa">
+         <rdfs:label>dcterms-rdfa</rdfs:label>
+         <rdfs:comment>The referenced metadata record is an RDFa(http://www.w3.org/TR/rdfa-syntax/) document using properties from http://purl.org/dc/terms/.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+   </rdf:Bag>
+</rdf:RDF>

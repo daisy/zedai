@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Relax NG schema module</title>
+      <link rel="stylesheet" type="text/css" href="../css/ProfileDocumentation.css" />
+   </head>
+   <body>
+      <h1 class="title">The DAISY Leisure Profile</h1>
+      
+      
+      <h1 id="d10e3" class="xhtml">Events Attribute Collection Module</h1>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Events.attrib</span>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">ev:event</span>
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="NMTOKEN.datatype.html">NMTOKEN.datatype</a></div>
+               
+            </div>
+            
+         </div>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">ev:observer</span>
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="IDREF.datatype.html">IDREF.datatype</a></div>
+               
+            </div>
+            
+         </div>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">ev:target</span>
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="IDREF.datatype.html">IDREF.datatype</a></div>
+               
+            </div>
+            
+         </div>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">ev:handler</span>
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="URI.datatype.html">URI.datatype</a></div>
+               
+            </div>
+            
+         </div>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">ev:phase</span>
+               
+               <div class="rng"><span class="rng">choice</span>:  A choice between at least one of:
+                  			
+                  
+                  <div class="rng"><span class="rng">value</span>: capture
+                  </div>
+                  
+                  <div class="rng"><span class="rng">value</span>: default
+                  </div>
+                  
+               </div>
+               
+            </div>
+            
+         </div>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">ev:propagate</span>
+               
+               <div class="rng"><span class="rng">choice</span>:  A choice between at least one of:
+                  			
+                  
+                  <div class="rng"><span class="rng">value</span>: stop
+                  </div>
+                  
+                  <div class="rng"><span class="rng">value</span>: continue
+                  </div>
+                  
+               </div>
+               
+            </div>
+            
+         </div>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">ev:defaultAction</span>
+               
+               <div class="rng"><span class="rng">choice</span>:  A choice between at least one of:
+                  			
+                  
+                  <div class="rng"><span class="rng">value</span>: cancel
+                  </div>
+                  
+                  <div class="rng"><span class="rng">value</span>: perform
+                  </div>
+                  
+               </div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Common.attrib</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Events.attrib.html">Events.attrib</a></div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">head.misc</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="listener.html">listener</a></div>
+         
+      </div>
+      
+      
+      
+      
+   </body>
+</html>

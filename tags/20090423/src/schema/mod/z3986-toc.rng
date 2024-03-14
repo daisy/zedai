@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+  <x:h1>The DAISY Table of Contents module</x:h1>
+
+  <div>
+    <x:h2>The toc element</x:h2>
+    <x:div id="z3986.toc">
+      <x:p class="description">A table of contents</x:p>
+      <x:h2>Use of this element</x:h2>
+      <p>This element is used to represent a printed table of content.</p>
+    </x:div>
+
+    <!-- the default toc allowing section parts -->
+    <define name="z3986.toc" ns="http://www.daisy.org/ns/z3986/2008/">
+      <element name="toc">
+        <ref name="z3986.toc.attlist"/>
+        <ref name="z3986.toc.content"/>
+      </element>
+    </define>
+    
+    <!-- a simple toc with no section parts -->
+    <define name="z3986.toc.simple" ns="http://www.daisy.org/ns/z3986/2008/">
+      <element name="toc">
+        <ref name="z3986.toc.attlist"/>
+        <ref name="z3986.tocpart.model"/>
+      </element>
+    </define>
+
+    <define name="z3986.toc.attlist" combine="interleave">
+      <ref name="xhtml.Common.attrib"/>
+    </define>
+
+    <define name="z3986.toc.content">
+      <choice>
+        <ref name="z3986.tocpart.model"/>
+        <interleave>
+          <ref name="z3986.section.toc"/>
+          <optional>
+            <ref name="z3986.tocpart.model.extra"/>
+          </optional>
+        </interleave>
+      </choice>
+    </define>
+    
+  </div>
+  
+  <define name="z3986.tocpart.model">
+    <optional>
+      <ref name="xhtml.h"/>
+    </optional>
+    <oneOrMore>
+      <interleave>
+        <ref name="z3986.tocentry"/>
+        <optional>
+          <ref name="z3986.tocpart.model.extra"/>
+        </optional>
+      </interleave>
+    </oneOrMore>
+  </define>
+
+  <define name="z3986.tocpart.model.extra">
+    <choice>
+      <empty/>
+    </choice>
+  </define>
+
+  <x:div id="z3986.section.toc">
+    <x:p class="description">
+      <x:em>Description: to be written ...</x:em>
+      <x:strong>(@id="z3986.section.toc" in file z3986-toc.rng)</x:strong>
+    </x:p>
+    <x:h2>Use of this element</x:h2>
+    <x:p>
+      <x:em>More info: to be written ...</x:em>
+      <x:strong>(@id="z3986.section.toc" in file z3986-toc.rng)</x:strong>
+    </x:p>
+  </x:div>
+  
+  <define name="z3986.section.toc">
+    <element name="section">
+      <ref name="xhtml.Common.attrib"/>
+      <ref name="z3986.tocpart.model"/>
+    </element>
+  </define>
+
+  <x:div id="z3986.tocentry">
+    <x:p class="description">
+      <x:em>Description: to be written ...</x:em>
+      <x:strong>(@id="z3986.tocentry" in file z3986-toc.rng)</x:strong>
+    </x:p>
+    <x:h2>Use of this element</x:h2>
+    <x:p>
+      <x:em>More info: to be written ...</x:em>
+      <x:strong>(@id="z3986.tocentry" in file z3986-toc.rng)</x:strong>
+    </x:p>
+  </x:div>
+  
+  <define name="z3986.tocentry" ns="http://www.daisy.org/ns/z3986/2008/">
+    <element name="tocentry">
+      <ref name="z3986.tocentry.attlist"/>
+      <ref name="z3986.tocentry.content"/>
+    </element>
+  </define>
+
+  <define name="z3986.tocentry.attlist" combine="interleave">
+    <ref name="xhtml.Common.attrib"/>
+  </define>
+
+  <define name="z3986.tocentry.content">
+    <ref name="z3986.tocentry.main"/>
+    <ref name="z3986.tocentry.sub"/>
+    <zeroOrMore>
+      <ref name="z3986.tocentry"/>
+    </zeroOrMore>
+  </define>
+
+  <!-- the main toc content -->
+  <define name="z3986.tocentry.main">
+    <ref name="z3986.toclabel"/>
+    <optional>
+      <ref name="z3986.tocpageref"/>
+    </optional>
+  </define>
+    
+  <!-- other block level content within the tocentry -->  
+  <define name="z3986.tocentry.sub">
+    <zeroOrMore>
+      <ref name="z3986.tocentry.sub.class"/>    
+    </zeroOrMore>    
+  </define>
+
+  <define name="z3986.tocentry.sub.class" combine="choice">
+    <choice>
+      <ref name="xhtml.p"/>      
+      <ref name="xhtml.div"/>
+      <ref name="xhtml.blockcode"/>
+      <ref name="xhtml.blockquote"/>
+      <ref name="xhtml.List.class"/>
+      <ref name="z3986.tocaside"/>
+    </choice>  
+  </define>
+
+  <x:div id="z3986.toclabel">
+    <x:p class="description">
+      <x:em>Description: to be written ...</x:em>
+      <x:strong>(@id="z3986.toclabel" in file z3986-toc.rng)</x:strong>
+    </x:p>
+    <x:h2>Use of this element</x:h2>
+    <x:p>
+      <x:em>More info: to be written ...</x:em>
+      <x:strong>(@id="z3986.toclabel" in file z3986-toc.rng)</x:strong>
+    </x:p>
+  </x:div>
+  <define name="z3986.toclabel" ns="http://www.daisy.org/ns/z3986/2008/">
+    <element name="label">
+      <ref name="z3986.toclabel.attlist"/>
+      <ref name="z3986.toclabel.content"/>
+    </element>
+  </define>
+
+  <define name="z3986.toclabel.attlist">
+    <ref name="xhtml.Common.attrib"/>
+  </define>
+
+  <define name="z3986.toclabel.content">
+    <ref name="xhtml.Text.model"/>
+  </define>
+
+  <x:div id="z3986.tocpageref">
+    <p class="description">
+      <em>Description: to be written ...</em>
+      <strong>(@id="z3986.tocpageref" in file z3986-toc.rng)</strong>
+    </p>
+    <h2>Use of this element</h2>
+    <p>
+      <em>More info: to be written ...</em>
+      <strong>(@id="z3986.tocpageref" in file z3986-toc.rng)</strong>
+    </p>
+  </x:div>
+
+  <define name="z3986.tocpageref" ns="http://www.daisy.org/ns/z3986/2008/">
+    <element name="pageref">
+      <ref name="z3986.tocpageref.attlist"/>
+      <ref name="z3986.tocpageref.content"/>
+    </element>
+  </define>
+
+  <x:div id="z3986.tocpageref.ref.attrib">
+    <p>
+      <em>More info; to be written ... (@id="z3986.tocpageref.ref.attrib" in file
+        z3986-toc.rng)</em>
+    </p>
+  </x:div>
+  <define name="z3986.tocpageref.attlist">
+    <optional>
+      <attribute name="ref">
+        <ref name="IDREF.datatype"/>
+      </attribute>
+    </optional>
+    <ref name="xhtml.Common.attrib"/>
+  </define>
+
+  <define name="z3986.tocpageref.content">
+    <text/>
+  </define>
+
+  <div>
+    <x:h2>The TOC aside element</x:h2>
+    <x:div id="z3986.tocaside">
+      <p class="description">
+        <em>Description: to be written ...</em>
+        <strong>(@id="z3986.tocaside" in file z3986-toc.rng)</strong>
+      </p>    
+    </x:div>
+  
+    <define name="z3986.tocaside" ns="http://www.daisy.org/ns/z3986/2008/">
+      <element name="aside">
+        <ref name="z3986.tocaside.attlist"/>
+        <ref name="z3986.tocaside.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.tocaside.attlist">
+      <ref name="xhtml.Common.attrib"/>
+    </define>
+
+    <define name="z3986.tocaside.content">
+      <interleave>
+        <ref name="xhtml.Flow.model"/>
+        <optional>
+          <ref name="z3986.toc"/>
+        </optional>
+      </interleave>
+    </define>
+  </div>
+  
+  <div>
+    <x:h2>Content model contributions</x:h2>
+  
+    <!-- contribute toc to frontmatter -->
+    <define name="z3986.frontmatter.content" combine="interleave">
+      <optional>
+        <ref name="z3986.toc"/>
+      </optional>
+    </define>
+    
+    <!-- allow toc in the strict (bodymatter) sections -->
+    <define name="xhtml.section.strict.posthead.extra" combine="choice">
+      <optional>
+        <ref name="z3986.toc.simple"/>
+      </optional>
+    </define>
+    
+  </div>
+
+</grammar>

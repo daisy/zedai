@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+
+    <!-- TODO SCH If the type attribute of the layout element is given and has a value other than 
+        "text/smil-basic-layout", the element contains character data. -->
+
+    <div>
+        <define name="smil3.head.content" combine="interleave">            
+            <ref name="smil3.layout"/>             
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.layout">           
+            <element name="layout">
+                <a:documentation>The layout element contains the elements that define a particular
+                    layout model to be used within a SMIL presentation. If present, the layout element
+                    must appear in the head section of the document. If a document contains no layout
+                    element, no SMIL-defined default values are assigned and the positioning of the body
+                    elements is totally implementation-dependent. SMIL-defined default layout semantics
+                    can be assigned to all renderable elements by selecting the empty layout element.</a:documentation>
+                <ref name="smil3.layout.attlist"/>
+                <ref name="smil3.layout.content"/>
+            </element>
+        </define>
+
+        <define name="smil3.layout.attlist">
+            <ref name="smil3.Core.attrib"/>
+        </define>
+
+        <define name="smil3.layout.content" combine="interleave">
+            <empty/>                
+        </define>
+    </div>
+
+    <define name="smil3.layout.type.attrib">        
+        <attribute name="type">
+            <a:documentation>This attribute specifies which layout language is used in the layout
+                element. If the user agent does not understand this language, it must skip the element
+                and all of its content up until the next layout close tag. The default value of the type
+                attribute is "text/smil-basic-layout". This identifier value supports SMIL 3.0
+                BasicLayout module layout semantics.</a:documentation>
+            <choice>
+                <value>text/smil-basic-layout</value>
+                <ref name="NMTOKEN.datatype"/>
+            </choice>
+        </attribute>
+    </define>
+
+</grammar>

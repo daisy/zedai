@@ -1,0 +1,4 @@
+<p>The <code>Abort</code> behavior is the default; the <code>Ignore</code> and <code>Discard</code> behaviors 
+    must only be employed when the Processing Agent is explicitly instructed to do so by the client.<br/><br/>
+Processing Agents that employ the <code>Ignore</code> or <code>Discard</code> behaviors should issue a 
+notification.</p>

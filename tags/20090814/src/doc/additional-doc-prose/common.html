@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Sample Demo</title>
+    </head>
+    <body>
+        <!--        <div id="pagebreak-short">
+            <p><code> &lt;pagebreak /&gt; </code> or <code> &lt;pagebreak value="45"
+                    /&gt; </code></p>
+        </div>
+-->
+        <pre id="pagebreak-short">
+<pagebreak value="45" />
+        </pre>
+        <div id="pagebreak-long">
+            <p>For markup of a printed book, it is often useful or neccesary to retain information
+                about where in the text the actual pagebreaks occur. The <span class="markup"
+                    >pagebreak</span> element can be used for this purpose. </p>
+            <p> The optional <span class="markup">value</span> attribute can be used to hold
+                information about the page number of the page following the pagebreak. Note that
+                this attribute may contain any string, not just an arabic number.</p>
+            <h2>Examples</h2>
+            <h3>Example 1</h3>
+            <pre>
+                &lt;p&gt;
+                "He has never since been what he might have been," said Mr. Jarndyce, "and now you
+                see him in his age with no one near him &lt;d:pagebreak /&gt;but his servant and his little yellow 
+                friend.  It's your throw, my dear!"
+                &lt;/p&gt;
+            </pre>
+            <h3>Example 2</h3>
+            <pre>
+                &lt;p&gt;
+                &lt;d:s&gt;Mr. Guppy went down on his knees.&lt;/d:s&gt;
+                &lt;d:s&gt;I was well behind my table and not much frightened.&lt;/d:s&gt;
+                &lt;d:pagebreak value="176" /&gt;
+                &lt;d:s&gt;I said, "Get up from that ridiculous position immediately, sir, or you
+                will oblige me to break my implied promise and ring the bell!".&lt;/d:s&gt;
+                &lt;/p&gt;
+            </pre>
+            <h3>Example 3</h3>
+            <pre>
+                &lt;p&gt;He looked piteously, but slowly rose and did so.&lt;/p&gt;
+                &lt;d:pagebreak value="22" /&gt;
+                &lt;p&gt;"Yet what a mockery it is, miss," he said with his hand upon his heart and shaking
+                his head at me in a melancholy manner over the tray, "to be stationed behind food at
+                such a moment.  The soul recoils from food at such a moment, miss."&lt;/p&gt;
+            </pre>
+        </div>
+    </body>
+</html>

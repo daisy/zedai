@@ -1,0 +1,8 @@
+<sel:select>
+  <sel:when expr="target:consumer('COGNITIVE')">
+    …      
+  </sel:when>  
+  <sel:otherwise>
+    …
+  </sel:otherwise>
+</sel:select>

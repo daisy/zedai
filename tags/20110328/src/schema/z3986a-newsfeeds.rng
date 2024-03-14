@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/"
+         xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+  
+  <info xmlns="http://docbook.org/ns/docbook">
+    <title xreflabel="toc">The newsfeed aggregator schema</title>
+    <annotation annotates="/">
+      <para role="desc-main">
+        This driver file represents the RelaxNG implementation of the 
+        Z39.86-201x Newsfeed Aggregator Profile, and provides the schematic means
+        of validating conformant documents.
+      </para>
+    </annotation>
+    <author>
+      <personname>Markus Gylling</personname>
+      <email>mgylling@daisy.org</email>
+    </author>
+    <legalnotice>
+      <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+      <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+    </legalnotice>
+    <copyright>
+      <year>2009</year>
+      <year>2010</year>
+      <holder>DAISY Consortium</holder>
+    </copyright>
+    <revhistory>
+      <revision>
+        <date>2011-03-28</date>
+        <authorinitials>MGy</authorinitials>
+        <revdescription>
+          <para>
+            Initial version.
+          </para>
+          <para>
+            This revision history only reflects changes to the driver file, not to any of the
+            modules included in it.
+          </para>
+        </revdescription>
+      </revision>
+    </revhistory>
+  </info>
+  
+  <x:h1>RELAX NG driver for Z39.86-201x Part A Newsfeed Aggregator Profile</x:h1>
+  
+  <x:h2>Common Document Model Modules</x:h2>
+
+  <x:h3>Content Model Definitions</x:h3>
+  <include href="./mod/z3986-global-classes.rng" />    
+  
+  <x:h3>Common Elements</x:h3>    
+  <include href="./mod/z3986-document.rng">
+    <!-- redefine body content to be either sections or articles -->
+    <define name="z3986.body.content">
+      <ref name="z3986.newsfeeds.body.content"/>
+    </define>
+  </include>  
+  <include href="./mod/z3986-meta.rng"/>
+  <include href="./mod/z3986-linking.rng"/>   
+      
+  <include href="./mod/z3986-section.rng">
+    <!-- redefine section to only allow sections or articles -->
+    <define name="z3986.section.content">
+      <ref name="z3986.newsfeeds.section.strict.content"/>
+    </define>  
+  </include>
+  <include href="./mod/z3986-headings.rng">
+      <!--  remove hpart -->
+      <define name="z3986.hpart">
+      	<notAllowed/>     
+    </define>
+  </include>
+  <include href="./mod/z3986-block.rng"/>
+  <include href="./mod/z3986-p.rng"/>        
+  <include href="./mod/z3986-list.rng"/>          
+  <include href="./mod/z3986-table.rng">
+    <!-- redefine table to the simplest model -->
+    <define name="z3986.table.content">
+      <ref name="z3986.table.simple.content"/>
+    </define>
+  </include>            
+  <include href="./mod/z3986-quote.rng"/>
+  <include href="./mod/z3986-citation.rng"/>  
+  <include href="./mod/z3986-object.rng"/>
+  <include href="./mod/z3986-annotation.rng"/>     
+  <include href="./mod/z3986-caption.rng"/>    
+  <include href="./mod/z3986-description.rng"/>
+  <include href="./mod/z3986-span.rng"/>
+  <include href="./mod/z3986-line.rng"/>    
+  <include href="./mod/z3986-s.rng"/>
+  <include href="./mod/z3986-w.rng"/>  
+  <include href="./mod/z3986-abbr.rng"/>  
+  <include href="./mod/z3986-code.rng"/>
+  <include href="./mod/z3986-emph.rng" />  
+  <include href="./mod/z3986-time.rng"/>
+  <include href="./mod/z3986-name.rng"/>  
+  <include href="./mod/z3986-term.rng"/>
+  <include href="./mod/z3986-definition.rng"/>
+  <include href="./mod/z3986-sub-sup.rng"/>
+  <include href="./mod/z3986-num.rng" />
+            
+  <x:h3>Common Attributes</x:h3>  
+  <include href="./mod/z3986-core-attrib.rng"/>
+  <include href="./mod/z3986-i18n-attrib.rng"/>
+  <include href="./mod/xlink.rng"/>
+  <include href="./mod/z3986-depth-attrib.rng"/>
+
+	<include href="./mod/rdfa-attrib.rng">
+		<define name="rdfa.profile.attrib.content">
+			<value>http://www.daisy.org/z3986/2011/vocab/profiles/periodicals/</value>
+		</define>	
+	</include>
+
+  <include href="./mod/z3986-role-attrib.rng"/>
+  <include href="./mod/z3986-by-attrib.rng"/>
+  
+  <x:h2>Profile Specific Modules</x:h2>
+  <include href="./mod/z3986-article.rng"/>
+  <include href="./mod/z3986-byline.rng"/>
+  <include href="./mod/z3986-dateline.rng"/>
+    
+  <x:h2>Optional Feature Modules</x:h2>
+  
+  <div x:id="its-ruby" x:class="feature">
+    <x:h2>ITS Ruby Feature</x:h2>
+    <include href="./mod/z3986-feature-its-ruby.rng"/>
+  </div>
+  
+  <x:h2>RDF Property Enumeration Modules</x:h2>
+  <include href="./mod/z3986-vocab-contrib-periodicals.rng"/>
+            
+  <x:h2>Support Modules</x:h2>
+  <include href="./mod/z3986-datatypes.rng" />
+  <!-- <include href="./mod/iana-lang-enum.rng" /> -->
+  
+  <x:h2>Profile specific models</x:h2>
+
+  <define name="z3986.newsfeeds.body.content">
+    <optional>
+      <ref name="z3986.h"/>
+    </optional>
+    <choice>
+      <oneOrMore>
+        <ref name="z3986.section"/>
+      </oneOrMore> 
+      <oneOrMore>
+        <ref name="z3986.article"/>
+      </oneOrMore>     
+    </choice>
+  </define>  
+  
+  <define name="z3986.newsfeeds.section.strict.content">
+    <ref name="z3986.newsfeeds.body.content"/>
+  </define>
+
+  <!-- define as placeholders internal classes that arent used in this schema -->
+  <define name="z3986.Global.extra.class">
+    <notAllowed/>
+  </define>
+  <define name="z3986.Section.extern.class">
+    <notAllowed/>
+  </define>
+  <define name="z3986.Block.extern.class">
+    <notAllowed/>
+  </define>
+  <define name="z3986.Phrase.extern.class">
+    <notAllowed/>
+  </define>
+  <define name="z3986.Text.core.class.xsd">
+    <notAllowed/>
+  </define>
+  <define name="z3986.Phrase.extern.class.xsd">
+    <notAllowed/>
+  </define>
+</grammar>

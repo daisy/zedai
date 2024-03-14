@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  ns="http://www.w3.org/2005/11/its"
+  xmlns:x="http://www.w3.org/1999/xhtml"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+
+  <x:h1>ITS Ruby module</x:h1>
+
+  <define name="its-ruby">
+    <element name="ruby">
+      <a:documentation>Ruby markup.</a:documentation>
+      <ref name="its-ruby.content"/>
+      <ref name="its-ruby.attributes"/>
+    </element>
+  </define>
+
+  <define name="its-ruby.content">
+    <choice>
+      <group>
+        <ref name="its-rb"/>
+        <choice>
+          <ref name="its-rt"/>
+          <group>
+            <ref name="its-rp"/>
+            <ref name="its-rt"/>
+            <ref name="its-rp"/>
+          </group>
+        </choice>
+      </group>
+      <group>
+        <ref name="its-rbc"/>
+        <ref name="its-rtc"/>
+        <optional>
+          <ref name="its-rtc"/>
+        </optional>
+      </group>
+    </choice>
+  </define>
+
+  <define name="its-ruby.attributes">
+    <ref name="its-att.local.no-ns.attributes"/>
+  </define>
+
+  <define name="its-rb">
+    <element name="rb">
+      <a:documentation>Ruby base text. The rb element may contain inline elements or 
+        character data as its content, but the ruby element is not allowed as its 
+        descendant element.</a:documentation>
+      <ref name="its-rb.content"/>
+      <ref name="its-rb.attributes"/>
+    </element>
+  </define>
+
+  <define name="its-rb.content">
+    <text/>
+  </define>
+
+  <define name="its-rb.attributes">
+    <ref name="its-att.local.no-ns.attributes"/>
+  </define>
+
+  <define name="its-rt">
+    <element name="rt">
+      <a:documentation>Ruby text. The rt element may contain inline elements or 
+        character data as its content, but the ruby element is not allowed as 
+        its descendant element.</a:documentation>
+      <ref name="its-rt.content"/>
+      <ref name="its-rt.attributes"/>
+    </element>
+  </define>
+
+  <define name="its-rt.content">
+    <text/>
+  </define>
+
+  <define name="its-rt.attributes">
+    <ref name="its-att.local.no-ns.attributes"/>
+    <optional>
+      <attribute name="rbspan">
+        <a:documentation>Allows an rt element to span multiple rb elements in complex ruby
+          markup.</a:documentation>
+        <data type="string"/>
+      </attribute>
+    </optional>
+  </define>
+
+  <define name="its-rbc">
+    <element name="rbc">
+      <a:documentation>Container for rb elements in the case of complex ruby
+        markup.</a:documentation>
+      <ref name="its-rbc.content"/>
+      <ref name="its-rbc.attributes"/>
+    </element>
+  </define>
+
+  <define name="its-rbc.content">
+    <oneOrMore>
+      <ref name="its-rb"/>
+    </oneOrMore>
+  </define>
+
+  <define name="its-rbc.attributes">
+    <ref name="its-att.local.no-ns.attributes"/>
+  </define>
+
+  <define name="its-rtc">
+    <element name="rtc">
+      <a:documentation>Container for rt elements in the case of complex ruby markup. </a:documentation>
+      <ref name="its-rtc.content"/>
+      <ref name="its-rtc.attributes"/>
+    </element>
+  </define>
+
+  <define name="its-rtc.content">
+    <oneOrMore>
+      <ref name="its-rt"/>
+    </oneOrMore>
+  </define>
+
+  <define name="its-rtc.attributes">
+    <ref name="its-att.local.no-ns.attributes"/>
+  </define>
+
+  <define name="its-rp">
+    <element name="rp">
+      <a:documentation>Used in the case of simple ruby markup to specify characters that can
+        denote the beginning and end of ruby text when user agents do not have other ways to
+        present ruby text distinctively from the base text.</a:documentation>
+      <ref name="its-rp.content"/>
+      <ref name="its-rp.attributes"/>
+    </element>
+  </define>
+
+  <define name="its-rp.content">
+    <text/>
+  </define>
+
+  <define name="its-rp.attributes">
+    <ref name="its-att.local.no-ns.attributes"/>
+  </define>
+
+</grammar>

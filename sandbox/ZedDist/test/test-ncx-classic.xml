@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="../src/schema/ncx-classic.rng" type="xml"?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" 
+    xmlns:book="http://foo" xml:lang="en">
+    <!-- An example of a classic, full featured NCX -->
+    <!-- TODO spec to define out-of-line CURIE prefix catalog mechanism so no need to declare here -->
+    
+    <navMap role="book:h">
+        <target href="aURI" ord="1">
+            <label>
+                <text>Label Text</text>
+                <audio src="aURI" clipBegin="0.0" clipEnd="0.2"/>
+                <image src="aURI"/>
+            </label>
+            <target href="aURI" ord="3" targetRole="h" >
+                <label>
+                    <text>Label Text</text>
+                    <audio src="aURI" clipBegin="0.0" clipEnd="0.2"/>
+                    <image src="aURI"/>
+                </label>
+                <label xml:lang="it">
+                    <text>Il texto di labelo</text>
+                    <audio src="aURI" clipBegin="0.0" clipEnd="0.2"/>
+                    <image src="aURI"/>
+                </label>
+            </target>
+        </target>
+    </navMap>
+    
+    <navList role="book:pagebreak"> <!-- role here means all target children inherit unless explicitly overridden using @targetRole -->
+        <label><text>pages</text></label>
+        <!-- <info><text>blah blah</text></info> -->
+        <target href="aURI" ord="2">
+            <label>
+                <text>Label text</text>
+                <audio src="aURI" />
+                <image src="aURI" /> 
+            </label>
+        </target>
+    </navList>
+        
+</ncx>

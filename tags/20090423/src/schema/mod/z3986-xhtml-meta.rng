@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z3986 Meta Module</x:h1>  
+  <x:p>This module is the Z3986 revised XHTML2 Metainformation Module.</x:p>
+
+  <include href="xhtml-meta-2.rng">
+    <!-- TODO may move this to driver space and remove this wrapper -->  
+      
+    <define name="xhtml.link.attlist">
+      <ref name="xhtml.Common.attrib"/>
+      <ref name="xhtml.Hypertext.attrib"/>
+    </define>
+     
+    <define name="xhtml.meta.content">
+      <choice>
+        <empty/>
+        <ref name="xhtml.Text.model"/>
+        <oneOrMore>
+          <ref name="xhtml.meta" />
+        </oneOrMore>
+      </choice>                   
+    </define>
+         
+  </include>
+
+</grammar>

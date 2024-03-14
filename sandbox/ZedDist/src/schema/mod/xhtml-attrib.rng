@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    
+    <define name="xhtml.Core.attrib">
+        <optional>
+            <ref name="xhtml.id.attrib"/>
+        </optional>
+        <optional>
+            <ref name="xhtml.class.attrib"/>
+        </optional>    
+    </define>
+        
+    <define name="xhtml.Core.contrib.attrib" combine="interleave">
+        <empty/>    
+    </define>    
+        
+    <define name="xhtml.I18n.attrib">
+        <optional>
+            <ref name="xhtml.xml.lang.attrib"/>
+        </optional>
+        <optional>
+            <ref name="xhtml.lang.attrib"/>
+        </optional>
+        <optional>
+            <ref name="xhtml.dir.attrib"/>
+        </optional>
+    </define>
+    
+    <define name="xhtml.Common.attrib">
+        <ref name="xhtml.Core.attrib"/>
+        <ref name="xhtml.Core.contrib.attrib"/>
+        <ref name="xhtml.I18n.attrib"/>
+    </define>    
+    
+    <define name="xhtml.class.attrib">
+        <attribute name="class" />
+    </define>
+    
+    <define name="xhtml.id.attrib">
+        <attribute name="id">
+            <data type="ID"/>
+        </attribute>
+    </define>
+    
+    <define name="xhtml.xml.lang.attrib">
+        <attribute name="xml:lang">
+            <ref name="LanguageCode.datatype"/>
+        </attribute>
+    </define>
+    
+    <define name="xhtml.lang.attrib">
+        <attribute name="lang">
+            <ref name="LanguageCode.datatype"/>
+        </attribute>
+    </define>
+    
+    <define name="xhtml.dir.attrib">
+        <attribute name="dir">
+            <choice>
+                <value>ltr</value>
+                <value>rtl</value>
+                <!-- TODO ITS additional values -->
+            </choice>
+        </attribute>
+    </define>
+        
+</grammar>

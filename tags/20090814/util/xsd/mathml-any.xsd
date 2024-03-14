@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"  
+           xmlns:m="http://www.w3.org/1998/Math/MathML"
+           targetNamespace="http://www.w3.org/1998/Math/MathML" 
+	       elementFormDefault="qualified"> 
+  <xs:element name="math"> 
+    <xs:complexType>
+       <xs:sequence>
+        <xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence> 
+      <xs:anyAttribute namespace="##any" processContents="skip" />
+	</xs:complexType>
+  </xs:element> 
+     
+  <xs:group name="semantics">
+    <xs:sequence/>
+  </xs:group>
+      
+  <xs:group name="semantics1">
+    <xs:sequence>
+      <xs:group ref="m:semantics"/>
+    </xs:sequence>
+  </xs:group>
+  
+  <xs:group name="semantics2">
+    <xs:sequence>
+      <xs:group ref="m:semantics"/>
+    </xs:sequence>
+  </xs:group>
+  
+  <xs:group name="semantics3">
+    <xs:sequence>
+      <xs:group ref="m:semantics"/>
+    </xs:sequence>
+  </xs:group>
+  
+  <xs:group name="semantics4">
+    <xs:sequence>
+      <xs:group ref="m:semantics"/>
+    </xs:sequence>
+  </xs:group>
+  
+  <xs:group name="semantics5">
+    <xs:sequence>
+      <xs:group ref="m:semantics"/>
+    </xs:sequence>
+  </xs:group>
+    
+</xs:schema>

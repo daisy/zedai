@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+  ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="aside">The aside module</dcterms:title>
+      <dcterms:description>This module defines the {[[#z3986.aside]]} element for capturing supplementary information in documents.</dcterms:description>
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}"/>
+      <dcterms:creator>Markus Gylling</dcterms:creator>
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng"/>
+      <dcterms:requires rdf:resource="z3986-datatypes.rng"/>      
+      <dcterms:requires rdf:resource="z3986-core-attrib.rng"/>       
+      <dcterms:requires rdf:resource="z3986-i18n-attrib.rng"/>       
+      <dcterms:requires rdf:resource="rdfa-attrib.rng"/>        
+    </rdf:Description>
+  </rdf:RDF>
+
+  <div>
+    <define name="z3986.aside">
+      <element name="aside">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="aside">The {aside} element</dcterms:title>
+            <dcterms:description>The {aside} element represents information supplementary to the main text and/or
+              narrative flow.</dcterms:description>
+            <z:info>An aside typically floats separate from the main text, often in a boxed or shaded region.</z:info>
+            <z:info doc-only="true">The {[[#z3986.role.attrib]]} attribute optionally expresses the semantic nature
+              of the aside.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>{[[#z3986.Block.class]]}</z:context>
+            <z:content>{(z3986.Block.class)+ | (text | z3986.Text.class | z3986.Phrase.class)+}</z:content>
+            <z:attlist>{[[#z3986.Block.attrib]], [[#z3986.ref.attrib]]}</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.aside.attlist"/>
+        <ref name="z3986.aside.content"/>
+        <sch:rule context="default:aside">
+          <sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0"
+            >The {aside} element must neither be empty nor contain only whitespace.</sch:assert>
+        </sch:rule>
+      </element>
+    </define>
+
+    <define name="z3986.aside.attlist">
+      <!-- this is Block.attrib expanded out to allow contributions to @role -->
+      <ref name="z3986.Core.attrib"/>
+      <ref name="z3986.I18n.attrib"/>
+      <ref name="Rdfa.attrib"/>
+      <ref name="z3986.Block.contrib.attrib"/>
+      <optional>
+        <ref name="z3986.aside.role.attrib"/>
+      </optional>
+    </define>
+
+    <define name="z3986.aside.role.attrib">
+      <attribute name="role">
+        <ref name="z3986.aside.role.attrib.content"/>
+      </attribute>
+    </define>
+
+    <define name="z3986.aside.role.attrib.content" combine="choice">
+      <choice>
+        <ref name="CURIEs.datatype"/>
+      </choice>
+    </define>
+
+    <define name="z3986.aside.content">
+      <ref name="z3986.Flow.choice.model"/>
+    </define>
+
+  </div>
+  
+  <div>
+    <a:documentation>aside - default content model contribution</a:documentation>
+
+    <define name="z3986.Block.core.class" combine="choice">
+      <ref name="z3986.aside"/>
+    </define>
+    
+    <define name="z3986.index.extra.class" combine="choice">
+      <ref name="z3986.aside"/>
+    </define>
+    
+    <define name="z3986.bibliography.extra.class" combine="choice">
+      <ref name="z3986.aside"/>
+    </define>
+    
+    <define name="z3986.glossary.extra.class" combine="choice">
+      <ref name="z3986.aside"/>
+    </define>
+    
+  </div>
+  
+
+</grammar>

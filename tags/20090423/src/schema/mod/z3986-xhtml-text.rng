@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z3986 Text Module</x:h1>
+  <x:p>This module is the Z3986 revised XHTML2 Text Module.</x:p>
+  
+  <include href="xhtml-text-2.rng">
+  
+    <!-- redefine xhtml.Text.class to be composed
+      of Text.base.class and individual refs -->
+    <define name="xhtml.Text.class">      
+      <choice>
+        <ref name="z3986.Text.base.class"/>        
+        <ref name="xhtml.cite"/>        
+        <ref name="xhtml.dfn"/>                    
+        <ref name="xhtml.quote"/>
+        <ref name="xhtml.l"/>
+	    <ref name="xhtml.samp"/>
+	    <ref name="xhtml.var"/>
+	    <ref name="xhtml.code"/>
+	    <ref name="xhtml.kbd"/>
+        <ref name="xhtml.sub"/>
+        <ref name="xhtml.sup"/>
+      </choice>        
+    </define>  
+  
+  	<!-- reduce the full xhtml.Text.Model -->
+  	<define name="xhtml.abbr.content">    
+      <ref name="z3986.Text.base.model"/>
+    </define>
+  	
+  	<!-- reduce the full xhtml.Text.Model -->
+  	<define name="xhtml.sub.content">    
+      <ref name="z3986.Text.base.model"/>
+    </define>
+    
+    <!-- reduce the full xhtml.Text.Model -->
+    <define name="xhtml.sup.content">    
+      <ref name="z3986.Text.base.model"/>
+    </define>
+    
+    <!-- reduce the full xhtml.Text.Model -->
+    <define name="xhtml.kbd.content">    
+      <ref name="z3986.Text.base.model"/>
+    </define>
+
+    <!-- reduce the full xhtml.Text.Model -->
+    <define name="xhtml.var.content">    
+      <ref name="z3986.Text.base.model"/>
+    </define>
+    
+  </include>
+
+  <define name="abbr.expansion.attrib">
+    <!-- as a specialized form of @title -->
+  	<attribute name="expansion" ns="http://www.daisy.org/ns/z3986/2008/"/>
+  </define>
+  
+  <define name="abbr.type.attrib">    
+    <!-- if type is not specified, the abbr is just an abbreviation -->    
+  	<attribute name="type" ns="http://www.daisy.org/ns/z3986/2008/">  		
+  		<choice>
+	  		<value>acronym</value>
+	  		<value>initialism</value>
+  		</choice>	  		
+  	</attribute>  
+  </define>
+  
+  <define name="xhtml.abbr.attlist" combine="interleave">
+  	<optional>
+  		<ref name="abbr.expansion.attrib"/>
+  	</optional>	
+  	<optional>
+  		<ref name="abbr.type.attrib"/>
+  	</optional>	
+  </define>
+
+  <!-- add cite to cite -->  
+  <define name="xhtml.cite.attlist" combine="interleave">
+  	<optional>
+  		<ref name="xhtml.cite.attrib"/>
+  	</optional>	
+  </define>
+
+  <!-- A minimalistic text class, inherited in the 
+    redefine of xhtml.Text.class -->
+  <define name="z3986.Text.base.class">
+    <choice>
+  	  <ref name="xhtml.span" />
+      <ref name="xhtml.abbr"/>
+      <ref name="xhtml.em"/>  	  
+  	</choice>	
+  </define>
+  
+  <!-- The closest we get to a plain text content model -->  
+  <define name="z3986.Text.base.model">                
+  	<oneOrMore>
+      <choice>
+        <text/>  		
+        <ref name="z3986.Text.base.class" />
+  	  </choice>
+  	</oneOrMore>		  		  	
+  </define>
+  
+  <!-- add some to the object text class, which is specialized. 
+    We dont ref an existing Text.model here, since that includes
+    object. TODO -->
+  <define name="z3986.object.content.text.class" combine="choice">
+    <choice>
+	  <ref name="z3986.Text.base.class"/>
+      <ref name="xhtml.abbr"/>
+      <ref name="xhtml.cite"/>        
+      <ref name="xhtml.dfn"/>
+      <ref name="xhtml.em"/>            
+      <ref name="xhtml.quote"/>              
+	  <ref name="xhtml.samp"/>
+	  <ref name="xhtml.var"/>
+	  <ref name="xhtml.code"/>
+	  <ref name="xhtml.kbd"/>
+      <ref name="xhtml.sub"/>
+      <ref name="xhtml.sup"/>
+    </choice>
+  </define>
+    
+</grammar>

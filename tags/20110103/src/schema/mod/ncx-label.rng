@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" ns="http://www.daisy.org/z3986/2005/ncx/"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="label">The label module</title>
+        <annotation annotates="/">
+            <para role="desc-main">
+                This module defines the {[[#ncx.label]]}, {[[#ncx.label.text]]}, {[[#ncx.label.audio]]} and {[[#ncx.label.image]]}
+                elements for identifying the navigation points in an NCX document.
+            </para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="ncx-attrib.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <author>
+            <personname>Matt Garrish</personname>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>
+                This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is 
+                available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">
+                    http://creativecommons.org/licenses/by/3.0/</link>
+            </para>
+            <para>
+                Full permission is granted to re-use this module and its associated documentation in any way 
+                and for any purpose provided the DAISY copyright notice and link to the Creative Commons license 
+                are retained. Modifications to the source are permitted so long as the author clearly indicates that 
+                the module is a derivation of the original.
+            </para>
+            <para>
+                The copyright holders make no representations about the suitability of this module for any purpose.
+                The module is provided "as is" without warranty of any kind, expressed or implied.
+            </para>
+            <para>
+                The Z3986 Advisory Committee is responsible for the maintenance of this module. All questions,
+                suggestions, bugs and other issues related to this module should be direct to the Committee. 
+                Contact information is available from the DAISY website at 
+                <link xlink:href="http://www.daisy.org">www.daisy.org</link>.
+            </para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2010-08-01</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    
+    
+    <define name="ncx.label">
+        <element name="label">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="label">The {label} element</title>
+                <para role="desc-main">The {label} element provides a multimodal label for its parent element.</para>
+                <para role="desc-sub">An element may allow more than one {label} for multi-language support.
+                    When including multiple {label} elementss, each must be unique with respect to the 
+                    value of their {xml:lang} attribute (given or inherited).</para>
+                <synopsis role="def-context">{[[#ncx.navmap]], [[#ncx.navlist]]}</synopsis>
+                <synopsis role="def-content">{[[#ncx.label.text]], [[#ncx.label.audio]]?, [[#ncx.label.image]]?}</synopsis>
+                <synopsis role="def-attlist">{[[#ncx.xml.lang.attrib]]?}</synopsis>
+            </annotation>
+            <ref name="ncx.label.attlist"/>
+            <ref name="ncx.label.content"/>
+        </element>
+    </define>
+    
+    <define name="ncx.label.attlist" combine="interleave">
+        <ref name="ncx.Common.attrib"/>
+        <optional>
+            <ref name="ncx.xml.lang.attrib"/>
+        </optional>
+    </define>
+    
+    <define name="ncx.label.content">
+        <ref name="ncx.label.text"/>
+        <optional>
+            <ref name="ncx.label.audio"/>
+        </optional>
+        <optional>
+            <ref name="ncx.label.image"/>
+        </optional>    
+    </define>
+    
+    <define name="ncx.label.text">
+        <element name="text">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="text">The {text} element</title>
+                <para role="desc-main">The {text} element provides the text representation of a label.</para>
+                <synopsis role="def-context">{[[#ncx.ncx]]}</synopsis>
+                <synopsis role="def-content">{text}</synopsis>
+                <synopsis role="def-attlist">{[[#ncx.dir.attrib]]}</synopsis>
+            </annotation>
+            <ref name="ncx.label.text.attlist"/>
+            <ref name="ncx.label.text.model" />
+        </element>            
+    </define>
+    
+    <define name="ncx.label.text.model">
+        <interleave>
+            <ref name="NonEmptyString.datatype"/>
+            <zeroOrMore>
+                <ref name="ncx.label.text.class" />
+            </zeroOrMore>
+        </interleave>
+    </define>    
+    
+    <define name="ncx.label.text.attlist">
+        <optional>
+            <ref name="ncx.dir.attrib"/>
+        </optional>
+    </define>
+        
+    <define name="ncx.label.text.class" combine="interleave">
+        <!-- this is a contribution point for inline markup -->
+        <notAllowed/>
+    </define>   
+    
+    <define name="ncx.label.audio">
+        <element name="audio">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="audio">The {audio} element</title>
+                <para role="desc-main">
+                    The {audio} element provides an auditory representation of a label in one of the defined audio formats.
+                </para>
+                <synopsis role="def-context">{[[#ncx.ncx]]}</synopsis>
+                <synopsis role="def-content">{empty}</synopsis>
+                <synopsis role="def-attlist">{[[#ncx.src.attrib]], [[#ncx.clipBegin.attrib]]?, [[#ncx.clipEnd.attrib]]?}</synopsis>
+            </annotation>
+            <ref name="ncx.label.audio.attlist"/>
+            <empty/>
+        </element>
+    </define>
+    
+    <define name="ncx.label.audio.attlist" combine="interleave">
+        <ref name="ncx.src.attrib"/> <!-- TODO if w3c media fragment, clipBegin and clipEnd redundant -->
+        <optional>
+            <ref name="ncx.clipBegin.attrib"/>
+        </optional>
+        <optional>
+            <ref name="ncx.clipEnd.attrib"/>
+        </optional>    
+    </define>
+    
+    <define name="ncx.label.image">
+        <element name="image">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="image">The {image} element</title>
+                <para role="desc-main">
+                    The {image} element provides a visual representation of a label in one of the allowed image formats.
+                </para>
+                <synopsis role="def-context">{[[#ncx.ncx]]}</synopsis>
+                <synopsis role="def-content">{empty}</synopsis>
+                <synopsis role="def-attlist">{[[#ncx.src.attrib]]}</synopsis>
+            </annotation>
+            <ref name="ncx.label.image.attlist"/>
+            <empty/>
+        </element>    
+    </define>
+    
+    <define name="ncx.label.image.attlist" combine="interleave">
+        <ref name="ncx.src.attrib"/>
+    </define>
+        
+    <define name="ncx.clipBegin.attrib">
+        <attribute name="clipBegin"> <!-- TODO clock pattern -->
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="clipBegin">The {clipBegin} attribute</title>
+                <para role="desc-main">
+                    The {clipBegin} attribute specifies the beginning of a segment of a continuous media object as a 
+                    time offset from the start of the object.
+                </para>
+                <para role="desc-sub">
+                    Allowed values are defined by the SMIL 3.0 Timing and Synchronization Module {[[#refSMIL]]}.
+                </para>
+                <synopsis role="def-context">{[[#ncx.ncx]]}</synopsis>
+                <synopsis role="def-content">{[[#ncx.label.audio]]}</synopsis>
+            </annotation>
+        </attribute>
+    </define>
+
+    <define name="ncx.clipEnd.attrib">
+        <attribute name="clipEnd"> <!-- TODO clock pattern -->
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="clipEnd">The {clipEnd} attribute</title>
+                <para role="desc-main">
+                    The {clipEnd} attribute specifies the end of a segment of a continuous 
+                    media object as a time offset from the start of the object.
+                </para>
+                <para role="desc-sub">
+                    Allowed values are defined by the SMIL 3.0 Timing and Synchronization Module {[[#refSMIL]]}.
+                </para>
+                <synopsis role="def-context">{[[#ncx.ncx]]}</synopsis>
+                <synopsis role="def-content">{[[#ncx.label.audio]]}</synopsis>
+            </annotation>
+        </attribute>
+    </define>
+        
+    <define name="ncx.src.attrib">
+        <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+            <title xreflabel="src">The {src} attribute</title>
+            <para role="desc-main">The {src} attribute URI of audio resource containing the clip to be rendered.</para>
+            <synopsis role="def-context">{[[#ncx.label.audio]], [[#ncx.label.image]]}</synopsis>
+            <synopsis role="def-content">[[http://www.daisy.org/z3986/2011/auth/cm/#URI.datatype URI]]</synopsis>
+        </annotation>
+        <attribute name="src">
+            <ref name="URI.datatype"/> 
+        </attribute>
+    </define>    
+        
+</grammar>

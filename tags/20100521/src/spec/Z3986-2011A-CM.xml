@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="../../util/docbook/rng/docbook.rng" type="xml"?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>ANSI/NISO Z39.86-2011 Part A — Core Modules</title>
+
+    <info>
+        <abstract>
+            <para> The core modules are a set of modules that have been created to accompany the
+                    <link xlink:href="../../Z3986-2011A.html">Z39.86 Authoring and Interchange
+                    Framework Specification</link> (Z39.86-AI). These modules serve both to define
+                the common structure of a document and to provide a common base of components that
+                can be drawn on for use across Z39.86-AI profiles. </para>
+        </abstract>
+        <revhistory>
+            <revision>
+                <date>2010-05-21</date>
+                <revdescription>
+                    <para>Initial version.</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+
+    <chapter xml:id="intro">
+        <title>Introduction</title>
+
+        <section xml:id="intro_overview">
+            <title>Overview</title>
+
+            <para> This document provides the definitions for the core modules developed to accompany
+                the <link xlink:href="../../Z3986-2011A.html">Z39.86 Authoring and Interchange Framework Specification</link>.
+                These definitions are the human-readable descriptions that specify the nature of each module
+                and component prior to their activation in any profile. Consequently, this document must not 
+                be read as a reference on how to tag a document to conform to any specific Z39.86-AI profile, as 
+                the actual implementation of a component in any given profile may vary from the definition
+                given here.</para>
+
+            <para> The <link xlink:href="../../Z3986-2011A.html#coreModules">Core Modules</link>
+                section of the Z39.86-AI specification formally defines the purpose of these
+                modules. In order to understand the definitions provided in this document and to be able
+                to use them to build a profile, however, readers should also be familiar with the 
+                <link xlink:href="../../Z3986-2011A.html#abstractDocumentModel">Abstract Document Model</link>
+                and the process of activating modules, as detailed in the Z39.86-AI
+                    specification. </para>
+
+        </section>
+        
+        <section xml:id="intro_reading">
+            <title>How to read this document</title>
+            
+            <section xml:id="intro_grouping">
+                <title>Module groupings</title>
+                
+                <para> The core modules have been grouped according to the primary container layer in
+                    the Abstract Document Model for the components they define. The first module listed
+                    in each layer contains the default member for that layer, while the remaining
+                    modules have been arranged alphabetically by name. </para>
+                
+                <para> In cases where a module contains multiple variants of an element, the module
+                    appears in the first Abstract Document Model layer that contains the element (for
+                    example, the <code>code</code> module is listed under the Block layer not the Phrase
+                    layer, even though it contains variants for both layers). </para>
+                
+            </section>
+            
+            <section xml:id="intro_infoTables">
+                <title>Information Tables</title>
+                
+                <para>
+                    Each module and component definition includes a table summarizing pertinent information about it.
+                    In the case of modules, these tables provide a quick glance at the elements, attributes, datatypes and/or
+                    classes that they contribute. Module tables are only intended to provide an introduction to their components;
+                    the information in the tables should never be relied on alone when constructing a profile.
+                </para>
+                
+                <para>
+                    Accompanying each component is a table that provides a detailed listing of its traits.
+                    Depending on the type of component, the table may list the local name of the element, 
+                    its namespace, its default usage context, its default content and attribute 
+                    models and whether the component can
+                    be altered and/or omitted during module activation. In the case of attributes, the content and
+                    attribute model information is replaced by the attribute's datatype or allowed set of values.
+                    More information about these traits can be found in the
+                    <link xlink:href="../../Z3986-2011A.html#modulesComponents">Module Components</link>
+                    section of the Z39.86-AI specification.
+                </para>
+                
+                <para>
+                    The naming of columns in these tables may change depending on the nature of the component.
+                    In some cases, a component's table may list its "Default Content Model" and in others it may
+                    list a "Content Model" (and similar with attribute models, usage context and values). The difference
+                    between a table item prefixed with the word "Default" and an item without relates to the 
+                    alterability of that aspect of the component. If a content model can be altered on activation, for
+                    example, it only provides a default content model (i.e., one you can use as is or modify to your
+                    own needs). If the content model cannot be altered, then the listing in the table is fixed and 
+                    must remain unchanged (the default modifier does not apply, as there is no other possible state). 
+                </para>
+                
+            </section>
+            
+        </section>
+
+        <section xml:id="intro_maintenance">
+            <title>Maintenance</title>
+
+            <para> The core modules are a product of the Z39.86-AI Working Group and are maintained
+                and hosted by the Z39.86 Advisory Committee.</para>
+        </section>
+
+        <section xml:id="intro_versioning">
+            <title>Changes to this document</title>
+
+            <para> This document is not subject to the same update process as the Z39.86-AI
+                specification. It may be updated at any time to add new modules or to change or
+                deprecate modules and components. The publication date and revision history of this
+                document should always be checked to ensure the latest version is being referenced.
+                The current official version of this document is available from the DAISY web site
+                at <link xlink:href="http://www.daisy.org/z3986/2011/auth/cm/"
+                    >http://www.daisy.org/z3986/2011/auth/cm/</link>. </para>
+
+        </section>
+
+    </chapter>
+
+    <chapter xml:id="coreModuleDefinitions">
+        <title>Module and component definitions</title>
+
+            <para> The definitions contained in this section have been extracted from the
+                module and component metadata in the corresponding normative schema files. In the
+                case of discrepancies between the prose abstract definitions and the practical
+                definition of components in the normative schemas, the latter shall be taken as
+                authoritative. </para>
+        
+
+        <!-- note: the URIs of @src in absdef is relative to schema root dir, 
+        not relative to this document -->
+
+        <section xml:id="absdef_document">
+            <title>Document foundation</title>
+            <para> The document foundation modules define the common base of all profiles. </para>
+            <?absdef src="/mod/z3986-document.rng" ?>
+            <?absdef src="/mod/z3986-datatypes.rng" ?>
+            <?absdef src="/mod/z3986-global-classes.rng" ?>
+        </section>
+
+        <section xml:id="absdef_section">
+            <title>Section layer</title>
+            <para> The Section layer modules define major structural components for use within
+                documents. </para>
+            <?absdef src="/mod/z3986-section.rng" ?>
+            <?absdef src="/mod/z3986-article.rng" ?>
+            <?absdef src="/mod/z3986-bibliography.rng" ?>
+            <?absdef src="/mod/z3986-cover.rng" ?>
+            <?absdef src="/mod/z3986-glossary.rng" ?>
+            <?absdef src="/mod/z3986-index.rng" ?>
+            <?absdef src="/mod/z3986-partitions.rng" ?>
+            <?absdef src="/mod/z3986-toc.rng" ?>
+            <?absdef src="/mod/z3986-verse.rng" ?>
+        </section>
+
+        <section xml:id="absdef_block">
+            <title>Block layer</title>
+            <para> The Block layer modules define components that are not structural in nature but
+                that can stand alone from their surroundings. </para>
+            <?absdef src="/mod/z3986-block.rng" ?>
+            <?absdef src="/mod/z3986-annotation.rng" ?>
+            <?absdef src="/mod/z3986-aside.rng" ?>
+            <?absdef src="/mod/z3986-byline.rng" ?>
+            <?absdef src="/mod/z3986-caption.rng" ?>
+            <?absdef src="/mod/z3986-citation.rng" ?>
+            <?absdef src="/mod/z3986-code.rng" ?>
+            <?absdef src="/mod/z3986-dateline.rng" ?>
+            <?absdef src="/mod/z3986-definition.rng" ?>
+            <?absdef src="/mod/z3986-headings.rng" ?>
+            <?absdef src="/mod/z3986-list.rng" ?>
+            <?absdef src="/mod/z3986-meta.rng" ?>
+            <?absdef src="/mod/z3986-note.rng" ?>
+            <?absdef src="/mod/z3986-object.rng" ?>
+            <?absdef src="/mod/z3986-p.rng" ?>
+            <?absdef src="/mod/z3986-pagebreak.rng" ?>
+            <?absdef src="/mod/z3986-quote.rng" ?>
+            <?absdef src="/mod/z3986-separator.rng" ?>
+            <?absdef src="/mod/z3986-table.rng" ?>
+        </section>
+
+        <section xml:id="absdef_phrase">
+            <title>Phrase layer</title>
+            <para> The Phrase layer modules define constructs that operate at the grammatical level. </para>
+            <?absdef src="/mod/z3986-span.rng" ?>
+            <?absdef src="/mod/z3986-abbr.rng" ?>
+            <?absdef src="/mod/z3986-d.rng" ?>
+            <?absdef src="/mod/z3986-emph.rng" ?>
+            <?absdef src="/mod/z3986-line.rng" ?>
+            <?absdef src="/mod/z3986-linking.rng" ?>
+            <?absdef src="/mod/z3986-name.rng" ?>
+            <?absdef src="/mod/z3986-num.rng" ?>
+            <?absdef src="/mod/z3986-s.rng" ?>
+            <?absdef src="/mod/z3986-term.rng" ?>
+            <?absdef src="/mod/z3986-time.rng" ?>
+            <?absdef src="/mod/z3986-w.rng" ?>
+        </section>
+
+        <section xml:id="absdef_text">
+            <title>Text layer</title>
+            <para> The Text layer modules define character data and elements whose semantics operate
+                at a character level. </para>
+            <?absdef src="/mod/z3986-sub-sup.rng" ?>
+            <?absdef src="/mod/z3986-char.rng" ?>
+        </section>
+
+        <section xml:id="absdef_globalAttributes">
+            <title>Global attributes</title>
+            <para> The Global attributes modules define attributes that are available across the
+                elements in a profile. </para>
+            <?absdef src="/mod/z3986-core-attrib.rng" ?>
+            <?absdef src="/mod/z3986-depth-attrib.rng" ?>
+            <?absdef src="/mod/z3986-i18n-attrib.rng" ?>
+            <?absdef src="/mod/xlink.rng" ?>
+        </section>
+
+        <section xml:id="absdef_metaAttributes">
+            <title>Metadata attributes</title>
+            <para> The Metadata attributes modules define attributes that allow meta information and
+                semantics to be appended to elements in a profile. </para>
+            <?absdef src="/mod/rdfa-attrib.rng" ?>
+            <?absdef src="/mod/z3986-role-attrib.rng" ?>
+        </section>
+
+    </chapter>
+
+
+</book>

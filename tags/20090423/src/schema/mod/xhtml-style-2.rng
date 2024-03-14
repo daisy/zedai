@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Style Module</x:h1>
+
+  <div>
+    <x:h2>The style element</x:h2>
+
+    <define name="xhtml.style">
+      <element name="style">
+        <ref name="xhtml.style.attlist"/>
+        <ref name="xhtml.style.content"/>        
+      </element>
+    </define>
+
+    <define name="xhtml.style.attlist">
+      <ref name="xhtml.Common.attrib"/>
+      <optional>
+        <attribute name="disabled">
+          <value>disabled</value>
+        </attribute>     
+      </optional>
+    </define>
+    
+    <define name="xhtml.style.content">
+      <text/>    
+    </define>
+  </div>
+
+  <define name="xhtml.head.misc" combine="choice">
+    <ref name="xhtml.style"/>
+  </define>
+
+</grammar>

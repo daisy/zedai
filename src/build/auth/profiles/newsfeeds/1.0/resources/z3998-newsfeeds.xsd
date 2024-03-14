@@ -1,0 +1,4157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.daisy.org/ns/z3998/authoring/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:its="http://www.w3.org/2005/11/its" xmlns:authoring="http://www.daisy.org/ns/z3998/authoring/" xmlns:d="http://www.daisy.org/ns/z3998/authoring/features/description/" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <xs:import namespace="http://www.daisy.org/ns/z3998/authoring/features/description/" schemaLocation="d.xsd"/>
+    <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
+    <xs:import namespace="http://www.w3.org/2005/11/its" schemaLocation="its.xsd"/>
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+    <xs:element name="document">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:group ref="authoring:head"/>
+                <xs:group ref="authoring:body"/>
+            </xs:sequence>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang" use="required"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="prefix">
+                <xs:simpleType>
+                    <xs:restriction base="xs:normalizedString">
+                        <xs:pattern value="\s*([\i-[:]][\c-[:]]*: +[^ ]+)(\s+[\i-[:]][\c-[:]]*: +[^ ]+)*\s*"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute> 
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:group name="head">
+        <xs:sequence>
+            <xs:element name="head">
+                <xs:complexType>
+                    <xs:choice maxOccurs="unbounded">
+                        <xs:element ref="authoring:meta"/>
+                        <xs:element ref="authoring:description"/>
+                        <xs:element ref="authoring:expansion"/>
+                        <xs:element ref="authoring:definition"/>
+                    </xs:choice>
+                    <xs:attribute ref="xml:id"/>
+                    <xs:attribute ref="xml:space"/>
+                    <xs:attribute ref="xml:base"/>
+                    <xs:attribute name="class" type="xs:NMTOKENS"/>
+                    <xs:attribute ref="xml:lang"/>
+                    <xs:attribute ref="its:dir"/>
+                    <xs:attribute ref="its:translate"/> 
+                    <xs:attribute name="desc">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list itemType="xs:NCName"/>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="by">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="role">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="body">
+        <xs:sequence>
+            <xs:element name="body">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" ref="authoring:h"/>
+                        <xs:choice>
+                            <xs:group maxOccurs="unbounded" ref="authoring:section"/>
+                            <xs:element maxOccurs="unbounded" ref="authoring:article"/>
+                        </xs:choice>
+                    </xs:sequence>
+                    <xs:attribute ref="xml:id"/>
+                    <xs:attribute ref="xml:space"/>
+                    <xs:attribute ref="xml:base"/>
+                    <xs:attribute name="class" type="xs:NMTOKENS"/>
+                    <xs:attribute ref="xml:lang"/>
+                    <xs:attribute ref="its:dir"/>
+                    <xs:attribute ref="its:translate"/> 
+                    <xs:attribute name="desc">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list itemType="xs:NCName"/>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="by">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="role">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="meta">
+        <xs:complexType mixed="true">
+            <xs:choice>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="authoring:meta"/>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element ref="authoring:sub"/>
+                    <xs:element ref="authoring:sup"/>
+                    <xs:element ref="its:ruby"/>
+                    <xs:group ref="authoring:span"/>
+                    <xs:element ref="authoring:ref"/>
+                    <xs:group ref="authoring:ln"/>
+                    <xs:element ref="authoring:s"/>
+                    <xs:element ref="authoring:w"/>
+                    <xs:element ref="authoring:abbr"/>
+                    <xs:element ref="authoring:expansion"/>
+                    <xs:element ref="authoring:emph"/>
+                    <xs:element ref="authoring:time"/>
+                    <xs:element ref="authoring:name"/>
+                    <xs:element ref="authoring:term"/>
+                    <xs:element ref="authoring:definition"/>
+                    <xs:element ref="authoring:num"/>
+                </xs:choice>
+            </xs:choice> 
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="description">
+        <xs:complexType mixed="true">
+            <xs:choice>
+                <xs:choice maxOccurs="unbounded">
+                    <xs:element ref="authoring:hd"/>
+                    <xs:element ref="authoring:block"/>
+                    <xs:element ref="authoring:p"/>
+                    <xs:element ref="authoring:list"/>
+                    <xs:element ref="authoring:table"/>
+                    <xs:element ref="authoring:quote"/>
+                    <xs:element ref="authoring:citation"/>
+                    <xs:element ref="authoring:object"/>
+                    <xs:element ref="authoring:address"/>
+                    <xs:group ref="authoring:annotation"/>
+                    <xs:element ref="authoring:caption"/>
+                    <xs:element ref="authoring:code"/>
+                    <xs:element ref="authoring:description"/>
+                </xs:choice>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:group ref="authoring:span"/>
+                    <xs:element ref="authoring:ref"/>
+                    <xs:group ref="authoring:ln"/>
+                    <xs:element ref="authoring:s"/>
+                    <xs:element ref="authoring:w"/>
+                    <xs:element ref="authoring:abbr"/>
+                    <xs:element ref="authoring:expansion"/>
+                    <xs:element ref="authoring:emph"/>
+                    <xs:element ref="authoring:time"/>
+                    <xs:element ref="authoring:name"/>
+                    <xs:element ref="authoring:term"/>
+                    <xs:element ref="authoring:definition"/>
+                    <xs:element ref="authoring:num"/>
+                    <xs:element ref="authoring:sub"/>
+                    <xs:element ref="authoring:sup"/>
+                </xs:choice>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="ref">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute ref="xlink:href"/>
+            <xs:attribute ref="xlink:type"/>
+            <xs:attribute ref="xlink:title"/>
+            <xs:attribute ref="xlink:show"/>
+            <xs:attribute ref="xlink:actuate"/>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="expansion">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="authoring:sub"/>
+                <xs:element ref="authoring:sup"/>
+                <xs:element ref="its:ruby"/>
+                <xs:element ref="authoring:ref"/>
+                <xs:group ref="authoring:ln"/>
+                <xs:element ref="authoring:s"/>
+                <xs:element ref="authoring:w"/>
+                <xs:element ref="authoring:abbr"/>
+                <xs:element ref="authoring:expansion"/>
+                <xs:element ref="authoring:emph"/>
+                <xs:element ref="authoring:time"/>
+                <xs:element ref="authoring:name"/>
+                <xs:element ref="authoring:term"/>
+                <xs:element ref="authoring:definition"/>
+                <xs:element ref="authoring:num"/>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="continuation">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="definition">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="authoring:sub"/>
+                <xs:element ref="authoring:sup"/>
+                <xs:element ref="its:ruby"/>
+                <xs:group ref="authoring:span"/>
+                <xs:element ref="authoring:ref"/>
+                <xs:group ref="authoring:ln"/>
+                <xs:element ref="authoring:s"/>
+                <xs:element ref="authoring:w"/>
+                <xs:element ref="authoring:abbr"/>
+                <xs:element ref="authoring:expansion"/>
+                <xs:element ref="authoring:emph"/>
+                <xs:element ref="authoring:time"/>
+                <xs:element ref="authoring:name"/>
+                <xs:element ref="authoring:term"/>
+                <xs:element ref="authoring:definition"/>
+                <xs:element ref="authoring:num"/>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="continuation">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="h">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="authoring:sub"/>
+                <xs:element ref="authoring:sup"/>
+                <xs:element ref="its:ruby"/>
+                <xs:element ref="authoring:ref"/>
+                <xs:group ref="authoring:ln"/>
+                <xs:element ref="authoring:s"/>
+                <xs:element ref="authoring:w"/>
+                <xs:element ref="authoring:abbr"/>
+                <xs:element ref="authoring:expansion"/>
+                <xs:element ref="authoring:emph"/>
+                <xs:element ref="authoring:time"/>
+                <xs:element ref="authoring:name"/>
+                <xs:element ref="authoring:term"/>
+                <xs:element ref="authoring:definition"/>
+                <xs:element ref="authoring:num"/>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="continuation">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:group name="section">
+        <xs:sequence>
+            <xs:element name="section">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" ref="authoring:h"/>
+                        <xs:choice>
+                            <xs:group maxOccurs="unbounded" ref="authoring:section"/>
+                            <xs:element maxOccurs="unbounded" ref="authoring:article"/>
+                        </xs:choice>
+                    </xs:sequence>
+                    <xs:attribute ref="xml:id"/>
+                    <xs:attribute ref="xml:space"/>
+                    <xs:attribute ref="xml:base"/>
+                    <xs:attribute name="class" type="xs:NMTOKENS"/>
+                    <xs:attribute ref="xml:lang"/>
+                    <xs:attribute ref="its:dir"/>
+                    <xs:attribute ref="its:translate"/> 
+                    <xs:attribute name="desc">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list itemType="xs:NCName"/>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="by">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="role">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="depth">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:nonNegativeInteger">
+                                <xs:pattern value="[0-9]+"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="article">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:group ref="authoring:head_2"/>
+                <xs:group ref="authoring:body_2"/>
+            </xs:sequence>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="sub">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="authoring:sub"/>
+                <xs:element ref="authoring:sup"/>
+                <xs:element ref="its:ruby"/>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="sup">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="authoring:sub"/>
+                <xs:element ref="authoring:sup"/>
+                <xs:element ref="its:ruby"/>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:group name="span">
+        <xs:sequence>
+            <xs:element name="span">
+                <xs:complexType mixed="true">
+                    <xs:choice minOccurs="0" maxOccurs="unbounded">
+                        <xs:element ref="authoring:sub"/>
+                        <xs:element ref="authoring:sup"/>
+                        <xs:element ref="its:ruby"/>
+                        <xs:group ref="authoring:span"/>
+                        <xs:element ref="authoring:ref"/>
+                        <xs:group ref="authoring:ln"/>
+                        <xs:element ref="authoring:s"/>
+                        <xs:element ref="authoring:w"/>
+                        <xs:element ref="authoring:abbr"/>
+                        <xs:element ref="authoring:expansion"/>
+                        <xs:element ref="authoring:emph"/>
+                        <xs:element ref="authoring:time"/>
+                        <xs:element ref="authoring:name"/>
+                        <xs:element ref="authoring:term"/>
+                        <xs:element ref="authoring:definition"/>
+                        <xs:element ref="authoring:num"/>
+                    </xs:choice>
+                    <xs:attribute ref="xml:id"/>
+                    <xs:attribute ref="xml:space"/>
+                    <xs:attribute ref="xml:base"/>
+                    <xs:attribute name="class" type="xs:NMTOKENS"/>
+                    <xs:attribute ref="xml:lang"/>
+                    <xs:attribute ref="its:dir"/>
+                    <xs:attribute ref="its:translate"/> 
+                    <xs:attribute name="desc">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list itemType="xs:NCName"/>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="by">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="role">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="ref">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="authoring:sub"/>
+                <xs:element ref="authoring:sup"/>
+                <xs:element ref="its:ruby"/>
+                <xs:element ref="authoring:ref"/>
+                <xs:group ref="authoring:ln"/>
+                <xs:element ref="authoring:s"/>
+                <xs:element ref="authoring:w"/>
+                <xs:element ref="authoring:abbr"/>
+                <xs:element ref="authoring:expansion"/>
+                <xs:element ref="authoring:emph"/>
+                <xs:element ref="authoring:time"/>
+                <xs:element ref="authoring:name"/>
+                <xs:element ref="authoring:term"/>
+                <xs:element ref="authoring:definition"/>
+                <xs:element ref="authoring:num"/>
+            </xs:choice>
+            <xs:attribute ref="xlink:href"/>
+            <xs:attribute ref="xlink:type"/>
+            <xs:attribute ref="xlink:title"/>
+            <xs:attribute ref="xlink:show"/>
+            <xs:attribute ref="xlink:actuate"/>
+            <xs:attribute name="ref">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="continuation">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:group name="ln">
+        <xs:sequence>
+            <xs:element name="ln">
+                <xs:complexType mixed="true">
+                    <xs:choice minOccurs="0" maxOccurs="unbounded">
+                        <xs:choice>
+                            <xs:element ref="authoring:sub"/>
+                            <xs:element ref="authoring:sup"/>
+                            <xs:element ref="its:ruby"/>
+                            <xs:group ref="authoring:span"/>
+                            <xs:element ref="authoring:ref"/>
+                            <xs:group ref="authoring:ln"/>
+                            <xs:element ref="authoring:s"/>
+                            <xs:element ref="authoring:w"/>
+                            <xs:element ref="authoring:abbr"/>
+                            <xs:element ref="authoring:expansion"/>
+                            <xs:element ref="authoring:emph"/>
+                            <xs:element ref="authoring:time"/>
+                            <xs:element ref="authoring:name"/>
+                            <xs:element ref="authoring:term"/>
+                            <xs:element ref="authoring:definition"/>
+                            <xs:element ref="authoring:num"/>
+                        </xs:choice>
+                        <xs:element ref="authoring:lnum"/>
+                    </xs:choice>
+                    <xs:attribute ref="xml:id"/>
+                    <xs:attribute ref="xml:space"/>
+                    <xs:attribute ref="xml:base"/>
+                    <xs:attribute name="class" type="xs:NMTOKENS"/>
+                    <xs:attribute ref="xml:lang"/>
+                    <xs:attribute ref="its:dir"/>
+                    <xs:attribute ref="its:translate"/> 
+                    <xs:attribute name="desc">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list itemType="xs:NCName"/>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="by">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="role">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="continuation">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list itemType="xs:NCName"/>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="s">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="authoring:sub"/>
+                <xs:element ref="authoring:sup"/>
+                <xs:element ref="its:ruby"/>
+                <xs:group ref="authoring:span"/>
+                <xs:element ref="authoring:ref"/>
+                <xs:group ref="authoring:ln"/>
+                <xs:element ref="authoring:s"/>
+                <xs:element ref="authoring:w"/>
+                <xs:element ref="authoring:abbr"/>
+                <xs:element ref="authoring:expansion"/>
+                <xs:element ref="authoring:emph"/>
+                <xs:element ref="authoring:time"/>
+                <xs:element ref="authoring:name"/>
+                <xs:element ref="authoring:term"/>
+                <xs:element ref="authoring:definition"/>
+                <xs:element ref="authoring:num"/>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="continuation">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="w">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="authoring:sub"/>
+                <xs:element ref="authoring:sup"/>
+                <xs:element ref="its:ruby"/>
+                <xs:element ref="authoring:wpart"/>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="abbr">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="authoring:sub"/>
+                <xs:element ref="authoring:sup"/>
+                <xs:element ref="its:ruby"/>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="ref">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="emph">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="authoring:sub"/>
+                <xs:element ref="authoring:sup"/>
+                <xs:element ref="its:ruby"/>
+                <xs:element ref="authoring:ref"/>
+                <xs:group ref="authoring:ln"/>
+                <xs:element ref="authoring:s"/>
+                <xs:element ref="authoring:w"/>
+                <xs:element ref="authoring:abbr"/>
+                <xs:element ref="authoring:expansion"/>
+                <xs:element ref="authoring:emph"/>
+                <xs:element ref="authoring:time"/>
+                <xs:element ref="authoring:name"/>
+                <xs:element ref="authoring:term"/>
+                <xs:element ref="authoring:definition"/>
+                <xs:element ref="authoring:num"/>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="continuation">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="time">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="authoring:sub"/>
+                <xs:element ref="authoring:sup"/>
+                <xs:element ref="its:ruby"/>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="continuation">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="time">
+                <xs:simpleType>
+                    <xs:union memberTypes="xs:gYear xs:gYearMonth xs:gMonthDay xs:gDay xs:gMonth xs:date xs:time xs:dateTime">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:pattern value="\d\d:\d\d"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:union>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="name">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="authoring:sub"/>
+                <xs:element ref="authoring:sup"/>
+                <xs:element ref="its:ruby"/>
+                <xs:element ref="authoring:abbr"/>
+                <xs:group ref="authoring:span_2"/>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="term">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="authoring:sub"/>
+                <xs:element ref="authoring:sup"/>
+                <xs:element ref="its:ruby"/>
+                <xs:element ref="authoring:ref"/>
+                <xs:group ref="authoring:ln"/>
+                <xs:element ref="authoring:s"/>
+                <xs:element ref="authoring:w"/>
+                <xs:element ref="authoring:abbr"/>
+                <xs:element ref="authoring:expansion"/>
+                <xs:element ref="authoring:emph"/>
+                <xs:element ref="authoring:time"/>
+                <xs:element ref="authoring:name"/>
+                <xs:element ref="authoring:term"/>
+                <xs:element ref="authoring:definition"/>
+                <xs:element ref="authoring:num"/>
+            </xs:choice>
+            <xs:attribute name="ref">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="continuation">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="num">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="authoring:sub"/>
+                <xs:element ref="authoring:sup"/>
+                <xs:element ref="its:ruby"/>
+            </xs:choice>
+            <xs:attribute name="value">
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="hd">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="authoring:sub"/>
+                <xs:element ref="authoring:sup"/>
+                <xs:element ref="its:ruby"/>
+                <xs:element ref="authoring:ref"/>
+                <xs:group ref="authoring:ln"/>
+                <xs:element ref="authoring:s"/>
+                <xs:element ref="authoring:w"/>
+                <xs:element ref="authoring:abbr"/>
+                <xs:element ref="authoring:expansion"/>
+                <xs:element ref="authoring:emph"/>
+                <xs:element ref="authoring:time"/>
+                <xs:element ref="authoring:name"/>
+                <xs:element ref="authoring:term"/>
+                <xs:element ref="authoring:definition"/>
+                <xs:element ref="authoring:num"/>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="continuation">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="ref">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="block">
+        <xs:complexType mixed="true">
+            <xs:choice>
+                <xs:choice maxOccurs="unbounded">
+                    <xs:element ref="authoring:hd"/>
+                    <xs:element ref="authoring:block"/>
+                    <xs:element ref="authoring:p"/>
+                    <xs:element ref="authoring:list"/>
+                    <xs:element ref="authoring:table"/>
+                    <xs:element ref="authoring:quote"/>
+                    <xs:element ref="authoring:citation"/>
+                    <xs:element ref="authoring:object"/>
+                    <xs:element ref="authoring:address"/>
+                    <xs:group ref="authoring:annotation"/>
+                    <xs:element ref="authoring:caption"/>
+                    <xs:element ref="authoring:code"/>
+                    <xs:element ref="authoring:description"/>
+                    <xs:element ref="d:description"/>
+                </xs:choice>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element ref="authoring:sub"/>
+                    <xs:element ref="authoring:sup"/>
+                    <xs:element ref="its:ruby"/>
+                    <xs:group ref="authoring:span"/>
+                    <xs:element ref="authoring:ref"/>
+                    <xs:group ref="authoring:ln"/>
+                    <xs:element ref="authoring:s"/>
+                    <xs:element ref="authoring:w"/>
+                    <xs:element ref="authoring:abbr"/>
+                    <xs:element ref="authoring:expansion"/>
+                    <xs:element ref="authoring:emph"/>
+                    <xs:element ref="authoring:time"/>
+                    <xs:element ref="authoring:name"/>
+                    <xs:element ref="authoring:term"/>
+                    <xs:element ref="authoring:definition"/>
+                    <xs:element ref="authoring:num"/>
+                </xs:choice>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="continuation">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="associate" type="xs:NCName"/>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="p">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="authoring:sub"/>
+                <xs:element ref="authoring:sup"/>
+                <xs:element ref="its:ruby"/>
+                <xs:group ref="authoring:span"/>
+                <xs:element ref="authoring:ref"/>
+                <xs:group ref="authoring:ln"/>
+                <xs:element ref="authoring:s"/>
+                <xs:element ref="authoring:w"/>
+                <xs:element ref="authoring:abbr"/>
+                <xs:element ref="authoring:expansion"/>
+                <xs:element ref="authoring:emph"/>
+                <xs:element ref="authoring:time"/>
+                <xs:element ref="authoring:name"/>
+                <xs:element ref="authoring:term"/>
+                <xs:element ref="authoring:definition"/>
+                <xs:element ref="authoring:num"/>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="continuation">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="authoring:item"/>
+            </xs:sequence>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="continuation">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="type">
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:enumeration value="ordered"/>
+                        <xs:enumeration value="unordered"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="start" type="xs:integer"/>
+            <xs:attribute name="depth">
+                <xs:simpleType>
+                    <xs:restriction base="xs:nonNegativeInteger">
+                        <xs:pattern value="[0-9]+"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="table">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="authoring:tr"/>
+            </xs:sequence>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="continuation">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="quote">
+        <xs:complexType mixed="true">
+            <xs:choice>
+                <xs:choice maxOccurs="unbounded">
+                    <xs:element ref="authoring:hd"/>
+                    <xs:element ref="authoring:block"/>
+                    <xs:element ref="authoring:p"/>
+                    <xs:element ref="authoring:list"/>
+                    <xs:element ref="authoring:table"/>
+                    <xs:element ref="authoring:quote"/>
+                    <xs:element ref="authoring:citation"/>
+                    <xs:element ref="authoring:object"/>
+                    <xs:element ref="authoring:address"/>
+                    <xs:group ref="authoring:annotation"/>
+                    <xs:element ref="authoring:caption"/>
+                    <xs:element ref="authoring:code"/>
+                    <xs:element ref="authoring:description"/>
+                    <xs:element ref="d:description"/>
+                </xs:choice>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element ref="authoring:sub"/>
+                    <xs:element ref="authoring:sup"/>
+                    <xs:element ref="its:ruby"/>
+                    <xs:group ref="authoring:span"/>
+                    <xs:element ref="authoring:ref"/>
+                    <xs:group ref="authoring:ln"/>
+                    <xs:element ref="authoring:s"/>
+                    <xs:element ref="authoring:w"/>
+                    <xs:element ref="authoring:abbr"/>
+                    <xs:element ref="authoring:expansion"/>
+                    <xs:element ref="authoring:emph"/>
+                    <xs:element ref="authoring:time"/>
+                    <xs:element ref="authoring:name"/>
+                    <xs:element ref="authoring:term"/>
+                    <xs:element ref="authoring:definition"/>
+                    <xs:element ref="authoring:num"/>
+                </xs:choice>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="continuation">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="ref">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute ref="xlink:href"/>
+            <xs:attribute ref="xlink:type"/>
+            <xs:attribute ref="xlink:title"/>
+            <xs:attribute ref="xlink:show"/>
+            <xs:attribute ref="xlink:actuate"/>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="citation">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="authoring:sub"/>
+                <xs:element ref="authoring:sup"/>
+                <xs:element ref="its:ruby"/>
+                <xs:group ref="authoring:span"/>
+                <xs:element ref="authoring:ref"/>
+                <xs:group ref="authoring:ln"/>
+                <xs:element ref="authoring:s"/>
+                <xs:element ref="authoring:w"/>
+                <xs:element ref="authoring:abbr"/>
+                <xs:element ref="authoring:expansion"/>
+                <xs:element ref="authoring:emph"/>
+                <xs:element ref="authoring:time"/>
+                <xs:element ref="authoring:name"/>
+                <xs:element ref="authoring:term"/>
+                <xs:element ref="authoring:definition"/>
+                <xs:element ref="authoring:num"/>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="continuation">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="ref">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute ref="xlink:href"/>
+            <xs:attribute ref="xlink:type"/>
+            <xs:attribute ref="xlink:title"/>
+            <xs:attribute ref="xlink:show"/>
+            <xs:attribute ref="xlink:actuate"/>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="object">
+        <xs:complexType mixed="true">
+            <xs:choice>
+                <xs:choice maxOccurs="unbounded">
+                    <xs:element ref="authoring:hd"/>
+                    <xs:element ref="authoring:block"/>
+                    <xs:element ref="authoring:p"/>
+                    <xs:element ref="authoring:list"/>
+                    <xs:element ref="authoring:table"/>
+                    <xs:element ref="authoring:quote"/>
+                    <xs:element ref="authoring:citation"/>
+                    <xs:element ref="authoring:object"/>
+                    <xs:element ref="authoring:address"/>
+                    <xs:group ref="authoring:annotation"/>
+                    <xs:element ref="authoring:caption"/>
+                    <xs:element ref="authoring:code"/>
+                    <xs:element ref="authoring:description"/>
+                    <xs:element ref="d:description"/>
+                </xs:choice>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element ref="authoring:sub"/>
+                    <xs:element ref="authoring:sup"/>
+                    <xs:element ref="its:ruby"/>
+                    <xs:group ref="authoring:span"/>
+                    <xs:element ref="authoring:ref"/>
+                    <xs:group ref="authoring:ln"/>
+                    <xs:element ref="authoring:s"/>
+                    <xs:element ref="authoring:w"/>
+                    <xs:element ref="authoring:abbr"/>
+                    <xs:element ref="authoring:expansion"/>
+                    <xs:element ref="authoring:emph"/>
+                    <xs:element ref="authoring:time"/>
+                    <xs:element ref="authoring:name"/>
+                    <xs:element ref="authoring:term"/>
+                    <xs:element ref="authoring:definition"/>
+                    <xs:element ref="authoring:num"/>
+                </xs:choice>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="continuation">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="src" use="required" type="xs:anyURI"/>
+            <xs:attribute name="srctype">
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:enumeration value="image/png"/>
+                        <xs:enumeration value="image/jpeg"/>
+                        <xs:enumeration value="image/bmp"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="address">
+        <xs:complexType>
+            <xs:choice maxOccurs="unbounded">
+                <xs:group ref="authoring:lngroup"/>
+                <xs:group ref="authoring:ln"/>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="ref">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute ref="xlink:href"/>
+            <xs:attribute ref="xlink:type"/>
+            <xs:attribute ref="xlink:title"/>
+            <xs:attribute ref="xlink:show"/>
+            <xs:attribute ref="xlink:actuate"/>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:group name="annotation">
+        <xs:sequence>
+            <xs:element name="annotation">
+                <xs:complexType mixed="true">
+                    <xs:choice>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element ref="authoring:hd"/>
+                            <xs:element ref="authoring:block"/>
+                            <xs:element ref="authoring:p"/>
+                            <xs:element ref="authoring:list"/>
+                            <xs:element ref="authoring:table"/>
+                            <xs:element ref="authoring:quote"/>
+                            <xs:element ref="authoring:citation"/>
+                            <xs:element ref="authoring:object"/>
+                            <xs:element ref="authoring:address"/>
+                            <xs:group ref="authoring:annotation"/>
+                            <xs:element ref="authoring:caption"/>
+                            <xs:element ref="authoring:code"/>
+                            <xs:element ref="authoring:description"/>
+                            <xs:element ref="d:description"/>
+                        </xs:choice>
+                        <xs:choice minOccurs="0" maxOccurs="unbounded">
+                            <xs:element ref="authoring:sub"/>
+                            <xs:element ref="authoring:sup"/>
+                            <xs:element ref="its:ruby"/>
+                            <xs:group ref="authoring:span"/>
+                            <xs:element ref="authoring:ref"/>
+                            <xs:group ref="authoring:ln"/>
+                            <xs:element ref="authoring:s"/>
+                            <xs:element ref="authoring:w"/>
+                            <xs:element ref="authoring:abbr"/>
+                            <xs:element ref="authoring:expansion"/>
+                            <xs:element ref="authoring:emph"/>
+                            <xs:element ref="authoring:time"/>
+                            <xs:element ref="authoring:name"/>
+                            <xs:element ref="authoring:term"/>
+                            <xs:element ref="authoring:definition"/>
+                            <xs:element ref="authoring:num"/>
+                        </xs:choice>
+                    </xs:choice>
+                    <xs:attribute ref="xml:id"/>
+                    <xs:attribute ref="xml:space"/>
+                    <xs:attribute ref="xml:base"/>
+                    <xs:attribute name="class" type="xs:NMTOKENS"/>
+                    <xs:attribute ref="xml:lang"/>
+                    <xs:attribute ref="its:dir"/>
+                    <xs:attribute ref="its:translate"/> 
+                    <xs:attribute name="desc">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list itemType="xs:NCName"/>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="by">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="role">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="ref">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list itemType="xs:NCName"/>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="caption">
+        <xs:complexType mixed="true">
+            <xs:choice>
+                <xs:choice maxOccurs="unbounded">
+                    <xs:element ref="authoring:hd"/>
+                    <xs:element ref="authoring:block"/>
+                    <xs:element ref="authoring:p"/>
+                    <xs:element ref="authoring:list"/>
+                    <xs:element ref="authoring:table"/>
+                    <xs:element ref="authoring:quote"/>
+                    <xs:element ref="authoring:citation"/>
+                    <xs:element ref="authoring:object"/>
+                    <xs:element ref="authoring:address"/>
+                    <xs:group ref="authoring:annotation"/>
+                    <xs:element ref="authoring:caption"/>
+                    <xs:element ref="authoring:code"/>
+                    <xs:element ref="authoring:description"/>
+                    <xs:element ref="d:description"/>
+                </xs:choice>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element ref="authoring:sub"/>
+                    <xs:element ref="authoring:sup"/>
+                    <xs:element ref="its:ruby"/>
+                    <xs:group ref="authoring:span"/>
+                    <xs:element ref="authoring:ref"/>
+                    <xs:group ref="authoring:ln"/>
+                    <xs:element ref="authoring:s"/>
+                    <xs:element ref="authoring:w"/>
+                    <xs:element ref="authoring:abbr"/>
+                    <xs:element ref="authoring:expansion"/>
+                    <xs:element ref="authoring:emph"/>
+                    <xs:element ref="authoring:time"/>
+                    <xs:element ref="authoring:name"/>
+                    <xs:element ref="authoring:term"/>
+                    <xs:element ref="authoring:definition"/>
+                    <xs:element ref="authoring:num"/>
+                </xs:choice>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="continuation">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="ref">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="code">
+        <xs:complexType>
+            <xs:choice maxOccurs="unbounded">
+                <xs:group ref="authoring:lngroup_2"/>
+                <xs:group ref="authoring:ln_2"/>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="continuation">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:group name="head_2">
+        <xs:sequence>
+            <xs:element name="head">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" ref="authoring:meta"/>
+                    </xs:sequence>
+                    <xs:attribute ref="xml:id"/>
+                    <xs:attribute ref="xml:space"/>
+                    <xs:attribute ref="xml:base"/>
+                    <xs:attribute name="class" type="xs:NMTOKENS"/>
+                    <xs:attribute ref="xml:lang"/>
+                    <xs:attribute ref="its:dir"/>
+                    <xs:attribute ref="its:translate"/> 
+                    <xs:attribute name="desc">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list itemType="xs:NCName"/>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="by">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="role">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="body_2">
+        <xs:sequence>
+            <xs:element name="body">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:choice minOccurs="0" maxOccurs="unbounded">
+                            <xs:element ref="authoring:h"/>
+                            <xs:choice>
+                                <xs:element ref="authoring:hd"/>
+                                <xs:element ref="authoring:block"/>
+                                <xs:element ref="authoring:p"/>
+                                <xs:element ref="authoring:list"/>
+                                <xs:element ref="authoring:table"/>
+                                <xs:element ref="authoring:quote"/>
+                                <xs:element ref="authoring:citation"/>
+                                <xs:element ref="authoring:object"/>
+                                <xs:element ref="authoring:address"/>
+                                <xs:group ref="authoring:annotation"/>
+                                <xs:element ref="authoring:caption"/>
+                                <xs:element ref="authoring:code"/>
+                                <xs:element ref="authoring:description"/>
+                                <xs:element ref="d:description"/>
+                            </xs:choice>
+                            <xs:element ref="authoring:byline"/>
+                            <xs:element ref="authoring:dateline"/>
+                        </xs:choice>
+                        <xs:group minOccurs="0" maxOccurs="unbounded" ref="authoring:section_2"/>
+                    </xs:sequence>
+                    <xs:attribute ref="xml:id"/>
+                    <xs:attribute ref="xml:space"/>
+                    <xs:attribute ref="xml:base"/>
+                    <xs:attribute name="class" type="xs:NMTOKENS"/>
+                    <xs:attribute ref="xml:lang"/>
+                    <xs:attribute ref="its:dir"/>
+                    <xs:attribute ref="its:translate"/> 
+                    <xs:attribute name="desc">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list itemType="xs:NCName"/>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="by">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="role">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="lnum">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="authoring:sub"/>
+                <xs:element ref="authoring:sup"/>
+                <xs:element ref="its:ruby"/>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="wpart">
+        <xs:complexType mixed="true">
+            <xs:choice maxOccurs="unbounded">
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element ref="authoring:sub"/>
+                    <xs:element ref="authoring:sup"/>
+                    <xs:element ref="its:ruby"/>
+                </xs:choice>
+                <xs:element ref="authoring:wpart"/>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="continuation">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:group name="span_2">
+        <xs:sequence>
+            <xs:element name="span">
+                <xs:complexType mixed="true">
+                    <xs:choice minOccurs="0" maxOccurs="unbounded">
+                        <xs:element ref="authoring:sub"/>
+                        <xs:element ref="authoring:sup"/>
+                        <xs:element ref="its:ruby"/>
+                    </xs:choice>
+                    <xs:attribute ref="xml:id"/>
+                    <xs:attribute ref="xml:space"/>
+                    <xs:attribute ref="xml:base"/>
+                    <xs:attribute name="class" type="xs:NMTOKENS"/>
+                    <xs:attribute ref="xml:lang"/>
+                    <xs:attribute ref="its:dir"/>
+                    <xs:attribute ref="its:translate"/> 
+                    <xs:attribute name="desc">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list itemType="xs:NCName"/>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="by">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="role">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="item">
+        <xs:complexType mixed="true">
+            <xs:choice>
+                <xs:choice maxOccurs="unbounded">
+                    <xs:element ref="authoring:hd"/>
+                    <xs:element ref="authoring:block"/>
+                    <xs:element ref="authoring:p"/>
+                    <xs:element ref="authoring:list"/>
+                    <xs:element ref="authoring:table"/>
+                    <xs:element ref="authoring:quote"/>
+                    <xs:element ref="authoring:citation"/>
+                    <xs:element ref="authoring:object"/>
+                    <xs:element ref="authoring:address"/>
+                    <xs:group ref="authoring:annotation"/>
+                    <xs:element ref="authoring:caption"/>
+                    <xs:element ref="authoring:code"/>
+                    <xs:element ref="authoring:description"/>
+                    <xs:element ref="d:description"/>
+                </xs:choice>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element ref="authoring:sub"/>
+                    <xs:element ref="authoring:sup"/>
+                    <xs:element ref="its:ruby"/>
+                    <xs:group ref="authoring:span"/>
+                    <xs:element ref="authoring:ref"/>
+                    <xs:group ref="authoring:ln"/>
+                    <xs:element ref="authoring:s"/>
+                    <xs:element ref="authoring:w"/>
+                    <xs:element ref="authoring:abbr"/>
+                    <xs:element ref="authoring:expansion"/>
+                    <xs:element ref="authoring:emph"/>
+                    <xs:element ref="authoring:time"/>
+                    <xs:element ref="authoring:name"/>
+                    <xs:element ref="authoring:term"/>
+                    <xs:element ref="authoring:definition"/>
+                    <xs:element ref="authoring:num"/>
+                </xs:choice>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="continuation">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="tr">
+        <xs:complexType>
+            <xs:choice maxOccurs="unbounded">
+                <xs:element ref="authoring:th"/>
+                <xs:element ref="authoring:td"/>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="continuation">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:group name="lngroup">
+        <xs:sequence>
+            <xs:element name="lngroup">
+                <xs:complexType>
+                    <xs:choice minOccurs="0" maxOccurs="unbounded">
+                        <xs:group ref="authoring:annotation_2"/>
+                        <xs:group ref="authoring:ln"/>
+                    </xs:choice>
+                    <xs:attribute ref="xml:id"/>
+                    <xs:attribute ref="xml:space"/>
+                    <xs:attribute ref="xml:base"/>
+                    <xs:attribute name="class" type="xs:NMTOKENS"/>
+                    <xs:attribute ref="xml:lang"/>
+                    <xs:attribute ref="its:dir"/>
+                    <xs:attribute ref="its:translate"/> 
+                    <xs:attribute name="desc">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list itemType="xs:NCName"/>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="by">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="role">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="continuation">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list itemType="xs:NCName"/>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="lngroup_2">
+        <xs:sequence>
+            <xs:element name="lngroup">
+                <xs:complexType>
+                    <xs:group maxOccurs="unbounded" ref="authoring:ln_2"/>
+                    <xs:attribute ref="xml:id"/>
+                    <xs:attribute ref="xml:space"/>
+                    <xs:attribute ref="xml:base"/>
+                    <xs:attribute name="class" type="xs:NMTOKENS"/>
+                    <xs:attribute ref="xml:lang"/>
+                    <xs:attribute ref="its:dir"/>
+                    <xs:attribute ref="its:translate"/> 
+                    <xs:attribute name="desc">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list itemType="xs:NCName"/>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="by">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="role">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="continuation">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list itemType="xs:NCName"/>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="ln_2">
+        <xs:sequence>
+            <xs:element name="ln">
+                <xs:complexType mixed="true">
+                    <xs:choice minOccurs="0" maxOccurs="unbounded">
+                        <xs:element ref="authoring:lnum"/>
+                        <xs:choice>
+                            <xs:element ref="authoring:sub"/>
+                            <xs:element ref="authoring:sup"/>
+                            <xs:element ref="its:ruby"/>
+                        </xs:choice>
+                    </xs:choice>
+                    <xs:attribute ref="xml:id"/>
+                    <xs:attribute ref="xml:space"/>
+                    <xs:attribute ref="xml:base"/>
+                    <xs:attribute name="class" type="xs:NMTOKENS"/>
+                    <xs:attribute ref="xml:lang"/>
+                    <xs:attribute ref="its:dir"/>
+                    <xs:attribute ref="its:translate"/> 
+                    <xs:attribute name="desc">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list itemType="xs:NCName"/>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="by">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="role">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="continuation">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list itemType="xs:NCName"/>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="byline">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="authoring:sub"/>
+                <xs:element ref="authoring:sup"/>
+                <xs:element ref="its:ruby"/>
+                <xs:group ref="authoring:span"/>
+                <xs:element ref="authoring:ref"/>
+                <xs:group ref="authoring:ln"/>
+                <xs:element ref="authoring:s"/>
+                <xs:element ref="authoring:w"/>
+                <xs:element ref="authoring:abbr"/>
+                <xs:element ref="authoring:expansion"/>
+                <xs:element ref="authoring:emph"/>
+                <xs:element ref="authoring:time"/>
+                <xs:element ref="authoring:name"/>
+                <xs:element ref="authoring:term"/>
+                <xs:element ref="authoring:definition"/>
+                <xs:element ref="authoring:num"/>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="continuation">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="dateline">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="authoring:sub"/>
+                <xs:element ref="authoring:sup"/>
+                <xs:element ref="its:ruby"/>
+                <xs:group ref="authoring:span"/>
+                <xs:element ref="authoring:ref"/>
+                <xs:group ref="authoring:ln"/>
+                <xs:element ref="authoring:s"/>
+                <xs:element ref="authoring:w"/>
+                <xs:element ref="authoring:abbr"/>
+                <xs:element ref="authoring:expansion"/>
+                <xs:element ref="authoring:emph"/>
+                <xs:element ref="authoring:time"/>
+                <xs:element ref="authoring:name"/>
+                <xs:element ref="authoring:term"/>
+                <xs:element ref="authoring:definition"/>
+                <xs:element ref="authoring:num"/>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="continuation">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:group name="section_2">
+        <xs:sequence>
+            <xs:element name="section">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:choice minOccurs="0" maxOccurs="unbounded">
+                            <xs:element ref="authoring:h"/>
+                            <xs:choice>
+                                <xs:element ref="authoring:hd"/>
+                                <xs:element ref="authoring:block"/>
+                                <xs:element ref="authoring:p"/>
+                                <xs:element ref="authoring:list"/>
+                                <xs:element ref="authoring:table"/>
+                                <xs:element ref="authoring:quote"/>
+                                <xs:element ref="authoring:citation"/>
+                                <xs:element ref="authoring:object"/>
+                                <xs:element ref="authoring:address"/>
+                                <xs:group ref="authoring:annotation"/>
+                                <xs:element ref="authoring:caption"/>
+                                <xs:element ref="authoring:code"/>
+                                <xs:element ref="authoring:description"/>
+                                <xs:element ref="d:description"/>
+                            </xs:choice>
+                        </xs:choice>
+                        <xs:group minOccurs="0" maxOccurs="unbounded" ref="authoring:section_2"/>
+                    </xs:sequence>
+                    <xs:attribute ref="xml:id"/>
+                    <xs:attribute ref="xml:space"/>
+                    <xs:attribute ref="xml:base"/>
+                    <xs:attribute name="class" type="xs:NMTOKENS"/>
+                    <xs:attribute ref="xml:lang"/>
+                    <xs:attribute ref="its:dir"/>
+                    <xs:attribute ref="its:translate"/> 
+                    <xs:attribute name="desc">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list itemType="xs:NCName"/>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="by">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="role">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="th">
+        <xs:complexType mixed="true">
+            <xs:choice>
+                <xs:choice maxOccurs="unbounded">
+                    <xs:element ref="authoring:hd"/>
+                    <xs:element ref="authoring:block"/>
+                    <xs:element ref="authoring:p"/>
+                    <xs:element ref="authoring:list"/>
+                    <xs:element ref="authoring:table"/>
+                    <xs:element ref="authoring:quote"/>
+                    <xs:element ref="authoring:citation"/>
+                    <xs:element ref="authoring:object"/>
+                    <xs:element ref="authoring:address"/>
+                    <xs:group ref="authoring:annotation"/>
+                    <xs:element ref="authoring:caption"/>
+                    <xs:element ref="authoring:code"/>
+                    <xs:element ref="authoring:description"/>
+                    <xs:element ref="d:description"/>
+                </xs:choice>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element ref="authoring:sub"/>
+                    <xs:element ref="authoring:sup"/>
+                    <xs:element ref="its:ruby"/>
+                    <xs:group ref="authoring:span"/>
+                    <xs:element ref="authoring:ref"/>
+                    <xs:group ref="authoring:ln"/>
+                    <xs:element ref="authoring:s"/>
+                    <xs:element ref="authoring:w"/>
+                    <xs:element ref="authoring:abbr"/>
+                    <xs:element ref="authoring:expansion"/>
+                    <xs:element ref="authoring:emph"/>
+                    <xs:element ref="authoring:time"/>
+                    <xs:element ref="authoring:name"/>
+                    <xs:element ref="authoring:term"/>
+                    <xs:element ref="authoring:definition"/>
+                    <xs:element ref="authoring:num"/>
+                </xs:choice>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="continuation">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="colspan">
+                <xs:simpleType>
+                    <xs:restriction base="xs:nonNegativeInteger">
+                        <xs:pattern value="[0-9]+"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="rowspan">
+                <xs:simpleType>
+                    <xs:restriction base="xs:nonNegativeInteger">
+                        <xs:pattern value="[0-9]+"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="headers">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="scope">
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:enumeration value="row"/>
+                        <xs:enumeration value="col"/>
+                        <xs:enumeration value="rowgroup"/>
+                        <xs:enumeration value="colgroup"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="abbr"/>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="td">
+        <xs:complexType mixed="true">
+            <xs:choice>
+                <xs:choice maxOccurs="unbounded">
+                    <xs:element ref="authoring:hd"/>
+                    <xs:element ref="authoring:block"/>
+                    <xs:element ref="authoring:p"/>
+                    <xs:element ref="authoring:list"/>
+                    <xs:element ref="authoring:table"/>
+                    <xs:element ref="authoring:quote"/>
+                    <xs:element ref="authoring:citation"/>
+                    <xs:element ref="authoring:object"/>
+                    <xs:element ref="authoring:address"/>
+                    <xs:group ref="authoring:annotation"/>
+                    <xs:element ref="authoring:caption"/>
+                    <xs:element ref="authoring:code"/>
+                    <xs:element ref="authoring:description"/>
+                    <xs:element ref="d:description"/>
+                </xs:choice>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element ref="authoring:sub"/>
+                    <xs:element ref="authoring:sup"/>
+                    <xs:element ref="its:ruby"/>
+                    <xs:group ref="authoring:span"/>
+                    <xs:element ref="authoring:ref"/>
+                    <xs:group ref="authoring:ln"/>
+                    <xs:element ref="authoring:s"/>
+                    <xs:element ref="authoring:w"/>
+                    <xs:element ref="authoring:abbr"/>
+                    <xs:element ref="authoring:expansion"/>
+                    <xs:element ref="authoring:emph"/>
+                    <xs:element ref="authoring:time"/>
+                    <xs:element ref="authoring:name"/>
+                    <xs:element ref="authoring:term"/>
+                    <xs:element ref="authoring:definition"/>
+                    <xs:element ref="authoring:num"/>
+                </xs:choice>
+            </xs:choice>
+            <xs:attribute ref="xml:id"/>
+            <xs:attribute ref="xml:space"/>
+            <xs:attribute ref="xml:base"/>
+            <xs:attribute name="class" type="xs:NMTOKENS"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute ref="its:dir"/>
+            <xs:attribute ref="its:translate"/> 
+            <xs:attribute name="desc">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="by">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:list>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="continuation">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="colspan">
+                <xs:simpleType>
+                    <xs:restriction base="xs:nonNegativeInteger">
+                        <xs:pattern value="[0-9]+"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="rowspan">
+                <xs:simpleType>
+                    <xs:restriction base="xs:nonNegativeInteger">
+                        <xs:pattern value="[0-9]+"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="headers">
+                <xs:simpleType>
+                    <xs:restriction>
+                        <xs:simpleType>
+                            <xs:list itemType="xs:NCName"/>
+                        </xs:simpleType>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="scope">
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:enumeration value="row"/>
+                        <xs:enumeration value="col"/>
+                        <xs:enumeration value="rowgroup"/>
+                        <xs:enumeration value="colgroup"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:group name="annotation_2">
+        <xs:sequence>
+            <xs:element name="annotation">
+                <xs:complexType mixed="true">
+                    <xs:choice minOccurs="0" maxOccurs="unbounded">
+                        <xs:element ref="authoring:sub"/>
+                        <xs:element ref="authoring:sup"/>
+                        <xs:element ref="its:ruby"/>
+                        <xs:group ref="authoring:span"/>
+                        <xs:element ref="authoring:ref"/>
+                        <xs:group ref="authoring:ln"/>
+                        <xs:element ref="authoring:s"/>
+                        <xs:element ref="authoring:w"/>
+                        <xs:element ref="authoring:abbr"/>
+                        <xs:element ref="authoring:expansion"/>
+                        <xs:element ref="authoring:emph"/>
+                        <xs:element ref="authoring:time"/>
+                        <xs:element ref="authoring:name"/>
+                        <xs:element ref="authoring:term"/>
+                        <xs:element ref="authoring:definition"/>
+                        <xs:element ref="authoring:num"/>
+                    </xs:choice>
+                    <xs:attribute ref="xml:id"/>
+                    <xs:attribute ref="xml:space"/>
+                    <xs:attribute ref="xml:base"/>
+                    <xs:attribute name="class" type="xs:NMTOKENS"/>
+                    <xs:attribute ref="xml:lang"/>
+                    <xs:attribute ref="its:dir"/>
+                    <xs:attribute ref="its:translate"/> 
+                    <xs:attribute name="desc">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list itemType="xs:NCName"/>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="by">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="role">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:list>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="ref">
+                        <xs:simpleType>
+                            <xs:restriction>
+                                <xs:simpleType>
+                                    <xs:list itemType="xs:NCName"/>
+                                </xs:simpleType>
+                                <xs:minLength value="1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <attributeGroup ref="authoring:rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="_1">
+        <xs:sequence>
+            <xs:any processContents="skip"/>
+        </xs:sequence>
+    </xs:group>
+    <attributeGroup name="rdfaAttribs" xmlns="http://www.w3.org/2001/XMLSchema">
+        <xs:attribute name="about" type="xs:anyURI"/>
+        <xs:attribute name="content"/>
+        <xs:attribute name="datatype">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="typeof">
+            <xs:simpleType>
+                <xs:restriction>
+                    <xs:simpleType>
+                        <xs:list>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:list>
+                    </xs:simpleType>
+                    <xs:minLength value="1"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="property">
+            <xs:simpleType>
+                <xs:restriction>
+                    <xs:simpleType>
+                        <xs:list>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:list>
+                    </xs:simpleType>
+                    <xs:minLength value="1"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="rel">
+            <xs:simpleType>
+                <xs:restriction>
+                    <xs:simpleType>
+                        <xs:list>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:list>
+                    </xs:simpleType>
+                    <xs:minLength value="1"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="resource" type="xs:anyURI"/>
+        <xs:attribute name="rev">
+            <xs:simpleType>
+                <xs:restriction>
+                    <xs:simpleType>
+                        <xs:list>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:list>
+                    </xs:simpleType>
+                    <xs:minLength value="1"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </attributeGroup>
+</xs:schema>

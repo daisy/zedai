@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z3986 Structural Module</x:h1>
+  <x:p>This module is a wrapper around the XHTML2 Structure Module.</x:p>
+  <x:p>It introduces the following major changes: </x:p>
+  <x:ul>
+  	<x:li>allow only h as heading (remove h1-h6)</x:li>
+  	<x:li>require a h to be the first child of section</x:li>  	
+  	<x:li>tighten up p content model</x:li>
+  	<x:li>tighten up div content model</x:li>
+  	<x:li>tighten up blockquote content model</x:li>
+  	<x:li>tighten up blockcode content model</x:li>
+  	<x:li>tighten up div content model</x:li>  	
+  	<x:li>heavy redefine of Flow.model</x:li>
+  	<x:li>tighten up default section content model to be strict</x:li>
+  	<x:li>define section.loose, which resembles xhtml2 section model, but uses only Structural.model</x:li>
+  	<x:li>define a new Structural.nosection.class which excludes section from XHTML2's Structural.class</x:li>  	  	
+  </x:ul>
+  
+  <!-- broken out to a module instead of in driver in order to 
+  		allow reuse between profiles -->
+  
+    <include href="xhtml-structural-2.rng">
+        
+    	<define name="Heading.class">      		
+        	<ref name="h"/>
+      	</define>
+      	
+      	<define name="Heading.content">
+      		<interleave>
+      			<ref name="Text.reduced.model"/>
+      			<optional>
+      				<ref name="object"/>
+      			</optional>
+      		</interleave>	
+    	</define>
+      	    	
+    	<define name="p.model">
+	    	<ref name="Text.model"/>		
+	    </define>
+    	     
+    	<define name="p.attlist">
+      		<ref name="Common.reduced.attrib"/>
+    	</define>
+    	       	
+      	<define name="div">
+         	<element name="div">
+            	<ref name="div.attlist"/>
+            	<ref name="Flow.model"/>
+         	</element>
+      	</define>
+      	
+      	 <define name="blockcode.model">
+		      <choice>
+		      	<ref name="Text.model"/>
+		      	<oneOrMore>
+		      		<ref name="div" />
+		      	</oneOrMore>		      	
+		      </choice>
+    	 </define>
+
+	    <define name="blockquote.model">
+	      <ref name="Flow.model"/>
+	    </define>
+	    
+	    <define name="section">
+	    	<!-- make the default section the strict one -->
+      		<element name="section">
+        		<ref name="section.attlist"/>
+        		<ref name="section.strict.model"/>
+      		</element>
+    	</define>
+	    	    
+	    <define name="Structural.model">
+	    	<!-- remove misc.class -->
+	    	<oneOrMore>
+	    		<choice>
+					<ref name="Heading.class"/>
+					<ref name="Structural.class"/>
+					<ref name="List.class"/>
+				</choice>	
+	        </oneOrMore>
+    	</define>
+      	
+      	<define name="Flow.model">
+	      	<choice>
+			    <oneOrMore>
+					<ref name="Structural.nosection.class"/>				
+				</oneOrMore>	
+				<oneOrMore>
+					<ref name="Text.model"/>
+				</oneOrMore>	
+			</choice>		      
+    	</define>
+      		    	       	
+    </include>
+    
+    <define name="section.strict">
+    	<!-- just a proxy name -->
+  		<ref name="section"/>
+    </define> 
+        
+  	<define name="section.strict.model">  		
+		<ref name="section.strict.prehead.slot"/>
+		<ref name="Heading.class" />
+		<zeroOrMore>
+			<choice>
+    			<ref name="Structural.class"/>    			
+            	<ref name="List.class"/>
+            	<ref name="section.strict.body.slot"/>
+            </choice>	
+        </zeroOrMore>
+	</define>
+  
+    <define name="section.strict.body.slot">
+    	<empty/>
+    </define>
+  
+  	<define name="section.strict.prehead.slot">
+    	<empty/>
+    </define>
+        
+    <define name="section.loose">
+  		<element name="section">
+    		<ref name="section.attlist"/>
+    		<ref name="Structural.model"/>
+  		</element>
+    </define>
+      
+    <define name="Structural.nosection.class">
+    	<choice>      
+	        <ref name="address"/>
+	        <ref name="blockcode"/>
+	        <ref name="blockquote"/>  
+	        <ref name="div"/>
+	        <ref name="p"/>        
+	        <ref name="pre"/>
+	        <ref name="separator"/>	        
+	        <ref name="Structural.extra"/>
+        </choice>      
+    </define>
+  
+  	<define name="blockquote.attlist" combine="interleave">
+      <ref name="cite.attrib"/>
+    </define>
+    
+    <define name="Structural.extra">
+		<notAllowed/>
+    </define>
+    
+    <define name="Structural.class" combine="choice">
+    	<ref name="Structural.extra"/>
+    </define>
+            
+</grammar>  

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="bibliography">The bibliography module</title>
+        <annotation annotates="/">
+            <para role="desc-main">This module defines the {[[#z3986.bibliography]]} element used to structure bibliographic sections.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3986-global-classes.rng"/>
+                <member xlink:href="z3986-headings.rng"/>
+                <member xlink:href="z3986-p.rng"/>
+                <member xlink:href="z3986-block.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <author>
+            <personname>Matt Garrish</personname>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <year>2012</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2012-12-19</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="z3986.bibliography" xml:id="z3986.bibliography">
+            <element name="bibliography">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="bibliography">The {bibliography} element</title>
+                    <para role="desc-main">The {bibliography} element represents a bibliography, discography, filmography or other bibliographic section.</para>
+                    <para role="desc-sub">The {[[#z3986.bibliography.entry entries]]} in an {bibliography} may be grouped into {[[#z3986.bibliography.section sections]]} by topic, work, alphabetic letter or other means.</para>
+                    <synopsis role="def-context">{[[#z3986.Section.class]]}</synopsis>
+                    <synopsis role="def-content" condition="The content model must allow {[[#z3986.bibliography.entry entry]]} elements and no more than one {[[#z3986.h h]]} element.">{[[#z3986.h]]?, [[#z3986.bibliography.entry]]*, [[#z3986.bibliography.section]]*}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Section.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.bibliography.attlist"/>
+                <ref name="z3986.bibliography.content"/>
+            </element>
+        </define>
+        <define name="z3986.bibliography.attlist" xml:id="z3986.bibliography.attlist">
+            <ref name="z3986.Section.attrib"/>
+        </define>
+        <define name="z3986.bibliography.content" xml:id="z3986.bibliography.content">
+            <ref name="z3986.bibliography.model"/>
+        </define>
+        <define name="z3986.bibliography.model" xml:id="z3986.bibliography.model">
+            <interleave>
+                <optional>
+                    <ref name="z3986.h"/>
+                </optional>
+                <zeroOrMore>
+                    <choice>
+                        <ref name="z3986.bibliography.extra.class"/>
+                    </choice>
+                </zeroOrMore>
+            </interleave>
+            <choice>
+                <group>
+                    <interleave>
+                        <oneOrMore>
+                            <ref name="z3986.bibliography.entry"/>
+                        </oneOrMore>
+                        <zeroOrMore>
+                            <ref name="z3986.bibliography.extended.entry.class"/>
+                        </zeroOrMore>
+                    </interleave>
+                    <zeroOrMore>
+                        <ref name="z3986.bibliography.section"/>
+                    </zeroOrMore>
+                </group>
+                <group>
+                    <zeroOrMore>
+                        <ref name="z3986.bibliography.entry"/>
+                    </zeroOrMore>
+                    <oneOrMore>
+                        <ref name="z3986.bibliography.section"/>
+                    </oneOrMore>
+                </group>
+            </choice>
+        </define>
+        <define name="z3986.bibliography.extra.class" xml:id="z3986.bibliography.extra.class">
+            <choice>
+                <ref name="z3986.Block.basic.model"/>
+                <ref name="z3986.Global.extra.class"/>
+            </choice>
+        </define>
+        <define name="z3986.bibliography.extended.entry.class" xml:id="z3986.bibliography.extended.entry.class">
+            <choice>
+                <ref name="z3986.hd"/>
+                <ref name="z3986.Global.extra.class"/>
+            </choice>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.bibliography.section" xml:id="z3986.bibliography.section">
+            <element name="section">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="section (bibliography)">The bibliography {section} element</title>
+                    <para role="desc-main">The bibliography {section} element represents a major structural division of a {[[#z3986.bibliography]]}.</para>
+                    <para role="desc-sub">The bibliography {section} element is a specialization of the {[[#z3986.section]]} element that provides a content model to fit the unique requirements of bibliographic divisions.</para>
+                    <para role="desc-sub" xlink:role="inherit-common" xlink:href="z3986.custom-content"/>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.bibliography]]}</synopsis>
+                    <synopsis role="def-content" condition="The content model must allow {[[#z3986.bibliography.entry entry]]} elements and no more than one {[[#z3986.h h]]} element.">{[[#z3986.h]]?, [[#z3986.bibliography.entry]]*, [[#z3986.bibliography.section]]*}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Section.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.bibliography.attlist"/>
+                <ref name="z3986.bibliography.model"/>
+            </element>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.bibliography.entry" xml:id="z3986.bibliography.entry">
+            <element name="entry">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="entry (bibliography)">The bibliography {entry} element</title>
+                    <para role="desc-main">The bibliography {entry} element represents a single unique entry in a {[[#z3986.bibliography]]}.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.bibliography]]} and {[[#z3986.bibliography.section]]}</synopsis>
+                    <synopsis role="def-content">{([[#z3986.Block.class]])+ | (text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Block.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.bibliography.entry.attlist"/>
+                <ref name="z3986.bibliography.entry.content"/>
+                <sch:rule context="default:entry[ancestor::default:bibliography]">
+                    <sch:assert test="normalize-space(.) or *">The {entry} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="z3986.bibliography.entry.attlist" xml:id="z3986.bibliography.entry.attlist">
+            <ref name="z3986.Block.attrib"/>
+        </define>
+        <define name="z3986.bibliography.entry.content" xml:id="z3986.bibliography.entry.content">
+            <ref name="z3986.Flow.choice.model"/>
+        </define>
+    </div>
+    <div>
+        <a:documentation>bibliography - default content model contribution</a:documentation>
+        <define name="z3986.frontmatter.content.class" combine="choice">
+            <ref name="z3986.bibliography"/>
+        </define>
+        <define name="z3986.section.Section.content.class" combine="choice">
+            <ref name="z3986.bibliography"/>
+        </define>
+        <define name="z3986.backmatter.content.class" combine="choice">
+            <ref name="z3986.bibliography"/>
+        </define>
+    </div>
+</grammar>

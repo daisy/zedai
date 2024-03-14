@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 reference element module</x:h1>
+  <!-- TODO SCH need to figure out which references cannot nest (guesstimate: those that indulge in xlink); not sure -->
+
+  <div>
+    <x:h2>The reference element</x:h2>
+    <x:div id="z3986.reference">
+      <x:p class="description"> The <x:code>ref</x:code> element is used to represent various kinds
+        of references including bibliographical references, hyperlinks, arcs, etc. The nature of a
+        reference can be expressed via the <x:code>role</x:code> attribute. 
+        <x:br/> The ref element may make use of attributes gtom the xlink collection to attain the nature of a
+        hyperlink, including or excluding expressions of link activation behavior. The xlink
+          <code>simpletype</code> is the default xlink type used on <x:code>ref</x:code>, and does
+        not need to be expressed literally using the <x:code>xlink:type</x:code> attribute. 
+        <x:br/>
+        IDREF link relationships can also be established on the reference element using the
+          <x:code>for</x:code> attribute. Its use can not be combined with the xlink attribute
+        collection.</x:p>
+    </x:div>
+
+    <define name="z3986.reference">
+      <element name="ref">
+        <ref name="z3986.reference.attlist"/>
+        <ref name="z3986.reference.content"/>
+      </element>
+    </define>
+    <!--
+    <define name="z3986.reference.empty">
+      <element name="ref">        
+        <ref name="z3986.reference.attlist"/>
+        <empty/>  
+      </element>    
+    </define>
+-->
+    <define name="z3986.reference.attlist">
+      <ref name="z3986.Text.attrib"/>
+      <choice>
+        <optional>
+          <ref name="xlink.attrib"/>
+        </optional>
+        <optional>
+          <ref name="z3986.for.attrib"/>
+        </optional>
+      </choice>
+    </define>
+
+    <define name="z3986.reference.content">
+      <ref name="z3986.Text.model"/>
+    </define>
+
+  </div>
+
+  <div>
+    <x:h2>The reference element - default content model contribution</x:h2>
+
+    <define name="z3986.Text.class" combine="choice">
+      <ref name="z3986.reference"/>
+    </define>
+
+  </div>
+
+</grammar>

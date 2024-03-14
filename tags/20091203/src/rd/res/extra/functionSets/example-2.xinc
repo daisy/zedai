@@ -1,0 +1,9 @@
+<sel:select xmlns:sel="http://www.daisy.org/z3986/2010/auth/features/select/#">
+      <sel:when expr="target:consumer('BLIND') or target:consumer('DEAFBLIND')">
+            <annotation for="img02" property="republisherAnno">A photo of the Old Town Hall in Leipzig, Germany.</annotation>
+      </sel:when>
+      <sel:when expr="target:language('en')">
+            
+      </sel:when>
+      <sel:otherwise />
+</sel:select>

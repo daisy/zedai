@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+
+    <div>
+        <a:documentation>This profile adds the switch element to the content model of the par, seq
+            and excl elements of the Timing and Synchronization Modules, of the body and the head
+            elements of the Structure Module, of the content model of the a element of the Linking
+            Modules.</a:documentation>
+
+        <define name="smil3.timecontainers.content.class" combine="choice">
+            <ref name="smil3.switch.body"/>
+        </define>
+
+        <define name="smil3.a.content.class" combine="choice">
+            <ref name="smil3.switch.body"/>
+        </define>
+
+        <define name="smil3.head.content" combine="interleave">
+            <zeroOrMore>
+                <ref name="smil3.switch.head"/>
+            </zeroOrMore>
+        </define>
+
+        <define name="smil3.switch.head">
+            <element name="switch">
+                <ref name="smil3.switch.attlist"/>
+                <ref name="smil3.switch.head.content"/>
+            </element>
+        </define>
+
+        <define name="smil3.switch.body">
+            <element name="switch">
+                <ref name="smil3.switch.attlist"/>
+                <ref name="smil3.switch.body.content"/>
+            </element>
+        </define>
+
+        <define name="smil3.switch.attlist">
+            <ref name="smil3.Core.attrib"/>
+            <optional>
+                <ref name="smil3.allowReorder.attrib"/>
+            </optional>
+        </define>
+
+        <define name="smil3.switch.head.content">
+            <oneOrMore>
+                <ref name="smil3.layout"/>
+            </oneOrMore>
+        </define>
+
+        <define name="smil3.switch.body.content">
+            <oneOrMore>
+                <choice>
+                    <ref name="smil3.switch.body"/>
+                    <ref name="smil3.timecontainers.class"/>
+                    <ref name="smil3.mediaobjects.class"/>
+                </choice>
+            </oneOrMore>
+        </define>
+
+        <define name="smil3.allowReorder.attrib">
+            <attribute name="allowReorder">
+                <choice>
+                    <value>no</value>
+                    <value>yes</value>
+                </choice>
+            </attribute>
+        </define>
+
+    </div>
+
+    <div>
+        
+        <define name="smil3.mediaobjects.attrib" combine="interleave">
+            <ref name="smil3.ContentControl.attrib"/>
+        </define>
+
+        <define name="smil3.timecontainers.attrib">
+            <ref name="smil3.ContentControl.attrib"/>
+        </define>
+
+        <define name="smil3.region.attlist" combine="interleave">
+            <ref name="smil3.ContentControl.attrib"/>
+        </define>
+
+        <define name="smil3.root-layout.attlist" combine="interleave">
+            <ref name="smil3.ContentControl.attrib"/>
+        </define>
+
+        <define name="smil3.layout.attlist" combine="interleave">
+            <ref name="smil3.ContentControl.attrib"/>
+        </define>
+
+        <define name="smil3.a.attlist" combine="interleave">
+            <ref name="smil3.ContentControl.attrib"/>
+        </define>
+
+        <define name="smil3.ContentControl.attrib" combine="interleave">
+            <optional>
+                <ref name="smil3.systemAudioDesc.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.systemCPU.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.systemComponent.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.systemOperatingSystem.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.systemOverdubOrSubtitle.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.systemBitrate.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.systemCaptions.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.systemLanguage.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.systemScreenDepth.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.systemScreenSize.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.systemBaseProfile.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.systemVersion.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.systemRequired.attrib"/>
+            </optional>
+        </define>
+
+
+        <define name="smil3.systemAudioDesc.attrib">
+            <attribute name="systemAudioDesc">
+                <a:documentation>This test attribute specifies whether or not closed audio
+                    descriptions should be rendered. This is intended to provide authors with the
+                    ability to support audio descriptions in the same way that systemCaptions
+                    provides text captions. The value of systemAudioDesc is used to control object
+                    rendering in conjunction with the user's preference for receiving audio
+                    descriptions of a media object if and when these are available. A value of on
+                    indicates a preference to have such descriptions rendered when available. A
+                    value of off indicates a preference not to render such descriptions. Authors
+                    should place systemAudioDesc = on only on elements that they wish to render when
+                    the user has indicated they want audio descriptions. Authors should place
+                    systemAudioDesc = off only on elements that they wish to render when the user
+                    has indicated they DON'T want audio descriptions. Evaluates to true if the user
+                    preference matches this attribute value. Evaluates to false if they do not
+                    match.</a:documentation>
+                <choice>
+                    <value>on</value>
+                    <value>off</value>
+                </choice>
+            </attribute>
+        </define>
+
+
+        <define name="smil3.systemCPU.attrib">
+            <attribute name="systemCPU">
+                <a:documentation> This test attribute specifies the CPU on which a user agent may be
+                    running. An implementation must allow the user the ability to set the system
+                    value to unknown for privacy. The following list contains the suggested values
+                    for this test attribute (additional names may be supported by an
+                    implementation): alpha, arm, arm32, hppa1.1, m68k, mips, ppc, rs6000, vax, x86,
+                    unknown. </a:documentation>
+                <ref name="NMTOKEN.datatype"/>
+            </attribute>
+        </define>
+
+
+        <define name="smil3.systemComponent.attrib">
+            <attribute name="systemComponent">
+                <a:documentation>value: an XML CDATA string containing one or more white-space
+                    separated URI's. Each URI identifies a component of the playback system, e.g.
+                    user agent component/feature, number of audio channels, codec, HW MPEG decoder,
+                    etc. The URI is implementation dependent. Each implementation is encouraged to
+                    publish a list of component URIs which may be used to identify and resolve the
+                    presence of implementation-dependent components. Evaluates to true if all URI's
+                    match one of the URI's that the user agent recognizes. Evaluates to false
+                    otherwise.</a:documentation>
+                <ref name="URIs.datatype"/>
+            </attribute>
+        </define>
+
+
+        <define name="smil3.systemOperatingSystem.attrib">
+            <attribute name="systemOperatingSystem">
+                <a:documentation> value: an XML NMTOKEN. This test attribute specifies the operating
+                    system on which a user agent may be running. An implementation must allow the
+                    user the ability to set the user preference to unknown for privacy. The
+                    following list contains the suggested values for this test attribute (additional
+                    names may be supported by an implementation): aix, beos, bsdi, dgux, freebsd,
+                    hpux, irix, linux, macos, ncr, nec, netbsd, nextstep, nto, openbsd, openvms,
+                    os2, osf, palmos, qnx, sinix, rhapsody, sco, solaris, sonly, sunos, unixware,
+                    win16, win32, win9x, winnt, wince, unknown.</a:documentation>
+                <ref name="NMTOKEN.datatype"/>
+            </attribute>
+        </define>
+
+
+        <define name="smil3.systemOverdubOrSubtitle.attrib">
+            <attribute name="systemOverdubOrSubtitle">
+                <a:documentation>This attribute specifies whether subtitles or overdub is rendered.
+                    overdub selects for substitution of one voice track for another, and subtitle
+                    means that the user prefers the display of text in a language other than that
+                    which is being used in the audio track. Evaluates to true if the user preference
+                    matches this attribute value. Evaluates to false if they do not
+                    match.</a:documentation>
+                <choice>
+                    <value>overdub</value>
+                    <value>subtitle</value>
+                </choice>
+            </attribute>
+        </define>
+
+
+        <define name="smil3.systemBitrate.attrib">
+            <attribute name="systemBitrate"/>
+        </define>
+
+
+        <define name="smil3.systemCaptions.attrib">
+            <attribute name="systemCaptions">
+                <a:documentation>systemBitratevalue: the approximate bandwidth, in bits-per-second,
+                    available to the system. The measurement of bandwidth is application specific,
+                    meaning that applications may use sophisticated measurement of end-to-end
+                    connectivity, or a simple static setting controlled by the user. In the latter
+                    case, this could for instance be used to make a choice based on the user's
+                    connection to the network. Typical values for modem users would be 14400, 28800,
+                    56000 bit/s etc. Evaluates to true if the available system bitrate is equal to
+                    or greater than the given value. Evaluates to false if the available system
+                    bitrate is less than the given value. The attribute can assume any integer value
+                    greater than 0. If the value exceeds an implementation-defined maximum bandwidth
+                    value, the attribute always evaluates to false.</a:documentation>
+                <ref name="NonNegativeInteger.datatype"/>
+            </attribute>
+        </define>
+
+        <define name="smil3.systemLanguage.attrib">
+            <attribute name="systemLanguage">
+                <a:documentation>values: a comma-separated list of language tags as defined in BCP47
+                    [BCP47], or an empty/null string Each of the language tags is matched against
+                    the users' language preferences according to the BCP47 Basic Filtering matching
+                    algorithm [BCP47]. If any language tag matches the test attribute evaluates to
+                    true, else it evaluates to false. If a null or empty string is specified, the
+                    test attribute evaluates to false. </a:documentation>
+                <ref name="LanguageCodes.datatype"/>
+            </attribute>
+        </define>
+
+        <define name="smil3.systemScreenDepth.attrib">
+            <attribute name="systemScreenDepth">
+                <a:documentation>This attribute specifies the depth of the screen color palette in
+                    bits required for displaying the element. Typical values are 1 | 4 | 8 | 24 |
+                    32. Evaluates to true if the playback engine is capable of displaying images or
+                    video with the given color depth. Evaluates to false if the playback engine is
+                    only capable of displaying images or video with a smaller color
+                    depth.</a:documentation>
+                <ref name="NonNegativeInteger.datatype"/>
+            </attribute>
+        </define>
+
+
+        <define name="smil3.systemScreenSize.attrib">
+            <attribute name="systemScreenSize">
+                <a:documentation>Attribute values have the following syntax: Screen-size ::=
+                    Screen-height S? "X" S? Screen-width Each of these is a pixel value, and must be
+                    an integer value greater than 0. Evaluates to true if the playback engine is
+                    capable of displaying a presentation of the given size. Evaluates to false if
+                    the playback engine is only capable of displaying smaller
+                    presentations.</a:documentation>
+                <!-- TODO regex -->
+            </attribute>
+        </define>
+
+
+        <define name="smil3.systemBaseProfile.attrib">
+            <attribute name="systemBaseProfile">
+                <a:documentation>This attribute may be used to test the base profile used by the
+                    SMIL player to execute the document. The profile name may be used to determine
+                    the presence of a set of profile-specific features. Note that since this
+                    attribute was introduced in SMIL version 3.0, only the profiles supported in
+                    that version and later may be tested with this attribute.</a:documentation>
+                <choice>
+                    <value>Language</value>
+                    <value>UnifiedMobile</value>
+                    <value>Daisy</value>
+                    <value>Tiny</value>
+                    <value>smilText</value>
+                    <!-- TODO "x-" regex -->
+                </choice>
+            </attribute>
+        </define>
+
+
+        <define name="smil3.systemVersion.attrib">
+            <attribute name="systemVersion">
+                <a:documentation>This attribute may be used to test the version number of the SMIL
+                    player executing the document. The number may be used to determine the presence
+                    of a set of specification-specific features. Since this attribute was introduced
+                    in SMIL version 3.0, only values of 3.0 and later may be tested with this
+                    attribute.</a:documentation>
+                <value>3.0</value>
+            </attribute>
+        </define>
+
+
+        <define name="smil3.systemRequired.attrib">
+            <attribute name="systemRequired">
+                <a:documentation>From requiredContentControl module. List of namespace prefix language extensions This
+                    attributes provides an extension mechanism for new elements or attributes.
+                    Evaluates to true if all of the extensions in the list are supported by the
+                    implementation, otherwise, this evaluates to false. The syntax of the
+                    systemRequired and the deprecated system-required attributes are defined using
+                    EBNF notation (as defined in [XML11]) as list of XML namespace prefixes
+                    [XML-NS], separated by the '+' character: </a:documentation>
+                <!-- TODO regex -->
+            </attribute>
+        </define>
+
+
+    </div>
+
+</grammar>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar 
+  xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:x="http://www.w3.org/1999/xhtml"
+>
+
+        <!-- 	mg TODO: include a formalized way of expressing to-be SG docmumentation in here
+
+		mg TODO: this module should ideally be written so that it is independent of its context.
+		Now, it imports XHTML defines, and defines itself where it is allowed in XHTML2. This 
+		should be externalized so that the pageum module can be imported into any context
+
+
+		mg TODO: make a specialized restriction on pagenum.content based on 
+		the value of @page, eg if page="normal" allow only integers. 
+		Use regex datatypes (borrow from daisy pipeline svn dataypes rng)	
+		Or alternatively, use Schematron.
+
+		mg TODO: revisit committee discussion on needs to change pagenum model (types etc). This
+		was primarily a problem in SG and NCX; but may stem from the dtbook content model.
+	-->
+    
+    <x:h1>pagenum module</x:h1>
+    
+    <div>
+        <define name="Daisy.pagenumber" ns="http://www.daisy.org/ns/z3986/2008/">
+            <element name="pagenum">
+                <ref name="pagenum.attlist" />
+                <ref name="pagenum.content" />
+            </element>
+        </define>
+
+        <define name="pagenum.attlist">
+            <ref name="Common.attrib" />
+            <attribute name="page">
+                <choice>
+                    <value>normal</value>
+                    <value>front</value>
+                    <value>special</value>
+                </choice>
+            </attribute>
+        </define>
+        
+        <define name="pagenum.content">
+            <text />
+        </define>
+        
+	<!-- allow pagenum in Flow -->
+        <define name="Flow.model" combine="interleave">
+            <zeroOrMore>
+                <choice>
+                    <ref name="Daisy.pagenumber" />
+                </choice>
+            </zeroOrMore>
+        </define>
+
+	<!-- allow pagenum inside p -->
+        <define name="p.model" combine="interleave">
+            <zeroOrMore>
+                <choice>
+                    <ref name="Daisy.pagenumber" />
+                </choice>
+            </zeroOrMore>
+        </define>
+        
+    </div>
+    
+</grammar>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="time">The time module</title>
+        <annotation annotates="/">
+            <para role="desc-main">This module defines the {[[#z3986.time]]} element and the {[[#z3986.time.attrib]]} attribute for including dates and times in human- and machine-readable forms.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3986-global-classes.rng"/>
+                <member xlink:href="z3986-datatypes.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2011-01-03</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="z3986.time" xml:id="z3986.time">
+            <element name="time">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="time">The {time} element</title>
+                    <para role="desc-main">The {time} element represents a calendar or clock-based statement of time.</para>
+                    <para role="desc-sub">If the value of the {time} element is not in a machine-readable format, the {[[#z3986.time.attrib]]} attribute optionally allows the inclusion of an alternate representation.</para>
+                    <synopsis role="def-context">{[[#z3986.Phrase.class]]}</synopsis>
+                    <synopsis role="def-content">{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</synopsis>
+                    <synopsis role="def-attlist" condition="The attribute model must allow the {[[#z3986.time.attrib time]]} attribute.">{[[#z3986.Phrase.attrib]], [[#z3986.time.attrib]]?}</synopsis>
+                </annotation>
+                <ref name="z3986.time.attlist"/>
+                <ref name="z3986.time.content"/>
+                <sch:rule context="default:time">
+                    <sch:assert test="not(descendant::default:time)">The {time} element must not contain descendant {time} elements.</sch:assert>
+                    <sch:assert test="normalize-space(.) or *">The {time} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="z3986.time.attlist" xml:id="z3986.time.attlist">
+            <ref name="z3986.Phrase.attrib"/>
+            <optional>
+                <ref name="z3986.time.attrib"/>
+            </optional>
+        </define>
+        <define name="z3986.time.content" xml:id="z3986.time.content">
+            <ref name="z3986.Text.model"/>
+        </define>
+        <define name="z3986.time.attrib" xml:id="z3986.time.attrib">
+            <attribute name="time">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="time">The {time} attribute</title>
+                    <para role="desc-main">The {time} attribute contains a calendar or clock-based statement of time expressed in machine-readable form.</para>
+                    <para role="desc-sub">When this attribute appears on the [[#z3986.time]] element, it contains an alternate rendition of the element's content.</para>
+                    <para role="desc-sub">The {time} attribute value must be valid to the {[[#Time.datatype]]} datatype.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.time]]}</synopsis>
+                    <synopsis role="def-content">{[[#Time.datatype]]}</synopsis>
+                </annotation>
+                <ref name="Time.datatype"/>
+            </attribute>
+        </define>
+    </div>
+    <div>
+        <a:documentation>time - default content model contribution</a:documentation>
+        <define name="z3986.Phrase.core.class" combine="choice">
+            <ref name="z3986.time"/>
+        </define>
+    </div>
+</grammar>

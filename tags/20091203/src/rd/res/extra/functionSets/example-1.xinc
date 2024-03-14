@@ -1,0 +1,32 @@
+<sel:select xmlns:sel="http://www.daisy.org/z3986/2010/auth/features/select/#">
+  <sel:when expr="target:format('BRAILLE')">
+    <annotation for="table01" property="republisherAnno"> The table on this page, not represented
+      as a table in the braille version, presents information about ..... </annotation>
+  </sel:when>
+  <sel:when expr="target:format('TALKING_BOOK')">
+    <annotation for="table01" property="republisherAnno"> The information presented in the table
+      on this page, is in this talking book, presented in the following list of the number of
+      persons developing the Basivar-Sumeko Syndrom per year </annotation>
+    <ul>
+      <li>1950: 23</li>
+      <li>2010: 80 (estimated)</li>
+    </ul>
+  </sel:when>
+  <sel:otherwise>
+    <table xml:id="table01">
+      <caption>Number of persons developing the Basivar-Sumeko Syndrom per year</caption>
+      <tr>
+        <th>Year</th>
+        <th>Number of persons</th>
+      </tr>
+      <tr>
+        <td>1950</td>
+        <td>23</td>
+      </tr>
+      <tr>
+        <td>2010</td>
+        <td>80 (estimated)</td>
+      </tr>
+    </table>
+  </sel:otherwise>
+</sel:select>

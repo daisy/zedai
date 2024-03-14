@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="docResources.rng" type="xml"?>
+<docResources xmlns="http://www.daisy.org/ns/z3986/2008/docResources/">
+    <include subDrURI="doc-resources-common.xml"/>
+    <include subDrURI="doc-resources-feature-ssml.xml"/>
+    <include subDrURI="doc-resources-feature-mathml.xml"/>
+    <include subDrURI="doc-resources-feature-ruby.xml"/>
+    <include subDrURI="doc-resources-feature-select.xml"/>
+    <include subDrURI="doc-resources-feature-forms.xml"/>
+    
+    <namespace nsURI="http://www.daisy.org/z3986/2010/"
+        defaultDocURL="http://www.daisy.org/z3986/2010" feature="no">
+        
+        <element name="head" descriptionURI="../schema/mod/z3986-document.rng#z3986.head"
+            shortSampleURI="./additional-doc-prose/genericdocument-profile.html#head-short"
+            descriptionInclude="yes"/>
+        
+        <element name="body" descriptionURI="../schema/mod/z3986-document.rng#z3986.body"
+            shortSampleURI="./additional-doc-prose/genericdocument-profile.html#body-short"
+            descriptionInclude="yes"/>
+        
+    </namespace>
+</docResources>

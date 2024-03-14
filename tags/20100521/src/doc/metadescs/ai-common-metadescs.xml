@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="ai-metadescs.rng" type="xml"?>
+
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <title>ZedAI Element Meta Shared Descriptions</title>
+
+
+
+    <!--
+                    ANNOTATION
+    -->
+
+    <section about="z3986.annotation">
+        <para role="desc"> The {annotation} element represents an annotation that an author, editor,
+            publisher, republisher, or other individual or agency has added to a document. </para>
+        <para role="info">The {[[#z3986.ref.attrib]]} attribute identifies the specific element(s)
+            being annotated by referencing their {xml:id} values.</para>
+        <para role="info">All {annotation} elements must reference at least one element in a
+            document. For annotations that apply to more than one element, use a space-separated
+            list of {xml:id} values.</para>
+        <para role="info">REMARK: the design of this element is not yet stable. Refer to <link
+                xlink:href="http://code.google.com/p/zednext/issues/detail?id=153">Issue
+            153</link>.</para>
+    </section>
+
+
+
+    <!--
+                    CITATION
+    -->
+
+    <section about="z3986.citation">
+        <para role="desc">The {citation} element represents an author's acknowledgment of the
+            original author and/or work of a directly or indirectly borrowed idea, quote or other
+            resource. Citations typically occur in conjunction with epigraphs, quotes,
+            illustrations, charts and diagrams.</para>
+        <para role="info">The optional {[[#z3986.ref.attrib]]} attribute on the {citation} element
+            is used to establish an explicit association between the citation and the passage
+            (epigraph, quote, etc.) that constitutes the quotation. No other means for establishing
+            this association is available; the placement of the {citation} does not imply the
+            location of the passage being cited.</para>
+        <para role="info">The {citation} can also be linked to the work it cites by including a
+            {[[#z3986.ref]]} element. A {[[#z3986.ref.attrib]]} attribute can be attached to the
+            nested {ref} element to reference a work in the current document's
+            {[[#z3986.bibliography]]}. To reference other resources, including resources external to
+            the current document, the {[[#xlink.href.attrib]]} attribute must be used
+            instead.</para>
+    </section>
+
+
+
+    <!--
+                    CODE
+    -->
+
+    <section about="z3986.code">
+        <para role="desc"> The {code} element is intended for general instances of code as found in
+            works of fiction and similar non-technical documents, which includes computer
+            programming code, commands and command input/output as well as representations of
+            numeric and text coding systems, such as Morse code. </para>
+        <para role="info"> For computer programming books, manuals and specifications, specializing
+            the {code} element or using a computer markup feature is recommended. </para>
+    </section>
+
+
+
+
+    <!--
+                    CUSTOM-CONTENT
+    -->
+
+    <section about="z3986.custom-content">
+        <para role="info"> The republishing of documents often requires the insertion of content
+            that was not a part of the original source document. For example, in the case of
+            indexes, bibliographies and other ordered sections, this requirement may take the form
+            of placeholder sections to mark gaps in the alphabetic list of entries. To indicate that
+            an element presents content that is a deviation from the source, the
+            {[[#z3986.role.attrib]]} attribute can be used with the value {custom}. No behaviors are
+            defined for how a processing agent should handle sections so identified, however.
+        </para>
+    </section>
+
+
+
+    <!--
+                    GLOSSARY
+    -->
+
+    <section about="z3986.glossary">
+        <para role="desc"> The {glossary} element represents a glossary, pronunciation guide or
+            other section that exclusively defines terms or phrases. </para>
+    </section>
+
+
+
+
+
+    <!--
+                    ITEM
+    -->
+
+    <section about="z3986.list.item">
+        <para role="desc"> The {item} element represents a single item in a list. </para>
+    </section>
+
+
+    <!--
+                    LIST
+    -->
+
+    <section about="z3986.list">
+        <para role="desc"> The {list} element represents a simple list of items, either ordered or
+            unordered. </para>
+        <para role="info"> The optional {type} attribute specifies the HTML-style ordered and
+            unordered nature of the list.</para>
+        <para role="info"> By default, an unordered list is prefixed by bullets and an ordered list
+            by numeric values. To change this behavior, refer to the {rend:prefix} attribute. </para>
+        <para role="info">If the {type} attribute is omitted, then there is no default
+            formatting.</para>
+        <para role="info">The {list} element is not intended to structure semantically meaningful
+            sets of entries as found in indexes, bibliographies and glossaries.</para>
+    </section>
+
+
+    <!--
+                    OBJECT
+    -->
+
+    <section about="z3986.object">
+        <para role="desc"> The {object} element contains a reference to an external resource, such
+            as a graphic or video. </para>
+        <para role="info">The formal behavior of the {object} element is defined by
+            {[[http://www.w3.org/TR/xhtml11 XHTML 1.1]]}.</para>
+        <para role="info">The referenced resource may be an image, video, XML text, or other
+            content, but its media type must be supported by the current profile and features in
+            use. The optional {srctype} attribute carries an enumeration of the allowed media
+            types.</para>
+        <para role="info">REMARK: the design of this element is not yet stable. Refer to <link
+            xlink:href="http://code.google.com/p/zednext/issues/detail?id=153">Issue
+            153</link>.</para>
+    </section>
+
+
+    <!--
+                    QUOTE
+    -->
+
+    <section about="z3986.quote">
+        <para role="desc">The {quote} element represents a quotation from a real or fictitious
+            source.</para>
+
+        <para role="info">The {[[#z3986.role.attrib]]} attribute optionally expresses the semantic
+            nature of the quote. For example, adding the value 'epigraph' would indicate the quote
+            represents an epigraph for the document or section it belongs to.</para>
+
+    </section>
+
+    <section about="z3986.quote.characters">
+        <para role="info"> Quotation marks should be included within the element if they must be
+            retained in the file. The use of CSS for appending these characters is recommended,
+            however, for the flexibility it allows to change the characters depending on the desired
+            output. </para>
+    </section>
+
+
+    <!--
+                    TOC
+    -->
+
+    <section about="z3986.toc">
+        <para role="desc">The {toc} element represents a single table of contents in a
+            document.</para>
+        <para role="info">The term "table of contents" is a generalization encompassing all of
+            tables of contents, tables of figures, tables of maps and similar guides to the contents
+            of a document.</para>
+    </section>
+
+</article>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar 
+  xmlns="http://relaxng.org/ns/structure/1.0" 
+  xmlns:x="http://www.w3.org/1999/xhtml">
+  
+  <x:h1>The Z39.86 Depth attribute module</x:h1>
+  <x:p>This module provides a depth attribute to various nestable elements.</x:p>
+  
+  <div>
+    <x:h2>The depth attribute</x:h2>
+    
+    <define name="z3986.depth.attrib">
+      <optional>
+        <attribute name="depth" ns="http://www.daisy.org/ns/z3986/2008/">
+          <ref name="Number.datatype"/>    
+        </attribute>
+      </optional>
+    </define>    
+  </div>
+    
+  <define name="xhtml.section.attlist" combine="interleave">    
+    <ref name="z3986.depth.attrib"/>      
+  </define>
+
+  <define name="xhtml.ol.attlist" combine="interleave">    
+    <ref name="z3986.depth.attrib"/>      
+  </define>
+  
+  <define name="xhtml.ul.attlist" combine="interleave">    
+    <ref name="z3986.depth.attrib"/>      
+  </define>
+  
+  <define name="xhtml.dl.attlist" combine="interleave">    
+    <ref name="z3986.depth.attrib"/>      
+  </define>
+        
+</grammar>  

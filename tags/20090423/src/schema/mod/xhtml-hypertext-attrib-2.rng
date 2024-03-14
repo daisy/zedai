@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Hypertext Attributes Module</x:h1>
+
+  <div>
+    <x:h2>Hypertext Attributes Collection</x:h2>
+
+    <define name="xhtml.cite.attrib">      
+      <attribute name="cite">
+        <ref name="URI.datatype"/>
+      </attribute>      
+    </define>
+
+    <define name="xhtml.href.attrib">      
+      <attribute name="href">
+        <ref name="URI.datatype"/>
+      </attribute>
+    </define>
+
+    <define name="xhtml.hreflang.attrib">      
+      <attribute name="hreflang">
+        <ref name="LanguageCodes.datatype"/>
+      </attribute>
+    </define>
+
+    <define name="xhtml.hrefmedia.attrib">
+      <attribute name="hrefmedia">
+        <ref name="MediaDesc.datatype"/>
+      </attribute>
+    </define>
+
+    <define name="xhtml.hreftype.attrib">      
+      <attribute name="hreftype">
+        <ref name="ContentTypes.datatype"/>
+      </attribute>      
+    </define>
+
+    <define name="xhtml.nextfocus.attrib">      
+      <attribute name="nextfocus">
+        <ref name="IDREF.datatype"/>
+      </attribute>      
+    </define>
+
+    <define name="xhtml.prevfocus.attrib">
+      <attribute name="prevfocus">
+        <ref name="IDREF.datatype"/>
+      </attribute>
+    </define>
+
+    <define name="xhtml.target.attrib">      
+      <attribute name="target">
+        <ref name="HrefTarget.datatype"/>
+      </attribute>
+    </define>
+
+    <define name="xml.base.attrib">      
+      <attribute name="xml:base">
+        <ref name="URI.datatype"/>
+      </attribute>
+    </define>
+        
+    <define name="xhtml.Hypertext.attrib">
+      <optional>
+        <ref name="xhtml.cite.attrib"/>
+      </optional>
+      <optional>
+        <ref name="xhtml.href.attrib"/>
+      </optional>
+      <optional>
+        <ref name="xhtml.hreflang.attrib"/>
+      </optional>
+      <optional>
+        <ref name="xhtml.hrefmedia.attrib"/>
+      </optional>
+      <optional>
+        <ref name="xhtml.hreftype.attrib"/>
+      </optional>
+      <optional>
+        <ref name="xhtml.nextfocus.attrib"/>
+      </optional>
+      <optional>
+        <ref name="xhtml.prevfocus.attrib"/>
+      </optional>
+      <optional>
+        <ref name="xhtml.target.attrib"/>
+      </optional>
+      <optional>
+        <ref name="xml.base.attrib"/>
+      </optional>
+    </define>
+  </div>
+
+  <define name="xhtml.Common.attrib" combine="interleave">
+    <ref name="xhtml.Hypertext.attrib"/>
+  </define>
+
+</grammar>

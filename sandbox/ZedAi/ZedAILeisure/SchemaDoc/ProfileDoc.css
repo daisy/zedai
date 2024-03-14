@@ -1,0 +1,50 @@
+/* ProfileDoc.css */
+body {
+    font-family:arial, helvetica, sans-serif;
+    margin:2% 10% 5% 10%;
+}
+
+table {
+    border-collapse:collapse;
+    margin-bottom:1em;
+    width:100%;
+    }
+    
+#col1 {
+    font-weight:bold;
+    width:12em;
+    }
+td,th {border:1pt solid rgb(230,230,230);padding-left:1mm;}
+
+ol, ul {
+    border:1pt solid red;
+    /*list-style-position:inside;*/
+    margin-bottom:0mm;
+    /*margin-left:0mm;*/
+    }
+*.attribute {
+    font-family:monospace;
+    color:rgb(120,70,20);
+    }
+*.element {
+    font-family:monospace;
+    color:rgb(20,70,180);
+}
+*.namespace {
+    font-family:monospace;
+    color:rgb(120,70,180);
+}
+a.element {
+    text-decoration:none;
+}
+a.element:hover {text-decoration:underline;}
+
+div.element-toc a.element{
+    text-align:center;
+    display:inline-block;
+    width:8em;
+    border:1pt solid rgb(20,70,180);
+    margin:0.4em 3px 0 1px;
+    padding:2pt;
+    background-color:rgb(240,240,220);
+    }

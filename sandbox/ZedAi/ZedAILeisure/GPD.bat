@@ -1,0 +1,2 @@
+cls
+call GenerateProfileDocumentation.bat

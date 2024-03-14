@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar 
+  xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:x="http://www.w3.org/1999/xhtml"
+>
+
+    <include href="../RelaxNG/DAISYmodules/pagenumber.rng"/>
+    <include href="../RelaxNG/DAISYmodules/datatypes.rng"/>	
+
+    <!-- TODO in XHTMLMOD, xhtml attributes are allowed on other ns islands without declaration -->
+
+    <!-- TODO - this is a module design pattern issue: because of core-attrib-2.rng include, 
+	the DAISY pagenum module is now dependent on XHTML2, which is wrong -->
+
+    <include href="../../w3c/rng/xhtml-core-attrib-2.rng"/>
+    <include href="../../w3c/rng/xhtml-datatypes-2.rng"/>
+		    
+    <start>
+	<ref name="Daisy.pagenumber"/>	
+    </start>
+    
+</grammar>	

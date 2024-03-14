@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+    
+    <!-- TODO align with html5 object -->
+    <define name="xhtml.Text.class" combine="choice">
+        <ref name="xhtml.object"/>
+    </define>
+    
+    <define name="xhtml.object">
+        <element name="object">
+            <ref name="xhtml.object.attlist"/>            
+            <zeroOrMore>
+                <ref name="xhtml.param"/>
+            </zeroOrMore>
+            <ref name="xhtml.Flow.model"/>
+        </element>
+    </define>
+    
+    <define name="xhtml.object.attlist">
+        <ref name="xhtml.Core.attrib"/>
+        <optional>
+            <attribute name="declare">
+                <value>declare</value>
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="classid">
+                <ref name="URI.datatype"/>
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="codebase">
+                <ref name="URI.datatype"/>
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="data">
+                <ref name="URI.datatype"/>
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="type">
+                <ref name="ContentType.datatype"/>
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="codetype">
+                <ref name="ContentType.datatype"/>
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="archive">
+                <ref name="URIs.datatype"/>
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="standby">
+                <ref name="Text.datatype"/>
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="height">
+                <ref name="Length.datatype"/>
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="width">
+                <ref name="Length.datatype"/>
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="name"/>
+        </optional>
+        <optional>
+            <attribute name="tabindex">
+                <ref name="NonNegativeInteger.datatype"/>
+            </attribute>
+        </optional>
+    </define>
+
+    <define name="xhtml.param">
+        <element name="param">
+            <ref name="xhtml.param.attlist"/>
+        </element>
+    </define>
+    
+    <define name="xhtml.param.attlist">
+        <ref name="xhtml.id.attrib"/>
+        <attribute name="name"/>
+        <optional>
+            <attribute name="value"/>
+        </optional>
+        <optional>
+            <attribute name="valuetype">
+                <choice>
+                    <value>data</value>
+                    <value>ref</value>
+                    <value>object</value>
+                </choice>
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="type">
+                <ref name="ContentType.datatype"/>
+            </attribute>
+        </optional>
+    </define>
+
+</grammar>

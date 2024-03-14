@@ -1,0 +1,11 @@
+<head>
+    [...]
+    <link rel="z3986-profile" 
+        href="http://purl.oclc.org/z3986/2010/auth/profiles/sciencejournal/1.0/">
+        <link rel="z3986-feature"
+                  href="http://www.daisy.org/z3986/2010/auth/features/mathematics/3.0/"/>
+        <link rel="z3986-feature"
+                  href="http://www.daisy.org/z3986/2010/auth/features/chemistry/1.1/"/>
+    </link>
+    [...]
+</head>

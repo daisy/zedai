@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+  ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+  xmlns:xsdp="http://www.daisy.org/ns/rng-preprocess/xsd">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="bibliography">The bibliography module</dcterms:title>
+      <dcterms:description>This module defines the {[[#z3986.bibliography]]} element used to structure bibliographic sections.</dcterms:description>      
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}" />
+      <dcterms:creator>Markus Gylling</dcterms:creator> 
+      <dcterms:creator>Matt Garrish</dcterms:creator> 
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng"/>      
+      <dcterms:requires rdf:resource="z3986-headings.rng"/>       
+      <dcterms:requires rdf:resource="z3986-headings.rng"/>       
+      <dcterms:requires rdf:resource="z3986-p.rng"/>       
+      <dcterms:requires rdf:resource="z3986-block.rng"/>        
+    </rdf:Description>
+  </rdf:RDF>
+  
+  <div>
+    
+    <define name="z3986.bibliography">
+      <element name="bibliography">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="bibliography">The {bibliography} element</dcterms:title>
+            <dcterms:description>The {bibliography} element represents a bibliography, discography, filmography or other bibliographic section.</dcterms:description>
+            <z:info doc-only="true">Bibliographic sections are typically located in the backmatter of print works.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.Section.class]]}</z:context>          
+            <z:content>{[[#z3986.h]]?, [[#z3986.bibliography.entry]]*, [[#z3986.bibliography.section]]*}</z:content>          
+            <z:attlist>{[[#z3986.Section.attrib]]}</z:attlist>      
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.bibliography.attlist"/>
+        <ref name="z3986.bibliography.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.bibliography.attlist">
+      <ref name="z3986.Section.attrib"/>
+    </define>
+
+    <define name="z3986.bibliography.content">
+      <ref name="z3986.bibliography.model"/>
+    </define>
+
+    <define name="z3986.bibliography.model" xsdp:replace="z3986.bibliography.model.xsd">
+      <interleave>
+        <optional>
+          <ref name="z3986.h"/>
+        </optional>  
+        <zeroOrMore>
+          <choice>
+            <ref name="z3986.bibliography.extra.class"/>
+          </choice>
+        </zeroOrMore>
+      </interleave>  
+      <choice>
+        <group>
+          <oneOrMore>
+            <ref name="z3986.bibliography.entry"/>
+            <zeroOrMore>
+              <choice>
+                <ref name="z3986.bibliography.extra.class"/>
+              </choice>
+            </zeroOrMore>
+          </oneOrMore>  
+          <zeroOrMore>
+            <ref name="z3986.bibliography.section"/>
+          </zeroOrMore>
+        </group> 
+        <group>
+          <zeroOrMore>
+            <ref name="z3986.bibliography.entry"/>            
+          </zeroOrMore>  
+          <oneOrMore>
+            <ref name="z3986.bibliography.section"/>
+          </oneOrMore>
+        </group>
+      </choice>        
+    </define>
+
+    <define name="z3986.bibliography.model.xsd">      
+      <optional>
+        <ref name="z3986.h"/>
+      </optional>
+      <zeroOrMore>
+        <choice>
+          <ref name="z3986.bibliography.entry"/>
+          <ref name="z3986.bibliography.extra.class"/>
+        </choice>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="z3986.bibliography.section"/>
+      </zeroOrMore>
+    </define>
+
+    <define name="z3986.bibliography.extra.class" combine="choice">
+      <choice>
+        <ref name="z3986.Block.core.base.class"/>
+        <ref name="z3986.Global.extra.class"/>
+      </choice>
+    </define>
+            
+  </div>
+
+  <div>
+    
+    <define name="z3986.bibliography.section">
+      <element name="section">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="section (bibliography)">The bibliography {section} element</dcterms:title>
+            <dcterms:description>The bibliography {section} element represents a major structural division in a {[[#z3986.bibliography]]}.</dcterms:description>
+            <z:info>The bibliography {section} element is a specialization of the {[[#z3986.section]]} element. It provides a content model to fit the unique requirements of bibliographic divisions.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.bibliography]]}</z:context>          
+            <z:content>{[[#z3986.h]]?, [[#z3986.bibliography.entry]]*, [[#z3986.bibliography.section]]*}</z:content>          
+            <z:attlist>{[[#z3986.Section.attrib]]}</z:attlist>      
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.bibliography.attlist"/>
+        <ref name="z3986.bibliography.model"/>
+      </element>
+    </define>
+    
+  </div>
+  
+  <div>
+    
+    <define name="z3986.bibliography.entry">
+      <element name="entry">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="entry (bibliography)">The bibliography {entry} element</dcterms:title>
+            <dcterms:description>The bibliography {entry} element represents a single unique entry in a {[[#z3986.bibliography]]}.</dcterms:description>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>{[[#z3986.bibliography]]} and {[[#z3986.bibliography.section]]}</z:context>          
+            <z:content>{([[#z3986.Block.class]])+ | (text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</z:content>          
+            <z:attlist>{[[#z3986.Block.attrib]]}</z:attlist>      
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.bibliography.entry.attlist"/>
+        <ref name="z3986.bibliography.entry.content"/>
+        <sch:rule context="default:bibliography//default:entry">          
+          <sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0"
+            >The {entry} element must neither be empty nor contain only whitespace.</sch:assert>
+        </sch:rule>
+      </element>
+    </define>
+
+    <define name="z3986.bibliography.entry.attlist">
+      <ref name="z3986.Block.attrib"/>
+    </define>
+
+    <define name="z3986.bibliography.entry.content">      
+      <ref name="z3986.Flow.choice.model"/>
+    </define>
+  </div>
+  
+  <div>
+    <a:documentation>bibliography - default content model contribution</a:documentation>
+    <define name="z3986.backmatter.content.class" combine="choice">
+      <ref name="z3986.bibliography"/>
+    </define>  
+  </div>
+  
+</grammar>

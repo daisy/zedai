@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/2002/06/xhtml2/" xml:lang="da" xmlns:zai="http://www.daisy.org/ns/z3986/2008/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <head>
+    <title>Weekendavisen den 4. december 2008</title>
+    <meta property="dc:title">Weekendavisen den 4. december 2008</meta>
+    <meta property="dc:date" datatype="xsd:date">04-12-2008</meta>
+  </head>
+  <body>
+    <section>
+    	<h>Bagsiden</h>
+        <zai:articleHead>
+          <meta property="zai:positionSection">4</meta>
+          <meta property="zai:positionSequence">1</meta>
+          <meta property="dc:copyright">Weekendavisen 2008</meta>
+          <meta property="dc:subject">VEJR</meta>
+          <meta property="dc:title">Vejret for København</meta>
+          <meta property="dc:date" datatype="xsd:date">04-12-2008</meta>
+          <meta property="zai:destEdition">København</meta>
+        </zai:articleHead>
+        <zai:articleBody>
+					<zai:headline>Vejret for København</zai:headline>
+					<p>Regn de kommende dage</p>
+					<img src="prognose.jpg">Femdøgnsprognose</img>
+	      </zai:articleBody>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    
+    <!-- an imaginary epub ncx that doesnt support audio nor multilingual target labels, 
+    and therefore doesnt use the label element (still supporting images on targets, via an 
+    attribute, and still supporting label for navLists). Does not use playorder. -->
+        
+    <!-- import the components  -->
+    <include href="./mod/ncx-attrib.rng"/>
+    <include href="./mod/ncx-navmap.rng"/>
+    <include href="./mod/ncx-navlist.rng"/>    
+    <include href="./mod/ncx-label.rng">
+        <!-- redefine the label content model, remember; this element only used for navMap and navList -->
+        <define name="ncx.label.content">
+            <ref name="ncx.label.text.model" />
+        </define>    
+    </include> 
+    <!-- add image label to the label element -->
+    <define name="ncx.label.attlist" combine="interleave">
+        <optional>
+            <ref name="ncx.label.img.attrib" />
+        </optional>    
+    </define>
+    
+    <include href="./mod/ncx-target.rng">
+        <!-- in this NCX Profile, targets do not use the label element, but instead a text child -->
+        <define name="ncx.target.label.slot">               
+            <ref name="ncx.label.text.model" />
+        </define>
+    </include>
+    <!-- add the image label attribute to the target element -->
+    <define name="ncx.target.attlist" combine="interleave">
+        <optional>
+            <ref name="ncx.label.img.attrib" />
+        </optional> 
+        <optional>
+            <attribute name="ncx.dir.attrib" />
+        </optional>
+    </define>
+            
+    <!-- import the global datatypes collection -->
+    <include href="./mod/z3986-datatypes.rng"/>
+    
+    <!-- import the root and create the model, one navMap, 0-n navLists -->
+    <include href="./mod/ncx-document.rng">
+        <define name="ncx.ncx.content">
+            <ref name="ncx.navmap"/>
+            <zeroOrMore>
+                <ref name="ncx.navlist"/>
+            </zeroOrMore>
+        </define>
+    </include>
+    
+</grammar>

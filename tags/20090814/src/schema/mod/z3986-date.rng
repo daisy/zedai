@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 date element module</x:h1>
+    
+  <div>
+    <x:h2>The date element</x:h2>
+    <x:div id="z3986.date">
+      <x:p class="description">
+        The <x:code>date</x:code> element represents a date or a 
+        statement of time.
+      </x:p>
+    </x:div>
+         
+    <define name="z3986.date">
+      <element name="date">        
+        <ref name="z3986.date.attlist"/>
+        <ref name="z3986.date.content"/>  
+      </element>    
+    </define>
+
+    <define name="z3986.date.attlist">
+      <ref name="z3986.Text.attrib"/>
+    </define>
+    
+    <define name="z3986.date.content">
+      <ref name="z3986.Text.base.model"/>
+    </define>  
+    
+  </div>  
+
+  <div>
+    <x:h2>The date element - default content model contribution</x:h2>
+    
+    <define name="z3986.Text.class" combine="choice">
+      <ref name="z3986.date"/>    
+    </define>
+    
+  </div>
+
+</grammar>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3998/authoring/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="line">The line module</title>
+        <annotation annotates="/">
+            <para role="desc-main">This module defines the {[[#z3998.ln]]}, {[[#z3998.lngroup]]} and {[[#z3998.lnum]]} elements for representing individual lines and line groupings.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3998-global-classes.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <year>2012</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2012-12-19</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="z3998.ln" xml:id="z3998.ln">
+            <element name="ln">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="ln">The {ln} element</title>
+                    <para role="desc-main">The {ln} element represents a single line of text.</para>
+                    <para role="desc-sub">The {[[#z3998.lnum]]} element can be added to the start of the {ln} to represent numbered lines.</para>
+                    <synopsis role="def-context">{[[#z3998.Phrase.class]]}</synopsis>
+                    <synopsis role="def-content">{(text | [[#z3998.Text.class]] | [[#z3998.Phrase.class]])+ &amp;amp; [[#z3998.lnum]]?}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3998.Phrase.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3998.ln.attlist"/>
+                <ref name="z3998.ln.content"/>
+                <sch:rule context="default:ln">
+                    <sch:assert test="not(descendant::default:ln)">The {ln} element must not contain descendant {ln} elements.</sch:assert>
+                    <sch:assert test="normalize-space(.) or *">The {ln} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="z3998.ln.attlist" xml:id="z3998.ln.attlist">
+            <ref name="z3998.Phrase.attrib"/>
+        </define>
+        <define name="z3998.ln.content" xml:id="z3998.ln.content">
+            <interleave>
+                <ref name="z3998.Phrase.Text.mix.model"/>
+                <optional>
+                    <ref name="z3998.lnum"/>
+                </optional>
+            </interleave>
+        </define>
+    </div>
+    <div>
+        <define name="z3998.lnum" xml:id="z3998.lnum">
+            <element name="lnum">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="lnum">The {lnum} element</title>
+                    <para role="desc-main">The {lnum} element represents the line number of the parent {[[#z3998.ln]]}.</para>
+                    <para role="desc-sub doc-only">Line numbers are a common convention in poetic works, legal texts and programming code.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3998.ln]]}</synopsis>
+                    <synopsis role="def-content">{(text | [[#z3998.Text.class]])+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3998.Text.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3998.lnum.attlist"/>
+                <ref name="z3998.lnum.content"/>
+                <sch:rule context="default:lnum">
+                    <sch:assert test="normalize-space(.) or *">The {lnum} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="z3998.lnum.attlist" xml:id="z3998.lnum.attlist">
+            <ref name="z3998.Text.attrib"/>
+        </define>
+        <define name="z3998.lnum.content" xml:id="z3998.lnum.content">
+            <ref name="z3998.Text.model"/>
+        </define>
+    </div>
+    <div>
+        <define name="z3998.lngroup" xml:id="z3998.lngroup">
+            <element name="lngroup">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="lngroup">The {lngroup} element</title>
+                    <para role="desc-main">The {lngroup} element represents a group of [[#z3998.ln lines]].</para>
+                    <synopsis role="def-context">No default context.</synopsis>
+                    <synopsis role="def-content" condition="The content model must allow {[[#z3998.ln ln]]} elements.">{[[#z3998.ln]]+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3998.Block.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3998.lngroup.attlist"/>
+                <ref name="z3998.lngroup.content"/>
+            </element>
+        </define>
+        <define name="z3998.lngroup.attlist" xml:id="z3998.lngroup.attlist">
+            <ref name="z3998.Block.attrib"/>
+        </define>
+        <define name="z3998.lngroup.content" xml:id="z3998.lngroup.content">
+            <interleave>
+                <oneOrMore>
+                    <ref name="z3998.ln"/>
+                </oneOrMore>
+                <zeroOrMore>
+                    <ref name="z3998.lngroup.content.extra.class"/>
+                </zeroOrMore>
+            </interleave>
+        </define>
+        <define name="z3998.lngroup.content.extra.class" combine="choice">
+            <ref name="z3998.Global.extra.class"/>
+        </define>
+    </div>
+    <div>
+        <a:documentation>line - default content model contribution</a:documentation>
+        <define name="z3998.Phrase.core.class" combine="choice">
+            <ref name="z3998.ln"/>
+        </define>
+        <define name="z3998.table.td.Block.class" combine="choice">
+            <ref name="z3998.ln"/>
+        </define>
+    </div>
+</grammar>

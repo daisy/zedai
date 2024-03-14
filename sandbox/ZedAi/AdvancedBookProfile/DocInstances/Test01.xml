@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="http://www.w3.org/MarkUp/style/xhtml2.css"?>
+<?oxygen RNGSchema="../RelaxNG/z3986a-advancedbook.rng" type="xml"?>
+
+<html xmlns="http://www.w3.org/2002/06/xhtml2/" xmlns:d="http://www.daisy.org/ns/z3986/2008/"
+    xml:lang="en">
+
+    <!-- html@version (or, perhaps more properly, a zed namespaced root attribute) 
+	can be used to provide a URI which functions as a profile+version identifier, 
+	and resolves to an RDDL-like resource directory where schemas, taxonomies etc could be found -->
+
+    <head>
+        <!-- Here is the slot for the IFLA document-level metadata set. 
+	We do not know if xhtml:meta will be used by IFLA at all, which is fine.
+	Note - we may want to inherit RDF/A for inline metadata as well.
+	-->
+    </head>
+    <d:book>
+        <d:frontmatter>
+            <d:toc>
+                <h>Table of Contents</h>
+                <d:tocentry>
+                    <label>This is the title</label>
+                    <d:pageref ref="p1">2</d:pageref>
+                </d:tocentry>
+            </d:toc>
+        </d:frontmatter>
+        <d:bodymatter>
+            <section>
+                <d:pagebreak value="1" xml:id="p1" />
+                <!-- ps: All (?) elements may carry the family attribute, and thus may be affected by output handling parameters -->
+                <h>This is the title</h>
+                <p>The first paragraph. Not very long, but there it is.</p>
+                <section>
+                    <h>A heading on a lower level (level2)</h>
+                    <!-- <h>Invalid: only one h per section</h> -->
+                    <p>We start with a list: </p>
+                    <ul>
+                        <li>This is the first item on the list.</li>
+                        <li>This is the second item on the list.</li>
+                        <li>And this is the last item on this list.</li>
+                    </ul>
+                    <d:box>
+                        <d:bridgehead>Something to think about</d:bridgehead>
+                        <p>You could for example think about the following</p>
+                    </d:box>
+                    <d:pagebreak value="2" />
+                    <section>
+                        <d:pagebreak value="3" />
+                        <h>A heading</h>
+                        <p>In order for this document to be valid, some element must follow the
+                            heading.</p>
+                    </section>
+                </section>
+
+                <section>
+                    <h>About tables</h>
+                    <p>I must create a table at this point.</p>
+
+                    <p> But the third page came first in a mixed content model.</p>
+                    <p>
+                        <d:pagebreak value="4" />
+                    </p>
+                    <p>A section with some text and a <d:pagebreak value="5" />, and some more text
+                        after that</p>
+                </section>
+                <section>
+                    <h>About exercises</h>
+                    <p>The d:exercises and d:exercises element are special elements used for
+                        exercises, but could just as well be used for questions, tasks, example,
+                        instructions etc, often found in text books.</p>
+                    <d:exercises>
+                        <d:exercise answer-ref="answ01">What is the capital of Denmark?</d:exercise>
+                        <d:exercise answer-ref="answ02">What is the largess city in Denmark?</d:exercise>
+                        <d:exercise answer-ref="answ03">Where is DBB located?</d:exercise>
+                    </d:exercises>
+
+                    <p>There may be sub-questions, as well:</p>
+                    <d:exercises>
+                        <d:exercise>Is 3787 a prime number?</d:exercise>
+                        <d:exercise>
+                            <p>Given that x=2 and y=22 and z=222.</p>
+                            <d:exercises>
+                                <d:exercise>What is the capital of Denmark?</d:exercise>
+                                <d:exercise>What is the largess city in Denmark?</d:exercise>
+                                <d:exercise>Where is DBB located?</d:exercise>
+                            </d:exercises>
+                        </d:exercise>
+                        <d:exercise>What did you find strange about the above exercise?</d:exercise>
+                    </d:exercises>
+                    <p>The exercises element is also useful for markup of tasks involving several
+                        steps, for example a description of how to grow a tree:</p>
+                    <d:exercises>
+                        <d:exercise>Find a garden.</d:exercise>
+                        <d:exercise>Decide a proper location in that garden.</d:exercise>
+                        <d:exercise>
+                            <p>Dig a hole of a suitable size.</p>
+                            <d:exercises>
+                                <d:exercise>Borrow, steal or buy a spade.</d:exercise>
+                                <d:exercise>Transport the spade to the spot where the hole is to be
+                                    located.</d:exercise>
+                                <d:exercise>Dig the hole</d:exercise>
+                            </d:exercises>
+                        </d:exercise>
+                        <d:exercise>Put something into the hole.</d:exercise>
+                        <d:exercise>Fill up the rest of the hole with soil.</d:exercise>
+                        <d:exercise>Add water.</d:exercise>
+                        <d:exercise>Return to the garden after some years, and you will find a
+                            beautiful tree.</d:exercise>
+                    </d:exercises>
+                </section>
+            </section>
+        </d:bodymatter>
+        <d:backmatter>
+
+            <section>
+                <h>Answers to selected questions</h>
+                <d:exercises>
+                    <d:exercise xml:id="answ01">Copenhagen is the capital of Denmark.</d:exercise>
+                    <d:exercise xml:id="answ02">Copenhagen is the largest city in Denmark.</d:exercise>
+                    <d:pagebreak />
+                    <!-- Pagebreaks are ok as children -->
+                    <d:exercise xml:id="answ03">DBB is located in Denmark.</d:exercise>
+                </d:exercises>
+            </section>
+        </d:backmatter>
+    </d:book>
+</html>

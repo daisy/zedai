@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="docResources.rng" type="xml"?>
+<docResources xmlns="http://www.daisy.org/ns/z3986/2008/docResources/">
+
+    <namespace nsURI="http://www.w3.org/2005/11/its" defaultDocURL="http://www.w3.org/TR/its/#ruby-annotation"  feature="yes" featureNicename="ITS Ruby">
+		<element name="rb" descriptionURI="http://www.w3.org/TR/its/#ruby-annotation" descriptionInclude="no" />
+		<element name="rbc" descriptionURI="http://www.w3.org/TR/its/#ruby-annotation" descriptionInclude="no" />
+		<element name="rp" descriptionURI="http://www.w3.org/TR/its/#ruby-annotation" descriptionInclude="no" />
+		<element name="rt" descriptionURI="http://www.w3.org/TR/its/#ruby-annotation" descriptionInclude="no" />
+		<element name="rtc" descriptionURI="http://www.w3.org/TR/its/#ruby-annotation" descriptionInclude="no" />
+		<element name="ruby" descriptionURI="http://www.w3.org/TR/its/#ruby-annotation" descriptionInclude="no" />
+    </namespace>
+    
+
+</docResources>

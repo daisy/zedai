@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
+	xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<info xmlns="http://docbook.org/ns/docbook">
+		<title xreflabel="RDFa">The {RDFa} Attributes Module</title>
+		<annotation annotates="/" condition="required">
+			<para role="desc-main">This module defines the W3C RDFa attribute collection.</para>
+			<para role="desc-sub">The semantics of the attributes in this module are defined by [[#refRDFa11]]. Refer to [[http://www.w3.org/TR/xhtml-rdfa-primer/ RDFa Primer]] for further information.</para>
+			<simplelist role="def-dependencies">
+				<member xlink:href="z3986-datatypes.rng"/>
+			</simplelist>
+		</annotation>
+		<author>
+			<personname>Markus Gylling</personname>
+			<email>mgylling@daisy.org</email>
+		</author>
+		<copyright>
+			<year>2009</year>
+			<year>2010</year>
+			<holder>DAISY Consortium</holder>
+		</copyright>
+		<legalnotice>
+			<para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+			<para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+		</legalnotice>
+		<revhistory>
+			<revision>
+				<date>2011-01-03</date>
+				<authorinitials>MGy</authorinitials>
+				<revdescription>
+					<para>Initial version</para>
+				</revdescription>
+			</revision>
+		</revhistory>
+	</info>
+	<div>
+		<define name="rdfa.profile.attrib">
+			<attribute name="profile">
+				<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+					<title xreflabel="profile">The RDFa {profile} attribute</title>
+					<para role="desc-main">The {profile} attribute references the default RDFa profile associated with a document, as defined in [[#refRDFa11 RDFa Core 1.1]].</para>
+					<para role="desc-sub">The associated RDFa profile may define a default vocabulary (allowing unprefixed CURIEs) and/or define prefixes for commonly-used vocabularies.</para>
+					<para role="desc-sub spec-only">The {profile} attribute must be attached to the root {[[#z3986.document]]} element. Profiles must not allow the attribute to be attached to any other element.</para>
+					<para role="desc-sub">Each ZedAI profile declares the default RDFa profile URI that all compliant documents must reference. Refer to the Resource Directory for each ZedAI profile for more information.</para>
+					<synopsis role="def-context">{[[#z3986.document]]}</synopsis>
+					<synopsis role="def-content">[[#URI.datatype]]</synopsis>
+				</annotation>
+				<ref name="rdfa.profile.attrib.content"/>
+			</attribute>
+		</define>
+		<define name="rdfa.profile.attrib.content">
+			<ref name="URI.datatype"/>
+		</define>
+	</div>
+	<div>
+		<define name="rdfa.prefix.attrib">
+			<attribute name="prefix">
+				<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+					<title xreflabel="prefix">The RDFa {prefix} attribute</title>
+					<para role="desc-main">The {prefix} attribute associates RDFa vocabulary namespace prefixes and URIs, as defined in [[#refRDFa11 RDFa Core 1.1]].</para>
+					<para role="desc-sub spec-only">The {prefix} attribute may optionally be attached to the root {[[#z3986.document]]} element. Profiles must not allow the attribute to be attached to any other element.</para>
+					<synopsis role="def-context">{[[#z3986.document]]}</synopsis>
+					<synopsis role="def-content">([[#NCName.datatype]]: [[#URI.datatype]])+</synopsis>
+				</annotation>
+				<ref name="rdfa.prefix.attrib.content"/>
+			</attribute>
+		</define>
+		<define name="rdfa.prefix.attrib.content">
+			<data type="normalizedString">
+				<param name="pattern">\s*([\i-[:]][\c-[:]]*: +[^ ]+)(\s+[\i-[:]][\c-[:]]*: +[^ ]+)*\s*</param>
+			</data>
+		</define>
+	</div>
+	<div>
+		<define name="rdfa.about.attrib">
+			<attribute name="about">
+				<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+					<title xreflabel="about">The RDFa {about} attribute</title>
+					<para role="desc-main">The {about} attribute specifies the subject of a relationship. If not given, then the subject is the current document.</para>
+					<synopsis role="def-context">All [[#z3986.global-classes.module global attribute classes]]</synopsis>
+					<synopsis role="def-content">[[#URI.datatype]]</synopsis>
+				</annotation>
+				<ref name="rdfa.about.attrib.content"/>
+				<sch:rule context="*[@about and starts-with(@about,'#')]">
+					<!-- <sch:assert test="some $elem in //* satisfies substring(current()/@about,1) eq $elem/@xml:id or substring(current()/@about,1) eq $elem/@id" >The fragment URI in the {about} attribute must resolve to an ID in the document.</sch:assert>-->
+					<sch:assert test="exists(//*[@xml:id eq substring-after(current()/@about,'#')])">The fragment URI in the {about} attribute must resolve to an ID in the document.</sch:assert>
+				</sch:rule>
+			</attribute>
+		</define>
+		<define name="rdfa.about.attrib.content">
+			<ref name="URI.datatype"/>
+		</define>
+		<define name="rdfa.content.attrib">
+			<attribute name="content">
+				<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+					<title xreflabel="content">The RDFa {content} attribute</title>
+					<para role="desc-main">The {content} attribute specifies a string to use as an object for the {[[#rdfa.property.attrib]]} attribute.</para>
+					<synopsis role="def-context">All [[#z3986.global-classes.module global attribute classes]]</synopsis>
+					<synopsis role="def-content">[[#Characters.datatype]]</synopsis>
+				</annotation>
+				<ref name="rdfa.content.attrib.content"/>
+			</attribute>
+		</define>
+		<define name="rdfa.content.attrib.content">
+			<ref name="Characters.datatype"/>
+		</define>
+		<define name="rdfa.datatype.attrib">
+			<attribute name="datatype">
+				<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+					<title xreflabel="datatype">The RDFa {datatype} attribute</title>
+					<para role="desc-main">The {datatype} attribute specifies a datatype of the object of the {[[#rdfa.property.attrib]]} attribute (either in the content attribute, or the content of the element that the datatype attribute is on.)</para>
+					<para role="desc-sub">By default, data in the content attribute is of type string, and data in the content of an element has type {xml:Literal}. If {datatype=""} is used, then for the RDF the element content is stripped of markup, and is of type string.</para>
+					<synopsis role="def-context">All [[#z3986.global-classes.module global attribute classes]]</synopsis>
+					<synopsis role="def-content">[[#CURIE.datatype]]</synopsis>
+				</annotation>
+				<ref name="rdfa.datatype.attrib.content"/>
+				<sch:rule context="*[@datatype]">
+					<sch:assert test="every $prefix in substring-before(@datatype, ':') satisfies (key('rdfprefix', $prefix) or key('rdfprofile', $prefix) or $prefix='')">The {datatype} attribute contains an undeclared CURIE prefix.</sch:assert>
+				</sch:rule>
+			</attribute>
+		</define>
+		<define name="rdfa.datatype.attrib.content">
+			<ref name="CURIE.datatype"/>
+		</define>
+		<define name="rdfa.typeof.attrib">
+			<attribute name="typeof">
+				<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+					<title xreflabel="typeof">The RDFa {typeof} attribute</title>
+					<para role="desc-main">The {typeof} attribute creates a blank node, which becomes the subject, and asserts that the current element contains relationships that match the given RDF type.</para>
+					<synopsis role="def-context">All [[#z3986.global-classes.module global attribute classes]]</synopsis>
+					<synopsis role="def-content">[[#CURIEs.datatype]]</synopsis>
+				</annotation>
+				<ref name="rdfa.typeof.attrib.content"/>
+				<sch:rule context="*[@typeof]">
+					<sch:assert test="every $curie in tokenize(@typeof, '\s+') satisfies ( (every $prefix in substring-before($curie, ':') satisfies (key('rdfprefix', $prefix) or key('rdfprofile', $prefix) or $prefix='')))">The {typeof} attribute contains an undeclared CURIE prefix.</sch:assert>
+				</sch:rule>
+			</attribute>
+		</define>
+		<define name="rdfa.typeof.attrib.content">
+			<ref name="CURIEs.datatype"/>
+		</define>
+		<define name="rdfa.property.attrib">
+			<attribute name="property">
+				<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+					<title xreflabel="property">The RDFa {property} attribute</title>
+					<para role="desc-main">The {property} attribute defines a relationship between the subject and either a string (if the {[[#rdfa.content.attrib]]} attribute is present) or the content of the element that the {property} attribute is on.</para>
+					<synopsis role="def-context">All [[#z3986.global-classes.module global attribute classes]]</synopsis>
+					<synopsis role="def-content">[[#CURIEs.datatype]]</synopsis>
+				</annotation>
+				<ref name="rdfa.property.attrib.content"/>
+				<sch:rule context="*[@property]">
+					<sch:assert test="every $curie in tokenize(@property, '\s+') satisfies ( (every $prefix in substring-before($curie, ':') satisfies (key('rdfprefix', $prefix) or key('rdfprofile', $prefix) or $prefix='')))">The {property} attribute contains an undeclared CURIE prefix.</sch:assert>
+				</sch:rule>
+			</attribute>
+		</define>
+		<define name="rdfa.property.attrib.content">
+			<ref name="CURIEs.datatype"/>
+		</define>
+		<define name="rdfa.rel.attrib">
+			<attribute name="rel">
+				<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+					<title xreflabel="rel">The RDFa {rel} attribute</title>
+					<para role="desc-main">The {rel} attribute defines a relation between the subject and a URL given by the {[[#rdfa.resource.attrib]]} attribute.</para>
+					<para role="desc-sub">The {[[#rdfa.rev.attrib]]} attribute expresses the inverse relation.</para>
+					<synopsis role="def-context">All [[#z3986.global-classes.module global attribute classes]]</synopsis>
+					<synopsis role="def-content">[[#CURIEs.datatype]]</synopsis>
+				</annotation>
+				<ref name="rdfa.rel.attrib.content"/>
+				<sch:rule context="*[@rel]">
+					<sch:assert test="every $curie in tokenize(@rel, '\s+') satisfies ( (every $prefix in substring-before($curie, ':') satisfies (key('rdfprefix', $prefix) or key('rdfprofile', $prefix) or $prefix='')))">The {rel} attribute contains an undeclared CURIE prefix.</sch:assert>
+				</sch:rule>
+			</attribute>
+		</define>
+		<define name="rdfa.rel.attrib.content">
+			<ref name="CURIEs.datatype"/>
+		</define>
+		<define name="rdfa.resource.attrib">
+			<attribute name="resource">
+				<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+					<title xreflabel="resource">The RDFa {resource} attribute</title>
+					<para role="desc-main">The {resource} attribute specifies an object URI for the {[[#rdfa.rev.attrib]]} and {[[#rdfa.rel.attrib]]} attributes, if the attribute {href} is not present.</para>
+					<synopsis role="def-context">All [[#z3986.global-classes.module global attribute classes]]</synopsis>
+					<synopsis role="def-content">[[#URI.datatype]]</synopsis>
+				</annotation>
+				<ref name="rdfa.resource.attrib.content"/>
+			</attribute>
+		</define>
+		<define name="rdfa.resource.attrib.content">
+			<ref name="URI.datatype"/>
+		</define>
+		<define name="rdfa.rev.attrib">
+			<attribute name="rev">
+				<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+					<title xreflabel="rev">The RDFa {rev} attribute</title>
+					<para role="desc-main">The {rev} attribute defines a relation between the subject and a URL given by the {[[#rdfa.resource.attrib]]} attribute.</para>
+					<para role="desc-sub">The {[[#rdfa.rel.attrib]]} attribute expresses the inverse relation.</para>
+					<synopsis role="def-context">All [[#z3986.global-classes.module global attribute classes]]</synopsis>
+					<synopsis role="def-content">[[#CURIEs.datatype]]</synopsis>
+				</annotation>
+				<ref name="rdfa.rev.attrib.content"/>
+				<sch:rule context="*[@rev]">
+					<sch:assert test="every $curie in tokenize(@rev, '\s+') satisfies ( (every $prefix in substring-before($curie, ':') satisfies (key('rdfprefix', $prefix) or key('rdfprofile', $prefix) or $prefix='')))">The {rev} attribute contains an undeclared CURIE prefix.</sch:assert>
+				</sch:rule>
+			</attribute>
+		</define>
+		<define name="rdfa.rev.attrib.content">
+			<ref name="CURIEs.datatype"/>
+		</define>
+		<define name="Rdfa.attrib" combine="interleave">
+			<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+				<title xreflabel="Rdfa.attrib">The RDFa attributes collection</title>
+				<para role="desc-main">Defines the RDFa attribute collection; all attributes with optional occurrence.</para>
+				<synopsis role="def-context">Global.</synopsis>
+				<synopsis role="def-content">{[[#rdfa.about.attrib]]?, [[#rdfa.content.attrib]]?, [[#rdfa.datatype.attrib]]?, [[#rdfa.typeof.attrib]]?, [[#rdfa.property.attrib]]?, [[#rdfa.rel.attrib]]?, [[#rdfa.resource.attrib]]?, [[#rdfa.rev.attrib]]?}</synopsis>
+			</annotation>
+			<optional>
+				<ref name="rdfa.about.attrib"/>
+			</optional>
+			<optional>
+				<ref name="rdfa.content.attrib"/>
+			</optional>
+			<optional>
+				<ref name="rdfa.datatype.attrib"/>
+			</optional>
+			<optional>
+				<ref name="rdfa.typeof.attrib"/>
+			</optional>
+			<optional>
+				<ref name="rdfa.property.attrib"/>
+			</optional>
+			<optional>
+				<ref name="rdfa.rel.attrib"/>
+			</optional>
+			<optional>
+				<ref name="rdfa.resource.attrib"/>
+			</optional>
+			<optional>
+				<ref name="rdfa.rev.attrib"/>
+			</optional>
+		</define>
+	</div>
+</grammar>

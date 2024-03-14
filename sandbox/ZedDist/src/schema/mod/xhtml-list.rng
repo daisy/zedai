@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+  
+  <define name="xhtml.List.class">
+    <choice>
+      <ref name="xhtml.ul"/>
+      <ref name="xhtml.ol"/>
+      <ref name="xhtml.dl"/>
+    </choice>
+  </define>
+  
+  <define name="xhtml.Structural.class" combine="choice">
+    <ref name="xhtml.List.class"/>
+  </define>
+  
+  <define name="xhtml.dl">
+    <element name="dl">
+      <ref name="xhtml.dl.attlist"/>
+      <oneOrMore>
+        <choice>
+          <ref name="xhtml.dt"/>
+          <ref name="xhtml.dd"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  
+  <define name="xhtml.dl.attlist">
+    <ref name="xhtml.Core.attrib"/>
+  </define>
+  
+  <define name="xhtml.dt">
+    <element name="dt">
+      <ref name="xhtml.dt.attlist"/>
+      <ref name="xhtml.Text.model"/>
+    </element>
+  </define>
+  
+  <define name="xhtml.dt.attlist">
+    <ref name="xhtml.Core.attrib"/>
+  </define>
+  <define name="xhtml.dd">
+    <element name="dd">
+      <ref name="xhtml.dd.attlist"/>
+      <ref name="xhtml.Flow.model"/>
+    </element>
+  </define>
+  <define name="xhtml.dd.attlist">
+    <ref name="xhtml.Core.attrib"/>
+  </define>
+  
+  <define name="xhtml.ol">
+    <element name="ol">
+      <ref name="xhtml.ol.attlist"/>
+      <oneOrMore>
+        <ref name="xhtml.li"/>
+      </oneOrMore>
+    </element>
+  </define>
+  
+  <define name="xhtml.ol.attlist">
+    <ref name="xhtml.Core.attrib"/>
+    <!-- TODO @start? -->
+  </define>
+  
+  <define name="xhtml.ul">
+    <element name="ul">
+      <ref name="xhtml.ul.attlist"/>
+      <oneOrMore>
+        <ref name="xhtml.li"/>
+      </oneOrMore>
+    </element>
+  </define>
+  
+  <define name="xhtml.ul.attlist">
+    <ref name="xhtml.Core.attrib"/>
+  </define>
+  
+  <define name="xhtml.li">
+    <element name="li">
+      <ref name="xhtml.li.attlist"/>
+      <ref name="xhtml.Flow.model"/>
+    </element>
+  </define>
+  
+  <define name="xhtml.li.attlist">
+    <ref name="xhtml.Core.attrib"/>
+  </define>
+  
+</grammar>

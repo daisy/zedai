@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <meta>
+        <filters directoryPatterns="" filePatterns=""
+            positiveFilePatterns="" showHiddenFiles="false"/>
+        <options/>
+    </meta>
+    <projectTree name="ncx.xpr">
+        <folder name="mod">
+            <file name="src/schema/mod/ncx-attrib.rng"/>
+            <file name="src/schema/mod/ncx-document.rng"/>
+            <file name="src/schema/mod/ncx-label.rng"/>
+            <file name="src/schema/mod/ncx-navlist.rng"/>
+            <file name="src/schema/mod/ncx-navmap.rng"/>
+            <file name="src/schema/mod/ncx-target.rng"/>
+            <file name="src/schema/mod/z3986-datatypes.rng"/>
+        </folder>
+        <folder name="test">
+            <file name="test/test-ncx-audio.xml"/>
+            <file name="test/test-ncx-classic.xml"/>
+            <file name="test/test-ncx-noaudio.xml"/>
+        </folder>
+        <file name="src/schema/ncx-audio.rng"/>
+        <file name="src/schema/ncx-classic.rng"/>
+        <file name="src/schema/ncx-noaudio.rng"/>
+    </projectTree>
+</project>

@@ -1,0 +1,11 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <!-- create a revhistory xhtml document for a vocab -->
+ <!-- see util/rdf/rev-history.xsl and common.xml#build-triple-rdf -->
+ 
+ <dl class="rev-history" id="rev-history">
+ 	<!-- add additional dt/dd pairs on top as revisions are made --> 	
+ 	<dt class="rev-date">2011-01-03</dt>
+ 	<dd class="rev-description">Initial public version.</dd> 	
+ </dl>
+ 
+</html>

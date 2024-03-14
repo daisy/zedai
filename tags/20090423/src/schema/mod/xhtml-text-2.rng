@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Text Module</x:h1>
+
+  <div>
+    <x:h2>The abbr element</x:h2>
+
+    <define name="xhtml.abbr">
+      <element name="abbr">
+        <ref name="xhtml.abbr.attlist"/>
+        <ref name="xhtml.abbr.content"/>
+      </element>
+    </define>
+
+    <define name="xhtml.abbr.attlist">
+      <ref name="xhtml.Text.attrib"/>
+      <optional>
+        <attribute name="full">
+          <ref name="URI.datatype"/>
+        </attribute>
+      </optional>
+    </define>
+
+    <define name="xhtml.abbr.content">    
+      <ref name="xhtml.Text.model"/>
+    </define>  
+  </div>
+
+  <div>
+    <x:h2>The cite element</x:h2>
+
+    <define name="xhtml.cite">
+      <element name="cite">
+        <ref name="xhtml.cite.attlist"/>
+        <ref name="xhtml.cite.content"/>
+      </element>
+    </define>
+
+    <define name="xhtml.cite.attlist">
+      <ref name="xhtml.Text.attrib"/>
+    </define>
+    
+    <define name="xhtml.cite.content">
+        <ref name="xhtml.Text.model"/>    
+    </define>
+  </div>
+
+  <div>
+    <x:h2>The code element</x:h2>
+
+    <define name="xhtml.code">
+      <element name="code">
+        <ref name="xhtml.code.attlist"/>
+        <ref name="xhtml.code.content"/>        
+      </element>
+    </define>
+
+    <define name="xhtml.code.attlist">
+      <ref name="xhtml.Text.attrib"/>
+    </define>
+    
+    <define name="xhtml.code.content">
+        <ref name="xhtml.Text.model"/>    
+    </define>
+  </div>
+
+  <div>
+    <x:h2>The dfn element</x:h2>
+
+    <define name="xhtml.dfn">
+      <element name="dfn">
+        <ref name="xhtml.dfn.attlist"/>
+        <ref name="xhtml.dfn.content"/>        
+      </element>
+    </define>
+
+    <define name="xhtml.dfn.attlist">
+      <ref name="xhtml.Text.attrib"/>
+    </define>
+    
+    <define name="xhtml.dfn.content">    
+      <ref name="xhtml.Text.model"/>
+    </define>  
+  </div>
+
+  <div>
+    <x:h2>The em element</x:h2>
+
+    <define name="xhtml.em">
+      <element name="em">
+        <ref name="xhtml.em.attlist"/>
+        <ref name="xhtml.em.content"/>        
+      </element>
+    </define>
+
+    <define name="xhtml.em.attlist">
+      <ref name="xhtml.Text.attrib"/>
+    </define>
+    
+    <define name="xhtml.em.content">
+      <ref name="xhtml.Text.model"/>    
+    </define>
+  </div>
+
+  <div>
+    <x:h2>The kbd element</x:h2>
+
+    <define name="xhtml.kbd">
+      <element name="kbd">
+        <ref name="xhtml.kbd.attlist"/>
+        <ref name="xhtml.kbd.content"/>        
+      </element>
+    </define>
+
+    <define name="xhtml.kbd.attlist">
+      <ref name="xhtml.Text.attrib"/>
+    </define>
+    
+    <define name="xhtml.kbd.content">
+      <ref name="xhtml.Text.model"/>
+    </define>
+  </div>
+
+  <div>
+    <x:h2>The l element</x:h2>
+
+    <define name="xhtml.l">
+      <element name="l">
+        <ref name="xhtml.l.attlist"/>
+        <ref name="xhtml.l.content"/>        
+      </element>
+    </define>
+
+    <define name="xhtml.l.attlist">
+      <ref name="xhtml.Text.attrib"/>
+    </define>
+    
+    <define name="xhtml.l.content">
+      <ref name="xhtml.Text.model"/>
+    </define>
+    
+  </div>
+
+  <div>
+    <x:h2>The quote element</x:h2>
+
+    <define name="xhtml.quote">
+      <element name="q">
+        <ref name="xhtml.quote.attlist"/>
+        <ref name="xhtml.quote.content"/>        
+      </element>
+    </define>
+
+    <define name="xhtml.quote.attlist">
+      <ref name="xhtml.Text.attrib"/>
+    </define>
+
+    <define name="xhtml.quote.content">    
+      <ref name="xhtml.Text.model"/>
+    </define>  
+  </div>
+
+  <div>
+    <x:h2>The samp element</x:h2>
+
+    <define name="xhtml.samp">
+      <element name="samp">
+        <ref name="xhtml.samp.attlist"/>
+        <ref name="xhtml.samp.content"/>        
+      </element>
+    </define>
+
+    <define name="xhtml.samp.attlist">
+      <ref name="xhtml.Text.attrib"/>
+    </define>
+
+    <define name="xhtml.samp.content">    
+      <ref name="xhtml.Text.model"/>
+    </define>  
+  </div>
+
+  <div>
+    <x:h2>The span element</x:h2>
+
+    <define name="xhtml.span">
+      <element name="span">
+        <ref name="xhtml.span.attlist"/>
+        <ref name="xhtml.span.content"/>        
+      </element>
+    </define>
+
+    <define name="xhtml.span.attlist">
+      <ref name="xhtml.Text.attrib"/>
+    </define>
+
+    <define name="xhtml.span.content">    
+      <ref name="xhtml.Text.model"/>
+    </define>  
+  </div>
+
+  <div>
+    <x:h2>The strong element</x:h2>
+
+    <define name="xhtml.strong">
+      <element name="strong">
+        <ref name="xhtml.strong.attlist"/>
+        <ref name="xhtml.strong.content"/>        
+      </element>
+    </define>
+
+    <define name="xhtml.strong.attlist">
+      <ref name="xhtml.Text.attrib"/>
+    </define>
+    
+    <define name="xhtml.strong.content">    
+      <ref name="xhtml.Text.model"/>
+    </define>  
+  </div>
+
+  <div>
+    <x:h2>The sub element</x:h2>
+
+    <define name="xhtml.sub">
+      <element name="sub">
+        <ref name="xhtml.sub.attlist"/>
+        <ref name="xhtml.sub.content"/>
+      </element>
+    </define>
+
+    <define name="xhtml.sub.attlist">
+      <ref name="xhtml.Text.attrib"/>
+    </define>
+    
+    <define name="xhtml.sub.content">
+      <ref name="xhtml.Text.model"/>
+    </define>  
+  </div>
+
+  <div>
+    <x:h2>The sup element</x:h2>
+
+    <define name="xhtml.sup">
+      <element name="sup">
+        <ref name="xhtml.sup.attlist"/>
+        <ref name="xhtml.sup.content"/>        
+      </element>
+    </define>
+
+    <define name="xhtml.sup.attlist">
+      <ref name="xhtml.Text.attrib"/>
+    </define>
+    
+    <define name="xhtml.sup.content">
+      <ref name="xhtml.Text.model"/>
+    </define>  
+  </div>
+
+  <div>
+    <x:h2>The var element</x:h2>
+
+    <define name="xhtml.var">
+      <element name="var">
+        <ref name="xhtml.var.attlist"/>
+        <ref name="xhtml.var.content"/>        
+      </element>
+    </define>
+
+    <define name="xhtml.var.attlist">
+      <ref name="xhtml.Text.attrib"/>
+    </define>
+    
+    <define name="xhtml.var.content">
+      <ref name="xhtml.Text.model"/>
+    </define>  
+  </div>
+    
+  <div>
+    <x:p>these can occur at Structural or Text level</x:p>
+
+    <define name="xhtml.Misc.class">
+      <empty/>
+    </define>
+  </div>
+
+  <div>
+    <x:h2>Content Model</x:h2>
+
+    <define name="xhtml.Text.class">
+      <choice>
+        <ref name="xhtml.abbr"/>
+        <ref name="xhtml.cite"/>
+        <ref name="xhtml.code"/>
+        <ref name="xhtml.dfn"/>
+        <ref name="xhtml.em"/>
+        <ref name="xhtml.kbd"/>
+        <ref name="xhtml.l"/>
+        <ref name="xhtml.quote"/>
+        <ref name="xhtml.samp"/>
+        <ref name="xhtml.span"/>
+        <ref name="xhtml.strong"/>
+        <ref name="xhtml.sub"/>
+        <ref name="xhtml.sup"/>
+        <ref name="xhtml.var"/>
+      </choice>
+    </define>
+
+    <define name="xhtml.Text.model">
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="xhtml.Text.class"/>
+          <ref name="xhtml.Misc.class"/>
+        </choice>
+      </zeroOrMore>
+    </define>
+    
+    <define name="xhtml.Text.attrib" combine="interleave">
+      <ref name="xhtml.Common.attrib"/>
+    </define>
+  </div>
+
+</grammar>

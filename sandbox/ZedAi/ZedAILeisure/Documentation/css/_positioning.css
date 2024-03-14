@@ -1,0 +1,30 @@
+/* POSITIONING */
+
+/*
+   Some colors used:
+  light blue:         rgb(176,176,255)
+  very light blue:    rgb(215,215,255)
+ */
+#main-container {
+    border:1pt solid rgb(215,215,255);
+    position:relative;
+}
+#menu-and-info {
+    position:absolute;
+    top:0;
+    left:0;
+    width:40mm;
+    /*border:1pt solid magenta;*/
+    background-color:rgb(215,215,255);
+    height:100%;
+}
+#content {
+    margin-left:40mm;
+    padding-left:1em;
+    font-size:90%;
+    /*border-left:10pt solid rgb(176,176,255);*/
+}
+#menu-container {
+    margin:0;
+    font-size:60%;
+}

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 annotation element module</x:h1>
+    
+  <div>
+    <x:h2>The annotation element</x:h2>
+    <x:div id="z3986.annotation">
+      <x:p class="description">
+        The <x:code>annotation</x:code> element represents an annotation that 
+        is added to the document by an author, editor, publisher, republisher, or 
+        other agency.
+        <x:br/>
+        The <x:code>for</x:code> attribute is used to identify the components being annotated. 
+        <x:br/>
+        The <x:code>role</x:code> attribute may be used to express the nature of the annotation, and to
+        define the source of the annotation.
+      </x:p>
+    </x:div>
+    
+    <define name="z3986.annotation">
+      <element name="annotation">        
+        <ref name="z3986.annotation.attlist"/>
+        <ref name="z3986.annotation.content"/>  
+      </element>    
+    </define>
+
+    <define name="z3986.annotation.attlist">
+        <ref name="z3986.for.attrib"/>
+        <ref name="z3986.Flow.attrib"/>
+    </define>
+       
+    <define name="z3986.annotation.content">
+      <ref name="z3986.Flow.model"/>    
+    </define>  
+    
+  </div>
+  
+  <div>
+    <x:h2>The annotation element - default content model contribution</x:h2>
+    
+    <define name="z3986.Structural.class" combine="choice">
+      <ref name="z3986.annotation"/>    
+    </define>
+    
+    <define name="z3986.Text.class" combine="choice">
+      <ref name="z3986.annotation"/>    
+    </define>
+
+    <define name="z3986.covers.content.class" combine="choice">
+      <ref name="z3986.annotation"/>
+    </define>
+
+  </div>
+
+</grammar>

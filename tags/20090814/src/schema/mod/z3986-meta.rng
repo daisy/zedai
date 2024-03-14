@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 meta element module</x:h1>
+
+  <div>
+    <x:h2>The meta element</x:h2>
+    <x:div id="z3986.meta">
+      <x:p class="description">      
+        The meta element is used to describe properties of a document or a 
+        document fragment.
+        <!--<x:br/>
+        The Z39.86 <x:code>meta</x:code> element inherits all fundamental 
+        properties of the XHTML <x:code>meta</x:code> element.   -->     
+      </x:p>
+    </x:div>
+    
+    <define name="z3986.meta">         
+      <element name="meta">
+        <ref name="z3986.meta.attlist"/>
+        <ref name="z3986.meta.content"/>
+      </element>
+    </define>  
+    
+    <define name="z3986.meta.attlist">  
+        <ref name="Rdfa.attrib" />      
+        <optional>
+          <ref name="xml.id.attrib"/>
+        </optional>
+        <ref name="z3986.I18n.attrib"/>                     
+    </define>
+    
+   <define name="z3986.meta.content">
+     <ref name="z3986.Text.model" />
+   </define>
+    
+  </div>
+
+  <div>
+    <x:h2>The meta element - default content model contribution</x:h2>
+                      
+    <define name="z3986.head.class" combine="choice">
+      <ref name="z3986.meta"/>
+    </define>
+  
+  </div>  
+
+    <!--
+    <define name="z3986.meta">
+      <element name="meta">
+        <choice>
+          <ref name="rdfa.property.attrib"/>
+          <ref name="rdfa.typeof.attrib"/>
+        </choice>  
+        <choice>          
+          <ref name="rdfa.content.attrib"/>
+          <ref name="z3986.Text.base.model"/>
+          <oneOrMore>
+            <ref name="z3986.meta" />
+          </oneOrMore>
+        </choice>      
+        <optional>
+          <ref name="rdfa.about.attrib"/>
+        </optional>            
+        <optional>
+          <ref name="rdfa.datatype.attrib"/>
+        </optional>      
+        <optional>
+          <ref name="rdfa.resource.attrib"/>
+        </optional>
+        <optional>
+          <ref name="rdfa.rev.attrib"/>
+        </optional> 
+        <optional>
+          <ref name="rdfa.rel.attrib"/>
+        </optional>
+        <optional>      
+          <ref name="xml.id.attrib"/>
+        </optional>
+        <ref name="z3986.i18n.attrib"/>                     
+      </element>
+    </define>
+    -->
+
+</grammar>

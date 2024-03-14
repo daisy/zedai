@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+    
+  <x:h1>Z39.86 Linking Attributes Module</x:h1>
+  <!-- TODO or use XLink -->
+   
+  <div>
+    <x:h2>Linking Attributes Collection</x:h2>         
+             
+    <x:h3>The href Attribute</x:h3>
+    
+    <x:div id="z3986.href.attrib">    
+      <!--The Z39.86 <x:code>href</x:code> attribute inherits all fundamental 
+      properties of the XHTML <x:code>href</x:code> attribute. Its 
+      value is a URI specifying a document-internal or -external target.-->      
+      The value of the Z39.86 <x:code>href</x:code> attribute is a URI specifying a document-internal or -external target.
+    </x:div>
+         
+    <define name="z3986.href.attrib">      
+      <attribute name="href">
+        <ref name="URI.datatype"/>
+      </attribute>
+    </define>
+    
+             
+    <x:h3>The targetlang Attribute</x:h3>
+    
+    <x:div id="z3986.targetlang.attrib">    
+      The <x:code>targetlang</x:code> attribute specifies the  
+      language(s) of the resource designated by the href attribute.        
+    </x:div>
+      
+    <define name="z3986.targetlang.attrib">      
+      <attribute name="targetlang">
+        <ref name="LanguageCodes.datatype"/>
+      </attribute>
+    </define>
+      
+             
+    <x:h3>The targettype Attribute</x:h3>
+    
+    <x:div id="z3986.targettype.attrib">    
+      The <x:code>targettype</x:code> attribute specifies the  
+      media type of the resource designated by the href attribute.       
+    </x:div>
+      
+    <define name="z3986.targettype.attrib">      
+      <attribute name="targettype">
+        <ref name="ContentType.datatype"/>
+      </attribute>      
+    </define>
+      
+             
+    <x:h3>The targetrole Attribute</x:h3>
+    
+    <x:div id="z3986.targetrole.attrib">    
+      The <x:code>targetrole</x:code> attribute specifies the role(s) of 
+      the resource designated by the href attribute.       
+    </x:div>
+      
+    <define name="z3986.targetrole.attrib">      
+      <attribute name="targetrole">
+        <ref name="CURIEs.datatype"/>
+      </attribute>      
+    </define>
+              
+  </div>
+
+  <div>
+    <x:h2>The Linking attributes collection - initial class declarations</x:h2>
+    
+    <define name="z3986.Linking.attrib" combine="interleave">     
+      <optional>
+        <group>
+          <ref name="z3986.href.attrib"/>
+          <optional>
+            <ref name="z3986.targetlang.attrib"/>
+          </optional>  
+          <optional>
+            <ref name="z3986.targettype.attrib"/>
+          </optional>      
+          <optional>
+            <ref name="z3986.targetrole.attrib"/>
+          </optional>
+        </group>
+      </optional>
+      <ref name="z3986.Linking.contrib.attrib"/>
+    </define>
+    
+    <define name="z3986.Linking.contrib.attrib" combine="interleave">
+      <empty/>
+    </define>
+    
+  </div>
+    
+  <div>
+    <x:h2>Linking Attributes Collection - default content model contribution</x:h2>
+    
+    <define name="z3986.Text.attrib" combine="interleave">
+      <ref name="z3986.Linking.attrib"/>
+    </define>
+        
+  </div>
+  
+    
+</grammar>  

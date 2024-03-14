@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml"
+  xmlns:xsdp="http://www.daisy.org/ns/rng-preprocess/xsd">
+
+  <x:h1>Z39.86 index element module</x:h1>
+
+  <div>
+    <x:h2>The index element</x:h2>
+    <x:div id="z3986.index">
+      <x:p class="description">Represents an index, typically located in the backmatter of printed
+        works. </x:p>
+      <!-- TODO is a specialization of section -->
+    </x:div>
+
+    <define name="z3986.index">
+      <element name="index">
+        <ref name="z3986.index.attlist"/>
+        <ref name="z3986.index.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.index.attlist">
+      <ref name="z3986.Structural.attrib"/>
+    </define>
+
+    <define name="z3986.index.content">
+      <ref name="z3986.index.model"/>
+    </define>
+
+    <define name="z3986.index.model" xsdp:replace="z3986.index.model.xsd">
+      <interleave>
+        <optional>
+          <ref name="z3986.h"/>
+        </optional>
+        <zeroOrMore>
+          <ref name="z3986.index.extra.class"/>
+        </zeroOrMore>
+      </interleave>
+      <zeroOrMore>
+        <choice>
+          <ref name="z3986.index.entry"/>
+          <ref name="z3986.index.extra.class"/>
+        </choice>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="z3986.index.section"/>
+      </zeroOrMore>
+    </define>
+
+    <define name="z3986.index.model.xsd">      
+      <optional>
+        <ref name="z3986.h"/>
+      </optional>
+      <zeroOrMore>
+        <choice>
+          <ref name="z3986.index.entry"/>
+          <ref name="z3986.index.extra.class"/>
+        </choice>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="z3986.index.section"/>
+      </zeroOrMore>
+    </define>
+
+    <define name="z3986.index.extra.class" combine="choice">
+      <choice>
+        <ref name="z3986.hd"/>
+        <ref name="z3986.p"/>
+        <ref name="z3986.block.flow"/>
+      </choice>
+    </define>
+  </div>
+
+  <div>
+    <x:h2>The index section element</x:h2>
+    <define name="z3986.index.section">
+      <element name="section">
+        <ref name="z3986.index.attlist"/>
+        <ref name="z3986.index.model"/>
+      </element>
+    </define>
+  </div>
+
+  <div>
+    <x:h2>The index entry element</x:h2>
+
+    <define name="z3986.index.entry">
+      <element name="entry">
+        <ref name="z3986.index.entry.attlist"/>
+        <ref name="z3986.index.entry.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.index.entry.attlist">
+      <ref name="z3986.Text.attrib"/>
+    </define>
+
+    <define name="z3986.index.entry.content">
+      <!-- TODO note that entry is now not required to contain ref -->
+      <ref name="z3986.Flow.model"/>
+      <zeroOrMore>
+        <ref name="z3986.index.entry"/>
+      </zeroOrMore>
+    </define>
+  </div>
+
+  <div>
+    <x:h2>The index element - default content model contribution</x:h2>
+
+    <define name="z3986.backmatter.content.class" combine="choice">
+      <ref name="z3986.index"/>
+    </define>
+
+  </div>
+
+</grammar>

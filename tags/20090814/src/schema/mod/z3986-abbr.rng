@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 abbr element module</x:h1>
+    
+  <div>
+    <x:h2>The abbr element</x:h2>
+    <x:div id="z3986.abbr">
+      <x:p class="description">
+        The <x:code>abbr</x:code> element represents an abbreviation. 
+        <x:br/>
+        The expansion of the abbreviation can either be provided locally through the <x:code>expansion</x:code>
+        attribute, or by using the <x:code>full</x:code> attribute to point to an expansion located
+        elsewhere.
+        <x:br/>
+        The type of abbreviation can be provided using the <x:code>type</x:code> attribute.        
+      </x:p>
+  
+    </x:div>
+         
+    <define name="z3986.abbr">
+      <element name="abbr">        
+        <ref name="z3986.abbr.attlist"/>
+        <ref name="z3986.abbr.content"/>  
+      </element>    
+    </define>
+
+    <define name="z3986.abbr.attlist">
+      <ref name="z3986.Text.attrib"/>
+      <optional>
+        <choice>
+  		  <ref name="z3986.abbr.expansion.attrib"/>
+  		  <ref name="z3986.abbr.full.attrib"/>
+  		</choice>  
+  	  </optional>	
+  	  <optional>
+  		<ref name="z3986.abbr.type.attrib"/>
+  	  </optional>	
+    </define>
+    
+    <define name="z3986.abbr.content">
+      <ref name="z3986.Text.base.model"/>   
+    </define>  
+
+    <define name="z3986.abbr.expansion.attrib">      
+  	  <attribute name="expansion"/>
+    </define>
+  
+    <define name="z3986.abbr.type.attrib">          
+  	  <attribute name="type">  		
+  		<choice>
+	  		<value>acronym</value>
+	  		<value>initialism</value>
+  		</choice>	  		
+  	  </attribute>
+    </define>
+
+    <define name="z3986.abbr.full.attrib">
+      <attribute name="full">
+        <ref name="URI.datatype"/>
+      </attribute>
+    </define>    
+    
+    
+  </div>  
+  
+  <div>
+    <x:h2>The abbr element - default content model contribution</x:h2>
+    
+    <define name="z3986.Text.class" combine="choice">
+      <ref name="z3986.abbr"/>
+    </define>
+  </div>
+    
+ </grammar> 

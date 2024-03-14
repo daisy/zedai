@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+  ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="datatypes">The datatypes module</dcterms:title>
+      <dcterms:description>This module defines a set of core datatypes for reference globally.</dcterms:description>
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}"/>
+      <dcterms:creator>Markus Gylling</dcterms:creator>
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:isRequiredBy rdf:resource="http://www.daisy.org/z3986/2011/auth/"/>
+    </rdf:Description>
+  </rdf:RDF>
+
+  <div xml:id="datatypes-xml">
+    <a:documentation>Datatypes defined in XML 1.0</a:documentation>
+
+    <define name="ID.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="ID">The ID datatype</dcterms:title>
+          <dcterms:description>An ID TokenizedType, as defined in section 3.3.1 of [[#refXML]].</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>
+      <data type="ID" />
+    </define>
+
+    <define name="IDREF.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="IDREF">The IDREF datatype</dcterms:title>
+          <dcterms:description>An IDREF TokenizedType, as defined in section 3.3.1 of [[#refXML]].</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>
+      <data type="IDREF"/>
+    </define>
+
+    <define name="IDREFS.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="IDREFS">The IDREFS datatype</dcterms:title>
+          <dcterms:description>A space-separated list of [[#IDREF.datatype]] TokenizedTypes.</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>      
+      <data type="IDREFS"/>
+    </define>
+    
+    <define name="NMTOKEN.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="NMTOKEN">The NMTOKEN datatype</dcterms:title>
+          <dcterms:description>An NMTOKEN TokenizedType, as defined in section 3.3.1 of [[#refXML]].</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>
+      <data type="NMTOKEN"/>
+    </define>
+
+    <define name="NMTOKENS.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="NMTOKENS">The NMTOKENS datatype</dcterms:title>
+          <dcterms:description>A space-separated list of [[#NMTOKEN.datatype]] TokenizedTypes.</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>
+      <data type="NMTOKENS"/>
+    </define>
+    
+    <define name="Character.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="Character">The {Character} datatype</dcterms:title>
+          <dcterms:description>A single character, as per section 2.2 of [[#refXML]].</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>            
+      <data type="string">
+        <param name="length">1</param>
+      </data>
+    </define>
+    
+    <define name="Characters.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="Characters">The {Characters} datatype</dcterms:title>
+          <dcterms:description>A range (0..n) of characters, as per section 2.2 of [[#refXML]].</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>
+      <text/>
+    </define>
+    
+    <define name="LanguageIdentifier.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="LanguageIdentifier">The {LanguageIdentifier} datatype</dcterms:title>
+          <dcterms:description>A language identifier, as per [[http://www.w3.org/TR/REC-xml/#sec-lang-tag Language Identification]] in [[#refXML]].</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>
+      <choice>
+        <data type="language"/>
+        <data type="string">
+          <param name="length">0</param>
+        </data>
+      </choice>
+    </define>
+    
+    <!-- 
+    <define name="CDATA.datatype">      
+      <text/>
+    </define>
+    
+    <define name="PCDATA.datatype">
+      <text/>
+    </define> 
+    
+    <define name="NAME.datatype">
+      <data type="Name"/>
+    </define> 
+    -->
+  </div>
+
+  <div xml:id="datatypes-xsd">
+    <a:documentation>Datatypes defined in or derived from XSD datatypes</a:documentation>
+    
+    <define name="NonEmptyString.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="NonEmptyString">The {NonEmptyString} datatype</dcterms:title>
+          <dcterms:description>
+            Specifies a value that must contain at least one non-whitespace character
+            after whitespace normalization rules have been applied to the attribute value,
+            as expressed through the [[#refXSDDatatypes XSD]] {normalizedString} datatype.
+          </dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>
+      <data type="normalizedString">
+        <param name="pattern">.+</param>
+      </data>
+    </define>
+    
+    <define name="Time.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="Time">The {Time} datatype</dcterms:title>
+          <dcterms:description>A date and/or time statement, expressed using any of the [[#refXSDDatatypes XSD]] 
+            {gYear}, {gYearMonth}, {gMonthDay}, {gDay}, {gMonth}, {date}, {time} or {dateTime} datatypes, or the
+            Z39.86-defined {[[#TimeNoSeconds.datatype]]} datatype.</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>            
+      <choice>
+        <data type="gYear"/>
+        <data type="gYearMonth"/>
+        <data type="gMonthDay"/>
+        <data type="gDay"/>
+        <data type="gMonth"/>
+        <data type="date"/>
+        <data type="time"/>
+        <data type="dateTime"/>
+        <ref name="TimeNoSeconds.datatype"/>
+      </choice>
+    </define>
+    
+    <define name="TimeNoSeconds.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="TimeNoSeconds">The TimeNoSeconds datatype</dcterms:title>
+          <dcterms:description>A derivation of the [[#refXSDDatatypes XSD]] {time} datatype that only includes hour 
+            and minute specifications. The lexical expression is {hh:mm}.</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>      
+      <data type="string">
+        <param name="pattern">\d\d:\d\d</param>
+      </data>        
+    </define>  
+    
+    <define name="Datetime.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="dateTime">The {dateTime} datatype</dcterms:title>
+          <dcterms:description>Date and time information, as defined by the {dateTime} type in [[#refXSDDatatypes]].</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>                  
+      <data type="dateTime"/>      
+    </define>
+    
+    <define name="NonNegativeInteger.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="nonNegativeInteger">The {NonNegativeInteger} datatype</dcterms:title>
+          <dcterms:description>A non-negative integer.</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>      
+      <data type="nonNegativeInteger">
+        <param name="pattern">[0-9]+</param>
+      </data>
+    </define>
+    
+    <define name="PositiveInteger.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="positiveInteger">The {PositiveInteger} datatype</dcterms:title>
+          <dcterms:description>A positive integer.</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>
+      <data type="positiveInteger">
+        <param name="pattern">[0-9]+</param>
+      </data>
+    </define>
+    
+    <define name="Integer.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="integer">The {Integer} datatype</dcterms:title>
+          <dcterms:description>An integer.</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>
+      <data type="integer"/>
+    </define>
+    
+    <define name="URI.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="URI">The anyURI datatype</dcterms:title>
+          <dcterms:description>A Uniform Resource Identifier Reference, as defined by the {anyURI} type in [[#refXSDDatatypes]].</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource=""/>
+        </rdf:Description>
+      </rdf:RDF>
+      <data type="anyURI"/>
+    </define>
+    
+    <define name="URIs.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="URIs">The URIs datatype</dcterms:title>
+          <dcterms:description>A space-separated list of {[[#URI.datatype]]}s.</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource=""/>
+        </rdf:Description>
+      </rdf:RDF>
+      <list>
+        <oneOrMore>
+          <ref name="URI.datatype"/>
+        </oneOrMore>
+      </list>
+    </define>
+        
+  </div>
+  
+  <div xml:id="datatypes-xmlns">
+    
+    <define name="QName.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="QName">The {QName} datatype</dcterms:title>
+          <dcterms:description>A namespace qualified name as per [[#refXMLNamespaces]].</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF> 
+      <data type="QName"/>
+    </define>
+    
+    <define name="QNames.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="QNames">The {QNames} datatype</dcterms:title>
+          <dcterms:description>One or more whitespace separated {[[#QName.datatype]]}s.</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>
+      <list>
+        <oneOrMore>
+          <data type="QName"/>
+        </oneOrMore>
+      </list>
+    </define>
+    
+    <define name="prefixedQName.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="prefixedQName">The {prefixedQName} datatype</dcterms:title>
+          <dcterms:description>A prefixed {[[#QName.datatype]]}.</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>
+      <data type="QName">
+        <param name="pattern">[\i-[:]][\c-[:]]*:[\i-[:]][\c-[:]]*</param>
+      </data>
+    </define>
+  </div>
+  
+  <div xml:id="datatypes-contentType">
+    <a:documentation>ContentType and MediaType Datatypes</a:documentation>
+
+    <define name="MediaType.datatype">   
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="MediaType">The {MediaType} datatype</dcterms:title>
+          <dcterms:description>Media type, as per [[#refRFC2046]].</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>      
+      <text/> <!-- TODO regex for rfc2046 -->
+    </define>
+                    
+  </div>
+
+  <div xml:id="datatypes-css">
+    <a:documentation>CSS Datatypes</a:documentation>
+    
+    <define name="CSS.TimeValue.datatype">   
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="TimeValue">The {CSS.TimeValue} datatype</dcterms:title>
+          <dcterms:description>A {time value} as defined in CSS 2.1 [[http://www.w3.org/TR/CSS2/aural.html#times Times]], e.g. {250ms}, {3s}.</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>      
+      <text/> <!-- TODO regex : number followed by 'ms' or 's', if not '0'-->
+    </define>
+    
+  </div>
+
+  <div xml:id="datatypes-curie">
+    <a:documentation>CURIE Datatypes</a:documentation>
+    
+    <define name="CURIE.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="CURIE">The {CURIE} datatype</dcterms:title>
+          <dcterms:description>A single CURIE, as defined in [[#refRDFa]].</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>      
+      <data type="string">
+        <param name="pattern">(([\i-[:]][\c-[:]]*)?:)?.+</param>
+        <param name="minLength">1</param>
+      </data>
+    </define>
+
+    <define name="CURIEs.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="CURIEs">The {CURIEs} datatype</dcterms:title>
+          <dcterms:description>A whitespace separated list of [[#CURIE.datatype]]s.</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>      
+      <list>
+        <oneOrMore>
+          <ref name="CURIE.datatype"/>
+        </oneOrMore>
+      </list>
+    </define>
+
+    <define name="SafeCURIE.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="SafeCURIE">The {SafeCURIE} datatype</dcterms:title>
+          <dcterms:description>A single {safe CURIE}, as defined in [[#refRDFa]].</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>      
+      <data type="string">
+        <param name="pattern">\[(([\i-[:]][\c-[:]]*)?:)?.+\]</param>
+        <param name="minLength">3</param>
+      </data>
+    </define>
+
+    <define name="SafeCURIEs.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="SafeCURIEs">The {SafeCURIEs} datatype</dcterms:title>
+          <dcterms:description>A whitespace separated list of [[#SafeCURIE.datatype]]s.</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>      
+      <list>
+        <oneOrMore>
+          <ref name="SafeCURIE.datatype"/>
+        </oneOrMore>
+      </list>
+    </define>
+
+    <define name="URIorSafeCURIE.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="URIorSafeCURIE">The {URIorSafeCURIE} datatype</dcterms:title>
+          <dcterms:description>A [[#URI.datatype]] or a [[#SafeCURIE.datatype]].</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>      
+      <choice>
+        <ref name="URI.datatype"/>
+        <ref name="CURIE.datatype"/>
+      </choice>
+    </define>
+
+    <define name="URIorSafeCURIEs.datatype">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="URIorSafeCURIEs">The {URIorSafeCURIEs} datatype</dcterms:title>
+          <dcterms:description>A whitespace separated list of [[#URIorSafeCURIE.datatype]]s.</dcterms:description>                                    
+          <dcterms:isRequiredBy rdf:resource="."/>
+        </rdf:Description>
+      </rdf:RDF>        
+      <list>
+        <oneOrMore>
+          <ref name="URIorSafeCURIE.datatype"/>
+        </oneOrMore>
+      </list>
+    </define>
+  </div>
+
+
+  <!-- <define name="Number.datatype">
+    <a:documentation>One or more digits (NUMBER).</a:documentation>
+    <data type="nonNegativeInteger">
+    <param name="pattern">[0-9]+</param>
+    </data>
+    </define> 
+    
+    <define name="spanNumber.datatype">
+    <a:documentation>span: this attribute value must be an integer > 0; the implicit value is 1.</a:documentation>
+    <data type="positiveInteger">
+    <param name="pattern">[0-9]+</param>
+    </data>
+    </define> 
+    
+    <define name="Text.datatype">
+    <a:documentation>Arbitrary textual data, including whitespace only and the empty string.</a:documentation>
+    <text/>
+    </define> 
+    
+    <define name="Coordinates.datatype">
+    <a:documentation>Comma separated list of Lengths used in defining areas.</a:documentation>
+    <data type="string">
+    <param name="pattern">(\d+|\d+(\.\d+)?%)(,\s*(\d+|\d+(\.\d+)?%))*</param>
+    </data>
+    </define>
+    
+    <define name="HrefTarget.datatype">
+    <a:documentation>Name used as destination for results of certain actions.</a:documentation>
+    <ref name="NMTOKEN.datatype"/>
+    </define>
+  
+    <define name="Length.datatype">
+    <a:documentation>The value may be either in pixels or a percentage of the available horizontal or vertical
+    space. Thus, the value "50%" means half of the available space.</a:documentation>
+    <data type="string">
+    <param name="pattern">(\d+|\d+(\.\d+)?%)</param>
+    </data>
+    </define>
+    
+    <define name="LocationPath.datatype">
+    <a:documentation>A location path as defined in [XPATH].</a:documentation>
+    <text/>
+    </define>
+    
+    <define name="MediaDesc.datatype">
+    <a:documentation>A comma-separated list of media descriptors as described by [CSS]. The default is
+    all.</a:documentation>
+    <data type="string">
+    <param name="pattern">[^,]+(,\s*[^,]+)*</param>
+    </data>
+    </define>
+    
+    <define name="Shape.datatype">
+    <a:documentation>The shape of a region.</a:documentation>
+    <choice>
+    <value>default</value>
+    <value>rect</value>
+    <value>circle</value>
+    <value>poly</value>
+    </choice>
+    </define>
+  
+  <define name="Boolean.datatype">
+  <choice>
+  TODO get this from WXSDT 
+  <value>true</value>
+  <value>false</value>
+  </choice>
+  </define> 
+  
+  <define name="Charset.datatype">
+  <a:documentation>A character encoding, as per [RFC2045]</a:documentation>
+  <text/>
+  </define>
+  
+  <define name="Encodings.datatype">
+  <a:documentation>A comma-separated list of 'charset's with optional q parameters, as defined in section
+  14.2 of [RFC2616] as the field value of the Accept-Charset request header.</a:documentation>
+  <text/>
+  </define>
+  
+  <define name="ContentTypes.datatype">
+  <a:documentation>A list of media ranges with optional accept parameters, as defined in section 14.1 of
+  [RFC2616] as the field value of the accept request header.</a:documentation>
+  <text/>
+  </define>
+  
+  <define name="LanguageCodes.datatype">
+  <a:documentation>A comma-separated list of language ranges.</a:documentation>
+  <text/>
+  </define>
+  
+  <define name="ContentType.datatype">      
+  <a:documentation>Media type, as per [RFC2045]</a:documentation>
+  <text/>
+  </define>
+  -->
+</grammar>

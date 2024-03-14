@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 meta element module</x:h1>
+
+  <div>
+    <x:h2>The meta element</x:h2>
+    <x:div id="z3986.meta">
+      <x:p class="description">      
+        The meta element is used to describe properties of a document or a 
+        document fragment.
+      </x:p>
+    </x:div>
+    
+    <define name="z3986.meta">         
+      <element name="meta">
+        <ref name="z3986.meta.attlist"/>
+        <ref name="z3986.meta.content"/>
+      </element>
+    </define>  
+    
+    <define name="z3986.meta.attlist">  
+        <ref name="z3986.meta.rdfa.attrib" />      
+        <optional>
+          <ref name="xml.id.attrib"/>
+        </optional>
+        <ref name="z3986.I18n.attrib"/>                     
+    </define>
+    
+   <define name="z3986.meta.content">
+     <choice>
+       <empty/>
+       <oneOrMore>
+         <ref name="z3986.meta" />
+       </oneOrMore>
+       <ref name="z3986.Text.model" />
+     </choice>
+   </define>
+    
+  </div>
+
+  <define name="z3986.meta.rdfa.attrib" combine="interleave">
+    <!--  override the base Rdfa.attrib define in order to allow
+    value contributions -->
+      <optional>
+        <ref name="rdfa.about.attrib"/>
+      </optional>
+      <optional>
+        <ref name="rdfa.content.attrib"/>
+      </optional>
+      <optional>
+        <ref name="rdfa.datatype.attrib"/>
+      </optional>
+      <optional>
+        <ref name="rdfa.typeof.attrib"/>
+      </optional>
+      <optional>
+        <ref name="z3986.meta.rdfa.property.attrib"/>
+      </optional>
+      <optional>
+        <ref name="rdfa.rel.attrib"/>
+      </optional>
+      <optional>
+        <ref name="rdfa.resource.attrib"/>
+      </optional>
+      <optional>
+        <ref name="rdfa.rev.attrib"/>
+      </optional> 
+  </define>
+   
+  <define name="z3986.meta.rdfa.property.attrib">      
+    <attribute name="property">
+      <ref name="z3986.meta.rdfa.property.attrib.content"/>
+    </attribute>      
+  </define>    
+      
+  <define name="z3986.meta.rdfa.property.attrib.content" combine="choice">
+    <ref name="CURIEs.datatype"/>
+  </define>
+
+  <div>
+    <x:h2>The meta element - default content model contribution</x:h2>
+                      
+    <define name="z3986.head.class" combine="choice">
+      <ref name="z3986.meta"/>
+    </define>
+  
+  </div>  
+ 
+</grammar>

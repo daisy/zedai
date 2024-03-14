@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 verse module</x:h1>
+    
+  <div>
+    <x:h2>The verse element</x:h2>
+    <x:div id="z3986.verse">
+      <x:p class="description">
+        Represents a poem, song, hymn etc, with or without metrical structure. 
+      </x:p>
+    </x:div>
+         
+    <define name="z3986.verse">
+      <element name="verse">        
+        <ref name="z3986.verse.attlist"/>
+        <ref name="z3986.verse.content"/>  
+      </element>    
+    </define>
+
+    <define name="z3986.verse.attlist">
+      <ref name="z3986.section.attlist"/>
+    </define>
+    
+    <define name="z3986.verse.content">      
+      <ref name="z3986.verse.content.base"/>
+    </define>  
+    
+    <define name="z3986.verse.content.base">            
+      <interleave>
+        <optional>
+          <ref name="z3986.h"/>
+        </optional>
+        <zeroOrMore>
+          <choice>
+            <ref name="z3986.verse.content.class"/>
+          </choice>
+        </zeroOrMore>
+      </interleave>   
+      <zeroOrMore>
+        <ref name="z3986.verse.section"/>
+      </zeroOrMore>
+    </define>
+    
+    <define name="z3986.verse.content.class" combine="choice">
+      <choice>
+        <ref name="z3986.linegroup"/>
+        <ref name="z3986.separator"/>
+        <ref name="z3986.line"/>
+        <ref name="z3986.hd"/>        
+      </choice>
+    </define>
+
+  </div>    
+  
+  <div>
+    <x:h2>The verse section element</x:h2>
+    <x:div id="z3986.verse.section">
+      <x:p class="description">
+        
+      </x:p>
+    </x:div>
+      
+    <define name="z3986.verse.section">
+      <element name="section">
+        <ref name="z3986.verse.section.attlist"/>
+        <ref name="z3986.verse.section.content"/>  
+      </element>
+    </define>
+    
+    <define name="z3986.verse.section.attlist">
+      <ref name="z3986.section.attlist"/>
+    </define>
+    
+    <define name="z3986.verse.section.content">
+      <ref name="z3986.verse.content.base"/>
+    </define>  
+    
+  </div>  
+
+  <div>
+    <x:h2>The verse element - default content model contribution</x:h2>    
+    <define name="z3986.Structural.class" combine="choice">
+      <ref name="z3986.verse"/>    
+    </define>    
+  </div>
+
+</grammar>

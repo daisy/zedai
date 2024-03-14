@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" ns="http://www.daisy.org/ns/z3986/authoring/"
+	xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+	xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+	<rdf:RDF>
+		<rdf:Description>
+			<dcterms:title z:short="note">The note module</dcterms:title>
+			<dcterms:description>This module defines the {[[#z3986.note]]} and {[[#z3986.noteref]]}
+				elements for the referencing and inclusion of footnotes and endnotes.</dcterms:description>
+			<dcterms:publisher>DAISY Consortium</dcterms:publisher>
+			<dcterms:license rdf:resource="{LICENSE_TODO}"/>
+			<dcterms:creator>Markus Gylling</dcterms:creator>
+			<dcterms:issued>2009-12-21</dcterms:issued>
+			<dcterms:requires rdf:resource="z3986-global-classes.rng"/>
+			<dcterms:requires rdf:resource="z3986-linking.rng"/>
+		</rdf:Description>
+	</rdf:RDF>
+
+	<div>
+		<define name="z3986.note">
+			<element name="note">
+				<rdf:RDF>
+					<rdf:Description>
+						<dcterms:title z:short="note">The {note} element</dcterms:title>
+						<dcterms:description>The {note} element represents a single footnote or a endnote.</dcterms:description>
+						<z:info>
+							Notes provide or reference sources of additional information or acknowledge the source of a 
+							quotation or idea. Each {note} is typically referenced by a {[[#z3986.noteref]]} or prefixed 
+							by a page location where explicit references have been omitted from the text. 
+						</z:info>
+						<z:info>
+							Where a note is prefixed by a number or symbol, that identifier should be included
+							using the {rend:prefix} attribute.
+						</z:info>
+						<z:info>Notes in printed matter are generally distinguishable from annotations by their location either
+							at the bottom of print pages, at the end of sections or in the back matter of a document.
+							Annotations typically occur in the margin near the text being annotated.
+						</z:info>
+						<dcterms:isRequiredBy rdf:resource="."/>
+						<z:context>{[[#z3986.Block.class]]}</z:context>
+						<z:content>{ z3986.rend.note.prefix.attrib?, ((z3986.Block.class)+ | (text | z3986.Text.class | z3986.Phrase.class)+) }</z:content>
+						<z:attlist>{[[#z3986.Block.attrib]]}</z:attlist>
+					</rdf:Description>
+				</rdf:RDF>
+				<ref name="z3986.note.attlist"/>
+				<ref name="z3986.note.content"/>
+				<sch:rule context="default:note">
+					<sch:assert test="some $noteref in //default:noteref satisfies current()/@xml:id eq $noteref/@for"
+						>The {note} element must be referenced from a {noteref}.</sch:assert>
+					<sch:assert test="not(descendant::default:note)"
+						>The {note} element must not contain {note} element descendants.</sch:assert>
+					<sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0"
+						>The {note} element must neither be empty nor contain only whitespace.</sch:assert>
+				</sch:rule>
+			</element>
+		</define>
+
+		<define name="z3986.note.content">
+			<ref name="z3986.Flow.choice.model"/>
+		</define>
+
+		<define name="z3986.note.attlist">
+			<optional>
+				<ref name="z3986.rend.note.prefix.attrib"/>
+			</optional>
+			<ref name="z3986.Block.attrib"/>
+		</define>
+	</div>
+
+	<div>
+
+		<define name="z3986.noteref">
+			<element name="noteref">
+				<rdf:RDF>
+					<rdf:Description>
+						<dcterms:title z:short="noteref">The {noteref} element</dcterms:title>
+						<dcterms:description>The {noteref} element represents a textual reference to a {[[#z3986.note]]}.</dcterms:description>
+						<z:info doc-only="true">Note references typically appear as superscripted numbers or symbols within the narrative flow.</z:info>
+						<z:info>The {[[#z3986.ref.attrib]]} attribute is used to establish the link between the note reference and its associated {note}.</z:info>
+						<dcterms:isRequiredBy rdf:resource="."/>
+						<z:context>{[[#z3986.Phrase.class]]}</z:context>
+						<z:content>{(text | z3986.Text.class)+}</z:content>
+						<z:attlist>{[[#z3986.Phrase.attrib]], [[#z3986.ref.attrib]]}</z:attlist>
+					</rdf:Description>
+				</rdf:RDF>
+				<ref name="z3986.noteref.attlist"/>
+				<ref name="z3986.noteref.content"/>
+			</element>
+			<sch:rule context="default:noteref">
+				<sch:assert
+					test="some $note in //default:note satisfies current()/@for eq $note/@xml:id"
+					>The {noteref} attribute must resolve to a {note} element.</sch:assert>
+				<sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0"
+					>The {noteref} element must neither be empty nor contain only whitespace.</sch:assert>
+			</sch:rule>
+		</define>
+
+		<define name="z3986.noteref.attlist">
+			<ref name="z3986.Phrase.attrib"/>
+			<ref name="z3986.ref.attrib"/>
+		</define>
+
+		<define name="z3986.noteref.content">
+			<ref name="z3986.Text.model"/>
+		</define>
+
+	</div>
+
+	<div>
+		<a:documentation>note, noteref - default content model contribution</a:documentation>
+		<define name="z3986.Phrase.core.class" combine="choice">
+			<ref name="z3986.noteref"/>
+		</define>
+		
+		<define name="z3986.Block.core.class" combine="choice">
+			<ref name="z3986.note"/>
+		</define>
+	</div>
+	
+
+</grammar>

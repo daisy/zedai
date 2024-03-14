@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="ai-examples.rng" type="xml"?>
+<snippets xmlns="http://www.daisy.org/ns/z3986/authoring/" xmlns:xi="http://www.w3.org/2001/XInclude">
+	    
+	    
+	    
+	    
+  <snippet about="ai-head-profile-and-feature-decl" dest="spec">
+…
+<head xmlns:decl="http://www.daisy.org/z3986/2011/vocab/decl/#">
+  <meta rel="decl:profile"
+    resource="http://example.org/z3986/2011/auth/profiles/sciencejournal/1.0/">
+    <meta rel="decl:feature"
+      resource="http://example.org/z3986/2011/auth/features/physics/3.0/" />
+    <meta rel="decl:feature"
+      resource="http://example.org/z3986/2011/auth/features/chemistry/1.1/" />
+  </meta>
+</head>
+…
+  </snippet>
+    
+    
+    
+    
+  <snippet about="ai-head-metadata" dest="spec">  
+…      
+<head xmlns:decl="http://www.daisy.org/z3986/2011/vocab/decl/#"
+    xmlns:dcterms="http://purl.org/dc/terms/">
+    …
+    <meta property="dcterms:identifier" content="daisy-z2011-exemplar-01" />
+    <meta property="dcterms:publisher" content="DAISY Consortium" />
+    <meta property="dcterms:date" content="2011-07-27T13:50:05-05:00" />
+    
+    <meta rel="decl:meta-record" resource="daisy-z2011-exemplar-01-mods.xml">
+        <meta property="decl:meta-record-type" 
+            about="daisy-z2011-exemplar-01-mods.xml" content="decl:mods" />
+        <meta property="decl:meta-record-version" 
+            about="daisy-z2011-exemplar-01-mods.xml" content="3.3" />
+    </meta>
+    
+    <meta rel="decl:meta-record" resource="daisy-z2011-exemplar-01-onix.xml">
+        <meta property="decl:meta-record-type"
+            about="daisy-z2011-exemplar-01-onix.xml" content="decl:onix-books" />
+    </meta>
+  
+    <meta rel="decl:meta-record" 
+       resource="http://www.example.com/meta/generator?rec=exemplar-01&amp;format=marc21">
+        <meta property="decl:meta-record-type"
+            about="http://www.example.com/meta/generator?rec=exemplar-01&amp;format=marc21"
+            content="decl:marc21-xml" />
+    </meta>
+    …
+</head>
+…            
+    </snippet>  
+   
+   
+   
+   
+    <snippet about="ai-metadata-inline" dest="spec">   
+<section xmlns:dcterms="http://purl.org/dc/terms/">
+  <h property="dcterms:title">
+    <hpart role="fulltitle">On the Origin of Species by Means of Natural Selection</hpart> or
+    <hpart role="subtitle">the Preservation of Favoured races in the struggle for life</hpart>.
+  </h>
+   …
+</section>
+    </snippet>
+    
+    
+    
+</snippets>

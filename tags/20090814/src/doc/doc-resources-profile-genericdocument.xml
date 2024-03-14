@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="docResources.rng" type="xml"?>
+<docResources xmlns="http://www.daisy.org/ns/z3986/2008/docResources/">
+    
+    <include subDrURI="doc-resources-common.xml"/>
+    <include subDrURI="doc-resources-feature-ssml.xml"/>
+    <include subDrURI="doc-resources-feature-mathml.xml"/>
+    <include subDrURI="doc-resources-feature-ruby.xml"/>
+    <include subDrURI="doc-resources-feature-select.xml"/>
+    <include subDrURI="doc-resources-feature-forms.xml"/>
+    
+</docResources>

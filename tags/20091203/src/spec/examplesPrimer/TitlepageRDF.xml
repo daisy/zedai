@@ -1,0 +1,9 @@
+<div id="frontmatter-properties" about="#frontmatter-properties" typeof="rdf:Bag">
+    <h2>Frontmatter</h2>
+    <dl about="#frontmatter-properties" rev="rdfs:member">
+        <dt id="titlepage" about="#titlepage" typeof="rdf:Property">titlepage</dt>
+        <dd about="#titlepage" property="rdfs:comment" datatype="xsd:string">
+            Analogous to a print book's title page.
+        </dd>
+    </dl>
+</div>

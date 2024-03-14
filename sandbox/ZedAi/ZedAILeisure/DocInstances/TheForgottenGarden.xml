@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="http://www.w3.org/MarkUp/style/xhtml2.css"?>
+<?oxygen RNGSchema="../RelaxNG/daisy-leisure-profile-driver.rng" type="xml"?>
+<!-- 
+    The sole purpose of this file is to demonstrate one possible markup of front matter
+    in a novel, so most of the book is NOT represented in this file.    
+-->
+<html xmlns="http://www.w3.org/2002/06/xhtml2/" xmlns:d="http://www.daisy.org/ns/z3986/2008/"
+    xml:lang="en">
+    <head>
+        <title>A Spot of Bother</title>
+        <meta property="title">An XHTML 2.0 test document</meta>
+        <meta property="reference">ZedAI-20081001</meta>
+    </head>
+    <d:book>
+        <d:frontmatter>
+            <d:bookcover>
+                <d:frontcover>
+                    <p>Winner of Richard &amp; Judy's Summer Read 2007</p>
+                    <d:author>Kate Morton</d:author>
+                    <p>Author of The House at Riverton</p>
+                    <title>The Forgotten Garden</title>
+                    <object src="frontcover.png">The frontcover picture shows [...]</object>
+                    <d:inside>
+                        <!-- For stuff inside the front cover -->
+                        <object src="author.png">
+                            <caption>Author's photograph by Russel Shakespeare</caption> The photo,
+                            in colors, is of a woman sitting [...] </object>
+                    </d:inside>
+                </d:frontcover>
+                <d:spine>
+                    <title>The Forgotten Garden</title>
+                    <d:author>Kate Morton</d:author>
+                    <p>PAN</p>
+                </d:spine>
+                <d:backcover>
+                    <p>Before her eyes the garden [...] entry once more ...</p>
+                    <p><l><strong>1913</strong></l>
+                        On the eve of the First World War [...] vanished without trace.
+                    </p>
+                    <p><l><strong>1975</strong></l>
+                        Now an old lade, Nell travels to [...] after all these years?
+                    </p>
+                    <p><l><strong>2005</strong></l>
+                        On Nell's death [...] all those decades before.
+                    </p>
+                    <!-- Some more stuff on this page that it didn't seem natural to mark up:
+                        Price
+                        Web-adresses for the printing house
+                        ISBN (also as bar code)
+                        Copyright information for the cover illustration
+                    -->
+                    <d:inside>
+                        <blockquote cite="Guardian">Amusing, brisk and charming</blockquote>
+                        <blockquote cite="Sunday herald">Haddon floats [...] offbeat
+                            wit</blockquote>
+                        <!-- And several other quotes from magazines and newspapers -->
+                    </d:inside>
+                </d:backcover>
+            </d:bookcover>
+            <section>
+                <h>The Forgotten Garden</h>
+                <p>Kate Morton grew up in the mountains [...] Her first novel, <em>The House at
+                        Riverton</em> won the 2007 Richard &amp; Judy's Summer Read </p>
+                <p>You can find more information about Kate and her books at <span
+                        href="http://www.katemorton.com">www.katemorton.com</span>
+                </p>
+            </section>
+            <section>
+                <h>Also by Kate Morton</h>
+                <p>The House at Riverton</p>
+            </section>
+            <d:titlepage>
+                <title>The Forgotten Garden</title>
+                <d:author>Kate Morton</d:author>
+                <d:publisher>Pan Books</d:publisher>
+            </d:titlepage>
+            <d:copyrightinformation>
+                <p>First published 2008 by Allen &amp; Unwin, Australia</p>
+                <!-- very much the same kind of information as in
+                    "A Spot of Bother" (ASpotOfBother.xml), so take a look at that one, instead
+                -->
+            </d:copyrightinformation>
+            <d:dedication>
+                <p>For Oliver and Louis</p>
+                <p>More precious than all the spun gold in Fairyland</p>
+            </d:dedication>
+            <d:prologue>
+                <!-- I'm not sure this is actually a prologue.
+                    The text marked up below, is a quote from a story written
+                    by one of the characters in the novel.
+                -->
+                <blockquote cite="from &apos;The Fairy Plait&apos; by Eliza Makepeace">
+                    <p>
+                        <quote>But why must I bring back three strands of the Fairy Queen's
+                            hair?</quote> spoke the young prince to the crone. <quote>Why no other
+                            number, why not two or four?</quote>
+                    </p>
+                    <!-- And a few more paragraphs from the same story-->
+                    <p>
+                        <quote>Thus must I have three strands, to weave my magic plait.</quote>
+                    </p>
+                </blockquote>
+            </d:prologue>
+        </d:frontmatter>
+        <d:bodymatter>
+            <section>
+                <d:pagebreak value="1"/>
+                <h>Part One</h>
+                <d:pagebreak value="2"/>
+                <!-- This is a completely empty page
+                    I think it would be a good idea to present that information on the pagebreak element, eg
+                    <d:pagebreak value="2" type="blankPage" />
+                    other values for @type could be
+                    "onlyPagenumber" (for blank pages, with a page number)
+                    "noPagenumber"    (for pages with content, but no pagination)
+                    "notRelevant"    (for pages with content, but where the content is judges as irrelevant and 
+                        skipped in the markup) 
+                -->
+                <section>
+                    <d:pagebreak value="3"/>
+                    <h>1 London, 1913</h>
+                    <p>It was dark where she was crouched but the little girl [...]</p>
+                    <!-- many, many pages and many, many sections -->
+                    <p>The end of the maze.</p>
+                    <p>
+                        <quote>Where am I?</quote>
+                    </p>
+                    <d:pagebreak value="645"/>
+                    <p>
+                        <quote>You're home.</quote>
+                    </p>
+                    <p>With a deep breath, Nell followed the Authoress across the threshold and into
+                        the most beautiful garden she had ever seen.</p>
+                </section>
+            </section>
+        </d:bodymatter>
+        <d:backmatter>
+            <d:epilogue>
+                <!-- As with the prologue, I'm not sure this is an epilogue -->
+                <blockquote
+                    cite="from &apos;The Cucko&apos;s flight&apos; by Eliza Makepeace">
+                    And at last, the wicked Queen's spell was broken, [...] Towards her other half.
+                    Home. </blockquote>
+            </d:epilogue>
+            <d:acknowledgment>
+                <h>Acknowledgments</h>
+                <p>For helping to bring <em>The Forgotten Garden</em>, I'd like to thank:</p>
+                <p>My Nana [...] to whom this story belongs.</p>
+            </d:acknowledgment>
+            <d:page>
+                <p>Winner of Richard &amp; Judy's Summer Read 2007</p>
+                <object src="Riverton.png">The picture shows the front cover of Kate Morton's book
+                    The House at Riverton.</object>
+            </d:page>
+        </d:backmatter>
+    </d:book>
+</html>

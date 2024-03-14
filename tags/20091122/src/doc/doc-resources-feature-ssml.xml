@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="docResources.rng" type="xml"?>
+<docResources xmlns="http://www.daisy.org/ns/z3986/2008/docResources/">
+
+	<namespace nsURI="http://www.w3.org/2001/10/synthesis"
+		defaultDocURL="http://www.w3.org/TR/speech-synthesis11/" feature="yes"
+		featureNicename="SSML (Speech Synthesiser Markup Language) Integration">
+		<element name="break" descriptionURI="../schema/mod/ssml-break.rng#ssml.break" descriptionInclude="yes" />
+		<element name="phoneme" descriptionURI="../schema/mod/ssml-phoneme.rng#ssml.phoneme" descriptionInclude="yes" />
+		<element name="prosody" descriptionURI="../schema/mod/ssml-prosody.rng#ssml.prosody" descriptionInclude="yes" />
+		<element name="say-as" descriptionURI="../schema/mod/ssml-sayas.rng#ssml.say-as" descriptionInclude="yes" />
+		<element name="sub" descriptionURI="../schema/mod/ssml-sub.rng#ssml.sub" descriptionInclude="yes" />
+		<element name="token" descriptionURI="../schema/mod/ssml-token.rng#ssml.token" descriptionInclude="yes" />
+
+		<attribute name="ph" descriptionURI="../schema/mod/ssml-phoneme-attrib.rng#ssml.ph" descriptionInclude="yes" />
+		<attribute name="alphabet" descriptionURI="../schema/mod/ssml-phoneme-attrib.rng#ssml.alphabet"
+			descriptionInclude="yes" />
+		<attribute name="onlangfailure"
+			descriptionURI="../schema/mod/ssml-onlangfailure-attrib.rng#ssml.onlangfailure" descriptionInclude="yes" />
+
+	</namespace>
+
+</docResources>

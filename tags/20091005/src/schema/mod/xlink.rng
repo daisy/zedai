@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:x="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+  <x:h1>XLink Module</x:h1>
+  <!-- TODO SCH any of the xlink attributes must only occur with the xlink:href attribute -->
+  <!-- TODO find out how to do attr value enums with Per's system (see a: below) -->
+  <!-- TODO describe the xlink 1.1 behavior a la docbook5 (defaults to simple) -->
+
+  <define name="xlink.href.attrib">
+    <x:div id="xlink.href.attrib">Identifies a link target with a URI</x:div>
+    <attribute name="xlink:href">
+      <ref name="URI.datatype"/>
+    </attribute>
+  </define>
+
+  <define name="xlink.type.attrib">
+    <x:div id="xlink.type.attrib">Identifies the XLink link type</x:div>
+    <attribute name="xlink:type">
+      <value>simple</value>
+    </attribute>
+  </define>
+
+  <define name="xlink.role.attrib">
+    <x:div id="xlink.role.attrib">Identifies the XLink role of the link</x:div>
+    <attribute name="xlink:role">
+      <ref name="URI.datatype"/>
+    </attribute>
+  </define>
+
+  <define name="xlink.arcrole.attrib">
+    <x:div id="xlink.arcrole.attrib">Identifies the XLink arcrole of the link</x:div>
+    <attribute name="xlink:arcrole">
+      <ref name="URI.datatype"/>
+    </attribute>
+  </define>
+
+  <define name="xlink.title.attrib">
+    <x:div id="xlink.title.attrib">Identifies the XLink title of the link</x:div>
+    <optional>
+      <attribute name="xlink:title"/>
+    </optional>
+  </define>
+
+  <define name="xlink.show.enumeration">
+    <choice>
+      <value>new</value>
+      <a:documentation>An application traversing to the ending resource should load it in a new
+        window, frame, pane, or other relevant presentation context.</a:documentation>
+      <value>replace</value>
+      <a:documentation>An application traversing to the ending resource should load the resource in
+        the same window, frame, pane, or other relevant presentation context in which the starting
+        resource was loaded.</a:documentation>
+      <value>embed</value>
+      <a:documentation>An application traversing to the ending resource should load its presentation
+        in place of the presentation of the starting resource.</a:documentation>
+      <value>other</value>
+      <a:documentation>The behavior of an application traversing to the ending resource is
+        unconstrained by XLink. The application should look for other markup present in the link to
+        determine the appropriate behavior.</a:documentation>
+      <value>none</value>
+      <a:documentation>The behavior of an application traversing to the ending resource is
+        unconstrained by this specification. No other markup is present to help the application
+        determine the appropriate behavior.</a:documentation>
+    </choice>
+  </define>
+
+  <define name="xlink.show.attrib">
+    <x:div id="xlink.show.attrib">Identifies the XLink show behavior of the link</x:div>
+    <attribute name="xlink:show">
+      <ref name="xlink.show.enumeration"/>
+    </attribute>
+  </define>
+
+  <define name="xlink.actuate.enumeration">
+    <choice>
+      <value>onLoad</value>
+      <a:documentation>An application should traverse to the ending resource immediately on loading
+        the starting resource.</a:documentation>
+      <value>onRequest</value>
+      <a:documentation>An application should traverse from the starting resource to the ending
+        resource only on a post-loading event triggered for the purpose of
+        traversal.</a:documentation>
+      <value>other</value>
+      <a:documentation>The behavior of an application traversing to the ending resource is
+        unconstrained by this specification. The application should look for other markup present in
+        the link to determine the appropriate behavior.</a:documentation>
+      <value>none</value>
+      <a:documentation>The behavior of an application traversing to the ending resource is
+        unconstrained by this specification. No other markup is present to help the application
+        determine the appropriate behavior.</a:documentation>
+    </choice>
+  </define>
+
+  <define name="xlink.actuate.attrib">
+    <x:div id="xlink.actuate.attrib">Identifies the XLink actuate behavior of the link</x:div>
+    <attribute name="xlink:actuate">
+      <ref name="xlink.actuate.enumeration"/>
+    </attribute>
+  </define>
+
+  <define name="xlink.attrib">
+    <interleave>
+      <ref name="xlink.href.attrib"/>
+      <optional>
+        <ref name="xlink.type.attrib"/>
+      </optional>
+      <optional>
+        <ref name="xlink.role.attrib"/>
+      </optional>
+      <optional>
+        <ref name="xlink.arcrole.attrib"/>
+      </optional>
+      <optional>
+        <ref name="xlink.title.attrib"/>
+      </optional>
+      <optional>
+        <ref name="xlink.show.attrib"/>
+      </optional>
+      <optional>
+        <ref name="xlink.actuate.attrib"/>
+      </optional>
+    </interleave>
+  </define>
+
+</grammar>

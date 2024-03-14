@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml"
+	xmlns:xsdp="http://www.daisy.org/ns/rng-preprocess/xsd">
+
+	<x:h1>Z3986 Table of Contents module</x:h1>
+	<x:div id="z3986.toc">
+		<x:p class="description">Represents a table of contents.</x:p>
+		<!-- TODO specialization of section -->
+	</x:div>
+	<!-- TODO SCH toc is allowed to be empty - must identify minimal content model (at least one entry descendant for example) -->
+	<div>
+		<define name="z3986.toc">
+			<element name="toc">
+				<ref name="z3986.toc.attlist"/>
+				<ref name="z3986.toc.content"/>
+			</element>
+		</define>
+
+		<define name="z3986.toc.attlist">
+			<ref name="z3986.section.attlist"/>
+		</define>
+
+		<define name="z3986.toc.content" xsdp:replace="z3986.toc.content.xsd"> 
+			<interleave>
+				<optional>
+					<ref name="z3986.h"/>
+				</optional>
+				<zeroOrMore>
+					<ref name="z3986.toc.extra.class"/>
+				</zeroOrMore>
+			</interleave>
+			<interleave>
+				<zeroOrMore>
+					<ref name="z3986.toc.entry"/>
+				</zeroOrMore>
+				<zeroOrMore>
+					<ref name="z3986.toc.extra.class"/>
+				</zeroOrMore>
+			</interleave>
+			<zeroOrMore>
+				<ref name="z3986.toc.section"/>
+			</zeroOrMore>
+		</define>
+
+		<define name="z3986.toc.content.xsd">
+			<optional>
+				<ref name="z3986.h"/>
+			</optional>	
+			<zeroOrMore>
+				<ref name="z3986.toc.extra.class"/>
+				<ref name="z3986.toc.entry"/>
+			</zeroOrMore>
+			<zeroOrMore>
+				<ref name="z3986.toc.section"/>
+			</zeroOrMore>
+		</define>	
+
+		<define name="z3986.toc.extra.class" combine="choice">
+			<choice>
+				<ref name="z3986.toc.aside"/>
+				<ref name="z3986.hd"/>
+				<ref name="z3986.block.flow"/>
+				<ref name="z3986.p"/>				
+			</choice>				
+		</define>
+
+	</div>
+
+	<div>
+		<x:h2>The toc entry element</x:h2>
+		
+		<define name="z3986.toc.entry">
+			<element name="entry">
+				<ref name="z3986.toc.entry.attlist"/>
+				<ref name="z3986.toc.entry.content"/>
+			</element>	
+		</define>	
+		
+		<define name="z3986.toc.entry.attlist">
+			<ref name="z3986.Text.attrib"/>
+		</define>
+		
+		<define name="z3986.toc.entry.content">
+			<ref name="z3986.toc.entry.main" />
+			<ref name="z3986.toc.entry.sub" />
+			<zeroOrMore>
+				<ref name="z3986.toc.entry" />
+			</zeroOrMore>
+		</define>
+		
+		<!-- the main toc content -->
+		<define name="z3986.toc.entry.main">
+			<ref name="z3986.toc.label" />
+			<optional>
+				<ref name="z3986.reference" />
+			</optional>
+		</define>
+		
+		<!-- other block level content within the tocentry -->
+		<define name="z3986.toc.entry.sub">
+			<zeroOrMore>
+				<ref name="z3986.toc.extra.class" />
+			</zeroOrMore>
+		</define>
+		
+		<define name="z3986.toc.label">
+			<element name="label">
+				<ref name="z3986.toc.label.attlist" />
+				<ref name="z3986.toc.label.content" />
+			</element>
+		</define>
+		
+		<define name="z3986.toc.label.attlist">
+			<ref name="z3986.Text.attrib" />
+		</define>
+		
+		<define name="z3986.toc.label.content">
+			<ref name="z3986.Text.model" />
+		</define>
+	</div>
+	
+	<div>
+		<x:h2>The toc section element</x:h2>
+		<x:div id="z3986.toc.section">
+			<p class="description">
+				<em>Description: to be written ...</em>
+				<strong>(@id="z3986.toc.section" in file z3986-toc.rng)</strong>
+			</p>
+		</x:div>
+		<define name="z3986.toc.section">
+			<element name="section">
+				<ref name="z3986.toc.attlist" />
+				<ref name="z3986.toc.content"/>				
+			</element>	
+		</define>	
+	</div>	
+
+	<div>
+		<x:h2>The toc aside element</x:h2>
+		<x:div id="z3986.toc.aside">
+			<p class="description">
+				<em>Description: to be written ...</em>
+				<strong>(@id="z3986.toc.aside" in file z3986-toc.rng)</strong>
+			</p>
+		</x:div>
+		
+		<define name="z3986.toc.aside">
+			<element name="aside">
+				<ref name="z3986.toc.aside.attlist" />
+				<ref name="z3986.toc.aside.content" />
+			</element>
+		</define>
+		
+		<define name="z3986.toc.aside.attlist">
+			<ref name="z3986.Structural.attrib" />
+		</define>
+		
+		<define name="z3986.toc.aside.content">
+			<interleave>
+				<ref name="z3986.Flow.model" />
+				<optional>
+					<ref name="z3986.toc" />
+				</optional>
+			</interleave>
+		</define>
+	</div>
+	
+	<div>
+		<x:h2>TOC Module - default content model contributions</x:h2>
+		
+		<define name="z3986.frontmatter.content" combine="interleave">
+			<zeroOrMore>
+				<ref name="z3986.toc" />
+			</zeroOrMore>
+		</define>
+		
+		<define name="z3986.section.extra" combine="interleave">
+			<zeroOrMore>
+				<ref name="z3986.toc" />
+			</zeroOrMore>
+		</define>
+		
+	</div>
+</grammar>

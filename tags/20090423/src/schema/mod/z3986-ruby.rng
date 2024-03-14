@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+  <div x:id="ruby">
+    <x:h2>Ruby module</x:h2>
+    <x:p>This module is a wrapper around the canonical W3C Ruby module, with some
+    	z3986-specific contextualizations.</x:p>
+
+    <include href="full-ruby-1.rng">
+
+      <define name="Inline.class">
+        <notAllowed/>
+      </define>
+
+      <define name="NoRuby.content">
+        <ref name="xhtml.Text.model"/>
+      </define>
+
+    </include>
+
+    <define name="Inline.model">
+      <notAllowed/>
+    </define>
+    
+    <define name="z3986.Text.base.class" combine="choice">
+  	  <ref name="ruby"/>
+    </define>
+    
+  </div> 
+</grammar>  

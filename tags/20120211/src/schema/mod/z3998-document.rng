@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3998/authoring/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="document">The document module</title>
+        <annotation annotates="/" condition="required">
+            <para role="desc-main">This module defines the {[[#z3998.document]]}, {[[#z3998.head]]} and {[[#z3998.body]]} core structural elements common to all Z39.98-AI Profiles.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3998-i18n-attrib.rng"/>
+                <member xlink:href="z3998-role-attrib.rng"/>
+                <member xlink:href="rdfa-attrib.rng"/>
+                <member xlink:href="z3998-global-classes.rng"/>
+                <member xlink:href="z3998-meta.rng"/>
+                <member xlink:href="z3998-section.rng"/>
+                <member xlink:href="z3998-core-attrib.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <year>2012</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2012-12-19</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <start>
+        <ref name="z3998.document"/>
+    </start>
+    <div>
+        <define name="z3998.document" xml:id="z3998.document">
+            <element name="document">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="document">The {document} element</title>
+                    <para role="desc-main">The {document} element is the root element of all Z39.98-AI Profiles.</para>
+                    <para role="desc-sub">The {document} element must include an {xmlns} attribute declaring the Z39.98-AI Core namespace and an {[[#xml.lang.attrib]]} attribute specifying the language of the document.</para>
+                    <synopsis role="def-context">Document root.</synopsis>
+                    <synopsis role="def-content" condition="fixed">{[[#z3998.head]], [[#z3998.body]]}</synopsis>
+                    <synopsis role="def-attlist">[[#z3998.Document.attrib]]; the {[[#xml.lang.attrib]]} attribute required</synopsis>
+                </annotation>
+                <ref name="z3998.document.attlist"/>
+                <ref name="z3998.head"/>
+                <ref name="z3998.body"/>
+            </element>
+        </define>
+        <define name="z3998.document.attlist" xml:id="z3998.document.attlist">
+            <!-- expand out to make xml:lang required -->
+            <ref name="z3998.Core.attrib"/>
+            <ref name="z3998.I18n.attrib.xml.lang.required"/>
+            <optional>
+                <ref name="z3998.role.attrib"/>
+            </optional>
+            <optional>
+                <ref name="rdfa.prefix.attrib"/>
+            </optional>
+            <ref name="Rdfa.attrib"/>
+            <ref name="z3998.Document.extern.attrib"/>
+        </define>
+    </div>
+    <div>
+        <define name="z3998.head" xml:id="z3998.head">
+            <element name="head">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="head">The {head} element</title>
+                    <para role="desc-main">The {head} element contains meta information about the complete or partial document contained in the enclosing {[[#z3998.document]]}.</para>
+                    <para role="desc-sub">The meta information in the {head} element is not document content in the context of Z39.98-AI documents, but may be used for display and other purposes when rendering documents into alternate formats.</para>
+                    <para role="desc-sub doc-only">Refer to [[#documentsMetadata Document metadata]] for the normative specification of required metadata in {head}.</para>
+                    <synopsis role="def-context" condition="fixed">[[#z3998.document]]</synopsis>
+                    <synopsis role="def-content" condition="The content model must allow {[[#z3998.meta meta]]} elements such that the [[#documentsMetadata normatively requried metadata]] can be expressed.">{[[#z3998.meta]]+}</synopsis>
+                    <synopsis role="def-attlist">[[#z3998.Document.attrib]]</synopsis>
+                    <sch:rule context="default:head[parent::default:document]">
+                        <sch:assert test="descendant::default:meta[@rel='z3998:profile']">The {head} element must include a {meta} element identifying the Z39.98-AI profile the document conforms to (z3998:profile).</sch:assert>
+                        <sch:assert test="count(descendant::default:meta[@rel='z3998:profile'])">The document must not include more than one {meta} element identifying a Z39.98-AI profile.</sch:assert>
+                        <sch:assert test="descendant::default:meta[@rel='z3998:profile']/default:meta[@property='z3998:name'][not(normalize-space(@content)='')]
+                                                    or default:meta[@about = //descendant::default:meta[@rel='z3998:profile']/@resource][@property='z3998:name'][not(normalize-space(@content)='')]">A {meta} element containing the profile name must be specified (z3998:name).</sch:assert>
+                        <sch:assert test="descendant::default:meta[@rel='z3998:profile']/default:meta[@property='z3998:version'][not(normalize-space(@content)='')]
+                                                    or default:meta[@about = //descendant::default:meta[@rel='z3998:profile']/@resource][@property='z3998:version'][not(normalize-space(@content)='')]">A {meta} element containing the profile version must be specified (z3998:version).</sch:assert>
+                        <sch:assert test="every $feature in descendant::default:meta[@rel='z3998:feature']/@resource satisfies 
+                                                    //default:meta[(@about = $feature) or parent::default:meta[@rel='z3998:feature'][@resource=$feature]][@property='z3998:name'][not(normalize-space(@content)='')]">Every feature must have its name specified (z3998:name).</sch:assert>
+                        <sch:assert test="every $feature in descendant::default:meta[@rel='z3998:feature']/@resource satisfies 
+                                                    //default:meta[(@about = $feature) or parent::default:meta[@rel='z3998:feature'][@resource=$feature]][@property='z3998:version'][not(normalize-space(@content)='')]">Every feature must have its version specified (z3998:version).</sch:assert>
+                        <sch:assert test="descendant::default:meta[@property='dc:identifier']">The {head} element must include a {meta} element with a unique identifier (dc:identifier).</sch:assert>
+                        <sch:assert test="descendant::default:meta[@property='dc:publisher']">The {head} element must include a {meta} element identifying the document publisher (dc:publisher).</sch:assert>
+                        <sch:assert test="descendant::default:meta[@property='dc:date']">The {head} element must include a {meta} element indicating the document modification date (dc:date).</sch:assert>
+                        <sch:assert test="count(descendant::default:meta[@property='dc:date'])=1">The {head} element must include only a single {dc:date} property.</sch:assert>
+                        <sch:assert test="matches(descendant::default:meta[@property='dc:date']/@content, '[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([0-1][0-9]|2[0-3])(:([0-5][0-9])){2}Z')">The {dc:date} property must be of the form CCYY-MM-DDThh:mm:ssZ.</sch:assert>
+                    </sch:rule>
+                </annotation>
+                <ref name="z3998.head.attlist"/>
+                <ref name="z3998.head.content"/>
+            </element>
+        </define>
+        <define name="z3998.head.attlist" xml:id="z3998.head.attlist">
+            <ref name="z3998.Document.attrib"/>
+        </define>
+        <define name="z3998.head.content" xml:id="z3998.head.content">
+            <oneOrMore>
+                <choice>
+                    <ref name="z3998.head.class"/>
+                </choice>
+            </oneOrMore>
+        </define>
+        <define name="z3998.head.class" combine="choice">
+            <ref name="z3998.meta"/>
+        </define>
+    </div>
+    <div>
+        <define name="z3998.body" xml:id="z3998.body">
+            <element name="body">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="body">The {body} element</title>
+                    <para role="desc-main">The {body} element contains the complete or partial content of the enclosing {[[#z3998.document]]}.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3998.document]]}</synopsis>
+                    <synopsis role="def-content">{([[#z3998.h]]? &amp;amp; [[#z3998.Block.class]]*), [[#z3998.Section.class]]*}</synopsis>
+                    <synopsis role="def-attlist">[[#z3998.Document.attrib]]</synopsis>
+                </annotation>
+                <ref name="z3998.body.attlist"/>
+                <ref name="z3998.body.content"/>
+            </element>
+        </define>
+        <define name="z3998.body.attlist" xml:id="z3998.body.attlist">
+            <ref name="z3998.Document.attrib"/>
+        </define>
+        <define name="z3998.body.content" xml:id="z3998.body.content">
+            <ref name="z3998.section.content"/>
+        </define>
+    </div>
+</grammar>

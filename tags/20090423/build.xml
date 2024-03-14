@@ -1,0 +1,420 @@
+<project name="zednext" default="build-all" basedir=".">
+<!-- TODO
+Copy rddl/res/profilename/* automatically as fileset	
+-->
+	<property name="z3986.part.a.prefix" value="z3986a"/>
+	<property name="lib.dir" value="lib"/>
+	<property name="build.dir" value="${basedir}/build"/>	
+	<property name="src.dir" value="${basedir}/src"/>
+	<property name="rddl.dir" value="${src.dir}/rddl"/>
+	<property name="rdf.dir" value="${src.dir}/rdf"/>
+	<property name="schema.dir" value="${src.dir}/schema"/>
+	<property name="spec.dir" value="${src.dir}/spec"/>
+	<property name="spec.path" value="${spec.dir}/Z3986-2010A.xml"/>
+	<property name="primer.path" value="${spec.dir}/Z3986-2010A_Primer.xml"/>
+	<property name="util.dir" value="${basedir}/util"/>
+	<property name="temp.dir" value="${basedir}/temp"/>
+	<property name="doc.dir" value="${src.dir}/doc" />
+	<property name="test.dir" value="${basedir}/test"/>
+	<property name="test.z3986a.dir" value="${test.dir}/z3986a"/>
+	
+	<property name="css.basic.name" value="z3986a-basic.css"/>
+	<property name="css.basic.path" value="${rddl.dir}/res/general/${css.basic.name}"/>
+	
+	<property name="schema.fileset.list" value="${temp.dir}/schema-fileset.xml"/>
+	<property name="simplified.rng.path" value="${temp.dir}/simplified.rng"/>
+
+	<target name="build-all" depends="clean-build-dir, clean-temp-dir, validate-vocabs" description="build everything">		
+				
+		<!-- Book Profile -->  
+		<antcall target="build-rng-profile-specific-book" />
+		<antcall target="build-rng-profile">
+			<param name="profile.name" value="book" />
+			<param name="profile.fullname" value="Z39.86 Book Profile" />
+			<param name="doc.resource" value="${doc.dir}/book-doc-resources.xml"/>
+		</antcall> 
+						
+		<!-- Generic Document Profile   
+		<antcall target="build-rng-profile">
+			<param name="profile.name" value="genericdocument" />
+			<param name="profile.fullname" value="Z39.86 Generic Document Profile" />
+			<param name="doc.resource" value="${doc.dir}/genericdocument-doc-resources.xml"/>
+		</antcall>
+		-->
+		
+		<!--Newsfeed Profile -->  
+		<antcall target="build-rng-profile">
+			<param name="profile.name" value="newsfeeds" />
+			<param name="profile.fullname" value="Z39.86 News Feed Aggregator Profile" />	
+			<param name="doc.resource" value="${doc.dir}/newsfeeds-doc-resources.xml"/>
+		</antcall> 
+				
+		<antcall target="build-spec" />
+								
+	</target>
+		
+	<target name="build-rng-profile" 
+		depends="clean-temp-dir"
+		description="Builds a RelaxNG-based profile.
+		Parameters:
+			profile.name 		[technical name]
+			profile.fullname	[full human readable name]
+		">
+		
+		<echo message="***** Building Profile: ${profile.fullname} ***** "/>
+
+		<!-- build the vocabularies as rng enumerations -->
+		<antcall target="build-rng-vocab-enum"/>
+		
+		<property name="dest.dir" value="${build.dir}/${z3986.part.a.prefix}-${profile.name}/" />
+		<property name="schema.path" value="${schema.dir}/${z3986.part.a.prefix}-${profile.name}.rng"/>		
+
+		<mkdir dir="${dest.dir}/res/"/>
+
+		<!-- build the RDDL -->
+		<antcall target="build-rddl">
+			<param name="profile.name" value="${profile.name}"/>
+			<param name="dest.dir" value="${dest.dir}"/>
+			<param name="schema.path" value="${schema.path}"/>
+		</antcall>
+		
+		<!-- copy modules -->
+		<antcall target="copy-modules" />
+		
+		<!-- validate the schemas in build dir -->
+		<antcall target="validate-build-schemas" />
+		
+		<!-- convert simplified rng to xsd -->
+		<antcall target="rng-to-xsd">
+			<param name="input-rng" value="${schema.path}"/>
+			<param name="output-xsd" value="${dest.dir}/res/${z3986.part.a.prefix}-${profile.name}.xsd"/>
+		</antcall>		
+
+		<!-- copy default css -->
+		<copy file="${css.basic.path}" tofile="${dest.dir}/res/${css.basic.name}" />
+		
+		<!-- copy rddl css -->
+		<copy file="${util.dir}/rddl/xrd.css" tofile="${dest.dir}/res/xrd.css" />
+		
+		<!-- copy the simplified rng -->
+		<copy file="${simplified.rng.path}" tofile="${dest.dir}/res/${z3986.part.a.prefix}-${profile.name}-single.rng" />
+		
+		<!-- copy any resources specific to this profile -->
+		<copy todir="${dest.dir}/res/">
+		  <fileset dir="${rddl.dir}/res/${profile.name}/"/>
+		</copy>
+		
+		<!-- build the profile schema documentation -->
+		<antcall target="build-rng-schema-doc">
+			<param name="dest.dir" value="${dest.dir}"/>
+			<param name="docTitle" value="${profile.fullname}"/>
+			<param name="namespacelistURI" value="${doc.dir}/namespaceList.xml" />
+			<!--<param name="docResourceURI" value="docResources.xml" />-->
+			<param name="docResourceURI" value="${doc.resource}" />
+		</antcall>	
+				
+		<!-- zip everything -->		
+		<zip destfile="${dest.dir}/${z3986.part.a.prefix}-${profile.name}.zip"
+			    basedir="${dest.dir}"		  	
+		/>				
+		
+		<!-- and finally the developer-oriented schema topology doc (not in zip) -->
+		<mkdir dir="${build.dir}/dev/${profile.name}-topology/"/>
+		<antcall target="rng-to-topology-doc">
+			<param name="input-rng" value="${schema.path}"/>
+			<param name="output-html" value="${build.dir}/dev/${profile.name}-topology/index.html"/>
+		</antcall>	
+
+	</target>	
+	
+	<target name="build-rng-profile-specific-book" 
+		description="runs routines specific to book profile">
+		
+		<property name="profile.name" value="book"/>
+		<property name="schema.path" value="${schema.dir}/${z3986.part.a.prefix}-${profile.name}.rng"/>
+		
+	    <!-- create driver minus math extension -->
+ 	    <saxon-xslt in="${schema.path}" 
+				  style="${util.dir}/rng/rng-driver-reducer.xsl"
+		 			out="${build.dir}/${z3986.part.a.prefix}-${profile.name}/${z3986.part.a.prefix}-${profile.name}-nomath.rng">
+ 	    	<param name="excludeList" expression="feature-mathml3"/>
+	    </saxon-xslt>
+	    
+	</target>
+	
+	<target name="validate-vocabs">
+		<!-- validate all RDF/a vocabs 
+		<xmlvalidate failonerror="yes" warn="yes" >
+			<fileset dir="${rdf.dir}" includes="**/*rdfa*.html"/>
+			<xmlcatalog refid="catalog"/>
+		</xmlvalidate>		
+		-->
+	</target>
+	
+	<target name="copy-modules">
+		<!-- path fix for windows -->
+	    <path id="tmp" path="${dest.dir}" />	    
+	    <pathconvert targetos="unix" property="destparam" refid="tmp">	      	    
+	    	<map from="" to="file:///"/>
+	    </pathconvert>
+		
+		<!-- use xslt to copy modules over -->
+		<saxon-xslt in="${schema.fileset.list}" 
+				  style="${util.dir}/xml-fileset-copy.xsl"
+		 			out="${temp.dir}/temp.xml">
+			<param name="destination-dir" expression="${destparam}/"/>
+		</saxon-xslt>
+	</target>
+	
+	<target name="build-rng-schema-doc">
+		<!-- path fix for windows -->
+		<path id="tmp1" path="${doc.dir}/namespaceList.xml" />	    
+		<pathconvert targetos="unix" property="nsList" refid="tmp1">	      	    
+			<map from="" to="file:///"/>
+		</pathconvert>
+		<path id="tmp2" path="${docResourceURI}" />	    
+		<pathconvert targetos="unix" property="dr" refid="tmp2">	      	    
+			<map from="" to="file:///"/>
+		</pathconvert>
+		
+		<!-- Changed style="${util.dir}/rng/rng-doc.xsl" to style="${doc.dir}/rng-doc.xsl"  -->
+		<saxon-xslt in="${simplified.rng.path}" 
+			style="${doc.dir}/rng-doc.xsl"
+			 			out="${dest.dir}/schemadoc/index.html">		
+			<param name="docTitle" expression="${docTitle}"/>
+
+			<param name="namespaceListURI" expression="${nsList}" />
+			<param name="docResourceURI" expression="${dr}" />
+		</saxon-xslt>
+		<copy file="${doc.dir}/rng-doc.css" tofile="${dest.dir}/schemadoc/rng-doc.css" />
+	</target>	
+
+		
+	<target name="rng-to-topology-doc">		
+		<saxon-xslt in="${input-rng}" 
+				  style="${util.dir}/rng/rng-topology.xsl"
+		 			out="${output-html}">			
+		</saxon-xslt>
+	</target>
+	
+	<target name="validate-build-schemas">
+		<!-- if rng, validate schemas towards relaxng relaxng -->
+		<jing rngfile="${util.dir}/rng/relaxng.rng">
+		    <fileset dir="${build.dir}" includes="**/*.rng"/>
+		</jing>
+				
+		<!-- run a pass on available valid instances in /test/ -->
+		<!-- get the schema -->
+		<fileset dir="${dest.dir}" id="builtschema">
+			<include name="z3986a-${profile.name}.rng"/>
+		</fileset>
+				
+		<property name="schema" refid="builtschema"/>
+		<echo message="*** Validating sample instances against ${schema}"/>	
+		<jing failonerror="false" rngfile="${dest.dir}/${schema}">
+		    <fileset dir="${test.dir}/z3986a/${profile.name}/valid/" includes="**/*.xml"/>			
+		</jing>
+		
+	</target>
+	
+	<target name="rng-to-xsd" depends="rng-to-simplified-rng" 
+		description="converts a simplified rng to xsd using trang, 
+			expects parameters 'input-rng' and 'output-xsd'">
+		<java jar="${lib.dir}/trang.jar" fork="true" failonerror="true" maxmemory="256m">			
+			<arg value="${simplified.rng.path}"/>
+			<arg value="${output-xsd}"/>			
+			<classpath>
+				<pathelement location="${lib.dir}/trang.jar"/>
+				<pathelement path="${java.class.path}"/>
+			</classpath>
+		</java>		
+		
+		<antcall target="check-xsd">
+			<param name="xsd.path" value="${output-xsd}"/>
+		</antcall>
+	</target>
+	
+	<target name="check-xsd" 
+			description="checks XSD using IBM SQC (http://www.w3.org/XML/Schema.html#SQC)
+			  expects inparam xsd.path"> <!--		
+		<property name="sqc.dir" location="${util.dir}/xsd/sqc"/>		
+		<java classname="com.ibm.sketch.util.SchemaQualityChecker" fork="true" maxmemory="512m" >
+			<arg value="${xsd.path}"/>
+			<classpath>
+				<pathelement location="${sqc.dir}/xmlParserAPIs.jar"/>
+				<pathelement location="${sqc.dir}/xercesImpl.jar"/>
+				<pathelement location="${sqc.dir}/xschemaREC.jar"/>
+				<pathelement location="${sqc.dir}/xml4j.jar"/>
+				<pathelement location="${sqc.dir}/mofrt.jar"/>
+			</classpath>
+		</java>	-->	
+	</target>	
+	
+	<target name="rng-to-simplified-rng" 
+			description="uses Jing -s to create a simplified rng schema, 
+				expects parameter 'input-rng'">
+		
+		<java jar="${lib.dir}/jing.jar" fork="true" failonerror="true" maxmemory="256m">			
+			<arg value="-s"/>
+			<arg value="${input-rng}"/>
+			<arg value="${simplified.rng.path}"/>			
+			<classpath>
+				<pathelement location="${lib.dir}/jing.jar"/>
+				<pathelement path="${java.class.path}"/>
+			</classpath>
+		</java>		
+	</target>
+		
+	<target name="build-rddl" 
+		description="copies and builds the rddl instance for inparam profile,
+		expects inparams profile.name, dest.dir, schema.path">
+		
+		<antcall target="build-schema-fileset">
+			<param name="schema.path" value="${schema.path}"/>
+		</antcall>
+		
+		<property name="rddl.src" value="${rddl.dir}/${z3986.part.a.prefix}-${profile.name}.rddl"/>
+		<property name="rddl.dest" value="${dest.dir}/${z3986.part.a.prefix}-${profile.name}.html"/>
+		
+		<!-- fix xslt inparam to be a valid uri (else crash on windows) -->
+	    <path id="tmp" path="${schema.fileset.list}" />	    
+	    <pathconvert targetos="unix" property="uriparam" refid="tmp">
+	    	<map from="" to="file:///"/>
+	    </pathconvert>
+	    				
+		<!-- take the src rddl, insert the module list, and output to build dir -->
+		<saxon-xslt in="${rddl.src}" 
+				  style="${util.dir}/rddl/rddl-finalize.xsl"
+		 			out="${rddl.dest}">
+			<param name="schema-fileset" expression="${uriparam}"/>
+		</saxon-xslt>
+				
+		<!-- validate the result -->
+		<echo message="Validating output RDDL..."/>
+		<jing rngfile="${util.dir}/rddl/xhtml-rddl.rng" file="${rddl.dest}" checkid="true" />	
+
+	</target>
+	
+	<target name="build-schema-fileset"
+		description="creates a schema fileset list in xml, 
+			expects a 'schema.path' parameter">
+					
+		<saxon-xslt in="${schema.path}" 
+			style="${util.dir}/rng/rng-fileset.xsl"
+		 	out="${schema.fileset.list}"
+		/>
+	</target>
+		
+	<target name="build-spec" depends="validate-spec-sources" description="validates and builds docbook 5 sources">
+		<!-- spec: create the HTML version of the docbook5 source -->	
+		<saxon-xslt in="${spec.path}" 
+			style="${util.dir}/docbook/xslt/ZedAI_docbook2xhtml.xsl"				  
+		 		out="${build.dir}/z3986-2010a.html">
+			<param name="section.autolabel" expression="1"/>
+			<param name="section.label.includes.component.label" expression="1"/>
+			<param name="html.stylesheet" expression="z3986.css"/>
+		</saxon-xslt>
+		
+		<!-- primer: create the HTML version of the docbook5 source -->	
+		<saxon-xslt in="${primer.path}" 
+			style="${util.dir}/docbook/xslt/ZedAI_docbook2xhtml.xsl"
+				out="${build.dir}/z3986-2010a-primer.html">
+			<param name="section.autolabel" expression="1"/>
+			<param name="section.label.includes.component.label" expression="1"/>
+			<param name="html.stylesheet" expression="z3986.css"/>
+		</saxon-xslt>
+		
+		<!-- copy the docbook html css -->		
+		<copy file="${util.dir}/docbook/html-css/docbook.css" tofile="${build.dir}/z3986.css" />
+		
+	</target>
+	
+	<target name="validate-spec-sources" 
+		description="validate the docbook spec doc sources">		
+		<jing rngfile="${util.dir}/docbook/rng/docbook.rng" 
+			file="${spec.path}" checkid="true" failonerror="true" />
+		<jing rngfile="${util.dir}/docbook/rng/docbook.rng" 
+			file="${primer.path}" checkid="true" failonerror="true" />
+	</target>
+	
+	<target name="clean-build-dir" depends="make-build-dir" description="clean build dir">
+		<delete>
+			<fileset dir="${build.dir}" includes="**/*.*"/>
+		</delete>
+	</target>
+
+	<target name="clean-temp-dir" depends="make-temp-dir" description="clean temp dir">
+		<delete>
+			<fileset dir="${temp.dir}" includes="**/*.*"/>
+		</delete>
+	</target>
+		
+	<target name="make-build-dir">
+		<mkdir dir="${build.dir}"/>		
+	</target>
+
+	<target name="make-temp-dir">
+		<mkdir dir="${temp.dir}"/>
+	</target>
+	
+	<target name="build-rng-vocab-enum"
+	  description="Builds a RelaxNG enumeration of RDFa vocabulary terms.
+		Parameters:
+		  profile.name
+		">
+	  <saxon-xslt in="${src.dir}/rdf/z3986-${profile.name}-rdfa-vocab.html" 
+			style="${util.dir}/rdf/rdfa-to-rng.xslt"
+		 	out="${schema.dir}/mod/z3986-${profile.name}-vocab.rng">
+		 	<param name="profile.name" expression="${profile.name}"/>
+		  <xmlcatalog refid="catalog"/>
+		</saxon-xslt>
+	</target>
+	
+	<taskdef name="jing" classname="com.thaiopensource.relaxng.util.JingTask">
+		<classpath>
+			<pathelement location="${lib.dir}/jing.jar"/>
+		</classpath>
+	</taskdef>
+	
+	<taskdef name="saxon-xslt" classname="net.sf.saxon.ant.AntTransform">
+		<classpath>
+			<pathelement location="${lib.dir}/saxon9.jar"/>
+			<pathelement location="${lib.dir}/saxon9-ant.jar"/>
+		</classpath>		
+	</taskdef>
+	
+	<xmlcatalog id="catalog">
+        <dtd publicId="-//W3C//DTD XHTML+RDFa 1.0//EN" location="${util.dir}/cat/xhtml-rdfa-1.dtd"/>		
+		<entity publicid="-//W3C//ELEMENTS XHTML Base Element 1.0//EN" location="${util.dir}/cat/xhtml-base-1.mod" />                   
+		<entity publicid="-//W3C//ELEMENTS XHTML Ruby 1.0//EN" location="${util.dir}/cat/xhtml-ruby-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Forms 1.0//EN" location="${util.dir}/cat/xhtml-basic-form-1.mod" />   
+		<entity publicid="-//W3C//ELEMENTS XHTML Legacy Markup 1.0//EN" location="${util.dir}/cat/xhtml-legacy-1.mod" />          
+		<entity publicid="-//W3C//ELEMENTS XHTML Scripting 1.0//EN" location="${util.dir}/cat/xhtml-script-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Link Element 1.0//EN" location="${util.dir}/cat/xhtml-link-1.mod" />            
+		<entity publicid="-//W3C//ELEMENTS XHTML BIDI Override Element 1.0//EN" location="${util.dir}/cat/xhtml-bdo-1.mod" />          
+		<entity publicid="-//W3C//ELEMENTS XHTML Lists 1.0//EN" location="${util.dir}/cat/xhtml-list-1.mod" />            
+		<entity publicid="-//W3C//ELEMENTS XHTML Server-side Image Maps 1.0//EN" location="${util.dir}/cat/xhtml-ssismap-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Client-side Image Maps 1.0//EN" location="${util.dir}/cat/xhtml-csismap-1.mod" />      
+		<entity publicid="-//W3C//ELEMENTS XHTML Metainformation 1.0//EN" location="${util.dir}/cat/xhtml-meta-1.mod" />            
+		<entity publicid="-//W3C//ELEMENTS XHTML Document Structure 1.0//EN" location="${util.dir}/cat/xhtml-struct-1.mod" />
+		<entity publicid="-//W3C//ENTITIES XHTML Datatypes 1.0//EN" location="${util.dir}/cat/xhtml-datatypes-1.mod" />    
+		<entity publicid="-//W3C//ENTITIES XHTML MetaAttributes 1.0//EN" location="${util.dir}/cat/xhtml-metaAttributes-1.mod" />  
+		<entity publicid="-//W3C//ELEMENTS XHTML Style Sheets 1.0//EN" location="${util.dir}/cat/xhtml-style-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Editing Elements 1.0//EN" location="${util.dir}/cat/xhtml-edit-1.mod" />         
+		<entity publicid="-//W3C//ELEMENTS XHTML Embedded Object 1.0//EN" location="${util.dir}/cat/xhtml-object-1.mod" />          
+		<entity publicid="-//W3C//ENTITIES XHTML Modular Framework 1.0//EN" location="${util.dir}/cat/xhtml-framework-1.mod" />    
+		<entity publicid="-//W3C//ELEMENTS XHTML Param Element 1.0//EN" location="${util.dir}/cat/xhtml-param-1.mod" />           
+		<entity publicid="-//W3C//ELEMENTS XHTML Tables 1.0//EN" location="${util.dir}/cat/xhtml-table-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Hypertext 1.0//EN" location="${util.dir}/cat/xhtml-hypertext-1.mod" />    
+		<entity publicid="-//W3C//ELEMENTS XHTML Presentation 1.0//EN" location="${util.dir}/cat/xhtml-pres-1.mod" />            
+		<entity publicid="-//W3C//ELEMENTS XHTML Target 1.0//EN" location="${util.dir}/cat/xhtml-target-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Images 1.0//EN" location="${util.dir}/cat/xhtml-image-1.mod" />        
+		<entity publicid="-//W3C//ELEMENTS XHTML Text 1.0//EN" location="${util.dir}/cat/xhtml-text-1.mod" />
+		<entity publicid="-//W3C//ELEMENTS XHTML Inline Style 1.0//EN" location="${util.dir}/cat/xhtml-inlstyle-1.mod" />     
+		<entity publicid="-//W3C//ENTITIES XHTML+RDFa Document Model 1.0//EN" location="${util.dir}/cat/xhtml-rdfa-model-1.mod" />
+		<entity publicid="-//W3C//ENTITIES Symbols for XHTML//EN" location="${util.dir}/cat/xhtml-symbol.ent" />
+		<entity publicid="-//W3C//ENTITIES Special for XHTML//EN" location="${util.dir}/cat/xhtml-special.ent" />
+		<entity publicid="-//W3C//ENTITIES Latin 1 for XHTML//EN" location="${util.dir}/cat/xhtml-lat1.ent" /> 	
+	</xmlcatalog>
+	
+</project>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z3986 Text Module</x:h1>
+  <x:p>This module is a wrapper around the XHTML2 Text Module.</x:p>
+  <x:p>It introduces the following major changes: </x:p>
+  <x:ul>
+  	<x:li>Remove Misc.class from Text.model</x:li>
+  	<x:li>Allow only text in kbd</x:li>
+  	<x:li>Add the expansion and type attributes to abbr</x:li>
+  	<x:li>define Text.minimal.model, Text.reduced.model and Text.extra</x:li>
+  </x:ul>
+  
+  <!-- broken out to a module instead of in driver in order to 
+  		allow reuse between profiles -->
+
+  <include href="xhtml-text-2.rng">
+		    	
+		<!-- remove Misc.class -->    	
+    	<define name="Text.model">    	
+      		<zeroOrMore>
+        		<choice>
+		          <text/>
+		          <ref name="Text.class"/>
+        		</choice>
+      		</zeroOrMore>
+    	</define>
+    	
+     	<!-- subsetting the inline elements content models -->
+  		<define name="kbd">
+      		<element name="kbd">
+        		<ref name="kbd.attlist"/>
+        		<ref name="kbd.content"/>
+      		</element>
+    	</define>
+    	
+    	<define name="abbr">
+      		<element name="abbr">
+        		<ref name="abbr.attlist"/>
+				<ref name="abbr.content"/>
+      		</element>
+    	</define>
+    	
+    	<define name="l">
+      		<element name="l">
+        		<ref name="l.attlist"/>
+				<ref name="l.content"/>
+      		</element>
+    	</define>
+	    
+	    <define name="quote">
+	      <element name="quote">
+	        <ref name="quote.attlist"/>
+	        <ref name="quote.content"/>
+	      </element>
+	    </define>    	
+
+	    <define name="sub">
+	      <element name="sub">
+	        <ref name="sub.attlist"/>
+	        <ref name="sub.content"/>
+	      </element>
+	    </define>
+
+	    <define name="sup">
+	      <element name="sup">
+	        <ref name="sup.attlist"/>
+	        <ref name="sup.content"/>
+	      </element>
+	    </define>	    
+    	  
+  </include>  
+  
+  <define name="quote.content">
+	<oneOrMore>
+		<choice>
+			<text />
+			<ref name="quote.class"/>
+		</choice>
+	</oneOrMore>  
+  </define>
+
+  <define name="quote.class">
+  	<choice>
+		<ref name="abbr"/>
+		<ref name="em"/>
+		<ref name="l"/>  
+		<ref name="span"/>  
+		<ref name="strong"/>  
+		<ref name="sub"/>  
+		<ref name="sup"/>  
+		<ref name="ruby"/>  
+		<ref name="a"/>  
+		<ref name="object"/>  
+  	</choice>
+  </define>
+  
+  <define name="sub.content">
+	<ref name="Text.minimal.model"/>  
+  </define>
+  
+  <define name="sup.content">
+	<ref name="Text.minimal.model"/>
+  </define>
+    
+  <define name="kbd.content">
+	<ref name="Text.minimal.model"/>
+  </define>  
+    
+  <define name="l.content">
+	<oneOrMore>
+		<choice>
+			<text />
+			<ref name="l.class"/>
+		</choice>
+	</oneOrMore>  
+  </define>
+
+  <define name="l.class">
+  	<choice>
+		<ref name="abbr"/>
+		<ref name="em"/>
+		<ref name="quote"/>  
+		<ref name="span"/>  
+		<ref name="strong"/>  
+		<ref name="sub"/>  
+		<ref name="sup"/>  
+		<ref name="ruby"/>  
+		<ref name="a"/>  
+		<ref name="object"/>  
+	</choice>
+  </define>
+    
+  <define name="abbr.content">
+		<oneOrMore>
+			<choice>
+				<text />
+				<ref name="ruby"/>
+				<ref name="span" />
+			</choice>
+		</oneOrMore>  
+  </define>      
+  
+  <define name="abbr.expansion.attrib">
+  	<attribute name="expansion" ns="http://www.daisy.org/ns/z3986/2008/"/>
+  </define>
+  
+  <define name="abbr.type.attrib">    
+  	<attribute name="type" ns="http://www.daisy.org/ns/z3986/2008/">  		
+  		<choice>
+	  		<value>acronym</value>
+	  		<value>initialism</value>
+  		</choice>	  		
+  	</attribute>  
+  </define>
+  
+  <define name="abbr.attlist" combine="interleave">
+  	<optional>
+  		<ref name="abbr.expansion.attrib"/>
+  	</optional>	
+  	<optional>
+  		<ref name="abbr.type.attrib"/>
+  	</optional>	
+  </define>
+    
+  <define name="Text.minimal.class">
+  	<choice>
+  		<empty/>
+  		<ref name="Text.extra"/>
+  	</choice>	
+  </define>
+    
+  <define name="Text.minimal.model">                
+  	<oneOrMore>
+  		<choice>
+			<text/>  		
+  			<ref name="Text.minimal.class" />
+  		</choice>
+  	</oneOrMore>		  		  	
+  </define>
+  
+  <define name="Text.reduced.class">
+  	<choice>
+  		<ref name="abbr"/>
+        <ref name="em"/>                
+        <ref name="span"/>
+        <ref name="dfn"/>
+        <ref name="strong"/>
+        <ref name="sub"/>
+        <ref name="sup"/>
+        <ref name="code"/>               
+        <ref name="kbd"/>
+        <ref name="quote"/>
+        <ref name="cite"/>
+        <ref name="Text.extra"/>
+  	</choice>	
+  </define>
+        
+  <define name="Text.reduced.model">                
+  	<oneOrMore>
+  		<choice>
+			<text/>  		
+  			<ref name="Text.reduced.class" />
+  		</choice>
+  	</oneOrMore>		  		  	
+  </define>
+  
+  <define name="Text.extra">
+  	<notAllowed/>
+  </define>
+
+  <define name="Text.class" combine="choice">
+  	<ref name="Text.extra" />
+  </define>
+    
+</grammar>  

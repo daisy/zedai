@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:zt="http://www.daisy.org/ns/rdf/property#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:dcterms="http://purl.org/dc/terms/">
+   <rdf:Description rdf:about="http://www.daisy.org/z3998/2012/vocab/periodicals/">
+      <dcterms:modified>2012-12-19</dcterms:modified>
+      <dcterms:creator>kjohar</dcterms:creator>
+      <dcterms:creator>oha</dcterms:creator>
+      <dcterms:issued>2009-12-01</dcterms:issued>
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:description>This RDF vocabulary contains terms for use primarily in the context of the NISO Z39.98-2012 Newsfeeds Aggregator profile(http://www.daisy.org/z3998/2012/auth/profiles/newsfeeds/). It defines terms for semantic inflection of document content, and terms for article-level metadata.</dcterms:description>
+      <dcterms:title>Z39.98-2012 Periodicals Vocabulary</dcterms:title>
+  </rdf:Description>
+   <rdf:Bag rdf:ID="sections-blocks">
+      <dcterms:title>Article and section types</dcterms:title>
+      <rdf:Description rdf:about="#news" rdf:ID="news">
+         <rdfs:label>news</rdfs:label>
+         <rdfs:comment>An article or group of articles that contains current or recent news of either general interest or on a specific topic</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#feature" rdf:ID="feature">
+         <rdfs:label>feature</rdfs:label>
+         <rdfs:comment>An article which discusses a selected issue in-depth</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#review" rdf:ID="review">
+         <rdfs:label>review</rdfs:label>
+         <rdfs:comment>An evaluation of a publication or other item.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#advertisement" rdf:ID="advertisement">
+         <rdfs:label>advertisement</rdfs:label>
+         <rdfs:comment>An advertisement.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#editorial" rdf:ID="editorial">
+         <rdfs:label>editorial</rdfs:label>
+         <rdfs:comment>An article stating opinions or giving perspectives.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#commentary" rdf:ID="commentary">
+         <rdfs:label>commentary</rdfs:label>
+         <rdfs:comment>An article or posting containing commentary on a publication or other item.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#classifieds" rdf:ID="classifieds">
+         <rdfs:label>classifieds</rdfs:label>
+         <rdfs:comment>Classified advertisements.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#weather" rdf:ID="weather">
+         <rdfs:label>weather</rdfs:label>
+         <rdfs:comment>The weather forecast.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#sports" rdf:ID="sports">
+         <rdfs:label>sports</rdfs:label>
+         <rdfs:comment>The sports section.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+   </rdf:Bag>
+   <rdf:Bag rdf:ID="phrasal">
+      <dcterms:title>Article content structures</dcterms:title>
+      <rdf:Description rdf:about="#headline" rdf:ID="headline">
+         <rdfs:label>headline</rdfs:label>
+         <rdfs:comment>The heading or title of an article</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#byline" rdf:ID="byline">
+         <rdfs:label>byline</rdfs:label>
+         <rdfs:comment>Indicates the names of the author(s) of an article or story, sometimes also giving credit for accompanying resources or information</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#dateline" rdf:ID="dateline">
+         <rdfs:label>dateline</rdfs:label>
+         <rdfs:comment>Indicates the time and/or place where an article or story was reported, occurred or was written</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#lead" rdf:ID="lead">
+         <rdfs:label>lead</rdfs:label>
+         <rdfs:comment>An initial segment of an article introducing and/or summarizing the content</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#deck" rdf:ID="deck">
+         <rdfs:label>deck</rdfs:label>
+         <rdfs:comment>A teaser segment near the title of an article.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#kicker" rdf:ID="kicker">
+         <rdfs:label>kicker</rdfs:label>
+         <rdfs:comment>A lead-out segment at the end of an article.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#continuation" rdf:ID="continuation">
+         <rdfs:label>continuation</rdfs:label>
+         <rdfs:comment>A reference to another part of the publication which contains the continuation of the current article</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         <rdfs:subPropertyOf rdf:resource="http://www.daisy.org/z3998/2012/vocab/structure/#continuation"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#continuation-of" rdf:ID="continuation-of">
+         <rdfs:label>continuation-of</rdfs:label>
+         <rdfs:comment>A reference to a previous part of the publication that contains the initial part of the article that the current article is a continuation of</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         <rdfs:subPropertyOf rdf:resource="http://www.daisy.org/z3998/2012/vocab/structure/#continuation-of"/>
+      </rdf:Description>
+   </rdf:Bag>
+   <rdf:Bag rdf:ID="metadata">
+      <dcterms:title>Article aggregation metadata</dcterms:title>
+      <dcterms:description>This set of article metadata terms are intended for use in aggregation contexts to maintain information about the location of source content segments, and to describe intended locations in the aggregation being built.</dcterms:description>
+      <rdf:Description rdf:about="#positionSequence" rdf:ID="positionSequence">
+         <rdfs:label>positionSequence</rdfs:label>
+         <rdfs:comment>Holds ordinal information about the article within its parent section/sub section. For example, a value of 2 means that the article is the second article in its parent section/sub section. Is only relevant in instances where the instance document is being used to deliver a single article, or a collection of articles for one or more publications.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         <rdfs:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#positionSection" rdf:ID="positionSection">
+         <rdfs:label>positionSection</rdfs:label>
+         <rdfs:comment>Holds ordinal information about the parent section and or sub section(s) within a publication, that an article appears in. For example, a value of 1.2 means that an article appears in a section that is the first section in the publication, and a sub section that is the second subsection within the section;is only relevant in instances where the particular instance document is being used to deliver a single article, or a collection of articles for one or more publications.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         <rdfs:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#positionPage" rdf:ID="positionPage">
+         <rdfs:label>positionPage</rdfs:label>
+         <rdfs:comment>Holds information about the page that the article appears on in the publication. Is only relevant in instances where the Feeds Profile document instance is being used to deliver a single article, or a collection of articles for one or more publications.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         <rdfs:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#revision" rdf:ID="revision">
+         <rdfs:label>revision</rdfs:label>
+         <rdfs:comment>Holds revision information about the article. Is relevant in instances where the Feeds Profile instance document is being used to deliver a single article, or a collection of articles for one or more publications.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         <rdfs:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#destEdition" rdf:ID="destEdition">
+         <rdfs:label>destEdition</rdfs:label>
+         <rdfs:comment>Holds information about an edition of a publication that the article is meant to appear in. Is only relevant in instances where the instance document is being used to deliver a single article, or a collection of articles for one or more publications; can appear more than once inside the Article head; each occurrence of destEdition holds information about a particular edition of a publication that the article is meant to appear in.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         <rdfs:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#destPublication" rdf:ID="destPublication">
+         <rdfs:label>destPublication</rdfs:label>
+         <rdfs:comment>Holds information about a publication that the article is meant to appear in; is only relevant in contexts where the instance document is being used to deliver a single article, or a collection of articles for one or more publications; can appear more than once inside the Article head; each occurrence of destPublication holds information about a particular publication that the article is meant to appear in.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         <rdfs:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#sourceEdition" rdf:ID="sourceEdition">
+         <rdfs:label>sourceEdition</rdfs:label>
+         <rdfs:comment>Holds information about an edition of a publication that the article is originally a part of; is only relevant in instances where the instance document is being used to deliver a single article, or a collection of articles for one or more publications; can appear more than once inside the Article head; each occurrence of sourceEdition holds information about a particular edition of a publication that the article is originally a part of.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         <rdfs:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#sourcePublication" rdf:ID="sourcePublication">
+         <rdfs:label>sourcePublication</rdfs:label>
+         <rdfs:comment>Holds information about a publication that the article is originally a part of; is only relevant in contexts where the instance document is being used to deliver a single article, or a collection of articles for one or more publications; can appear more than once inside the Article head; each occurrence of sourcePublication holds information about a particular publication that the article is originally a part of.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         <rdfs:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      </rdf:Description>
+   </rdf:Bag>
+</rdf:RDF>

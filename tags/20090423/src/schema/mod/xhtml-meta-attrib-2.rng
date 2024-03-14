@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+<x:h1>Metainformation Attributes Module</x:h1>
+
+  <div>
+    <x:h2>Metadata Attribute Collection</x:h2>
+
+    <define name="rdfa.about.attrib">
+      <optional>
+        <attribute name="about">
+          <ref name="URIorSafeCURIE.datatype"/>
+        </attribute>
+      </optional>
+    </define>
+
+    <define name="rdfa.content.attrib">
+      <optional>
+        <attribute name="content">
+          <ref name="CDATA.datatype"/>
+        </attribute>
+      </optional>
+    </define>
+
+    <define name="rdfa.datatype.attrib">
+      <optional>
+        <attribute name="datatype">
+          <ref name="CURIE.datatype"/>
+        </attribute>
+      </optional>
+    </define>
+    
+    <define name="rdfa.typeof.attrib">
+      <optional>
+        <attribute name="typeof">
+          <ref name="CURIEs.datatype"/>
+        </attribute>
+      </optional>
+    </define>    
+
+    <define name="rdfa.property.attrib">
+      <optional>
+        <!-- a:defaultValue="reference" -->
+        <attribute name="property">
+          <ref name="CURIEs.datatype"/>
+        </attribute>
+      </optional>
+    </define>
+
+    <define name="rdfa.rel.attrib">
+      <optional>
+        <attribute name="rel">
+          <ref name="CURIEs.datatype"/>
+        </attribute>
+      </optional>
+    </define>
+    
+    <define name="rdfa.resource.attrib">
+      <optional>
+        <attribute name="resource">
+          <ref name="URIorSafeCURIE.datatype"/>
+        </attribute>
+      </optional>
+    </define>    
+
+    <define name="rdfa.rev.attrib">
+      <optional>
+        <attribute name="rev">
+          <ref name="CURIEs.datatype"/>
+        </attribute>
+      </optional>
+    </define>
+
+    <define name="rdfa.Metadata.attrib">
+      <ref name="rdfa.about.attrib"/>
+      <ref name="rdfa.content.attrib"/>
+      <ref name="rdfa.datatype.attrib"/>
+      <ref name="rdfa.typeof.attrib"/>
+      <ref name="rdfa.property.attrib"/>
+      <ref name="rdfa.rel.attrib"/>
+      <ref name="rdfa.resource.attrib"/>
+      <ref name="rdfa.rev.attrib"/>
+    </define>
+  </div>
+
+  <define name="xhtml.Common.attrib" combine="interleave">
+    <ref name="rdfa.Metadata.attrib"/>
+  </define>
+
+</grammar>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://www.w3.org/2002/06/xhtml2/"
+         xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>RELAX NG schema for Z39.86-2010 Part A Generic Document Profile, building on XHTML 2.0</x:h1>
+  <x:p>This is a driver, modified by DAISY, originating from the XHTML2 default driver.</x:p>
+
+  <div>
+    <x:h2>XHTML 2.0 modules</x:h2>
+
+    <x:h3>Attribute Collections Module, Z39.86 modified</x:h3>
+    <include href="mod/z3986-xhtml-attribs.rng"/>
+
+    <x:h3>Document Module, Z39.86 modified</x:h3>
+    <include href="mod/z3986-xhtml-document.rng" />
+    
+    <x:h3>Structural Module, Z39.86 modified</x:h3>
+    <include href="mod/z3986-xhtml-structural.rng"/>
+
+    <x:h3>Text Module, Z39.86 modified</x:h3>
+    <include href="mod/z3986-xhtml-text.rng" />
+    	
+    <x:h3>Hypertext Module</x:h3>
+    <include href="mod/xhtml-hypertext-2.rng" />
+    <define name="Text.reduced.class" combine="choice">
+      <ref name="a"/>
+    </define>	
+    
+    <x:h3>List Module, Z39.86 modified</x:h3>
+    <include href="mod/z3986-xhtml-list.rng" />    
+                
+    <x:h3>Metainformation Module, Z39.86 modified</x:h3>
+    <include href="mod/xhtml-meta-2.rng">
+        <define name="meta">
+      		<element name="meta">
+	        	<ref name="meta.attlist"/>
+	        	<ref name="Text.reduced.model"/>
+	      	</element>
+    	</define>
+    
+        <define name="meta.attlist">
+        <!-- will change when rdfa gets integrated -->
+      		<ref name="Common.attrib"/>
+      		<ref name="about.attrib"/>
+         	<ref name="content.attrib"/>
+         	<ref name="datatype.attrib"/>         
+         	<ref name="rel.attrib"/>
+         	<ref name="rev.attrib"/>
+    	</define>
+  		
+    	<define name="link.attlist">
+      		<ref name="Common.attrib"/>
+      		<ref name="rel.attrib" />
+      		<ref name="rev.attrib" />
+    	</define>  		
+    </include>	
+
+    <x:h3>Object Module, Z39.86 modified</x:h3>
+    <include href="mod/z3986-xhtml-object.rng"/>
+
+    <x:h3>Tables Module, Z39.86 modified</x:h3>
+    <include href="mod/z3986-xhtml-table.rng"/>
+
+    <x:h3>Support Modules</x:h3>
+
+    <x:h4>Datatypes Module, Z39.86 modified</x:h4>
+    <include href="mod/xhtml-datatypes-2.rng">
+    	<!-- temp remove of old roles and stuff -->
+        <define name="Property.datatype">      
+	      <choice>
+	        <ref name="prefixedQName.datatype"/>
+	      </choice>
+	    </define>
+
+    	<define name="Role.datatype">    
+    	  <!-- temporary, too -->  
+	      <list>
+	        <oneOrMore>	          
+	            <ref name="prefixedQName.datatype"/>	          
+	        </oneOrMore>
+	      </list>
+    	</define>    
+    	
+    	<define name="LinkTypes.datatype">
+    		<!-- temporary, too -->
+    		<choice>
+	    		<value>profile</value>
+	    		<ref name="QName.datatype"/>
+    		</choice>
+    	</define>
+    </include>
+
+    <x:h4>Caption Module</x:h4>
+    <include href="mod/xhtml-caption-2.rng"/>
+    
+  </div>
+
+  <div x:id="ruby">
+    <x:h2>Ruby module</x:h2>
+
+    <include href="mod/full-ruby-1.rng">
+
+      <define name="Inline.class">
+        <notAllowed/>
+      </define>
+
+      <define name="NoRuby.content">
+        <ref name="Text.model"/>
+      </define>
+
+    </include>
+
+    <define name="Inline.model">
+      <notAllowed/>
+    </define>
+
+    <define name="Text.extra" combine="choice">
+      <ref name="ruby"/>
+    </define>
+    
+  </div>
+
+
+  <div>
+    <x:h2>Z39.86 Modules</x:h2>
+
+    <x:h3>Bridgehead Module</x:h3>
+	<include href="mod/z3986.bridgehead.rng" />	    
+		                        
+    <x:h3>Z3986 Note Module</x:h3>    
+	<include href="mod/z3986-note.rng" />
+		
+	<x:h3>Z3986 Inline Module</x:h3>
+	<include href="mod/z3986-inline.rng" />
+		    
+  </div>
+   
+      
+  <!-- ********************************************************
+    Z3986: Modules included for RelaxNG compile-time only
+  ********************************************************* -->
+  
+  <div>
+    <x:h2>XML Schema instance module</x:h2>
+    <include href="mod/XMLSchema-instance.rng"/>
+    <!-- todo ask WG to contextualize in module instead of head -->
+  </div>
+
+  <!-- ********************************************************
+    Z3986: debug
+  ********************************************************* -->
+  	<!-- make sure we dont use Misc.class anywhere -->
+	<define name="misc-avoid">
+		<element name="MISC_CLASS_DEBUG">
+			<empty/>
+		</element>
+	</define>
+	<define name="Misc.class" combine="choice">
+		<ref name="misc-avoid"/>
+	</define>
+
+</grammar>

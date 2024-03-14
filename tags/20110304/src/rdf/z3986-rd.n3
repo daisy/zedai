@@ -1,0 +1,195 @@
+@base  <http://www.daisy.org/z3986/2011/vocab/resourcedirectory/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix jena: <http://www.daisy.org/ns/rdf/jena#> .
+@prefix : <#> .
+
+<> 
+  dcterms:title "Z39.86-2011 Resource Directory Vocabulary" ;
+  dcterms:description "This RDF vocabulary is a normative part of [[http://www.daisy.org/z3986/2011/Z3986-2011A.html ANSI/NISO Z39.86-2011 Part A]]. It defines a set of properties for use in the Z39.86-2011 Resource Directory document type." ;
+  dcterms:publisher "DAISY Consortium" ;
+  dcterms:issued "2009-12-01" ;
+  dcterms:creator "mgylling" ;
+  dcterms:modified "2011-03-04" .
+  
+  
+########################################
+###### nature/identity properties ######
+########################################
+
+:nature-identity    a rdf:Bag ;
+					jena:bag-sort "10" ;
+					dcterms:title "Nature and Identity" .
+
+:reference 			a rdf:Property ;
+					rdfs:label "reference" ;
+					jena:prop-sort "10" ;
+					rdf:member :nature-identity ;
+					dcterms:description "A human-readable description of the purpose and structure of the entity described by this directory" .
+
+:token-identifier  	a rdf:Property ;
+					rdfs:label "token-identifier" ;
+					jena:prop-sort "20" ;
+					rdf:member :nature-identity ;
+					dcterms:description "A canonical string identifier for the entity described by this directory" .
+
+:maintenance-agency a rdf:Property ;
+					rdfs:label "maintenance-agency" ;
+					jena:prop-sort "30" ;
+					rdf:member :nature-identity ;
+					dcterms:description "The identity of agency responsible for maintaining the entity described by this directory" .
+
+:specification-compliance a rdf:Property ;
+					rdfs:label "specification-compliance" ;
+					jena:prop-sort "40" ;
+					rdf:member :nature-identity ;
+					dcterms:description "A reference to a specification which the entity described by this directory conforms to" .
+
+:version            a rdf:Property ;
+					rdfs:label "version" ;
+					jena:prop-sort "50" ;
+					rdf:member :nature-identity ;
+					dcterms:description "A version identifier for the entity described by this directory" .
+					
+:current-version-uri a rdf:Property ;
+					rdfs:label "current-version-uri" ;
+					jena:prop-sort "60" ;
+					rdf:member :nature-identity ;
+					dcterms:description "A URI resolving to the resource directory of the most recently published (current) version of the entity described by this directory" .
+
+:version-history    a rdf:Property ;
+					rdfs:label "version-history" ;
+					jena:prop-sort "70" ;
+					rdf:member :nature-identity ;
+					dcterms:description "A reference to list of URIs that contains all available versions of the entity described by this directory" .
+
+
+########################################
+### instance conformance properties ####
+########################################
+
+:instance-conformance a rdf:Bag ;
+					jena:bag-sort "20" ;
+					dcterms:title "Instance Conformance" ;
+					dcterms:description "Resources related to testing whether instances satisfies the constraints expressed in this directory" .
+
+:normative-schemata  	a rdf:Property ;
+					rdfs:label "normative-schemata" ;
+					jena:prop-sort "10" ;
+					rdf:member :instance-conformance ;
+					dcterms:description "The normative schema(ta) for validation of instances satisfying the constraints expressed in this directory" .
+
+:normative-prose  	a rdf:Property ;
+					rdfs:label "normative-prose" ;
+					jena:prop-sort "20" ;
+					rdf:member :instance-conformance ;
+					dcterms:description "Normative prose regarding the application of the entity described by this directory" .
+					
+:schema-documentation a rdf:Property ;
+					rdfs:label "schema-documentation" ;
+					jena:prop-sort "30" ;
+					rdf:member :instance-conformance ;
+					dcterms:description "Human-readable documentation of a schema" .
+					
+:prefix 			a rdf:Property ;
+					rdfs:label "prefix" ;
+					jena:prop-sort "40" ;
+					rdf:member :instance-conformance ;
+					dcterms:description "A prefix functioning as a symbolical short form for a URI" .
+					
+:conformance 			a rdf:Property ;
+					rdfs:label "conformance" ;
+					jena:prop-sort "50" ;
+					rdf:member :instance-conformance ;
+					dcterms:description "The conformance requirement of a resource: normative or informative" .
+					
+:schema-type 			a rdf:Property ;
+					rdfs:label "format" ;
+					jena:prop-sort "60" ;
+					rdf:member :instance-conformance ;
+					dcterms:description "The language in which a schema is expressed" .
+
+					
+					
+########################################
+#### instance conformance: profiles ####
+########################################
+
+										
+:instance-conformance-profile a rdf:Bag ;
+					jena:bag-sort "30" ;
+					rdf:member :instance-conformance ;
+					dcterms:title "Instance Conformance (Z39.86-2011 Profile Specific)" ;
+					dcterms:description "Resources related to testing whether instances satisfies the constraints expressed in this directory" .
+
+:z3986-feature  	a rdf:Property ;
+					rdfs:label "z3986-feature" ;
+					jena:prop-sort "10" ;
+					rdf:member :instance-conformance-profile ;
+					dcterms:description "A Feature supported by the Profile" .
+
+:z3986-rdfa-profile a rdf:Property ;
+					rdfs:label "z3986-rdfa-profile" ;
+					jena:prop-sort "20" ;
+					rdf:member :instance-conformance-profile ;
+					dcterms:description "The canonical URI of the default RDFa profile" .
+
+:z3986-default-vocab a rdf:Property ;
+					rdfs:label "z3986-default-vocab" ;
+					jena:prop-sort "30" ;
+					rdf:member :instance-conformance-profile ;
+					dcterms:description "The profile's default RDF vocabulary" .
+
+########################################
+############## auxilliary ##############
+########################################
+
+
+:auxiliary 			a rdf:Bag ;
+					jena:bag-sort "40" ;
+					dcterms:title "Auxiliary Resources" .
+
+:examples 			a rdf:Property ;
+					rdfs:label "examples" ;
+					jena:prop-sort "10" ;
+					rdf:member :auxiliary ;
+					dcterms:description "Examples of instances satisfying the constraints expressed in this directory" .
+
+:informative-schema-alt a rdf:Property ;
+					rdfs:label "informative-schema-alt" ;
+					jena:prop-sort "20" ;
+					rdf:member :auxiliary ;
+					dcterms:description "An informative schema, alternative to [[#normative-schema normative schemas]], for validation of instances satisfying the constraints expressed in this directory" .
+
+:informative-schema-add a rdf:Property ;
+					rdfs:label "informative-schema-add" ;
+					jena:prop-sort "30" ;
+					rdf:member :auxiliary ;
+					dcterms:description "An informative schema, for use in addition to [[#normative-schemata normative schemas]]" .
+
+:schema-module 		a rdf:Property ;
+					rdfs:label "module" ;
+					jena:prop-sort "40" ;
+					rdf:member :auxiliary ;					
+					dcterms:description "A subcomponent of a schema" .
+				
+:default-css  		a rdf:Property ;
+					rdfs:label "default-css" ;
+					jena:prop-sort "50" ;
+					rdf:member :auxiliary ;
+					dcterms:description "A cascading stylesheet suitable for use in instances satisfying the constraints expressed in this directory" .
+
+:supporting-software a rdf:Property ;
+					rdfs:label "supporting-software" ;
+					jena:prop-sort "60" ;
+					rdf:member :auxiliary ;
+					dcterms:description "Software that supports the entity described by this directory or instances satisfying the constraints expressed herein" .
+
+:archive 			a rdf:Property ;
+					rdfs:label "archive" ;
+					jena:prop-sort "70" ;
+					rdf:member :auxiliary ;
+					dcterms:description "A downloadable archive of documents and resources referenced from this directory" .
+                   

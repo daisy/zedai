@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+       "http://www.w3.org/TR/html4/loose.dtd"> 
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="main.css" rel=stylesheet type="text/css">
+<title>Error Report</title>
+</head>
+<body>
+<h1><a name="Error"></a>Error Report</h1>
+<p>If the input Schema was flawed, Schema Quality Checker will report this
+(either on <i>stdout</i> or in the <i>reportAsXML</i> output file.
+The error message includes an Error Severity and an Error type.</p>
+<p></p>
+<table cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td class="C1"><table width="100%" cellspacing=1 cellpadding=4>
+
+<tr class="C6">
+<th width="22%">Error Severity Code</th>
+<th width="80%">Meaning</th>
+</tr>
+
+<tr class="C6">
+<td align="center">0</td>
+<td>WARNING: a notification of some minor problem which does not
+affect the validity of the schema</td>
+</tr>
+
+<tr class="C6">
+<td align="center">1</td>
+<td>ERROR: a problem was found related to the syntax or semantics
+of the XML Schema specification</td>
+</tr>
+
+<tr class="C6">
+<td align="center">2</td>
+<td>FATAL_ERROR: no XML Schema found in the input file, or the schema
+is not wellformed</td>
+</tr>
+</table></td>
+
+</tr>
+</table>
+
+<p></p>
+<p></p>
+
+<table cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td class="C1"><table width="100%" cellspacing=1 cellpadding=4>
+
+<tr class="C6">
+<th width="22%">Error Type Code</th>
+<th width="80%">Meaning</th>
+</tr>
+
+<tr class="C6">
+<td align="center">0</td>
+<td>WELLFORMEDNESS: an error occured because the XML representation
+of a Schema is not wellformed</td>
+</tr>
+
+<tr class="C6">
+<td align="center">1</td>
+<td>XML_SCHEMA_REPRESENTATION: an error occured because the XML
+representation is not valid against the DTD for Schema and/or against other
+constraints on the way XML Schema should be represented as an XML document</td>
+</tr>
+
+<tr class="C6">
+<td align="center">2</td>
+<td>CONSTRAINT_ON_SCHEMA : an error occured because at
+least one constraint on schema is not valid, acording to the
+definition provided in the XML Schema specification Part I
+<a href="http://www.w3.org/TR/xmlschema-1/#components">Chapter 3</a>.</td>
+</tr>
+</table></td>
+
+</tr>
+</table>
+</body>
+</html>

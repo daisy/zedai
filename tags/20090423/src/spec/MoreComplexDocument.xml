@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="file:/G:/eclipseProjects/zednext-trunk/build/z3986a-book/z3986a-book.rng" type="xml"?>
+<html xmlns="http://www.w3.org/2002/06/xhtml2/" xmlns:d="http://www.daisy.org/ns/z3986/2008/"  xml:lang="en">
+    <head>
+        <link rel="profile" href="http://www.daisy.org/z3986/2010/simplebook/0.1/"/>
+    </head>
+    <body>
+        <d:frontmatter >
+            <d:toc>
+                <h>Table of contents</h>
+                <d:tocentry>
+                    <d:label>Chapter 1</d:label>
+                    <d:pageref ref="p1">1</d:pageref>
+                </d:tocentry>
+                <d:tocentry>
+                    <d:label>Chapter 2</d:label>
+                    <d:pageref ref="p3">3</d:pageref>
+                </d:tocentry>
+            </d:toc>
+        </d:frontmatter>
+        <d:bodymatter>
+            <section>
+                <d:pagebreak xml:id="p1" value="1" />
+                <h>Chapter 1</h>
+                <p>
+                    This is the first chapter of this document.
+                </p>
+                <d:pagebreak value="2" />
+            </section>
+            <section>
+                <d:pagebreak xml:id="p3" value="3" />
+                <h>Chapter 2</h>
+                <p>
+                    And this is the second chapter of this document
+                </p>
+            </section>
+        </d:bodymatter>
+    </body>
+</html>

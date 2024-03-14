@@ -1,0 +1,119 @@
+@base  <http://www.daisy.org/z3986/2012/vocab/descriptions/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix zt:  <http://www.daisy.org/ns/rdf/property#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix jena: <http://www.daisy.org/ns/rdf/jena#> .
+@prefix foaf: <http://xmlns.com/foaf/spec/#term_> .
+@prefix : <#> .
+
+<>
+  dcterms:title "DIAGRAM Descriptions Vocabulary" ;
+  dcterms:description "This RDF vocabulary defines a set of terms relating to accessible descriptions." ;
+  dcterms:publisher "DAISY Consortium" ;
+  dcterms:issued "2012-08-26" ;  
+  dcterms:creator "mgarrish" ;
+  dcterms:modified "2012-12-19" . 
+  
+ 
+
+########################################
+########## descriptions #########
+########################################
+
+:description-metadata	a rdf:Bag ;
+					jena:bag-sort "10" ;
+					dcterms:title "Description Metadata" ;
+					dcterms:description "Standard terms used for defining metadata about a description." .
+
+:purpose			a rdf:Property ;
+					rdfs:label "purpose" ;
+					jena:prop-sort "10" ;
+					rdf:member :description-metadata ;
+					rdfs:comment "The purpose of the description." .
+
+:descriptionQuality		a rdf:Property ;
+					rdfs:label "descriptionQuality" ;
+					jena:prop-sort "20" ;
+					rdf:member :description-metadata ;
+					rdfs:comment "A quality rating for the description." .
+
+
+
+
+########## types #########
+
+:reader-metadata		a rdf:Bag ;
+					jena:bag-sort "20" ;
+					rdf:member :description-metadata ;
+					dcterms:title "Target Readers" .
+
+:targetAge			a rdf:Property ;
+					rdfs:label "targetAge" ;
+					jena:prop-sort "10" ;
+					rdf:member :reader-metadata ;
+					rdfs:comment "The target age of the reader." .
+
+:targetGrade			a rdf:Property ;
+					rdfs:label "targetGrade" ;
+					jena:prop-sort "20" ;
+					rdf:member :reader-metadata ;
+					rdfs:comment "Target school grade level of the reader." .
+
+
+
+
+########## versioning #########
+
+:description-versioning	a rdf:Bag ;
+					jena:bag-sort "30" ;
+					rdf:member :description-metadata ;
+					dcterms:title "Description Versioning" .
+
+:currentVersion		a rdf:Property ;
+					rdfs:label "currentVersion";
+					jena:prop-sort "10" ;
+					rdf:member :description-versioning ;
+					rdfs:comment "A URI pointing to the location where the most current version of the description can be found." .
+
+:thisVersion			a rdf:Property ;
+					rdfs:label "thisVersion";
+					jena:prop-sort "20" ;
+					rdf:member :description-versioning ;
+					rdfs:comment "A URI pointing to the location where the currently referenced description can be found." .
+
+:previousVersion		a rdf:Property ;
+					rdfs:label "previousVersion";
+					jena:prop-sort "30" ;
+					rdf:member :description-versioning ;
+					rdfs:comment "A URI pointing to the location where the previous version of the description can be found." .
+
+:alternateVersion		a rdf:Property ;
+					rdfs:label "currentVersion";
+					jena:prop-sort "40" ;
+					rdf:member :description-versioning ;
+					rdfs:comment "A URI pointing to the location where an alternative." .
+
+
+
+
+########## repository access #########
+
+:repository-access		a rdf:Bag ;
+					jena:bag-sort "40" ;
+					rdf:member :description-metadata ;
+					dcterms:title "Repository Access" .
+
+:repository			a rdf:Property ;
+					rdfs:label "repository";
+					jena:prop-sort "10" ;
+					rdf:member :repository-access ;
+					rdfs:comment "A URI pointing to a repository of descriptions." .
+
+:queryConcept			a rdf:Property ;
+					rdfs:label "queryConcept";
+					jena:prop-sort "20" ;
+					rdf:member :repository-access ;
+					rdfs:comment "A term relevant to the current description that can be used to query a repository for additional information." .
+

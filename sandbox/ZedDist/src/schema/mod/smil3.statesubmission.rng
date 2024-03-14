@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+
+    <!-- This profile adds the state and submission elements to the content model of the head element of the Structure Module, 
+        and the setvalue, newvalue, delvalue, and send elements to the content model of the body, switch, a, par, seq, excl elements. 
+        It also adds the expr attribute to all elements within the content model of the body element (i.e. excluding the body element itself). -->
+
+    <div>
+        <define name="smil3.head.content" combine="interleave">
+            <optional>
+                <ref name="smil3.statesubmission.submission"/>
+            </optional>
+        </define>
+                
+        <define name="smil3.timecontainers.content.class" combine="choice">
+            <ref name="smil3.statesubmission.send"/>
+        </define>
+        
+        <define name="smil3.a.content.class" combine="choice">
+            <ref name="smil3.statesubmission.send"/>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.statesubmission.submission">
+            <element name="submission">
+                <a:documentation>The submission element carries the information needed to determine
+                    which parts of the data model should be sent, where it should be sent and what
+                    to do with any data returned. The ref attribute selects the portion of the data
+                    model to transmit and in case of XPath should be a node-set expression. The
+                    default is to transmit the whole data model (in case of xpath:
+                    "/").</a:documentation>
+                <ref name="smil3.statesubmission.submission.attlist"/>
+                <ref name="smil3.statesubmission.submission.content"/>
+            </element>
+        </define>
+
+        <define name="smil3.statesubmission.submission.attlist">            
+            <ref name="smil3.statesubmission.action.attrib"/>
+            <ref name="smil3.statesubmission.method.attrib"/>
+            <optional>
+                <ref name="smil3.userstate.ref.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.statesubmission.replace.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.statesubmission.target.attrib"/>
+            </optional>
+        </define>
+
+        <define name="smil3.statesubmission.submission.content">
+            <empty/>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.statesubmission.send">
+            <element name="send">
+                <a:documentation>The send element causes the data model, or some part of the data
+                    model, to be submitted to server, saved to disk or transmitted externally
+                    through some other method. It does not specify any of this directly but contains
+                    only a reference to such submission instructions.</a:documentation>
+                <ref name="smil3.statesubmission.send.attlist"/>
+                <ref name="smil3.statesubmission.send.content"/>
+            </element>
+        </define>
+
+        <define name="smil3.statesubmission.send.attlist">
+            <!-- TODO The send supports all timing attributes, and participates normally in timing computations.  -->
+            <ref name="smil3.statesubmission.submission.attrib"/>
+        </define>
+
+        <define name="smil3.statesubmission.send.content">
+            <empty/>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.statesubmission.submission.attrib">
+            <attribute name="submission">
+                <a:documentation>The submission attribute is an IDREF that should refer to a
+                    submission element.</a:documentation>
+                <!-- TODO SCH is an IDREF that should refer to a submission element -->
+                <ref name="IDREF.datatype"/>
+            </attribute>
+        </define>
+        <define name="smil3.statesubmission.action.attrib">
+            <attribute name="action">
+                <a:documentation>A URL specifying where to transmit or save the nodeset. Which URLs
+                    are allowable must take security and privacy considerations into account. </a:documentation>
+                <ref name="URL.datatype"/>
+            </attribute>
+        </define>
+        <define name="smil3.statesubmission.method.attrib">
+            <attribute name="method">
+                <a:documentation>How to serialize and transmit the data. Allowed values are at least
+                    put and get but may be extended by the profile. put and get must be symmetrical,
+                    and if there is a canonical external representation for the data model language
+                    put must create that representation.</a:documentation>
+                <text/>
+            </attribute>
+        </define>
+        <define name="smil3.statesubmission.replace.attrib">
+            <attribute name="replace">
+                <a:documentation>What to replace with the reply. Allowed values are all for the
+                    whole SMIL presentation, instance for the instance data, none for
+                    nothing.</a:documentation>
+                <choice>
+                    <value>all</value>
+                    <value>instance</value>
+                    <value>none</value>
+                </choice>
+            </attribute>
+        </define>
+        <define name="smil3.statesubmission.target.attrib">
+            <attribute name="target">
+                <a:documentation>If the value of replace is instance, the optional target attribute
+                    specifies which part of the data model to replace. The default is to replace the
+                    whole instance.</a:documentation>
+                <text/>
+            </attribute>
+        </define>
+
+    </div>
+
+</grammar>

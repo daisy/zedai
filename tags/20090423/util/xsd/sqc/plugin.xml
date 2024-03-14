@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- File written by PDE 1.0 -->
+<plugin
+   id="com.ibm.etools.sketch.sqc"
+   name="SQC Plugin"
+   version="2.2"
+   provider-name="IBM Research via alphaWorks">
+<requires>
+   <import plugin="org.eclipse.ui"/>
+   <import plugin="org.eclipse.core.resources"/>
+</requires>
+
+<runtime>
+   <library name="xmlParserAPIs.jar"/>
+   <library name="xercesImpl.jar"/>
+   <library name="xschemaREC.jar">
+   		<export name="com.ibm.etools.sketch.sqc.SQCAction"/>
+   </library>
+   <library name="mofrt.jar"/>
+   <library name="xml4j.jar"/>
+</runtime>
+
+<extension-point name="SQC Plugin Extension Point"
+				 id="fileExtension"
+				 schema="extensionPoint.xsd"/>
+				 
+<extension point="com.ibm.etools.sketch.sqc.fileExtension">
+	<contribution fileExtension="xsd"/>
+	<contribution fileExtension="wsdl" options="-wsdl"/>
+	<contribution fileExtension="xfm"  options="-xform"/>
+</extension>      
+			      
+
+<extension
+      point="org.eclipse.ui.popupMenus">
+   <objectContribution
+         objectClass="org.eclipse.core.resources.IFile"
+         nameFilter="*.err.xml"
+         id="com.ibm.etools.sketch.sqc.REVALIDATION">
+      <action
+            label="&amp;Revalidate with SQC"
+            class="com.ibm.etools.sketch.sqc.SQCAction"
+            enablesFor="+"
+            id="com.ibm.etools.sketch.sqc.SQCRevalidation">
+      </action>
+   </objectContribution>
+   
+   <objectContribution
+         objectClass="org.eclipse.core.resources.IFile"
+         nameFilter="*.warn.xml"
+         id="com.ibm.etools.sketch.sqc.REVALIDATION2">
+      <action
+            label="&amp;Revalidate with SQC"
+            class="com.ibm.etools.sketch.sqc.SQCAction"
+            enablesFor="+"
+            id="com.ibm.etools.sketch.sqc.SQCRevalidation2">
+      </action>
+   </objectContribution>
+   
+   <objectContribution
+         objectClass="org.eclipse.core.resources.IFile"
+         nameFilter="*.clean.xml"
+         id="com.ibm.etools.sketch.sqc.REVALIDATION3">
+      <action
+            label="&amp;Revalidate with SQC"
+            class="com.ibm.etools.sketch.sqc.SQCAction"
+            enablesFor="+"
+            id="com.ibm.etools.sketch.sqc.SQCRevalidation3">
+      </action>
+   </objectContribution>
+   
+   
+  
+   <objectContribution
+         objectClass="org.eclipse.core.resources.IFile"
+         nameFilter="*.xsd"
+         id="com.ibm.etools.sketch.sqc.XSD">
+      <action
+            label="&amp;Validate with SQC"
+            class="com.ibm.etools.sketch.sqc.SQCAction"
+            enablesFor="+"
+            id="com.ibm.etools.sketch.sqc.SQCRunForXSD">
+      </action>
+   </objectContribution>
+   <objectContribution
+         objectClass="org.eclipse.core.resources.IFile"
+         nameFilter="*.wsdl"
+         id="com.ibm.etools.sketch.sqc.WSDL">
+      <action
+            label="&amp;Validate with SQC"
+            class="com.ibm.etools.sketch.sqc.SQCAction"
+            enablesFor="+"
+            id="com.ibm.etools.sketch.sqc.SQCRunForWSDL">
+      </action>
+   </objectContribution>
+   <objectContribution
+         objectClass="org.eclipse.core.resources.IFile"
+         nameFilter="*.xfm"
+         id="com.ibm.etools.sketch.sqc.XFORMS">
+      <action
+            label="&amp;Validate with SQC"
+            class="com.ibm.etools.sketch.sqc.SQCAction"
+            enablesFor="+"
+            id="com.ibm.etools.sketch.sqc.SQCRunForXFORMS">
+      </action>
+   </objectContribution>
+  
+   
+</extension>
+
+<!-- help -->
+ <extension point="org.eclipse.help.toc">
+    <toc file="toc.xml" primary="true"/>
+ </extension>
+ <extension point="org.eclipse.help.toc">
+    <toc file="toc_Setup.xml"/>
+    <toc file="toc_Use.xml"/>
+    <toc file="toc_Appendix.xml"/>
+  </extension>
+
+</plugin>

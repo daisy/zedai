@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Hypertext Module</x:h1>
+
+  <div>
+    <x:h2>The a element</x:h2>
+
+    <define name="xhtml.a">
+      <element name="a">
+        <ref name="xhtml.a.attlist"/>
+        <ref name="xhtml.a.content"/>        
+      </element>
+    </define>
+
+    <define name="xhtml.a.attlist">
+      <ref name="xhtml.Common.attrib"/>
+    </define>
+    
+    <define name="xhtml.a.content">
+      <ref name="xhtml.Text.model"/>
+    </define>
+  </div>
+
+  <define name="xhtml.Text.class" combine="choice">
+    <ref name="xhtml.a"/>
+  </define>
+
+</grammar>

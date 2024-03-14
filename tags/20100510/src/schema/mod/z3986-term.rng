@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="term">The term module</dcterms:title>
+      <dcterms:description>This module defines the {[[#z3986.term]]} element for identifying words and phrases of semantic or lexical significance.</dcterms:description>      
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}" />
+      <dcterms:creator>Markus Gylling</dcterms:creator>      
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng" />
+      <dcterms:requires rdf:resource="z3986-linking.rng"/>
+    </rdf:Description>
+  </rdf:RDF>
+    
+  <div>        
+    <define name="z3986.term">
+      <element name="term">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="term">The {term} element</dcterms:title>
+            <dcterms:description>The {term} element represents a word, or compound word, characterized 
+            by its particular use and context.</dcterms:description>  
+            <z:info>The addition of a {[[#z3986.ref.attrib]]} attribute establishes a link to a definition.
+              The value of the {ref} attribute must reference the {xml:id} of a {[[#z3986.definition]]} element</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.Phrase.class]]}</z:context>          
+            <z:content>{(text | z3986.Text.class)+}</z:content>            
+            <z:attlist>{[[#z3986.Phrase.attrib]]}</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.term.attlist"/>
+        <ref name="z3986.term.content"/>  
+        <!-- TODO SCH term@for must resolve to definition -->
+        <sch:rule context="default:term">
+          <sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0"
+            >The {term} element must neither be empty nor contain only whitespace.</sch:assert>
+        </sch:rule>
+        <sch:rule context="default:term[@for]">
+          <sch:assert test="some $def in //default:definition satisfies current()/@for eq $def/@xml:id"
+            >The {ref} attribute on {term} must resolve to a {definition} element.</sch:assert>
+        </sch:rule>
+      </element>    
+    </define>
+
+    <define name="z3986.term.attlist">
+      <optional>
+        <ref name="z3986.ref.attrib"/>
+      </optional>      
+      <ref name="z3986.Phrase.attrib"/>
+    </define>
+    
+    <define name="z3986.term.content">
+      <ref name="z3986.Text.model" />
+    </define>  
+  </div>
+   
+  <div>
+    <a:documentation>term - default content model contribution</a:documentation>
+    
+    <define name="z3986.Phrase.core.class" combine="choice">
+      <ref name="z3986.term"/>    
+    </define>
+    
+  </div>
+
+</grammar>

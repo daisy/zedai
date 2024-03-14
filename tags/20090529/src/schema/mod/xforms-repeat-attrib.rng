@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"
+         xmlns:xforms="http://www.w3.org/2004/xforms/">
+
+  <x:h1>XForms Repeat Attribute Collection Module</x:h1>
+
+  <define name="xforms.Repeat.attrib">
+    <optional>
+      <attribute name="xforms:repeat-model">
+        <ref name="IDREF.datatype"/>
+      </attribute>
+    </optional>    
+    <optional>
+      <attribute name="xforms:repeat-bind">
+        <ref name="IDREF.datatype"/>
+      </attribute>
+    </optional>    
+    <optional>
+      <attribute name="xforms:repeat-nodeset">
+        <ref name="LocationPath.datatype"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="xforms:repeat-startindex">
+        <ref name="Number.datatype"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="xforms:repeat-number">
+        <ref name="Number.datatype"/>
+      </attribute>
+    </optional>
+  </define>
+
+</grammar>

@@ -1,0 +1,36 @@
+<mods xmlns="http://www.loc.gov/mods/v3" version="3.3">
+    <titleInfo>
+        <title>Elements of Contract Law: The Sanity Clause</title>
+    </titleInfo>
+    <identifier type="isbn13">978-1-56619-909-4</identifier>
+    <identifier type="isbn10">1-56619-909-3</identifier>
+    <identifier type="uid">ca-otnlb-0000-0000-0001</identifier>
+    <name>
+        <namePart>Otis B. Driftwood</namePart>
+        <role>
+            <roleTerm type="text">author</roleTerm>
+        </role>
+    </name>
+    <name>
+        <namePart>Mrs. Claypool</namePart>
+        <role>
+            <roleTerm type="text">editor</roleTerm>
+        </role>
+    </name>
+    <originInfo>
+        <publisher>DAISY Consortium</publisher>
+        <place>
+            <placeTerm>Zurich, Switzerland</placeTerm>
+        </place>
+        <dateCreated>2010-01-31</dateCreated>
+    </originInfo>
+    <relatedItem type="original">
+        <originInfo>
+            <publisher>Book Publisher Ltd.</publisher>
+            <place>
+                <placeTerm>New York, NY</placeTerm>
+            </place>
+            <dateIssued>2005-03-30</dateIssued>
+        </originInfo>
+    </relatedItem>
+</mods>

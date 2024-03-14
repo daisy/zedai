@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+
+    <div>
+        <define name="smil3.mediaobjects.attrib" combine="interleave">
+            <optional>
+                <ref name="smil3.clipBegin.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.clipEnd.attrib"/>
+            </optional>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.clipBegin.attrib">
+            <attribute name="clipBegin">
+                <ref name="clipBegin.attrib.value"/>
+            </attribute>
+        </define>
+
+        <define name="clipBegin.attrib.value">
+            <choice>
+                <ref name="SMIL3.npt.datatype"/>
+                <ref name="SMIL3.smpte.datatype"/>
+            </choice>
+        </define>
+
+        <define name="smil3.clipEnd.attrib">
+            <attribute name="clipEnd">
+                <ref name="clipEnd.attrib.value"/>
+            </attribute>
+        </define>
+
+        <define name="clipEnd.attrib.value">
+            <choice>
+                <ref name="SMIL3.npt.datatype"/>
+                <ref name="SMIL3.smpte.datatype"/>
+            </choice>
+        </define>
+    </div>
+
+</grammar>

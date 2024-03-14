@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <meta>
+        <filters directoryPatterns="" filePatterns=""
+            positiveFilePatterns="" showHiddenFiles="false"/>
+        <options/>
+    </meta>
+    <projectTree name="smil3.xpr">
+        <folder name="mod">
+            <file name="src/schema/mod/smil3-basiccontentcontrol.rng"/>
+            <file
+                name="src/schema/mod/smil3-basicexcltimecontainers.rng"/>
+            <file name="src/schema/mod/smil3-basicinlinetiming.rng"/>
+            <file name="src/schema/mod/smil3-basiclayout.rng"/>
+            <file name="src/schema/mod/smil3-basiclinking.rng"/>
+            <file name="src/schema/mod/smil3-basicmedia.rng"/>
+            <file name="src/schema/mod/smil3-basictimecontainers.rng"/>
+            <file name="src/schema/mod/smil3-mediaaccessibility.rng"/>
+            <file name="src/schema/mod/smil3-mediaclipping.rng"/>
+            <file name="src/schema/mod/smil3-mediadescription.rng"/>
+            <file name="src/schema/mod/smil3-mediaparam.rng"/>
+            <file name="src/schema/mod/smil3-metainformation.rng"/>
+            <file name="src/schema/mod/smil3-skipcontentcontrol.rng"/>
+            <file name="src/schema/mod/smil3-statesubmission.rng"/>
+            <file name="src/schema/mod/smil3-statetest.rng"/>
+            <file name="src/schema/mod/smil3-structure.rng"/>
+            <file name="src/schema/mod/smil3-structurelayout.rng"/>
+            <file name="src/schema/mod/smil3-subregionlayout.rng"/>
+            <file name="src/schema/mod/smil3-userstate.rng"/>
+            <file name="src/schema/mod/z3986-datatypes.rng"/>
+        </folder>
+        <folder name="test">
+            <file name="test/test-smil3-classic.smil"/>
+            <file name="test/test-smil3-daisy.smil"/>
+        </folder>
+        <file name="src/schema/smil3-classic.rng"/>
+        <file name="src/schema/smil3-daisy.rng"/>
+    </projectTree>
+</project>

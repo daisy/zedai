@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="http://www.w3.org/MarkUp/style/xhtml2.css"?>
+<html xmlns="http://www.w3.org/2002/06/xhtml2/" xmlns:news="http://iptc.org/std/nar/2006-10-01/" xml:lang="en">
+    <head>
+        <title>An XHTML 2.0 with NewsML injeced. NVDL test document</title>
+        <meta property="title">An XHTML 2.0 with NewsML injeced. NVDL test document</meta>        
+    </head>
+    <body>
+    <section>
+    	<news:headline>NewsML Headline</news:headline>
+    	<news:dateline>NewsML dateline</news:dateline>
+    	<news:by>NewsML by</news:by>
+    	<p>Here goes some content.</p>    	    	
+    </section>
+    </body>
+</html>

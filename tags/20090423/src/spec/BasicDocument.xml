@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="file:/G:/eclipseProjects/zednext-trunk/build/z3986a-book/z3986a-book.rng" type="xml"?>
+<html xmlns="http://www.w3.org/2002/06/xhtml2/" xmlns:d="http://www.daisy.org/ns/z3986/2008/"  xml:lang="en">
+    <head>
+        <link rel="profile" href="http://www.daisy.org/z3986/2010/book/1.0/"/>
+        <meta typeof="mods:originInfo">
+            <meta property="mods:publisher" content="DAISY Consortium" />
+        </meta>
+        <meta typeof="mods:titleInfo">
+            <meta property="mods:title" content="A simple document" />
+        </meta>
+        <meta typeof="mods:identifier" content="example1">
+            <meta property="mods:type" content="uid" />
+        </meta>
+    </head>
+    <body>
+        <d:frontmatter />
+        <d:bodymatter>
+            <section>
+                <h>Hello, world.</h>
+            </section>
+        </d:bodymatter>
+    </body>
+</html>

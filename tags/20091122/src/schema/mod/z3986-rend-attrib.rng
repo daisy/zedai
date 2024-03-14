@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar 
+  xmlns="http://relaxng.org/ns/structure/1.0" 
+  xmlns:x="http://www.w3.org/1999/xhtml"
+  xmlns:rend="http://www.daisy.org/z3986/2010/auth/features/rend/">
+
+  <x:h1>Z3986 Source Rendition Attributes module</x:h1>
+  
+  <div>
+    <x:h2>The rend attribute</x:h2>
+    
+    <x:div id="z3986.rend.attrib">
+      <x:p>The Rendition (rend) attribute provides a means to indicate 
+       how the text within element in question was rendered or presented 
+       in the source text.
+      </x:p>  
+      <x:p>The value is a limited set of single CSS properties, provided primarily 
+        to allow efficient Braille transcription. 
+        For more elaborate expressions of source style capturing, authors must make
+        use of external CSS stylesheets.
+      </x:p>       
+      <x:p>
+        The value is inherit by descendants.
+      </x:p>           
+    </x:div>
+
+    <define name="z3986.rend.attrib">
+      <attribute name="rend:rend">
+        <ref name="z3986.rend.attrib.content"/>
+      </attribute>
+    </define>
+
+    <define name="z3986.rend.attrib.content" combine="choice">
+      <choice>
+        <value>text-decoration: underline</value>
+        <value>font-weight: bold</value>
+        <value>font-style: italic</value>
+      </choice>
+    </define>
+  </div>
+  
+  <div>
+    <x:h2>The symbol attribute</x:h2>    
+    <x:div id="z3986.rend.symbol.attrib"> 	 
+ 	  <x:p>In the print republishing context, it may be necessary to capture
+	    whether and which typographical symbols were used to mark a contextual 
+		break.
+	  </x:p>
+	  <x:p>On the generic <code>separator</code> element, the attribute <code>symbol</code>
+	   (to capture a textual symbol) alternatively the attribute <code>src</code> 
+	   (to link to an image symbol) are used for this purpose.
+	  </x:p>  
+	  <x:p>The symbol attribute has the predefined value 'blank' used to signal that
+	    whitespace alone was used to represent the context break.
+	  </x:p>
+    
+    </x:div>
+         
+    <define name="z3986.rend.symbol.attrib">
+      <attribute name="rend:symbol">        
+        <ref name="z3986.rend.symbol.attrib.content"/>  
+      </attribute>    
+    </define>
+
+    <define name="z3986.rend.symbol.attrib.content">
+      <choice>
+        <value>blank</value>      
+        <text/>
+      </choice>      
+    </define>  
+    
+  </div>
+    
+</grammar>

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+      This is the Mathematical Markup Language (MathML) 3.0, an XML
+      application for describing mathematical notation and capturing
+      both its structure and content.
+  
+      Copyright 1998-2008 W3C (MIT, ERCIM, Keio)
+  
+      Use and distribution of this code are permitted under the terms
+      W3C Software Notice and License
+      http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
+  
+  
+      Revision:   $Id: mathml3-common.rng,v 1.2 2008/11/15 22:00:48 dcarlis Exp $
+  
+     Update to MathML3 and Relax NG: David Carlisle and Michael Kohlhase
+-->
+<grammar ns="http://www.w3.org/1998/Math/MathML" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <!-- <start>
+    <ref name="math"/>
+  </start> -->
+  <define name="math">
+    <element name="math">
+      <ref name="math.attlist"/>
+      <ref name="math.content"/>
+    </element>
+  </define>
+  <define name="math.content">
+    <notAllowed/>
+  </define>
+  <define name="non-mathml-attribs">
+    <attribute>
+      <anyName>
+        <except>
+          <nsName ns=""/>
+        </except>
+      </anyName>
+      <data type="string"/>
+    </attribute>
+  </define>
+  <define name="MathML.Common.attrib">
+    <optional>
+      <attribute name="id">
+        <data type="ID"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="xref"/>
+    </optional>
+    <zeroOrMore>
+      <ref name="non-mathml-attribs"/>
+    </zeroOrMore>
+  </define>
+  <define name="math.attlist" combine="choice">
+    <ref name="MathML.Common.attrib"/>
+    <optional>
+      <attribute name="mode">
+        <data type="string"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="macros">
+        <data type="string"/>
+      </attribute>
+    </optional>
+    <ref name="dir.attrib"/>
+    <ref name="linebreak.attrib"/>
+  </define>
+  <define name="dir.attrib">
+    <optional>
+      <attribute name="dir">
+        <choice>
+          <value>rtl</value>
+          <value>ltr</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="linebreak.attrib">
+    <optional>
+      <attribute name="lineleading"/>
+    </optional>
+    <optional>
+      <attribute name="linebreak"/>
+    </optional>
+    <optional>
+      <attribute name="linebreakstyle"/>
+    </optional>
+    <optional>
+      <attribute name="linebreakmultchar"/>
+    </optional>
+    <optional>
+      <attribute name="indentamount"/>
+    </optional>
+    <optional>
+      <attribute name="indenttarget"/>
+    </optional>
+    <optional>
+      <attribute name="indentstylefirst"/>
+    </optional>
+    <optional>
+      <attribute name="indentstylelast"/>
+    </optional>
+    <optional>
+      <attribute name="indentoffset"/>
+    </optional>
+    <optional>
+      <attribute name="indentoffsetfirst"/>
+    </optional>
+    <optional>
+      <attribute name="indentoffsetlast"/>
+    </optional>
+    <optional>
+      <attribute name="indentstyle"/>
+    </optional>
+  </define>
+  <define name="name.attrib">
+    <attribute name="name">
+      <data type="NCName"/>
+    </attribute>
+  </define>
+  <define name="cd.attrib">
+    <attribute name="cd">
+      <data type="NCName"/>
+    </attribute>
+  </define>
+  <define name="cdbase.attrib">
+    <attribute name="cdbase">
+      <data type="anyURI"/>
+    </attribute>
+  </define>
+  <define name="Definition.attrib">
+    <optional>
+      <attribute name="encoding">
+        <data type="string"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="definitionURL">
+        <data type="anyURI"/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="annotation">
+    <element name="annotation">
+      <ref name="Definition.attrib"/>
+      <ref name="MathML.Common.attrib"/>
+      <optional>
+        <attribute name="href">
+          <data type="anyURI"/>
+        </attribute>
+      </optional>
+      <text/>
+    </element>
+  </define>
+  <define name="annotation-xml.model">
+    <zeroOrMore>
+      <choice>
+        <ref name="ContInPres"/>
+        <ref name="anyElement"/>
+      </choice>
+    </zeroOrMore>
+  </define>
+  <define name="anyElement">
+    <element>
+      <anyName>
+        <except>
+          <nsName/>
+        </except>
+      </anyName>
+      <zeroOrMore>
+        <choice>
+          <attribute>
+            <anyName/>
+          </attribute>
+          <text/>
+          <ref name="anyElement"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="annotation-xml">
+    <element name="annotation-xml">
+      <ref name="MathML.Common.attrib"/>
+      <optional>
+        <ref name="cd.attrib"/>
+      </optional>
+      <optional>
+        <ref name="name.attrib"/>
+      </optional>
+      <optional>
+        <ref name="cdbase.attrib"/>
+      </optional>
+      <ref name="Definition.attrib"/>
+      <optional>
+        <attribute name="href">
+          <data type="anyURI"/>
+        </attribute>
+      </optional>
+      <ref name="annotation-xml.model"/>
+    </element>
+  </define>
+  <define name="semantics-annotation">
+    <choice>
+      <ref name="annotation"/>
+      <ref name="annotation-xml"/>
+    </choice>
+  </define>
+  <define name="semantics.attribs">
+    <ref name="Definition.attrib"/>
+    <ref name="MathML.Common.attrib"/>
+    <optional>
+      <ref name="cdbase.attrib"/>
+    </optional>
+    <optional>
+      <ref name="cd.attrib"/>
+    </optional>
+    <optional>
+      <ref name="name.attrib"/>
+    </optional>
+  </define>
+  <define name="ContInPres">
+    <notAllowed/>
+  </define>
+</grammar>

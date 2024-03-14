@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+	xmlns:x="http://www.w3.org/1999/xhtml">
+
+    <x:h1>The Z3986 Bridgehead module</x:h1>
+
+  <div>
+    <x:h2>The bridgehead element</x:h2>      
+    <x:div id="z3986.bridgehead">
+        <x:p class="description">The <x:code>bridgehead</x:code> element represents a free-floating 
+        heading that is not associated with the hierarchical structure of the document.
+        <x:br/> 
+        <x:code>bridgehead</x:code> should be used only when it is clear that use of 
+        the structural heading (<x:code>h</x:code>) is not appropriate.
+        </x:p>
+    </x:div>
+    
+    <define name="z3986.bridgehead">
+      <element name="bridgehead">
+        <ref name="z3986.bridgehead.attlist" />
+        <ref name="z3986.bridgehead.content" />
+      </element>
+    </define>
+
+    <define name="z3986.bridgehead.attlist" combine="interleave">
+        <ref name="z3986.Structural.attrib"/>
+    </define>		
+    
+	<define name="z3986.bridgehead.content" combine="choice">
+        <ref name="z3986.Text.model"/>
+    </define>
+    
+  </div>
+  
+  <div>
+    <x:h2>The bridgehead element - default content model contributions</x:h2>
+         	 
+    <define name="z3986.Structural.class" combine="choice">
+	  <ref name="z3986.bridgehead"/>
+	</define>
+				
+	<!-- contribute to tocentry sub which is specialized -->	
+	<define name="z3986.tocentry.sub.class" combine="choice">
+	  <ref name="z3986.bridgehead"/>
+	</define>
+	
+	<define name="z3986.covers.content.class" combine="choice">
+	  <ref name="z3986.bridgehead" />
+    </define>
+
+	<define name="z3986.spine.content.class" combine="choice">
+	  <ref name="z3986.bridgehead" />
+    </define>
+	
+	
+  </div>
+  	
+</grammar>

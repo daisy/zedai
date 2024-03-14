@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 Flow Model module</x:h1>
+  <x:p>This is a content model definition module.</x:p> 
+    
+  <div>
+
+    <x:h2>Z39.86 Flow class element set</x:h2>    
+    <x:p>
+      Abstract choice pattern for elements in the Flow class.
+      This class inherits all members of z3986.Text.class,
+      so only structural elements to be part of Flow need to
+      contribute themselves here.
+    </x:p>
+
+    <define name="z3986.Flow.class" combine="choice">
+      <ref name="z3986.Text.class" />
+    </define>
+    
+    <x:h2>Z39.86 Flow class attributes collection</x:h2>    
+    <x:p>Common attributes for elements in the Flow class.</x:p> 
+    
+    <define name="z3986.Flow.attrib" combine="interleave">
+      <ref name="z3986.Flow.contrib.attrib"/>
+    </define>
+
+    <define name="z3986.Flow.contrib.attrib" combine="interleave">
+      <empty/>
+    </define>
+
+    
+    <x:h2>Z39.86 Flow Model</x:h2>    
+    <x:p>Default concrete model pattern for the Flow class.</x:p>
+           
+    <define name="z3986.Flow.model">      
+      <oneOrMore>
+        <choice>
+          <text/>
+          <ref name="z3986.Flow.class"/>
+        </choice> 
+      </oneOrMore>                   
+    </define>
+             
+  </div>  
+
+</grammar>

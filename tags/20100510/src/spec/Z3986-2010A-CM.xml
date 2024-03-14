@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="../../util/docbook/rng/docbook.rng" type="xml"?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>ANSI/NISO Z39.86-2010 Part A </title>
+    <subtitle>Core Modules</subtitle>
+
+    <info>
+        <abstract>
+            <para> The core modules are a set of modules that have been created to accompany the
+                    <link xlink:href="../../Z3986-2010A.html">Z39.86 Authoring and Interchange
+                    Framework Specification</link> (Z39.86-AI). These modules serve both to define
+                the common structure of a document and to provide a common base of components that
+                can be drawn on for use across Z39.86-AI profiles. </para>
+        </abstract>
+        <revhistory>
+            <revision>
+                <date>2010-04-08</date>
+                <revdescription>
+                    <para>Initial version.</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+
+    <chapter xml:id="intro">
+        <title>Introduction</title>
+
+        <section xml:id="intro_overview">
+            <title>Overview</title>
+
+            <para> The <link xlink:href="../../Z3986-2010A.html#coreModules">Core Modules</link>
+                section of the Z39.86-AI specification formally defines the purpose of these
+                modules. This document instead provides the abstract definitions for each module
+                &#8212; the human-readable descriptions that specify the nature of each module and
+                the components they contain. </para>
+
+            <para> In order to understand the definitions provided in this document, readers must be
+                familiar with the <link xlink:href="../../Z3986-2010A.html#abstractDocumentModel"
+                    >Abstract Document Model</link> and the process of activating modules to create
+                profiles, as detailed in the <link xlink:href="../../Z3986-2010A.html">Z39.86-AI
+                    specification</link>. </para>
+
+            <para> This document should not be read as a reference on how to tag a document to
+                conform to any Z39.86-AI profile. The abstract definitions for the core modules
+                describe the initial state of their components prior to activation, and the actual
+                implementation of a component in any given profile may vary widely from this state. </para>
+
+        </section>
+
+        <section xml:id="intro_grouping">
+            <title>Module Groupings</title>
+
+            <para> The core modules have been grouped according to the primary container layer in
+                the Abstract Document Model for the components they define. The first module listed
+                in each layer contains the default member for that layer, while the remaining
+                modules have been arranged alphabetically by name. </para>
+
+            <para> In cases where a module contains multiple variants of an element, the module
+                appears in the first Abstract Document Model layer that contains the element (for
+                example, the <code>code</code> module is listed under the Block layer not the Phrase
+                layer, even though it contains variants for both layers). </para>
+
+        </section>
+
+        <section xml:id="intro_maintenance">
+            <title>Maintenance</title>
+
+            <para> The core modules are a product of the Z39.86-AI Working Group and is maintained
+                and hosted by the Z39.86 Advisory Committee. The addition, modification or
+                deprecation of any modules or components is at the sole discretion of the
+                maintenance committee. </para>
+        </section>
+
+        <section xml:id="intro_versioning">
+            <title>Changes to this document</title>
+
+            <para> This document is not subject to the same update process as the Z39.86-AI
+                specification. It may be updated at any time to add new modules or to change or
+                deprecate modules and components. The publication date and revision history of this
+                document should always be checked to ensure the latest version is being referenced.
+                The current official version of this document is available from the DAISY web site
+                at <link xlink:href="http://www.daisy.org/z3986/2010/auth/cm/"
+                    >http://www.daisy.org/z3986/2010/auth/cm/</link>. </para>
+
+        </section>
+
+    </chapter>
+
+    <chapter xml:id="coreModuleDefinitions">
+        <title>Abstract definitions</title>
+
+        <note>
+            <para> The abstract definitions contained in this section have been extracted from the
+                module and component metadata in the corresponding normative schema files. In the
+                case of discrepancies between the prose abstract definitions and the practical
+                definition of components in the normative schemas, the latter shall be taken as
+                authoritative. </para>
+        </note>
+
+        <!-- note: the URIs of @src in absdef is relative to schema root dir, 
+        not relative to this document -->
+
+        <section xml:id="absdef_document">
+            <title>Document foundation</title>
+            <para> The document foundation modules define the common base of all profiles. </para>
+            <?absdef src="/mod/z3986-document.rng" ?>
+            <?absdef src="/mod/z3986-datatypes.rng" ?>
+            <?absdef src="/mod/z3986-global-classes.rng" ?>
+        </section>
+
+        <section xml:id="absdef_section">
+            <title>Section layer</title>
+            <para> The Section layer modules define major structural components for use within
+                documents. </para>
+            <?absdef src="/mod/z3986-section.rng" ?>
+            <?absdef src="/mod/z3986-article.rng" ?>
+            <?absdef src="/mod/z3986-bibliography.rng" ?>
+            <?absdef src="/mod/z3986-book.rng" ?>
+            <?absdef src="/mod/z3986-cover.rng" ?>
+            <?absdef src="/mod/z3986-glossary.rng" ?>
+            <?absdef src="/mod/z3986-index.rng" ?>
+            <?absdef src="/mod/z3986-toc.rng" ?>
+            <?absdef src="/mod/z3986-verse.rng" ?>
+        </section>
+
+        <section xml:id="absdef_block">
+            <title>Block layer</title>
+            <para> The Block layer modules define components that are not structural in nature but
+                that can stand alone from their surroundings. </para>
+            <?absdef src="/mod/z3986-block.rng" ?>
+            <?absdef src="/mod/z3986-annotation.rng" ?>
+            <?absdef src="/mod/z3986-aside.rng" ?>
+            <?absdef src="/mod/z3986-byline.rng" ?>
+            <?absdef src="/mod/z3986-caption.rng" ?>
+            <?absdef src="/mod/z3986-citation.rng" ?>
+            <?absdef src="/mod/z3986-code.rng" ?>
+            <?absdef src="/mod/z3986-dateline.rng" ?>
+            <?absdef src="/mod/z3986-definition.rng" ?>
+            <?absdef src="/mod/z3986-headings.rng" ?>
+            <?absdef src="/mod/z3986-list.rng" ?>
+            <?absdef src="/mod/z3986-meta.rng" ?>
+            <?absdef src="/mod/z3986-note.rng" ?>
+            <?absdef src="/mod/z3986-object.rng" ?>
+            <?absdef src="/mod/z3986-p.rng" ?>
+            <?absdef src="/mod/z3986-pagebreak.rng" ?>
+            <?absdef src="/mod/z3986-quote.rng" ?>
+            <?absdef src="/mod/z3986-separator.rng" ?>
+            <?absdef src="/mod/z3986-table.rng" ?>
+        </section>
+
+        <section xml:id="absdef_phrase">
+            <title>Phrase layer</title>
+            <para> The Phrase layer modules define constructs that operate at the grammatical level. </para>
+            <?absdef src="/mod/z3986-span.rng" ?>
+            <?absdef src="/mod/z3986-abbr.rng" ?>
+            <?absdef src="/mod/z3986-d.rng" ?>
+            <?absdef src="/mod/z3986-emph.rng" ?>
+            <?absdef src="/mod/z3986-line.rng" ?>
+            <?absdef src="/mod/z3986-linking.rng" ?>
+            <?absdef src="/mod/z3986-name.rng" ?>
+            <?absdef src="/mod/z3986-num.rng" ?>
+            <?absdef src="/mod/z3986-s.rng" ?>
+            <?absdef src="/mod/z3986-term.rng" ?>
+            <?absdef src="/mod/z3986-time.rng" ?>
+            <?absdef src="/mod/z3986-w.rng" ?>
+        </section>
+
+        <section xml:id="absdef_text">
+            <title>Text layer</title>
+            <para> The Text layer modules define character data and elements whose semantics operate
+                at a character level. </para>
+            <?absdef src="/mod/z3986-char.rng" ?>
+            <?absdef src="/mod/z3986-sub-sup.rng" ?>
+        </section>
+
+        <section xml:id="absdef_globalAttributes">
+            <title>Global attributes</title>
+            <para> The Global attributes modules define attributes that are available across the
+                elements in a profile. </para>
+            <?absdef src="/mod/z3986-core-attrib.rng" ?>
+            <?absdef src="/mod/z3986-depth-attrib.rng" ?>
+            <?absdef src="/mod/z3986-i18n-attrib.rng" ?>
+            <?absdef src="/mod/xlink.rng" ?>
+        </section>
+
+        <section xml:id="absdef_metaAttributes">
+            <title>Metadata attributes</title>
+            <para> The Metadata attributes modules define attributes that allow meta information and
+                semantics to be appended to elements in a profile. </para>
+            <?absdef src="/mod/rdfa-attrib.rng" ?>
+            <?absdef src="/mod/z3986-role-attrib.rng" ?>
+        </section>
+
+    </chapter>
+
+
+</book>

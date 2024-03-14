@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="../src/schema/smil3-daisy.rng" type="xml"?>
+<smil xmlns="http://www.w3.org/ns/SMIL" baseProfile="Daisy" version="3.0">
+    <head>
+        <meta name="aboveParamGroup" content=""/>
+        <paramGroup xml:id="textParams">
+            <param name="daisy:display-in-context" value="true" valuetype="data"/>
+            <param name="daisy:css-highlight-style"
+                value="background-color: yellow; color: black; border: solid thin green"
+                valuetype="data"/>
+            <param name="myCollection" value="./params.xml" valuetype="ref" type="application/xml"/>
+        </paramGroup>
+        <meta name="belowParamGroup" content=""/>
+        <meta name="aboveLayout" content=""/>
+        <layout>
+            <root-layout xml:id="root-layout" width="100%" height="100%"/>            
+            <region xml:id="textWindow" width="100%" height="100%" paramGroup="textParams"/>
+        </layout>
+        <meta name="belowLayout" content=""/>
+    </head>
+    <body>
+        <par>
+            <audio src="a"/>
+            <text src="b" region="textWindow"/>
+            <img src="c"/>
+        </par>
+        <par>
+            <a href="#foo">
+                <switch>
+                    <text systemLanguage="en" src="a" region="textWindow" />
+                    <text systemLanguage="es" src="b"/>
+                </switch>
+                <switch>
+                    <audio systemLanguage="en" src="c"/>
+                    <audio systemLanguage="es" src="d"/>
+                </switch>
+                <switch>
+                    <img systemLanguage="en" src="e"/>
+                    <img systemLanguage="es" src="f"/>
+                </switch>
+            </a>
+        </par>
+    </body>
+</smil>

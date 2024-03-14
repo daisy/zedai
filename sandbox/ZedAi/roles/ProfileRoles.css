@@ -1,0 +1,22 @@
+/* ProfileRoles.css */
+
+body {
+    padding:2mm 2em 3mm 2em;
+    font-family:verdana, helvetica, sans-serif;
+    }
+
+   
+dt {font-weight: bold;}
+dl>dl {margin-left: 3.5%;}
+
+dl {margin-bottom: 2%;}
+
+.booktitle {font-style:italic;}
+
+.description {margin-bottom: 1%;}
+
+code {font-size: larger;}
+
+.roleslist {border: solid black thin; background-color: #FFCCD5; margin-bottom: 5%; padding: 2%;}
+
+.informative {border: solid black thin; background-color: lightgray; padding: 2%;}

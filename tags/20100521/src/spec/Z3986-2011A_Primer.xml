@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="../../util/docbook/rng/docbook.rng" type="xml"?>
+<book xmlns="http://docbook.org/ns/docbook"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:xi="http://www.w3.org/2001/XInclude">
+   <title>ANSI/NISO Z39.86-2011 Part A</title>
+   <subtitle>Z39.86 Authoring and Interchange Framework:  Primer</subtitle>
+   <info>
+      <releaseinfo>Public working draft</releaseinfo>
+      <pubdate>21 May 2010</pubdate>
+      <annotation xml:id="editors">
+         <para>
+            <personname>James Pritchett</personname>
+            <orgname>Recording for the Blind &amp; Dyslexic</orgname>
+            <email>jpritchett@rfbd.org</email>
+         </para>
+         <para>
+            <personname>Markus Gylling</personname>, <orgname>DAISY Consortium</orgname>
+            <email>mgylling@daisy.org</email>
+         </para>
+         <para>
+            <personname>Matt Garrish</personname>, <orgname>Invited Expert</orgname>
+         </para>
+      </annotation>
+      <abstract>
+         <title>Abstract</title>
+         <para>The Z39.86-2011A Primer is a non-normative document that provides an
+            introduction to the technologies and concepts behind the Z39.86-2011
+            Authoring and Interchange Framework.</para>
+      </abstract>
+   </info>
+   <preface>
+      <title>Introduction</title>
+      <para>This document provides an introduction to the technologies and concepts
+         behind the <link xlink:href="http://www.daisy.org/z3986/2011/">Z39.86-2011
+            Authoring and Interchange Framework</link> (Z39.86-AI Framework).  It is
+         intended to be read along with the normative specification documents,
+         especially <link
+            xlink:href="http://www.daisy.org/z3986/2011/Z3986-2011A.html">Z39.86
+            Authoring and Interchange Framework Specification</link>.  The intended
+         audience includes Z39.86-AI document creators, as well as developers who
+         will be creating and working with systems that operate on Z39.86-AI
+         documents, or who will be developing new Z39.86-AI profiles.  It assumes a
+         basic understanding of <link
+            xlink:href="http://www.w3.org/TR/2006/REC-xml-20060816/">XML</link>,
+            <link xlink:href="http://www.w3.org/TR/REC-xml-names/">XML
+            Namespaces</link>, and XML schema languages. </para>
+   </preface>
+   <chapter xml:id="profiles">
+      <title>Z39.86-AI profiles</title>
+      <section xml:id="profilesSimpleDoc">
+         <title>A simple Z39.86-AI document</title>
+         <para>We will begin with the simplest possible valid Z39.86-AI
+            document:</para>
+         <example xml:id="exMinimalDoc">
+            <title>A minimal Z39.86-AI document</title>
+            <programlisting xml:space="preserve"><?example id='ai-primer-basic-document'?></programlisting>
+         </example>
+         <para> We will go through this document and explain the various markup items
+            found there. </para>
+      </section>
+      <section xml:id="profilesNamespace">
+         <title>Default namespace</title>
+         <para> Z39.86-AI documents may contain a mixture of many different markup
+            languages to express different kinds of content. In order to keep these
+            straight, all Z39.86-AI documents use <link
+               xlink:href="http://www.w3.org/TR/REC-xml-names/">XML
+            namespaces</link>. But while the different namespaces that may be used in
+            a Z39.86-AI document may vary, all Z39.86-AI documents must use the same
+            default namespace, which is the namespace for the Z39.86-2011 core
+            modules: <code>http://www.daisy.org/ns/z3986/authoring/</code>. In <link
+               xlink:href="#exMinimalDoc">our
+            example document</link>, this default namespace is declared on the root
+               <code>document</code> element. </para>
+      </section>
+      <section xml:id="profilesIdentifying">
+         <title>Identifying profiles</title>
+         <para>Every Z39.86-AI document references a Z39.86-AI profile.  A profile
+            defines markup designed to support the creation of XML documents from a
+            particular type of information resource.  Simple books, periodicals,
+            newspapers, textbooks, and examinations all might require different XML
+            vocabularies in order to be fully and clearly expressed in an XML
+            document.  Therefore, each of these kinds of resources could have a
+            different Z39.86-AI profile that provides the tools necessary for
+            document authors.</para>
+         <para><link xlink:href="#exMinimalDoc" >Our example document</link> references the "generic document" profile, one of
+            the profiles defined by the Z39.86-2011 specification, using the
+               <code>meta</code> element:</para>
+         <example xml:id="exIdentifyProfile">
+            <title>Identifying the profile</title>
+            <programlisting xml:space="preserve"><?example id='ai-primer-profile-identification'?></programlisting>
+         </example>
+         <para>The <code>rel</code> attribute value of <code>"decl:profile"</code>
+            here indicates that this <code>meta</code> element is a profile
+            declaration. The prefix <code>decl</code> is declared in the
+               <code>document</code> element, and points to the Z39.86-2011 Instance
+            Metadata Vocabulary (we will describe vocabularies and how to reference
+            them in <xref linkend="semantics" />). As you can also see in the
+            example, profiles are identified by a unique URI, given in the
+               <code>resource</code> attribute of the <code>meta</code> element.  The
+            URI for each profile is defined by the agency that created and maintains
+            that profile (in this case, the DAISY Consortium).</para>
+         <section xml:id="profilesIdentifyingRD">
+            <title>Profile resources</title>
+            <para>At its core, a profile defines specific XML markup to be used for
+               documents.  This markup is defined using one or more normative
+               schemas, written in a schema language such as RelaxNG.  There may be
+               other resources associated with a profile, such as translated W3C XML
+               Schemas, and stylesheets. We will touch on other profile resources
+               later on in this primer.</para>
+            <para>Beyond uniquely identifying the profile, the profile URI points to
+               a location on the Internet that contains a resource directory for the
+               profile.  This resource directory contains all the information related
+               to the profile and is described using XHTML+RDFa (as defined in <link
+                  xlink:href="http://www.w3.org/TR/rdfa-syntax/">RDFa in XHTML:
+                  Syntax and Processing</link>).   Resource directory documents are
+               thus based on XHTML, which means that they can be viewed in a web
+               browser.  The document will typically have a description of the
+               purpose of the profile, links to the normative schema and other
+               profile resources, and to any associated specification documents.
+                   <link xlink:href="http://www.w3.org/TR/rdfa-syntax/"
+                  >XHTML+RDFa</link> documents are also machine-readable, which means
+               that they can be used by systems that process Z39.86-AI documents to
+               discover necessary schemas and other resources at run time. In sum, by
+               following the profile link appearing in the head of the document, any
+               person or processing system can find all the information available
+               about that profile.</para>
+            <para>Here is an excerpt of the source for a resource directory, where
+               the normative schema is identified:</para>
+            <example xml:id="exResDir">
+               <title>Profile resource directory (partial)</title>
+               <!--<programlisting xml:space="preserve"><xi:include href="./examples/z3986a-genericdocument.html" parse="text" /></programlisting>-->
+               <programlisting xml:space="preserve">
+<![CDATA[
+<div class="rd-section">
+  <h3>Normative schemata</h3>
+  <p>The normative schema of this profile is 
+     <a href="z3986a-genericdocument.rng" 
+          rel="rd:normative-schema">z3986a-genericdocument.rng</a> 
+     (<em>version 0.2</em>).
+  </p>
+</div>
+]]>
+               </programlisting>
+            </example>
+            <para>The various resources for the profile are identified as the targets
+               of links within the  <link
+                  xlink:href="http://www.w3.org/TR/rdfa-syntax/">XHTML+RDFa</link>
+               document. The nature of each resource being linked to is identified
+               using the <code>rel</code> attribute of the <code>a</code> element. In
+               <link xlink:href="#exResDir">the example</link>, the normative schema for the profile is found by
+               following the link with the <code>rel</code> value of
+                  <code>rd:normative-schema</code>. </para>
+         </section>
+      </section>
+      <section xml:id="profilesMetadata">
+         <title>Metadata</title>
+         <para> As with XHTML and earlier versions of Z39.86, Z39.86-AI documents
+            contain metadata in the document head. There is an intentionally small
+            set of required metadata items: <token>unique identifier</token>,
+               <token>publisher</token>, and <token>date</token> (the latter also
+            serving as a version identifier). </para>
+         <example xml:id="exBasicMetadata">
+            <title>Basic document: metadata</title>
+            <programlisting xml:space="preserve"><?example id='ai-primer-basic-document-metadata'?></programlisting>
+         </example>
+         <para>As is described further in <xref linkend="metadataInDetail" />,
+            Z39.86-AI documents allow you to associate metadata resources with the
+            document. These resources are intended to contain more "complete"
+            metadata about the document (and, as sometimes needed in a republishing
+            context, about the document source). </para>
+      </section>
+      <section xml:id="profilesContent">
+         <title>The document content</title>
+         <para>Following the profile identification and metadata in the document head
+            of <link xlink:href="#exMinimalDoc">our minimal document</link> 
+            comes our minimal document content: a single heading, expressed with the
+               <code>h</code> element. This comes from the Z39.86-2011 core modules,
+            and hence does not need a further namespace identification. The
+            Z39.86-2011 core modules define a few basic elements and attributes that
+            are likely to be used in all profiles. The elements defined here include
+            all the basic structural elements (<code>head</code>, <code>body</code>)
+            and attributes that are needed throughout Z39.86-AI documents, such as
+               <code>xml:id</code>
+            <code>role</code>. For our minimal document, no further markup is needed,
+            and hence no schema modules outside the Z39.86-2011 core modules are
+            used. </para>
+      </section>
+      <section xml:id="profilesValidation">
+         <title>Validating the document</title>
+         <para> That is all there is to the document, which is nevertheless a
+            completely valid, conforming Z39.86-AI document. For those used to DTDs,
+            the lack of a doctype and system identifier may raise the question of how
+            one validates this document.</para>
+         <para>As we saw in <xref linkend="profilesIdentifyingRD" />, the profile's
+            resource directory (found at the profile identification URI in the
+            document head) defines at least one normative schema to use in validating
+            the document. The way in which the schema validation process takes place
+            depends on the schema language(s) used, and which tools are used to
+            perform the validation.</para>
+         <para>The profile's resource directory can also reference informative
+            schemas or DTDs, that allow authoring and (to a certain extent)
+            validation within a variety of tools. Note however that the concept of
+               <emphasis>informative</emphasis> means that the informative schemas
+            are provided for utility and convenience reasons - not to perform the
+            ultimate test on whether a document is valid or not. That latter task is
+            reserved for the schema defined by the resource directory to be
+            normative.</para>
+      </section>
+   </chapter>
+   <chapter xml:id="modules">
+      <title>Modules and namespaces</title>
+      <section xml:id="modulesExample">
+         <title>A more complex document</title>
+         <para>Our first example Z39.86-AI document included almost nothing beyond
+            the core Z39.86-2011 modules. Real information resources will require
+            much more than this, of course, and Z39.86-AI profiles will provide a
+            variety of markup constructs to represent those structures. Here is a
+            slightly more complex Z39.86-AI document that demonstrates this:</para>
+         <example xml:id="exMoreComplexDoc">
+            <title>A more complex Z39.86-AI document</title>
+            <programlisting xml:space="preserve"><?example id='ai-primer-more-complex-document'?></programlisting>
+         </example>
+      </section>
+      <section xml:id="modulesSchemas">
+         <title>Schemas and modules</title>
+         <para>Earlier vocabularies such as <link
+               xlink:href="http://www.w3.org/TR/xhtml1/">XHTML 1.0</link> (used in
+               <link
+               xlink:href="http://www.daisy.org/z3986/specifications/daisy_202.html"
+               >DAISY 2.02</link>) and DTBook (used in <link
+               xlink:href="http://www.niso.org/workrooms/daisy/Z39-86-2005.html"
+               >ANSI/NISO Z39.86-2005</link>) were based on Document Type Definitions
+            (DTDs).  Z39.86-2011 is based on a modularly-constructed schemas.
+             Schemas can do more than DTDs: they are namespace aware, they allow the
+            expression of intricate and complex content model constraints, and they
+            support datatypes. All Z39.86-AI profiles define their markup using
+            schemas in any combination of four different schema languages:  RelaxNG,
+            NVDL, W3C XML Schema, and ISO Schematron.</para>
+         <para>Schema languages naturally lend themselves to modular designs for
+            markup languages. This means that there are multiple independent schema
+            documents, each of which defines a set of elements and/or attributes that
+            form a functional group.  These modules can then be combined (composed)
+            into a single vocabulary through a master "driver" schema document that
+            brings the individual modules together and defines their interrelations.
+             This kind of architecture will be familiar to those accustomed to
+            object-oriented software design.</para>
+         <para>Every Z39.86-AI profile is based on the Z39.86-2011 abstract document
+            model, as expressed in the Z39.86-2011 core modules.  This means that
+            every profile will use the Z39.86-2011 core modules in its master schema
+            to some degree or another.  While there are a very few elements that must
+            be included in every profile (e.g., the document element
+               <code>document</code>), profiles are free to include other Z39.86-2011
+            core modules that are appropriate to the kind of information resource the
+            profile is designed to handle.  In the case of the book profile, the main
+            Z39.86-2011 modules used include, among others, the ones defining basic
+            text structures (headings, paragraphs, etc.), tables, notes, pagination,
+            and internationalization attributes.</para>
+         <para>Schema modules specifically provided with the profile are designed to
+            contain the markup definitions for targeted structures. In <link xlink:href="#exMoreComplexDoc">our sample
+            document</link> we see one such case: the table of contents: </para>
+         <example xml:id="exTOC">
+            <title>Table of contents from example document</title>
+            <programlisting xml:space="preserve"><?example id='ai-primer-more-complex-document-toc'?></programlisting>
+         </example>
+         <para> The schema module for table of contents (<code>z3986-toc</code>)
+            contains the definitions for the <code>toc</code>, <code>tocentry</code>,
+               <code>label</code>, and <code>pageref</code> elements and their
+            attributes. The book profile master schema then includes this module and
+            defines that <code>toc</code> can occur within <code>frontmatter</code>.
+            In this way the table of contents module is integrated within the book
+            profile's markup model. Note also that the table of contents module
+            itself draws upon constructs from other modules. In our example, the
+               <code>toc</code> includes an element from a different Z38.86-AI
+            module: the heading element <code>h</code>. The table of contents module
+            brings this into the content model for <code>toc</code>. </para>
+      </section>
+      <section xml:id="modulesNamespaces">
+         <title>Including other markup: namespaces</title>
+         <para>So far, all the elements and attributes we have looked at are defined
+            in schema modules that are part of the Z39.86-2011 specification, and
+            hence are all in the default Z39.86-AI namespace. Just as the book
+            profile brings in the table of contents module, so it can also bring in
+            schema modules from other markup languages. In such a case, the elements
+            and attributes from the other markup languages are distinguished by
+            different namespaces.</para>
+         <para><link xlink:href="#exMoreComplexDoc">Our example document</link> uses one attribute from a different namespace:
+            the <code>translate</code> attribute defined by the <link
+               xlink:href="http://www.w3.org/TR/its/#trans-datacat"
+               >Internationalization Tag Set (ITS)</link> of the W3C. This attribute
+            is bound to the ITS namespace by the <code>its:</code> prefix, which
+            itself is declared in the document's root element: </para>
+         <example xml:id="exITS">
+            <title>Declaration and use of the ITS namespace</title>
+            <programlisting xml:space="preserve"><?example id='ai-primer-more-complex-document-its'?></programlisting>
+         </example>
+         <para>There is no limitation to the number of different schema modules that
+            can be combined in a profile, and there is no limitation to the number of
+            namespaces from which these may draw. Schema modules can be taken from
+            non-DAISY namespaces (<link xlink:href="http://www.w3.org/Math/"
+               >MathML</link>, for example).</para>
+      </section>
+   </chapter>
+   <chapter xml:id="semantics">
+      <title>Adding semantic inflections</title>
+      <section xml:id="semanticsExample">
+         <title>A more meaningful example</title>
+         <para>Let us look at an example which provides more detailed information
+            about the front parts of the book:</para>
+         <example xml:id="exDetailedDoc">
+            <title>A document with detailed frontmatter</title>
+            <programlisting xml:space="preserve"><?example id='ai-primer-document-with-role'?></programlisting>
+         </example>
+         <para> This document identifies the title page as a special structure, and
+            provides even more detail within that, identifying an image that acts as
+            a frontispiece, for example. </para>
+      </section>
+      <section xml:id="semanticsRoles">
+         <title>The <code>role</code> attribute</title>
+         <para>The Z39.86-AI book profile provides a rich set of elements to use when
+            representing book structures, but one may encounter cases where more
+            subtle refinements of these structures are required.  To support this,
+            Z39.86-AI profiles, in addition to elements, can reference vocabularies
+            of semantic <emphasis>roles</emphasis> that elements may play within the
+            structure of the document. These roles are identified using the
+               <code>role</code> attribute, which is available on every element in
+            every Z39.86-AI profile. In <link xlink:href="#exDetailedDoc">our example</link>, "title page" is one such role
+            that is being played by a <code>section</code> element, and is identified
+            by the <code>role</code> attribute value <code>"titlepage"</code>. The
+            use of the <code>role</code> attribute in this manner thus allows for a
+            finer-grained differentiation of structures within the set of elements in
+            the schema. </para>
+      </section>
+      <section xml:id="semanticsVocabularies">
+         <title>Role vocabularies</title>
+         <para>For the <code>role</code> attribute to be at all useful, its values
+            must be generally understood by authors and processing agents, which
+            suggests standardization. To this end, profiles may define specific
+               <emphasis>role vocabularies</emphasis> that extend their markup model
+            to provide more detail about the semantics of the markup. Vocabularies
+            are expressed using the Resource Description Framework (<link
+               xlink:href="http://www.w3.org/RDF/">RDF</link>). RDF is the technology
+            behind the "semantic web" and is a means of expressing information about
+            elements and the data they contain. In the Z39.86-AI Framework, <link
+               xlink:href="http://www.w3.org/RDF/">RDF</link> is used to define
+            semantic properties, describe their meaning, and to relate them to other
+            constructs. </para>
+         <para> Role vocabularies defined by Z39.86 are typically expressed via <link
+               xlink:href="http://www.w3.org/TR/rdfa-syntax/">RDFa</link>, which uses
+            special attributes to express <link xlink:href="http://www.w3.org/RDF/"
+               >RDF</link> within the well-known structure of XHTML. Here, for
+            example, is the definition of the "title page" role in the Z39.86-2011
+            core vocabulary: <example xml:id="exRDF">
+               <title>RDFa representation of "title page" role</title>
+               <programlisting xml:space="preserve"><xi:include href="./examples/TitlepageRDF.xml" parse="text" /></programlisting>
+            </example></para>
+         <para>The syntax above says that the element whose <code>id</code> is
+               <code>titlepage</code> is also an <link
+               xlink:href="http://www.w3.org/RDF/">RDF</link> property. This means it
+            can be used as a role value in a document and traced back to the
+            definition given here. There is also a human-readable comment which says
+            what the meaning of <code>titlepage</code> is.</para>
+         <para> Each profile may define a default role vocabulary, which in that case
+            is referenced in the profile's resource directory. However, Z39.86-AI
+            documents are not limited to using the role vocabulary referenced by the
+            resource directory, nor to use only vocabularies defined within the
+            Z39.86-AI Framework. In <link xlink:href="#exDetailedDoc">our example document above</link>, the <link
+               xlink:href="http://dublincore.org/">Dublin Core</link> roles of
+            "title" and "creator" are examples of non-Z39.86-AI roles. </para>
+      </section>
+      <section xml:id="semanticsUsingRole">
+         <title>Using <code>role</code> in Z39.86-AI documents</title>
+         <para>As stated previously, the <code>role</code> value
+               <code>titlepage</code> is defined in the Z39.86-2011 core vocabulary.
+            This example shows how to use this role value in a document to identify a
+            section as a "title page".</para>
+         <example xml:id="exRole">
+            <title>Section with titlepage role</title>
+            <programlisting xml:space="preserve"><?example id='ai-primer-document-with-role-extract'?></programlisting>
+         </example>
+         <para> Any element in a Z39.86-AI document can reference a role via the
+               <code>role</code> attribute. The value of <code>role</code> is a
+               <emphasis>CURIE</emphasis> (short for "Compact URI"), as defined in
+               <link xlink:href="http://www.w3.org/TR/curie/">CURIE Syntax
+            1.0</link>. Simply described, <link
+               xlink:href="http://www.w3.org/TR/curie/">CURIEs</link> consist of a
+            prefix and a local part that creates a unique identifier (URI) in a
+            manner similar to the way that qualified names (QNames) are created using
+               <link xlink:href="http://www.w3.org/TR/REC-xml-names/">XML
+               namespaces</link>. In <link xlink:href="#exDetailedDoc">our example document</link>, we find CURIEs such as
+               <code>book:frontispiece</code>, where <code>book:</code> is the prefix
+            and <code>frontispiece</code> is the local part. </para>
+         <para>You have already noted that the role attribute value in <link
+            xlink:href="#exRole">the example
+            above</link> does not have a prefix (<code>role="titlepage"</code> for example).
+            This is because a Z39.86-AI profile via its resource directory can define
+            one vocabulary to be the default. Roles from the default vocabulary do
+            not need prefixes.</para>
+         <para>All <link xlink:href="http://www.w3.org/TR/curie/">CURIEs</link>
+            belonging to other vocabularies than the default one however, need to be
+            prefixed, and the association between the prefix and a vocabulary URI
+            must be declared in the document. In the <link xlink:href="#exDetailedDoc">example document above</link>, the xmlns attribute is
+            used to declare the association between the prefix <code>dcterms</code> and
+            the URI <code>http://purl.org/dc/terms/</code> (which is an <link
+               xlink:href="http://www.w3.org/RDF/">RDF</link> vocabulary URI), and
+            the same mechanism is used to associate the <code>decl</code> prefix with
+            the vocabulary URI corresponding to the Z39.86-2011 Instance Metadata Vocabulary.</para>
+      </section>
+      <section xml:id="semanticsCustom">
+         <title>Custom role vocabularies</title>
+         <para> The role-defining mechanism of the Z39.86-AI Framework is inherently
+            extensible: the <code>role</code> attribute can reference any role
+            vocabulary, not just the ones defined by the Z39.86-2011 specification or
+            the various profiles and features. If a particular information resource
+            or collection of resources require highly specialized semantic
+            inflections, the document author can create a role vocabulary in <link
+               xlink:href="http://www.w3.org/TR/rdfa-syntax/">RDFa</link> that is
+            tailored for that specific purpose. Conforming Z39.86-AI documents can
+            then reference this custom vocabulary. Processing agents can discover the
+               <link xlink:href="http://www.w3.org/TR/rdfa-syntax/">RDFa</link>
+            documents to find further information about the roles used and respond
+            appropriately. </para>
+      </section>
+   </chapter>
+   <chapter xml:id="features">
+      <title>Advanced functions of profiles: features</title>
+      <section xml:id="featuresIntro">
+         <title>Introduction to Z39.86-AI features</title>
+         <para> The examples we have seen so far are relatively generic in their
+            content. There are cases, however, where information resources may
+            include areas highly specialized content. A typical example would be a
+            math textbook, in which mathematical equations would occur within the
+            context of the book structures. The book profile can handle this by
+            including parts of <link xlink:href="http://www.w3.org/Math/"
+               >MathML</link> in its markup model. However, this markup will only be
+            used in some books, probably relatively few compared to the total
+            population of print books that could be expressed using the Z39.86-AI
+            book profile. For this reason, the Z39.86-AI Framework has defined the
+            concept of "features": discrete components similar in structure to
+            profiles, but which are narrower in scope and which can be included by
+            profiles and identified by documents as they need to use them. </para>
+         <para> The advantages of separating specialized markup such as <link
+               xlink:href="http://www.w3.org/Math/">MathML</link> in a Z39.86-AI
+            feature are: <itemizedlist>
+               <listitem>
+                  <para>Reusability: a feature may be "plugged into" many different
+                     profiles without alteration, reducing the burden of
+                     implementation on profile designers.</para>
+               </listitem>
+               <listitem>
+                  <para>Modularity: By keeping specialized markup in separate
+                     features, the rest of the profile's schema modules are
+                     simplified.</para>
+               </listitem>
+               <listitem>
+                  <para>Processing support: Not all processing agents may wish to
+                     implement specialized markup such as <link
+                        xlink:href="http://www.w3.org/Math/">MathML</link>. By making
+                        <link xlink:href="http://www.w3.org/Math/">MathML</link> an
+                     identifiable feature within the book profile, it gives Z39.86-AI
+                     documents a mechanism for signaling their use or non-use of
+                        <link xlink:href="http://www.w3.org/Math/">MathML</link> to
+                     processing agents. Processors that can handle a feature used in
+                     a document can process it, while processors that do not support
+                     the feature can fail gracefully.</para>
+               </listitem>
+            </itemizedlist></para>
+      </section>
+      <section xml:id="featuresExample">
+         <title>An example using the MathML feature</title>
+         <para> Here is an example document that includes a mathematical equation,
+            expressed in <link xlink:href="http://www.w3.org/Math/">MathML</link>: </para>
+         <example xml:id="exMathDoc">
+            <title>Document with math</title>
+            <programlisting xml:space="preserve"><?example id='ai-primer-document-with-math'?></programlisting>
+         </example>
+         <para> We saw earlier that profiles are identified by a <code>meta</code>
+            element in the document <code>head</code>. Features are identified in a
+            similar manner, by <code>meta</code> elements that are children of the
+            profile's identifying <code>meta</code>:</para>
+            <example xml:id="exIdentifyingFeature">
+               <title>Identifying a profile and a feature</title>
+               <programlisting xml:space="preserve"><?example id='ai-primer-math-feature-id'?></programlisting>
+            </example>
+            <para>Feature <code>meta</code>s are
+            noted by the <code>rel</code> attribute value of <code>"feature"</code>,
+            again referencing the Z39.86-2011 Instance Metadata Vocabulary. The
+               <code>resource</code> attribute is a URL maintained by the feature
+            creator, and points to a resource directory, just as profile identifying
+            URLs do. </para>
+         <para> When a processing agent is presented with this document, it will
+            detect the profile used and also that the <link
+               xlink:href="http://www.w3.org/Math/">MathML</link> feature is used in
+            this document. It can then respond to this in whatever way is
+            appropriate. If it supports math, it may enable special math features,
+            for example. Or, if it does not support math, the processor would be
+            required to stop processing so as not to generate unreliable results.
+         </para>
+      </section>
+      <section xml:id="featuresInformative">
+         <title>Features and informative schemas</title>
+         <para> Markup defined by Z39.86-AI features are intended to be optional
+            parts of a profile: not all documents will take advantage of the
+            specialized markup they provide, and not all processing systems will
+            implement support for them. Nevertheless, all features that are included
+            as part of a profile will be part of the normative schemas for the
+            profile. </para>
+         <para> In order to facilitate the authoring and use of documents that do not
+            need the special functions provided by features, profiles may provide
+            additional, informative schemas that simply remove one or more of the
+            features from the normative schemas. The list of features used and the
+            list of informative schemas will be found in the profile's resource
+            directory. </para>
+      </section>
+   </chapter>
+   <chapter xml:id="metadataInDetail">
+      <title>Metadata in Detail</title>
+      <para>As described in <xref linkend="profilesMetadata" />, all Z39.86-AI
+         documents must contain the metadata items <token>identifier</token>,
+            <token>publisher</token>, and <token>date</token> (the latter also
+         serving as a version identifier). This is an intentionally minimal set of
+         metadata items, which serves only to uniquely identify the document and its
+         publisher.</para>
+      <para>In many circumstances, it is of course necessary to be able to express
+         more and richer metadata about the document (and, in the case of
+         republishing, about the document source, e.g. the work being republished).
+         Given that various metadata expression languages exist in the world today,
+         and given that different Z39.86-AI usage domains have different needs and
+         requirements in terms of metadata, there is a certain amount of flexibility
+         available with regards to how this "richer" metadata can be expressed in
+         Z39.86-AI documents.</para>
+      <section xml:id="metadataInDetailExternalResource">
+         <title>Referencing metadata in external resources</title>
+         <para>The key principle is that metadata resources can be external to the
+            Z39.86-AI document itself. All we need to do in the Z39.86-AI document is
+            to provide links to one or several such resources. </para>
+         <para>Here is an example of a <link
+               xlink:href="http://www.loc.gov/standards/mods/v3/">MODS</link> record
+            being referenced from the <code>head</code> of a Z39.86-AI
+            document:</para>
+         <example xml:id="exMODSref">
+            <title>Referencing an external metadata record: MODS</title>
+            <programlisting xml:space="preserve"><?example id='ai-primer-external-metadata-reference'?></programlisting>
+         </example>
+         <para>The link is labelled with information about the type (and, optionally,
+            version) of the record.</para>
+         <para>The referenced resource in its turn, is an XML document using the MODS
+            grammar:</para>
+         <example xml:id="exMODS">
+            <title>External metadata record: MODS</title>
+            <programlisting xml:space="preserve"><?example id='ai-primer-external-metadata-record-mods'?></programlisting>
+         </example>
+         <para>Z39.86-AI is extensible with regards to which types of metadata
+            expression languages can be used in the referenced resources. Note how
+            the <code>meta-record-type</code> meta element in <link xlink:href="#exMODSref">the first example above</link>
+            contains the attribute <code>content="decl:mods"</code> &#8212; this is
+            in fact a reference to the <link
+               xlink:href="http://www.daisy.org/z3986/2011/vocab/decl/">Z39.86-2011 Instance Metadata Vocabulary</link>,
+            which contains a listing of well known
+            metadata expression languages. You can use any of the languages that are
+            available in this listing. And, as metadata expression languages evolve,
+            this listing will be expanded.</para>
+         <para>In order to enhance interoperability and to take advantage of the
+            different strengths of different metadata expression languages, a single
+            Z39.86-2011 document can reference several metadata records. As an
+            example, a document could reference two MODS records, one of them MODS
+            version 3.3 and the other version 4.0, and at the same time reference,
+            say, an <link xlink:href="http://www.editeur.org">ONIX</link>-based
+            record.</para>
+      </section>
+      <section xml:id="metadataInDetailSelfResource">
+         <title>Making the document itself the metadata resource</title>
+         <para>As an alternative to the external metadata record approach as outlined
+            above, it remains possible to provide a complete metadata record inside
+            the Z39.86-AI document itself.  When doing so, you must still provide the
+               <code>meta-record</code> and <code>meta-record-type</code> meta items
+            in the document <code>head</code> to clearly signal that in this
+            instance, the document is its own metadata resource. (See the example
+            below for how this is done.) </para>
+         <para>All internal metadata expressions are done using <link
+            xlink:href="http://www.w3.org/TR/rdfa-syntax/">RDFa</link> attributes. 
+            These can be provided on <code>meta</code>
+            elements in the document <code>head</code>, and/or on various elements 
+            in the document <code>body</code>.</para>
+         <para>The following example shows a document that provides <link
+               xlink:href="http://dublincore.org/">DCMI</link> metadata using the
+               <code>property</code> attribute on <code>h</code> and
+               <code>name</code> elements inside <code>frontmatter</code>:</para>
+         <example xml:id="InternalMetadata">
+            <title>Internal metadata record: RDFa</title>
+            <programlisting xml:space="preserve"><?example id='ai-primer-internal-meta-rdfa'?></programlisting>
+         </example>
+         <para>Note how, in the <code>head</code>, the metadata resource is
+            identified as ".", a single period. This is standard abbreviated way to
+            refer to the current document URI. In other words, the single period is
+            what says that this document is its own metadata resource.</para>
+      </section>
+   </chapter>
+   <!--<chapter xml:id="otherProfiles">
+      <title>Other profiles</title>
+      <para> While the Z39.86-2011 Part A specification defines a handful of
+         profiles, the specification is designed as a framework for building a wide
+         variety of profiles to represent any kind of information resource. The
+         Z39.86 maintenance agency will not be the only entity creating profiles: the
+         vision is for any organization that needs to represent information resources
+         in XML in an accessible way to be able to create a conforming profile that
+         meets their needs (if one does not already exist). With the resource
+         directory and role vocabulary components of the framework, processing agents
+         should be able to easily detect new profiles and possibly be able to handle
+         them through automated discovery of the profile's normative resources. </para>
+      <para> For an organization seeking to create a new profile, the steps involved
+         would include: <itemizedlist>
+            <listitem>
+               <para> Writing a conforming schema using the core Z39.86-2011 modules
+                  and whatever other markup is required, possibly including other
+                  Z39.86-2011 modules and Z39.86-AI features. </para>
+            </listitem>
+            <listitem>
+               <para> Possibly creating an RDF vocabulary in <link
+                     xlink:href="http://www.w3.org/TR/rdfa-syntax/">RDFa</link> to
+                  enable further refinement of the semantics in the markup model.
+               </para>
+            </listitem>
+            <listitem>
+               <para> Creating a resource directory document for the profile and
+                  hosting it at a defined URL to be used in the profile's identifying
+                     <code>meta</code>. </para>
+            </listitem>
+         </itemizedlist></para>
+   </chapter>-->
+</book>

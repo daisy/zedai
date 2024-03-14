@@ -1,0 +1,1054 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="ai-longdescs.rng" type="xml"?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:rend="http://www.daisy.org/ns/z3986/authoring/features/rend/">
+    <title>ZedAI longdescs</title>
+    
+    <!--
+        this one too long for doc snippets... could go to longdesc
+        <snippet about="z3986.abbr" dest="doc">
+        <expansion xml:id="abbr_ESQ">Esquire</expansion>
+        <expansion xml:id="abbr_MA">Master of Arts</expansion>
+        <expansion xml:id="abbr_FRS">Fellow of the Royal Society</expansion>
+        <expansion xml:id="abbr_SECGS">Secretary of the Geological Society</expansion>
+        
+        CHARLES DARWIN, <abbr  type="truncation" ref="abbr_ESQ">ESQ.</abbr> 
+        <abbr type="initialism" ref="abbr_MA">M.A.</abbr> 
+        <abbr type="initialism" ref="abbr_FRS">F.R.S.</abbr> 
+        <abbr type="truncation" ref="abbr_SECGS">SEC. G.S.</abbr>
+        RICHARD OWEN, <abbr type="truncation" ref="abbr_ESQ">ESQ.</abbr> 
+        <abbr type="initialism" ref="abbr_FRS">F.R.S.</abbr>
+        </snippet>
+    -->
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <!--                   ABBR@type                      -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    
+    <section about="z3986.abbr.type.attrib" dest="any">
+        <para>The <code>type</code> attribute defines the following values for specifying abbreviations:</para>
+        <itemizedlist>
+            <listitem>
+                <para><code>acronym</code> &#8212; represents an abbreviation formed from initial letters of a name or expression, pronounced as a word.</para>
+            </listitem>
+            <listitem>
+                <para><code>initialism</code> &#8212; represents an abbreviation formed from initial letters of a name or expression, with each letter pronounced separately.</para>
+            </listitem>
+            <listitem>
+                <para><code>truncation</code> &#8212; represents an abbreviation formed from the first part of the word being abbreviated.</para>
+            </listitem>
+        </itemizedlist>
+    </section>
+    
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <!--                   ANNOREF                      -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    
+    <section about="z3986.annoref" dest="any">
+        
+        <para>
+            There are two means of tagging references to annotations. When a superscripted identifier is used,
+            the <code>value</code> attribute is required:
+        </para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<p>…it created a great chasm between my step-mother and me.<annoref ref="anno-04" value="4"/></p>
+        </escape>
+        
+        <para>
+            In the above example, the annotation identifier (the number 4) is no longer part of the document content,
+            but can still be output and repurposed by a processing agent.
+        </para>
+        
+        <para>
+            It is sometimes the case, however, that using one or
+            more words in the content to link to the annotation is preferred to a superscripted identifier. In this case,
+            the <code>value</code> attribute is omitted and the text content of the <code>annoref</code> becomes
+            the linkable text:
+        </para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<p>…it created a great chasm between <annoref ref="anno-04">my step-mother and me</annoref>.</p>
+        </escape>
+        
+        <para>
+            An additional benefit to tagging words instead of inserting superscripted referents is that a transformation process
+            could automatically remove the link from the words and instead insert superscripted numbers or symbols after 
+            the element when they are needed. It would not be possible to do the reverse if only the superscripts have
+            been tagged, however.
+        </para>
+        
+        <para>
+            It is illegal to use an empty element and omit a <code>value</code> attribute, as in the following example, 
+            as some text content is necessary to render the link:
+        </para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<p>…it created a great chasm between my step-mother and me.<annoref ref="anno-04"/></p>
+        </escape>
+        
+        <para>
+            It is also illegal to use text content together with a <code>value</code> attribute, as it introduces
+            ambiguity in how to format the output:
+        </para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<p>…it created a great chasm between <annoref ref="anno-04" value="4">my step-mother and me</annoref>.</p>
+        </escape>
+        
+    </section>
+
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <!--                   ANNOTATION                     -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    
+    <section about="z3986.annotation" dest="any">
+        <para>The optional <code>by</code> and <code>role</code> attributes define the contributor of the annotation
+            and expresses its nature:</para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<object xml:id="mnt" src="mnt.png"/>
+    <annotation ref="mnt" by="republisher" role="alteration">
+        <p>This picture was originally on page 15 in the source but has been moved after the paragraph it split.</p>
+    </annotation>
+        </escape>
+        
+        <para>The lack of a <code>role</code> value indicates the <code>annotation</code> is general in nature; no
+            implicit value should be assumed. The <code>by</code> attribute has an implicit value of <code>author</code>
+            unless an ancestor element establishes a new relationship.
+        </para>
+        
+        <para>
+            Notice also in the preceding example that there isn't an explicit reference to the annotation (i.e., no 
+            <code>annoref</code> element). As a result, the <code>annotation</code> establishes its relationship
+            to the text via the <code>ref</code> attribute. Only temporary notes may be included with no reference
+            to them or from them:
+        </para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<annotation role="temporary">
+       2010-12-24 - Markup verified to this point. Continuing after holidays. --MG
+</annotation>
+        </escape>
+        
+        <para>
+            The <code>by</code> attribute may be omitted from temporary annotations as they must be removed
+            from a document prior to its finalization. Where they are being used to relay production information, however,
+            creating and assigning unique <code>by</code> values for staff/production roles may improve their 
+            usability. For example, a quality assurance editor could use the element to leave notes for the markup team:
+        </para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<annotation role="temporary" by="qa" class="error">
+        Missed merged paragraphs.
+</annotation>
+        </escape>
+        
+        <para>This specification does not attempt to define all the <code>role</code> values needed for all production 
+            contexts. New contributor and annotation types can be added as required, however.</para>
+        
+        <para>Attaching more than one <code>annotation</code> to an element is permitted, but each annotation
+            must have a unique <code>role</code>.</para>
+    </section>
+    
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <!--                      CITATION                    -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <section about="z3986.citation" dest="doc">        
+        <para>The following example shows how to reference an <code>entry</code> in a <code>bibliography</code> 
+            using the <code>ref</code> attribute on the nested <code>ref</code> element:</para>
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<p>By his return he was critical of the Bible as history, and wondered why all religions should 
+    not be equally valid. <citation><ref ref="darwin-1958">Darwin 1958</ref>, pp. 85–96</citation></p>   
+…
+<bibliography>    
+    <entry xml:id="darwin-1958">
+        Darwin, Charles (1958). Barlow, Nora. ed. The Autobiography of Charles Darwin 1809–1882. London: Collins.
+    </entry>
+</bibliography>
+        </escape>
+        
+        <para>The following example shows how to explicitly associate a citation with an excerpt, in this case a <code>quote</code>:</para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<quote xml:id="q1">
+    In The Origin, Darwin provided an alternative hypothesis for the development, 
+    diversification, and design of life. [...] In Darwin's day, the evidence for 
+    his theories was compelling but not completely decisive.
+</quote>
+<citation ref="q1">Coyne, Jerry A. (2009). Why Evolution is True. Oxford: Oxford University Press. p. 17. </citation>  
+        </escape>
+    	
+    	<para>
+    		The same example could take advantage of the implied association between a <code>quote</code>
+    		and a child <code>citation</code> by being rewritten as follows:
+    	</para>
+    	
+    	<escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<quote>
+    <p>
+    	In The Origin, Darwin provided an alternative hypothesis for the development, 
+    	diversification, and design of life. [...] In Darwin's day, the evidence for 
+    	his theories was compelling but not completely decisive.
+    </p>
+    <citation>Coyne, Jerry A. (2009). Why Evolution is True. Oxford: Oxford University Press. p. 17. </citation>  
+</quote>
+    	</escape>
+    	
+    </section>
+    
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <!--                    DESCRIPTION                    -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <section about="z3986.description z3986.description.phrase z3986.description.text" dest="doc">
+        <para>The <code>description</code> element can be used in one of two ways:</para>
+        <orderedlist>
+            <listitem>
+                <para>as a direct container for the descriptive text:</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<description by="republisher" xml:id="mouse-desc">
+            <p>A picture of a small, grey mouse.</p>
+</description>
+                </escape>
+            </listitem>
+            <listitem>
+                <para>as a pointer to an external description:</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<description by="republisher" xml:id="mouse-desc2" xlink:href="mouse-desc.xml"/>
+                </escape>
+            </listitem>
+        </orderedlist>
+        
+        <para>
+            An element may point to more than one <code>description</code> so long as each description has a
+            unique <code>role</code> attribute value.
+        </para>
+        
+        <para>
+            A single <code>description</code> element can be the child of an <code>object</code> to provide
+            its accessible description. In this case, an implicit association is made between the two elements (i.e.,
+            the <code>desc</code> attribute does not need to be used:
+        </para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+            <object src="mouse.png">
+                <description by="republisher" xlink:href="mouse-desc.xml"/>
+            </object>
+        </escape>
+        
+        <para>
+            If an <code>object</code> element
+            contains text or other elements as its children, an implicit <code>description</code> is assumed. In the
+            absence of the container element, the <code>object</code>'s children represent an implied 
+            content description added by an author. The following examples are functionally identical, but highlight
+            the various implicit elements and attributes:
+        </para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+            <object src="mouse.png">
+                <p>A small mouse...</p>
+            </object>
+            
+            <object src="mouse.png">
+                <description>
+                    <p>A small mouse...</p>
+                </description>
+            </object>
+            
+            <object src="mouse.png">
+                <description by="author">
+                    <p>A small mouse...</p>
+                </description>
+            </object>
+            
+            <object src="mouse.png">
+                <description by="author" role="content">
+                    <p>A small mouse...</p>
+                </description>
+            </object>
+            
+            <object src="mouse.png" desc="mouse-desc">
+                <description xml:id="mouse-descrip" by="author" role="content">
+                    <p>A small mouse...</p>
+                </description>
+            </object>
+        </escape>
+        
+        
+        <para>
+            The Content Selection feature can additionally be used to tailor the type of <code>description</code> to the output
+            format being generated:
+        </para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/" xmlns:sel="http://www.daisy.org/ns/z3986/authoring/features/select/">
+            <sel:select>
+                <sel:when expr="target:format('BRAILLE')">
+                    <description sel:selid="mouse-desc" by="republisher" xlink:href="mouse-braille-desc.xml"/>
+                </sel:when>
+                <sel:otherwise>
+                    <description sel:selid="mouse-desc" by="republisher" xlink:href="mouse-desc.xml"/>
+                </sel:otherwise>
+            </sel:select>
+        </escape>
+        
+        
+        <para>
+            As each condition in the <code>sel:select</code> contains the same <code>description</code>
+            element but corresponding to a different output, they cannot each have the same <code>xml:id</code>. The 
+            <code>sel:selid</code> attribute is instead attached to each <code>description</code>. After the select condition
+            has been evaluated, the remaining <code>sel:selid</code> is converted back to an <code>xml:id</code>.
+        </para>
+    </section>
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <!--            DRAMATIS PERSONAE            -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    
+    <section about="z3986.d" dest="doc">
+        <para>
+            If a document includes a dramatis personae, character dialogue can explicitly
+            reference the speaker. A list of characters will typically appear directly in the body of the
+            work, but can also be embedded in a document header using <code>meta</code> elements
+            when none is provided. A typical example of a dramatis personae follows:
+        </para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<section typeof="dramatis-personae">
+    <h>Dramatis Personae</h>
+    <list>
+        <item xml:id="alice" about="#alice">
+            <name property="persona">Alice</name> — <span property="role-description">a little girl</span>.
+        </item>
+        <item xml:id="rabbit" about="#rabbit">
+            <name property="persona">White Rabbit</name> — <span property="role-description">fellow who is late for a very important date</span>.
+        </item>
+        <item xml:id="mouse" about="#mouse">
+            <name property="persona">Mouse</name> — <span property="role-description">small rodent at the bottom of the rabbit hole</span>.
+        </item>
+    </list>
+</section>
+        </escape>
+        
+        <para>
+            In the above example, the RDFa attributes <code>about</code> and <code>property</code> are used to
+            augment the standard list of character names. The <code>about</code> attribute on each list <code>item</code>
+            identifies which character the information applies to, while the <code>property</code> attribute specifies what each 
+            child element is defining (the predefined value <code>persona</code> is a short-hand from the 
+            <link xlink:href="http://www.daisy.org/z3986/2012/vocab/structure/">Z39.86-2012 Structural Semantics Vocabulary</link>
+            that establishes that each is a character
+            in the work and <code>role-description</code> that each span describes the character's role).
+        </para>
+        
+        <para>
+            With a clearly defined dramatis personae, all dialogue in the work can now be linked back to 
+            each character's definition by attaching a <code>ref</code> attribute to each <code>d</code>
+            element:
+        </para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<p>She ate a little bit, and said anxiously to herself, 
+    <d ref="alice">‘Which way? Which way?’</d></p>
+        </escape>
+        
+        <para>
+            The advantage of clearly establishing who is speaking in this way is that a processing agent 
+            could now inform a reader which character is speaking as well provide any additional information about that
+            person specified in their dramatis personae entry (or otherwise associated with the character).
+        </para>
+        
+    </section>
+    
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <!--                   GLOSSARIES                      -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    
+    <section about="z3986.glossary z3986.glossary.block" dest="any">
+        <para>
+            The greatest advantage to using the dedicated <code>glossary</code> element over hand-rolled solutions is
+            the automatic association it allows when an entry contains exactly one <code>term</code> and one
+            <code>definition</code> (which covers most glossaries and definition lists). The element is also intended
+            to provide flexibility to accommodate the various forms definition lists take in production. A numbered definition
+            list, for example, can be created using the Content Rendition feature's prefix attribute:
+        </para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<glossary>
+   <entry rend:prefix="1.">
+      <term>evolution</term> — <definition>the process by which ...</definition>
+   </entry>
+   <entry rend:prefix="2.">
+      <term>gene</term> — <definition>a segment of DNA...</definition>
+   </entry>
+</glossary>
+        </escape>
+        
+        <para>
+            The definitions could be turned into a variable list through use of CSS styles. Removing the em dashes and
+            attaching a <code>class</code> attribute to the <code>glossary</code> element in the preceding example
+            with a value of  <code>varlist</code>, for example, would allow the creation of the following style definitions
+            to re-flow the content:
+        </para>
+        
+        <programlisting xml:space="preserve">
+<![CDATA[
+
+glossary.varList > entry > term {
+   display: block;
+   padding-bottom: .2em
+   font-weight: bold;
+}
+
+glossary.varList > entry > definition {
+   display: block;
+   margin-left: 2em;
+}
+
+]]>
+        </programlisting>
+        
+        <para>
+            Although it is recommended that the <code>glossary</code> element be used whenever possible, there are no
+            restrictions against creating definition lists using other combinations of elements. The <code>list</code> element 
+            can simplify aspects (auto numbering, specifically), but at the price of having to explicitly link the terms and definitions
+            in each entry. The first example above could be reformulated as a list as follows:
+        </para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<list type="ordered">
+   <item><term ref="def1">evolution</term> — <definition xml:id="def1">the process by which ...</definition></item>
+   <item><term ref="def2">gene</term> — <definition xml:id="def2">a segment of DNA...</definition></item>
+</list>
+        </escape>
+        
+        <para>
+            A variable list can also be implemented in a similar fashion with the addition of CSS styles:
+        </para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<list class="varList">
+   <item>
+      <term ref="defn1">evolution</term>
+      <definition xml:id="defn1">the process by which ...</definition>
+   </item>
+   <item>
+      <term ref="defn2">gene</term>
+      <definition xml:id="defn2">a segment of DNA...</definition>
+   </item>
+</list>
+        </escape>
+        
+        <para>
+            The absence of the <code>type</code> attribute on the <code>list</code> element in the preceding example
+            outputs each <code>item</code> without a prefix, similar to the default formatting for <code>glossary</code>
+            entries.
+        </para>
+        
+        <para>
+            There are times where even more simplicity is needed. The <code>glossary</code> and <code>list</code>
+            elements can be used for single definitions, but are typically more tagging than is needed, especially when the
+            definition occurs in the flow of the body:
+        </para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<p>
+   A <term ref="defn01">gene</term> is <definition xml:id="defn01">a segment of DNA...</definition>. 
+</p>
+        </escape>
+        
+        <para>
+            The convenience of using <code>term</code> and <code>definition</code> in these ways comes
+            at the price of having to explicitly link the elements together via their <code>ref</code> and <code>xml:id</code>
+            attributes, however.
+        </para>
+        
+    </section>
+    
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <!--                   LIST@type                      -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    
+    <section about="z3986.list.type.attrib" dest="any">
+        <para>The <code>type</code> attribute values imply the following semantics for the list items:</para>
+        <itemizedlist>
+            <listitem>
+                <para><code>ordered</code> &#8212; the order of the items is significant 
+                    and changing the order of the items typically changes the meaning of the list.</para>
+            </listitem>
+            <listitem>
+                <para><code>unordered</code> &#8212; the order of the items is not significant 
+                    and changes the order of the items typically does not change the meaning of the list.</para>
+            </listitem>
+        </itemizedlist>
+    </section>
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <!--                      META                        -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <section about="z3986.meta" dest="any">
+        <para>Acceptable methods for specifying the value of a <code>meta</code> element include:</para>
+        <itemizedlist>
+            <listitem>
+                <para>attaching a <code>content</code> attribute; and</para>
+            </listitem>
+            <listitem>
+                <para>inlining text and non-<code>meta</code> element children.</para>
+            </listitem>
+        </itemizedlist>
+        <para>It is not valid to employ both methods for the same element. If no value is specified, the <code>meta</code> element either expresses a specialized metadata function or is a container for one or more child <code>meta</code> elements.</para>
+    </section>
+    
+    
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <!--                        NAME                      -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <section about="z3986.name" dest="doc">
+        <bridgehead>Personal name markup</bridgehead>
+        <para>In 
+            order to specify that a <code>name</code> represents a personal name, the <link 
+                xlink:href="http://www.daisy.org/z3986/2012/vocab/structure/#personal-name">personal-name</link> 
+            property from the Z39.86 Structural Semantics Vocabulary is used.</para>
+        
+        <para>The Z39.86 Structural Semantics Vocabulary further contains a set of properties related to <link 
+            xlink:href="http://www.daisy.org/z3986/2012/vocab/structure/#names"
+            >name components</link>, supporting the representation of honorary titles, given and family names. The 
+            following example shows how to represent three typical components of a personal name:</para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+            <name role="personal-name">                
+                <span role="given-name">CHARLES</span>
+                <span role="family-name">DARWIN</span>,
+                <span role="name-title">ESQ</span>
+            </name>
+        </escape>
+        
+        <para>(Note also that the name components in the Z39.86 Structural Semantics Vocabulary are explicitly equivalent to properties in the
+            <link xlink:href="http://www.foaf-project.org">FOAF</link> vocabulary.)</para>
+        
+        <bridgehead>Proper noun markup</bridgehead>
+        
+        <para>The <code>name</code> element can be used to represent any proper noun, for example for:</para>
+        
+        <itemizedlist>
+            <listitem>
+                <para>Places</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+                    this tendency has been found incurable in dogs which have been brought home as 
+                    puppies from countries, such as <name role="place">Tierra del Fuego</name> …
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Nationalities</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+                    What <name role="nationality">English</name> breeders have actually effected is 
+                    proved by the enormous prices given for animals with a good pedigree …
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Organizations</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+                    I have associated with several eminent fanciers, and have been permitted to join two
+                    of the <name role="organization">London Pigeon Clubs</name>.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Taxonomic Classifications</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+                    I am fully convinced that the common opinion of naturalists is correct, namely, 
+                    that all have descended from the rock-pigeon (<name role="taxonomy">Columba livia</name>) …
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Events</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+                    so that the latter, by the regulations for the <name role="event">Goodwood Races</name>, 
+                    are favoured in the weights they carry …
+                </escape>
+            </listitem>
+        </itemizedlist>
+        
+        <para>
+            The above example are not meant to present an exhaustive listing of proper nouns,
+            or all available values for specifying.
+            Where a role value is not available and necessary for a document type, the 
+            inherent extensibility of the <code>role</code> attribute can be extended to accommodate. 
+        </para>
+        
+    </section>
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <!--                   NOTEREF                      -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    
+    <section about="z3986.noteref" dest="any">
+        
+        <para>
+            There are two means of tagging references to notes. When a superscripted identifier is used,
+            the <code>value</code> attribute is required:
+        </para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<p>THE following pages contain Extracts from LETTERS addressed 
+    to Professor HENSLOW<noteref ref="n2" value="2"/> by C. DARWIN, Esq. … </p>
+        </escape>
+        
+        <para>
+            In the above example, the note identifier (the number 2) is no longer part of the document content,
+            but can still be output and repurposed by a processing agent.
+        </para>
+        
+        <para>
+            It is sometimes the case, however, that using one or
+            more words in the content to link to the annotation is preferred to a superscripted identifier. In this case,
+            the <code>value</code> attribute is omitted and the text content of the <code>noteref</code> becomes
+            the linkable text:
+        </para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<p>THE following pages contain Extracts from LETTERS addressed 
+    to <noteref ref="n2">Professor HENSLOW</noteref> by C. DARWIN, Esq. … </p>
+        </escape>
+        
+        <para>
+            An additional benefit to tagging words instead of inserting superscripted referents is that a transformation process
+            could automatically remove the link from the words and instead insert superscripted numbers or symbols after 
+            the element when they are needed. It would not be possible to do the reverse if only the superscripts have
+            been tagged, however.
+        </para>
+        
+        <para>
+            It is illegal to use an empty element and omit a <code>value</code> attribute, as in the following example, 
+            as some text content is necessary to render the link:
+        </para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<p>THE following pages contain Extracts from LETTERS addressed 
+    to Professor HENSLOW<noteref ref="n2"/> by C. DARWIN, Esq. … </p>
+        </escape>
+        
+        <para>
+            It is also illegal to use text content together with a <code>value</code> attribute, as it introduces
+            ambiguity in how to format the output:
+        </para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<p>THE following pages contain Extracts from LETTERS addressed 
+    to <noteref ref="n2" value="2">Professor HENSLOW</noteref> by C. DARWIN, Esq. … </p>
+        </escape>
+        
+    </section>   
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <!--                        NUM                        -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <section about="z3986.num" dest="doc">
+        <para>
+            Following are examples of how the <code>num</code> element can be used to format identifiers and 
+            numbers that are not used in mathemtatical contexts:
+        </para>
+        <itemizedlist>
+            <listitem>
+                <para>Cardinal Numbers</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<num role="cardinal" value="30,000">30.000</num> lightyears away.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Ordinal Numbers</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+The <num role="ordinal">1st</num> person on the moon was Neil Armstrong.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Roman Numerals</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+The motion picture release date is listed as <num role="roman" value="1948">mcmxlviii</num>.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Phone Numbers</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+The conference call in line was <num role="phone">+1 416-486-2500</num>
+                </escape>
+            </listitem>
+            <listitem>
+                <para>ISBN numbers</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+Lib. Binding: <num role="isbn">978-1-1234-4567-1</num>
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Postal Code</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+There is, in fact, no <num role="postal">90210</num> zip code in the United States.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Currencies</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+The US dollar is currently trading at <num role="currency">€0.731768</num> and <num role="currency">$1.02CAD</num>.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Heights</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+The tallest man ever was <num role="height">8'11.1"</num> or <num role="height">272 cm</num>.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Weights</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+He weighed in at slightly over <num role="weight">220 lbs</num> for the fight.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Percentages</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+Only <num role="percentage">15%</num> of people know that statistics are misleading.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Ratios</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+The ratio of gas to oil is <num role="ratio">3:2</num> for the lawn mower to work without sputtering.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Coordinates</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+The Great Pyramid of Giza is located at <num role="coordinate">29°58′45.03″N</num> <num role="coordinate">31°08′03.69″E</num>.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Fractions</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+Add <num role="fraction">1/2</num> cup of milk.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Mixed</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+Add <num role="mixed">2 3/4</num> cups of flour.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Decimal</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+Pi is often rounded to <num role="decimal">3.14</num> when used in equations.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Segmented</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+He made the dubious claim that his Social Insurance Number is <num role="segmented">000 000 001</num>.
+                </escape>
+            </listitem>
+        </itemizedlist>
+        
+        <para>
+            The <code>span</code> element can further be used to group related sets of numbers:
+        </para>
+        
+        <itemizedlist>
+            <listitem>
+                <para>Ranges</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+                    It takes between <span role="range"><num>2</num>–<num>5</num></span> cups of flour depending on the size of the loaf.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Results</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+                    The final score was <span role="result"><num>3</num>-<num>2</num></span> for Team Canada over Team USA.
+                </escape>
+            </listitem>
+        </itemizedlist>
+        
+        
+    </section>
+    
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <!--                     OBJECT                       -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    
+    <section about="z3986.object.block z3986.object.phrase z3986.object.text" dest="any">
+        <para>It is not always the case that the referenced object will be available, renderable or accessible.
+            The <code>object</code> element provides two mechanisms for adding fallback accessible descriptions
+            in these cases:</para>
+        <orderedlist>
+            <listitem>
+                <para>the direct inclusion of elements within the <code>object</code> element:</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<object xml:id="mnt1" src="mouse.png">
+    <p>A picture of a small, grey mouse.</p>
+</object>
+                </escape>
+                
+                <para>or</para>
+                
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<object xml:id="mnt2" src="mouse.png">
+    <description by="republisher">
+        <p>A picture of a small, grey mouse.</p>
+    </description>
+</object>
+                </escape>
+                
+                <para>In the first example, a <code>description</code> element with a <code>by</code> attribute value
+                    of <code>author</code> is implied around the child content. In the second, an explicit <code>description</code>
+                    has been added to identify that the description has been contributed by a republisher of the document.
+                </para>
+            </listitem>
+            
+            <listitem>
+                <para>by attaching a <code>desc</code> attribute pointing to the description:</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<object xml:id="mnt3" src="mouse.png" desc="mouse-description"/>
+<description by="republisher" xml:id="mouse-description">
+    <p>A picture of a small, grey mouse.</p>
+</description>
+                </escape>
+                
+            </listitem>
+        </orderedlist>
+    </section>
+    
+    
+    <section about="z3986.object.block z3986.object.phrase z3986.object.text z3986.block z3986.table" dest="any">
+        <bridgehead>Associated content</bridgehead>
+        <para>
+            Although images, tables and other objects may stand on their own in a document, typically 
+            they will include an accessible description, a caption and possibly a header.
+        </para>
+        
+        <para>
+            In order to establish that other elements are carrying information about the table or image,
+            you must tie them together using <code>ref</code> attributes that point to the <code>xml:id</code>
+            of the central element, as in the following example:
+        </para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<hd ref="galapisle">Galapagos Islands</hd>
+
+<object xml:id="galapisle" src="island.png"/>
+
+<caption ref="galapisle">The Galapagos islands lie approximately 970km off the shore of Ecuador.</caption>
+        </escape>
+        
+        <para>
+            If you were to omit the <code>ref</code> attributes, the information would only be loosely associated
+            by its order in the document (i.e., a processing agent would not be able to handle the elements as a
+            group).
+        </para>
+        
+        <para>
+            Although all of the above elements are associated through references to the 
+            <code>object</code> element, their semantics are still only loosely defined 
+            (i.e., the linkage is established, but not what that linkage represents). 
+            A human can intuit they represent a figure by the collected items and their use, 
+            but not so a machine.
+        </para>
+        
+        <para>
+            It can also be confusing to edit a document marked up with all content within a section
+            as siblings, because document narrative could fall both immediately before and after the figure 
+            elements making it all appear connected. Without checking for <code>ref</code> attributes 
+            as you edit, it wouldn't be clear if a new non-structural heading were occuring or a figure were
+            being inserted.
+        </para>
+        
+        <para>
+            To begin to bind the elements more tightly and create a figure both humans and machines
+            can understand, the <code>block</code> element can be wrapped as a container. 
+            A <code>role</code> attribute can then be attached to further
+            specify that all of the children constitute a figure, as in the following example:
+        </para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<block role="figure">
+    
+    <hd ref="galapisland">Galapagos Islands</hd>
+    
+    <object xml:id="galapisland" src="island.png"/>
+    
+    <caption ref="galapisland">The Galapagos islands lie approximately 970km off the shore of Ecuador.</caption>
+    
+</block>
+        </escape>
+        
+        <para>
+            A common question at this point is why the <code>ref</code> elements are
+            still necessary. The answer is because the <code>block</code> element is only a general container.
+            The <code>role</code> attribute provides additional semantics, but those semantics only extend to
+            what kind of content the <code>block</code> represents, not how it is interrelated (but more on 
+            this shortly).
+        </para>
+        
+        <para>
+            Now that the content is grouped, however, we can begin to further simplify it. To avoid the extra work
+            of linking the child elements, an <code>associate</code> attribute can be attached to the 
+            <code>block</code> (the attribute represents an automatic <code>ref</code> 
+            between all the children). The IDREF that you specify in the attribute implicitly makes the references
+            that we have so far been carrying forward, so our markup can now be more minimally represented as
+            in the following example:
+        </para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<block role="figure" associate="galap-figure">
+    
+    <hd>Galapagos Islands</hd>
+    
+    <object xml:id="galap-figure" src="island.png"/>
+    
+    <caption>The Galapagos islands lie approximately 970km off the shore of Ecuador.</caption>
+    
+</block>
+        </escape>
+        
+        <para>
+            Now, when a processing agent comes across this markup it will be able to determine both that the
+            block constitutes a figure (from the <code>role</code> attribute) and that the child <code>hd</code>
+            and  <code>caption</code> elements are tied to the <code>object</code> (from the 
+            <code>associate</code> attribute). We've gained much more information about the figure
+            than we started with, and the work required to reproduce the figure has been greatly simplified 
+            (there is also no worry about accidentally forgetting a <code>ref</code> on any of the children).
+        </para>
+        
+        <para>
+            Now that we have a compact markup model for figures, we can briefly jump back to why we cannot 
+            assume associations. Consider the following example:
+        </para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<block role="figure">
+    
+    <object xml:id="galap-isa" src="isabella.png"/>
+    
+    <object xml:id="galap-fer" src="fernandina.png"/>
+    
+    <object xml:id="galap-sc" src="santa-cruz.png"/>
+    
+    <caption>The Galapagos islands lie approximately 970km off the shore of Ecuador.</caption>
+    
+</block>
+        </escape>
+        
+        <para>
+            We cannot make a simple association here that all the children of the figure are tied to an 
+            <code>object</code>, as the figure constitutes three images sharing a caption. We likewise
+            cannot use the <code>associate</code> attribute, but have to revert back to explicitly linking
+            the <code>caption</code> to each of the three images it describes:
+        </para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<block role="figure">
+    
+    <object xml:id="isa" src="isabella.png"/>
+    
+    <object xml:id="fer" src="fernandina.png"/>
+    
+    <object xml:id="sc" src="santa-cruz.png"/>
+    
+    <caption ref="isa fer sc">The Galapagos islands lie approximately 970km off the shore of Ecuador.</caption>
+    
+</block>
+        </escape>
+        
+        <para>
+            It's this potential for varation that requires at least some level of linking in all cases, and makes
+            it impossible to state a simple rule that would hold true for all content grouped in a <code>block</code>.
+        </para>
+        
+        <para>
+            Fortunately, most image and table figures are not this complicated, and the simpler process
+            of grouping in a <code>block</code> with the <code>associate</code> attribute will work
+            the majority of the time.
+        </para>
+        
+    </section>
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <!--                        P                         -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <section about="z3986.p" dest="doc">
+        <bridgehead>Associating groups of paragraphs</bridgehead>
+        <para>It is sometimes necessary to provide information about paragraphs that are associated with each other. In a 
+            republishing context for example, paragraph association may have been expressed in the print source using 
+            some indentation convention, and for certain output formats, this association must be preserved.</para>
+        <para>The Z39.86 Structural Semantics Vocabulary contains the <link xlink:href="http://www.daisy.org/z3986/2012/vocab/structure/#pgroup"
+            ><code>pgroup</code></link> property, which is used to associate a group of paragraphs:</para>        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<block role="pgroup">
+    <p>…</p>
+    <p>…</p>
+</block>
+        </escape>
+    </section>
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <!--                        REF                         -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    
+    <section about="z3986.ref" dest="doc">
+        <para>
+            The <code>ref</code> element can be used with the <code>ref</code> attribute to link to resources that
+            are contained within the current document. Typical examples of this kind of usage occur in indexes and
+            tables of contents, where the <code>ref</code> element is used to link to a corresponding page number 
+            or location:
+        </para>
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<toc>
+    <entry>INTRODUCTION <ref ref="p1">Page 1</ref></entry>
+</toc>
+        </escape>
+        
+        <para>
+            It is not necessary for the <code>ref</code> element to point to a location, even when used for page
+            references as in the above example (e.g. if alternate methods of linking are expected in outputs). 
+            Marking the references without linking them can still be useful for formatting leader lines between
+            the text and reference in a table of contents entry, for example. 
+        </para>
+        
+        <para>
+            Not all references are to internal locations, of course, and the <code>ref</code> elements allows
+            attributes from the XLink feature to be attached instead for such situations:
+        </para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<p>For more information, refer to the 
+    <ref xlink:href="http://en.wikipedia.org/wiki/Charles_Darwin">wikipedia article on Darwin</ref>.</p>            
+        </escape>
+        
+        <para>
+            It is also not necessary for the <code>ref</code> element to point to an electronic resource at all.
+            The element could be used to tag the coordinates of a physical location or object, for example: 
+        </para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<p>San Cristóbal Island, the first Darwin visited, is located at 
+    <ref><num role="coordinate">0°48′S</num> <num class="coordinate">89°24′W</num></ref>.</p>
+        </escape>
+        
+    </section>
+    
+    <!-- dummies -->
+    <dummy xmlns="http://www.daisy.org/ns/z3986/authoring/" xml:id="anno-04"/>
+    <dummy xmlns="http://www.daisy.org/ns/z3986/authoring/" xml:id="n2"/>
+    <dummy xmlns="http://www.daisy.org/ns/z3986/authoring/" xml:id="p1"/>
+</article>
+

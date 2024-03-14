@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <x:h1>The DAISY Byline module</x:h1>
+
+
+    <define name="Daisy.byline" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="byline">
+            <ref name="Daisy.byline.content" />
+        </element>
+    </define>
+
+    <define name="Daisy.byline.content">
+        <text />
+    </define>
+
+</grammar>

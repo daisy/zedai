@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+      
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="word">The word module</dcterms:title>
+      <dcterms:description>This module defines the {[[#z3986.w]]} element for marking the component words that compose the document text.</dcterms:description>      
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}" />
+      <dcterms:creator>Markus Gylling</dcterms:creator>      
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-datatypes.rng"/>
+      <dcterms:requires rdf:resource="z3986-core-attrib.rng"/>
+      <dcterms:requires rdf:resource="z3986-i18n-attrib.rng"/>
+      <dcterms:requires rdf:resource="rdfa-attrib.rng"/>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng" />
+    </rdf:Description>
+  </rdf:RDF>
+    
+  <div>         
+    <define name="z3986.w" >
+      <element name="w">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="w">The {w} element</dcterms:title>
+            <dcterms:description>The {w} element represents a single, possibly compound, lexical word.</dcterms:description>                                    
+            <z:info>
+              The {[[#z3986.role.attrib]]} attribute optionally expresses the semantic nature of the word.
+              No implicit value is associated with the {wpart} element.
+            </z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.Phrase.class]]}</z:context>          
+            <z:content>{(text | z3986.Text.class)+}</z:content>            
+            <z:attlist>{[[#z3986.Phrase.attrib]]}</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.w.attlist"/>
+        <ref name="z3986.w.content"/> 
+        <sch:rule context="default:w">
+          <sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0"
+            >The {word} element must neither be empty nor contain only whitespace.</sch:assert>
+        </sch:rule>
+      </element>    
+    </define>
+
+    <define name="z3986.w.attlist" combine="interleave">
+      <!-- expand out Phrase.attrib in order to allow
+        value suggestion injections on @role -->
+      <ref name="z3986.Core.attrib"/>
+      <ref name="z3986.I18n.attrib"/>
+      <optional>
+        <ref name="z3986.w.role.attrib"/>
+      </optional>
+      <ref name="Rdfa.attrib"/>
+      <ref name="z3986.Phrase.contrib.attrib"/>
+    </define>
+    
+    <define name="z3986.w.role.attrib">
+      <attribute name="role">
+        <list>
+          <oneOrMore>
+            <ref name="z3986.w.role.attrib.content.enum" />                        
+          </oneOrMore>  
+        </list>  
+      </attribute>  
+    </define>    
+    
+    <define name="z3986.w.role.attrib.content.enum" combine="choice">
+      <ref name="QName.datatype"/>
+    </define>
+    
+    <define name="z3986.w.content">
+      <oneOrMore>
+        <choice>
+          <ref name="z3986.w.class"/>
+          <ref name="z3986.wpart"/>
+        </choice> 
+      </oneOrMore>
+    </define>  
+    
+    <define name="z3986.w.class" combine="choice">
+      <ref name="z3986.Text.model"/>
+     </define> 
+    
+  </div>  
+  
+  <div>
+    
+    <define name="z3986.wpart">
+      <element name="wpart">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="wpart">The {wpart} element</dcterms:title>
+            <dcterms:description>The {wpart} element represents a segment of a word.</dcterms:description>
+            <z:info>
+              The {wpart} element is typically used to distinguish the parts of a word (root, stem and affix),
+              compound word, portmanteau or homograph. It can also be used in grammatical contexts to 
+              identify morphemes, graphemes and other divisions and boundaries within a word.
+            </z:info>
+            <z:info>
+              The {wpart} element additionally can be used in place of soft hyphens to identify line ending 
+              break locations, if external formatting options are limited.
+            </z:info>
+            <z:info>
+              The {[[#z3986.role.attrib]]} attribute optionally expresses the semantic nature of the word part.
+              No implicit value is associated with the {wpart} element.
+            </z:info>
+            <z:context z:alterability="fixed">[[#z3986.w]]</z:context>          
+            <z:content>{(text | [[#z3986.Text.class]])+}</z:content>            
+            <z:attlist>[[#z3986.Phrase.attrib]]</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>        
+        <ref name="wpart.attlist"/>
+        <ref name="wpart.content"/>
+        <sch:rule context="default:wpart">          
+          <sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0"
+            >The {wpart} element must neither be empty nor contain only whitespace.</sch:assert>
+        </sch:rule>
+      </element>     
+    </define>
+    
+    <define name="wpart.attlist">
+      <ref name="z3986.Phrase.attrib"/>
+    </define>
+    
+    <define name="wpart.content">
+      <oneOrMore>
+        <choice>
+          <ref name="z3986.Text.model"/>
+          <ref name="z3986.wpart"/>
+        </choice>
+      </oneOrMore>
+    </define>
+    
+  </div>
+  
+  <div>
+    <a:documentation>w - default content model contribution</a:documentation>
+    
+    <define name="z3986.Phrase.core.class" combine="choice">
+      <ref name="z3986.w"/> 
+    </define>
+    
+  </div>
+
+</grammar>

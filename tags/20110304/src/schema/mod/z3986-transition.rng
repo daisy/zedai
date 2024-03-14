@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="transition">The transition module</title>
+        <annotation annotates="/">
+            <para role="desc-main">This module defines the [[#z3986.transition]] element for indicating changes in context and other shifts in the narrative flow of a document.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3986-global-classes.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2011-03-04</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="z3986.transition" xml:id="z3986.transition">
+            <element name="transition">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="transition">The {transition} element</title>
+                    <para role="desc-main">The {transition} element represents context changes and other shifts in the narrative flow or content of a document.</para>
+                    <para role="desc-sub">The shift represented by a {transition} does not infer structural meaning on the elements that precede or follow it (see the {[[#z3986.section]]} element). A typical example of a {transition} in print documents is a spaced gap between paragraphs, which may include centered asterisks or other glyphs (often referred to as a space break).</para>
+                    <para role="desc-sub">The Content Rendition feature's {[[http://www.daisy.org/z3986/2011/auth/features/rend/current/#z3986.rend.symbol.attrib symbol]]} attribute can be used to represent a character marker associated with the {transition}, and the {[[#z3986.src.attrib]]} attribute can be used to reference an image. If both attributes are omitted, the {transition} is treated as a whitespace gap.</para>
+                    <synopsis role="def-context">[[#z3986.Block.class]]</synopsis>
+                    <synopsis role="def-content"/>
+                    <!-- by default it's empty, note that the rend feature changes this -->
+                    <synopsis role="def-attlist">[[#z3986.Block.attrib]]</synopsis>
+                </annotation>
+                <ref name="z3986.transition.attlist"/>
+                <ref name="z3986.transition.content"/>
+            </element>
+        </define>
+        <define name="z3986.transition.attlist" combine="interleave">
+            <ref name="z3986.Block.attrib"/>
+        </define>
+        <define name="z3986.transition.content" xml:id="z3986.transition.content">
+            <empty/>
+        </define>
+    </div>
+    <div>
+        <a:documentation>transition - default content model contribution</a:documentation>
+        <define name="z3986.Block.core.class" combine="choice">
+            <ref name="z3986.transition"/>
+        </define>
+        <define name="z3986.verse.content.class" combine="choice">
+            <ref name="z3986.transition"/>
+        </define>
+        <define name="z3986.Block.basic.model" combine="choice">
+            <ref name="z3986.transition"/>
+        </define>
+    </div>
+</grammar>

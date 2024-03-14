@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Basic Tables Module -->
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+  
+  <define name="xhtml.Structural.class" combine="choice">
+    <ref name="xhtml.table"/>
+  </define>
+  
+  <define name="xhtml.table">
+    <element name="table">
+      <ref name="xhtml.table.attlist"/>
+      <optional>
+        <ref name="xhtml.caption"/>
+      </optional>
+      <oneOrMore>
+        <ref name="xhtml.tr"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="xhtml.table.attlist">
+    <ref name="xhtml.Common.attrib"/>
+    <optional>
+      <attribute name="summary">
+        <ref name="Text.datatype"/>
+      </attribute>
+    </optional>
+  </define>
+  
+  <define name="xhtml.caption">
+    <element name="caption">
+      <ref name="xhtml.caption.attlist"/>
+      <ref name="xhtml.Text.model"/>
+    </element>
+  </define>
+  
+  <define name="xhtml.caption.attlist">
+    <ref name="xhtml.Common.attrib"/>
+  </define>
+  
+  <define name="xhtml.tr">
+    <element name="tr">
+      <ref name="xhtml.tr.attlist"/>
+      <oneOrMore>
+        <choice>
+          <ref name="xhtml.th"/>
+          <ref name="xhtml.td"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="xhtml.tr.attlist">
+    <ref name="xhtml.Common.attrib"/>
+    <ref name="xhtml.CellHAlign.attrib"/>
+    <ref name="xhtml.CellVAlign.attrib"/>
+  </define>
+  <define name="xhtml.th">
+    <element name="th">
+      <ref name="xhtml.th.attlist"/>
+      <ref name="xhtml.Flow.model"/>
+    </element>
+  </define>
+  <define name="xhtml.th.attlist">
+    <ref name="xhtml.Cell.attrib"/>
+  </define>
+  <define name="xhtml.td">
+    <element name="td">
+      <ref name="xhtml.td.attlist"/>
+      <ref name="xhtml.Flow.model"/>
+    </element>
+  </define>
+  <define name="xhtml.td.attlist">
+    <ref name="xhtml.Cell.attrib"/>
+  </define>
+  <define name="xhtml.Cell.attrib">
+    <ref name="xhtml.Common.attrib"/>
+    <optional>
+      <attribute name="abbr">
+        <ref name="Text.datatype"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="axis"/>
+    </optional>
+    <optional>
+      <attribute name="headers">
+        <ref name="IDREFS.datatype"/>
+      </attribute>
+    </optional>
+    <ref name="xhtml.scope.attrib"/>
+    <optional>
+      <attribute name="rowspan">
+        <ref name="NonNegativeInteger.datatype"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="colspan">
+        <ref name="NonNegativeInteger.datatype"/>
+      </attribute>
+    </optional>
+    <ref name="xhtml.CellHAlign.attrib"/>
+    <ref name="xhtml.CellVAlign.attrib"/>
+  </define>
+  <define name="xhtml.CellHAlign.attrib">
+    <optional>
+      <attribute name="align">
+        <choice>
+          <value>left</value>
+          <value>center</value>
+          <value>right</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="xhtml.CellVAlign.attrib">
+    <optional>
+      <attribute name="valign">
+        <choice>
+          <value>top</value>
+          <value>middle</value>
+          <value>bottom</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="xhtml.scope.attrib">
+    <optional>
+      <attribute name="scope">
+        <choice>
+          <value>row</value>
+          <value>col</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  
+</grammar>

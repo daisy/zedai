@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ErrorReport.xsl"?>
+<schemaAnalysis SchemaQualityCheckerVersion="2.2"
+    anyWarningsRequestedToBeSuppressed="false" cost="10"
+    haltAtFirstError="false" requireEachDocumentValid="false" schemaLanguageVersion="2001-05-02">
+    <file fileNameWithoutPath="bad.xsd" filename="distRes\samples\bad.xsd">
+        <startdatetime>2003-07-15T16:36:52</startdatetime>
+        <error severity="1" type="2">
+            <source column="30" line="20"
+                location="file:C:/Documents%20and%20Settings/Administrator/My%20Documents/IBM/wsad/workspace/Sketch/distRes/samples/bad.xsd" locationWithoutPath="bad.xsd"/>
+            <message>In the definition of simpleType B,
+                &lt;xsd:minLength value=&quot;7&quot;/>   is not
+                compatible with the following facets defined in one of
+                the ancestors of simpleType B, specifically simpleType A
+                [ located at file:/C:/Documents and
+                Settings/Administrator/My
+                Documents/IBM/wsad/workspace/Sketch/distRes/samples/bad.xsd
+                ] : &lt;xsd:minLength fixed=&quot;true&quot;
+                value=&quot;10&quot;/>      The basetype facet is
+                declared fixed. Therefore, the value of
+                &lt;xsd:minLength value=&quot;7&quot;/>   must be 10. </message>
+        </error>
+        <error severity="1" type="2">
+            <source column="31" line="38"
+                location="file:C:/Documents%20and%20Settings/Administrator/My%20Documents/IBM/wsad/workspace/Sketch/distRes/samples/bad.xsd" locationWithoutPath="bad.xsd"/>
+            <message>In the definition of simpleType E,
+                &lt;xsd:minLength value=&quot;30&quot;/>   is not
+                compatible with the following facets defined in one of
+                the ancestors of simpleType E, specifically simpleType C
+                [ located at file:/C:/Documents and
+                Settings/Administrator/My
+                Documents/IBM/wsad/workspace/Sketch/distRes/samples/bad.xsd
+                ] : &lt;xsd:maxLength value=&quot;20&quot;/>     </message>
+        </error>
+        <enddatetime>2003-07-15T16:36:55</enddatetime>
+    </file>
+</schemaAnalysis>

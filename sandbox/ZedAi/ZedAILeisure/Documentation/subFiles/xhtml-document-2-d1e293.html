@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Relax NG schema module</title>
+      <link rel="stylesheet" type="text/css" href="../css/ProfileDocumentation.css" />
+   </head>
+   <body>
+      <h1 class="title">The DAISY Leisure Profile</h1>
+      
+      
+      <h1 id="d18e3" class="xhtml">Document Module</h1>
+      
+      
+      <div class="rng"><span class="rng">start</span>: 
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="html.html">html</a></div>
+         
+      </div>
+      
+      
+      
+      <h2 id="d18e13" class="xhtml">The html element</h2>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">html</span>
+         
+         <div class="rng"><span class="rng">element</span>: <span class="name">html</span>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="html.attlist.html">html.attlist</a></div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="head.html">head</a></div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="body.html">body</a></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">html.attlist</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Common.attrib.html">Common.attrib</a></div>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="version.attrib.html">version.attrib</a></div>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="XSI.schemaLocation.html">XSI.schemaLocation</a></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">version.attrib</span>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">version</span>
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="CDATA.datatype.html">CDATA.datatype</a></div>
+               
+            </div>     
+            
+         </div>
+         
+      </div>
+      
+      
+      
+      
+      <h2 id="d18e54" class="xhtml">The head element</h2>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">head</span>
+         
+         <div class="rng"><span class="rng">element</span>: <span class="name">head</span>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="head.attlist.html">head.attlist</a></div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="head.content.html">head.content</a></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">head.attlist</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Common.attrib.html">Common.attrib</a></div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">head.content</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="title.html">title</a></div>
+         
+         <div class="rng"><span class="rng">zeroOrMore</span>:  Zero or more of: 
+            
+            <div class="rng"><span class="rng">choice</span>:  A choice between at least one of:
+               			
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="head.misc.html">head.misc</a></div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">head.misc</span>
+         
+         <div class="rng"><span class="rng">notAllowed</span>: 
+         </div>
+         
+      </div>
+      
+      
+      
+      
+      <h2 id="d18e93" class="xhtml">The title element</h2>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">title</span>
+         
+         <div class="rng"><span class="rng">element</span>: <span class="name">title</span>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="title.attlist.html">title.attlist</a></div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Text.model.html">Text.model</a></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">title.attlist</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Common.attrib.html">Common.attrib</a></div>
+         
+      </div>
+      
+      
+      
+      
+      <h2 id="d18e115" class="xhtml">The body element</h2>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">body</span>
+         
+         <div class="rng"><span class="rng">element</span>: <span class="name">body</span>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="body.attlist.html">body.attlist</a></div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Structural.model.html">Structural.model</a></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">body.attlist</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Common.attrib.html">Common.attrib</a></div>
+         
+      </div>
+      
+      
+      
+   </body>
+</html>

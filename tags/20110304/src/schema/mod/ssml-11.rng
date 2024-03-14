@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.w3.org/2001/10/synthesis" xmlns="http://relaxng.org/ns/structure/1.0" 
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" 
+    xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:ssml="http://www.w3.org/2001/10/synthesis">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="ssml-elements">The SSML Element Integration Module</title>
+        <annotation annotates="/">
+            <para role="desc-main">Provides a subset of the W3C [[http://www.w3.org/TR/speech-synthesis11/ Speech Synthesis Markup Language (SSML) Version 1.1]] element set, suitable for integration in Z39.86-2011 Profiles.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3986-core-attrib.rng"/>
+                <member xlink:href="z3986-datatypes.rng"/>
+                <member xlink:href="z3986-global-classes.rng"/>
+                <member xlink:href="z3986-i18n-attrib.rng"/>
+                <member xlink:href="ssml-datatypes.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <legalnotice>
+            <para>Copyright 1998-2008 W3C (MIT, ERCIM, Keio), All Rights Reserved. Permission to use, copy, modify and distribute the SSML schema and its accompanying documentation for any purpose and without fee is hereby granted in perpetuity, provided that the above copyright notice and this paragraph appear in all copies.</para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2011-03-04</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="ssml.break">
+            <element name="break">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="ssml:break">The SSML {break} element</title>
+                    <para role="desc-main">Controls the pausing or other prosodic boundaries between tokens.</para>
+                    <para role="desc-sub">Refer to [[http://www.w3.org/TR/speech-synthesis11/#S3.2.3 SSML 1.1]] for further information.</para>
+                    <synopsis role="def-context">{[[#z3986.Phrase.class]]}</synopsis>
+                    <synopsis role="def-content"/>
+                    <synopsis role="def-attlist">{[[#ssml.strength.attrib]]?, [[#ssml.time.attrib]]?, [[#xml.id.attrib]]?}</synopsis>
+                </annotation>
+                <ref name="ssml.break.attlist"/>
+                <empty/>
+            </element>
+        </define>
+        <define name="ssml.break.attlist" combine="interleave">
+            <optional>
+                <ref name="ssml.strength.attrib"/>
+            </optional>
+            <optional>
+                <ref name="ssml.time.attrib"/>
+            </optional>
+            <optional>
+                <ref name="xml.id.attrib"/>
+            </optional>
+        </define>
+        <define name="ssml.strength.attrib">
+            <attribute name="strength">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="strength">The SSML {strength} attribute</title>
+                    <para role="desc-main">Indicates the prosodic strength of the break in the speech output.</para>
+                    <para role="desc-sub">Refer to [[http://www.w3.org/TR/speech-synthesis11/#S3.2.3 SSML 1.1]] for further information.</para>
+                    <synopsis role="def-context">{[[#ssml.break]]}</synopsis>
+                    <synopsis role="def-content">{'none' | 'x-weak' | 'weak' | 'medium" | 'strong' | 'x-strong'}</synopsis>
+                </annotation>
+                <ref name="ssml.strength.attrib.content"/>
+            </attribute>
+        </define>
+        <define name="ssml.strength.attrib.content">
+            <choice>
+                <value>none</value>
+                <a:documentation>Indicates that no prosodic break boundary should be output.</a:documentation>
+                <value>x-weak</value>
+                <value>weak</value>
+                <value>medium</value>
+                <value>strong</value>
+                <value>x-strong</value>
+            </choice>
+        </define>
+        <define name="ssml.time.attrib">
+            <attribute name="time">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="time">The SSML {time} attribute</title>
+                    <para role="desc-main">Indicates the duration of a pause to be inserted in the output in seconds or milliseconds.</para>
+                    <para role="desc-sub">Refer to [[http://www.w3.org/TR/speech-synthesis11/#S3.2.3 SSML 1.1]] for further information.</para>
+                    <synopsis role="def-context">{[[#ssml.break]]}</synopsis>
+                    <synopsis role="def-content">{[[#CSS.TimeValue.datatype]]}</synopsis>
+                </annotation>
+                <ref name="CSS.TimeValue.datatype"/>
+            </attribute>
+        </define>
+    </div>
+    <div>
+        <define name="ssml.onlangfailure.attrib">
+            <attribute name="ssml:onlangfailure" ns="http://www.w3.org/2001/10/synthesis">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="onlangfailure">The SSML {onlangfailure} attribute</title>
+                    <para role="desc-main">Describes the desired behavior of a synthesis processor upon language speaking failure. The value of this attribute is inherited by descendants.</para>
+                    <para role="desc-sub">Refer to [[http://www.w3.org/TR/speech-synthesis11/#adef_onlangfailure SSML 1.1]] for further information.</para>
+                    <synopsis role="def-context">{[[#z3986.Document.attrib]]}, {[[#z3986.Phrase.attrib]]} and {[[#z3986.Text.attrib]]}</synopsis>
+                    <synopsis role="def-content">{'changevoice" | 'ignoretext' | 'ignorelang' | 'processorchoice'}</synopsis>
+                </annotation>
+                <ref name="ssml.onlangfailure.attrib.content"/>
+            </attribute>
+        </define>
+        <define name="ssml.onlangfailure.attrib.content">
+            <choice>
+                <value>changevoice</value>
+                <a:documentation>if a voice exists that can speak the language, the synthesis processor will switch to that voice and speak the content. Otherwise, the processor chooses another behavior (either ignoretext or ignorelang)</a:documentation>
+                <value>ignoretext</value>
+                <a:documentation>the synthesis processor will not attempt to render the text that is in the failed language.</a:documentation>
+                <value>ignorelang</value>
+                <a:documentation>the synthesis processor will ignore the change in language and speak as if the content were in the previous language.</a:documentation>
+                <value>processorchoice</value>
+                <a:documentation>processorchoice - the synthesis processor chooses the behavior (either changevoice, ignoretext, or ignorelang).</a:documentation>
+            </choice>
+        </define>
+    </div>
+    <div>
+        <define name="ssml.phoneme">
+            <element name="phoneme">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="ssml:phoneme (phrase)">The SSML {phoneme} element (Phrase)</title>
+                    <para role="desc-main" xlink:role="inherit-common" xlink:href="ssml.phoneme"/>
+                    <para role="desc-sub" xlink:role="inherit-common" xlink:href="ssml.phoneme"/>
+                    <synopsis role="def-context">{[[#z3986.Phrase.class]]}</synopsis>
+                    <synopsis role="def-content">{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</synopsis>
+                    <synopsis role="def-attlist">{[[#ssml.ph.attrib]], [[#ssml.alphabet.attrib]]?, [[#z3986.Core.attrib]], [[#z3986.I18n.attrib]]}</synopsis>
+                </annotation>
+                <ref name="ssml.phoneme.attlist"/>
+                <ref name="ssml.phoneme.content"/>
+                <sch:rule context="ssml:phoneme">
+                    <sch:assert test="not(descendant::ssml:*) and not(descendant::*[@ssml:*])">The {ssml:phoneme} element must not have {ssml} namespace element or attribute descendants.</sch:assert>
+                    <sch:assert test="normalize-space(.) or *">The {ssml:phoneme} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="ssml.phoneme.content">
+            <ref name="z3986.Phrase.Text.mix.model"/>
+        </define>
+        <define name="ssml.phoneme.attlist" combine="interleave">
+            <ref name="ssml.ph.attrib"/>
+            <optional>
+                <ref name="ssml.alphabet.attrib"/>
+            </optional>
+            <ref name="z3986.Core.attrib"/>
+            <ref name="z3986.I18n.attrib"/>
+        </define>
+        <define name="ssml.phoneme.text">
+            <element name="phoneme">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="ssml:phoneme (text)">The SSML {phoneme} element (Text)</title>
+                    <para role="desc-main" xlink:role="inherit-common" xlink:href="ssml.phoneme"/>
+                    <para role="desc-sub" xlink:role="inherit-common" xlink:href="ssml.phoneme"/>
+                    <synopsis role="def-context">{[[#z3986.Text.class]]}</synopsis>
+                    <synopsis role="def-content">{(text | [[#z3986.Text.class]])+}</synopsis>
+                    <synopsis role="def-attlist">{[[#ssml.ph.attrib]], [[#ssml.alphabet.attrib]]?, [[#z3986.Core.attrib]], [[#z3986.I18n.attrib]]}</synopsis>
+                </annotation>
+                <ref name="ssml.phoneme.attlist"/>
+                <ref name="ssml.phoneme.text.content"/>
+            </element>
+        </define>
+        <define name="ssml.phoneme.text.content">
+            <ref name="z3986.Text.model"/>
+        </define>
+        <define name="ssml.ph.attrib">
+            <attribute name="ph">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="ph">The SSML {ph} attribute</title>
+                    <para role="desc-main">Specifies a phonemic/phonetic pronunciation for the text contained in the current element.</para>
+                    <para role="desc-sub">Refer to [[http://www.w3.org/TR/speech-synthesis11/#edef_phoneme SSML 1.1]] for further information.</para>
+                    <synopsis role="def-context">{[[#ssml.phoneme]]}</synopsis>
+                    <synopsis role="def-content">{[[#SSML.PhoneticExpression.datatype]]}</synopsis>
+                </annotation>
+                <ref name="ssml.ph.attrib.content"/>
+            </attribute>
+        </define>
+        <define name="ssml.ph.attrib.content">
+            <ref name="SSML.PhoneticExpression.datatype"/>
+        </define>
+        <define name="ssml.alphabet.attrib">
+            <attribute name="alphabet">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="alphabet">The SSML {alphabet} attribute</title>
+                    <para role="desc-main">Specifies which phonemic/phonetic pronunciation alphabet is used in the {[[#ssml.ph.attrib]]} attribute.</para>
+                    <para role="desc-sub">If omitted, the implicit value {x-SAMPA} is assumed.</para>
+                    <para role="desc-sub">Refer to [[http://www.w3.org/TR/speech-synthesis11/#edef_phoneme SSML 1.1]] for further information.</para>
+                    <synopsis role="def-context">{[[#ssml.phoneme]]}</synopsis>
+                    <synopsis role="def-content">{[[#SSML.alphabet.datatype]]}</synopsis>
+                </annotation>
+                <ref name="ssml.alphabet.attrib.content"/>
+            </attribute>
+        </define>
+        <define name="ssml.alphabet.attrib.content">
+            <ref name="SSML.alphabet.datatype"/>
+        </define>
+    </div>
+    <div>
+        <define name="ssml.prosody">
+            <element name="prosody">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="ssml:prosody (phrase)">The SSML {prosody} element (Phrase)</title>
+                    <para role="desc-main" xlink:role="inherit-common" xlink:href="ssml.prosody"/>
+                    <para role="desc-sub" xlink:role="inherit-common" xlink:href="ssml.prosody"/>
+                    <synopsis role="def-context">{[[#z3986.Phrase.class]]}</synopsis>
+                    <synopsis role="def-content">{{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}}</synopsis>
+                    <synopsis role="def-attlist">{[[#ssml.pitch.attrib]]?, [[#ssml.contour.attrib]]?, [[#ssml.range.attrib]]?, [[#ssml.rate.attrib]]?, [[#ssml.duration.attrib]]?, [[#ssml.volume.attrib]]?, [[#z3986.Core.attrib]], [[#z3986.I18n.attrib]]}</synopsis>
+                </annotation>
+                <ref name="ssml.prosody.attlist"/>
+                <ref name="ssml.prosody.content"/>
+                <sch:rule context="ssml:prosody">
+                    <sch:assert test="not(descendant::ssml:prosody)">The {ssml:prosody} element must not have {ssml:prosody} descendants.</sch:assert>
+                    <sch:assert test="normalize-space(.) or *">The {ssml:prosody} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="ssml.prosody.content">
+            <ref name="z3986.Phrase.Text.mix.model"/>
+        </define>
+        <define name="ssml.prosody.attlist" combine="interleave">
+            <optional>
+                <ref name="ssml.pitch.attrib"/>
+            </optional>
+            <optional>
+                <ref name="ssml.contour.attrib"/>
+            </optional>
+            <optional>
+                <ref name="ssml.range.attrib"/>
+            </optional>
+            <optional>
+                <ref name="ssml.rate.attrib"/>
+            </optional>
+            <optional>
+                <ref name="ssml.duration.attrib"/>
+            </optional>
+            <optional>
+                <ref name="ssml.volume.attrib"/>
+            </optional>
+            <ref name="z3986.Core.attrib"/>
+            <ref name="z3986.I18n.attrib"/>
+        </define>
+        <define name="ssml.prosody.text">
+            <element name="prosody">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="ssml:prosody (text)">The SSML {prosody} element (Text)</title>
+                    <para role="desc-main" xlink:role="inherit-common" xlink:href="ssml.prosody"/>
+                    <para role="desc-sub" xlink:role="inherit-common" xlink:href="ssml.prosody"/>
+                    <synopsis role="def-context">{[[#z3986.Text.class]]}</synopsis>
+                    <synopsis role="def-content">{{(text | [[#z3986.Text.class]])+}}</synopsis>
+                    <synopsis role="def-attlist">{[[#ssml.pitch.attrib]]?, [[#ssml.contour.attrib]]?, [[#ssml.range.attrib]]?, [[#ssml.rate.attrib]]?, [[#ssml.duration.attrib]]?, [[#ssml.volume.attrib]]?, [[#z3986.Core.attrib]], [[#z3986.I18n.attrib]]}</synopsis>
+                </annotation>
+                <ref name="ssml.prosody.attlist"/>
+                <ref name="ssml.prosody.text.content"/>
+            </element>
+        </define>
+        <define name="ssml.prosody.text.content">
+            <ref name="z3986.Text.model"/>
+        </define>
+        <define name="ssml.pitch.attrib">
+            <attribute name="pitch">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="pitch">The SSML {pitch} attribute</title>
+                    <para role="desc-main">Specifies the baseline pitch for the contained text.</para>
+                    <para role="desc-sub">The labels {x-low} through {x-high} represent a sequence of monotonically non-decreasing pitch levels.</para>
+                    <para role="desc-sub">Refer to [[http://www.w3.org/TR/speech-synthesis11/#S3.2.4 SSML 1.1]] for further information.</para>
+                    <synopsis role="def-content">{'x-low' | 'low' | 'medium' | 'high' | 'x-high' | 'default' | [[#SSML.RelativeChange.datatype]] | [[#SSML.PitchExpression.datatype]]}</synopsis>
+                    <synopsis role="def-context">{[[#ssml.prosody]]}</synopsis>
+                </annotation>
+                <ref name="ssml.pitch.attrib.content"/>
+            </attribute>
+        </define>
+        <define name="ssml.pitch.attrib.content">
+            <choice>
+                <value>x-low</value>
+                <value>low</value>
+                <value>medium</value>
+                <value>high</value>
+                <value>x-high</value>
+                <value>default</value>
+                <ref name="SSML.RelativeChange.datatype"/>
+                <ref name="SSML.PitchExpression.datatype"/>
+            </choice>
+        </define>
+        <define name="ssml.contour.attrib">
+            <attribute name="contour">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="contour">The SSML {contour} attribute</title>
+                    <para role="desc-main">Sets the pitch contour for the contained text.</para>
+                    <para role="desc-sub">Refer to [[http://www.w3.org/TR/speech-synthesis11/#S3.2.4 SSML 1.1]] for further information.</para>
+                    <synopsis role="def-content">{[[#SSML.PitchContour.datatype]]}</synopsis>
+                    <synopsis role="def-context">{[[#ssml.prosody]]}</synopsis>
+                </annotation>
+                <ref name="ssml.contour.attrib.content"/>
+            </attribute>
+        </define>
+        <define name="ssml.contour.attrib.content">
+            <ref name="SSML.PitchContour.datatype"/>
+        </define>
+        <define name="ssml.range.attrib">
+            <attribute name="range">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="range">The SSML {range} attribute</title>
+                    <para role="desc-main">Specifies the pitch range (variability) for the contained text.</para>
+                    <para role="desc-sub">Refer to [[http://www.w3.org/TR/speech-synthesis11/#S3.2.4 SSML 1.1]] for further information.</para>
+                    <synopsis role="def-content">{'x-low' | 'low' | 'medium' | 'high' | 'x-high' | 'default' | [[#SSML.RelativeChange.datatype]] | [[#SSML.PitchExpression.datatype]]}</synopsis>
+                    <synopsis role="def-context">{[[#ssml.prosody]]}</synopsis>
+                </annotation>
+                <ref name="ssml.pitch.attrib.content"/>
+            </attribute>
+        </define>
+        <define name="ssml.rate.attrib">
+            <attribute name="rate">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="rate">The SSML {rate} attribute</title>
+                    <para role="desc-main">Specifies a change in the speaking rate for the contained text.</para>
+                    <para role="desc-sub">The values {x-slow} through {x-fast} represent a sequence of monotonically non-decreasing speaking rates.</para>
+                    <para role="desc-sub">Refer to [[http://www.w3.org/TR/speech-synthesis11/#S3.2.4 SSML 1.1]] for further information.</para>
+                    <synopsis role="def-content">{'x-slow' | 'slow' | 'medium' | 'fast' | 'x-fast' | 'default' | [[#SSML.NonNegativePercentage.datatype]]}</synopsis>
+                    <synopsis role="def-context">{[[#ssml.prosody]]}</synopsis>
+                </annotation>
+                <ref name="ssml.rate.attrib.content"/>
+            </attribute>
+        </define>
+        <define name="ssml.rate.attrib.content">
+            <choice>
+                <value>x-slow</value>
+                <value>slow</value>
+                <value>medium</value>
+                <value>fast</value>
+                <value>x-fast</value>
+                <value>default</value>
+                <ref name="SSML.NonNegativePercentage.datatype"/>
+            </choice>
+        </define>
+        <define name="ssml.duration.attrib">
+            <attribute name="duration">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="duration">The SSML {duration} attribute</title>
+                    <para role="desc-main">Specifies a value in seconds or milliseconds for the desired time to take to read the contained text.</para>
+                    <para role="desc-sub">Refer to [[http://www.w3.org/TR/speech-synthesis11/#S3.2.4 SSML 1.1]] for further information.</para>
+                    <synopsis role="def-context">{[[#ssml.prosody]]}</synopsis>
+                    <synopsis role="def-content">{[[#CSS.TimeValue.datatype]]}</synopsis>
+                </annotation>
+                <ref name="CSS.TimeValue.datatype"/>
+            </attribute>
+        </define>
+        <define name="ssml.volume.attrib">
+            <attribute name="volume">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="volume">The SSML {volume} attribute</title>
+                    <para role="desc-main">Specifies the volume for the contained text.</para>
+                    <para role="desc-sub">If omitted, the implicit value {+0.0dB} is assumed.</para>
+                    <para role="desc-sub">Refer to [[http://www.w3.org/TR/speech-synthesis11/#S3.2.4 SSML 1.1]] for further information.</para>
+                    <synopsis role="def-context">{[[#ssml.prosody]]}</synopsis>
+                    <synopsis role="def-content">{'silent' | 'x-soft' | 'soft' | 'medium' | 'loud' | 'x-loud' | 'default' | [[#SSML.VolumeExpression.datatype]]}</synopsis>
+                </annotation>
+                <ref name="ssml.volume.attrib.content"/>
+            </attribute>
+        </define>
+        <define name="ssml.volume.attrib.content">
+            <choice>
+                <value>silent</value>
+                <value>x-soft</value>
+                <value>soft</value>
+                <value>medium</value>
+                <value>loud</value>
+                <value>x-loud</value>
+                <value>default</value>
+                <ref name="SSML.VolumeExpression.datatype"/>
+            </choice>
+        </define>
+    </div>
+    <div>
+        <define name="ssml.say-as">
+            <element name="say-as">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="ssml:say-as (phrase)">The SSML {say-as} element (Phrase)</title>
+                    <para role="desc-main" xlink:role="inherit-common" xlink:href="ssml.say-as"/>
+                    <para role="desc-sub" xlink:role="inherit-common" xlink:href="ssml.say-as"/>
+                    <synopsis role="def-context">{[[#z3986.Phrase.class]]}</synopsis>
+                    <synopsis role="def-content">{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</synopsis>
+                    <synopsis role="def-attlist">{[[#ssml.interpret-as.attrib]], [[#ssml.format.attrib]]?, [[#ssml.detail.attrib]]?, [[#z3986.Core.attrib]], [[#z3986.I18n.attrib]]}</synopsis>
+                </annotation>
+                <ref name="ssml.say-as.attlist"/>
+                <ref name="ssml.say-as.content"/>
+                <sch:rule context="ssml:say-as">
+                    <sch:assert test="normalize-space(.) or *">The {ssml:say-as} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="ssml.say-as.content">
+            <ref name="z3986.Phrase.Text.mix.model"/>
+        </define>
+        <define name="ssml.say-as.text">
+            <element name="say-as">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="ssml:say-as (text)">The SSML {say-as} element (Text)</title>
+                    <para role="desc-main" xlink:role="inherit-common" xlink:href="ssml.say-as"/>
+                    <para role="desc-sub" xlink:role="inherit-common" xlink:href="ssml.say-as"/>
+                    <synopsis role="def-context">{Text.extern.class}</synopsis>
+                    <synopsis role="def-content">{(text | [[#z3986.Text.class]])+}</synopsis>
+                    <synopsis role="def-attlist">{[[#ssml.interpret-as.attrib]], [[#ssml.format.attrib]]?, [[#ssml.detail.attrib]]?, [[#z3986.Core.attrib]], [[#z3986.I18n.attrib]]}</synopsis>
+                </annotation>
+                <ref name="ssml.say-as.attlist"/>
+                <ref name="ssml.say-as.text.content"/>
+            </element>
+        </define>
+        <define name="ssml.say-as.text.content">
+            <ref name="z3986.Phrase.Text.mix.model"/>
+        </define>
+        <define name="ssml.say-as.attlist" combine="interleave">
+            <ref name="ssml.interpret-as.attrib"/>
+            <optional>
+                <ref name="ssml.format.attrib"/>
+            </optional>
+            <optional>
+                <ref name="ssml.detail.attrib"/>
+            </optional>
+            <ref name="z3986.Core.attrib"/>
+            <ref name="z3986.I18n.attrib"/>
+        </define>
+        <define name="ssml.interpret-as.attrib">
+            <attribute name="interpret-as">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="interpret-as">The SSML {interpret-as} attribute</title>
+                    <para role="desc-main">Indicates the content type of the contained text construct.</para>
+                    <para role="desc-sub">Refer to [[http://www.w3.org/TR/speech-synthesis11/#S3.1.9 SSML 1.1]] for further information.</para>
+                    <synopsis role="def-context">{[[#ssml.say-as]]}</synopsis>
+                    <synopsis role="def-content">{'date' | 'time' | 'telephone' | 'characters' | 'cardinal' | 'ordinal'}</synopsis>
+                </annotation>
+                <choice>
+                    <a:documentation>Indicates that the contained text is a Gregorian calendar date.</a:documentation>
+                    <value>date</value>
+                    <a:documentation>Indicates that the contained text is a time.</a:documentation>
+                    <value>time</value>
+                    <a:documentation>Indicates that the contained text is a telephone number.</a:documentation>
+                    <value>telephone</value>
+                    <a:documentation>Indicates that the enclosed text should be spoken as a series of alpha-numeric characters.</a:documentation>
+                    <value>characters</value>
+                    <a:documentation>Indicates that the enclosed text is an integral or decimal number and should be spoken as a cardinal number (as opposed to an ordinal number or digit string).</a:documentation>
+                    <value>cardinal</value>
+                    <a:documentation>Indicates that the enclosed text is an integral number and should be spoken as an ordinal number (as opposed to a cardinal number or digit string).</a:documentation>
+                    <value>ordinal</value>
+                </choice>
+            </attribute>
+        </define>
+        <define name="ssml.format.attrib">
+            <attribute name="format">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="format">The SSML {format} attribute</title>
+                    <para role="desc-main">In addition to [[#ssml.interpret-as.attrib]], provides further hints on the precise formatting of the contained text for content types that may have ambiguous formats.</para>
+                    <para role="desc-sub">Refer to [[http://www.w3.org/TR/speech-synthesis11/#S3.1.9 SSML 1.1]] for further information.</para>
+                    <synopsis role="def-context">{[[#ssml.say-as]]}</synopsis>
+                    <synopsis role="def-content">{text}</synopsis>
+                </annotation>
+            </attribute>
+        </define>
+        <define name="ssml.detail.attrib">
+            <attribute name="detail">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="detail">The SSML {detail} attribute</title>
+                    <para role="desc-main">Indicates the level of detail to be read aloud or rendered.</para>
+                    <para role="desc-sub">Refer to [[http://www.w3.org/TR/speech-synthesis11/#S3.2.3 SSML 1.1]] for further information.</para>
+                    <synopsis role="def-context">{[[#ssml.say-as]]}</synopsis>
+                    <synopsis role="def-content">{text}</synopsis>
+                </annotation>
+            </attribute>
+        </define>
+    </div>
+    <div>
+        <define name="ssml.sub">
+            <element name="sub">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="ssml:sub (phrase)">The SSML {sub} element (Phrase)</title>
+                    <para role="desc-main" xlink:role="inherit-common" xlink:href="ssml.sub"/>
+                    <para role="desc-sub" xlink:role="inherit-common" xlink:href="ssml.sub"/>
+                    <synopsis role="def-context">{[[#z3986.Phrase.class]]}</synopsis>
+                    <synopsis role="def-content">{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</synopsis>
+                    <synopsis role="def-attlist">{[[#ssml.alias.attrib]], [[#z3986.Core.attrib]], [[#z3986.I18n.attrib]]}</synopsis>
+                </annotation>
+                <ref name="ssml.sub.attlist"/>
+                <ref name="ssml.sub.content"/>
+                <sch:rule context="ssml:sub">
+                    <sch:assert test="normalize-space(.) or *">The {ssml:sub} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="ssml.sub.attlist" combine="interleave">
+            <ref name="ssml.alias.attrib"/>
+            <!-- Since the ssml-ph-attrib module contributes ph and alphabet, we cant reference z3986.Phrase.attrib -->
+            <ref name="z3986.Core.attrib"/>
+            <ref name="z3986.I18n.attrib"/>
+        </define>
+        <define name="ssml.alias.attrib">
+            <attribute name="alias">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="alias">The SSML {alias} attribute</title>
+                    <para role="desc-main">Specifies the string to be spoken instead of the string in the sub element.</para>
+                    <para role="desc-sub">Refer to [[http://www.w3.org/TR/speech-synthesis11/#S3.1.11 SSML 1.1]] for further information.</para>
+                    <synopsis role="def-content">{text}</synopsis>
+                    <synopsis role="def-context">{[[#ssml.sub]]}</synopsis>
+                </annotation>
+            </attribute>
+        </define>
+        <define name="ssml.sub.content">
+            <ref name="z3986.Phrase.Text.mix.model"/>
+        </define>
+        <define name="ssml.sub.text">
+            <element name="sub">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="ssml:sub (text)">The SSML {sub} element (Text)</title>
+                    <para role="desc-main" xlink:role="inherit-common" xlink:href="ssml.sub"/>
+                    <para role="desc-sub" xlink:role="inherit-common" xlink:href="ssml.sub"/>
+                    <synopsis role="def-context">{[[#z3986.Text.class]]}</synopsis>
+                    <synopsis role="def-content">{(text | [[#z3986.Text.class]])+}</synopsis>
+                    <synopsis role="def-attlist">{[[#ssml.alias.attrib]], [[#z3986.Core.attrib]], [[#z3986.I18n.attrib]]}</synopsis>
+                </annotation>
+                <ref name="ssml.sub.attlist"/>
+                <ref name="ssml.sub.text.content"/>
+            </element>
+        </define>
+        <define name="ssml.sub.text.content">
+            <ref name="z3986.Text.model"/>
+        </define>
+    </div>
+    <div>
+        <define name="ssml.token">
+            <element name="token">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="ssml:token (phrase)">The SSML {token} element (Phrase)</title>
+                    <para role="desc-main" xlink:role="inherit-common" xlink:href="ssml.token"/>
+                    <para role="desc-sub" xlink:role="inherit-common" xlink:href="ssml.token"/>
+                    <synopsis role="def-context">{[[#z3986.Phrase.class]]}</synopsis>
+                    <synopsis role="def-content">{(text | [[#z3986.Text.class]])+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Phrase.attrib]]}</synopsis>
+                </annotation>
+                <ref name="ssml.token.attlist"/>
+                <ref name="ssml.token.content"/>
+                <sch:rule context="ssml:token">
+                    <sch:assert test="normalize-space(.) or *">The {ssml:token} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="ssml.token.attlist" combine="interleave">
+            <ref name="z3986.Text.attrib"/>
+        </define>
+        <define name="ssml.token.content">
+            <ref name="z3986.Text.model"/>
+        </define>
+        <define name="ssml.token.text">
+            <element name="token">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="ssml:token (text)">The SSML {token} element (Text)</title>
+                    <para role="desc-main" xlink:role="inherit-common" xlink:href="ssml.token"/>
+                    <para role="desc-sub" xlink:role="inherit-common" xlink:href="ssml.token"/>
+                    <synopsis role="def-context">{[[#z3986.Text.class]]}</synopsis>
+                    <synopsis role="def-content">{(text | [[#z3986.Text.class]])+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Text.attrib]]}</synopsis>
+                </annotation>
+                <ref name="ssml.token.attlist"/>
+                <ref name="ssml.token.text.content"/>
+            </element>
+        </define>
+        <define name="ssml.token.text.content">
+            <ref name="z3986.Text.model"/>
+        </define>
+    </div>
+    <div>
+        <define name="ssml.lexicon">
+            <element name="lexicon">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="ssml:lexicon">The SSML {lexicon} element</title>
+                    <para role="desc-main">Specifies a reference to a lexicon document.</para>
+                    <para role="desc-sub">Refer to [[http://www.w3.org/TR/speech-synthesis11/#S3.1.5.1 SSML 1.1]] for further information.</para>
+                    <synopsis role="def-context">The lexicon element is allowed in the document {[[#z3986.head]]}.</synopsis>
+                    <synopsis role="def-content"/>
+                    <synopsis role="def-attlist">{[[#ssml.lexicon.uri.attrib]], [[#xml.id.attrib]], [[#ssml.lexicon.type.attrib]]?}</synopsis>
+                </annotation>
+                <ref name="ssml.lexicon.attlist"/>
+                <empty/>
+            </element>
+        </define>
+        <define name="ssml.lexicon.attlist">
+            <ref name="ssml.lexicon.uri.attrib"/>
+            <ref name="xml.id.attrib"/>
+            <optional>
+                <ref name="ssml.lexicon.type.attrib"/>
+            </optional>
+        </define>
+        <define name="ssml.lexicon.uri.attrib">
+            <attribute name="uri">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="uri">The SSML {uri} attribute</title>
+                    <para role="desc-main">Identifies the location of the lexicon document.</para>
+                    <para role="desc-sub">Refer to [[http://www.w3.org/TR/speech-synthesis11/#S3.1.5.1 SSML 1.1]] for further information.</para>
+                    <synopsis role="def-content">{[[#URI.datatype]]}</synopsis>
+                    <synopsis role="def-context">{[[#ssml.lexicon]]}</synopsis>
+                </annotation>
+                <ref name="URI.datatype"/>
+            </attribute>
+        </define>
+        <define name="ssml.lexicon.type.attrib">
+            <attribute name="type">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="type">The SSML {type} attribute</title>
+                    <para role="desc-main">Specifies the media type of the lexicon document. The implicit value of this attribute is {application/pls+xml}, the media type associated with the [[http://www.w3.org/TR/speech-synthesis11/#ref-pls Pronunciation Lexicon Specification]].</para>
+                    <para role="desc-sub">Refer to [[http://www.w3.org/TR/speech-synthesis11/#S3.1.5.1 SSML 1.1]] for further information.</para>
+                    <synopsis role="def-content">{[[#MediaType.datatype]]}</synopsis>
+                    <synopsis role="def-context">{[[#ssml.lexicon]]}</synopsis>
+                </annotation>
+                <choice>
+                    <value>application/pls+xml</value>
+                    <ref name="MediaType.datatype"/>
+                </choice>
+            </attribute>
+        </define>
+    </div>
+</grammar>

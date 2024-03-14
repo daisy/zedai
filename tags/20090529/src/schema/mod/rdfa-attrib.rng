@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"
+         xmlns:rdfa="http://www.w3.org/1999/02/22-rdf-syntax-ns">
+
+  <x:h1>RDF/a Attributes Module</x:h1>
+
+  <div>
+    <x:h2>RDF/a Attribute Collection</x:h2>
+    <x:p>This module defines the W3C RDF/a attribute collection. 
+      See <x:a href="http://www.w3.org/TR/xhtml-rdfa-primer/">RDFa primer</x:a>.</x:p>
+
+        
+    <x:h3>The about attribute</x:h3>
+    <x:div id="rdfa.about.attrib">This attribute is part of the <x:em>RDF/a metadata attributes 
+      collection</x:em>. For more information on the usage of RDF/a, consult the W3C 
+      <x:a href="http://www.w3.org/TR/xhtml-rdfa-primer/">RDF/a primer</x:a>.
+    </x:div>  
+    
+    <define name="rdfa.about.attrib">      
+      <attribute name="about">
+        <ref name="rdfa.about.attrib.content"/>
+      </attribute>      
+    </define>    
+      
+    <define name="rdfa.about.attrib.content">
+      <ref name="URIorSafeCURIE.datatype"/>
+    </define>
+
+
+    <x:h3>The content attribute</x:h3>
+      
+    <define name="rdfa.content.attrib">      
+      <attribute name="content">
+        <ref name="rdfa.content.attrib.content"/>
+      </attribute>      
+    </define>    
+      
+    <define name="rdfa.content.attrib.content">
+      <ref name="CDATA.datatype"/>
+    </define>
+          
+    
+    <x:h3>The datatype attribute</x:h3>
+      
+    <define name="rdfa.datatype.attrib">      
+      <attribute name="datatype">
+        <ref name="rdfa.datatype.attrib.content"/>
+      </attribute>      
+    </define>    
+      
+    <define name="rdfa.datatype.attrib.content">
+      <ref name="CURIE.datatype"/>
+    </define>
+      
+           
+    <x:h3>The typeof attribute</x:h3>
+      
+    <define name="rdfa.typeof.attrib">      
+      <attribute name="typeof">
+        <ref name="rdfa.typeof.attrib.content"/>
+      </attribute>      
+    </define>    
+      
+    <define name="rdfa.typeof.attrib.content">
+      <ref name="CURIEs.datatype"/>
+    </define>
+      
+    
+    <x:h3>The property attribute</x:h3>
+      
+    <define name="rdfa.property.attrib">      
+      <attribute name="property">
+        <ref name="rdfa.property.attrib.content"/>
+      </attribute>      
+    </define>    
+      
+    <define name="rdfa.property.attrib.content">
+      <ref name="CURIEs.datatype"/>
+    </define>
+      
+    
+    <x:h3>The rel attribute</x:h3>
+      
+    <define name="rdfa.rel.attrib">      
+      <attribute name="rel">
+        <ref name="rdfa.rel.attrib.content"/>
+      </attribute>      
+    </define>    
+      
+    <define name="rdfa.rel.attrib.content">
+      <ref name="CURIEs.datatype"/>
+    </define>
+      
+      
+    <x:h3>The resource attribute</x:h3>
+      
+    <define name="rdfa.resource.attrib">      
+      <attribute name="resource">
+        <ref name="rdfa.resource.attrib.content"/>
+      </attribute>      
+    </define>    
+      
+    <define name="rdfa.resource.attrib.content">
+      <ref name="URIorSafeCURIE.datatype"/>
+    </define>
+      
+      
+    <x:h3>The rev attribute</x:h3>
+      
+    <define name="rdfa.rev.attrib">      
+      <attribute name="rev">
+        <ref name="rdfa.rev.attrib.content"/>
+      </attribute>      
+    </define>    
+      
+    <define name="rdfa.rev.attrib.content">
+      <ref name="CURIEs.datatype"/>
+    </define>
+      
+  
+    <define name="Rdfa.attrib" combine="interleave">
+      <optional>
+        <ref name="rdfa.about.attrib"/>
+      </optional>
+      <optional>
+        <ref name="rdfa.content.attrib"/>
+      </optional>
+      <optional>
+        <ref name="rdfa.datatype.attrib"/>
+      </optional>
+      <optional>
+        <ref name="rdfa.typeof.attrib"/>
+      </optional>
+      <optional>
+        <ref name="rdfa.property.attrib"/>
+      </optional>
+      <optional>
+        <ref name="rdfa.rel.attrib"/>
+      </optional>
+      <optional>
+        <ref name="rdfa.resource.attrib"/>
+      </optional>
+      <optional>
+        <ref name="rdfa.rev.attrib"/>
+      </optional> 
+    </define>
+    
+  </div>
+
+  <div>
+    <x:h2>RDF/a Attribute Collection - default content model contribution</x:h2>
+    
+    <define name="z3986.Text.attrib" combine="interleave">
+      <ref name="Rdfa.attrib"/>
+    </define>
+    
+    <define name="z3986.Structural.attrib" combine="interleave">
+      <ref name="Rdfa.attrib"/>
+    </define>
+    
+    <define name="z3986.Flow.attrib" combine="interleave">
+      <ref name="Rdfa.attrib"/>
+    </define>
+    
+  </div>  
+
+</grammar>

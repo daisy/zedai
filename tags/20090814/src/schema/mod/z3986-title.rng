@@ -1,0 +1,113 @@
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml">
+
+   <x:h1>Z3986 title module</x:h1>
+
+   <div>
+    <x:h2>The title element</x:h2>
+    <x:div id="z3986.title">
+     <p class="description">
+      <em>Description: to be written ...</em>
+      <strong>(@id="z3986.title" in file z3986-title.rng)</strong>
+     </p>
+    </x:div>
+
+    <define name="z3986.title">
+     <element name="title">
+      <ref name="z3986.title.attlist"/>
+      <ref name="z3986.title.content"/>
+     </element>
+    </define>
+
+    <define name="z3986.title.rich">
+     <element name="title">
+      <ref name="z3986.title.attlist"/>
+      <ref name="z3986.title.rich.content"/>
+     </element>
+    </define>
+
+    <define name="z3986.title.attlist">
+      <!-- expanded to allow specialized
+       contributions to @role -->
+      <ref name="z3986.Core.attrib"/>
+      <ref name="z3986.I18n.attrib"/>
+      <ref name="Rdfa.attrib"/>
+      <optional>
+        <ref name="z3986.title.role.attrib"/>
+      </optional>
+      <ref name="z3986.Text.contrib.attrib"/>   
+    </define>
+
+	<define name="z3986.title.role.attrib">
+	  <attribute name="role">
+	    <ref name="z3986.title.role.attrib.content"/>
+	  </attribute>
+	</define>
+
+	<define name="z3986.title.role.attrib.content" combine="choice">
+	  <choice>
+	    <ref name="CURIEs.datatype" />
+	  </choice>
+	</define>
+
+    <define name="z3986.title.content">
+     <ref name="z3986.Text.model"/>
+    </define>
+
+    <define name="z3986.title.rich.content">
+     <oneOrMore>
+      <choice>
+         <ref name="z3986.Text.class"/>
+         <ref name="z3986.titlepart"/>
+         <text/>
+      </choice>
+     </oneOrMore>
+    </define>
+
+   </div>
+
+   <div>
+    <x:h2>The titlepart element</x:h2>
+    <x:div id="z3986.titlepart">
+     <p class="description">
+      <em>Description: to be written ...</em>
+      <strong>(@id="z3986.titlepart" in file z3986-doctitle.rng)</strong>
+     </p>
+    </x:div>
+
+    <define name="z3986.titlepart">
+     <element name="titlepart">
+      <ref name="z3986.titlepart.attlist"/>
+      <ref name="z3986.titlepart.content"/>
+     </element>
+    </define>
+
+    <define name="z3986.titlepart.attlist">
+     <ref name="z3986.title.attlist"/>
+    </define>
+
+    <define name="z3986.titlepart.content">
+     <ref name="z3986.Text.model"/>
+    </define>
+   </div>
+
+   <div>
+    <x:h2>The title element - default content model contribution</x:h2>
+
+    <!-- contribute to cover/spine -->
+    <define name="z3986.spine.content.class" combine="choice">
+     <ref name="z3986.title.rich"/>
+    </define>
+
+    <!-- contribute to frontmatter/section -->
+    <define name="z3986.section.frontmatter.class" combine="choice">
+       <ref name="z3986.title.rich"/> 
+    </define>
+    
+    <!-- contribute to frontcover/backcover/flaps -->
+    <define name="z3986.covers.content.class" combine="choice">
+       <ref name="z3986.title.rich"/> 
+    </define>
+    
+   </div>
+   
+</grammar>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:zt="http://www.daisy.org/ns/rdf/property#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:dcterms="http://purl.org/dc/terms/">
+   <rdf:Description rdf:about="http://www.daisy.org/z3998/2012/vocab/descriptions/">
+      <dcterms:modified>2012-12-19</dcterms:modified>
+      <dcterms:creator>mgarrish</dcterms:creator>
+      <dcterms:issued>2012-08-26</dcterms:issued>
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:description>This RDF vocabulary defines a set of terms relating to accessible descriptions.</dcterms:description>
+      <dcterms:title>DIAGRAM Descriptions Vocabulary</dcterms:title>
+  </rdf:Description>
+   <rdf:Bag rdf:ID="description-metadata">
+      <dcterms:title>Description Metadata</dcterms:title>
+      <dcterms:description>Standard terms used for defining metadata about a description.</dcterms:description>
+      <rdf:Description rdf:about="#purpose" rdf:ID="purpose">
+         <rdfs:label>purpose</rdfs:label>
+         <rdfs:comment>The purpose of the description.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#descriptionQuality" rdf:ID="descriptionQuality">
+         <rdfs:label>descriptionQuality</rdfs:label>
+         <rdfs:comment>A quality rating for the description.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Bag rdf:ID="reader-metadata">
+         <dcterms:title>Target Readers</dcterms:title>
+         <rdf:Description rdf:about="#targetAge" rdf:ID="targetAge">
+            <rdfs:label>targetAge</rdfs:label>
+            <rdfs:comment>The target age of the reader.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#targetGrade" rdf:ID="targetGrade">
+            <rdfs:label>targetGrade</rdfs:label>
+            <rdfs:comment>Target school grade level of the reader.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+      </rdf:Bag>
+      <rdf:Bag rdf:ID="description-versioning">
+         <dcterms:title>Description Versioning</dcterms:title>
+         <rdf:Description rdf:about="#currentVersion" rdf:ID="currentVersion">
+            <rdfs:label>currentVersion</rdfs:label>
+            <rdfs:comment>A URI pointing to the location where the most current version of the description can be found.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#thisVersion" rdf:ID="thisVersion">
+            <rdfs:label>thisVersion</rdfs:label>
+            <rdfs:comment>A URI pointing to the location where the currently referenced description can be found.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#previousVersion" rdf:ID="previousVersion">
+            <rdfs:label>previousVersion</rdfs:label>
+            <rdfs:comment>A URI pointing to the location where the previous version of the description can be found.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#alternateVersion" rdf:ID="alternateVersion">
+            <rdfs:label>alternateVersion</rdfs:label>
+            <rdfs:comment>A URI pointing to the location where an alternative version is available.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+      </rdf:Bag>
+      <rdf:Bag rdf:ID="repository-access">
+         <dcterms:title>Repository Access</dcterms:title>
+         <rdf:Description rdf:about="#repository" rdf:ID="repository">
+            <rdfs:label>repository</rdfs:label>
+            <rdfs:comment>A URI pointing to a repository of descriptions.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#queryConcept" rdf:ID="queryConcept">
+            <rdfs:label>queryConcept</rdfs:label>
+            <rdfs:comment>A term relevant to the current description that can be used to query a repository for additional information.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+      </rdf:Bag>
+   </rdf:Bag>
+</rdf:RDF>

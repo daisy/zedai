@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+
+    <define name="xhtml.Structural.model">
+        <oneOrMore>
+            <choice>
+                <ref name="xhtml.Structural.class"/>
+                <ref name="xhtml.Heading.class"/>
+            </choice>    
+        </oneOrMore>
+    </define>
+
+    <define name="xhtml.Text.model">
+        <oneOrMore>
+            <choice>
+                <text/>
+                <ref name="xhtml.Text.class"/>
+            </choice>
+        </oneOrMore>
+    </define>
+
+    <define name="xhtml.Flow.model">
+        <oneOrMore>
+            <choice>
+                <text/>
+                <ref name="xhtml.Structural.class"/>
+                <ref name="xhtml.Text.class"/>
+                <ref name="xhtml.Heading.class"/>
+            </choice>
+        </oneOrMore>
+    </define>
+
+</grammar>

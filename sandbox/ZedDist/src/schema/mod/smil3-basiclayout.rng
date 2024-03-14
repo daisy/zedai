@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+
+    <!-- TODO SCH any @region resolves to regionName or xml:id of a head/layout/region -->
+
+    <div>
+        <define name="smil3.layout.content">
+            <interleave> <!-- TODO this could be expanded to require at least one -->
+                <zeroOrMore>
+                    <ref name="smil3.region"/>
+                </zeroOrMore>
+                <zeroOrMore>
+                    <ref name="smil3.root-layout"/>
+                </zeroOrMore>
+            </interleave>
+        </define>
+
+        <define name="smil3.mediaobjects.attrib" combine="interleave">
+            <optional>
+                <ref name="smil3.region.attrib"/>
+            </optional>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.region.attrib">
+            <!-- Q: errata for this doc in spec, should be "or a single region element with an xml:id attribute"? -->
+            <attribute name="region">
+                <a:documentation>The region attribute is added to the ref element (and its
+                    synonyms). The target of this attribute will be one or more regions with a
+                    regionName declared that matches the value of this attribute, or a single region
+                    element with a region attribute that matches this value.</a:documentation>
+                <ref name="NMTOKEN.datatype"/>
+            </attribute>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.region">
+            <element name="region">
+                <a:documentation>The region element controls the position, size and scaling of media
+                    object elements that are placed within its rendering space. The position of a
+                    region, as specified by its top, bottom, left, and right attributes, is always
+                    relative to the parent geometry, which is defined by the parent element. For the
+                    SMIL BasicLayout module, all region elements must have as their immediate parent
+                    a layout element, and the region position is defined relative to the root window
+                    declared in the sibling root-layout element. The root-layout element is
+                    considered to be the logical parent of all region elements in SMIL BasicLayout.
+                    The intrinsic size of a region is equal to the size of the logical parent's
+                    geometry.</a:documentation>
+                <ref name="smil3.region.attlist"/>
+                <ref name="smil3.region.content"/>
+            </element>
+        </define>
+
+        <define name="smil3.region.attlist" combine="interleave">
+            <!--  must have regionName and/or xml:id -->
+            <choice>
+                <ref name="smil3.layout.regionName.attrib"/>
+                <ref name="smil3.xmlid.attrib"/>
+                <group>
+                    <ref name="smil3.layout.regionName.attrib"/>
+                    <ref name="smil3.xmlid.attrib"/>
+                </group>
+            </choice>
+            <ref name="smil3.Core.base.attrib"/>
+            <optional>
+                <ref name="smil3.layout.backgroundColor.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.layout.backgroundOpacity.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.layout.bottom.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.layout.fit.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.layout.height.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.layout.left.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.layout.right.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.layout.showBackground.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.layout.top.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.layout.width.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.layout.z-index.attrib"/>
+            </optional>
+        </define>
+
+        <define name="smil3.region.content" combine="choice">
+            <empty/>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.root-layout">
+            <element name="root-layout">
+                <ref name="smil3.root-layout.attlist"/>
+                <empty/>
+            </element>
+        </define>
+
+        <define name="smil3.root-layout.attlist">
+            <ref name="smil3.Core.attrib"/>
+            <optional>
+                <ref name="smil3.layout.backgroundColor.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.layout.backgroundOpacity.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.layout.height.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.layout.width.attrib"/>
+            </optional>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.layout.backgroundColor.attrib">
+            <attribute name="backgroundColor"/>
+            <!-- TODO datatype -->
+        </define>
+
+        <define name="smil3.layout.backgroundOpacity.attrib">
+            <attribute name="backgroundOpacity">
+                <a:documentation>This attribute defines the opacity of the background of the region.
+                    It accepts a percentage value in the range 0-100% or a number in the range
+                    0.0-1.0, with 100% or 1.0 meaning fully opaque. If an implementation cannot
+                    support manipulation of the background opacity value, this attribute is ignored.
+                    The default value of this attribute is 100%.</a:documentation>
+                <choice>
+                    <ref name="Percentage.datatype"/>
+                    <ref name="NumberZeroToOneSingleFractionDigit.datatype"/>
+                </choice>
+            </attribute>
+
+        </define>
+
+        <define name="smil3.layout.bottom.attrib">
+            <attribute name="bottom">
+                <a:documentation>The use and definition of this attribute are identical to the
+                    "bottom" property in the CSS2 specification. Attribute values can be
+                    non-negative "percentage" values, and a variation of the "length" values defined
+                    in CSS2. For "length" values, SMIL BasicLayout only supports pixel units as
+                    defined in CSS2. It allows the author to leave out the "px" unit qualifier in
+                    pixel values (the "px" qualifier is required in CSS2). Conflicts between the
+                    region size attributes bottom, left, right, top, width, and height are resolved
+                    according to the rules for absolutely positioned, replaced elements in [CSS2].
+                    The default value of bottom attribute is auto.</a:documentation>
+                <choice>
+                    <ref name="Percentage.datatype"/>
+                    <ref name="CSS2.PixelsOptionalQualifier.datatype"/>
+                    <value>auto</value>
+                </choice>
+            </attribute>
+        </define>
+
+        <define name="smil3.layout.fit.attrib">
+            <attribute name="fit">
+                <a:documentation>This attribute specifies the behavior if the intrinsic height and
+                    width of a visual media object differ from the values specified by the height
+                    and width attributes in the region element. This attribute does not have a
+                    one-to-one mapping onto a CSS2 property, but may be simulated in
+                    CSS2.</a:documentation>
+                <choice>
+                    <value>fill</value>
+                    <a:documentation>Scale the object's height and width independently so that the
+                        content just touches all edges of the box.</a:documentation>
+
+                    <value>hidden</value>
+                    <a:documentation>Has the following effect: * If the intrinsic height (width) of
+                        the media object element is smaller than the height (width) defined in the
+                        region element, render the object starting from the top (left) edge and fill
+                        up the remaining height (width) with the background color. * If the
+                        intrinsic height (width) of the media object element is greater than the
+                        height (width) defined in the region element, render the object starting
+                        from the top (left) edge until the height (width) defined in the region
+                        element is reached, and clip the parts of the object below (right of) the
+                        height (width). </a:documentation>
+
+                    <value>meet</value>
+                    <a:documentation>Scale the visual media object while preserving its aspect ratio
+                        until its height or width is equal to the value specified by the height or
+                        width attributes, while none of the content is clipped. The object's left
+                        top corner is positioned at the top-left coordinates of the box, and empty
+                        space at the right or bottom is filled up with the background
+                        color.</a:documentation>
+
+                    <value>meetBest</value>
+                    <a:documentation>The semantic of this value is identical to meet except that the
+                        image is not scaled to greater than 100% in either dimension. This limits
+                        degradation of upwardly-scaled media content.</a:documentation>
+
+                    <value>scroll</value>
+                    <a:documentation>A scrolling mechanism should be invoked when the element's
+                        rendered contents exceed its bounds.</a:documentation>
+
+                    <value>slice</value>
+                    <a:documentation>Scale the visual media object while preserving its aspect ratio
+                        so that its height or width are equal to the value specified by the height
+                        and width attributes while some of the content may get clipped. Depending on
+                        the exact situation, either a horizontal or a vertical slice of the visual
+                        media object is displayed. Overflow width is clipped from the right of the
+                        media object. Overflow height is clipped from the bottom of the media
+                        object.</a:documentation>
+                </choice>
+            </attribute>
+        </define>
+
+        <define name="smil3.layout.height.attrib">
+            <attribute name="height">
+                <a:documentation>The use and definition of this attribute are identical to the
+                    "height" property in the CSS2 specification. Attribute values follow the same
+                    restrictions and rules as the values of the bottom attribute. The intrinsic
+                    height of a region is the same as that of the parent geometry. The default value
+                    of the height attribute is auto.</a:documentation>
+                <choice>
+                    <ref name="Percentage.datatype"/>
+                    <ref name="CSS2.PixelsOptionalQualifier.datatype"/>
+                    <value>auto</value>
+                </choice>
+            </attribute>
+        </define>
+
+        <define name="smil3.layout.left.attrib">
+            <attribute name="left">
+                <a:documentation>The use and definition of this attribute are identical to the
+                    "left" property in the CSS2 specification. Attribute values follow the same
+                    restrictions and rules as the values of the "bottom" attribute. The default
+                    value of the left attribute is auto.</a:documentation>
+                <choice>
+                    <ref name="Percentage.datatype"/>
+                    <ref name="CSS2.PixelsOptionalQualifier.datatype"/>
+                    <value>auto</value>
+                </choice>
+            </attribute>
+        </define>
+
+        <define name="smil3.layout.regionName.attrib">
+            <attribute name="regionName">
+                <a:documentation>This attribute assigns a name to this region element that can be
+                    referred to by the region attribute of media object elements. The regionName
+                    attribute is not a unique identifier; multiple region elements can share the
+                    same regionName attribute value. This attribute does not have a default value.
+                    right</a:documentation>
+                <ref name="NMTOKEN.datatype"/>
+            </attribute>
+        </define>
+
+        <define name="smil3.layout.right.attrib">
+            <attribute name="right">
+                <a:documentation>The use and definition of this attribute are identical to the
+                    "right" property in the CSS2 specification. Attribute values follow the same
+                    restrictions and rules as the values of the "bottom" attribute. The default
+                    value of right attribute is auto.</a:documentation>
+                <choice>
+                    <ref name="Percentage.datatype"/>
+                    <ref name="CSS2.PixelsOptionalQualifier.datatype"/>
+                    <value>auto</value>
+                </choice>
+            </attribute>
+        </define>
+
+        <define name="smil3.layout.showBackground.attrib">
+            <attribute name="showBackground">
+                <a:documentation>This attribute controls whether the backgroundColor of a region is
+                    shown when no media is being rendered to the region. The default value of
+                    showBackground is always.</a:documentation>
+                <choice>
+                    <value>always</value>
+                    <a:documentation>the background color will be shown in the region when no media
+                        object is rendering into that region. If the region is part of a
+                        hierarchical sub-region layout, then any ancestor regions must also either
+                        be active or have a showBackground value of always for the background color
+                        to be shown.</a:documentation>
+
+                    <value>whenActive</value>
+                    <a:documentation>the background color will be not be shown in the region when no
+                        media object is rendering into that region. If the region is part of a
+                        hierarchical sub-region layout, then the background color will also be shown
+                        when any descendent regions are active.</a:documentation>
+                </choice>
+            </attribute>
+        </define>
+
+        <define name="smil3.layout.top.attrib">
+            <attribute name="top">
+                <a:documentation>The use and definition of this attribute are identical to the "top"
+                    property in the CSS2 specification. Attribute values follow the same
+                    restrictions and rules as the values of the bottom attribute. The default value
+                    of the top attribute is auto.</a:documentation>
+                <choice>
+                    <ref name="Percentage.datatype"/>
+                    <ref name="CSS2.PixelsOptionalQualifier.datatype"/>
+                    <value>auto</value>
+                </choice>
+            </attribute>
+        </define>
+
+        <define name="smil3.layout.width.attrib">
+            <attribute name="width">
+                <a:documentation>The use and definition of this attribute are identical to the
+                    "width" property in the CSS2 specification. Attribute values follow the same
+                    restrictions and rules as the values of the bottom attribute. The intrinsic
+                    width of a region is the same as that of the parent geometry. The default value
+                    of width attribute is auto.</a:documentation>
+                <choice>
+                    <ref name="Percentage.datatype"/>
+                    <ref name="CSS2.PixelsOptionalQualifier.datatype"/>
+                    <value>auto</value>
+                </choice>
+            </attribute>
+        </define>
+
+        <define name="smil3.layout.z-index.attrib">
+            <attribute name="z-index">
+                <a:documentation> The use and definition of this attribute are identical to the
+                    "z-index" property in the CSS2 specification, with the following exception: If
+                    two boxes generated by elements A and B have the same stack level, then: * If
+                    the display of an element A starts later than the display of an element B, the
+                    box of A is stacked on top of the box of B (temporal order). * Else, if the
+                    display of the elements starts at the same time, and an element A occurs later
+                    in the SMIL document text than an element B, the box of A is stacked on top of
+                    the box of B (document tree order as defined in CSS2). </a:documentation>
+                <ref name="CSS2.Z-index.datatype"/>
+            </attribute>
+        </define>
+    </div>
+</grammar>

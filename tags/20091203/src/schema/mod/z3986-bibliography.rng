@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml"
+  xmlns:xsdp="http://www.daisy.org/ns/rng-preprocess/xsd">
+
+  <x:h1>Z39.86 bibliography module</x:h1>
+  
+  <div>
+    <x:h2>The bibliography element</x:h2>
+    <x:div id="z3986.bibliography">
+      <x:p class="description">Represents a bibliography, typically located in the backmatter of print works.</x:p>
+      <!-- TODO is a specialization of section -->
+    </x:div>
+
+    <define name="z3986.bibliography">
+      <element name="bibliography">
+        <ref name="z3986.bibliography.attlist"/>
+        <ref name="z3986.bibliography.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.bibliography.attlist">
+      <ref name="z3986.Structural.attrib"/>
+    </define>
+
+    <define name="z3986.bibliography.content">
+      <ref name="z3986.bibliography.model"/>
+    </define>
+
+    <define name="z3986.bibliography.model" xsdp:replace="z3986.bibliography.model.xsd">
+      <interleave>
+        <optional>
+          <ref name="z3986.h"/>
+        </optional>  
+        <zeroOrMore>
+          <choice>          
+            <ref name="z3986.bibliography.extra.class"/>
+          </choice>
+        </zeroOrMore>
+      </interleave>  
+      <zeroOrMore>
+        <choice>
+          <ref name="z3986.bibliography.entry"/>
+          <ref name="z3986.bibliography.extra.class"/>
+        </choice>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="z3986.bibliography.section"/>
+      </zeroOrMore>
+    </define>
+
+    <define name="z3986.bibliography.model.xsd">      
+      <optional>
+        <ref name="z3986.h"/>
+      </optional>
+      <zeroOrMore>
+        <choice>
+          <ref name="z3986.bibliography.entry"/>
+          <ref name="z3986.bibliography.extra.class"/>
+        </choice>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="z3986.bibliography.section"/>
+      </zeroOrMore>
+    </define>
+
+    <define name="z3986.bibliography.extra.class" combine="choice">
+      <choice>
+        <ref name="z3986.hd"/>
+        <ref name="z3986.p"/>
+        <ref name="z3986.block.flow"/>
+      </choice>
+    </define>
+  </div>
+
+  <div>
+    <x:h2>The bibliography section element</x:h2>
+    <define name="z3986.bibliography.section">
+      <element name="section">
+        <ref name="z3986.bibliography.attlist"/>
+        <ref name="z3986.bibliography.model"/>
+      </element>
+    </define>
+  </div>
+  
+  <div>
+    <x:h2>The bibliography entry element</x:h2>
+
+    <define name="z3986.bibliography.entry">
+      <element name="entry">
+        <ref name="z3986.bibliography.entry.attlist"/>
+        <ref name="z3986.bibliography.entry.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.bibliography.entry.attlist">
+      <ref name="z3986.Text.attrib"/>
+    </define>
+
+    <define name="z3986.bibliography.entry.content">      
+      <ref name="z3986.Flow.model"/>
+    </define>
+  </div>
+
+  <div>
+    <x:h2>The bibliography element - default content model contribution</x:h2>
+
+    <define name="z3986.backmatter.content.class" combine="choice">
+      <ref name="z3986.bibliography"/>
+    </define>
+
+  </div>
+
+</grammar>

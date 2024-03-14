@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="ai-snippets.rng" type="xml"?>
+<snippets
+	xmlns="http://www.daisy.org/ns/z3986/authoring/"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns:its="http://www.w3.org/2005/11/its"
+	xmlns:rend="http://www.daisy.org/ns/z3986/authoring/features/rend/"
+	xmlns:xlink="http://www.w3.org/1999/xlink">
+	
+	
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!--                           BY                                   -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->    
+	
+	<snippet about="z3986.by.attrib" dest="doc">
+<annotation by="editor" role="correction">
+	<p>...</p>
+</annotation>
+	</snippet>
+	
+	
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!--                        CLASS                           -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->    
+	
+	<snippet about="z3986.class.attrib" dest="doc">
+<p>… under the complex and sometimes varying conditions of life, will have a better chance of surviving, 
+	and thus be <emph class="italic">naturally selected</emph>.</p>
+	</snippet>
+	
+	
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!--                  CONTINUATION                    -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->    
+	
+	<snippet about="z3986.continuation.attrib" dest="doc">
+<p><emph xml:id="em1" class="italic" continuation="em2">
+	"Et in Spiritum Sanctum, Dominum et vivificantem, qui ex Patre Filioque procedit. 
+	Qui cum Patre et Filio simul adoratur et conglorificatur. Qui locutus est per prophetas.</emph></p>
+<p><emph xml:id="em2" class="italic">
+	"Et unam Catholicam et Apostolicam Ecclesiam. Confiteor unum Baptisma in remissionem peccatorum. 
+	Et exspecto Resurrectionem mortuorum. Et vitam venturi saeculi. Amen."</emph></p>
+	</snippet>
+
+
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!--                        DEPTH                           -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->    
+	
+	<snippet about="z3986.depth.attrib" dest="doc">
+<section xml:id="alice-p1" role="part">
+	<h>Part I.</h>
+	<section xml:id="alice-c1" role="chapter" depth="1">
+		<h>Chapter I.</h>
+		<list type="ordered">
+			<item>
+				…
+				<list type="ordered" depth="1">
+					<item>…</item>
+				</list>
+			</item>
+		</list>
+		…
+	</section>
+	…
+</section>
+	</snippet>
+	
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!--                        RDFA                          -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->    
+	
+	<snippet about="rdfa.profile.attrib" dest="doc">
+<document 
+	profile="http://www.daisy.org/z3986/2011/vocab/structure/"
+	xml:lang="fr">
+	…
+</document>
+	</snippet>
+	
+	<snippet about="rdfa.prefix.attrib" dest="doc">
+<document 
+	prefix="news: http://www.daisy.org/z3986/2011/vocab/periodicals/"
+	xml:lang="en">
+	…
+</document>
+	</snippet>
+	
+	<snippet about="rdfa.about.attrib rdfa.property.attrib rdfa.typeof.attrib" dest="doc">
+<head>
+	<meta typeof="dramatis-personae">
+		<meta xml:id="alice" about="#alice" property="persona">
+			<name>Alice</name>
+		</meta>
+	</meta>
+</head>
+	</snippet>
+	
+	<snippet about="rdfa.datatype.attrib z3986.table.colspan.attrib" dest="doc">
+<table>
+	<tr>
+		<th colspan="2">Length (as far as complete)</th>
+		<td datatype="xs:integer">17</td>
+		<td datatype="xs:integer">6</td>
+	</tr>
+	<tr>
+		<th colspan="2" rowspan="2">Depth of each ramus</th>
+		<td datatype="xs:integer">4</td>
+		<td datatype="xs:integer">9</td>
+	</tr>
+	<tr>
+		<th colspan="2"></th>
+		<td datatype="xs:integer">3</td>
+		<td datatype="xs:integer">18</td>
+	</tr>
+</table>
+	</snippet>
+	
+	<snippet about="rdfa.rel.attrib" dest="doc">
+<head>
+	…
+	<meta rel="z3986:profile" resource="http://example.org/z3986/2011/auth/profiles/sciencejournal/1.0/">
+		<meta property="z3986:name" content="sciencejournal"/>
+		<meta property="z3986:version" content="1.0"/>
+	</meta>
+	…
+</head>
+	</snippet>
+	
+	<snippet about="rdfa.content.attrib" dest="doc">
+<head>
+	…
+	<meta property="dcterms:identifier" content="daisy-z2011-exemplar-01" />
+	…
+</head>
+	</snippet>
+	
+	
+	<!-- - - - - - - - - - -  - - - - - - - - - - - -->
+	<!--                   TABLES                   -->
+	<!-- - - - - - - - - - -  - - - - - - - - - - - -->
+	
+	
+	<snippet about="z3986.table.headers.attrib" dest="doc">
+<table>
+	<tr>
+		<th colspan="2" xml:id="inches">Inches</th>
+		<th xml:id="lines">Lines</th>
+	</tr>
+	<tr>
+		<th xml:id="length">Length (as far as complete)</th>
+		<td headers="length inches">17</td>
+		<td headers="length lines">6</td>
+	</tr>
+	<tr>
+		<th xml:id="depth">Depth of each ramus</th>
+		<td headers="depth inches">4</td>
+		<td headers="depth lines">9</td>
+	</tr>
+</table> 
+	</snippet>
+	
+	<snippet about="z3986.table.th.abbr.attrib" dest="doc">
+<table>
+	<tr>
+		<th abbr="length">Length (as far as complete)</th>
+		<th abbr="depth">Depth of each ramus</th>
+	</tr>
+	…
+</table> 
+	</snippet>
+	
+	
+	
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!--                        VALUE                           -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->    
+	
+	<snippet about="z3986.pagebreak.value.attrib" dest="doc">
+<pagebreak xml:id="pix" value="ix"/>
+…
+<pagebreak xml:id="p23" value="23"/>
+	</snippet>
+
+
+	<snippet about="z3986.num.value.attrib" dest="doc">
+<p>The Origin of Species publication year is listed as <num role="roman" value="1859">mdccclix</num>.</p>
+	</snippet>
+
+
+	<!-- - - - - - - - - - -  - - - - - - - - - - - -->
+	<!--                  XLINK:*                  -->
+	<!-- - - - - - - - - - -  - - - - - - - - - - - -->
+	
+	<snippet about="xml.base.attrib" dest="doc">
+<citation>
+	<ref xlink:href="http://plato.stanford.edu/entries/darwinism/">
+		Darwinism
+	</ref>
+</citation>
+	</snippet>
+	
+	<!-- - - - - - - - - - -  - - - - - - - - - - - -->
+	<!--                    XML:*                    -->
+	<!-- - - - - - - - - - -  - - - - - - - - - - - -->
+	
+	
+	<snippet about="xml.base.attrib" dest="doc">
+<document xml:lang="en-ca" xml:base="http://www.daisy.org/examples/" xml:space="preserve">
+	…
+</document>
+	</snippet>
+	
+	<snippet about="xml.id.attrib" dest="doc">
+<pagebreak xml:id="p474" value="474"/>
+	</snippet>
+	
+	<snippet about="xml.space.attrib" dest="doc">
+<block xml:space="preserve" role="letter">
+    <ln>Alice's Right Foot, Esq.</ln>
+    <ln>    Hearthrug,</ln>
+    <ln>        Near the fender,</ln>
+    <ln>            (with Alice's love).</ln>
+</block>
+	</snippet>
+	
+	<snippet about="xml.lang.attrib" dest="doc">
+In the sea around <name xml:lang="es">Tierra del Fuego</name>, and at no great distance from the land, 
+I have seen narrow lines of water of a bright red colour …
+	</snippet>
+
+</snippets>

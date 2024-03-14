@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <x:h1>The Z38.86 Pagebreak module</x:h1>
+
+  	<div>
+    	<x:h2>The pagebreak element</x:h2>
+    	
+	    <define name="z3986.pagebreak" ns="http://www.daisy.org/ns/z3986/2008/">
+	        <element name="pagebreak">
+	            <ref name="z3986.pagebreak.attlist" />
+	            <ref name="z3986.pagebreak.content" />
+	        </element>
+	    </define>
+	
+	    <define name="z3986.pagebreak.attlist" combine="interleave">
+	    	<ref name="Common.reduced.attrib"/>
+	        <!-- TODO or require value but allow null? -->
+	        <optional>
+	            <attribute name="value">
+	                <text />
+	            </attribute>
+	        </optional>
+	    </define>
+	
+	    <define name="z3986.pagebreak.content">
+	        <empty />
+	    </define>
+	    	    
+    </div>
+
+	<define name="Text.class" combine="choice">
+  		<ref name="z3986.pagebreak"/>
+  	</define>
+  
+	<define name="Structural.class" combine="choice">
+  		<ref name="z3986.pagebreak"/>
+  	</define>
+
+	<define name="Structural.nosection.class" combine="choice">
+  		<ref name="z3986.pagebreak"/>
+  	</define>
+  	
+</grammar>

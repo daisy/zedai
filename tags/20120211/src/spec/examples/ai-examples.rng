@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://www.daisy.org/ns/z3998/authoring/"
+         xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <!-- Snippets are short extracts from content models, without surrounding explanatory prose,
+    maximally accompanied by a dedicated title and caption (see below) 
+    
+    Must use the about and dest attributes on wrappers. @about can contain 
+    several IDs; these must map to the targets xml:id in the (preprocessed) RNGs 
+    (which is the same value as rng:define/@name) 
+    
+    Attributes that *may* be used on the wrapper: 
+    snippet-caption="the caption" 
+    snippet-title="the title"         
+    These attributes can have wiki markup; {code} and [[#link label*]] 
+  -->
+
+ 
+  <include href="../../doc/snippets/ai-snippets.rng">
+        
+    <define name="snippet.attlist">
+      <ref name="rdfa.about.attrib"/>  
+      <attribute name="dest">
+        <choice>        
+          <value>doc</value>
+          <value>absdef</value>
+          <value>spec</value> <!-- only used by doc/src/examples-->
+          <value>any</value>
+        </choice>  
+      </attribute>
+      <optional><attribute name="snippet-title"/></optional>
+      <optional><attribute name="snippet-caption"/></optional>
+    </define>
+    
+  </include>  
+     
+  <define name="snippet.content">  
+    <choice>        
+      <ref name="mods" />
+      <ref name="example.head" />
+      <ref name="example.anymatter" />
+    </choice>
+  </define>
+     
+  <define name="example.head">
+    <text/> <!-- to allow ellipsis -->
+    <ref name="z3998.head"/>  
+    <text/> <!-- to allow ellipsis -->  
+  </define>
+
+  <define name="example.anymatter">
+    <element name="document">
+      <ref name="z3998.Document.attrib"/>
+      <text/> <!-- to allow ellipsis -->
+      <optional>
+        <ref name="z3998.head"/>
+      </optional>  
+      <element name="body">
+        <ref name="z3998.Document.attrib"/>
+        <text/> <!-- to allow ellipsis -->
+        <optional>
+          <ref name="z3998.frontmatter"/>
+        </optional>
+        <optional>
+          <ref name="z3998.bodymatter"/>
+        </optional>  
+      </element>          
+    </element>  
+  </define>  
+
+  <define name="mods">
+    <element name="mods" ns="http://www.loc.gov/mods/v3">
+      <attribute name="version" />
+      <zeroOrMore>
+        <ref name="anyModsElement"/>
+      </zeroOrMore>  
+    </element>  
+  </define>
+  
+  <define name="anyModsElement">
+    <element ns="http://www.loc.gov/mods/v3" >
+      <anyName />      
+      <zeroOrMore>
+        <choice>
+          <attribute name="version" />
+          <attribute name="type" />            
+          <text/>
+          <ref name="anyModsElement"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+    
+</grammar>

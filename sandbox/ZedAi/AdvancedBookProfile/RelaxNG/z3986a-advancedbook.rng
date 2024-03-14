@@ -1,0 +1,43 @@
+<grammar ns="http://www.w3.org/2002/06/xhtml2/" xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>RELAX NG schema for Z39.86-2010 Part A Adavcned Book Profile, building on XHTML 2.0</x:h1>
+  <x:p>This is a driver, modified by DAISY, originating from the XHTML2 default driver.</x:p>
+  <x:pre> Copyright ©2003-2005 W3C® (MIT, ERCIM, Keio), All Rights Reserved. Editor: Masayasu
+    Ishikawa &lt;mimasa@w3.org&gt; Revision: $Id: xhtml2.rng,v 1.42 2005/07/27 13:36:09
+    mimasa Exp $ Permission to use, copy, modify and distribute this RELAX NG schema for XHTML 2.0
+    and its accompanying documentation for any purpose and without fee is hereby granted in
+    perpetuity, provided that the above copyright notice and this paragraph appear in all copies.
+    The copyright holders make no representation about the suitability of this RELAX NG schema for
+    any purpose. It is provided "as is" without expressed or implied warranty. For details, please
+    refer to the W3C software license at: <x:a
+      href="http://www.w3.org/Consortium/Legal/copyright-software"
+      >http://www.w3.org/Consortium/Legal/copyright-software</x:a>
+  </x:pre>
+
+  <!-- The Simple Book Profile should be a good starting point, so lets get all of it's modules-->
+  <include href="../../../../trunk/src/schema/z3986a-simplebook.rng">
+    <!--	  <define name="head.content">      		
+	    <zeroOrMore>
+	      <choice>
+	        <ref name="head.misc"/>
+	      </choice>
+	    </zeroOrMore>
+	    <optional>
+	      <ref name="z3986.outputhandling" />
+	    </optional>
+	  </define>    	
+	  -->
+  </include>
+
+  <!-- ps: Just to get things started, I have added two modules: the Output Handling Module and
+      the Box module. None of these have been discussed on list, so they are very tentative
+    -->
+  <!-- ps: removed this one. Needs some more disussion
+    <include href="mod/z3986a-output-handling.rng" />-->
+
+  <include href="mod/z3986a-box.rng" />
+  
+  <include href="mod/z3986a-exercises.rng" />
+
+</grammar>

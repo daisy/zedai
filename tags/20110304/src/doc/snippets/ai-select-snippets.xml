@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="ai-snippets.rng" type="xml"?>
+<snippets xmlns="http://www.daisy.org/ns/z3986/authoring/"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:sel="http://www.daisy.org/ns/z3986/authoring/features/select/">
+       
+    <snippet dest="doc"
+        about="z3986.select.block z3986.select.phrase z3986.when.block z3986.when.phrase z3986.otherwise.block z3986.otherwise.phrase">        
+<sel:select>
+    <sel:when expr="…">
+        …
+    </sel:when>    
+    <sel:otherwise>
+        …
+    </sel:otherwise>
+</sel:select>        
+    </snippet>
+    
+    <snippet about="z3986.select.selid.attrib" dest="doc">
+        <object src="mouse.png" desc="mouse-desc"/>
+        <sel:select>
+            <sel:when expr="target:format('BRAILLE')">
+                <description sel:selid="mouse-desc" xlink:href="mouse-desc-braille.xml"/>
+            </sel:when>
+            <sel:otherwise>
+                <description sel:selid="mouse-desc" xlink:href="mouse-desc.xml"/>
+            </sel:otherwise>
+        </sel:select>
+    </snippet>
+           
+</snippets>

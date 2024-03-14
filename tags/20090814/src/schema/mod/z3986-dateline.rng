@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 dateline element module</x:h1>
+    
+  <div>
+    <x:h2>The dateline element</x:h2>
+    <x:div id="z3986.dateline">
+      <x:p class="description">
+        A <x:code>dateline</x:code> is a brief piece of text included in news articles 
+        that describes where and when the story was written or filed. In the case of articles 
+        reprinted from wire services, the distributing organization is also included 
+        (though the originating one is not). Datelines are traditionally placed on the first 
+        line of the text of the article, before the first sentence.
+      </x:p>
+    </x:div>
+         
+    <define name="z3986.dateline">
+      <element name="dateline">        
+        <ref name="z3986.dateline.attlist"/>
+        <ref name="z3986.dateline.content"/>  
+      </element>    
+    </define>
+
+    <define name="z3986.dateline.attlist">
+      <ref name="z3986.Text.attrib"/>
+    </define>
+    
+    <define name="z3986.dateline.content">
+      <ref name="z3986.Text.base.model"/>
+    </define>  
+    
+  </div>  
+  
+</grammar>

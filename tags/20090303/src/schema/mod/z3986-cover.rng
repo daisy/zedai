@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <x:h1>The DAISY Book cover module</x:h1>
+
+    <define name="z3986.cover" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="cover">
+            <ref name="z3986.cover.attlist" />
+            <ref name="z3986.cover.content" />
+        </element>
+    </define>
+
+    <define name="z3986.cover.content">
+        <optional>
+            <ref name="z3986.spine" />
+        </optional>
+        <ref name="z3986.frontcover" />
+        <ref name="z3986.backcover" />
+        <optional>
+            <ref name="z3986.flaps" />
+        </optional>        
+    </define>
+
+    <define name="z3986.spine" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="spine">
+            <ref name="z3986.spine.attlist" />
+            <ref name="z3986.spine.content" />
+        </element>
+    </define>
+    
+    <define name="z3986.frontcover" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="frontcover">
+            <ref name="z3986.frontcover.attlist" />
+            <ref name="z3986.frontcover.content" />
+        </element>
+    </define>
+    
+    <define name="z3986.backcover" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="backcover">
+            <ref name="z3986.backcover.attlist" />
+            <ref name="z3986.backcover.content" />
+        </element>
+    </define>
+    
+    <define name="z3986.spine.content" combine="interleave">
+    	<interleave>
+    		<zeroOrMore>
+    			<choice>
+      			<ref name="z3986.attribution.class"/>
+      			<ref name="object"/>
+      			<ref name="p"/>
+      			<ref name="blockquote"/>      			
+      			</choice>
+      		</zeroOrMore>      		
+      		<ref name="title"/>      		      		
+      	</interleave>	   
+    </define>
+        
+    <define name="z3986.frontcover.content" combine="interleave">
+    	<interleave>
+			<zeroOrMore>      	
+				<ref name="z3986.attribution.class"/>      	
+			</zeroOrMore>			
+			<ref name="title"/>				
+			<ref name="cover.section.model" />
+		</interleave>
+    </define>
+                
+    <define name="z3986.backcover.content" combine="interleave">              
+        <ref name="cover.section.model" />
+    </define>
+          
+    <define name="cover.section.model">
+    	<zeroOrMore>
+    		<ref name="cover.section.class"/>
+    	</zeroOrMore>      	  		   
+	</define>
+     
+    <define name="cover.section.class">
+  		<choice>    		
+        	<ref name="blockcode"/>
+        	<ref name="blockquote"/>
+        	<ref name="div"/>        
+        	<ref name="p"/>
+        	<ref name="pre"/>
+        	<ref name="object"/>
+        	<ref name="cover.section"/>
+        	<ref name="separator"/>
+        	<ref name="List.class"/>
+  		</choice>
+    </define>
+         
+    <define name="cover.section">
+  		<element name="section">
+    		<ref name="section.attlist"/>
+    		<ref name="cover.section.model"/>
+  		</element>
+    </define>     
+
+    <define name="z3986.flaps" ns="http://www.daisy.org/ns/z3986/2008/">
+    	<element name="flaps">      			
+			<ref name="z3986.flaps.attlist"/>
+			<ref name="z3986.flaps.content"/>
+      	</element>
+    </define>
+            
+    <define name="z3986.flaps.content" combine="interleave">
+        <choice>
+        	<oneOrMore>     
+	      		<ref name="section.loose"/>
+      		</oneOrMore>
+      		<oneOrMore>
+      			<ref name="Structural.nosection.class"/>
+      		</oneOrMore>
+        </choice>
+    	
+    </define>
+    
+    <define name="z3986.flaps.attlist">
+        <ref name="Common.reduced.attrib" />
+    </define>
+
+	<define name="z3986.backcover.attlist" combine="interleave">
+     	<ref name="Common.reduced.attrib" />
+    </define>
+
+	<define name="z3986.frontcover.attlist">
+        <ref name="Common.reduced.attrib" />
+    </define>
+
+    <define name="z3986.spine.attlist">
+        <ref name="Common.reduced.attrib" />
+    </define>
+
+    <define name="z3986.cover.attlist">
+        <ref name="Common.reduced.attrib" />
+    </define>
+
+</grammar>

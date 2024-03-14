@@ -1,0 +1,15 @@
+<toc label="SchemaQualityChecker">
+  <topic label="Overview" href="doc/index.html" />
+  <topic label="Introduction" href="doc/introduction.htm" />
+  <topic label="Setup" href="doc/setup.htm">
+     <link toc="toc_Setup.xml" />
+  </topic>
+  <topic label="Usage" href="doc/usage.htm">
+     <link toc="toc_Use.xml" />
+  </topic>
+  <topic label="Error Report" href="doc/error.htm"/>
+  <topic label="QualityChecker API" href="QualityCheckerAPI/index.html" />
+  <topic label="Appendix" href="doc/appendix.htm">
+     <link toc="toc_Appendix.xml" />
+  </topic>
+</toc>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml">
+
+    <x:h1>The xhtml2 + Inline module</x:h1>
+
+
+    <x:p>Allow sentence as a member of the Text.class.</x:p>
+    <define name="Text.class" combine="choice">
+        <!-- ps: I don't like using choice, but I have to, as choice is used in the ruby module -->
+        <zeroOrMore>
+            <ref name="Daisy.sentence"/>
+        </zeroOrMore>
+    </define>
+
+    
+</grammar>

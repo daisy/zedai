@@ -1,0 +1,6 @@
+<toc label="Setup">
+  <topic label="Requirements" href="doc/setup-req.htm"/>
+  <topic label="Download" href="doc/setup-download.htm"/>
+  <topic label="Install as Eclipse/WSAD Plugin" href="doc/setup-install.htm"/>
+  <topic label="Install SQC Help Plugin" href="doc/setup-install-help.htm"/>
+</toc>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <x:h1>The DAISY Datatype module</x:h1>
+
+    <define name="daisyPositiveInteger">
+        <data type="positiveInteger"/>
+    </define>
+
+    <define name="daisyUpperCaseRomanNumerals">
+        <data type="string">
+            <param name="pattern">[IVXLCDM]+</param>
+        </data>
+    </define>
+    <define name="daisyLowerCaseRomanNumerals">
+        <data type="string">
+            <param name="pattern">[ivxlcdm]+</param>
+        </data>
+    </define>
+
+</grammar>

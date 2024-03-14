@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:xsdp="http://www.daisy.org/ns/rng-preprocess/xsd"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="p">The paragraph module</dcterms:title>
+      <dcterms:description>This module defines the {[[#z3986.p]]} element for distinguishing paragraphs of text.</dcterms:description>      
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}"/>
+      <dcterms:creator>Markus Gylling</dcterms:creator>
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng"/>      
+    </rdf:Description>
+  </rdf:RDF>
+
+  <div>
+
+    <define name="z3986.p">
+      <element name="p">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="p">The {p} element</dcterms:title>
+            <dcterms:description>The {p} element represents a paragraph of text consisting of one or several sentences.</dcterms:description>
+            <z:info>For braille production and other contexts where the indent level of the first line in a paragraph is significant, the
+              {rend:indent} attribute provides a mechanism appending this information. Refer to the {[[#featureCatalog Z39.86 Source Rendition Feature]]}
+            for more information about activating and using this attribute.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.Section.class]]}</z:context>          
+            <z:content>{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</z:content>            
+            <z:attlist>{[[#z3986.Block.attrib]]}</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.p.attlist"/>
+        <ref name="z3986.p.content"/>
+        <sch:rule context="default:p">
+          <sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0"
+            >The {p} element must neither be empty nor contain only whitespace.</sch:assert>
+        </sch:rule>
+      </element>      
+    </define>
+
+    <define name="z3986.p.attlist">
+          <ref name="z3986.Block.attrib"/>
+    </define>
+
+    <define name="z3986.p.content">
+      <ref name="z3986.Phrase.Text.mix.model"/>
+    </define>
+
+  </div>
+
+  <div>
+    <a:documentation>p - default content model contribution</a:documentation>
+    <define name="z3986.Block.core.base.class" combine="choice">
+      <ref name="z3986.p"/>
+    </define>    
+  </div>
+
+
+</grammar>

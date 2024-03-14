@@ -1,0 +1,18 @@
+<document xml:lang="en" its:dir="ltr" 
+  xmlns="http://www.daisy.org/ns/z3986/authoring/"   
+  xml:base="http://daisy.org/publications/"
+  xmlns:decl="http://www.daisy.org/z3986/2010/vocab/decl/#"
+  xmlns:dcterms="http://purl.org/dc/terms"
+  xmlns:its="http://www.w3.org/2005/11/its">
+  <head>
+      <meta rel="decl:profile" 
+            resource="http://example.org/z3986/auth/profiles/sciencejournal/1.0/" />
+      
+      <meta property="dcterms:identifier" content="12398-5674" />
+      <meta property="dcterms:publisher" content="DAISY Consortium" />
+      <meta property="dcterms:date" content="2009-12-22T11:32:00-05:00" />
+  </head>
+  <body xml:id="body">
+  	  [...]
+  </body>
+</document>

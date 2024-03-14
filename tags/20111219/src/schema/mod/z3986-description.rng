@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/"
+	xmlns="http://relaxng.org/ns/structure/1.0"
+	xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+	xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+	xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<info xmlns="http://docbook.org/ns/docbook">
+	<title xreflabel="object">The description module</title>
+	<annotation annotates="/">
+		<para role="desc-main">This module defines the {[[#z3986.description]]} element and {[[#z3986.desc.attrib]]} attribute for providing accessible descriptions.</para>
+		<para role="desc-sub">Three variants of the {description} element are defined for use in the [[#z3986.Block.class Block]], [[#z3986.Phrase.class Phrase]] and [[#z3986.Text.class Text]] classes respectively.</para>
+		<simplelist role="def-dependencies">
+			<member xlink:href="z3986-global-classes.rng"/>
+			<member xlink:href="z3986-linking.rng"/>
+		</simplelist>
+	</annotation>
+	<author>
+		<personname>Markus Gylling</personname>
+		<email>mgylling@daisy.org</email>
+	</author>
+	<copyright>
+		<year>2009</year>
+		<year>2010</year>
+		<year>2011</year>
+		<year>2012</year>
+		<holder>DAISY Consortium</holder>
+	</copyright>
+	<legalnotice>
+		<para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+		<para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+	</legalnotice>
+	<revhistory>
+		<revision>
+			<date>2012-12-19</date>
+			<authorinitials>MGy</authorinitials>
+			<revdescription>
+				<para>Initial version</para>
+			</revdescription>
+		</revision>
+	</revhistory>
+</info>
+
+<div>
+	<define name="z3986.description" xml:id="z3986.description">
+		<element name="description">
+			<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+				<title xreflabel="description (block)">The {description} element (Block)</title>
+				<para role="desc-main" xlink:role="inherit-common" xlink:href="z3986.description"/>
+				<para role="desc-sub">The {Block} variant is an adaption for use embedding descriptions in other {Block}-layer elements and for grouping descriptions in {Section}-layer elements (for example, in the document {[[#z3986.head]]}, where they can be referenced globally).</para>
+				<para role="desc-sub" xlink:role="inherit-common" xlink:href="z3986.description"/>
+				<synopsis role="def-context">{[[#z3986.Block.class]]}</synopsis>
+				<synopsis role="def-content">{(empty | ([[#z3986.Block.class]])+ | (text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+)}</synopsis>
+				<synopsis role="def-attlist">{[[#z3986.Block.attrib]]}</synopsis>
+			</annotation>
+			<ref name="z3986.description.attlist"/>
+			<ref name="z3986.description.content"/>
+			<sch:rule context="default:description">
+				<sch:assert test="(normalize-space(.) or *) or @xlink:href">The {description} element must either contain text data or point to an external resource using the {xlink:href} attribute.</sch:assert>
+				<sch:report test="(normalize-space(.) or *) and @xlink:href">The {description} element must not contain text data and also point to an external resource using the {xlink:href} attribute.</sch:report>
+				<sch:report test="descendant::default:description">The {description} element must not contain descendant {description} elements.</sch:report>
+				<sch:report test="descendant::default:object">The {description} element must not contain descendant {object} elements.</sch:report>
+				<sch:report test="descendant::default:table">The {description} element must not contain descendant {table} elements.</sch:report>
+				<sch:report test="descendant::*[namespace-uri(.) = 'http://www.w3.org/1998/Math/MathML']">The {description} element must not contain descendant elements from the MathML feature grammar.</sch:report>
+			</sch:rule>
+			<sch:rule context="default:description[not(parent::default:object)]">
+				<sch:assert test="key('descrefs', current()/@xml:id) or key('descrefs', current()/@sel:selid)">Every {description} element must be referenced by at least one element in the document.</sch:assert>
+			</sch:rule>
+			<sch:rule context="default:object">
+				<sch:report test="count(descendant::default:description) &gt; 1">The {object} element may contain only one child {description}.</sch:report>
+				<sch:report test="not(child::default:description) and descendant::default:description">{description} elements cannot be nested inside the children of an {object} element.</sch:report>
+				<sch:report test="child::default:description and count(child::node()[normalize-space(.)]) &gt; 1">A single {description} element must be the only child of an {object} element when used.</sch:report>
+			</sch:rule>
+		</element>
+	</define>
+	<define name="z3986.description.attlist" xml:id="z3986.description.attlist">
+		<!-- expand out Block.attrib in order to allow value suggestion injections on @role -->
+		<ref name="z3986.global.core.attrib"/>
+		<optional>
+			<ref name="z3986.description.role.attrib"/>
+		</optional>
+		<optional>
+			<ref name="z3986.ref.attrib"/>
+		</optional>
+		<optional>
+			<ref name="xlink.attrib"/>
+		</optional>
+	</define>
+	<define name="z3986.description.content" xml:id="z3986.description.content">
+		<choice>
+			<empty/>
+			<ref name="z3986.Flow.choice.noextern.model"/>
+		</choice>
+	</define>
+</div>
+
+<div>
+	<define name="z3986.description.phrase" xml:id="z3986.description.phrase">
+		<element name="description">
+			<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+				<title xreflabel="description (phrase)">The {description} element (Phrase)</title>
+				<para role="desc-main" xlink:role="inherit-common" xlink:href="z3986.description"/>
+				<para role="desc-sub" xlink:role="inherit-common" xlink:href="z3986.description"/>
+				<synopsis role="def-context">{[[#z3986.Phrase.class]]}</synopsis>
+				<synopsis role="def-content">{(text | [[#z3986.Text.class]])+}</synopsis>
+				<synopsis role="def-attlist">{[[#z3986.Phrase.attrib]]}</synopsis>
+			</annotation>
+			<ref name="z3986.description.phrase.attlist"/>
+			<ref name="z3986.description.phrase.content"/>
+		</element>
+	</define>
+	<define name="z3986.description.phrase.attlist" xml:id="z3986.description.phrase.attlist">
+		<!-- expand out Phrase.attrib in order to allow value suggestion injections on @role -->
+		<ref name="z3986.global.core.attrib"/>
+		<optional>
+			<ref name="z3986.description.role.attrib"/>
+		</optional>
+		<ref name="z3986.ref.attrib"/>
+		<optional>
+			<ref name="xlink.attrib"/>
+		</optional>
+	</define>
+	<define name="z3986.description.phrase.content" xml:id="z3986.description.phrase.content">
+		<choice>
+			<empty/>
+			<ref name="z3986.Phrase.noextern.model"/>
+		</choice>
+	</define>
+	<define name="z3986.description.role.attrib" xml:id="z3986.description.role.attrib">
+		<attribute name="role">
+			<list>
+				<oneOrMore>
+					<ref name="z3986.description.role.attrib.content.enum"/>
+				</oneOrMore>
+			</list>
+		</attribute>
+	</define>
+	<define name="z3986.description.role.attrib.content.enum" combine="choice">
+		<ref name="CURIE.datatype"/>
+	</define>
+</div>
+
+<div>
+	<define name="z3986.description.text" xml:id="z3986.description.text">
+		<element name="description">
+			<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+				<title xreflabel="description (text)">The {description} element (Text)</title>
+				<para role="desc-main" xlink:role="inherit-common" xlink:href="z3986.description"/>
+				<para role="desc-sub" xlink:role="inherit-common" xlink:href="z3986.description"/>
+				<synopsis role="def-context">{[[#z3986.Text.class]]}</synopsis>
+				<synopsis role="def-content">{(text | [[#z3986.Text.class]])+}</synopsis>
+				<synopsis role="def-attlist">{[[#z3986.Text.attrib]]}</synopsis>
+			</annotation>
+			<ref name="z3986.description.text.attlist"/>
+			<ref name="z3986.description.text.content"/>
+		</element>
+	</define>
+	<define name="z3986.description.text.attlist" xml:id="z3986.description.text.attlist">
+		<!-- expand out Text.attrib in order to allow value suggestion injections on @role -->
+		<ref name="z3986.global.core.attrib"/>
+		<optional>
+			<ref name="z3986.description.role.attrib"/>
+		</optional>
+		<ref name="z3986.ref.attrib"/>
+		<optional>
+			<ref name="xlink.attrib"/>
+		</optional>
+	</define>
+	<define name="z3986.description.text.content" xml:id="z3986.description.text.content">
+		<choice>
+			<empty/>
+			<ref name="z3986.Text.model"/>
+		</choice>
+	</define>
+</div>
+
+<div>
+	<define name="z3986.desc.attrib" xml:id="z3986.desc.attrib">
+		<annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+			<title xreflabel="desc">The {desc} attribute</title>
+			<para role="desc-main">The {desc} attribute establishes the connection between the current element and its associated accessible {[[#z3986.description description]]}(s).</para>
+			<para role="desc-sub">The {desc} attribute must contain one or more space separated references to the {[[#xml.id.attrib IDs]]} of the associated {description}s.</para>
+			<para role="desc-sub">Features may extend the use of this attribute, but not override the requirement that it resolve to a {description}. The [[http://www.daisy.org/z3986/2012/auth/features/select/current Z39.86-2012 Content Selection feature]], for example, provides a mechanism for pointing to a {description} based on the format being rendered.</para>
+			<synopsis role="def-context">All [[#z3986.global-classes.module global attribute classes]]</synopsis>
+			<synopsis role="def-content">{[[#IDREFS.datatype]]}</synopsis>
+		</annotation>
+		<attribute name="desc">
+			<ref name="z3986.desc.attrib.content"/>
+		</attribute>
+		<sch:rule context="default:*[@desc]">
+			<sch:assert test="every $descref in tokenize(current()/@desc,'\s+') satisfies key('descriptions', $descref)">Every IDREF in the {desc} attribute must resolve to a {description} element.</sch:assert>
+		</sch:rule>
+	</define>
+	<define name="z3986.desc.attrib.content" combine="choice">
+		<list>
+			<oneOrMore>
+				<ref name="NCName.datatype"/>
+			</oneOrMore>
+		</list>
+	</define>
+</div>
+
+<div>
+	<a:documentation>Z39.86 description module - default content model contribution </a:documentation>
+	<define name="z3986.head.class" combine="choice">
+		<ref name="z3986.description"/>
+	</define>
+	<define name="z3986.Block.variant.class" combine="choice">
+		<ref name="z3986.description"/>
+	</define>
+	<define name="z3986.object.block.content.extern" combine="choice">
+		<ref name="z3986.description"/>
+	</define>
+	<define name="z3986.object.phrase.content.extern" combine="choice">
+		<ref name="z3986.description.phrase"/>
+	</define>
+	<define name="z3986.object.text.content.extern" combine="choice">
+		<ref name="z3986.description.text"/>
+	</define>
+	<define name="z3986.global.core.attrib" combine="interleave">
+		<optional>
+			<ref name="z3986.desc.attrib"/>
+		</optional>
+	</define>
+</div>
+</grammar>

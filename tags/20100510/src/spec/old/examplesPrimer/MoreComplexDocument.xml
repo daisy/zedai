@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://www.daisy.org/ns/z3986/authoring/"
+    xmlns:its="http://www.w3.org/2005/11/its" 
+    xmlns:z3986dec="http://www.daisy.org/z3986/2010/vocab/decl/#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xml:lang="en">
+    <head>
+        <meta rel="z3986dec:profile"
+            resource="http://www.daisy.org/z3986/2010/auth/profiles/book/1.0/" />
+        <meta property="dcterms:identifier" content="daisy-z2010-role-001"/>
+        <meta property="dcterms:publisher" content="DAISY Consortium"/>
+        <meta property="dcterms:date" content="2005-07-27T13:50:05-05:00"/>
+    </head>
+    <body>
+        <frontmatter>
+            <section>
+                <h property="dcterms:title">Ulysses: the condensed edition</h>
+                <pagebreak xml:id="pR1" value="i" />
+            </section>
+            <toc>
+                <h>Table of contents</h>
+                <entry>
+                    <label>Chapter 1</label>
+                    <ref ref="p1">1</ref>
+                </entry>
+                <entry>
+                    <label>Chapter 2</label>
+                    <ref ref="p3">3</ref>
+                </entry>
+                <pagebreak xml:id="pR2" value="ii" />
+            </toc>
+        </frontmatter>
+        <bodymatter>
+            <section>
+                <pagebreak xml:id="p1" value="1" />
+                <h>Chapter 1</h>
+                <p> Stately, plump Buck Mulligan came from the stairhead, bearing a
+                    bowl of lather on which a mirror and a razor lay crossed. He held
+                    the bowl aloft and intoned: 
+                    <quote xml:lang="la" its:translate="no">INTROIBO AD ALTARE DEI.</quote>
+                </p>
+                <pagebreak value="2" />
+            </section>
+            <section>
+                <pagebreak xml:id="p3" value="3" />
+                <h>Chapter 2</h>
+                <p> Yes I said yes I will Yes. </p>
+            </section>
+        </bodymatter>
+    </body>
+</document>

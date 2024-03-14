@@ -1,0 +1,12 @@
+<head>
+    <mods xmlns="http://www.loc.gov/mods/v3" version="3.3">
+        <originInfo>
+            <publisher>DAISY Consortium</publisher>
+            <dateCreated>2009-05-29</dateCreated>
+        </originInfo>
+        <titleInfo>
+            <title>A simple document</title>
+        </titleInfo>
+        <identifier type="uid">example1</identifier>
+    </mods>
+</head>

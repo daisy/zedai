@@ -1,0 +1,6 @@
+<sel:select>
+  <sel:when expr="parameter:test('redistribution','unprohibited')" />      
+  <sel:otherwise>
+  	<p>Any reproduction or redistribution of this publication is expressly prohibited by law …</p>
+  </sel:otherwise>            
+</sel:select>

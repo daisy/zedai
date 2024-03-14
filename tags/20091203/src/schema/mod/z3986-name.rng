@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 name element module</x:h1>
+    
+  <div>
+    <x:h2>The name element</x:h2>
+    <x:div id="z3986.name">
+      <x:p class="description">
+        The <x:code>name</x:code> element represents a name of an arbitrary entity.
+        <x:br/>
+        The <x:code>name</x:code> element is not restricted to use for person names. 
+        <!--  RDF/a attributes can be used to describe the nature of the element content. -->
+      </x:p>
+    </x:div>
+         
+    <define name="z3986.name">
+      <element name="name">        
+        <ref name="z3986.name.attlist"/>
+        <ref name="z3986.name.content"/>  
+      </element>    
+    </define>
+
+    <define name="z3986.name.attlist">
+      <ref name="z3986.Text.attrib"/>
+    </define>
+    
+    <define name="z3986.name.content">
+      <ref name="z3986.Text.base.model"/>
+    </define>  
+    
+  </div>  
+
+  <div>
+    <x:h2>The name element - default content model contribution</x:h2>
+    
+    <define name="z3986.Text.class" combine="choice">
+      <ref name="z3986.name"/>    
+    </define>
+    
+  </div>
+
+</grammar>

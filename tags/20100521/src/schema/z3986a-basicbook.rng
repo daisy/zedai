@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/"
+         xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>RELAX NG driver for Z39.86-2011 Part A Basic Book Profile</x:h1>
+  
+  <!-- define as placeholders internal classes that arent used in this schema -->  
+  <define name="z3986.Phrase.contrib.class" combine="choice">
+    <notAllowed/>
+  </define>
+  <define name="z3986.Block.contrib.class" combine="choice">
+    <notAllowed/>
+  </define>
+  
+  <x:h2>Common Document Model Modules</x:h2>
+
+  <x:h3>Content Model Definitions</x:h3>
+  <include href="./mod/z3986-global-classes.rng" />    
+  
+  <x:h3>Common Elements</x:h3>
+  
+  <include href="./mod/z3986-document.rng">
+    <!-- redefine body content to that of book -->
+    <define name="z3986.body.content">
+      <ref name="z3986.partitions"/>
+    </define>
+  </include>
+  <include href="./mod/z3986-meta.rng"/>
+  <include href="./mod/z3986-linking.rng"/>
+     
+  <include href="./mod/z3986-section.rng"/>
+  <include href="./mod/z3986-headings.rng"/>
+  <include href="./mod/z3986-block.rng"/>
+  <include href="./mod/z3986-p.rng"/>
+  <include href="./mod/z3986-separator.rng"/>
+  <include href="./mod/z3986-list.rng"/>
+  <include href="./mod/z3986-table.rng">
+    <!-- redefine table to its simplest model -->
+    <define name="z3986.table.content">
+      <ref name="z3986.table.simple.content"/>
+    </define>
+  </include>  
+    
+  <include href="./mod/z3986-quote.rng"/>
+  <include href="./mod/z3986-citation.rng"/>
+  <include href="./mod/z3986-code.rng"/>
+  <include href="./mod/z3986-object.rng"/>
+  
+  <include href="./mod/z3986-note.rng"/>
+  <include href="./mod/z3986-annotation.rng"/>
+  <include href="./mod/z3986-aside.rng"/>    
+  <include href="./mod/z3986-caption.rng"/>
+  <include href="./mod/z3986-verse.rng"/>  
+  
+  <include href="./mod/z3986-span.rng"/>  
+  <include href="./mod/z3986-line.rng"/>    
+  <include href="./mod/z3986-pagebreak.rng"/> 
+  <include href="./mod/z3986-s.rng"/>
+  <include href="./mod/z3986-w.rng"/>
+  
+  <include href="./mod/z3986-abbr.rng"/>  
+  <include href="./mod/z3986-emph.rng" />
+   
+  <include href="./mod/z3986-time.rng"/>
+  <include href="./mod/z3986-name.rng"/>  
+  <include href="./mod/z3986-term.rng"/>  
+  <include href="./mod/z3986-d.rng"/>    
+  <include href="./mod/z3986-num.rng" />
+  <include href="./mod/z3986-sub-sup.rng"/>
+  <include href="./mod/z3986-char.rng" />
+  
+  <x:h2>Profile Specific Modules</x:h2>  
+  <include href="./mod/z3986-partitions.rng"/>
+            
+  <x:h3>Common Attributes</x:h3>  
+  <include href="./mod/z3986-core-attrib.rng"/>
+  <include href="./mod/z3986-i18n-attrib.rng"/>  
+  <include href="./mod/xlink.rng"/>  
+  <include href="./mod/z3986-depth-attrib.rng"/>
+  <include href="./mod/rdfa-attrib.rng"/>    
+  <include href="./mod/z3986-role-attrib.rng"/>      
+    
+  
+  <x:h2>Optional Feature Modules</x:h2>
+  
+  <div x:id="its-ruby">
+    <x:h2>ITS Ruby Feature</x:h2>
+    <include href="./mod/z3986-feature-its-ruby.rng"/>
+  </div>
+  
+  <div x:id="svg-cdr" x:class="feature">
+    <x:h2>SVG CDR Feature</x:h2>
+    <include href="./mod/z3986-feature-svg-cdr.rng"/>
+  </div>
+       
+  <x:h2>RDF Property Enumeration Modules</x:h2>
+  <include href="./mod/z3986-vocab-contrib-structure.rng"/>
+       
+  <x:h2>Support Modules</x:h2>
+  <include href="./mod/z3986-datatypes.rng" />
+  <!-- <include href="./mod/iana-lang-enum.rng" /> -->
+  
+</grammar>

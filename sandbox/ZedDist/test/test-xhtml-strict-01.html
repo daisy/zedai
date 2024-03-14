@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="../src/schema/xhtml-strict.rng" type="xml"?>
+<html xmlns="http://www.w3.org/1999/xhtml/" xml:lang="en" lang="en">
+    <head>
+        <title>test</title>        
+    </head>
+    <body>
+        <h1>Introduction to the Z39.86-2011 Strict XHTML profile</h1>
+        <section>
+            <h2>Unique Traits</h2>
+            <section id="section-hx">
+                <h3>Sections and headings</h3>
+                <p>To mimic the cozy warm feeling of the DTBook <code>level</code> element, this profile elevates the 
+                    <code>section</code> and <code>hx</code> elements to a special status:</p>
+                <ul>
+                    <li>the <code>section</code> element is used solely to encapsulate major
+                        structural portions of the document (i.e. <code>section</code> alone
+                        constructs the document outline)</li>
+                    <li>a <code>section</code> can contain 0 or 1 h1-h6. Sections without a heading
+                        are equally structurally significant as those with a heading</li>
+                    <li>the <code>body</code> element has the content model of a top-level section,
+                        and is thus the only element that can contain 0 or 1 <code>h1</code></li>
+                    <li>The use of h1-h6 must follow proper nesting (e.g. section children of body
+                        can only use <code>h2</code> etc)</li>
+                </ul>
+
+                <p>The <code>div</code> element is considered a structurally less significant, and
+                    is used for grouping in contexts (typically Flow) where sections are not
+                    allowed.</p>
+                
+            </section>
+            <section id="flow-content">
+                <h3>Flow content</h3>
+                <p>As compared to loose (X)HTML, Flow content is of an <em>either-or</em> nature. This means
+                    that the children of list items and table cells for example, must be either inline or block,
+                    but not both at the same time at time.</p>
+            </section>
+            <section id="empty-elements">
+                <h3>Empty elements</h3>
+                <p>Certain elements, such as <code>p</code>, are not allowed to be empty. A <code>p</code> with only
+                whitespace is also considered invalid. (TODO -- this may be a req on loose as well).</p>
+            </section>  
+            <section id="compound-additions">
+                <h3>Non-XHTML namespace elements</h3>
+                <p>...</p>
+            </section>
+        </section>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+
+    <!-- TODO find out where skipcontent should be allowed -->
+
+    <define name="smil3.skipcontent.attrib">
+        <attribute name="skipcontent">
+            <a:documentation> This attribute controls whether the content of an element is evaluated
+                or should be skipped. * If a new element is introduced in a future version of
+                language allowing markup from a previous version of the language as element content,
+                the skip-content attribute controls whether this content is processed by the user
+                agent. * If an empty element in a version of a language becomes non-empty in a
+                future SMIL version, the skip-content attribute controls whether this content is
+                ignored by a user agent, or results in a syntax error. If the value of the
+                skip-content attribute is true, and one of the cases above apply, the content of the
+                element is ignored. If the value is false, the content of the element is processed.
+                The default value for skip-content is true.</a:documentation>
+            <choice>
+                <value>true</value>
+                <value>false</value>
+            </choice>
+        </attribute>
+    </define>
+
+</grammar>

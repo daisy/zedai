@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/2008/namespacelist/" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <start>
+    <element name="namespaces">
+      <oneOrMore>
+        <element name="namespace">
+          <attribute name="prefix">
+            <data type="NCName"/>
+          </attribute>
+          <optional>
+            <attribute name="owner">
+              <text />
+            </attribute>
+          </optional>
+          <data type="anyURI"/>
+        </element>
+      </oneOrMore>
+    </element>
+  </start>
+</grammar>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" ns="http://www.w3.org/ns/SMIL"
+        xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+
+        <!-- driver for the full W3C DAISY SMIL 3.0 Profile -->
+
+        <include href="./mod/smil3-structure.rng"/>
+        <include href="./mod/smil3-metainformation.rng"/>
+        <include href="./mod/smil3-structurelayout.rng"/>
+        <include href="./mod/smil3-basiclayout.rng"/>
+        <include href="./mod/smil3-mediaparam.rng"/>
+        <include href="./mod/smil3-basicmedia.rng"/>
+        <include href="./mod/smil3-mediaclipping.rng"/>
+        <include href="./mod/smil3-basictimecontainers.rng"/>
+        <include href="./mod/smil3-basicexcltimecontainers.rng"/>
+        <include href="./mod/smil3-basiccontentcontrol.rng"/>
+        <include href="./mod/smil3-basiclinking.rng"/>
+        <include href="./mod/smil3-basicinlinetiming.rng"/>
+        <include href="./mod/smil3-subregionlayout.rng"/>
+        <include href="./mod/smil3-mediaaccessibility.rng"/>
+        <include href="./mod/smil3-mediadescription.rng"/>
+        <include href="./mod/smil3-skipcontentcontrol.rng"/>
+
+        <include href="./mod/smil3-statetest.rng"/>
+        <include href="./mod/smil3-userstate.rng"/>
+        <include href="./mod/smil3-statesubmission.rng"/>
+
+        <include href="./mod/z3986-datatypes.rng"/>
+
+        <!-- implementation status               
+        
+        *  Structure functionality
++           o Structure Module                  [<smil>,<head>,<body> added]
++           o Identity Module                   [@version, @baseProfile added to <smil> only]
+        * Metainformation functionality
+-           o Metainformation Module            [<meta>,<label> added, but not <metadata>]
+        * Timing functionality
+-           o BasicInlineTiming Module          [@dur, @begin, @end added to timecontainers attlist, TODO where else?]
+-           o EventTiming Module                [no specific pattern added for @begin and @end]
+-           o MultiArcTiming Module             [no specific pattern added for @begin and @end]
++           o BasicTimeContainers Module        [<par>,<seq> added to timecontainers class, with @fill,@endsync]
++           o BasicExclTimeContainers Module    [<excl> added to timecontainers class, with @fill, @endsync TODO whats allowed inside excl?]
+        * Content Control functionality
++            o BasicContentControl Module       [<switch> added to timecontainers class and <head>, @system* added to timecontainers and mediaobjects]
++            o RequiredContentControl Module    [@systemRequired added to timecontainers and mediaobjects]
+-            o SkipContentControl Module        [TODO find out where @skipcontent should be allowed]
+        * State functionality
++              o StateTest Module
+-              o UserState Module               [TODO attlists for elements. allow xforms inside state] 
++              o StateSubmission Module
+-              o StateInterpolation Module      [TODO any impact on datatypes?]
+        * Layout functionality
++           o BasicLayout Module                [<region> and <rootlayout> added to <layout>, @region added to timecontainers]
++           o StructureLayout Module            [<layout> added to <head>]
++           o SubRegionLayout Module            [<region> added to <region> TODO are subregion attlists *exactly* the same as region? daisy profile table indicates not?]
+        * Linking functionality
++           o BasicLinking Module               [<a>, <area> added. TODO spec errata: 19.4.6 says excludes timing attributes, but table includes them TODO where is area allowed? now same as <a>]    
+        * Media functionality
++          o BasicMedia Module                  [<ref> and all synonyms added, z profiles to subset]
++          o MediaClipping Module               [@clipBegin, @clipEnd TODO confusion in datatypes.rng re npt and clock datatypes]
++          o MediaParam Module                  [<paramGroup> added to head, @paramGroup added to mediaobjects and <region>, <param> added to mediaobjects content model]
++          o MediaAccessibility Module          [@alt, @longdesc, @readindex]
++          o MediaDescription Module            [@title, @author, @copyright, @xml:lang]
+         
+    -->
+
+</grammar>

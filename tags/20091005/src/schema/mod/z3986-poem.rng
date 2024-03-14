@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 poem module</x:h1>
+  <!-- TODO byline, dateline from article, sb separate modules -->  
+  <div>
+    <x:h2>The poem element</x:h2>
+    <x:div id="z3986.poem">
+      <x:p class="description">
+        The <x:code>poem</x:code> element ... TODO
+      </x:p>
+    </x:div>
+         
+    <define name="z3986.poem">
+      <element name="poem">        
+        <ref name="z3986.poem.attlist"/>
+        <ref name="z3986.poem.content"/>  
+      </element>    
+    </define>
+
+    <define name="z3986.poem.attlist">
+      <ref name="z3986.section.attlist"/>
+    </define>
+    
+    <define name="z3986.poem.content">      
+      <ref name="z3986.poem.content.base"/>
+    </define>  
+    
+    <define name="z3986.poem.content.base">      
+      <optional>
+        <ref name="z3986.title.rich"/>
+      </optional>
+      <interleave>
+        <zeroOrMore>
+          <choice>
+            <ref name="z3986.poem.content.class"/>
+          </choice>
+        </zeroOrMore>
+        <!--
+        <optional>
+          <ref name="z3986.byline"/>
+        </optional>
+        <optional>
+          <ref name="z3986.dateline"/>
+        </optional>
+        -->
+      </interleave>    
+    </define>
+    
+    <define name="z3986.poem.content.class" combine="choice">
+      <choice>
+        <ref name="z3986.linegroup"/>
+        <ref name="z3986.separator"/>
+        <ref name="z3986.line"/>
+        <ref name="z3986.bridgehead"/>
+        <ref name="z3986.poem.section"/>
+      </choice>
+    </define>
+
+  </div>    
+  
+  <div>
+    <x:h2>The poem section element</x:h2>
+    <x:div id="z3986.poem.section">
+      <x:p class="description">
+        The <x:code>section</x:code> element within a poem  ... TODO
+      </x:p>
+    </x:div>
+      
+    <define name="z3986.poem.section">
+      <element name="section">
+        <ref name="z3986.poem.section.attlist"/>
+        <ref name="z3986.poem.section.content"/>  
+      </element>
+    </define>
+    
+    <define name="z3986.poem.section.attlist">
+      <!-- TODO specialized roles for poem -->
+      <ref name="z3986.Structural.attrib"/>
+    </define>
+    
+    <define name="z3986.poem.section.content">
+      <ref name="z3986.poem.content.base"/>
+    </define>  
+    
+  </div>  
+
+  <div>
+    <x:h2>The poem element - default content model contribution</x:h2>    
+    <define name="z3986.Structural.class" combine="choice">
+      <ref name="z3986.poem"/>    
+    </define>
+    
+  </div>
+
+</grammar>

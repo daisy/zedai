@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="ai-examples.rng" type="xml"?>
+<snippets xmlns="http://www.daisy.org/ns/z3986/authoring/" xmlns:xi="http://www.w3.org/2001/XInclude">
+	    
+	    
+  <snippet about="ai-document-foundation" dest="spec">
+<document xmlns="http://www.daisy.org/ns/z3986/authoring/">
+  <head>
+    …
+  </head>
+  <body>
+    …
+  </body>
+</document>
+  </snippet>
+
+<snippet about="ai-adm-metadata-attributes" dest="spec">
+<section about="origin_of_species">
+    <h property="dctems:title">On the Origin of Species by Means of Natural Selection</h>
+    <p property="dcterms:creator">Charles Darwin</p>
+</section>
+</snippet>
+  
+  <snippet about="ai-information-container" dest="spec">
+<head>
+    <meta rel="z3986:profile"
+      resource="http://example.org/z3986/2011/auth/profiles/book/1.0/">
+      <meta property="z3986:name" content="book"/>
+      <meta property="z3986:version" content="1.0"/>
+    </meta>
+</head>
+ </snippet>
+  
+  <snippet about="ai-adm-global-attributes" dest="spec">
+<section xml:id="s1">
+    <p xml:id="p1">
+         <w xml:id="w1">…</w> 
+    </p>
+</section>
+  </snippet>
+  
+  <snippet about="ai-head-profile-and-feature-decl" dest="spec">
+…
+<head>
+  <meta rel="z3986:profile"
+    resource="http://example.org/z3986/2011/auth/profiles/sciencejournal/1.0/">
+    <meta property="z3986:name" content="sciencejournal"/>
+    <meta property="z3986:version" content="1.0"/>
+    
+    <meta rel="z3986:feature"
+      resource="http://example.org/z3986/2011/auth/features/physics/3.0/">
+      <meta property="name" content="physics"/>
+      <meta property="version" content="3.0"/>
+    </meta>
+    
+    <meta rel="z3986:feature"
+      resource="http://example.org/z3986/2011/auth/features/chemistry/1.1/">
+      <meta property="name" content="chemistry"/>
+      <meta property="version" content="1.1"/>
+    </meta>
+  </meta>
+</head>
+…
+  </snippet>
+    
+    
+    
+    
+  <snippet about="ai-head-metadata" dest="spec">  
+…      
+<head>
+    …
+    <meta property="dcterms:identifier" content="daisy-z2011-exemplar-01" />
+    <meta property="dcterms:publisher" content="DAISY Consortium" />
+    <meta property="dcterms:modified" content="2011-07-27T18:50:05Z"/>
+  
+    <meta rel="z3986:meta-record" resource="daisy-z2011-exemplar-01-mods.xml">
+        <meta property="z3986:meta-record-type" content="z3986:mods" />
+        <meta property="z3986:meta-record-version" content="3.3" />
+    </meta>
+    
+    <meta rel="z3986:meta-record" resource="daisy-z2011-exemplar-01-onix.xml">
+        <meta property="z3986:meta-record-type" content="z3986:onix-books" />
+    </meta>
+  
+    <meta rel="z3986:meta-record" 
+       resource="http://www.example.com/meta/generator?rec=exemplar-01&amp;format=marc21">
+        <meta property="z3986:meta-record-type" content="z3986:marc21-xml" />
+    </meta>
+    …
+</head>
+…            
+    </snippet>  
+   
+   
+   
+   
+    <snippet about="ai-metadata-inline" dest="spec">   
+<section>
+  <h property="fulltitle">
+    <hpart role="title">On the Origin of Species by Means of Natural Selection</hpart> or
+    <hpart role="subtitle">the Preservation of Favoured races in the struggle for life</hpart>.
+  </h>
+   …
+</section>
+    </snippet>
+    
+    
+    
+    <snippet about="ai-default-profile-ref" dest="spec">
+<document xml:lang="en" profile="http://www.daisy.org/z3986/2011/vocab/profiles/default/">
+  …
+</document>
+    </snippet>
+  
+  <snippet about="ai-vocab-ref" dest="spec">
+<document xml:lang="en" prefix="foaf: http://xmlns.com/foaf/0.1/">
+  …
+</document>
+    </snippet>
+    
+    <snippet about="ai-default-vocab-term-ref" dest="spec">
+      <section role="chapter">
+        …
+      </section>
+    </snippet>
+  
+  <snippet about="ai-vocab-term-ref" dest="spec">
+    <section role="struct:chapter">
+      …
+    </section>
+  </snippet>
+  
+  <snippet about="ai-invalid-xmlns-ref" dest="spec">
+<document xml:lang="en" xmlns:dcterms="http://purl.org/dc/terms/">
+  <head>
+    <meta property="dcterms:identifier" content="uid123"/>
+    …
+  </head>
+  …
+</document>
+  </snippet>
+  
+</snippets>

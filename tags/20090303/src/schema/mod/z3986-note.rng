@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <x:h1>The Z3986 Note module</x:h1>
+
+  	<div>
+    	<x:h2>The note element</x:h2>
+	    
+	    <define name="z3986.note" ns="http://www.daisy.org/ns/z3986/2008/">
+	        <element name="note">
+	            <ref name="z3986.note.attlist" />
+	            <ref name="z3986.note.content" />
+	        </element>
+	    </define>
+	
+		<define name="z3986.note.content">
+	        <ref name="Flow.model"/>
+	    </define>
+	
+	    <define name="z3986.note.attlist">
+	        <ref name="Common.attrib"/>
+	        <attribute name="type">
+	            <choice>
+	                <!-- note at the bottom of the page containing the noteref -->
+	                <value type="string">endpage</value>
+	                <!-- note at the end of the section containing the noteref -->
+	                <value type="string">endsection</value>
+	                <!-- note at the end of the book -->
+	                <value type="string">endbook</value>
+	            </choice>
+	        </attribute>        
+	    </define>
+	    
+	</div>
+
+  	<div>
+    	<x:h2>The noteref element</x:h2>
+	    
+	    <define name="z3986.noteref" ns="http://www.daisy.org/ns/z3986/2008/">
+	        <element name="noteref">
+	            <ref name="z3986.noteref.attlist" />
+	            <ref name="z3986.noteref.content" />
+	        </element>
+	    </define>
+	    
+	    <define name="z3986.noteref.attlist">
+	    	<ref name="Common.attrib"/>
+	        <attribute name="ref">	              
+      			<ref name="URI.datatype"/>
+      		</attribute>
+	    </define>
+	
+	    <define name="z3986.noteref.content">
+	        <text />
+	    </define>
+	</div>
+	
+	<define name="Text.class" combine="choice">
+		<ref name="z3986.noteref"/>
+	</define>	
+	
+	<define name="Structural.extra" combine="choice">
+		<ref name="z3986.note"/>
+	</define>	
+		
+    
+</grammar>

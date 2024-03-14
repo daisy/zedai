@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+  ns="http://www.w3.org/1998/Math/MathML"
+  xmlns:m="http://www.w3.org/1998/Math/MathML"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="MathML">The MathML Feature</dcterms:title>
+      <dcterms:description>Provides support for mathematical expressions as defined in
+        [[http://www.w3.org/TR/MathML3/ W3C Mathematical Markup Language (MathML) Version
+        3.0]].</dcterms:description>
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}"/>
+      <dcterms:creator>Markus Gylling</dcterms:creator>
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:rights>Copyright 1998-2009 W3C (MIT, ERCIM, Keio). Use and distribution of this code
+        are permitted under the terms of the W3C Software Notice and License.
+        http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231</dcterms:rights>
+      <dcterms:rightsHolder>World Wide Web Consortium (http://www.w3.org)</dcterms:rightsHolder>
+      <dcterms:requires rdf:resource="z3986-datatypes.rng"/>
+      <dcterms:requires rdf:resource="z3986-core-attrib.rng"/> 
+    </rdf:Description>
+  </rdf:RDF>
+
+  <div>
+
+    <!-- 
+      As defined by the feature, we use presentation MathML as the top-level expression
+      form. Content MathML is allowed as an alternate or contentequiv representation in 
+      the semantics-xml element. 
+      
+      We let the pattern MathExpression contain presentation-MathML only, and refer
+      to the pattern ContExp for Content MathML.
+    -->
+
+    <include href="mathml3-content.rng">
+       <!-- kill the contribution to MathExpression -->      
+      <define name="MathExpression" combine="choice">      
+          <notAllowed/> 
+      </define>
+      <define name="DeprecatedContExp"> 
+        <empty/> 
+      </define>
+    </include>
+
+    <include href="mathml3-presentation.rng">
+      <define name="mglyph.deprecatedattributes">
+        <empty/>
+      </define>  
+      <define name="DeprecatedTokenAtt">
+        <empty/>
+      </define>  
+      <define name="mstyle.deprecatedattributes">
+        <empty/>
+      </define>  
+    </include>
+
+    <include href="mathml3-common.rng">
+
+      <!-- kill the internal start -->
+      <start combine="choice">
+        <notAllowed/>
+      </start>
+
+      <!-- override NonMathMLAtt to avoid datatype collision error -->
+      <define name="NonMathMLAtt">
+        <notAllowed/>
+      </define>
+
+      <!-- contribute a subset og Global.attrib -->
+      <define name="CommonAtt" combine="interleave">
+        <optional>
+          <ref name="xml.base.attrib"/>
+        </optional>
+        <optional>
+          <ref name="xml.space.attrib"/>
+        </optional>
+      </define>  
+
+      <!-- kill anyElement to avoid datatype collision error -->
+      <define name="anyElement">
+        <notAllowed/>
+      </define>
+
+      <!-- redefine the math element from zeroOrMore to oneOrMore (otherwise <math/> is valid) -->
+      <define name="math">
+        <element name="math">
+          <ref name="math.attributes"/>
+          <oneOrMore>
+            <ref name="MathExpression"/>
+          </oneOrMore>
+        </element>
+      </define>
+
+      <!-- override to avoid datatype collision error and to introduce a 
+        specialization re values of @encoding and actual markup -->
+      <define name="annotation-xml">
+        <element name="annotation-xml">
+          <ref name="annotation-xml.specialized.attlist"/>
+          <ref name="annotation-xml.specialized.choice"/>
+        </element>
+      </define>
+      
+      <define name="CommonDeprecatedAtt">
+        <notAllowed/>
+      </define>  
+    </include>
+
+    <define name="annotation-xml.specialized.attlist">
+      <!-- all attribs from the source schema except @encoding and @src which
+        has co-occurence constraints with the actual model -->
+      <ref name="CommonAtt"/>
+      <optional>
+        <ref name="cd"/>
+      </optional>
+      <optional>
+        <ref name="name"/>
+      </optional>
+      <optional>
+        <attribute name="definitionURL">
+          <data type="anyURI"/>
+        </attribute>
+      </optional>      
+    </define>
+
+    <define name="annotation-xml.specialized.choice" combine="choice">
+      
+      <!-- The choice pattern for combinations of values of @encoding and
+        actual xml annotation content. As this has @combine=choice, new types
+        can be added to this define via external contributions -->
+
+      <!-- Note that in both the Content and Presentation cases, nesting
+        annotation-xml is allowed. The MathML 3 spec seems silent on this topic -->
+
+      <choice>
+        
+        <group>
+          <attribute name="encoding">
+            <choice>
+              <value>application/mathml-content+xml</value> <!-- preferred -->
+              <value>MathML-Content</value>              
+            </choice>       
+          </attribute>
+          <choice>
+            <ref name="src"/>          
+            <oneOrMore>
+              <ref name="ContExp"/>
+            </oneOrMore>
+          </choice>  
+        </group>
+        
+        <group>
+          <!-- we need to allow MathML-Presentation inside annotation-xml as
+            well, for contentequiv purposes -->
+          <attribute name="encoding">
+            <choice>
+              <value>application/mathml-presentation+xml</value> <!-- preferred -->
+              <value>MathML-Presentation</value>              
+            </choice>  
+          </attribute>
+          <choice>
+            <ref name="src"/>
+            <oneOrMore>
+              <ref name="MathExpression"/>
+            </oneOrMore>
+          </choice>  
+        </group>
+        
+        <group>          
+          <attribute name="encoding">
+            <choice>
+              <value>application/z3986-auth+xml</value>         
+            </choice>  
+          </attribute>
+          <ref name="z3986.Flow.choice.model"/> 
+          <sch:rule context="m:annotation-xml[@encoding='application/z3986-auth+xml']">
+            <sch:assert test="not(descendant::m:*)"
+              >The {annotation-xml} element, when used with Z39.86-AI markup, must not contain any descendants in the MathML namespace.</sch:assert>            
+          </sch:rule>
+        </group>
+               
+      </choice>
+      
+      <sch:rule context="m:annotation-xml">
+        <sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0"
+          >The {annotation-xml} element must neither be empty nor contain only whitespace.</sch:assert>
+      </sch:rule>
+    </define>
+  </div>
+
+  <div>
+    <a:documentation>MathML Feature - default content model contribution</a:documentation>
+
+    <define name="z3986.Phrase.contrib.class" combine="choice">
+      <ref name="math"/>
+    </define>
+
+    <define name="z3986.Block.contrib.class" combine="choice">
+      <ref name="math"/>
+    </define>
+
+  </div>
+
+</grammar>

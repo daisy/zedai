@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="dateline">The dateline module</dcterms:title>
+      <dcterms:description>This module defines the [[#z3986.dateline]] element for identifying when and where a work was produced.</dcterms:description>
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}" />
+      <dcterms:creator>Markus Gylling</dcterms:creator>      
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng"/>
+    </rdf:Description>
+  </rdf:RDF>
+    
+  <div>
+    <define name="z3986.dateline">
+      <element name="dateline">   
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="dateline">The {dateline} element</dcterms:title>
+            <dcterms:description>The {dateline} element represents the creation date and/or time of a news article, diary entry, poem, etc.</dcterms:description>
+            <z:info>Datelines typically occur on their own line and include a date and location. For dates and times expressed within the narrative flow of a document, refer to the {[[#z3986.time]]} element.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.Block.class]]}</z:context>          
+            <z:content>{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</z:content>          
+            <z:attlist>{[[#z3986.Block.attrib]]}</z:attlist>      
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.dateline.attlist"/>
+        <ref name="z3986.dateline.content"/>  
+        <sch:rule context="default:dateline">
+          <sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0"
+            >The {dateline} element must neither be empty nor contain only whitespace.</sch:assert>
+        </sch:rule>
+      </element>    
+    </define>
+
+    <define name="z3986.dateline.attlist">
+      <ref name="z3986.Block.attrib"/>
+    </define>
+    
+    <define name="z3986.dateline.content">
+      <ref name="z3986.Phrase.Text.mix.model"/>
+    </define>  
+    
+  </div>  
+  
+</grammar>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <x:h1>The Z3986 Inline module</x:h1>
+
+  	<div>
+    	<x:h2>The sentence element (s)</x:h2>
+	    
+		<define name="z3986.sentence" ns="http://www.daisy.org/ns/z3986/2008/">
+	        <element name="s">
+	            <ref name="z3986.sentence.attlist" />
+	            <ref name="z3986.sentence.content" />
+	        </element>
+	    </define>
+	    
+	    <define name="z3986.sentence.attlist">
+	        <ref name="Common.attrib"/>
+	    </define>
+	    
+	    <define name="z3986.sentence.content">
+	        <ref name="Text.model"/>
+	    </define>
+    </div>
+    
+    <div>
+    	<x:h2>The word element (w)</x:h2>
+	
+	    <define name="z3986.word" ns="http://www.daisy.org/ns/z3986/2008/">
+	        <element name="w">
+	            <ref name="z3986.word.attlist" />
+	            <ref name="z3986.word.content" />
+	        </element>
+	    </define>
+	    
+	    <define name="z3986.word.attlist">
+	    	<ref name="Common.attrib"/>
+	    </define>
+	
+	    <define name="z3986.word.content">
+	        <ref name="Text.minimal.model"/>
+	    </define>
+	    
+	</div>
+		    
+	<!-- TODO add sent to a generic class -->	
+	<define name="p.model" combine="choice">		
+		<oneOrMore>
+			<ref name="z3986.sentence"/>
+		</oneOrMore>	    
+	</define>
+						
+	<define name="Text.class" combine="choice">
+		<ref name="z3986.word"/>
+	</define>
+		 
+</grammar>

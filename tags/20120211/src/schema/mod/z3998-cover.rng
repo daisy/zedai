@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3998/authoring/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="cover">The cover module</title>
+        <annotation annotates="/">
+            <para role="desc-main">This module defines the {[[#z3998.cover]]} element for including images and content originally reproduced on the covers and jackets of publications.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3998-global-classes.rng"/>
+                <member xlink:href="z3998-datatypes.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <year>2012</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2012-12-19</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="z3998.cover" xml:id="z3998.cover">
+            <element name="cover">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="cover">The {cover} element</title>
+                    <para role="desc-main">The {cover} element represents the complete cover or jacket of a print publication.</para>
+                    <synopsis role="def-context">{[[#z3998.Section.class]]}</synopsis>
+                    <synopsis role="def-content" condition="The {cover} element must contain at least one of its {[[#z3998.spine spine]]}, {[[#z3998.frontcover frontcover]]}, {[[#z3998.backcover backcover]]} or {[[#z3998.flaps flaps]]} children.">{[[#z3998.spine]]?, [[#z3998.frontcover]]?, [[#z3998.backcover]]?, [[#z3998.flaps]]?}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3998.Section.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3998.cover.attlist"/>
+                <ref name="z3998.cover.content"/>
+                <sch:rule context="default:cover">
+                    <sch:assert test="count(*) &gt; 0">The {cover} element must contain at least one of its allowed children.</sch:assert>
+                    <sch:report test="descendant::default:pagebreak">The {cover} element must contain descendant {pagebreak}s.</sch:report>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="z3998.cover.attlist" xml:id="z3998.cover.attlist">
+            <ref name="z3998.Section.attrib"/>
+        </define>
+        <define name="z3998.cover.content" xml:id="z3998.cover.content">
+            <optional>
+                <ref name="z3998.spine"/>
+            </optional>
+            <optional>
+                <ref name="z3998.frontcover"/>
+            </optional>
+            <optional>
+                <ref name="z3998.backcover"/>
+            </optional>
+            <optional>
+                <ref name="z3998.flaps"/>
+            </optional>
+        </define>
+    </div>
+    <div>
+        <define name="z3998.spine" xml:id="z3998.spine">
+            <element name="spine">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="spine">The {spine} element</title>
+                    <para role="desc-main">The {spine} element represents the section of the cover that overlays the bound inner side of a publication.</para>
+                    <para role="desc-sub doc-only">The spine typically contains the author/editor name(s), title and the publisher/imprint logo. Information on the spine is often truncated because of space constraints.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3998.cover]]}</synopsis>
+                    <synopsis role="def-content">{(z3998.Block.class)+ | (text | z3998.Text.class | z3998.Phrase.class)+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3998.Section.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3998.spine.attlist"/>
+                <ref name="z3998.spine.content"/>
+                <sch:rule context="default:spine">
+                    <sch:assert test="normalize-space(.) or *">The {spine} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="z3998.spine.attlist" xml:id="z3998.spine.attlist">
+            <ref name="z3998.Section.attrib"/>
+        </define>
+        <define name="z3998.spine.content" xml:id="z3998.spine.content">
+            <!-- dont ref the predefined Flow.choice.model as it contains Global.extra (w pagebreak) -->
+            <choice>
+                <oneOrMore>
+                    <choice>
+                        <ref name="z3998.Block.basic.model"/>
+                    </choice>
+                </oneOrMore>
+                <oneOrMore>
+                    <choice>
+                        <ref name="Characters.datatype"/>
+                        <ref name="z3998.Text.class"/>
+                        <ref name="z3998.Phrase.class"/>
+                    </choice>
+                </oneOrMore>
+            </choice>
+        </define>
+    </div>
+    <div>
+        <define name="z3998.frontcover" xml:id="z3998.frontcover">
+            <element name="frontcover">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="frontcover">The {frontcover} element</title>
+                    <para role="desc-main">The {frontcover} element represents all content and images contained on the inside and outside of the front cover.</para>
+                    <para role="desc-sub doc-only">The front outside cover typically contains the title and/or author information overlaid on an illustration.</para>
+                    <para role="desc-sub doc-only">The front inside cover may contain maps, additional books by the author, pricing, ISBN numbers, etc.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3998.cover]]}</synopsis>
+                    <synopsis role="def-content">{[[#z3998.Block.class]]+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3998.Section.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3998.frontcover.attlist"/>
+                <ref name="z3998.frontcover.content"/>
+            </element>
+        </define>
+        <define name="z3998.frontcover.attlist" xml:id="z3998.frontcover.attlist">
+            <ref name="z3998.Section.attrib"/>
+        </define>
+        <define name="z3998.frontcover.content" combine="interleave">
+            <ref name="z3998.covers.content"/>
+        </define>
+    </div>
+    <div>
+        <define name="z3998.covers.content" xml:id="z3998.covers.content">
+            <oneOrMore>
+                <ref name="z3998.Block.class"/>
+            </oneOrMore>
+        </define>
+    </div>
+    <div>
+        <define name="z3998.backcover" xml:id="z3998.backcover">
+            <element name="backcover">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="backcover">The {backcover} element</title>
+                    <para role="desc-main">The {backcover} element represents all content and images contained on the inside and outside of the back cover.</para>
+                    <para role="desc-sub doc-only">The back covers typically contain biographical information about contributors, quotes, and a summary or description of the publication.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3998.cover]]}</synopsis>
+                    <synopsis role="def-content">{[[#z3998.Block.class]]+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3998.Section.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3998.backcover.attlist"/>
+                <ref name="z3998.backcover.content"/>
+            </element>
+        </define>
+        <define name="z3998.backcover.attlist" combine="interleave">
+            <ref name="z3998.Section.attrib"/>
+        </define>
+        <define name="z3998.backcover.content" combine="interleave">
+            <ref name="z3998.covers.content"/>
+        </define>
+    </div>
+    <div>
+        <define name="z3998.flaps" xml:id="z3998.flaps">
+            <element name="flaps">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="flaps">The {flaps} element</title>
+                    <para role="desc-main">The {flaps} element represents all content and images contained on the front and back jacket flaps.</para>
+                    <para role="desc-sub doc-only">If the content on the flaps is continued from the front to back flap, it should be merged and treated as unbroken.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3998.cover]]}</synopsis>
+                    <synopsis role="def-content">{[[#z3998.Block.class]]+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3998.Section.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3998.flaps.attlist"/>
+                <ref name="z3998.flaps.content"/>
+            </element>
+        </define>
+        <define name="z3998.flaps.attlist" xml:id="z3998.flaps.attlist">
+            <ref name="z3998.Section.attrib"/>
+        </define>
+        <define name="z3998.flaps.content" combine="interleave">
+            <ref name="z3998.covers.content"/>
+        </define>
+    </div>
+    <div>
+        <a:documentation>cover - default content model contribution</a:documentation>
+        <a:documentation>contribute cover into the dedicated slot in the partitions module</a:documentation>
+        <define name="z3998.partitions.cover.slot" combine="choice">
+            <ref name="z3998.cover"/>
+        </define>
+    </div>
+</grammar>

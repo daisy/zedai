@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"
+         ns="http://www.w3.org/2001/10/synthesis">
+
+  <x:h1>SSML sub element module</x:h1>
+    
+  <div>
+    <x:h2>The sub element</x:h2>
+    <x:div id="ssml.sub">
+      <x:p class="description">
+        The <x:code>sub</x:code> element is employed to indicate that the 
+        text in the <x:code>alias</x:code> attribute value replaces the 
+        contained text for pronunciation.
+        <x:br/>
+        Consult <x:a href="http://www.w3.org/TR/speech-synthesis11/#S3.1.11"
+        >Speech Synthesis Markup Language (SSML) Version 1.1</x:a> 
+        for further information.         
+      </x:p>
+    </x:div>
+         
+    <define name="ssml.sub">
+      <element name="sub">        
+        <ref name="ssml.sub.attlist"/>
+        <ref name="ssml.sub.content"/>
+      </element>    
+    </define>
+
+    <define name="ssml.sub.attlist" combine="interleave">      
+      <ref name="ssml.alias.attrib"/>      
+      <!-- Since the ssml-sub-attrib module contributes ph
+       and alphabet, we cant reference z3986.Text.attrib  -->
+      <ref name="z3986.Core.attrib"/>
+      <ref name="z3986.I18n.attrib"/>
+    </define>
+    
+    <define name="ssml.alias.attrib">
+      <attribute name="alias"/>
+    </define>
+
+    <define name="ssml.sub.content">
+      <text/>
+    </define>
+    
+  </div>  
+  
+  <div>
+    <x:h2>The sub element - default content model contribution</x:h2>
+    
+    <define name="z3986.Text.class" combine="choice">
+      <ref name="ssml.sub"/>
+    </define>
+        
+  </div>
+
+</grammar>

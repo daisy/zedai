@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>SSML phoneme attributes module</x:h1>
+    
+  <div>
+    <x:h2>The ph attribute</x:h2>
+    <x:div id="ssml.ph">
+        The SSML ph attribute provides a phonemic and phonetic notation for the contained text.
+        <x:br/>
+        Consult <x:a href="http://www.w3.org/TR/speech-synthesis11/#S3.1.10"
+        >Speech Synthesis Markup Language (SSML) Version 1.1</x:a> 
+        for further information.         
+    </x:div>
+    
+    <define name="ssml.ph.ns.attrib" >
+      <attribute name="ph" ns="http://www.w3.org/2001/10/synthesis"/>
+    </define>
+         
+    <x:h2>The alphabet attribute</x:h2>
+    <x:div id="ssml.alphabet">
+        The SSML alphabet attribute specifies the phonemic/phonetic pronunciation alphabet to
+        use when rendering the value of the <x:code>ph</x:code> attribute. If the alphabet attribute
+        is not specified, the value <x:code>ipa</x:code> is assumed.
+        <x:br/>
+        Consult <x:a href="http://www.w3.org/TR/speech-synthesis11/#S3.1.10"
+        >Speech Synthesis Markup Language (SSML) Version 1.1</x:a> 
+        for further information.
+    </x:div>
+    
+    <define name="ssml.alphabet.ns.attrib">
+      <attribute name="alphabet" ns="http://www.w3.org/2001/10/synthesis">
+        <choice>
+          <value>ipa</value>
+          <text/>
+        </choice>
+      </attribute>
+    </define>
+        
+  </div>  
+  
+  <div>
+    <x:h2>The phoneme attributes - initial class declaration</x:h2>
+    
+    <define name="ssml.Phoneme.attrib" combine="interleave">
+      <optional>
+        <ref name="ssml.ph.ns.attrib"/>
+        <optional>
+          <ref name="ssml.alphabet.ns.attrib"/>
+        </optional>
+      </optional>
+    </define>
+    
+  </div>  
+  
+  <div>
+    <x:h2>The phoneme attributes - default content model contribution</x:h2>
+    
+    <define name="z3986.Text.contrib.attrib" combine="interleave">
+      <ref name="ssml.Phoneme.attrib"/>
+    </define>
+    
+    <define name="z3986.Flow.contrib.attrib" combine="interleave">
+      <ref name="ssml.Phoneme.attrib"/>
+    </define>
+ 
+    <define name="z3986.list.item.prefix.attlist" combine="interleave">
+      <ref name="ssml.Phoneme.attrib"/>
+    </define> 
+        
+  </div>
+
+</grammar>

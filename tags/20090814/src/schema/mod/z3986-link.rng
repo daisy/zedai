@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 link element module</x:h1>
+
+  <div>
+    <x:h2>The link element (head context)</x:h2>
+    <x:div id="z3986.link">
+      <x:p class="description">
+        The link element is used to establish relationships between 
+        the current document and external resources.
+        <!--<x:br/>
+        The Z39.86 <x:code>link</x:code> element inherits all fundamental 
+        properties of the XHTML <x:code>link</x:code> element.-->
+      </x:p>
+    </x:div>
+    
+    <define name="z3986.link.head">
+      <element name="link">
+        <ref name="z3986.link.head.attlist"/>
+        <ref name="z3986.link.head.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.link.head.attlist">
+      <choice>
+        <ref name="z3986.link.rel.attrib"/>
+        <ref name="z3986.link.rev.attrib"/>
+        <group>
+          <ref name="z3986.link.rel.attrib"/>
+          <ref name="z3986.link.rev.attrib"/>
+        </group>
+      </choice>
+      <ref name="z3986.href.attrib"/>
+      <optional>
+        <ref name="xml.id.attrib"/>
+      </optional>      
+    </define>
+    
+    <define name="z3986.link.head.content">
+      <choice>
+        <empty/>
+        <oneOrMore>
+          <ref name="z3986.link.head"/>
+        </oneOrMore>
+      </choice>
+    </define>
+    
+    <define name="z3986.link.rel.attrib">
+      <attribute name="rel">
+         <ref name="z3986.link.rel.attrib.content.class"/>
+      </attribute>
+    </define>
+    
+    <define name="z3986.link.rev.attrib">
+      <attribute name="rev">
+        <ref name="z3986.link.rev.attrib.content.class"/>
+      </attribute>    
+    </define>
+    
+    <define name="z3986.link.rel.attrib.content.class" combine="choice">
+      <choice>
+        <ref name="CURIEs.datatype"/>
+      </choice>
+    </define>
+
+    <define name="z3986.link.rev.attrib.content.class" combine="choice">
+      <choice>
+        <ref name="CURIEs.datatype"/>
+      </choice>    
+    </define>
+
+  </div>
+
+  <div>
+    <x:h2>The link element - default content model contribution</x:h2>
+    
+    <define name="z3986.head.class" combine="choice">
+      <ref name="z3986.link.head"/>
+    </define>
+
+  </div>  
+
+</grammar>

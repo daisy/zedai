@@ -1,0 +1,1179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      prefix="rd: http://www.daisy.org/z3998/2012/vocab/resourcedirectory/# dcterms: http://purl.org/dc/terms/"
+      lang="en-US"
+      xml:lang="en-US">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <title>Resource Directory for the Z39.98-2012 Authoring and Interchange Content Selection Feature, version 1.0</title>
+        <link rel="stylesheet" type="text/css" href="../../../../z3998-2012.css"/>
+    </head>
+    <body>
+        <h1 property="dcterms:title">
+            <span class="titlesub">Resource directory for the Z39.98-2012 Authoring and Interchange </span>
+            <br/>Content Selection Feature
+            <span class="titlesub">
+                <br/> version 1.0
+            </span>
+        </h1>
+      <h2 id="toc">Table of Contents</h2>
+      <ul>
+         <li class="first">
+            <a href="#h_introduction">Introduction</a>
+         </li>
+         <li class="first">
+            <a href="#h_normativereferences">Normative References</a>
+            <ul>
+               <li>
+                  <a href="#h_versioninformation">Version information</a>
+               </li>
+               <li>
+                  <a href="#h_identification">Identification</a>
+               </li>
+               <li>
+                  <a href="#h_specificationcompliance">Specification compliance</a>
+               </li>
+               <li>
+                  <a href="#h_normativeschemata">Normative schemata</a>
+               </li>
+               <li>
+                  <a href="#h_availablecomponents">Available components</a>
+               </li>
+               <li>
+                  <a href="#h_definitionofterms">Definition of terms</a>
+               </li>
+               <li>
+                  <a href="#h_generaldocumentmodelrequirements">General document model requirements</a>
+               </li>
+               <li>
+                  <a href="#h_declarationoffunctionsetprefix-urimappings">Declaration of function set prefix-URI mappings</a>
+               </li>
+               <li>
+                  <a href="#h_ebnfdefinitionoftheconditionalexpression">EBNF Definition of the Conditional Expression</a>
+               </li>
+               <li>
+                  <a href="#h_predefinedfunctionsets">Predefined Function Sets</a>
+               </li>
+               <li>
+                  <a href="#h_processingagentbehaviorrequirements">Processing agent behavior requirements</a>
+                  <ul>
+                     <li>
+                        <a href="#pa-reqs-supported">Feature supported</a>
+                     </li>
+                     <li>
+                        <a href="#pa-reqs-recognized">Feature recognized</a>
+                     </li>
+                     <li>
+                        <a href="#pa-reqs-notrecognized">Feature not recognized</a>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <a href="#h_featurecomponentdefinitions">Feature component definitions</a>
+                  <ul>
+                     <li>
+                        <a href="#h_thecontentselectionfeature">The Content Selection Feature</a>
+                        <ul>
+                           <li>
+                              <a href="#h_theselectelement(phrase)">The select element (Phrase)</a>
+                           </li>
+                           <li>
+                              <a href="#h_theselectelement(block)">The select element (Block)</a>
+                           </li>
+                           <li>
+                              <a href="#h_thewhenelement(phrase)">The when element (Phrase)</a>
+                           </li>
+                           <li>
+                              <a href="#h_thewhenelement(block)">The when element (Block)</a>
+                           </li>
+                           <li>
+                              <a href="#h_theotherwiseelement(phrase)">The otherwise element (Phrase)</a>
+                           </li>
+                           <li>
+                              <a href="#h_theotherwiseelement(block)">The otherwise element (Block)</a>
+                           </li>
+                           <li>
+                              <a href="#h_theexprattribute">The expr attribute</a>
+                           </li>
+                           <li>
+                              <a href="#h_theselidattribute">The selid attribute</a>
+                           </li>
+                           <li>
+                              <a href="#h_thecontentselectionfeature-implementations">The Content Selection Feature - Implementations</a>
+                           </li>
+                        </ul>
+                     </li>
+                  </ul>
+               </li>
+            </ul>
+         </li>
+         <li class="first">
+            <a href="#h_informativereferences">Informative References</a>
+            <ul>
+               <li>
+                  <a href="#supporting-software">Supporting software</a>
+               </li>
+            </ul>
+         </li>
+         <li class="first">
+            <a href="#h_appendix1listingofmodulesinthenormativeschema">Appendix 1: Listing of modules in the normative schema</a>
+         </li>
+      </ul>
+        <div id="introduction">
+            <h2 id="h_introduction">Introduction</h2>
+            <p xmlns:xi="http://www.w3.org/2001/XInclude"> The 
+                <code>Content Selection</code> feature provides a mechanism with which publishers can define alternate renditions of content fragments, and a mechanism for defining conditional expressions that allows runtime selection of these renditions. 
+            </p>
+            <p xmlns:xi="http://www.w3.org/2001/XInclude"> One core use-case for this feature is to 
+                <strong>vary the information set of output documents</strong>, based on criteria such as 
+                <em>output content type</em>, or 
+                <em>target consumer group</em>. As examples, 
+            </p>
+            <ul xmlns:xi="http://www.w3.org/2001/XInclude">
+                <li> specific variations of portions of the document can be associated exclusively with the Braille or e-text content types; </li>
+                <li> "simplified" versions of complex passages can be provided to meet the needs of persons with cognitive disabilities. </li>
+            </ul>
+            <p xmlns:xi="http://www.w3.org/2001/XInclude"> In the Z39.98 Authoring and Interchange context, this feature may also be used to provide 
+                <em>
+                    <a href="../../">feature</a> fallbacks 
+                </em>. While a publisher would normally be in a situation where the feature support in used processing agents is known, this is not always the case, especially in a content interchange scenario. Not knowing whether a processing chain has full support for a certain feature, a publisher may choose to use the 
+                <code>Content Selection</code> feature to provide a fallback for that feature. 
+            </p>
+            <p xmlns:xi="http://www.w3.org/2001/XInclude"> The 
+                <code>Content Selection</code> feature employs a conditional switch mechanism, represented by 1-n 
+                <code>when</code> elements appearing as children to the parent 
+                <code>select</code> element. There is an always-present default choice within the switch, represented by the 
+                <code>otherwise</code> element. 
+            </p>
+            <p id="maintenance-agency"> This feature is maintained by the 
+                <a href="http://www.daisy.org/z3998/advisory/" rel="rd:maintenance-agency">ANSI/NISO Z39.98 advisory committee</a> under the auspices of 
+                <a href="http://niso.org/">NISO</a>. 
+            </p>
+        </div>
+        <div id="normative-references">
+            <h2 id="h_normativereferences">Normative References</h2>
+            <p class="RFC2119">The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this section are to be interpreted as described in 
+                <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC2119</a>.
+            </p>
+            <div class="rd-section">
+                <h3 id="h_versioninformation">Version information</h3>
+                <p>This resource directory represents version 
+                    <code property="rd:version">1.0</code> of the Content Selection feature:
+                </p>
+                <ul>
+                    <li>refer to the 
+                        <a href="z3998-select-history.html">Version history</a> for the list of changes introduced in this release. 
+                    </li>
+                    <li id="version-listing"> refer to the 
+                        <a href="../index.html">Version index</a> for the list of all public releases of this feature. 
+                    </li>
+                </ul>
+                <p id="current-version"> This release may not be the most recently published (current) version of the Content Selection feature. The current version should always be obtained from the static URI: 
+                    <a href="../current/" rel="rd:current-version-uri">http://www.daisy.org/z3998/2012/auth/features/select/current/</a>
+                </p>
+            </div>
+            <div class="rd-section">
+                <h3 id="h_identification">Identification</h3>
+                <p>This feature must be identified as 
+                    <code property="rd:z3998-instance-name">select</code> in Z39.98-AI document feature declarations.
+                </p>
+                <p id="identity-uri"> The canonical identity URI is: 
+                    <code rel="rd:token-identifier">http://www.daisy.org/z3998/2012/auth/features/select/1.0/ </code>
+                </p>
+            </div>
+            <div class="rd-section">
+                <h3 id="h_specificationcompliance">Specification compliance</h3>
+                <p id="spec-ref"> This version of the feature is compliant with the 
+                    <a href="../../../../z3998-2012.html" rel="rd:specification-compliance">Z39.98-2012 Specification</a>. 
+                </p>
+            </div>
+            <div class="rd-section" property="rd:normative-schemata">
+                <h3 id="h_normativeschemata">Normative schemata</h3>
+                <p about="mod/z3998-feature-select.rng"> The normative 
+                    <span property="rd:schema-type" content="rng">RelaxNG</span> schema for version 
+                    <code property="rd:version">1.0</code> of the Content Selection feature is 
+                    <a href="mod/z3998-feature-select.rng">z3998-feature-select.rng</a>. 
+                </p>
+                <p>Note - this feature schema does not represent an entire document model; it is intended for inclusion in host profiles.</p>
+            </div>
+            <div id="markup-components">
+                <h3 id="h_availablecomponents">Available components</h3>
+                <p>This feature makes the following 
+                    <a href="http://www.daisy.org/z3998/2012/z3998-2012.html#featureConformance">components</a> available for inclusion in host profiles:
+                </p>
+                <ul xmlns:xi="http://www.w3.org/2001/XInclude">
+                    <li>
+                        <code>
+                            <a href="#z3998.select.phrase">sel:select</a>
+                        </code> (Phrase variant) 
+                    </li>
+                    <li>
+                        <code>
+                            <a href="#z3998.select.block">sel:select</a>
+                        </code> (Block variant) 
+                    </li>
+                    <li>
+                        <code>
+                            <a href="#z3998.select.selid.attrib">sel:selid</a>
+                        </code>
+                    </li>
+                </ul>
+            </div>
+            <div xmlns:xi="http://www.w3.org/2001/XInclude" class="rd-section">
+                <h3 id="h_definitionofterms">Definition of terms</h3>
+                <dl>
+                    <dt id="contentfragment">Content fragment</dt>
+                    <dd>
+                        <p> For the purposes of this feature, a content segment is an 
+                            <code>XML</code> fragment, appearing within a 
+                            <code>when</code> or 
+                            <code>otherwise</code> element. When a processing agent 
+                            <a href="#pa-reqs-supported">evaluates</a> a parent 
+                            <code>select</code> element, the result is that 
+                            <em>one</em> of the descendant content segments is selected for inclusion in the resulting document. (See further in 
+                            <a href="#pa-reqs">processing agent Behavior Requirements</a> below.) 
+                        </p>
+                        <p> Note that the 
+                            <code>when</code> and 
+                            <code>otherwise</code> elements are allowed to be empty, i.e. provide content fragments that when selected contribute nothing to the resulting document. 
+                        </p>
+                    </dd>
+                    <dt id="conditionalexpression">Conditional expression</dt>
+                    <dd>
+                        <p> An expression used at runtime to test whether a content fragment should be selected or not. The expression appears as the value of the 
+                            <a href="#z3998.expr.attrib">
+                                <code>expr</code>
+                            </a> attribute on the 
+                            <a href="#z3998.when.block">
+                                <code>when</code>
+                            </a> element. 
+                        </p>
+                        <p> A conditional expression is syntactically a combination of one or more 
+                            <a href="#function">functions</a>, and zero or more 
+                            <a href="#operators">operators</a>. The result of the evaluation of a conditional expression must always be a boolean. 
+                        </p>
+                        <p> The syntax of a conditional expression is normatively defined in 
+                            <a href="#ce-ebnf">EBNF Definition of the Conditional Expression</a>. 
+                        </p>
+                    </dd>
+                    <dt id="function">Function</dt>
+                    <dd>
+                        <p> A function is the core component of a conditional expression. The return value of a function must always be boolean. A function can take zero or more arguments. </p>
+                        <p> A function 
+                            <em>must not</em> take another function as an argument, with the exception of the 
+                            <code>not()</code> function, which 
+                            <em>always</em> takes another function as its argument. 
+                        </p>
+                        <p> The literal reference to a function always uses a prefix. This prefix defines which 
+                            <a href="#functionset">function set</a> the function belongs to. 
+                            <!-- <span class="ednote">TODO Note - the prefix declaration mechanism for function sets is subject to change, since a simplification of the prefix declaration mechanism for CURIEs is currently being investigated within RDFa 1.1 See <a href="http://code.google.com/p/zednext/issues/detail?id=107" >Issue 107</a>.</span> -->
+                        </p>
+                        <p>The method with which function arguments are bound to system variables at runtime is application specific.</p>
+                    </dd>
+                    <dt id="operators">Logical Operators</dt>
+                    <dd>
+                        <p> The operators 
+                            <code>and</code> and 
+                            <code>or</code> are used when referencing more than one function in a conditional expression. These operators have the following meaning: 
+                        </p>
+                        <dl>
+                            <dt id="operator_and">
+                                <code>and</code>: 
+                            </dt>
+                            <dd>
+                                <p> the return value of a conditional expression is true if, and only if, 
+                                    <em>all functions</em> in the expression evaluate to true. 
+                                </p>
+                            </dd>
+                            <dt id="operator_or">
+                                <code>or</code>: 
+                            </dt>
+                            <dd>
+                                <p> the return value of a conditional expression is true if, and only if, at least 
+                                    <em>one of the functions</em> in the expression evaluates to true. 
+                                </p>
+                            </dd>
+                        </dl>
+                        <p> The 
+                            <code>and</code> and 
+                            <code>or</code> operators must not occur simultaneously in the same conditional expression. There is no limitation on the number of functions to be connected through logical operators. 
+                        </p>
+                        <p> This feature also defines the function 
+                            <code>not()</code>, with one, and only one, argument, which must be another function. The purpose of this function is to return the value false if the argument function evaluates to true, and vice versa. Note that, contrary to all other functions, the 
+                            <code>not()</code> function must not be prefixed. 
+                        </p>
+                    </dd>
+                    <dt id="functionset">Function Set</dt>
+                    <dd>
+                        <p> A Function Set is a collection of 1-n functions. The set is defined by a canonical URI, where human-readable prose is available defining the name and nature of each function included in the set. </p>
+                        <p> When a function is used in a conditional expression, is uses a 
+                            <a href="#prefix-decl">name prefix</a> as a token for that URI. 
+                            <!--<span class="ednote"> TODO Note - the prefix declaration mechanism for functions is subject to change, since a simplification of the prefix declaration mechanism for CURIEs is currently being investigated within RDFa 1.1 See <a href="http://code.google.com/p/zednext/issues/detail?id=107" >Issue 107</a>.</span>-->
+                        </p>
+                        <p> The Content Selection feature provides a set of 
+                            <a href="#predef-functionsets">predefined function sets</a>. 
+                            <!--<a href="#additional-functionsets">Additional function sets may be defined.</a>-->
+                        </p>
+                    </dd>
+                </dl>
+            </div>
+            <div xmlns:xi="http://www.w3.org/2001/XInclude" class="rd-section">
+                <h3 id="h_generaldocumentmodelrequirements">General document model requirements</h3>
+                <p id="feature-ns">The namespace of all members of the Content Selection feature element set is 
+                    <code>http://www.daisy.org/ns/z3998/authoring/features/select/</code>. 
+                </p>
+                <p>The 
+                    <code>otherwise</code> element must not contain descendants in the 
+                    <code>http://www.daisy.org/ns/z3998/authoring/features/select/</code> namespace. 
+                </p>
+            </div>
+            <div xmlns:xi="http://www.w3.org/2001/XInclude" class="rd-section" id="prefix-decl">
+                <h3 id="h_declarationoffunctionsetprefix-urimappings">Declaration of function set prefix-URI mappings</h3>
+                <!--<p class="ednote">TODO Note - the prefix declaration mechanism for function sets is subject to change, since a simplification of the prefix declaration mechanism for CURIEs is currently being investigated within RDFa 1.1 See <a href="http://code.google.com/p/zednext/issues/detail?id=107" >Issue 107</a>.</p>-->
+                <p> The prefix of each function set that is used in a document instance must be declared in the document instance head using 
+                    <code>meta</code> elements with the 
+                    <code>prefix</code> property of the 
+                    <a href="../../../../vocab/resourcedirectory/">Resource Directory Vocabulary</a>. 
+                </p>
+                <p> The declared prefix must resolve to a URI which must contain a human-readable document where the processing behavior of included functions are defined. This URI serves as the canonical identifier of the function set. </p>
+                <p> In the example below, a 
+                    <code>target</code> prefix is bound to the URI 
+                    <code>http://www.daisy.org/z3998/2012/auth/features/select/functionSets/#targetFunctionSet</code>: 
+                </p>
+                <pre xml:space="preserve">
+&lt;head xmlns:res="http://www.daisy.org/z3998/2012/vocab/resourcedirectory/#"&gt;
+  &lt;meta about="http://www.daisy.org/z3998/2012/auth/features/select/functionSets/#targetFunctionSet" 
+    property="res:prefix" content="target" /&gt;
+&lt;/head&gt;
+      </pre>
+                <p> Function set prefixes, such as 
+                    <code>target</code> in the example above, are static throughout the document scope; they must not be redeclared locally. 
+                </p>
+                <p> Several prefixes for the same function set URI must not be declared within the document scope. </p>
+                <p> With the exception of the 
+                    <code>not()</code> function, which is unique in that it takes no prefix, all functions in Conditional Expressions must be literally referenced using prefixes, and these prefixes must be bound to a URI using the mechanism defined above. 
+                </p>
+            </div>
+            <div xmlns:xi="http://www.w3.org/2001/XInclude" class="rd-section" id="ce-ebnf">
+                <h3 id="h_ebnfdefinitionoftheconditionalexpression">EBNF Definition of the Conditional Expression</h3>
+                <pre xml:space="preserve">
+Conditional Expression := function, (operator, function)*
+function := ('not','(' .*')') | (qname, ('()' | '(' .*')'))
+operator := 'and' | 'or'
+qname := prefix ':' localname
+prefix := ncname
+localname := ncname
+ncname := [A-Za-z][A-Za-z0-9_]*
+      </pre>
+            </div>
+            <div xmlns:xi="http://www.w3.org/2001/XInclude" class="rd-section"
+              id="predef-functionsets">
+                <h3 id="h_predefinedfunctionsets">Predefined Function Sets</h3>
+                <p>
+                    <a href="../functionSets/">A set of predefined Function Sets are available</a>. 
+                    <!--These Function Sets do not differ behaviorally from <a href="#additional-functionsets">externally defined function sets</a> in terms of <a href="#pa-reqs">processing requirements</a>.-->
+                </p>
+            </div>
+            <div class="rd-section" id="pa-reqs">
+                <h3 id="h_processingagentbehaviorrequirements">Processing agent behavior requirements</h3>
+                <p>This section defines processing agent behaviors that extend the default behaviors defined in 
+                    <a href="http://www.daisy.org/z3998/2012/z3998-2012.html#processingAgentConformance">Processing agent conformance definition</a>.
+                </p>
+                <div xmlns:xi="http://www.w3.org/2001/XInclude" class="rd-section">
+                    <h4 id="pa-reqs-supported">Feature supported</h4>
+                    <p>If a processing agent 
+                        <em>supports</em> this feature, it must comply to the following: 
+                    </p>
+                    <dl>
+                        <dt>Processing of the 
+                            <code>select</code> element 
+                        </dt>
+                        <dd>
+                            <p> While traversing the document tree, each encountered 
+                                <code>select</code> element is replaced by the content of exactly one of its 
+                                <code>when</code> or 
+                                <code>otherwise</code> element descendants. 
+                            </p>
+                            <p> The process of selecting a 
+                                <code>when</code> or 
+                                <code>otherwise</code> element descendant is as follows: 
+                            </p>
+                            <ol>
+                                <li>
+                                    <p>For each encountered 
+                                        <code>select</code> element in the given XML (sub)tree, evaluate the conditional expressions of each 
+                                        <code>when</code> child, starting with the first 
+                                        <code>when</code> child in document order: 
+                                    </p>
+                                    <ul>
+                                        <li> If the given conditional expression uses a function from an unrecognized or unsupported function set, or if it contains an unrecognized parameter, continue processing the next sibling in document order (which is a 
+                                            <code>when</code> or 
+                                            <code>otherwise</code> element). 
+                                            <em> Processing agents must issue a warning when encountering unrecognized or unsupported functions or parameters. </em>
+                                        </li>
+                                        <li> If the evaluation of the conditional expression on the current 
+                                            <code>when</code> element results in 
+                                            <code>true</code>, select the content of the current 
+                                            <code>when</code> element. If the selected content contains 
+                                            <code>select</code> element descendants, apply these steps on the selected content recursively, then return. 
+                                        </li>
+                                        <li> If the evaluation of the conditional expression on the current 
+                                            <code>when</code> element results in 
+                                            <code>false</code>, continue processing the next sibling in document order (which is a 
+                                            <code>when</code> or 
+                                            <code>otherwise</code> element). 
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li> If none of the 
+                                    <code>when</code> element conditional expressions evaluate to true, select the content of the 
+                                    <code>otherwise</code> child, and return. 
+                                </li>
+                            </ol>
+                        </dd>
+                        <!-- <dt>Processing of conditional expressions</dt> <dd> <p class="ednote">TODO PerS</p> </dd>-->
+                    </dl>
+                </div>
+                <div xmlns:xi="http://www.w3.org/2001/XInclude" class="rd-section">
+                    <h4 id="pa-reqs-recognized">Feature recognized</h4>
+                    <p> If a processing agent 
+                        <em>recognizes but does not support</em> this feature, it must employ one of the following behaviors: 
+                    </p>
+                    <dl>
+                        <dt id="pa-reqs-recognized-abort">Abort</dt>
+                        <dd>
+                            <p>Upon encountering a document instance with this feature enabled, the processing agent issues a notification, and then aborts the processing.</p>
+                        </dd>
+                        <dt id="pa-reqs-recognized-fallback">Fallback</dt>
+                        <dd>
+                            <p> While traversing the document tree, the processing agent selects the content of the 
+                                <code>otherwise</code> child element of each encountered 
+                                <code>select</code> element. The resulting document is identical to a processing pass in 
+                                <a href="#pa-reqs-supported">Feature supported</a> mode where zero 
+                                <code>when</code> element conditional expressions evaluate to true. 
+                            </p>
+                        </dd>
+                    </dl>
+                    <p> The 
+                        <code>abort</code> behavior is the default; the 
+                        <code>fallback</code> behavior must only be employed when the processing agent is explicitly instructed to do so by the client. 
+                        <br/> Processing agents that employ the 
+                        <code>fallback</code> behavior should issue a notification. 
+                    </p>
+                </div>
+                <div class="rd-section">
+                    <h4 id="pa-reqs-notrecognized">Feature not recognized</h4>
+                    <p>If a processing agent 
+                        <em>does not recognize</em> this feature, it must, as dictated in 
+                        <a href="http://www.daisy.org/z3998/2012/z3998-2012.html#processingAgentConformance">Processing agent conformance definition</a>, abort processing and issue an error message.
+                    </p>
+                </div>
+            </div>
+            <h3 id="h_featurecomponentdefinitions">Feature component definitions</h3>
+            <p>The component definitions provided below follow the conventions used in 
+                <a href="../../../cm/">Core Modules</a>.
+            </p>
+            <div xmlns:xi="http://www.w3.org/2001/XInclude" class="rd-section" id="absdef">
+                <div id="z3998.feature-select.module" class="module">
+                    <h4 id="h_thecontentselectionfeature">The Content Selection Feature</h4>
+                    <p class="desc-main">Provides a mechanism for defining alternate renditions of content fragments, and a mechanism for defining conditional expressions that allow runtime selection of these renditions.</p>
+                    <p class="desc-sub">Two variants of the 
+                        <code>select</code> element are available: one for use in a 
+                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Block.class">Block</a> context and a second for use in a 
+                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase</a> context.
+                    </p>
+                    <table id="z3998.feature-select.module-elem-overview" class="overview">
+                        <caption>The Content Selection Feature: Element overview</caption>
+                        <tr>
+                            <th>Name</th>
+                            <th>Default attribute model</th>
+                            <th>Default content model</th>
+                            <th>Default usage context</th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#z3998.select.phrase">select</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#xml.id.attrib">xml:id</a>?,
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#xml.base.attrib">xml:base</a>?
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="#z3998.when.phrase">sel:when</a>+, 
+                                    <a href="#z3998.otherwise.phrase">sel:otherwise</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#z3998.select.block">select</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#xml.id.attrib">xml:id</a>?,
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#xml.base.attrib">xml:base</a>?
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="#z3998.when.block">sel:when</a>+, 
+                                    <a href="#z3998.otherwise.block">sel:otherwise</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Block.class">Block.class</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#z3998.when.phrase">when</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#xml.id.attrib">xml:id</a>?, 
+                                    <a href="#z3998.expr.attrib">expr</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>(text | 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a> | 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>)+
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="#z3998.select.phrase">sel:select</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#z3998.when.block">when</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#xml.id.attrib">xml:id</a>?, 
+                                    <a href="#z3998.expr.attrib">expr</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Block.class">Block.class</a>+
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="#z3998.select.block">sel:select</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#z3998.otherwise.phrase">otherwise</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#xml.id.attrib">xml:id</a>?
+                                </code>
+                            </td>
+                            <td>
+                                <code>(text | 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a> | 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>)+
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="#z3998.select.phrase">sel:select</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#z3998.otherwise.block">otherwise</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#xml.id.attrib">xml:id</a>?
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Block.class">Block.class</a>+
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="#z3998.select.block">sel:select</a>
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="z3998.feature-select.module-attr-overview" class="overview">
+                        <caption>The Content Selection Feature: Attribute overview</caption>
+                        <tr>
+                            <th>Name</th>
+                            <th>Default values</th>
+                            <th>Default usage context</th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#z3998.expr.attrib">expr</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="#z3998.select.ConditionalExpression.datatype">ConditionalExpression</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="#z3998.when.block">sel:when</a>
+                                </code> and 
+                                <code>
+                                    <a href="#z3998.when.phrase">sel:when</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#z3998.select.selid.attrib">selid</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#NCName.datatype">NCName</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>global attribute</code>
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="z3998.feature-select.module-define-overview" class="overview">
+                        <caption>The Content Selection Feature - Patterns</caption>
+                        <tr>
+                            <th>Name</th>
+                            <th>Definition</th>
+                            <th>Content</th>
+                        </tr>
+                        <tr id="z3998.select.ConditionalExpression.datatype">
+                            <th>
+                                <code>ConditionalExpression</code>
+                            </th>
+                            <td colspan="2">A conditional expression, as defined in 
+                                <a href="http://www.daisy.org/z3998/2012/auth/features/select/current/#conditionalexpression">Conditional Expression</a>
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="z3998.select.phrase" class="details">
+                        <h5 id="h_theselectelement(phrase)">The select element (Phrase)</h5>
+                        <p class="desc-main">Container for content selection declarations in a Phrase context.</p>
+                        <table id="z3998.select.phrasedetails-table" class="details">
+                            <caption>The select element (Phrase)</caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>select</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>
+                                    <code>http://www.daisy.org/ns/z3998/authoring/features/select/</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default attribute model</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#xml.id.attrib">xml:id</a>?,
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#xml.base.attrib">xml:base</a>?
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Content model</th>
+                                <td>
+                                    <code>
+                                        <a href="#z3998.when.phrase">sel:when</a>+, 
+                                        <a href="#z3998.otherwise.phrase">sel:otherwise</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr class="alterability">
+                                <th>Content model alterability</th>
+                                <td>This content model is fixed, and must not be altered when activating this module.</td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This element must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="z3998.select.block" class="details">
+                        <h5 id="h_theselectelement(block)">The select element (Block)</h5>
+                        <p class="desc-main">Container for content selection declarations in a Block context.</p>
+                        <table id="z3998.select.blockdetails-table" class="details">
+                            <caption>The select element (Block)</caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>select</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>
+                                    <code>http://www.daisy.org/ns/z3998/authoring/features/select/</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Block.class">Block.class</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default attribute model</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#xml.id.attrib">xml:id</a>?,
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#xml.base.attrib">xml:base</a>?
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Content model</th>
+                                <td>
+                                    <code>
+                                        <a href="#z3998.when.block">sel:when</a>+, 
+                                        <a href="#z3998.otherwise.block">sel:otherwise</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr class="alterability">
+                                <th>Content model alterability</th>
+                                <td>This content model is fixed, and must not be altered when activating this module.</td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This element must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="z3998.when.phrase" class="details">
+                        <h5 id="h_thewhenelement(phrase)">The when element (Phrase)</h5>
+                        <p class="desc-main">Container for a content fragment, associated with a selection condition.</p>
+                        <table id="z3998.when.phrasedetails-table" class="details">
+                            <caption>The when element (Phrase)</caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>when</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>
+                                    <code>http://www.daisy.org/ns/z3998/authoring/features/select/</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="#z3998.select.phrase">sel:select</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr class="alterability">
+                                <th>Usage context alterability</th>
+                                <td>This usage context is fixed, and must not be altered when activating this module.</td>
+                            </tr>
+                            <tr>
+                                <th>Default attribute model</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#xml.id.attrib">xml:id</a>?, 
+                                        <a href="#z3998.expr.attrib">expr</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default content model</th>
+                                <td>
+                                    <code>(text | 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a> | 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>)+
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This element must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="z3998.when.block" class="details">
+                        <h5 id="h_thewhenelement(block)">The when element (Block)</h5>
+                        <p class="desc-main">Container for a content fragment, associated with a selection condition.</p>
+                        <table id="z3998.when.blockdetails-table" class="details">
+                            <caption>The when element (Block)</caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>when</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>
+                                    <code>http://www.daisy.org/ns/z3998/authoring/features/select/</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="#z3998.select.block">sel:select</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr class="alterability">
+                                <th>Usage context alterability</th>
+                                <td>This usage context is fixed, and must not be altered when activating this module.</td>
+                            </tr>
+                            <tr>
+                                <th>Default attribute model</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#xml.id.attrib">xml:id</a>?, 
+                                        <a href="#z3998.expr.attrib">expr</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default content model</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Block.class">Block.class</a>+
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This element must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="z3998.otherwise.phrase" class="details">
+                        <h5 id="h_theotherwiseelement(phrase)">The otherwise element (Phrase)</h5>
+                        <p class="desc-main">Container for a content fragment to be selected if none of the preceding 
+                            <code>
+                                <a href="#z3998.when.phrase">sel:when</a>
+                            </code> conditions evaluated to true.
+                        </p>
+                        <table id="z3998.otherwise.phrasedetails-table" class="details">
+                            <caption>The otherwise element (Phrase)</caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>otherwise</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>
+                                    <code>http://www.daisy.org/ns/z3998/authoring/features/select/</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="#z3998.select.phrase">sel:select</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr class="alterability">
+                                <th>Usage context alterability</th>
+                                <td>This usage context is fixed, and must not be altered when activating this module.</td>
+                            </tr>
+                            <tr>
+                                <th>Default attribute model</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#xml.id.attrib">xml:id</a>?
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default content model</th>
+                                <td>
+                                    <code>(text | 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a> | 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>)+
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This element must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                        <p>The following model restrictions apply to this element:</p>
+                        <ul id="z3998.otherwise.phrase-assertions" class="assertions">
+                            <li>
+                                <p>The 
+                                    <code>sel:otherwise</code> element must not have 
+                                    <code>sel:select</code> descendants.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="z3998.otherwise.block" class="details">
+                        <h5 id="h_theotherwiseelement(block)">The otherwise element (Block)</h5>
+                        <p class="desc-main">Container for a content fragment to be selected if none of the preceding 
+                            <code>
+                                <a href="#z3998.when.block">sel:when</a>
+                            </code> conditions evaluated to true.
+                        </p>
+                        <table id="z3998.otherwise.blockdetails-table" class="details">
+                            <caption>The otherwise element (Block)</caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>otherwise</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>
+                                    <code>http://www.daisy.org/ns/z3998/authoring/features/select/</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="#z3998.select.block">sel:select</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr class="alterability">
+                                <th>Usage context alterability</th>
+                                <td>This usage context is fixed, and must not be altered when activating this module.</td>
+                            </tr>
+                            <tr>
+                                <th>Default attribute model</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#xml.id.attrib">xml:id</a>?
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default content model</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Block.class">Block.class</a>+
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This element must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="z3998.expr.attrib" class="details">
+                        <h5 id="h_theexprattribute">The expr attribute</h5>
+                        <p class="desc-main">The 
+                            <code>expr</code> attribute contains a conditional expression.
+                        </p>
+                        <p class="desc-sub">Refer to the 
+                            <a href="http://www.daisy.org/z3998/2012/auth/features/select/">Content Selection Feature</a> for information on syntax and function set association.
+                        </p>
+                        <table id="z3998.expr.attribdetails-table" class="details">
+                            <caption>The expr attribute</caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>expr</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="#z3998.when.block">sel:when</a>
+                                    </code> and 
+                                    <code>
+                                        <a href="#z3998.when.phrase">sel:when</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Value(s)</th>
+                                <td>
+                                    <code>
+                                        <a href="#z3998.select.ConditionalExpression.datatype">ConditionalExpression</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr class="alterability">
+                                <th>Value alterability</th>
+                                <td>The defined value(s) or datatype(s) are fixed, and must not be altered when activating this module.</td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This attribute may be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="z3998.select.selid.attrib" class="details">
+                        <h5 id="h_theselidattribute">The selid attribute</h5>
+                        <p class="desc-main">The 
+                            <code>selid</code> attribute provides a mechanism for including ID values on elements that are repeated in more than one 
+                            <code>select</code> condition.
+                        </p>
+                        <p class="desc-sub">The 
+                            <code>selid</code> allows a single NCNAME as its value.
+                        </p>
+                        <p class="desc-sub">When processing a 
+                            <code>select</code>, all 
+                            <code>selid</code> attributes in the resulting output condition must be converted to 
+                            <code>xml:id</code> attributes.
+                        </p>
+                        <table id="z3998.select.selid.attribdetails-table" class="details">
+                            <caption>The selid attribute</caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>selid</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>
+                                    <code>http://www.daisy.org/ns/z3998/authoring/features/select/</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>global attribute</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Value(s)</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#NCName.datatype">NCName</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr class="alterability">
+                                <th>Value alterability</th>
+                                <td>The defined value(s) or datatype(s) are fixed, and must not be altered when activating this module.</td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This attribute must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="z3998.feature-select.module-impl" class="impl">
+                        <h5 id="h_thecontentselectionfeature-implementations">The Content Selection Feature - Implementations</h5>
+                        <table>
+                            <tr>
+                                <th>Schema</th>
+                                <th>Language</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="http://www.daisy.org/z3998/2012/schema/mod/z3998-feature-select.rng">z3998-feature-select.rng</a>
+                                </td>
+                                <td>
+                                    <a href="http://www.daisy.org/z3998/2012/z3998-2012.html#refRelaxNG">RelaxNG</a>
+                                </td>
+                            </tr>
+                        </table>
+                        <p>Activation of this module depends on the 
+                            <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.global-classes.module">global-classes</a> and 
+                            <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.core-attrib.module">Core</a> modules also being activated.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="informative-references">
+            <h2 id="h_informativereferences">Informative References</h2>
+            <div class="rd-section" property="rd:supporting-software">
+                <h3 id="supporting-software">Supporting software</h3>
+                <p>Refer to the 
+                    <a href="http://www.daisy.org/zw/ZedAI_UserPortal">Z39.98-AI community portal</a> for information on available software tools.
+                </p>
+            </div>
+        </div>
+        <div id="module-list">
+            <h2 id="h_appendix1listingofmodulesinthenormativeschema">Appendix 1: Listing of modules in the normative schema</h2>
+            <p> The below list represents the modules at the time of version 1.0 of this feature. </p>
+            <p class="RFC2119">The occurrence of the keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in documentation fields embedded in these modules are to be interpreted as described in 
+                <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC2119</a>.
+            </p>
+            <ul id="normative-schema-modules">
+                <li>
+                    <a href="./mod/z3998-feature-select.rng" rel="rd:schema-module">z3998-feature-select.rng</a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer">
+            <p id="docinfo"> This document is a 
+                <em>Z39.98-2012 Resource Directory</em>, compliant with 
+                <a href="http://www.w3.org/TR/rdfa-syntax/">XHTML+RDFa</a> using the 
+                <a href="../../../../vocab/resourcedirectory/">Z39.98-2012 Resource Directory Vocabulary</a>. 
+            </p>
+            <p>Document generated: 2014-10-21T08:36:27.538-04:00.</p>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>List Module</x:h1>
+  <!-- TODO list types could be broken up into individual submodules -->
+  <!-- TODO investigate generic list instead of ol ul dl -->
+  
+  <div>
+    <x:h2>The dl element</x:h2>
+	<x:div id="z3986.dl">
+         <x:p class="description">
+           The <x:code>dl</x:code> element represents a definition list.
+         </x:p>
+    </x:div>
+
+    <define name="z3986.dl">
+      <element name="dl">
+        <ref name="z3986.dl.attlist"/>
+        <ref name="z3986.dl.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.dl.attlist">
+      <ref name="z3986.Structural.attrib"/>
+    </define>
+
+    <define name="z3986.dl.content">    
+      <optional>
+        <ref name="z3986.title"/>
+      </optional>
+      <optional>
+        <ref name="z3986.caption"/>
+      </optional>
+        <oneOrMore>
+          <ref name="z3986.di"/>
+        </oneOrMore>
+    </define>   
+                
+  </div>
+
+  <div>
+    <x:h2>The di element</x:h2>
+	<x:div id="z3986.di">
+         <x:p class="description">
+           The <x:code>di</x:code> element represents one item (the term to be defined, 
+           and the definition) in a definition list.
+         </x:p>
+    </x:div>
+
+    <define name="z3986.di">
+      <element name="di">
+        <ref name="z3986.di.attlist"/>
+        <ref name="z3986.di.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.di.attlist">
+      <ref name="z3986.Structural.attrib"/>
+    </define>
+
+    <define name="z3986.di.content">      
+      <ref name="z3986.dt"/>      
+      <oneOrMore>
+        <ref name="z3986.dd"/>
+      </oneOrMore>
+    </define>    
+    
+  </div>
+
+  <div>
+    <x:h2>The dt element</x:h2>
+    <x:div id="z3986.dt">
+         <x:p class="description">
+           The <x:code>dt</x:code> element represents the term to 
+           be defined in a definition list.
+         </x:p>
+    </x:div>
+    
+    <define name="z3986.dt">
+      <element name="dt">
+        <ref name="z3986.dt.attlist"/>
+        <ref name="z3986.dt.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.dt.attlist">
+      <ref name="z3986.Text.attrib"/>
+    </define>
+
+    <define name="z3986.dt.content">
+      <ref name="z3986.Text.model"/>
+    </define>    
+
+  </div>
+
+  <div>
+    <x:h2>The dd element</x:h2>
+    <x:div id="z3986.dd">
+         <x:p class="description">
+           The <x:code>dd</x:code> element represents the
+           definition data of a term in a definition list.
+         </x:p>
+    </x:div>
+    
+    <define name="z3986.dd">
+      <element name="dd">
+        <ref name="z3986.dd.attlist"/>
+        <ref name="z3986.dd.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.dd.attlist">
+      <ref name="z3986.Flow.attrib"/>
+    </define>
+
+    <define name="z3986.dd.content">    
+      <ref name="z3986.Flow.model"/>
+    </define>  
+  </div>
+
+  <div>
+    <x:h2>The ol element</x:h2>
+    <x:div id="z3986.ol">
+         <x:p class="description">
+           The <x:code>ol</x:code> element represents an
+           unordered list.
+         </x:p>
+    </x:div>
+    
+    <define name="z3986.ol">
+      <element name="ol">
+        <ref name="z3986.ol.attlist"/>
+        <ref name="z3986.ol.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.ol.attlist">
+      <ref name="z3986.Structural.attrib"/>
+    </define>
+
+    <define name="z3986.ol.content">    
+      <optional>
+        <ref name="z3986.title"/>
+      </optional>    
+      <optional>
+        <ref name="z3986.caption"/>
+      </optional>
+      <oneOrMore>
+        <ref name="z3986.li-in-ol"/>
+      </oneOrMore>
+    </define>  
+  </div>
+
+  <div>
+    <x:h2>The ul element</x:h2>
+   <x:div id="z3986.ol">
+         <x:p class="description">
+           The <x:code>ul</x:code> element represents an
+           ordered list.
+         </x:p>
+    </x:div>
+    
+    <define name="z3986.ul">
+      <element name="ul">
+        <ref name="z3986.ul.attlist"/>
+        <ref name="z3986.ul.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.ul.attlist">
+      <ref name="z3986.Structural.attrib"/>
+    </define>
+    
+    <define name="z3986.ul.content">
+      <optional>
+        <ref name="z3986.title"/>
+      </optional>        
+      <optional>
+        <ref name="z3986.caption"/>
+      </optional>
+      <oneOrMore>
+        <ref name="z3986.li"/>
+      </oneOrMore>    
+    </define>
+  </div>
+
+  <div>
+    <x:h2>The li element</x:h2>
+   <x:div id="z3986.li">
+         <x:p class="description">
+           The <x:code>li</x:code> element represents a list item in
+           an ordered or an unordered list.
+         </x:p>
+    </x:div>
+    
+    <define name="z3986.li">
+      <element name="li">
+        <ref name="z3986.li.attlist"/>
+        <ref name="z3986.li.content"/>
+      </element>
+    </define>  
+
+    <define name="z3986.li.attlist">
+      <ref name="z3986.Flow.attrib"/>
+    </define>
+    
+    <define name="z3986.li.content">
+        <ref name="z3986.Flow.model"/>    
+    </define>
+
+    <define name="z3986.li-in-ol">
+      <element name="li">
+        <ref name="z3986.li-in-ol.attlist"/>
+        <ref name="z3986.li.content"/>
+      </element>
+    </define>  
+
+    <define name="z3986.li-in-ol.attlist">
+      <ref name="z3986.li.attlist"/>
+      <ref name="z3986.li-in-ol.value.attrib"/>
+    </define>
+
+    <define name="z3986.li-in-ol.value.attrib">
+      <optional>
+        <attribute name="value">
+          <ref name="Number.datatype"/>
+        </attribute>
+      </optional>
+    </define>
+  </div>
+
+  <div>
+    <x:h2>List module - contribution slots</x:h2>
+    
+    <define name="z3986.dl.content" combine="interleave">
+      <ref name="z3986.Lists.extra.model"/>
+    </define>
+      
+    <define name="z3986.di.content" combine="interleave">
+      <ref name="z3986.Lists.extra.model"/>
+    </define>
+        
+    <define name="z3986.ul.content" combine="interleave">
+      <ref name="z3986.Lists.extra.model"/>
+    </define>
+        
+    <define name="z3986.ol.content" combine="interleave">
+      <ref name="z3986.Lists.extra.model"/>
+    </define>
+                   
+    <!-- slot for contributing children to listitems 
+    	(eg children of dl, di, ol, and ul) -->    	    
+    <define name="z3986.Lists.extra.class" combine="choice">
+      <choice>
+    	<notAllowed/>
+      </choice> 	
+    </define>
+    
+    <define name="z3986.Lists.extra.model">
+      <zeroOrMore>        
+        <ref name="z3986.Lists.extra.class"/>        
+      </zeroOrMore>
+    </define>
+    
+  </div>
+  
+  <div>
+    <x:h2>List module - default content model contribution</x:h2>
+
+    <define name="z3986.List.class">
+     <choice>
+        <ref name="z3986.dl"/>
+        <ref name="z3986.ol"/>
+        <ref name="z3986.ul"/>
+      </choice>      
+    </define>
+
+    <define name="z3986.Structural.class">
+     <ref name="z3986.List.class"/>
+    </define>
+    
+    <define name="z3986.Flow.class" combine="choice">
+      <ref name="z3986.List.class"/>
+    </define>
+    
+    <define name="z3986.p.content.class" combine="choice">
+      <ref name="z3986.List.class"/>          
+    </define>
+    
+    <define name="z3986.covers.content.class" combine="choice">
+	  <ref name="z3986.List.class" />
+    </define>
+    
+    
+  </div>
+
+</grammar>

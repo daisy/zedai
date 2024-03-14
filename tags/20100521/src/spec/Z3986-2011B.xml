@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="../../util/docbook/rng/docbook.rng" type="xml"?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>ANSI/NISO Z39.86-2011 Part B</title>
+    <subtitle>Z39.86 Distribution Framework Specification</subtitle>
+    <info>
+        <releaseinfo>Unpublished Working Draft</releaseinfo>
+        <pubdate>6 February 2010</pubdate>
+        <annotation xml:id="editors">
+            <para>
+                <personname>Markus Gylling</personname>
+                <orgname>DAISY Consortium</orgname>
+                <email>mgylling@daisy.org</email>
+            </para>
+            <para>
+                <personname>Gregory J. Rosmaita</personname>
+                <orgname>Open Accessibility at the Linux Foundation</orgname>
+                <email>gregory@TODO.com</email>
+            </para>
+
+        </annotation>
+        <abstract>
+            <title>Abstract</title>
+            <para>
+                <remark role="todo">Abstract TODO</remark>
+            </para>
+        </abstract>
+    </info>
+
+    <chapter xml:id="relationships" conformance="informative">
+        <title>Relationships to other specifications</title>
+        <para>This standard is based on the specific versions of the standards and specifications
+            referenced herein, which are used as defined except as noted by this document. Any
+            refinement or replacement of a referenced specification by a newer or different version
+            is not directly applicable to this standard. Conformance to this standard is based on
+            the versions of the standards and specifications in effect at the time of this
+            writing.</para>
+        <section xml:id="relationshipsZ39862010B">
+            <title>Relationship to Z39.86-2011 Part A</title>
+            <remark role="todo">TODO</remark>
+        </section>
+        <section xml:id="relationshipsZ39862005">
+            <title>Relationship to Z39.86-2005</title>
+            <remark role="todo">TODO</remark>
+        </section>
+        <section xml:id="relationshipsXML">
+            <title>Relationship to XML</title>
+            <para>The document types defined by Z39.86-2011 Part A inherit all constraints defined
+                by <citation linkend="refXML">Extensible Markup Language (XML) 1.0 (Fourth
+                    Edition)</citation>.</para>
+        </section>
+
+    </chapter>
+    <chapter xml:id="definitions" conformance="informative">
+        <title>Terms and definitions</title>
+        <variablelist>
+            <varlistentry>
+                <term>Profile</term>
+                <listitem>
+                    <para>
+                        <remark role="todo">TODO</remark>
+                    </para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Feature</term>
+                <listitem>
+                    <remark role="todo">TODO</remark>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Component</term>
+                <listitem>
+                    <para>
+                        <remark role="todo">TODO</remark>
+                    </para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Component Pool</term>
+                <listitem>
+                    <para>
+                        <remark role="todo">TODO</remark>
+                    </para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>RDF vocabulary</term>
+                <listitem>
+                    <para>An ontology that provides a mechanism to annotate elements or element
+                        content with machine-extractable semantic information about their nature or
+                        purpose. RDF vocabularies are expressed in RDF.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Resource directory</term>
+                <listitem>
+                    <para>
+                        <remark role="todo">TODO reference the RD section in part A </remark>
+                    </para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Reading System</term>
+                <listitem>
+                    <para>
+                        <remark role="todo">TODO</remark>
+                    </para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </chapter>
+    
+    <xi:include href="./xinc/conformanceexpressions.xml" parse="xml" />
+
+    <chapter xml:id="conformance" conformance="normative">
+        <title>Conformance definitions</title>
+
+        <section xml:id="conformanceProfile">
+            <title>Profile conformance</title>
+            <para>A conforming profile must meet all of the following criteria:</para>
+            <orderedlist>
+                <listitem>
+                    <para>
+                        <remark role="todo">TODO</remark>
+                    </para>
+                </listitem>
+            </orderedlist>
+        </section>
+        <section xml:id="conformanceFeature">
+            <title>Feature conformance</title>
+            <para>A conforming feature must meet all of the following criteria:</para>
+            <orderedlist>
+                <listitem>
+                    <para>
+                        <remark role="todo">TODO</remark>
+                    </para>
+                </listitem>
+            </orderedlist>
+        </section>
+        <section xml:id="conformanceInstance">
+            <title>Instance conformance</title>
+            <para>An instance conforming to this specification must meet all of the following
+                criteria:</para>
+            <orderedlist>
+                <listitem>
+                    <para>
+                        <remark role="todo">TODO</remark>
+                    </para>
+                </listitem>
+            </orderedlist>
+        </section>
+    </chapter>
+
+    <chapter xml:id="componentPool">
+        <title>Component Pool</title>
+        <section xml:id="componentPoolIntro" conformance="informative">
+            <title>Introduction</title>
+            <para>
+                <remark role="todo">TODO informative, ideas behind the <link
+                        xlink:href="http://www.daisy.org/zw/ZedDist_Strawman2#The_Component_Pool_Principle"
+                        >component pool principle</link></remark>
+            </para>
+        </section>
+
+        <section xml:id="componentPoolProfileComposition" conformance="normative">
+            <title>Profile composition using the component pool</title>
+            <para><remark role="todo">TODO overaching normative for when creating a profile</remark></para>
+        </section>
+
+        <section xml:id="componentPoolFeatureComposition" conformance="normative">
+            <title>Feature composition using the component pool</title>
+            <para><remark role="todo">TODO overaching normative for when creating a feature</remark></para>
+        </section>
+
+        <section xml:id="componentsMediaTypes" conformance="normative">
+            <title>Media Type Components</title>
+            <section xml:id="componentAudio">
+                <title>The Audio Component</title>
+                <remark role="todo">TODO</remark>
+            </section>
+            <section xml:id="componentVideo">
+                <title>The Video Component</title>
+                <remark role="todo">TODO</remark>
+            </section>
+            <section xml:id="componentImage">
+                <title>The Image Component</title>
+                <remark role="todo">TODO</remark>
+            </section>
+            <section xml:id="componentDocumentText">
+                <title>The Document Text Component</title>
+                <remark role="todo">TODO</remark>
+            </section>
+            <section xml:id="componentTimedText">
+                <title>The Timed Text Component</title>
+                <remark role="todo">TODO</remark>
+            </section>
+        </section>
+
+        <section xml:id="componentsLogic" conformance="normative">
+            <title>Logic Components</title>
+            <section xml:id="componentDirector">
+                <title>The Director Component</title>
+                <remark role="todo">TODO</remark>
+            </section>
+            <section xml:id="componentPackage">
+                <title>The Package Component</title>
+                <remark role="todo">TODO</remark>
+            </section>
+            <section xml:id="componentNavigation">
+                <title>The Navigation Component</title>
+                <remark role="todo">TODO</remark>
+            </section>
+            <section xml:id="componentSemanticOverlay">
+                <title>The Semantic Overlay Component</title>
+                <remark role="todo">TODO</remark>
+            </section>
+        </section>
+        <section xml:id="componentsDistribution" conformance="normative">
+            <title>Distribution Components</title>
+            <section xml:id="componentContainer">
+                <title>The Container Component</title>
+                <remark role="todo">TODO</remark>
+            </section>
+            <section xml:id="componentSearchIndex">
+                <title>The Search Index Component</title>
+                <remark role="todo">TODO</remark>
+            </section>
+            <section xml:id="componentAnnotations">
+                <title>The Annotations Component</title>
+                <remark role="todo">TODO</remark>
+            </section>
+        </section>
+
+    </chapter>
+
+    <chapter xml:id="profiles">
+        <title>Profiles</title>
+        <section xml:id="profileAudio">
+            <title>The Audio Profile</title>
+            <remark role="todo">TODO</remark>
+        </section>
+        <section xml:id="profileClassic">
+            <title>The Classic Profile</title>
+            <remark role="todo">TODO</remark>
+        </section>
+        <section xml:id="profilePro">
+            <title>The Pro Profile</title>
+            <remark role="todo">TODO</remark>
+        </section>
+        <section xml:id="profileEbook">
+            <title>The Ebook Profile</title>
+            <remark role="todo">TODO - this profile is intended to be a reference to, or a
+                specification infoset-compatible with EPUB 3.0</remark>
+        </section>
+    </chapter>
+
+    <chapter xml:id="features">
+        <title>Features</title>
+        <remark role="todo">TODO</remark>
+    </chapter>
+
+    <bibliography conformance="normative">
+        <title>References</title>
+        <biblioentry xml:id="refCURIE">
+            <abbrev>CURIE</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/curie/"> CURIE Syntax 1.0 - A syntax for
+                    expressing Compact URIs</link>
+            </title>
+            <editor>
+                <personname>M. Birbeck, et al</personname>
+            </editor>
+            <date>16 January 2009 [DRAFT]</date>
+        </biblioentry>
+        <biblioentry xml:id="refSchematron">
+            <abbrev>ISOSchematron</abbrev>
+            <title>
+                <link
+                    xlink:href="http://standards.iso.org/ittf/PubliclyAvailableStandards/c040833_ISO_IEC_19757-3_2006(E).zip"
+                    >ISO/IEC 19757-3: Rule-based validation — Schematron</link>
+            </title>
+        </biblioentry>
+        <biblioentry xml:id="refITS">
+            <abbrev>ITS</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/its/">Internationalization Tag Set (ITS)
+                    Version 1.0</link>
+            </title>
+            <editor>
+                <personname>C. Lieske, et al.</personname>
+            </editor>
+            <date>3 April 2007</date>
+        </biblioentry>
+        <biblioentry xml:id="refMODS">
+            <abbrev>MODS</abbrev>
+            <title>
+                <link xlink:href="http://www.loc.gov/standards/mods/">Metadata Object Description
+                    Schema (MODS)</link>
+            </title>
+        </biblioentry>
+        <biblioentry xml:id="refNVDL">
+            <abbrev>NVDL</abbrev>
+            <title>
+                <link
+                    xlink:href="http://standards.iso.org/ittf/PubliclyAvailableStandards/c038615_ISO_IEC_19757-4_2006(E).zip"
+                    >ISO/IEC 19757-4: NVDL (Namespace-based Validation Dispatching Language)</link>
+            </title>
+        </biblioentry>
+        <biblioentry xml:id="refRDFa">
+            <abbrev>RDFa</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/rdfa-syntax/">RDFa in XHTML: Syntax and
+                    Processing</link>
+            </title>
+            <editor>
+                <personname>B. Adida, et al.</personname>
+            </editor>
+            <date>14 October 2008</date>
+        </biblioentry>
+        <biblioentry xml:id="refRDFs">
+            <abbrev>RDFS</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/rdf-schema/">RDF Vocabulary Description
+                    Language 1.0: RDF Schema</link>
+            </title>
+            <editor>
+                <personname>D. Brickley, et al.</personname>
+            </editor>
+            <date>10 February 2004</date>
+        </biblioentry>
+        <biblioentry xml:id="refRelaxNG">
+            <abbrev>RelaxNG1</abbrev>
+            <title>
+                <link
+                    xlink:href="http://standards.iso.org/ittf/PubliclyAvailableStandards/c052348_ISO_IEC_19757-2_2008(E).zip"
+                    >ISO/IEC 19757-2: Regular-grammar-based validation -- RELAX NG</link>
+            </title>
+            <date>3 December 2001</date>
+        </biblioentry>
+        <biblioentry xml:id="refRFC2119">
+            <abbrev>RFC2119</abbrev>
+            <title>
+                <link xlink:href="http://www.ietf.org/rfc/rfc2119.txt">Key words for use in RFCs to
+                    Indicate Requirement Levels (RFC2119)</link>
+            </title>
+            <date>March 1997</date>
+        </biblioentry>
+        <biblioentry xml:id="refRFC3986">
+            <abbrev>RFC3986</abbrev>
+            <title>
+                <link xlink:href="http://www.ietf.org/rfc/rfc3986.txt">Uniform Resource Identifier
+                    (URI): Generic Syntax</link>
+            </title>
+            <author>
+                <personname>Berners-Lee, et al.</personname>
+            </author>
+            <date>January 2005</date>
+        </biblioentry>
+        <biblioentry xml:id="refXHTML2">
+            <abbrev>XHTML2</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/xhtml2/">XHTML 2.0</link>
+            </title>
+            <author>
+                <personname>J. Axelsson, et al</personname>
+            </author>
+            <date>2009 [DRAFT]</date>
+        </biblioentry>
+        <biblioentry xml:id="refXHTMLMOD2">
+            <abbrev>XHTMLMOD2</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/MarkUp/2009/ED-xhtml-modularization2-20090123/"
+                    >Modularization of XHTML™ 2.0</link>
+            </title>
+            <author>
+                <personname>M. Birbeck, et al</personname>
+            </author>
+            <date>2009 [DRAFT]</date>
+        </biblioentry>
+        <biblioentry xml:id="refXHTMLRole">
+            <abbrev>XHTMLRole</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/xhtml-role/">XHTML Role Attribute
+                    Model</link>
+            </title>
+            <author>
+                <personname>M. Birbeck, et al.</personname>
+            </author>
+            <date>2008</date>
+        </biblioentry>
+        <biblioentry xml:id="refXInclude">
+            <abbrev>XInclude</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/xinclude/">XML Inclusions (XInclude) Version
+                    1.0 (Second Edition)</link>
+            </title>
+            <author>
+                <personname>J. Marsh, et al.</personname>
+            </author>
+            <date>15 November 2006</date>
+        </biblioentry>
+        <biblioentry xml:id="refXML">
+            <abbrev>XML</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/2006/REC-xml-20060816/">Extensible Markup
+                    Language (XML) 1.0 (Fourth Edition)</link>
+            </title>
+            <author>
+                <personname>T. Bray, et al</personname>
+            </author>
+            <date>November 2008</date>
+        </biblioentry>
+        <biblioentry xml:id="refXMLBase">
+            <abbrev>XMLBase</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/xmlbase/">XML Base (Second Edition)</link>
+            </title>
+            <date>28 January 2009</date>
+        </biblioentry>
+        <biblioentry xml:id="refXMLID">
+            <abbrev>XMLID</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/xml-id/">xml:id Version 1.0</link>
+            </title>
+            <date>9 September 2005</date>
+        </biblioentry>
+        <biblioentry xml:id="refXMLInfoset">
+            <abbrev>XMLInfoset</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/xml-infoset/">XML Information Set (Second
+                    Edition)</link>
+            </title>
+            <author>
+                <personname>J. Cowan, et al.</personname>
+            </author>
+            <date>4 February 2004</date>
+        </biblioentry>
+        <biblioentry xml:id="refXMLNamespaces">
+            <abbrev>XMLNAMES</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/REC-xml-names/">Namespaces in XML 1.0 (Second
+                    Edition)</link>
+            </title>
+            <date>16 August 2006</date>
+        </biblioentry>
+        <biblioentry xml:id="refXMLSchema">
+            <abbrev>XMLSchema</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/XML/Schema#dev">XML Schema:
+                    Specifications</link>
+            </title>
+        </biblioentry>
+        <biblioentry xml:id="refXMLStylesheet">
+            <abbrev>XMLSTYLE</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/xml-stylesheet/">Associating Style Sheets
+                    with XML documents Version 1.0</link>
+            </title>
+            <author>
+                <personname>James Clark</personname>
+            </author>
+            <date>29 June 1999</date>
+        </biblioentry>
+        <biblioentry xml:id="refXSDID">
+            <abbrev>ID</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/xmlschema-2/#ID">XML Schema Part 2: Datatypes
+                    Second Edition</link>
+            </title>
+            <author>
+                <personname>Paul V. Biron et. al.</personname>
+            </author>
+            <date>28 October 2004</date>
+        </biblioentry>
+
+        <biblioentry xml:id="refZ39862005">
+            <abbrev>Z3986-2005</abbrev>
+            <title>
+                <link xlink:href="http://www.niso.org/standards/resources/Z39-86-2005.html"
+                    >ANSI/NISO Z39.86-2005: Specifications for the Digital Talking Book</link>
+            </title>
+            <author>
+                <personname>M. Moodie, et al.</personname>
+            </author>
+            <date>2005</date>
+        </biblioentry>
+    </bibliography>
+
+    <appendix xml:id="acknowledgements" role="acknowledgements" conformance="informative">
+        <title>Acknowledgements</title>
+        <para> The following are the members of the Z39.86-2011 Distribution Working Group
+            responsible for the creation of this specification: <bibliolist>
+                <bibliomixed>
+                    <personname>Markus Gylling</personname>, <title>Lead</title>, <orgname>DAISY
+                        Consortium</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Josh Altherr</personname>, <orgname>gh, LLC</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Marisa DeMeglio</personname>, <orgname>DAISY Consortium</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Boris Goldowsky</personname>, <orgname>CAST, Inc.</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Kenny Johar</personname>, <orgname>Vision Australia</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Dennis Leas</personname>, <orgname>gh, LLC</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Gregory J. Rosmaita</personname>, <orgname>Open Accessibility at the Linux Foundation</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Christian Wallin</personname>, <orgname>NOTA</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>
+                        <remark role="todo">TODO add all contributors</remark>
+                    </personname>
+                </bibliomixed>
+            </bibliolist>
+        </para>
+    </appendix>
+
+    <appendix xml:id="appendixChanges" conformance="informative">
+        <title>Summary of changes</title>
+        <para>The following is a summary of the changes introduced by this specification as compared
+            to the previous version of the ANSI/NISO Z39.86 standard (<xref linkend="refZ39862005"
+            />).</para>
+
+        <section xml:id="appendixChangesOverarching">
+            <title>Overarching changes</title>
+            <remark role="todo">TODO</remark>
+        </section>
+
+        <section xml:id="appendixChangesNCX">
+            <title>Changes to the NCX document type</title>
+            <remark role="todo">TODO</remark>
+        </section>
+
+    </appendix>
+
+</book>

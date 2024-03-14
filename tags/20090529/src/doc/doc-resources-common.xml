@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="docResources.rng" type="xml"?>
+<docResources xmlns="http://www.daisy.org/ns/z3986/2008/docResources/">
+
+    <namespace nsURI="http://www.daisy.org/z3986/2010/" defaultDocURL="http://www.daisy.org/z3986/2010" feature="no">
+      <!-- document model base -->
+      <element name="document" docURI="../schema/mod/z3986-document.rng#z3986.document" include="yes" />
+      <element name="head" docURI="../schema/mod/z3986-document.rng#z3986.head" include="yes" />
+      <element name="meta" docURI="../schema/mod/z3986-meta.rng#z3986.meta" include="yes" />
+      <element name="link" docURI="../schema/mod/z3986-link.rng#z3986.link" include="yes" />
+      <element name="body" docURI="../schema/mod/z3986-document.rng#z3986.body" include="yes" />
+
+      <!-- Structural level -->
+      <element name="aside" docURI="../schema/mod/z3986-aside.rng#z3986.aside" include="yes"/>
+      <element name="annotation" docURI="../schema/mod/z3986-annotation.rng#z3986.annotation" include="yes"/>
+      <element name="note" docURI="../schema/mod/z3986-note.rng#z3986.note" include="yes"/>
+      <element name="noteref" docURI="../schema/mod/z3986-note.rng#z3986.noteref" include="yes"/>
+      <attribute name="ref" context="noteref" docURI="../schema/mod/z3986-note.rng#z3986.noteref.ref.attrib" include="yes"/>
+            
+      <element name="code" docURI="../schema/mod/z3986-code.rng#z3986.code" include="yes"/>
+      <element name="div" docURI="../schema/mod/z3986-div.rng#z3986.div" include="yes"/>      
+      <element name="quote" docURI="../schema/mod/z3986-quote.rng#z3986.quote" include="yes"/>
+      <element name="separator" docURI="../schema/mod/z3986-separator.rng#z3986.separator" include="yes"/>
+
+      <element name="caption" docURI="../schema/mod/z3986-caption.rng#z3986.caption" include="yes"/>
+      
+      <element name="dl" docURI="../schema/mod/z3986-list.rng#z3986.dl" include="yes"/>
+      <element name="di" docURI="../schema/mod/z3986-list.rng#z3986.di" include="yes"/>
+      <element name="dt" docURI="../schema/mod/z3986-list.rng#z3986.dt" include="yes"/>
+      <element name="dd" docURI="../schema/mod/z3986-list.rng#z3986.dd" include="yes"/>
+      <element name="ol" docURI="../schema/mod/z3986-list.rng#z3986.ol" include="yes"/>
+      <element name="ul" docURI="../schema/mod/z3986-list.rng#z3986.ul" include="yes"/>
+      <element name="li" docURI="../schema/mod/z3986-list.rng#z3986.li" include="yes"/>
+         
+      <element name="l" docURI="../schema/mod/z3986-line.rng#z3986.line" include="yes"/>
+      <element name="lnum" docURI="../schema/mod/z3986-line.rng#z3986.linenum" include="yes"/>
+      <element name="lgroup" docURI="../schema/mod/z3986-line.rng#z3986.linegroup" include="yes"/>
+            
+      <element name="table" docURI="../schema/mod/z3986-table.rng#z3986.table" include="yes"/>      
+      <element name="col" docURI="../schema/mod/z3986-table.rng#z3986.table.col" include="yes"/>
+      <element name="colgroup" docURI="../schema/mod/z3986-table.rng#z3986.table.colgroup" include="yes"/>
+      <element name="thead" docURI="../schema/mod/z3986-table.rng#z3986.table.thead" include="yes"/>
+      <element name="tfoot" docURI="../schema/mod/z3986-table.rng#z3986.table.tfoot" include="yes"/>      
+      <element name="tbody" docURI="../schema/mod/z3986-table.rng#z3986.table.tbody" include="yes"/>
+      <element name="tr" docURI="../schema/mod/z3986-table.rng#z3986.table.tr" include="yes"/>
+      <element name="th" docURI="../schema/mod/z3986-table.rng#z3986.table.th" include="yes"/>
+      <element name="td" docURI="../schema/mod/z3986-table.rng#z3986.table.td" include="yes"/>                  
+      
+      <!-- Text level -->      
+      <element name="emph" docURI="../schema/mod/z3986-emph.rng#z3986.emph" include="yes" />
+      <element name="abbr" docURI="../schema/mod/z3986-abbr.rng#z3986.abbr" include="yes" />
+      <element name="bridgehead" docURI="../schema/mod/z3986-bridgehead.rng#z3986.bridgehead" include="yes" />
+      <element name="d" docURI="../schema/mod/z3986-d.rng#z3986.d" include="yes" />
+      <element name="w" docURI="../schema/mod/z3986-w.rng#z3986.w" include="yes" />
+      <element name="date" docURI="../schema/mod/z3986-date.rng#z3986.date" include="yes" />
+      <element name="name" docURI="../schema/mod/z3986-name.rng#z3986.name" include="yes" />
+      <element name="place" docURI="../schema/mod/z3986-place.rng#z3986.place" include="yes" />
+      <element name="identifier" docURI="../schema/mod/z3986-identifier.rng#z3986.identifier" include="yes" />
+      <element name="term" docURI="../schema/mod/z3986-term.rng#z3986.term" include="yes"/>
+      <attribute name="termdef" docURI="../schema/mod/z3986-term.rng#z3986.termdef.attrib" include="yes"/>
+      <element name="s" docURI="../schema/mod/z3986-s.rng#z3986.s" include="yes"/>
+      <element name="span" docURI="../schema/mod/z3986-span.rng#z3986.span" include="yes"/>
+      <element name="sub" docURI="../schema/mod/z3986-sub-sup.rng#z3986.sub" include="yes"/>
+      <element name="sup" docURI="../schema/mod/z3986-sub-sup.rng#z3986.sup" include="yes"/>
+      <element name="pagebreak" docURI="../schema/mod/z3986-pagebreak.rng#z3986.pagebreak" include="yes"/>
+      <attribute name="value" context="pagebreak" docURI="../schema/mod/z3986-pagebreak.rng#z3986.pagebreak.value.attrib" include="yes"/>
+      <element name="h" docURI="../schema/mod/z3986-h.rng#z3986.h" include="yes"/>      
+      
+      <!-- Common attributes -->      
+      <attribute name="class" docURI="../schema/mod/z3986-core-attrib.rng#z3986.class.attrib" include="yes"/>
+      <attribute name="role" docURI="../schema/mod/xhtml-role-attrib.rng#xhtml.role.attrib" include="yes"/>
+      <attribute name="depth" docURI="../schema/mod/z3986-depth-attrib.rng#z3986.depth.attrib" include="yes"/>      
+      <attribute name="href" docURI="../schema/mod/z3986-linking-attrib.rng#z3986.href.attrib" include="yes"/>
+      <attribute name="targetlang" docURI="../schema/mod/z3986-linking-attrib.rng#z3986.targetlang.attrib" include="yes"/>
+      <attribute name="targettype" docURI="../schema/mod/z3986-linking-attrib.rng#z3986.targettype.attrib" include="yes"/>
+      <attribute name="targetrole" docURI="../schema/mod/z3986-linking-attrib.rng#z3986.targetrole.attrib" include="yes"/>
+     																					   
+      <!-- RDF/a attributes -->
+      <!-- TODO get shorthand descriptions from http://www.w3.org/MarkUp/2009/rdfa-for-html-authors#Summary -->
+      <attribute name="about" docURI="../schema/mod/rdfa-attrib.rng#rdfa.about.attrib" include="yes"/>
+      <attribute name="content" docURI="../schema/mod/rdfa-attrib.rng#rdfa.about.attrib" include="yes"/>
+      <attribute name="datatype" docURI="../schema/mod/rdfa-attrib.rng#rdfa.about.attrib" include="yes"/>
+      <attribute name="typeof" docURI="../schema/mod/rdfa-attrib.rng#rdfa.about.attrib" include="yes"/>
+      <attribute name="property" docURI="../schema/mod/rdfa-attrib.rng#rdfa.about.attrib" include="yes"/>
+      <attribute name="rel" docURI="../schema/mod/rdfa-attrib.rng#rdfa.about.attrib" include="yes"/>
+      <attribute name="resource" docURI="../schema/mod/rdfa-attrib.rng#rdfa.about.attrib" include="yes"/>
+      <attribute name="rev" docURI="../schema/mod/rdfa-attrib.rng#rdfa.about.attrib" include="yes"/>
+    </namespace>
+    
+    <namespace nsURI="http://www.w3.org/XML/1998/namespace" defaultDocURL="http://www.w3.org/XML/1998/namespace" feature="no">
+        <attribute name="id" docURI="../schema/mod/z3986-core-attrib.rng#xml.id" include="yes"/>
+        <attribute name="space" docURI="../schema/mod/z3986-core-attrib.rng#xml.space" include="yes"/>
+        <attribute name="base" docURI="../schema/mod/z3986-core-attrib.rng#xml.base" include="yes"/>
+        <attribute name="lang" docURI="../schema/mod/z3986-i18n-attrib.rng#xml.lang" include="yes"/>
+    </namespace>
+
+    <namespace nsURI="http://www.w3.org/2005/11/its" defaultDocURL="http://www.w3.org/TR/its/" feature="no">
+      <attribute name="dir" docURI="../schema/mod/z3986-i18n-attrib.rng#its.dir" include="yes"/>
+      <attribute name="translate" docURI="../schema/mod/its-translate-attrib.rng#its.translate" include="yes"/>
+    </namespace>
+    
+    <namespace nsURI="http://www.loc.gov/mods/v3"
+      defaultDocURL="http://www.loc.gov/mods/v3" feature="no" />
+      
+    <namespace nsURI="http://www.w3.org/1999/xlink"
+      defaultDocURL="http://www.w3.org/1999/xlink" feature="no" />  
+      
+</docResources>

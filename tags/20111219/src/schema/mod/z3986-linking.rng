@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- TODO SCH need to figure out which references cannot nest (guesstimate: those that indulge in xlink) -->
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="linking">The linking and embedding module</title>
+        <annotation annotates="/">
+            <para role="desc-main">This module defines the {[[#z3986.ref]]} element and the {[[#z3986.ref.attrib]]}, {[[#z3986.src.attrib]]} and {[[#z3986.srctype.attrib]]} attributes that enable inter- and intra-document linking and content embedding. It also defines the {[[#z3986.continuation.attrib]]} attribute that enables logical association of elements.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3986-global-classes.rng"/>
+                <member xlink:href="xlink.rng"/>
+                <member xlink:href="z3986-datatypes.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <year>2012</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2012-12-19</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="z3986.ref" xml:id="z3986.ref">
+            <element name="ref">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="ref">The {ref} element</title>
+                    <para role="desc-main">The {ref} element represents a reference to an internal or external entity.</para>
+                    <para role="desc-sub">The referenced entity is not required to be resolvable or includable in a processing or rendering context: the {ref} element may point to conceptual or physical items.</para>
+                    <para role="desc-sub">The {ref} element may employ attributes from the {[[#xlink.attrib]]} attributes collection to specify the nature of the hyperlink, including or excluding expressions of link activation behavior.</para>
+                    <para role="desc-sub">IDREF link relationships may also be established using the {[[#z3986.ref.attrib]]} attribute, but not in conjunction with the {xlink} attributes collection.</para>
+                    <synopsis role="def-context">{[[#z3986.Phrase.class]]}</synopsis>
+                    <synopsis role="def-content">{(text | [[#z3986.Text.class]] | Phrase.core.class | Phrase.extern.class)+}</synopsis>
+                    <synopsis role="def-attlist" condition="fixed">{([[#xlink.attrib]]? | [[#z3986.ref.attrib]]?), [[#z3986.Phrase.attrib]]}</synopsis>
+                </annotation>
+                <sch:rule context="default:ref">
+                    <sch:report test="descendant::default:ref">The {ref} element must not contain descendant {ref} elements.</sch:report>
+                    <sch:assert test="normalize-space(.) or *">The {ref} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+                <ref name="z3986.ref.attlist"/>
+                <ref name="z3986.ref.content"/>
+            </element>
+        </define>
+        <define name="z3986.ref.attlist" xml:id="z3986.ref.attlist">
+            <choice>
+                <optional>
+                    <ref name="xlink.attrib"/>
+                </optional>
+                <optional>
+                    <ref name="z3986.ref.attrib"/>
+                </optional>
+            </choice>
+            <ref name="z3986.Phrase.attrib"/>
+        </define>
+        <define name="z3986.ref.content" xml:id="z3986.ref.content">
+            <ref name="z3986.Phrase.core.Text.mix.model"/>
+        </define>
+        <define name="z3986.ref.ref.required" xml:id="z3986.ref.ref.required">
+            <element name="ref">
+                <ref name="z3986.ref.attrib"/>
+                <ref name="z3986.Phrase.attrib"/>
+                <ref name="z3986.ref.content"/>
+            </element>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.ref.attrib" xml:id="z3986.ref.attrib">
+            <attribute name="ref">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="ref">The {ref} attribute</title>
+                    <para role="desc-main">The {ref} attribute provides a generic mechanism to establish an association between the current element and one or more other elements in the document scope.</para>
+                    <para role="desc-sub">The {ref} attribute must contain one or more space separated references to the {[[#xml.id.attrib IDs]]} of the associated elements.</para>
+                    <para role="desc-sub absdef-only">Elements adopting the {ref} attribute may express constraints on the nature of the referenced elements.</para>
+                    <synopsis role="def-context">No default context.</synopsis>
+                    <synopsis role="def-content">{[[#IDREFS.datatype]]}</synopsis>
+                </annotation>
+                <ref name="z3986.ref.attrib.content"/>
+                <sch:rule context="*[@ref][namespace-uri()='http://www.daisy.org/ns/z3986/authoring/']">
+                    <sch:assert test="every $id in tokenize(@ref, '\s+') satisfies count(index-of(tokenize(@ref, '\s+'), $id)) = 1">The {ref} attribute must not reference the same ID multiple times.</sch:assert>
+                    <sch:assert test="every $id in tokenize(@ref, '\s+') satisfies //*[@xml:id = $id]">Each IDREF in the {ref} attribute must reference the ID of another element in the document.</sch:assert>
+                    <sch:assert test="every $id in tokenize(@ref, '\s+') satisfies not(current() is //*[@xml:id eq $id])">Elements carrying a {ref} attribute must not reference themselves.</sch:assert>
+                </sch:rule>
+            </attribute>
+        </define>
+        <define name="z3986.ref.attrib.content" xml:id="z3986.ref.attrib.content">
+            <ref name="IDREFS.datatype"/>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.src.attrib" xml:id="z3986.src.attrib">
+            <attribute name="src">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="src">The {src} attribute</title>
+                    <para role="desc-main">The {src} attribute contains a URI reference to an external resource to embed in the document, in place of the current element.</para>
+                    <para role="desc-sub">Only references to resources that conform to one of the types in the {[[#z3986.srctype.attrib]]} attribute enumeration are allowed.</para>
+                    <!-- TODO is specialization of xlink:embed zlink:actuate=onload etc -->
+                    <synopsis role="def-context">No default context.</synopsis>
+                    <synopsis role="def-content" condition="fixed">{[[#URI.datatype]]}</synopsis>
+                </annotation>
+                <ref name="z3986.src.attrib.content"/>
+            </attribute>
+        </define>
+        <define name="z3986.src.attrib.content" xml:id="z3986.src.attrib.content">
+            <ref name="URI.datatype"/>
+        </define>
+        <define name="z3986.srctype.attrib" xml:id="z3986.srctype.attrib">
+            <attribute name="srctype">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="srctype">The {srctype} attribute</title>
+                    <para role="desc-main">The {srctype} attribute contains a {[[#refRFC2046 MediaType]]} expression that identifies the type of resource referenced from the {[[#z3986.src.attrib]]} attribute.</para>
+                    <para role="desc-sub absdef-only">All Z39.86-AI profiles must allow the media types {[[#refPNG image/png]]}, {[[#refJPEG image/jpeg]]} and {[[#refBMP image/bmp]]}. These three image types are jointly referred to as the "core image types". Z39.86-AI features may extend this enumeration to support additional media types.</para>
+                    <para role="desc-sub absdef-only">If the {srctype} attribute is not specified, processing agents must dereference the resource in the {src} attribute to identify its media type.</para>
+                    <synopsis role="def-context">On elements where {[[#z3986.src.attrib]]} is allowed.</synopsis>
+                    <synopsis role="def-content" condition="fixed">{'image/png'|'image/jpeg'|'image/bmp'}</synopsis>
+                </annotation>
+                <ref name="z3986.srctype.attrib.content"/>
+            </attribute>
+        </define>
+        <define name="z3986.srctype.attrib.content" combine="choice">
+            <choice>
+                <value>image/png</value>
+                <a:documentation>The referenced resource is a [[#refPNG PNG image]].</a:documentation>
+                <value>image/jpeg</value>
+                <a:documentation>The referenced resource is a [[#refJPEG JPEG image]].</a:documentation>
+                <value>image/bmp</value>
+                <a:documentation>The referenced resource is a [[#refBMP BMP image]].</a:documentation>
+            </choice>
+        </define>
+        <define name="z3986.Embed.attrib" xml:id="z3986.Embed.attrib">
+            <ref name="z3986.src.attrib"/>
+            <optional>
+                <ref name="z3986.srctype.attrib"/>
+            </optional>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.continuation.attrib" xml:id="z3986.continuation.attrib">
+            <attribute name="continuation">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="continuation">The {continuation} attribute</title>
+                    <para role="desc-main">The {continuation} attribute provides a generic mechanism to establish a logical continuation of the current element cross one or more other elements in the document scope.</para>
+                    <para role="desc-sub">The {continuation} attribute must contain one or more space separated references to the {[[#xml.id.attrib IDs]]} of the associated elements. Note that the element that carries the continuation attribute must not be referenced in this list.</para>
+                    <para role="desc-sub">The order in which the references appear in the attribute value is not significant (i.e., the reference order need not match the document order of the referenced elements). Only elements with the same QName as the parent element of the attribute can be referenced (e.g., a paragraph cannot list a table as a continuation). Additionally, only elements following the current element in the document order may be referenced as continuations. Elements that are referenced as continuations must not have continuation attributes themselves.</para>
+                    <para role="desc-sub">Logical connections allow for special formatting of elements when generating outputs (to establish the connection between emphasis that continues across multiple paragraphs for braille formatting, for example). When the {continuation} attribute has been attached to an element, all formatting instructions that apply to that element also apply to all the elements referenced in the attribute. Formatting instructions on the logical siblings, however, do not cascade.</para>
+                    <para role="desc-sub">A processing agent that does not recognize logical connections must be able to process each individual element in the continuation without requiring special knowledge of the elements that came before (i.e., inheritance of formatting cannot be assumed).</para>
+                    <synopsis role="def-context">No default context.</synopsis>
+                    <synopsis role="def-content" condition="fixed">{[[#IDREFS.datatype]]}</synopsis>
+                </annotation>
+                <sch:rule context="*[@continuation]">
+                    <sch:assert test="every $id in tokenize(@continuation, '\s+') satisfies count(index-of(tokenize(@continuation, '\s+'), $id)) = 1">The {continuation} attribute must not reference the same ID multiple times.</sch:assert>
+                    <sch:assert test="every $id in tokenize(@continuation, '\s+') satisfies current() &lt;&lt; //*[@xml:id eq $id]">Elements referenced by a {continuation} attribute must be located after the referencing element (i.e., in document order).</sch:assert>
+                    <sch:assert test="every $id in tokenize(@continuation, '\s+') satisfies name(//*[@xml:id eq $id]) eq name(current())">Elements referenced by a {continuation} attribute must have the same QName as the referencing element.</sch:assert>
+                    <sch:assert test="every $id in tokenize(@continuation, '\s+') satisfies not(current() is //*[@xml:id eq $id])">Elements carrying a {continuation} attribute must not reference themselves.</sch:assert>
+                </sch:rule>
+                <ref name="z3986.continuation.attrib.content"/>
+            </attribute>
+        </define>
+        <define name="z3986.continuation.attrib.content" xml:id="z3986.continuation.attrib.content">
+            <ref name="IDREFS.datatype"/>
+        </define>
+    </div>
+    <div>
+        <a:documentation>ref - default content model contribution</a:documentation>
+        <define name="z3986.Phrase.core.class" xml:id="z3986.Phrase.core.class">
+            <ref name="z3986.ref"/>
+        </define>
+        <define name="z3986.Block.core.attrib" combine="interleave">
+            <optional>
+                <ref name="z3986.continuation.attrib"/>
+            </optional>
+        </define>
+        <define name="z3986.Phrase.core.attrib" combine="interleave">
+            <optional>
+                <ref name="z3986.continuation.attrib"/>
+            </optional>
+        </define>
+    </div>
+</grammar>

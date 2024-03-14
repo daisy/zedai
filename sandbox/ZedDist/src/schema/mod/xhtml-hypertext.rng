@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+  
+  <!-- TODO SCH no nested a -->
+  
+  <define name="xhtml.Text.class" combine="choice">
+    <ref name="xhtml.a"/>
+  </define>
+  
+  <define name="xhtml.a">
+    <element name="a">
+      <ref name="xhtml.a.attlist"/>
+      <ref name="xhtml.Text.model"/>
+    </element>
+  </define>
+  
+  <define name="xhtml.a.attlist">
+    <ref name="xhtml.Core.attrib"/>
+    <optional>
+      <attribute name="href">
+        <ref name="URI.datatype"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="charset">
+        <ref name="Charset.datatype"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="type">
+        <ref name="ContentType.datatype"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="hreflang">
+        <ref name="LanguageCode.datatype"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="rel">
+        <ref name="LinkTypes.datatype"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="rev">
+        <ref name="LinkTypes.datatype"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="accesskey">
+        <ref name="Character.datatype"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="tabindex">
+        <ref name="NonNegativeInteger.datatype"/>
+      </attribute>
+    </optional>
+  </define>
+</grammar>

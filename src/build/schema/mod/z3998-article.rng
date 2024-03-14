@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3998/authoring/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:z="http://www.daisy.org/ns/z3998/annotations/#" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:db="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xml:lang="en" xmlns="http://docbook.org/ns/docbook">
+        <title>The article module </title>
+        <annotation annotates="/">
+            <para>This module defines the article element for the inclusion and embedding of articles. </para>
+            <para>More information about this module is available at http://www.daisy.org/z3998/2012/auth/cm/#z3998.article.module</para>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <year>2012</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at 
+                <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link>
+            </para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at 
+                <link xlink:href="http://www.daisy.org">www.daisy.org</link>
+            </para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2012-12-19</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <define name="z3998.article">
+        <element name="article">
+            <a:documentation>The article element represents an article in an electronic or print journal, magazine, news source or encyclopedia. The simplest use for the article element is as a specialization of the section element for reproducing full articles or extracts. It is additionally possible to include article.head and article.body children for more formally structured articles. </a:documentation>
+            <ref name="z3998.article.attlist"/>
+            <ref name="z3998.article.content"/>
+        </element>
+    </define>
+    <define name="z3998.article.attlist">
+        <ref name="z3998.Section.attrib"/>
+    </define>
+    <define name="z3998.article.content">
+        <ref name="z3998.article.document.model"/>
+    </define>
+    <define name="z3998.article.document.model">
+        <a:documentation>The document-like model choice for article </a:documentation>
+        <ref name="z3998.article.head"/>
+        <ref name="z3998.article.body"/>
+    </define>
+    <define name="z3998.article.simple.model">
+        <a:documentation>The section-like model choice for article </a:documentation>
+        <ref name="z3998.article.body.content"/>
+    </define>
+    <define name="z3998.article.head">
+        <element name="head">
+            <a:documentation>The article head element contains meta information about the complete or partial article contained in the enclosing article element. The meta information in the article head element is not document content in the context of Z39.98-AI documents, but may be used for display and other purposes when rendering documents into alternate formats. </a:documentation>
+            <ref name="z3998.article.head.attlist"/>
+            <ref name="z3998.article.head.content"/>
+        </element>
+    </define>
+    <define name="z3998.article.head.attlist">
+        <ref name="z3998.Document.attrib"/>
+    </define>
+    <define name="z3998.article.head.content">
+        <oneOrMore>
+            <choice>
+                <ref name="z3998.article.head.class"/>
+            </choice>
+        </oneOrMore>
+    </define>
+    <define name="z3998.article.head.class" combine="choice">
+        <choice>
+            <ref name="z3998.meta"/>
+        </choice>
+    </define>
+    <define name="z3998.article.body">
+        <element name="body">
+            <a:documentation>The article body element contains the complete or partial content of the article . </a:documentation>
+            <ref name="z3998.article.body.attlist"/>
+            <ref name="z3998.article.body.content"/>
+        </element>
+    </define>
+    <define name="z3998.article.body.attlist">
+        <ref name="z3998.Document.attrib"/>
+    </define>
+    <define name="z3998.article.body.content">
+        <choice>
+            <group>
+                <interleave>
+                    <ref name="z3998.h"/>
+                    <oneOrMore>
+                        <ref name="z3998.article.body.body.class"/>
+                    </oneOrMore>
+                    <optional>
+                        <ref name="z3998.byline"/>
+                    </optional>
+                    <optional>
+                        <ref name="z3998.dateline"/>
+                    </optional>
+                </interleave>
+                <zeroOrMore>
+                    <ref name="z3998.article.section"/>
+                </zeroOrMore>
+            </group>
+            <group>
+                <interleave>
+                    <ref name="z3998.h"/>
+                    <zeroOrMore>
+                        <ref name="z3998.article.body.body.class"/>
+                    </zeroOrMore>
+                    <optional>
+                        <ref name="z3998.byline"/>
+                    </optional>
+                    <optional>
+                        <ref name="z3998.dateline"/>
+                    </optional>
+                </interleave>
+                <oneOrMore>
+                    <ref name="z3998.article.section"/>
+                </oneOrMore>
+            </group>
+        </choice>
+    </define>
+    <define name="z3998.article.body.body.class" combine="choice">
+        <choice>
+            <ref name="z3998.Block.class"/>
+            <ref name="z3998.Global.extra.class"/>
+        </choice>
+    </define>
+    <define name="z3998.article.section">
+        <element name="section">
+            <a:documentation>The article section element represents a major structural division in an article . The article section element is a specialization of the section element. It provides a content model to fit the unique requirements of article divisions. </a:documentation>
+            <ref name="z3998.article.section.attlist"/>
+            <ref name="z3998.article.section.content"/>
+        </element>
+    </define>
+    <define name="z3998.article.section.attlist">
+        <ref name="z3998.Section.attrib"/>
+    </define>
+    <define name="z3998.article.section.content">
+        <choice>
+            <group>
+                <interleave>
+                    <optional>
+                        <ref name="z3998.h"/>
+                    </optional>
+                    <oneOrMore>
+                        <ref name="z3998.article.body.body.class"/>
+                    </oneOrMore>
+                </interleave>
+                <zeroOrMore>
+                    <ref name="z3998.article.section"/>
+                </zeroOrMore>
+            </group>
+            <group>
+                <interleave>
+                    <optional>
+                        <ref name="z3998.h"/>
+                    </optional>
+                    <zeroOrMore>
+                        <ref name="z3998.article.body.body.class"/>
+                    </zeroOrMore>
+                </interleave>
+                <oneOrMore>
+                    <ref name="z3998.article.section"/>
+                </oneOrMore>
+            </group>
+        </choice>
+    </define>
+</grammar>

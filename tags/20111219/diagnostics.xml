@@ -1,0 +1,39 @@
+<project name="diagnostics" default="all" basedir=".">
+	
+	<import file="common.xml"/>
+	
+	<target name="all"
+		depends="rng-unused-defines, rng-driver-exclusions, rng-dependencies, rng-element-schematron-text-test"
+	/>
+	
+	<target name="rng-unused-defines" depends="compile-util-java-classes">		
+		<java classname="org.daisy.z3986.rng.diagnostics.UnusedDefines" fork="true" failonerror="false" maxmemory="512m">			
+			<arg value="${basedir}"/>
+			<classpath refid="build.classpath" />
+		</java>
+	</target>	
+	
+	<target name="rng-driver-exclusions" depends="compile-util-java-classes">
+		<java classname="org.daisy.z3986.rng.diagnostics.DriverExclusions" fork="true" failonerror="false" maxmemory="512m">			
+			<arg value="${basedir}"/>
+			<!-- <arg value="z3986-book.rng"/> --> <!-- optional: driver to check -->
+			<classpath refid="build.classpath" />
+		</java>
+	</target>
+	
+	<target name="rng-dependencies" depends="compile-util-java-classes">
+		<java classname="org.daisy.z3986.rng.diagnostics.Dependencies" fork="true" failonerror="false" maxmemory="512m">			
+			<arg value="${basedir}"/>
+			<classpath refid="build.classpath" />
+		</java>
+	</target>
+	
+	<target name="rng-element-schematron-text-test" depends="compile-util-java-classes">
+		<java classname="org.daisy.z3986.rng.diagnostics.ElementSchematronTextTest" fork="true" failonerror="false" maxmemory="512m">			
+			<arg value="${basedir}"/>
+			<arg value="${dir.src.schema}/_z3986-all.rng"/>
+			<classpath refid="build.classpath" />
+		</java>
+	</target>
+	
+</project>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="http://www.w3.org/MarkUp/style/xhtml2.css"?>
+<?oxygen RNGSchema="../RelaxNG/daisy-leisure-profile-driver.rng" type="xml"?>
+<!-- 
+    The sole purpose of this file is to demonstrate one possible markup of front matter
+    in a novel, so most of the book is NOT represented in this file.    
+-->
+<html xmlns="http://www.w3.org/2002/06/xhtml2/" xmlns:d="http://www.daisy.org/ns/z3986/2008/"
+    xml:lang="en">
+    <head>
+        <title>A Spot of Bother</title>
+        <meta property="title">An XHTML 2.0 test document</meta>
+        <meta property="reference">ZedAI-20081001</meta>
+    </head>
+    <d:book>
+        <d:frontmatter>
+            <d:bookcover>
+                <d:frontcover>
+                    <blockquote cite="Sunday telegraph">BRILLIANT ... VERY FUNNY</blockquote>
+                    <title>A Spot of Bother</title>
+                    <object src="frontcover.png">The frontcover picture shows [...]</object>
+                    <d:author>Mark Haddon</d:author>
+                    <p>Vintage</p>
+                    <d:inside><!-- For stuff inside the front cover -->
+                        <blockquote cite="Scotland on Sunday">Riotously funny [...] won't be disappointed</blockquote>
+                        <blockquote cite="New York Times Book Review">Haddon is an [...] pas your bedtime</blockquote>
+                        <!-- And several other quotes from magazines and newspapers -->
+                    </d:inside>
+                </d:frontcover>
+                <d:spine>
+                    <title>A Spot of Bother</title>
+                    <d:author>Mark Haddon</d:author>
+                    <p>Vintage</p>
+                </d:spine>
+                <d:backcover>
+                    <blockquote cite="The times">A painful, funny [...] addictvely readable</blockquote>
+                    <p role="contentinfo">At fifty-seven, George is settling down [...] dreaded nuptilas.</p>
+                    <p role="contentinfo">Unnoticed in the uproar, George [...] to lose his mind.</p>
+                    <object src="backcover.png">The picture on the backcover shows [...]</object>
+                    <blockquote cite="Daily Telegraph">Wry, warm-heated and entertaining</blockquote>
+                    <blockquote cite="Daily Express">Unforgettable</blockquote>
+                    <blockquote cite="Independent on Sunday">A witty and subtle family drama</blockquote>
+                    <!-- Some more stuff on this page that it didn't seem natural to mark up:
+                        Price
+                        Web-adresses for the printing house
+                        ISBN (also as bar code)
+                        Copyright information for the cover illustration
+                    -->
+                    <d:inside>
+                        <blockquote cite="Guardian">Amusing, brisk and charming</blockquote>
+                        <blockquote cite="Sunday herald">Haddon floats [...] offbeat wit</blockquote>
+                        <!-- And several other quotes from magazines and newspapers -->
+                    </d:inside>
+                </d:backcover>
+            </d:bookcover>
+            <section>
+                <h>A SPOT OF BOTHER</h>
+                <p>Mark Haddon is an author, illustrator and screenwriter who has written
+                    [...]
+                    <!-- various information about the author and his books -->
+                    first colection of his poems, 
+                    <em>The Talking Horse and the Sad Girl and the Village Under the Sea</em>,
+                    was published in 2005.</p>
+            </section>
+            <section>
+                <h>ALSO BY MARK HADDON</h>
+                <p><strong>Fiction</strong> The Curious Incident of the Dog in the Night-time</p>
+                <p><strong>Poetry</strong> The Talking Horse and the Sad Girl and the Village Under the Sea</p>
+            </section>
+            <d:titlepage>
+                <d:author>Mark Haddon</d:author>
+                <title>A Spot of Bother</title>
+                <d:publisher>Vintage books, London</d:publisher>
+            </d:titlepage>
+            <d:copyrightinformation>
+                <p>Published by Vintage 2007</p>
+                <p>15 17 19 29 18 16 14</p>
+                <p>Copyright &#169; Mark Haddon 2006</p>
+                <p>Mark Haddon has asserted his rights [...] as the author of this work</p>
+                <p>This book is sold subject to [...] imposed on the subsequent purchaser</p>
+                <p>
+                    <l>First published in Great Brittain in 2006 by Jonathan Cape</l>
+                    <l>Random House, 20 Vauxhall Bridge Road,</l>
+                    <l>London SW1V 25A</l>
+                </p>
+                <p href="http://www.vintage-books.co.uk">www.vintage-books.co.uk</p>
+                <p>
+                    Addresses for companies within The Random House Group Limited can
+                    be found at <span href="http://www.randomhouse.co.uk/offices.htm">www.randomhouse.co.uk/offices.htm</span>
+                </p>
+                <p>The random House Group Limited Reg. No. 954009</p>
+                <p>A CIP-catalogue record for this book is available from the British Library</p>
+                <p>ISBN 9780099506928</p>
+                <p>
+                    The Random House Group Limited makes every effort to ensure [...] can be found at
+                    <span href="http://www.randomhouse.co.uk/paper.htm">www.randomhouse.co.uk/paper.htm</span>
+                </p>
+                <object src="FSC_logo.png">The logo for the FSC organization. The logo contains the text: [...]</object>
+                <p>Printed in the UK by CPI Bookmarque, Croydon, CR0 4TD</p>
+            </d:copyrightinformation>
+            <d:dedication>
+                <p>To My Continuity Girl</p>
+            </d:dedication>
+            <d:acknowledgment>
+                <p>With thanks to Sos Eltis, Clare Alexander, Dan Franklin and Bill Thomas</p>
+            </d:acknowledgment>
+        </d:frontmatter>
+        <d:bodymatter>
+            <section>
+                <d:pagebreak value="1" xml:id="p1" />
+                <h>1</h>
+                <p>It began when george was trying on a black suit in Allders the week before Bob Green's funeral.</p>
+                    <!-- many, many pages and many, many sections -->
+                <p>He turned the page and stood up to find a corkskrew.</p>
+            </section>
+        </d:bodymatter>
+    </d:book>
+</html>

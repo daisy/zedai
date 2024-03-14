@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z3986 Object Module</x:h1>
+  <x:p>This module is a Z3986 revised version of the XHTML2 Object module</x:p>
+    
+  <include href="xhtml-object-2.rng">
+    <define name="xhtml.object.content">        
+      <optional>
+        <ref name="xhtml.caption"/>
+      </optional>
+      <zeroOrMore>
+        <ref name="xhtml.param"/>
+      </zeroOrMore>
+      <choice>
+      	<ref name="xhtml.object"/>
+      	<choice>
+      	  <oneOrMore>
+      	    <ref name="z3986.object.content.structural.class"/>
+      	  </oneOrMore>
+      	  <oneOrMore>      	          	      
+      	    <ref name="z3986.object.content.text.class"/>
+      	  </oneOrMore>
+      	</choice>
+      </choice>      
+    </define>
+  </include>  
+
+  <include href="xhtml-param-2.rng"/>
+  
+  <define name="z3986.object.content.structural.class">    
+    <choice>
+      <notAllowed/>
+    </choice>      
+  </define>
+  
+  <define name="z3986.object.content.text.class">
+    <choice>
+      <text/>
+    </choice>
+  </define>
+  
+  <!-- contribute embedding attributes to object attlist 
+    and make some of them required --> 
+  <define name="xhtml.object.attlist" combine="interleave">      
+    <ref name="xhtml.src.attrib"/>
+    <optional> 
+      <!-- TODO should srctype be optional? -->            
+      <ref name="xhtml.srctype.attrib"/>
+    </optional>  
+    <optional>
+      <ref name="xhtml.encoding.attrib"/>
+    </optional>  
+  </define>
+  
+  <!-- Allow object in block context (xhtml-object-2 contributes 
+    to xhtml.Text.class) -->
+  <define name="xhtml.Structural.nosection.class" combine="choice">
+    <ref name="xhtml.object"/>
+  </define>
+  
+        
+</grammar>  

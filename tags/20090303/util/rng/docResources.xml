@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="docResources.rng" type="xml"?>
+<docResources xmlns="http://www.daisy.org/ns/z3986/2008/docResources/"
+    xmlns:d="http://www.daisy.org/ns/z3986/2008/"
+    xmlns:x2="http://www.w3.org/2002/06/xhtml2/">
+    
+<!--    <include subDrURI="docResourcesSub.xml"/>-->
+    
+    <namespace nsURI="http://www.w3.org/2002/06/xhtml2/" defaultDocURL="http://www.w3.org/TR/xhtml2/">
+        <element name="h" docURI="http://www.w3.org/TR/xhtml2/mod-document.html#edef_document_html" />
+        <element name="a" docURI="http://www.w3.org/TR/xhtml2/mod-hypertext.html#edef_hypertext_a" />
+        
+        <attribute name="class" docURI="http://www.w3.org/TR/xhtml2/mod-core.html#adef_core_class" />
+        <attribute name="dir" docURI="http://www.w3.org/TR/xhtml2/mod-bidi.html#adef_bidi_dir" />
+        <attribute name="href" docURI="http://www.w3.org/TR/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_href" />
+        <attribute name="hreflang" docURI="http://www.w3.org/TR/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_hreflang" />
+        <attribute name="hrefmedia" docURI="http://www.w3.org/TR/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_hrefmedia" />
+        <attribute name="hreftype" docURI="http://www.w3.org/TR/xhtml2/mod-hyperAttributes.html#adef_hyperAttributes_hreftype" />
+        <attribute name="property" docURI="http://www.w3.org/TR/xhtml2/mod-metaAttributes.html#adef_metaAttributes_property" />
+        <attribute name="role" docURI="http://www.w3.org/TR/xhtml2/mod-roleAttribute.html#adef_roleAttribute_role" />
+        <attribute name="value" context="x2:li" docURI="http://www.w3.org/TR/xhtml2/mod-list.html#adef_list_value" /> <!-- The xhtml2 object also carries a different value attribute -->
+    </namespace>
+    <namespace nsURI="http://www.w3.org/XML/1998/namespace" defaultDocURL="http://www.w3.org/XML/1998/namespace">
+        <attribute name="id" docURI="http://www.w3.org/TR/xml-id/"/>
+        <!--<element name="lang" docURI="http://www.w3.org/XML/1998/namespace"/>-->
+    </namespace>
+    <namespace nsURI="http://www.daisy.org/ns/z3986/2008/" defaultDocURL="http://www.daisy.org">
+        <element name="pagebreak" docURI="simplebookdocprose.html#pagebreak-pagebreak" include="yes" />
+        <element name="cover" docURI="simplebookdocprose.html#cover-cover" include="yes" />
+        <element name="frontcover" docURI="simplebookdocprose.html#backcover-backcover" include="yes" />
+        <element name="backcover" docURI="simplebookdocprose.html#frontcover-frontcover" include="yes" />
+        <element name="spine" docURI="simplebookdocprose.html#spine-spine" include="yes" />
+        <element name="noteref" docURI="simplebookdocprose.html#noteref-noteref" include="yes" />
+        <element name="backmatter" docURI="simplebookdocprose.html#backmatter-backmatter" include="yes" />
+        <element name="bodymatter" docURI="simplebookdocprose.html#bodymatter-bodymatter" include="yes" />
+        <element name="book" docURI="simplebookdocprose.html#book-book" include="yes" />
+        <element name="bridgehead" docURI="simplebookdocprose.html#bridgehead-bridgehead" include="yes" />
+        <element name="contributor" docURI="simplebookdocprose.html#contributor-contributor" include="yes" />
+        <element name="copyright" docURI="simplebookdocprose.html#copyright-copyright" include="yes" />
+        <element name="creator" docURI="simplebookdocprose.html#creator-creator" include="yes" />
+        <element name="date" docURI="simplebookdocprose.html#date-date" include="yes" />
+        <element name="flaps" docURI="simplebookdocprose.html#flaps-flaps" include="yes" />
+        <element name="frontmatter" docURI="simplebookdocprose.html#frontmatter-frontmatter" include="yes" />
+        <element name="note" docURI="simplebookdocprose.html#note-note" include="yes" />
+        <element name="pageref" docURI="simplebookdocprose.html#pageref-pageref" include="yes" />
+        <element name="publisher" docURI="simplebookdocprose.html#publisher-publisher" include="yes" />
+        <element name="s" docURI="simplebookdocprose.html#s-s" include="yes" />
+        <element name="toc" docURI="simplebookdocprose.html#toc-toc" include="yes" />
+        <element name="tocentry" docURI="simplebookdocprose.html#tocentry-tocentry" include="yes" />
+        <element name="w" docURI="simplebookdocprose.html#w-w" include="yes" />
+        
+        <attribute name="value" context="d:pagebreak" docURI="simplebookdocprose.html#a-pagenum-value" include="yes"/>
+        <attribute name="ref" context="d:noteref" docURI="simplebookdocprose.html#a-noteref-ref" include="yes"/>
+        <attribute name="ref" context="d:pageref" docURI="simplebookdocprose.html#a-pageref-ref" include="yes"/>
+        <attribute name="type" docURI="simplebookdocprose.html#a-type" include="yes"/>
+        
+    </namespace>
+    
+</docResources>

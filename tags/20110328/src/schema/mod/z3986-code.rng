@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="code">The code module</title>
+        <annotation annotates="/">
+            <para role="desc-main">This module defines the {[[#z3986.code.block]]} element for marking instances of computer code, commands and coded alphabets and systems.</para>
+            <para role="desc-sub">Two variants of the {code} element are available: one for use in a [[#z3986.Block.class Block]] context and a second for use in a [[#z3986.Phrase.class Phrase]] context.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3986-global-classes.rng"/>
+                <member xlink:href="z3986-line.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2011-03-28</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="z3986.code.block" xml:id="z3986.code.block">
+            <element name="code">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="code (block)">The {code} element (Block)</title>
+                    <para role="desc-main" xlink:role="inherit-common" xlink:href="z3986.code"/>
+                    <para role="desc-sub" xlink:role="inherit-common" xlink:href="z3986.code"/>
+                    <synopsis role="def-context">{[[#z3986.Block.class]]}</synopsis>
+                    <synopsis role="def-content">{(([[#z3986.code.lngroup]] | [[#z3986.code.ln]])+ | ([[#z3986.p]] | [[#z3986.list]] | [[#z3986.block]] )+)}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Block.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.code.block.attlist"/>
+                <ref name="z3986.code.block.content"/>
+                <sch:rule context="default:code">
+                    <sch:assert test="normalize-space(.) or *">The {code} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="z3986.code.block.attlist" xml:id="z3986.code.block.attlist">
+            <ref name="z3986.Block.attrib"/>
+        </define>
+        <define name="z3986.code.block.content" xml:id="z3986.code.block.content">
+            <choice>
+                <group>
+                    <oneOrMore>
+                        <choice>
+                            <ref name="z3986.code.lngroup"/>
+                            <ref name="z3986.code.ln"/>
+                            <ref name="z3986.Global.extra.class"/>
+                        </choice>
+                    </oneOrMore>
+                </group>
+                <group>
+                    <oneOrMore>
+                        <choice>
+                            <ref name="z3986.Block.basic.model"/>
+                            <ref name="z3986.Global.extra.class"/>
+                        </choice>
+                    </oneOrMore>
+                </group>
+            </choice>
+        </define>
+        <define name="z3986.code.lngroup" xml:id="z3986.code.lngroup">
+            <element name="lngroup">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="lngroup (code)">The {lngroup} element (code)</title>
+                    <para role="desc-main">The {lngroup} element for code represents a grouping of {ln} code elements.</para>
+                    <para role="desc-sub">Lines of code may be grouped to show a section of a coded message, a computer program, methods within a program, to separate programs from sample input/output, etc.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.code.block]]}</synopsis>
+                    <synopsis role="def-content" condition="The content model must allow {[[#z3986.code.ln ln]]} elements.">{[[#z3986.code.ln]]+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Block.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.code.lngroup.attlist"/>
+                <ref name="z3986.code.lngroup.content"/>
+            </element>
+        </define>
+        <define name="z3986.code.lngroup.attlist" xml:id="z3986.code.lngroup.attlist">
+            <ref name="z3986.Block.attrib"/>
+        </define>
+        <define name="z3986.code.lngroup.content" xml:id="z3986.code.lngroup.content">
+            <interleave>
+                <oneOrMore>
+                    <ref name="z3986.code.ln"/>
+                </oneOrMore>
+                <zeroOrMore>
+                    <ref name="z3986.Global.extra.class"/>
+                </zeroOrMore>
+            </interleave>
+        </define>
+        <define name="z3986.code.ln" xml:id="z3986.code.ln">
+            <element name="ln">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="ln (code)">The {ln} element (code)</title>
+                    <para role="desc-main">The {ln} element for the {code} element represents a single line of code.</para>
+                    <para role="desc-sub">The {[[#z3986.lnum]]} element can be added at the start of the {ln} for code examples that include line numbers.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.code.block]]} and {[[#z3986.code.lngroup]]} </synopsis>
+                    <synopsis role="def-content">{[[#z3986.lnum]]? &amp;amp; (text | [[#z3986.Text.class]])+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Phrase.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.code.ln.attlist"/>
+                <ref name="z3986.code.ln.content"/>
+            </element>
+        </define>
+        <define name="z3986.code.ln.attlist" xml:id="z3986.code.ln.attlist">
+            <ref name="z3986.Phrase.attrib"/>
+        </define>
+        <define name="z3986.code.ln.content" xml:id="z3986.code.ln.content">
+            <interleave>
+                <optional>
+                    <ref name="z3986.lnum"/>
+                </optional>
+                <ref name="z3986.Text.model"/>
+            </interleave>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.code.phrase" xml:id="z3986.code.phrase">
+            <element name="code">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="code (phrase)">The {code} element (Phrase)</title>
+                    <para role="desc-main" xlink:role="inherit-common" xlink:href="z3986.code"/>
+                    <para role="desc-sub" xlink:role="inherit-common" xlink:href="z3986.code"/>
+                    <synopsis role="def-context">{[[#z3986.Phrase.class]]}</synopsis>
+                    <synopsis role="def-content">{(text | [[#z3986.Text.class]])+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Phrase.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.code.phrase.attlist"/>
+                <ref name="z3986.code.phrase.content"/>
+            </element>
+        </define>
+        <define name="z3986.code.phrase.attlist" xml:id="z3986.code.phrase.attlist">
+            <ref name="z3986.Phrase.attrib"/>
+        </define>
+        <define name="z3986.code.phrase.content" xml:id="z3986.code.phrase.content">
+            <ref name="z3986.Text.model"/>
+        </define>
+    </div>
+    <div>
+        <a:documentation>code - default content model contribution</a:documentation>
+        <define name="z3986.Block.core.class" combine="choice">
+            <ref name="z3986.code.block"/>
+        </define>
+        <define name="z3986.Phrase.core.class" combine="choice">
+            <ref name="z3986.code.phrase"/>
+        </define>
+    </div>
+</grammar>

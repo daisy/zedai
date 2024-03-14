@@ -1,0 +1,14 @@
+@charset "UTF-8";
+@namespace "http://www.daisy.org/ns/z3986/authoring/";
+@namespace xlink "http://www.w3.org/1999/xlink";
+
+/*** linking ***************************************************/
+*[for]:before                       { link: "#" attr(for); }
+ref[xlink|href]:before              { link:attr(xlink|href); }
+
+
+/*** foldable **************************************************/
+section, article, toc, bibliography, index, glossary {
+    foldable:true;
+    not-foldable-child: h;
+}

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://www.daisy.org/ns/z3998/authoring/" xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:z="http://www.daisy.org/ns/z3998/annotations/#"
+    xmlns:xsdp="http://www.daisy.org/ns/rng-preprocess/xsd"
+    xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+    <a:documentation>A driver that includes absolutely everything, only for testing
+        purposes.</a:documentation>
+
+    <include href="./mod/z3998-global-classes.rng"/>
+    <include href="./mod/z3998-datatypes.rng"/>
+
+    <include href="./mod/z3998-document.rng"/>
+    <include href="./mod/z3998-meta.rng"/>
+
+    <!-- section level -->
+    <include href="./mod/z3998-section.rng"/>
+    <include href="./mod/z3998-bibliography.rng"/>
+    <include href="./mod/z3998-glossary.rng"/>
+    <include href="./mod/z3998-index.rng"/>
+    <include href="./mod/z3998-article.rng"/>
+    <include href="./mod/z3998-toc.rng"/>
+    <include href="./mod/z3998-cover.rng"/>
+    <include href="./mod/z3998-partitions.rng"/>
+
+    <!-- section and block level -->
+    <include href="./mod/z3998-verse.rng"/>
+
+    <!-- block level -->
+    <include href="./mod/z3998-block.rng"/>
+    <include href="./mod/z3998-headings.rng"/>
+    <include href="./mod/z3998-p.rng"/>
+    <include href="./mod/z3998-aside.rng"/>
+    <include href="./mod/z3998-note.rng"/>
+    <include href="./mod/z3998-table.rng"/>
+    <include href="./mod/z3998-transition.rng"/>
+    <include href="./mod/z3998-byline.rng"/>
+    <include href="./mod/z3998-dateline.rng"/>
+    <include href="./mod/z3998-caption.rng"/>
+    <include href="./mod/z3998-description.rng"/>
+    
+    <!-- block and phrase level -->
+    <include href="./mod/z3998-annotation.rng"/>
+    <include href="./mod/z3998-code.rng"/>
+    <include href="./mod/z3998-quote.rng"/>
+    <include href="./mod/z3998-pagebreak.rng"/>
+    <include href="./mod/z3998-list.rng"/>
+    <include href="./mod/z3998-address.rng"/>
+    
+    <!-- block and phrase and text level -->
+    <include href="./mod/z3998-object.rng"/>
+
+    <!-- phrase level -->
+    <include href="./mod/z3998-time.rng"/>
+    <include href="./mod/z3998-abbr.rng"/>
+    <include href="./mod/z3998-line.rng"/>
+    <include href="./mod/z3998-citation.rng"/>
+    <include href="./mod/z3998-w.rng"/>
+    <include href="./mod/z3998-term.rng"/>
+    <include href="./mod/z3998-definition.rng"/>
+    <include href="./mod/z3998-name.rng"/>
+    <include href="./mod/z3998-emph.rng"/>
+    <include href="./mod/z3998-s.rng"/>
+    <include href="./mod/z3998-span.rng"/>
+    <include href="./mod/z3998-d.rng"/>
+    <include href="./mod/z3998-num.rng"/>
+    <include href="./mod/z3998-linking.rng"/>
+
+    <!-- text level -->
+    <include href="./mod/z3998-sub-sup.rng"/>
+    <include href="./mod/z3998-char.rng"/>
+
+    <!-- attributes -->
+    <include href="./mod/z3998-core-attrib.rng"/>
+    <include href="./mod/z3998-i18n-attrib.rng"/>
+    <include href="./mod/rdfa-attrib.rng"/>
+    <include href="./mod/xlink.rng"/>
+    <include href="./mod/z3998-role-attrib.rng"/>
+    <include href="./mod/z3998-by-attrib.rng"/>
+    <include href="./mod/z3998-depth-attrib.rng"/>
+
+    <!-- features -->
+    <include href="./mod/z3998-feature-forms.rng"/>
+    <include href="./mod/z3998-feature-its-ruby.rng"/>
+    <include href="./mod/z3998-feature-mathml.rng"/>
+    <include href="./mod/z3998-feature-rend.rng"/>
+    <include href="./mod/z3998-feature-select.rng"/>
+    <include href="./mod/z3998-feature-ssml.rng"/>
+    <include href="./mod/z3998-feature-svg-cdr.rng"/>
+    <include href="./mod/z3998-feature-description.rng"/>
+    
+
+    <define name="z3998.Section.class" combine="choice">
+        <ref name="z3998.bibliography"/>
+    </define>
+
+    <define name="z3998.Section.class" combine="choice">
+        <ref name="z3998.article"/>
+    </define>
+    
+    <!-- define as placeholders internal classes that arent used in this schema -->
+    <define name="z3998.Section.extern.class">
+        <notAllowed/>
+    </define>
+
+</grammar>

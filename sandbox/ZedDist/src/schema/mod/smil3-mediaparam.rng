@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+    <!-- TODO create enum for daisy: param names -->
+
+    <div>
+        <define name="smil3.head.content" combine="interleave">
+            <zeroOrMore>
+                <ref name="smil3.paramGroup"/>
+            </zeroOrMore>
+        </define>
+        <define name="smil3.mediaobjects.attrib" combine="interleave">
+            <optional>
+                <ref name="smil3.paramGroup.attrib"/>
+            </optional>
+        </define>
+        <define name="smil3.region.attlist" combine="interleave">
+            <optional>
+                <ref name="smil3.paramGroup.attrib"/>
+            </optional>
+        </define>
+        <define name="smil3.mediaobjects.content" combine="interleave">
+            <zeroOrMore>
+                <ref name="smil3.param"/>
+            </zeroOrMore>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.param">
+            <element name="param">
+                <a:documentation>The param element allows a general parameter value to be sent to a
+                    media object renderer as a name/value pair. This parameter is sent to the
+                    renderer at the time that the media object is processed by the scheduler. It is
+                    up to the media renderer to associate an action with the given param. The media
+                    renderer may choose to ignore any unknown or inappropriate param values (such as
+                    sending a font size to an audio object). Any number of param elements may appear
+                    (in any order) in the content of a media object element or in a paramGroup
+                    element. If a given parameter is defined multiple times, the lexically last
+                    version of that parameter value should be used. The syntax of names and values
+                    is assumed to be understood by the object's implementation. The SMIL
+                    specification does not specify how user agents should retrieve name/value
+                    pairs.</a:documentation>
+                <ref name="smil3.param.attlist"/>
+                <empty/>
+            </element>
+        </define>
+
+        <define name="smil3.param.attlist">
+            <ref name="smil3.Core.attrib"/>
+            <attribute name="name">
+                <a:documentation>This attribute defines the name of a run-time parameter, assumed to
+                    be known by the inserted object. Whether the property name is case-sensitive
+                    depends on the specific object implementation.</a:documentation>
+                <ref name="NMTOKEN.datatype"/>
+            </attribute>
+            <ref name="param.value.choice"/>
+        </define>
+
+        <define name="param.value.choice">
+            <choice>
+                <ref name="param.value.choice.data"/>
+                <ref name="param.value.choice.ref"/>
+                <ref name="param.value.choice.object"/>
+            </choice>
+        </define>
+        
+        <define name="param.value.choice.data">
+            <attribute name="value">
+                <a:documentation>This attribute specifies the value of a run-time parameter
+                    specified by name.</a:documentation>
+                <ref name="Text.datatype"/>
+            </attribute>
+            <attribute name="valuetype">
+                <a:documentation>This is default value for the valuetype attribute. It means that
+                    the value specified by value will be evaluated and passed to the object's
+                    implementation as a string.</a:documentation>
+                <value>data</value>
+            </attribute>
+        </define>
+        
+        <define name="param.value.choice.ref">
+            <attribute name="value">
+                <a:documentation>This attribute specifies the value of a run-time parameter
+                    specified by name.</a:documentation>
+                <ref name="IRI.datatype"/>
+            </attribute>
+            <attribute name="valuetype">
+                <a:documentation>The value specified by value is a IRI [IRI] that designates a
+                    resource where run-time values are stored. This allows support tools to identify
+                    URIs given as parameters. The IRI must be passed to the object as is, i.e.,
+                    unresolved.</a:documentation>
+                <value>ref</value>
+            </attribute>
+            <attribute name="type">
+                <a:documentation>This attribute specifies the content type of the resource
+                    designated by the value attribute only in the case where valuetype is set to
+                    "ref".</a:documentation>
+                <ref name="ContentType.datatype"/>
+            </attribute>
+        </define>
+        
+        <define name="param.value.choice.object">
+            <attribute name="value">
+                <a:documentation>This attribute specifies the value of a run-time parameter
+                    specified by name.</a:documentation>
+                <ref name="NMTOKEN.datatype"/>
+            </attribute>
+            <!-- TODO SCH @value IDREF must resolve to a mediaobject [when @valuetype is object] -->
+            <attribute name="valuetype">
+                <a:documentation>The value specified by value is an identifier that refers to a
+                    media object declaration in the same document. The identifier must be the value
+                    of the id attribute set for the declared media object element.</a:documentation>
+                <value>object</value>
+            </attribute>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.paramGroup">
+            <element name="paramGroup">
+                <a:documentation>The paramGroup element provides a convenience mechanism for
+                    defining a collection of media parameters that may be reused with several
+                    different media objects. If present, the paramGroup element must appear in the
+                    head section of the document. The content of the paramGroup element consists of
+                    zero or more param elements. The paramGroup element may not contain nested
+                    paramGroup element definitions.</a:documentation>
+                <ref name="smil3.paramGroup.attlist"/>
+                <ref name="smil3.paramGroup.content"/>
+            </element>
+        </define>
+
+        <define name="smil3.paramGroup.attlist">
+            <ref name="smil3.Core.IDrequired.attrib"/>
+        </define>
+
+        <define name="smil3.paramGroup.content">
+            <oneOrMore>
+                <ref name="smil3.param"/>
+            </oneOrMore>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.paramGroup.attrib">
+            <attribute name="paramGroup">
+                <!-- TODO SCH @paramGroup value must resolve to head/paramGroup -->
+                <ref name="IDREF.datatype"/>
+            </attribute>
+        </define>
+    </div>
+</grammar>

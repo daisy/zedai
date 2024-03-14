@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml">
+
+    <x:h1>The xhtml2 + book module</x:h1>
+
+
+    <define name="Daisy.frontmatter.content" combine="interleave">
+        <zeroOrMore>
+            <ref name="section" />
+        </zeroOrMore>
+    </define>
+    <define name="Daisy.brmatter.content" combine="interleave">
+        <oneOrMore>
+            <ref name="section" />
+        </oneOrMore>
+    </define>
+    
+
+</grammar>

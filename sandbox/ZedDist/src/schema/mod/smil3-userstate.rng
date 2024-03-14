@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+
+    <div>
+        <!-- This profile adds the state and submission elements to the content model of the head
+            element of the Structure Module, and the setvalue, newvalue, delvalue, and send elements to
+            the content model of the body, switch, a, par, seq, excl elements. It also adds the expr
+            attribute to all elements within the content model of the body element (i.e. excluding the
+            body element itself). The content model of the state element is declared as EMPTY. The state
+            element defines the data model of the SMIL State engine using the XForms 1.0 syntax. The
+            elements are not imported into SMIL 3.0 and must be fully qualified.  -->
+
+        <define name="smil3.head.content" combine="interleave">
+            <optional>
+                <ref name="smil3.userstate.state"/>
+            </optional>
+        </define>
+
+        <define name="smil3.timecontainers.content.class" combine="choice">
+            <choice>
+                <ref name="smil3.userstate.setvalue"/>
+                <ref name="smil3.userstate.newvalue"/>
+                <ref name="smil3.userstate.delvalue"/>
+            </choice>
+        </define>
+
+        <define name="smil3.a.content.class" combine="choice">
+            <choice>
+                <ref name="smil3.userstate.setvalue"/>
+                <ref name="smil3.userstate.newvalue"/>
+                <ref name="smil3.userstate.delvalue"/>
+            </choice>
+        </define>
+
+    </div>
+
+    <!-- TODO attlists for the below elems : Test, Timing, skipcontent -->
+
+    <div>
+        <define name="smil3.userstate.state">
+            <element name="state">
+                <a:documentation>The state element sets global, document-wide, information for the
+                    other elements and attributes in this module. It selects the expression language
+                    to use and it may also be used to initialize the data model.</a:documentation>
+                <ref name="smil3.userstate.state.attlist"/>
+                <ref name="smil3.userstate.state.content"/>
+                <!-- TODO allow xforms, allow anything -->
+            </element>
+        </define>
+        <define name="smil3.userstate.state.attlist">
+            <ref name="smil3.Core.attrib"/>
+            <optional>
+                <ref name="smil3.userstate.language.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.basicmedia.src.attrib"/>
+            </optional>
+        </define>
+        <define name="smil3.userstate.state.content">
+            <empty/>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.userstate.setvalue">
+            <element name="setvalue">
+                <a:documentation>The setvalue element modifies the value of an item in the data
+                    model, similar to the corresponding element from XForms, but it takes its time
+                    behaviour from the SMIL ref element. </a:documentation>
+                <ref name="smil3.userstate.setvalue.attlist"/>
+                <ref name="smil3.userstate.setvalue.content"/>
+            </element>
+        </define>
+        <define name="smil3.userstate.setvalue.attlist">
+            <ref name="smil3.Core.attrib"/>
+            <ref name="smil3.userstate.ref.attrib"/>
+            <ref name="smil3.userstate.value.attrib"/>
+        </define>
+        <define name="smil3.userstate.setvalue.content">
+            <empty/>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.userstate.newvalue">
+            <element name="newvalue">
+                <a:documentation>The newvalue element introduces a new, named, item into the data
+                    model. </a:documentation>
+                <ref name="smil3.userstate.newvalue.attlist"/>
+                <ref name="smil3.userstate.newvalue.content"/>
+            </element>
+        </define>
+        <define name="smil3.userstate.newvalue.attlist">
+            <!-- TODO The newvalue element accepts the ref, where, name and value attributes. 
+                Which of these are required depends on the expression language.
+            -->
+            <ref name="smil3.Core.attrib"/>
+            <optional>
+                <ref name="smil3.userstate.ref.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.userstate.value.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.userstate.where.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.userstate.name.attrib"/>
+            </optional>
+        </define>
+        <define name="smil3.userstate.newvalue.content">
+            <empty/>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.userstate.delvalue">
+            <element name="delvalue">
+                <a:documentation>The delvalue element deletes a named item from the data
+                    model.</a:documentation>
+                <ref name="smil3.userstate.delvalue.attlist"/>
+                <ref name="smil3.userstate.delvalue.content"/>
+            </element>
+        </define>
+        <define name="smil3.userstate.delvalue.attlist">
+            <ref name="smil3.Core.attrib"/>
+            <ref name="smil3.userstate.ref.attrib"/>
+        </define>
+        <define name="smil3.userstate.delvalue.content">
+            <empty/>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.userstate.language.attrib">
+            <attribute name="language">
+                <a:documentation>The language attribute selects the expression language to use. Its
+                    value should be a URI defining that language. The default value for this
+                    attribute is defined in the profile. SMIL implementations should allow
+                    expression language availability to be tested through the systemComponent
+                    attribute.</a:documentation>
+                <text/>
+            </attribute>
+        </define>
+        <define name="smil3.userstate.ref.attrib">
+            <attribute name="ref">
+                <a:documentation>The ref attribute indicates which item in the data model will be
+                    changed. The language used to specify this, plus any additional constraints on
+                    the attribute value, depend on the expression language used.</a:documentation>
+                <text/>
+            </attribute>
+        </define>
+        <define name="smil3.userstate.where.attrib">
+            <attribute name="where">
+                <a:documentation>The where attribute indicates where in the data model the new item
+                    will be inserted, if the expression language supports a hierarchical data model.
+                    The allowed values are before, after and child, the default.</a:documentation>
+                <text/>
+            </attribute>
+        </define>
+        <define name="smil3.userstate.name.attrib">
+            <attribute name="name">
+                <a:documentation>The name attribute specifies the name for the new data model item.
+                    This name must adhere to constraints set by the expression language used. </a:documentation>
+                <text/>
+            </attribute>
+        </define>
+        <define name="smil3.userstate.value.attrib">
+            <attribute name="value">
+                <a:documentation>The value attribute specifies the new value of the data model item
+                    referred to by the ref element. How the new value is specified in the value
+                    attribute is defined in the profile that includes this module. This
+                    specification also states whether only simple values are allowed or also
+                    expressions, and when those expressions are evaluated.</a:documentation>
+                <text/>
+            </attribute>
+        </define>
+    </div>
+</grammar>

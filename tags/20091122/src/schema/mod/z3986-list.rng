@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml">
+  <x:h1>List Module</x:h1>
+
+  <!-- TODO SCH The start attribute must only be
+present when when this list is specified to be an ordered list, as given
+by the presence and value of the <x:code>prefix</x:code> attribute.</x:p> -->
+
+  <div>
+    <x:h2>The list element</x:h2>
+    <x:div id="z3986.list">
+      <x:p class="description">The <x:code>list</x:code> element represents various types of
+        lists.<x:br/> The optional <x:code>prefix</x:code> attribute is used to specify automatic
+        list item prefixes to create so called <x:em>bullet lists</x:em> or <x:em>ordered
+          lists</x:em>.</x:p>
+    </x:div>
+
+    <define name="z3986.list">
+      <element name="list">
+        <ref name="z3986.list.attlist"/>
+        <ref name="z3986.list.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.list.attlist">
+      <optional>
+        <ref name="z3986.list.prefix.attrib"/>
+        <optional>
+          <ref name="z3986.list.start.attrib"/>
+        </optional>
+      </optional>
+      <ref name="z3986.Structural.attrib"/>
+    </define>
+
+    <define name="z3986.list.content">
+      <oneOrMore>
+        <ref name="z3986.item"/>
+      </oneOrMore>
+    </define>
+
+    <div>
+      <x:h2>The list prefix attribute</x:h2>
+      <x:div id="z3986.item.prefix.attrib">
+        <x:p> Specifies the glyph to prepend to the <x:code>item</x:code> children of this
+            <x:code>list</x:code>, using values drawn from the list-style-type property of
+          CSS.<x:br/> The value specified here is inherited by any descendant
+          <x:code>list</x:code>s, unless such descendant <x:code>list</x:code>s specify a
+            <x:code>prefix</x:code> attribute themselves. (See also the <x:code>prefix</x:code>
+          element child of <x:code>item</x:code>.) </x:p>
+        <x:p>The values <x:code>box</x:code>, <x:code>check</x:code>, <x:code>circle</x:code>,
+            <x:code>diamond</x:code>, <x:code>disc</x:code>, <x:code>hyphen</x:code> and
+            <x:code>square</x:code> imply that this <x:code>list</x:code> is an unordered list. </x:p>
+        <x:p>The values <x:code>decimal</x:code>, <x:code>decimal-leading-zero</x:code>,
+            <x:code>lower-alpha</x:code>, <x:code>lower-greek</x:code>,
+          <x:code>lower-latin</x:code>, <x:code>lower-roman</x:code>, <x:code>upper-alpha</x:code>,
+            <x:code>upper-greek</x:code>, <x:code>upper-latin</x:code> and <x:code>upper-roman
+          </x:code> imply that this <x:code>list</x:code> is an ordered list. </x:p>
+        <x:p>For more specialized glyphs than the ones supported natively by the
+            <x:code>prefix</x:code> attribute, the <x:code>prefix</x:code> child of
+            <x:code>item</x:code> can be used.</x:p>
+      </x:div>
+
+      <define name="z3986.list.prefix.attrib">
+        <attribute name="prefix">
+          <choice>
+            <value>box</value>
+            <value>check</value>
+            <value>circle</value>
+            <value>diamond</value>
+            <value>disc</value>
+            <value>hyphen</value>
+            <value>square</value>
+            <value>decimal</value>
+            <value>decimal-leading-zero</value>
+            <value>lower-alpha</value>
+            <value>lower-greek</value>
+            <value>lower-latin</value>
+            <value>lower-roman</value>
+            <value>upper-alpha</value>
+            <value>upper-greek</value>
+            <value>upper-latin</value>
+            <value>upper-roman </value>
+          </choice>
+        </attribute>
+      </define>
+    </div>
+    <!--
+    <define name="z3986.list.prefix.attribs">
+      <choice>
+        <optional>
+          <ref name="z3986.list.prefix.unordered.attrib"/>
+        </optional>
+        <optional>
+          <ref name="z3986.list.prefix.ordered.attrib"/>
+          <optional>
+            <ref name="z3986.list.start.attrib"/>
+          </optional>
+        </optional>
+      </choice>
+    </define>
+  </div>
+
+  <div>
+    <x:h2>The list prefix attribute</x:h2>
+    <x:div id="z3986.item.prefix.attrib">
+      <x:p> Specifies the glyph to prepend to the <x:code>item</x:code>
+        children of this <x:code>list</x:code>. The value specified here is inherited by any
+        descendant <x:code>list</x:code>s, unless such descendant <x:code>list</x:code>s specify a
+        <x:code>prefix</x:code> attribute themselves. (See also the <x:code>prefix</x:code>
+        element child of <x:code>item</x:code>.) </x:p>
+      <x:p>The values <x:code>box</x:code>, <x:code>check</x:code>, <x:code>circle</x:code>,
+        <x:code>diamond</x:code>, <x:code>disc</x:code>, <x:code>hyphen</x:code> and
+        <x:code>square</x:code> imply that this <x:code>list</x:code> is an unordered list. </x:p>
+      <x:p>The values <x:code>decimal</x:code>, <x:code>decimal-leading-zero</x:code>,
+        <x:code>lower-alpha</x:code>, <x:code>lower-greek</x:code>,
+        <x:code>lower-latin</x:code>, <x:code>lower-roman</x:code>, <x:code>upper-alpha</x:code>,
+        <x:code>upper-greek</x:code>, <x:code>upper-latin</x:code> and <x:code>upper-roman
+        </x:code> imply that this <x:code>list</x:code> is an ordered list. </x:p>
+      <x:p>For more specialized glyphs than the ones supported natively by the
+        <x:code>prefix</x:code> attribute, the <x:code>prefix</x:code> child of 
+        <x:code>item</x:code> can be used.</x:p>
+    </x:div>
+    
+    <define name="z3986.list.prefix.attrib">
+      <attribute name="prefix">
+        <choice>
+          <value>box</value>
+          <value>check</value>
+          <value>circle</value>
+          <value>diamond</value>
+          <value>disc</value>
+          <value>hyphen</value>
+          <value>square</value>
+        </choice>
+      </attribute>
+    </define>
+
+    <define name="z3986.list.prefix.ordered.attrib">
+      <attribute name="prefix">
+        <choice>
+          <value>decimal</value>
+          <value>decimal-leading-zero</value>
+          <value>lower-alpha</value>
+          <value>lower-greek</value>
+          <value>lower-latin</value>
+          <value>lower-roman</value>
+          <value>upper-alpha</value>
+          <value>upper-greek</value>
+          <value>upper-latin</value>
+          <value>upper-roman </value>
+        </choice>
+      </attribute>
+    </define>
+  
+-->
+  </div>
+
+  <div>
+    <x:h2>The list start attribute</x:h2>
+    <x:div id="z3986.list.start.attrib">
+      <x:p>Specifies the ordinal value that this <x:code>list</x:code>s <x:code>item</x:code>
+        children prefixes should start from when this <x:code>list</x:code> is an ordered list. This
+        attribute must only be present when when this list is specified to be an ordered list, as
+        given by the presence and value of the <x:code>prefix</x:code> attribute.</x:p>
+    </x:div>
+
+    <define name="z3986.list.start.attrib">
+      <attribute name="start">
+        <!-- TODO a regex for sanity check -->
+      </attribute>
+    </define>
+  </div>
+
+  <div>
+    <x:h2>The item element</x:h2>
+    <x:div id="z3986.item">
+      <x:p class="description">The <x:code>item</x:code> element represents an item in a list.</x:p>
+    </x:div>
+
+    <define name="z3986.item">
+      <element name="item">
+        <ref name="z3986.item.attlist"/>
+        <ref name="z3986.item.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.item.attlist">
+      <ref name="z3986.Text.attrib"/>
+    </define>
+
+    <define name="z3986.item.content">
+      <optional>
+        <ref name="z3986.list.item.prefix"/>
+      </optional>
+      <ref name="z3986.Flow.model"/>
+    </define>
+
+  </div>
+
+  <div>
+    <x:h2>The list item prefix element</x:h2>
+    <x:div id="z3986.item.prefix">
+      <x:p class="description">Specifies a glyph or image to prepend to the <x:code>item</x:code>s
+        content. The occurence of this element means that the prefix inheritance, as set by the
+          <x:code>prefix</x:code> attribute on a <x:code>list</x:code> ancestor, ceases to be
+        active, for this <x:code>item</x:code>, any following <x:code>item</x:code> siblings, and
+        any child <x:code>list</x:code>s. </x:p>
+    </x:div>
+
+    <define name="z3986.list.item.prefix">
+      <element name="prefix">
+        <ref name="z3986.list.item.prefix.attlist"/>
+        <choice>
+          <group>
+            <ref name="z3986.Embed.attrib"/>
+            <empty/>
+          </group>
+          <ref name="z3986.Text.base.model"/>
+        </choice>
+      </element>
+    </define>
+
+    <define name="z3986.list.item.prefix.attlist" combine="interleave">
+      <ref name="z3986.Core.attrib"/>
+      <ref name="z3986.I18n.attrib"/>
+    </define>
+
+  </div>
+
+  <div>
+    <x:h2>List module - contribution slots</x:h2>
+
+    <define name="z3986.list.content" combine="interleave">
+      <ref name="z3986.Lists.extra.model"/>
+    </define>
+
+    <!-- slot for contributing children to the list element  -->
+    <define name="z3986.Lists.extra.class" combine="choice">
+      <choice>
+        <notAllowed/>
+      </choice>
+    </define>
+
+    <define name="z3986.Lists.extra.model">
+      <zeroOrMore>
+        <ref name="z3986.Lists.extra.class"/>
+      </zeroOrMore>
+    </define>
+
+  </div>
+
+  <div>
+    <x:h2>List module - default content model contribution</x:h2>
+
+    <define name="z3986.List.class">
+      <choice>
+        <ref name="z3986.list"/>
+      </choice>
+    </define>
+
+    <define name="z3986.Structural.class">
+      <ref name="z3986.List.class"/>
+    </define>
+
+    <define name="z3986.Flow.class" combine="choice">
+      <ref name="z3986.List.class"/>
+    </define>
+
+    <define name="z3986.p.content.class" combine="choice">
+      <ref name="z3986.List.class"/>
+    </define>
+
+    <define name="z3986.covers.content.class" combine="choice">
+      <ref name="z3986.List.class"/>
+    </define>
+
+  </div>
+</grammar>

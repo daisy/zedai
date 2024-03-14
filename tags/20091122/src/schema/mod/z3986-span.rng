@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 span element module</x:h1>
+    
+  <div>
+    <x:h2>The span element</x:h2>
+    <x:div id="z3986.span">
+      <x:p class="description">
+        The <x:code>span</x:code> element represents an arbitrary span of text.       
+      </x:p>
+    </x:div>
+         
+    <define name="z3986.span">
+      <element name="span">        
+        <ref name="z3986.span.attlist"/>
+        <ref name="z3986.span.content"/>  
+      </element>    
+    </define>
+
+    <define name="z3986.span.attlist">
+      <ref name="z3986.Text.attrib"/>
+    </define>
+    
+    <define name="z3986.span.content">
+      <ref name="z3986.Text.model"/>
+    </define>  
+    
+  </div>  
+  
+  <div>
+    <x:h2>The span element - default content model contribution</x:h2>
+    
+    <define name="z3986.Text.base.class" combine="choice">
+      <ref name="z3986.span"/>    
+    </define>
+
+    <define name="z3986.spine.content.class" combine="choice">
+ 	  <ref name="z3986.span" />
+    </define>
+    
+  </div>
+
+</grammar>

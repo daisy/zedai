@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml"
+	datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+	<x:h1>The Z3986 Exercises module</x:h1>
+
+	<div>
+		<x:h2>The exercises element</x:h2>
+		<define name="z3986.exercises" ns="http://www.daisy.org/ns/z3986/2008/">
+			<element name="exercises">
+				<ref name="z3986.exercises.attlist" />
+				<ref name="z3986.exercises.content" />
+			</element>
+		</define>
+
+		<define name="z3986.exercises.attlist">
+			<ref name="Common.attrib" />
+		</define>
+
+
+		<define name="z3986.exercises.content">
+			<interleave>
+				<oneOrMore>
+					<ref name="z3986.exercise" />
+				</oneOrMore>
+				<zeroOrMore>
+					<ref name="z3986.pagebreak" />
+				</zeroOrMore>
+			</interleave>
+		</define>
+	</div>
+	<div>
+		<x:h2>The exercise element</x:h2>
+		<define name="z3986.exercise" ns="http://www.daisy.org/ns/z3986/2008/">
+			<element name="exercise">
+				<ref name="z3986.exercise.attlist" />
+				<ref name="z3986.exercise.content" />
+			</element>
+		</define>
+		<define name="z3986.exercise.attlist">
+			<ref name="Common.attrib" />
+			<optional>
+				<attribute name="answer-ref">
+					<data type="IDREF" />
+				</attribute>
+			</optional>
+		</define>
+
+		<define name="z3986.exercise.content">
+			<interleave>
+				<ref name="Flow.model" />
+				<zeroOrMore>
+					<ref name="z3986.exercises" />
+				</zeroOrMore>
+			</interleave>
+		</define>
+	</div>
+
+	<!-- Allow the box element as a member of Structural.class -->
+	<define name="Structural.class" combine="choice">
+		<ref name="z3986.exercises" />
+	</define>
+	
+</grammar>

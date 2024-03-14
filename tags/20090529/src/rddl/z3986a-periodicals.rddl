@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:rddl="http://www.rddl.org/">
+		
+  <head>
+    <title>Resource Directory for the Z39.86-2010 Periodicals Profile</title>
+    <link href="res/xrd.css" type="text/css" rel="stylesheet"/>
+  </head>
+
+  <body>
+    <h1>Resource Directory for the Z39.86-2010 Periodicals Profile, version 0.1</h1> 
+    <p>The Z39.86-2010 Periodicals Profile is intended to serve as an XML republishing format for periodicals such as newspapers and magazines.</p> 
+    <p>The scope of the profile includes republishing of RSS-based newsfeeds. The scope does not include scientific journals.</p>
+    
+    <p>Maintenance agency information goes here.</p>
+    <p>This document is compliant with 
+	<a href="http://www.rddl.org">Resource Directory Description Language (RDDL)</a> 1.0, version February 18, 2002.</p>
+    <p>The canonical URI for this Resource Directory is <code>http://www.daisy.org/z3986/2010/periodicals/1.0/</code>.</p>
+
+    <h2>Normative Resources</h2>
+       
+    <rddl:resource xlink:type="simple" id="spec"
+		xlink:title="Z3986-2010 Part A Specification"
+		xlink:role="http://www.w3.org/1999/xhtml"
+		xlink:arcrole="http://www.rddl.org/purposes.htm#normative-reference"
+		xlink:href="http://www.niso.org/a/deeplink">
+        <div class="resource">
+	  		<h3>Z3986-2010 Part A Specification</h3>
+	  		<p>This profile adhers to the  
+	  			<a href="http://www.niso.org/a/deeplink">Z3986-2010 Part A Specification</a>.</p>
+        </div>
+    </rddl:resource>
+
+    <rddl:resource xlink:type="simple" id="normative-schema-1"
+		xlink:title="Normative Schema"
+		xlink:role="http://relaxng.org/ns/structure/1.0"
+		xlink:arcrole="http://www.rddl.org/purposes#schema-validation"
+		xlink:href="./z3986a-periodicals.rng">
+      	<div class="resource">
+			<h3>Normative Schema (RelaxNG)</h3>
+			<p>The normative schema for this profile is <a href="./z3986a-periodicals.rng">z3986a-periodicals.rng</a>.</p>
+      	</div>
+    </rddl:resource>
+
+    <p>The normative RelaxNG schema includes a number of modules:</p>    
+    <ul id="normative-schema-modules">
+		<!-- automatically inserted by build script-->		
+    </ul>
+
+    <rddl:resource
+		xlink:title="Z3986-2010 Book Taxonomy"
+		xlink:role="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+		xlink:arcrole="http://www.rddl.org/purposes.htm#normative-reference"
+		xlink:href="http://www.daisy.org/a/deeplink/to/the/book/taxonomy">
+        <div class="resource" id="tax-1">
+	  		<h3>Z3986-2010 Book RDF Taxonomy</h3>
+	  		<p>This profile refers and relates to the 
+				<a href="http://www.daisy.org/a/deeplink/to/the/book/taxonomy">
+					Z3986-2010 Book RDF Taxonomy</a>.</p>
+        </div>
+    </rddl:resource>
+
+    <h2>Informative Resources</h2>	
+
+    <rddl:resource
+		xlink:title="Prior Version"
+		xlink:role="http://www.rddl.org/"
+		xlink:arcrole="http://www.rddl.org/purposes#prior-version"
+		xlink:href="http://www.daisy.org/z3986/2010/periodicals/0.0/">
+      	<div class="resource" id="prior-version">
+			<h3>Prior Version of this Directory</h3>
+			<p>The prior version of this Resource Directory is available at 
+			<a href="http://www.daisy.org/z3986/2010/periodicals/0.0/">
+				http://www.daisy.org/z3986/2010/periodicals/0.0/</a>.</p>
+      	</div>
+    </rddl:resource>
+
+    <rddl:resource xlink:type="simple" id="xsd" 
+		xlink:title="W3C XML Schema"
+        xlink:href="./res/z3986a-periodicals.xsd" 
+	   	xlink:arcrole="http://www.rddl.org/purposes#software-module"
+	   	xlink:role="http://www.w3.org/2001/XMLSchema">
+        <div class="resource">
+          <h3>W3C XML Schema</h3>
+          <p>A non-normative <a href="./res/z3986a-periodicals.xsd">W3C XML Schema</a> 
+          	for use in software applications.</p> 
+        </div>
+    </rddl:resource>
+    
+   <rddl:resource xlink:type="simple" id="rng-simplified" 
+		xlink:title="Single RelaxNG schema"
+        xlink:href="z3986a-periodicals-single.rng" 
+	   	xlink:arcrole="http://www.rddl.org/purposes#software-module"
+	   	xlink:role="http://relaxng.org/ns/structure/1.0">
+        <div class="resource">
+          <h3>Single RelaxNG schema</h3>
+          <p>A non-normative <a href="./res/z3986a-periodicals-single.rng">single file RelaxNG Schema</a> 
+          	for use in software applications.</p> 
+        </div>
+    </rddl:resource>
+
+    <rddl:resource xlink:type="simple" id="css" 
+       	xlink:title="CSS Stylesheet"
+        xlink:href="./res/z3986a-basic.css" 
+	   	xlink:role="http://www.isi.edu/in-notes/iana/assignments/media-types/text/css">
+        <div class="resource">
+        	<h3>CSS Stylesheet</h3>
+        	<p>A <a href="./res/z3986a-basic.css">CSS stylesheet</a> suitable for instance documents adhering to the Periodicals profile.</p> 
+        </div>
+    </rddl:resource>
+
+
+    <rddl:resource xlink:type="simple" id="vocab-1"
+		xlink:title="Z3986-2010 Book Vocabulary"
+		xlink:role="http://www.w3.org/1999/xhtml"
+		xlink:arcrole="http://www.rddl.org/purposes.htm#non-normative-reference"
+		xlink:href="http://www.daisy.org/a/deeplink/to/the/book/vocab">
+        <div class="resource">
+	  		<h3>Z3986-2010 Book Vocabulary</h3>
+	  		<p>The Book RDF taxonomy referenced above is also
+				<a href="http://www.daisy.org/a/deeplink/to/the/book/vocab">available in a human-readable form.</a>.</p>
+        </div>
+    </rddl:resource>
+
+    <rddl:resource xlink:type="simple" id="docbookxslt"
+		xlink:title="DocBook XSLT Stylesheet"	   	
+        xlink:arcrole="http://docbook.org/ns/docbook"
+        xlink:role="http://www.w3.org/1999/XSL/Transform"
+        xlink:href="periodicals2docbook5.xsl">
+        <!-- see http://www.rddl.org/purposes/software, the arcrole is the destination namespace -->
+		<div class="resource">
+			<h3>DocBook5 XSLT Stylesheet</h3>
+			<p>An <a href="periodicals2docbook5.xslt">XSLT</a> stylesheet for transforming documents 
+				conforming to the Periodicals profile into DocBook, version 5.</p>
+			<p><em>@TODO http://www.rddl.org/purposes/software describes that arcrole is target namespace, how do we describe XSLTs  that has this profile as the target?</em></p>
+        </div>
+    </rddl:resource>
+
+    <rddl:resource xlink:type="simple" id="xhtml2xslt"
+           xlink:title="XHTML2 XSLT Stylesheet"	   
+           xlink:arcrole="http://www.w3.org/2002/06/xhtml2/"
+           xlink:role="http://www.w3.org/1999/XSL/Transform"
+           xlink:href="periodicals2xhtml2.xsl">
+           <!-- see http://www.rddl.org/purposes/software, the arcrole is the destination namespace -->
+		   	<div class="resource">
+				<h3>XHTML2 XSLT Stylesheet</h3>
+             	<p>An <a href="periodicals2xhtml2.xsl">XSLT</a> stylesheet for transforming documents 
+					conforming to the Periodicals profile into plain XHTML2.</p>
+	     		<p><em>@TODO http://www.rddl.org/purposes/software describes that arcrole is target namespace, how do we describe XSLTs that has this profile as the target?</em></p>
+           </div>
+    </rddl:resource>
+
+    <rddl:resource xlink:type="simple" id="oasis-catalog"
+           xlink:title="OASIS Catalog"
+           xlink:role="urn:oasis:names:tc:entity:xmlns:xml:catalog"
+           xlink:href="z3986-periodicals.soc">
+           <div class="resource">
+             <h3>OASIS Open Catalog</h3>
+	     <p>An <a href="z3986-periodicals.soc">OASIS Open Catalog Format catalog</a> 
+		for the Periodicals profile's normative schema and its modules.</p> 
+	   <p><em>@TODO autogenerate the catalog by parsing the driver</em></p> 
+           </div>
+    </rddl:resource>
+
+    <rddl:resource xlink:type="simple" id="zip"
+           xlink:role="http://www.isi.edu/in-notes/iana/assignments/media-types/application/zip"
+           xlink:arcrole="http://www.rddl.org/purposes#software-package"
+           xlink:href="z3986a-periodicals-10.zip">
+           <div class="resource">
+             <h3>Zip Archive</h3>
+             <p>All local contents of this directory, zipped for
+		<a href="z3986a-periodicals-10.zip">download</a>.</p>
+             <p><em>@TODO autogenerate this zip</em></p> 
+           </div>
+    </rddl:resource>
+  </body>
+</html>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="docResources.rng" type="xml"?>
+<docResources xmlns="http://www.daisy.org/ns/z3986/2008/docResources/">
+  
+  <namespace nsURI="http://www.daisy.org/z3986/2010/"
+    defaultDocURL="http://www.daisy.org/z3986/2010" feature="no">
+    <!-- document model base -->
+    <element name="document" descriptionURI="../schema/mod/z3986-document.rng#z3986.document"
+      shortSampleURI="./additional-doc-prose/common.html#document-short"
+      descriptionInclude="yes"/>
+    <!-- not in common since the sample is profile-specific
+    <element name="head" descriptionURI="../schema/mod/z3986-document.rng#z3986.head"
+      shortSampleURI="./additional-doc-prose/common.html#head-short"
+      descriptionInclude="yes"/> -->
+    <element name="meta" descriptionURI="../schema/mod/z3986-meta.rng#z3986.meta"
+    descriptionInclude="yes"/>
+    <!-- not in common since the sample is profile-specific
+    <element name="body" descriptionURI="../schema/mod/z3986-document.rng#z3986.body"
+      descriptionInclude="yes"/> -->
+
+    <!-- Structural level -->
+    <element name="h" descriptionURI="../schema/mod/z3986-headings.rng#z3986.h" 
+      shortSampleURI="./additional-doc-prose/common.html#h-short"
+      descriptionInclude="yes"/>
+    <element name="hpart" descriptionURI="../schema/mod/z3986-headings.rng#z3986.hpart" 
+      shortSampleURI="./additional-doc-prose/common.html#hpart-short"
+      descriptionInclude="yes"/>
+    <element name="title" descriptionURI="../schema/mod/z3986-title.rng#z3986.title" 
+      shortSampleURI="./additional-doc-prose/common.html#title-short"
+      descriptionInclude="yes"/>
+    <element name="titlepart" descriptionURI="../schema/mod/z3986-title.rng#z3986.titlepart" 
+      shortSampleURI="./additional-doc-prose/common.html#titlepart-short"
+      descriptionInclude="yes"/>
+    
+    <element name="aside" descriptionURI="../schema/mod/z3986-aside.rng#z3986.aside"
+      descriptionInclude="yes"/>
+    <element name="annotation" descriptionURI="../schema/mod/z3986-annotation.rng#z3986.annotation"
+      shortSampleURI="./additional-doc-prose/common.html#annotation-short"      
+      descriptionInclude="yes" />
+    <element name="caption" descriptionURI="../schema/mod/z3986-caption.rng#z3986.caption"
+      shortSampleURI="./additional-doc-prose/common.html#caption-short"      
+      descriptionInclude="yes" />
+    
+    <element name="note" descriptionURI="../schema/mod/z3986-note.rng#z3986.note"
+      shortSampleURI="./additional-doc-prose/common.html#note-noteref-short"
+      descriptionInclude="yes"/>
+    <element name="noteref" descriptionURI="../schema/mod/z3986-note.rng#z3986.noteref"
+      shortSampleURI="./additional-doc-prose/common.html#note-noteref-short"
+      descriptionInclude="yes"/>
+    <attribute name="for" context="noteref"
+      descriptionURI="../schema/mod/z3986-note.rng#z3986.noteref.for.attrib"
+      descriptionInclude="yes"/>
+
+    <element name="code" descriptionURI="../schema/mod/z3986-code.rng#z3986.code"
+      descriptionInclude="yes"/>
+    <element name="div" descriptionURI="../schema/mod/z3986-div.rng#z3986.div"
+      descriptionInclude="yes"/>
+    <element name="quote" descriptionURI="../schema/mod/z3986-quote.rng#z3986.quote"
+      descriptionInclude="yes"/>
+    <element name="separator" descriptionURI="../schema/mod/z3986-separator.rng#z3986.separator"
+      descriptionInclude="yes"/>
+    
+
+    <element name="list" descriptionURI="../schema/mod/z3986-list.rng#z3986.list"
+      descriptionInclude="yes"/>
+    <element name="item" descriptionURI="../schema/mod/z3986-list.rng#z3986.item"
+      descriptionInclude="yes"/>
+    <element name="prefix" descriptionURI="../schema/mod/z3986-list.rng#z3986.item.prefix"
+      descriptionInclude="yes"/>
+    <attribute name="prefix"
+      descriptionURI="../schema/mod/z3986-list.rng#z3986.item.prefix.attrib"
+      descriptionInclude="yes" />
+    <attribute name="start" 
+      descriptionURI="../schema/mod/z3986-list.rng#z3986.list.start.attrib"
+      descriptionInclude="yes" />
+    
+    <element name="l" descriptionURI="../schema/mod/z3986-line.rng#z3986.line"
+      descriptionInclude="yes"/>
+    <element name="lnum" descriptionURI="../schema/mod/z3986-line.rng#z3986.linenum"
+      descriptionInclude="yes"/>
+    <element name="lgroup" descriptionURI="../schema/mod/z3986-line.rng#z3986.linegroup"
+      descriptionInclude="yes"/>
+
+    <element name="table" descriptionURI="../schema/mod/z3986-table.rng#z3986.table"
+      descriptionInclude="yes"/>
+    <element name="col" descriptionURI="../schema/mod/z3986-table.rng#z3986.table.col"
+      descriptionInclude="yes"/>
+    <element name="colgroup" descriptionURI="../schema/mod/z3986-table.rng#z3986.table.colgroup"
+      descriptionInclude="yes"/>
+    <element name="thead" descriptionURI="../schema/mod/z3986-table.rng#z3986.table.thead"
+      descriptionInclude="yes"/>
+    <element name="tfoot" descriptionURI="../schema/mod/z3986-table.rng#z3986.table.tfoot"
+      descriptionInclude="yes"/>
+    <element name="tbody" descriptionURI="../schema/mod/z3986-table.rng#z3986.table.tbody"
+      descriptionInclude="yes"/>
+    <element name="tr" descriptionURI="../schema/mod/z3986-table.rng#z3986.table.tr"
+      descriptionInclude="yes"/>
+    <element name="th" descriptionURI="../schema/mod/z3986-table.rng#z3986.table.th"
+      descriptionInclude="yes"/>
+    <element name="td" descriptionURI="../schema/mod/z3986-table.rng#z3986.table.td"
+      descriptionInclude="yes"/>
+
+    <element name="object" descriptionURI="../schema/mod/z3986-object.rng#z3986.object"
+      shortSampleURI="./additional-doc-prose/common.html#object-short"
+      additionalInfoURI="./additional-doc-prose/common.html#object-additionalinfo"
+      descriptionInclude="yes"/>
+
+    <!-- Text level -->
+    <element name="emph" descriptionURI="../schema/mod/z3986-emph.rng#z3986.emph"
+      descriptionInclude="yes"/>
+    <element name="abbr" descriptionURI="../schema/mod/z3986-abbr.rng#z3986.abbr"
+      shortSampleURI="./additional-doc-prose/common.html#abbr-expansion-short"      
+      descriptionInclude="yes"/>
+    <element name="expansion" descriptionURI="../schema/mod/z3986-abbr.rng#z3986.expansion"
+      shortSampleURI="./additional-doc-prose/common.html#abbr-expansion-short"      
+      descriptionInclude="yes"/>  
+    <element name="hd" descriptionURI="../schema/mod/z3986-headings.rng#z3986.hd"
+      descriptionInclude="yes"/>
+    <element name="d" descriptionURI="../schema/mod/z3986-d.rng#z3986.d" 
+      descriptionInclude="yes"/>
+    <element name="w" descriptionURI="../schema/mod/z3986-w.rng#z3986.w" 
+      shortSampleURI="./additional-doc-prose/common.html#w-short"
+      descriptionInclude="yes"/>
+    <element name="date" descriptionURI="../schema/mod/z3986-date.rng#z3986.date"
+      shortSampleURI="./additional-doc-prose/common.html#date-name-place-short"
+      descriptionInclude="yes" />
+    <element name="name" descriptionURI="../schema/mod/z3986-name.rng#z3986.name"
+      shortSampleURI="./additional-doc-prose/common.html#date-name-place-short"
+      descriptionInclude="yes"/>
+    <element name="place" descriptionURI="../schema/mod/z3986-place.rng#z3986.place"
+      shortSampleURI="./additional-doc-prose/common.html#date-name-place-short"
+      descriptionInclude="yes"/>
+    <element name="identifier" descriptionURI="../schema/mod/z3986-identifier.rng#z3986.identifier"
+      descriptionInclude="yes"/>
+    <element name="definition" descriptionURI="../schema/mod/z3986-definition.rng#z3986.definition"
+      shortSampleURI="./additional-doc-prose/common.html#term-definition-short"
+      descriptionInclude="yes"/>
+    <element name="term" descriptionURI="../schema/mod/z3986-term.rng#z3986.term"
+      shortSampleURI="./additional-doc-prose/common.html#term-definition-short"      
+      descriptionInclude="yes"/>
+    <element name="s" descriptionURI="../schema/mod/z3986-s.rng#z3986.s" 
+      shortSampleURI="./additional-doc-prose/common.html#sent-short"
+      descriptionInclude="yes"/>
+    <element name="span" descriptionURI="../schema/mod/z3986-span.rng#z3986.span"
+      shortSampleURI="./additional-doc-prose/common.html#span-short"
+      descriptionInclude="yes"/>
+    <element name="sub" descriptionURI="../schema/mod/z3986-sub-sup.rng#z3986.sub"
+      shortSampleURI="./additional-doc-prose/common.html#sub-short"
+      descriptionInclude="yes"/>
+    <element name="sup" descriptionURI="../schema/mod/z3986-sub-sup.rng#z3986.sup"
+      shortSampleURI="./additional-doc-prose/common.html#sup-short"      
+      descriptionInclude="yes"/>
+    <element name="pagebreak" descriptionURI="../schema/mod/z3986-pagebreak.rng#z3986.pagebreak"
+      additionalInfoURI="./additional-doc-prose/common.html#pagebreak-long"
+      shortSampleURI="./additional-doc-prose/common.html#pagebreak-short" descriptionInclude="yes" />
+    <attribute name="value" context="pagebreak"
+      descriptionURI="../schema/mod/z3986-pagebreak.rng#z3986.pagebreak.value.attrib"
+      descriptionInclude="yes" />
+    <element name="reference" descriptionURI="../schema/mod/z3986-reference.rng#z3986.reference" 
+      descriptionInclude="yes" />
+
+    <!-- Common attributes -->
+    <attribute name="class" descriptionURI="../schema/mod/z3986-core-attrib.rng#z3986.class.attrib"
+      descriptionInclude="yes" />
+    <attribute name="role" descriptionURI="../schema/mod/xhtml-role-attrib.rng#xhtml.role.attrib"
+      descriptionInclude="yes" />
+    <attribute name="depth" descriptionURI="../schema/mod/z3986-depth-attrib.rng#z3986.depth.attrib"
+      descriptionInclude="yes" />
+
+    <!-- RDF/a attributes -->
+    <!-- TODO get shorthand descriptions from http://www.w3.org/MarkUp/2009/rdfa-for-html-authors#Summary -->
+    <attribute name="about" descriptionURI="../schema/mod/rdfa-attrib.rng#rdfa.about.attrib"
+      descriptionInclude="yes" />
+    <attribute name="content" descriptionURI="../schema/mod/rdfa-attrib.rng#rdfa.about.attrib"
+      descriptionInclude="yes" />
+    <attribute name="datatype" descriptionURI="../schema/mod/rdfa-attrib.rng#rdfa.about.attrib"
+      descriptionInclude="yes" />
+    <attribute name="typeof" descriptionURI="../schema/mod/rdfa-attrib.rng#rdfa.about.attrib"
+      descriptionInclude="yes" />
+    <attribute name="property" descriptionURI="../schema/mod/rdfa-attrib.rng#rdfa.about.attrib"
+      descriptionInclude="yes" />
+    <attribute name="rel" descriptionURI="../schema/mod/rdfa-attrib.rng#rdfa.about.attrib"
+      descriptionInclude="yes" />
+    <attribute name="resource" descriptionURI="../schema/mod/rdfa-attrib.rng#rdfa.about.attrib"
+      descriptionInclude="yes" />
+    <attribute name="rev" descriptionURI="../schema/mod/rdfa-attrib.rng#rdfa.about.attrib"
+      descriptionInclude="yes" />
+  </namespace>
+
+  <namespace nsURI="http://www.w3.org/XML/1998/namespace"
+    defaultDocURL="http://www.w3.org/XML/1998/namespace" feature="no">
+    <attribute name="id" descriptionURI="../schema/mod/z3986-core-attrib.rng#xml.id"
+      descriptionInclude="yes" />
+    <attribute name="space" descriptionURI="../schema/mod/z3986-core-attrib.rng#xml.space"
+      descriptionInclude="yes" />
+    <attribute name="base" descriptionURI="../schema/mod/z3986-core-attrib.rng#xml.base"
+      descriptionInclude="yes" />
+    <attribute name="lang" descriptionURI="../schema/mod/z3986-i18n-attrib.rng#xml.lang"
+      descriptionInclude="yes" />
+  </namespace>
+
+  <namespace nsURI="http://www.w3.org/2005/11/its" defaultDocURL="http://www.w3.org/TR/its/"
+    feature="no">
+    <attribute name="dir" descriptionURI="../schema/mod/z3986-i18n-attrib.rng#its.dir"
+      descriptionInclude="yes" />
+    <attribute name="translate"
+      descriptionURI="../schema/mod/its-translate-attrib.rng#its.translate" descriptionInclude="yes"
+     />
+  </namespace>
+
+  <namespace nsURI="http://www.loc.gov/mods/v3" defaultDocURL="http://www.loc.gov/mods/v3"
+    feature="no" />
+
+  <namespace nsURI="http://www.w3.org/1999/xlink" defaultDocURL="http://www.w3.org/1999/xlink"
+    feature="no" />
+
+</docResources>

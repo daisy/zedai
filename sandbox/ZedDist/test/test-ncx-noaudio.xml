@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="../src/schema/ncx-noaudio.rng" type="xml"?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" 
+    xmlns:book="http://foo" xmlns:cooking="http://cook" 
+    xmlns:drama="http://dramaturgy" xml:lang="en">
+    
+    <!-- A bimodel (text and image) label NCX that tries to achieve some terseness as compared to classic -->    
+    <!-- TODO spec to define out-of-line CURIE prefix catalog mechanism so no need to declare here -->
+        
+    <navMap role="book:structure">
+        <target href="aURI" label-img="aURI">Chapter 1
+            <target href="aURI">Chapter 1.1</target>
+        </target>
+        <target href="aURI">Chapter 2
+            <target href="aURI">Chapter 2.1
+                <target href="aURI">Chapter 2.1.1</target>
+            </target>
+        </target>
+    </navMap>
+    
+    <navList role="book:pagebreak"> <!-- role here means all target children inherit unless explicitly overridden using @targetRole -->
+        <label label-img="aURI">Pages</label>
+        <target href="aURI">1</target>
+        <target href="aURI">2</target>
+        <target href="aURI">3</target>
+    </navList>
+    
+    <navList role="cooking:recipe drama:poem drama:peripeti"> 
+        <label>Interesting Passages</label>
+        <target href="aURI" targetRole="cooking:recipe">Nice fudge</target>
+        <target href="aURI" targetRole="drama:poem">Worst poem in history</target>
+        <target href="aURI" targetRole="drama:peripeti">Climax of the book</target>
+    </navList>
+    
+</ncx>

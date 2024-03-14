@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+	xmlns:x="http://www.w3.org/1999/xhtml">
+
+    <x:h1>The Z3986 Bridgehead module</x:h1>
+
+    <define name="z3986.bridgehead" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="bridgehead">
+            <ref name="z3986.bridgehead.attlist" />
+            <ref name="z3986.bridgehead.content" />
+        </element>
+    </define>
+
+	<!-- set the bridgehead attlist -->
+    <define name="z3986.bridgehead.attlist" combine="interleave">
+        <ref name="Common.attrib"/>
+    </define>		
+    
+    <!-- set the bridgehead content model -->
+	<define name="z3986.bridgehead.content" combine="choice">
+        <ref name="Text.model"/>
+    </define>
+    
+    <!-- add bridgehead to structural class (the xhtml2 structural class, 
+    not the z3986 one, which means it becomes an allowed child of section) -->	 
+    <define name="Structural.class" combine="choice">
+		<ref name="z3986.bridgehead"/>
+	</define>
+	
+    <!-- add to Structural.nosection.class so thats its allowed in z3986.Flow -->
+  	<define name="Structural.nosection.class" combine="choice">
+		<ref name="z3986.bridgehead"/>
+	</define>
+
+</grammar>

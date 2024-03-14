@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="partitions">The document partitions module</title>
+        <annotation annotates="/">
+            <para role="desc-main">This module defines the {[[#z3986.frontmatter]]}, {[[#z3986.bodymatter]]} and {[[#z3986.backmatter]]} elements into which document content is typically partitioned when representing information resources such as books and journals.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3986-global-classes.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2011-03-04</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <define name="z3986.partitions" xml:id="z3986.partitions">
+        <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+            <title xreflabel="partitions">The {partitions} pattern</title>
+            <para role="desc-main">The {partitions} pattern defines a top-level partitioning structure for information resources such as books and journals.</para>
+            <synopsis role="def-context">{[[#z3986.body]]}</synopsis>
+            <synopsis role="def-content">{[[#z3986.cover]]?, [[#z3986.frontmatter]], [[#z3986.bodymatter]], [[#z3986.backmatter]]?}</synopsis>
+        </annotation>
+        <optional>
+            <ref name="z3986.partitions.cover.slot"/>
+        </optional>
+        <ref name="z3986.frontmatter"/>
+        <ref name="z3986.bodymatter"/>
+        <optional>
+            <ref name="z3986.backmatter"/>
+        </optional>
+    </define>
+    <define name="z3986.partitions.cover.slot" xml:id="z3986.partitions.cover.slot">
+        <empty/>
+    </define>
+    <div>
+        <define name="z3986.frontmatter" xml:id="z3986.frontmatter">
+            <element name="frontmatter">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="frontmatter">The {frontmatter} element</title>
+                    <para role="desc-main">The {frontmatter} element groups the initial/preliminary sections of a document.</para>
+                    <para role="desc-sub">Frontmatter typically consists of such sections as forewords, prefaces, acknowledgements, introductions, dedications, prologues, and tables of contents.</para>
+                    <para role="desc-sub doc-only">Frontmatter pages are typically identified by the use of Roman numerals for their numbering, but numbering alone is not a reliable indicator (it is not uncommon for front matter to begin with Arabic number 1, for example). The table of contents may help identify frontmatter sections either through emphasized typeface and/or the use of line breaks between the front, body and back matter sections.</para>
+                    <synopsis role="def-context">{[[#z3986.body]]}</synopsis>
+                    <synopsis role="def-content">{[[#z3986.section]]+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Section.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.frontmatter.attlist"/>
+                <ref name="z3986.frontmatter.content"/>
+            </element>
+        </define>
+        <define name="z3986.frontmatter.attlist" xml:id="z3986.frontmatter.attlist">
+            <ref name="z3986.Section.attrib"/>
+        </define>
+        <define name="z3986.frontmatter.content" xml:id="z3986.frontmatter.content">
+            <oneOrMore>
+                <choice>
+                    <ref name="z3986.frontmatter.content.class"/>
+                </choice>
+            </oneOrMore>
+        </define>
+        <define name="z3986.frontmatter.content.class" combine="choice">
+            <ref name="z3986.Section.class"/>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.bodymatter" xml:id="z3986.bodymatter">
+            <element name="bodymatter">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="bodymatter">The {bodymatter} element</title>
+                    <para role="desc-main">The {bodymatter} element groups the primary narrative of a document, as contrasted with preliminary material in {frontmatter} and supplementary information in {backmatter}.</para>
+                    <synopsis role="def-context">{[[#z3986.body]]}</synopsis>
+                    <synopsis role="def-content">{[[#z3986.section]]+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Section.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.bodymatter.attlist"/>
+                <ref name="z3986.bodymatter.content"/>
+            </element>
+        </define>
+        <define name="z3986.bodymatter.attlist" xml:id="z3986.bodymatter.attlist">
+            <ref name="z3986.Section.attrib"/>
+        </define>
+        <define name="z3986.bodymatter.content" xml:id="z3986.bodymatter.content">
+            <oneOrMore>
+                <choice>
+                    <ref name="z3986.Section.class"/>
+                </choice>
+            </oneOrMore>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.backmatter" xml:id="z3986.backmatter">
+            <element name="backmatter">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="backmatter">The {backmatter} element</title>
+                    <para role="desc-main">The {backmatter} element groups supplementary sections at the end of a document.</para>
+                    <para role="desc-sub doc-only">Backmatter typically consists of such sections as appendices, glossaries, bibliographies and indices.</para>
+                    <synopsis role="def-context">{[[#z3986.body]]}</synopsis>
+                    <synopsis role="def-content">{[[#z3986.section]]+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Section.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.backmatter.attlist"/>
+                <ref name="z3986.backmatter.content"/>
+            </element>
+        </define>
+        <define name="z3986.backmatter.attlist" xml:id="z3986.backmatter.attlist">
+            <ref name="z3986.Section.attrib"/>
+        </define>
+        <define name="z3986.backmatter.content" xml:id="z3986.backmatter.content">
+            <oneOrMore>
+                <choice>
+                    <ref name="z3986.backmatter.content.class"/>
+                </choice>
+            </oneOrMore>
+        </define>
+        <define name="z3986.backmatter.content.class" combine="choice">
+            <ref name="z3986.Section.class"/>
+        </define>
+    </div>
+</grammar>

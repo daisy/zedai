@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Function Sets for the Z39.86-201x Part A Content Selection Feature</title>
+    <link rel="stylesheet" type="text/css" href="../../../../z3986-2011.css"/>
+  </head>
+  <body>
+    <h1>Function Sets for the Z39.86-201x Part A Content Selection Feature</h1>
+     
+    <div class="rd-section" id="target">
+      
+      <h2>The Target Function Set</h2>
+      <p>
+        The Target Function Set is used to select content based on intended properties of the output.
+      </p>
+      
+      <p>
+        The canonical URI of this function set is
+          <code>http://www.daisy.org/z3986/2011/auth/features/select/functionSets/#target</code>.
+      </p>
+      
+      <p>
+        There are three functions in this set; the <code>format(arg)</code>, <code>impairment(arg)</code> 
+        and <code>language(arg)</code>functions:
+      </p>
+      
+      <div class="rd-section" id="target-format">
+        <h3>The <code>format</code> function</h3>        
+        <p>
+          The <code>format(arg)</code> function is used to specialize content fragments for
+          particular physical output formats. This function takes one argument, <code>arg</code>, 
+          which must match the <a href="http://www.w3.org/TR/xmlschema-2/#string"
+            >string datatype as defined in XML Schema Part 2: Datatypes Second Edition</a>. 
+        </p>
+        
+        <p>The following EBNF definition defines the allowed values of <code>arg</code>:</p>
+        
+        <pre xml:space="preserve">
+arg := 'BRAILLE' | 'LARGE_PRINT' | 'TALKING_BOOK' | 'EBOOK' | 'PRINT' | string
+string := [A-Za-z0-9_]*</pre>
+        
+        <p>An explanation of the allowed values follows:</p>
+        
+        <dl>
+          <dt><code>BRAILLE</code></dt>
+          <dd>Specifies that the output format is Braille. Note that this argument does not include the ability to 
+             specify Braille locales and varieties (contracted, non-contracted, etc).
+          <span class="ednote">REMARK Still an open issue whether to provide tokens for the type of Braille in this function set, or define that separately.</span></dd>
+          
+          <dt><code>LARGE_PRINT</code></dt>
+          <dd>Specifies that the output format is large print.</dd>
+          
+          <dt><code>TALKING_BOOK</code></dt>
+          <dd>Specifies that the output format is a <a href="http://www.daisy.org">DAISY</a> talking book.</dd>
+          
+          <dt><code>EBOOK</code></dt>
+          <dd>Specifies that the output format is a an E-Book.</dd>
+          
+          <dt><code>PRINT</code></dt>
+          <dd>Specifies that the output format is regular sized print (compare <code>LARGE_PRINT</code>). This value is 
+            typically used when producing content types such as PDF and XPS.</dd>
+          
+        </dl>
+        
+        <p>It is recommended to use arguments from the set of predefined values, but the possibility
+          to use any string as an argument allows for more specialized implementations of this
+          function.</p>
+        
+        <p>Example:</p>
+        <pre><xi:include href="./example-1.xinc" parse="text"/></pre>
+      </div>
+      
+      <div class="rd-section" id="target-consumer">
+        <h3>The <code>impairment</code> function</h3>
+        <p>
+          The <code>impairment(arg)</code> function is used to specialize content fragments for 
+          users with certain kinds of print disabilities.
+        </p>
+        
+        <p>
+          This function takes one argument, <code>arg</code>, which must match the
+          <a href="http://www.w3.org/TR/xmlschema-2/#string">string datatype as defined in
+            XML Schema Part 2: Datatypes Second Edition</a>. 
+        </p>
+        
+        <p>The following EBNF definition defines the allowed values of <code>arg</code>:</p>
+        
+        <pre xml:space="preserve">
+arg := 'BLINDNESS' | 'LOW_VISION' | 'DYSLEXIA' | 'DEAFNESS' | 'HARD_OF_HEARING' | 'DEAF_BLINDNESS' | 'COGNITIVE' | string
+string := [A-Za-z0-9_]*</pre>
+        <p>
+          It is recommended to use arguments from the set of predefined values, but the possibility
+          to use any string as an argument, allows for more specialized implementations of this
+          function.
+        </p>
+        
+        <p>Example:</p>
+        <pre><xi:include href="./example-2.xinc" parse="text"/></pre>
+      </div>
+      
+      <div class="rd-section" id="target-language">
+        <h3>The <code>language</code> function</h3>
+        
+        <p>The <code>language(arg)</code> function is used to describe parallell language versions of a 
+          content fragment.</p>
+          
+        <p>This function takes one argument, <code>arg</code>, which must match the
+          <a href="http://www.w3.org/TR/xmlschema-2/#language">language datatype as defined in
+            XML Schema Part 2: Datatypes Second Edition</a>.
+        </p>
+        <p>
+          All descendants of a <code>when</code> element which is using the <code>language(arg)</code> function
+          inherit the language given as <code>arg</code> in the <code>when</code> parent, unless a descendant explicitly overrides
+          this inheritance using the <code>xml:lang</code> attribute. In other words, the <code>language(arg)</code> function
+          has the same semantics as <code>xml:lang</code> in terms of language inheritance.
+        </p>
+        
+        <p>Example showing a bilingual document, where the base language of the document is English:</p>
+        <pre><xi:include href="./example-language.xinc" parse="text"/></pre>
+      </div>   
+    
+    </div>
+        
+    <div class="rd-section" id="parameterTest">
+      <h2>The Parameter Test Function Set</h2>
+      <p>The Parameter Test Function Set is used to test whether a string, the <code>value</code> argument,
+        is equal to the value of the runtime <code>name</code> parameter. </p>
+      
+      <p>The canonical URI of this function set is
+          <code>http://www.daisy.org/z3986/2011/auth/features/select/functionSets/#parameterTest</code>.</p>
+      
+      <p>This function set contains one function; the <code>test(name, value)</code> function. 
+        It takes two arguments, both of which must match the
+        <a href="http://www.w3.org/TR/xmlschema-2/#string">string datatype as defined in
+          XML Schema Part 2: Datatypes Second Edition</a>:</p>
+      <dl>
+        <dt><code>name</code></dt>
+        <dd>represents the name of a runtime parameter</dd>
+        <dt><code>value</code></dt>
+        <dd>represents value that the runtime parameter given in <code>name</code> must equal 
+          in order for the test to evaluate to true</dd>
+      </dl>
+      <p>String comparisons are case sensitive, and are done following</p>
+      <ul>
+        <li><a href="http://www.w3.org/TR/REC-xml/#AVNormalize">Attribute value normalization</a> of the <code>name</code> and <code>value</code> values;</li>
+        <li>Trimming of leading and trailing whitespace in the runtime value of the <code>name</code> parameter.</li>
+      </ul>
+      
+      <p>Example:</p>
+      <pre><xi:include href="./example-3.xinc" parse="text"/></pre>
+      
+      <p>Or, inversely, if the default nature of the document is to have restrictions on redistribution:</p>
+      <pre><xi:include href="./example-3b.xinc" parse="text"/></pre>
+    </div>
+    
+    <div class="rd-section" id="featureSupported">
+      <h2>The Feature Supported Function Set</h2>
+      
+      <p>
+        The Feature Supported Function Set is used to test whether a specific ANSI/NISO Z39.86-AI Feature
+        is supported by the processing agent.
+      </p>
+      
+      <p>
+        There is one function in this set, the
+          <code>featureSupported(uri)</code> function. It takes one argument,
+          <code>uri</code>, which is a string equal to the canonical URI of a
+        <!--ANSI/-->NISO Z39.86-201x Feature.
+      </p>
+      
+      <p>
+        The canonical URI of this function set is
+          <code>http://www.daisy.org/z3986/2011/auth/features/select/functionSets/#featureSupported</code>.
+      </p>
+      
+      <p>Example:</p>
+      <pre><xi:include href="./example-4.xinc" parse="text"/></pre>
+      
+      <p>
+        Note that since feature URIs are versioned, this function can be used to test support for different versions of the 
+        same feature.
+      </p>
+      
+    </div>
+    
+  </body>
+</html>

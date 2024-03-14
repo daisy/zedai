@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <x:h1>The DAISY Table of Contents module</x:h1>
+
+  	<div>
+	    <x:h2>The toc element</x:h2>
+	    
+	    <define name="z3986.toc" ns="http://www.daisy.org/ns/z3986/2008/">
+	        <element name="toc">
+	            <ref name="z3986.toc.attlist" />
+	            <ref name="z3986.toc.content" />
+	        </element>
+	    </define>
+	
+	    <define name="z3986.toc.attlist" combine="interleave">
+	      <ref name="Common.reduced.attrib" />      
+	    </define>
+	
+	    <define name="z3986.toc.content">	       
+          <ref name="z3986.tocpart.model" />           
+	    </define>
+	</div>
+	
+    <define name="z3986.tocpart.model">
+      <optional>
+        <ref name="z3986.pagebreak" />
+      </optional>
+      <optional>
+        <ref name="h" />
+      </optional>          
+      <oneOrMore>
+	      <optional>
+	      	<ref name="z3986.pagebreak" />
+	      </optional>
+	      <ref name="z3986.tocentry" />
+      </oneOrMore>
+    </define>
+
+	<define name="z3986.toc.section">
+		<element name="section">
+			<ref name="Common.reduced.attrib"/>
+			<ref name="z3986.tocpart.model"/>
+		</element>	
+	</define>
+
+    <define name="z3986.tocentry" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="tocentry">
+            <ref name="z3986.tocentry.attlist" />
+            <ref name="z3986.tocentry.content" />
+        </element>
+    </define>
+
+    <define name="z3986.tocentry.attlist" combine="interleave">
+      <ref name="Common.reduced.attrib" />
+    </define>
+
+    <define name="z3986.tocentry.content">
+    	<!-- <ref name="z3986.toclabel" /> -->
+    	<ref name="label-in-list"/>
+        <optional>
+            <ref name="z3986.tocpageref" />
+        </optional>
+        <zeroOrMore>
+            <ref name="z3986.tocentry" />
+        </zeroOrMore>
+    </define>
+
+	<!--
+    <define name="z3986.toclabel" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="label">
+            <ref name="z3986.toclabel.attlist" />
+            <ref name="z3986.toclabel.content" />
+        </element>
+    </define>
+
+    <define name="z3986.toclabel.attlist">
+        <optional>
+            <attribute name="ref">
+                <data type="IDREF" />
+            </attribute>
+        </optional>
+        <ref name="Common.reduced.attrib" />
+    </define>
+
+    <define name="z3986.toclabel.content">
+        <ref name="Text.model" />
+    </define>
+    -->
+
+    <define name="z3986.tocpageref" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="pageref">
+            <ref name="z3986.tocpageref.attlist" />
+            <ref name="z3986.tocpageref.content" />
+        </element>
+    </define>
+
+    <define name="z3986.tocpageref.attlist">
+        <optional>
+            <attribute name="ref">
+                <data type="IDREF" />
+            </attribute>
+        </optional>
+        <ref name="Common.reduced.attrib" />
+    </define>
+
+    <define name="z3986.tocpageref.content">
+        <text />
+    </define>
+    
+</grammar>

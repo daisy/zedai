@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml"
+	datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+	<x:h1>The Z3986 Box module</x:h1>
+
+	<div>
+		<x:h2>The box element</x:h2>
+		<define name="z3986.box" ns="http://www.daisy.org/ns/z3986/2008/">
+			<element name="box">
+				<ref name="z3986.box.attlist" />
+				<ref name="z3986.box.content" />
+			</element>
+		</define>
+
+		<define name="z3986.box.attlist">
+			<ref name="Common.attrib" />
+		</define>
+
+
+		<define name="z3986.box.content">
+			<ref name="Flow.model" />
+		</define>
+	</div>
+	
+	<!-- Allow the box element as a member of Structural.class -->
+	<define name="Structural.class" combine="choice">
+		<ref name="z3986.box" />
+	</define>
+
+</grammar>

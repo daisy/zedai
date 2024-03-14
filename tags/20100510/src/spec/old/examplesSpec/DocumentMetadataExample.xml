@@ -1,0 +1,20 @@
+<head xmlns:z="http://www.daisy.org/z3986/2010/vocab/decl/#"
+    xmlns:dcterms="http://purl.org/dc/terms/">
+    …
+    <meta property="dcterms:identifier" content="daisy-z2010-exemplar-01" />
+    <meta property="dcterms:publisher" content="DAISY Consortium" />
+    <meta property="dcterms:date" content="2005-07-27T13:50:05-05:00" />
+    
+    <meta rel="z:meta-record" resource="daisy-z2010-exemplar-01-mods.xml">
+        <meta property="z:meta-record-type" 
+            about="daisy-z2010-exemplar-01-mods.xml" content="z:mods" />
+        <meta property="z:meta-record-version" 
+            about="daisy-z2010-exemplar-01-mods.xml" content="3.3" />
+    </meta>
+    
+    <meta rel="z:meta-record" resource="daisy-z2010-exemplar-01-onix.xml">
+        <meta property="z:meta-record-type"
+            about="daisy-z2010-exemplar-01-onix.xml" content="z:onix" />
+    </meta>
+    …
+</head>

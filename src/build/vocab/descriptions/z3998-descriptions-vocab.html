@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"
+      prefix="      dcterms: http://purl.org/dc/terms/      owl: http://www.w3.org/2002/07/owl#      rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#      rdfs: http://www.w3.org/2000/01/rdf-schema#      xsd: http://www.w3.org/2001/XMLSchema       ">
+   <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+      <meta property="dcterms:modified" content="2012-12-19"/>
+      <meta property="dcterms:creator" content="mgarrish"/>
+      <meta property="dcterms:issued" content="2012-08-26"/>
+      <meta property="dcterms:publisher" content="DAISY Consortium"/>
+      <title>DIAGRAM Descriptions Vocabulary</title>
+      <link rel="stylesheet" type="text/css" href="../../z3998-2012.css"/>
+   </head>
+   <body>
+      <h1 property="dcterms:title">DIAGRAM Descriptions Vocabulary</h1>
+      <h2 id="toc">Table of Contents</h2>
+      <ul>
+         <li class="first">
+            <a href="#h_aboutthisvocabulary">About this vocabulary</a>
+         </li>
+         <li class="first">
+            <a href="#h_description-metadata">Description Metadata</a>
+            <ul>
+               <li>
+                  <a href="#h_reader-metadata">Target Readers</a>
+               </li>
+               <li>
+                  <a href="#h_description-versioning">Description Versioning</a>
+               </li>
+               <li>
+                  <a href="#h_repository-access">Repository Access</a>
+               </li>
+            </ul>
+         </li>
+      </ul>
+      <div>
+         <h2 id="h_aboutthisvocabulary">About this vocabulary</h2>
+         <div property="dcterms:description">
+            <p>This RDF vocabulary defines a set of terms relating to accessible descriptions.</p>
+         </div>
+         <p id="vocab-forms">You are currently reading the normative <a href="http://www.w3.org/TR/rdfa-syntax/">W3C XHTML+RDFa</a> expression of this vocabulary. It is also available in informative <a href="z3998-descriptions-vocab.n3">Notation3</a> and <a href="z3998-descriptions-vocab.xml">RDF/XML</a> syntax versions.</p>
+         <p class="vocab-date">Document last modified: 2012-12-19. Refer to the <a href="history-z3998-descriptions-vocab.html">revision history</a> for details.</p>
+      </div>
+      <div id="vocab" class="vocabulary">
+   
+         <div id="description-metadata" about="#description-metadata" typeof="rdf:Bag">
+            <h2 id="h_description-metadata" about="#description-metadata" rev="dcterms:title">Description Metadata</h2>
+            <p about="#description-metadata" rev="dcterms:description">Standard terms used for defining metadata about a description.</p>
+            <dl about="#description-metadata" rev="rdfs:member">
+      
+      
+               <dt id="purpose" about="#purpose" typeof="rdf:Property">purpose</dt>
+               <dd about="#purpose" property="rdfs:comment" datatype="xsd:string">
+                  <p>The purpose of the description.</p>
+               </dd>
+               <dt id="descriptionQuality" about="#descriptionQuality" typeof="rdf:Property">descriptionQuality</dt>
+               <dd about="#descriptionQuality" property="rdfs:comment" datatype="xsd:string">
+                  <p>A quality rating for the description.</p>
+               </dd>
+               <div id="reader-metadata" about="#reader-metadata" typeof="rdf:Bag">
+                  <h3 id="h_reader-metadata" about="#reader-metadata" rev="dcterms:title">Target Readers</h3>
+                  <dl about="#reader-metadata" rev="rdfs:member">
+         
+                     <dt id="targetAge" about="#targetAge" typeof="rdf:Property">targetAge</dt>
+                     <dd about="#targetAge" property="rdfs:comment" datatype="xsd:string">
+                        <p>The target age of the reader.</p>
+                     </dd>
+                     <dt id="targetGrade" about="#targetGrade" typeof="rdf:Property">targetGrade</dt>
+                     <dd about="#targetGrade" property="rdfs:comment" datatype="xsd:string">
+                        <p>Target school grade level of the reader.</p>
+                     </dd>
+                  </dl>
+               </div>
+               <div id="description-versioning" about="#description-versioning" typeof="rdf:Bag">
+                  <h3 id="h_description-versioning" about="#description-versioning"
+                      rev="dcterms:title">Description Versioning</h3>
+                  <dl about="#description-versioning" rev="rdfs:member">
+         
+                     <dt id="currentVersion" about="#currentVersion" typeof="rdf:Property">currentVersion</dt>
+                     <dd about="#currentVersion" property="rdfs:comment" datatype="xsd:string">
+                        <p>A URI pointing to the location where the most current version of the description can be found.</p>
+                     </dd>
+                     <dt id="thisVersion" about="#thisVersion" typeof="rdf:Property">thisVersion</dt>
+                     <dd about="#thisVersion" property="rdfs:comment" datatype="xsd:string">
+                        <p>A URI pointing to the location where the currently referenced description can be found.</p>
+                     </dd>
+                     <dt id="previousVersion" about="#previousVersion" typeof="rdf:Property">previousVersion</dt>
+                     <dd about="#previousVersion" property="rdfs:comment" datatype="xsd:string">
+                        <p>A URI pointing to the location where the previous version of the description can be found.</p>
+                     </dd>
+                     <dt id="alternateVersion" about="#alternateVersion" typeof="rdf:Property">alternateVersion</dt>
+                     <dd about="#alternateVersion" property="rdfs:comment" datatype="xsd:string">
+                        <p>A URI pointing to the location where an alternative version is available.</p>
+                     </dd>
+                  </dl>
+               </div>
+               <div id="repository-access" about="#repository-access" typeof="rdf:Bag">
+                  <h3 id="h_repository-access" about="#repository-access" rev="dcterms:title">Repository Access</h3>
+                  <dl about="#repository-access" rev="rdfs:member">
+         
+                     <dt id="repository" about="#repository" typeof="rdf:Property">repository</dt>
+                     <dd about="#repository" property="rdfs:comment" datatype="xsd:string">
+                        <p>A URI pointing to a repository of descriptions.</p>
+                     </dd>
+                     <dt id="queryConcept" about="#queryConcept" typeof="rdf:Property">queryConcept</dt>
+                     <dd about="#queryConcept" property="rdfs:comment" datatype="xsd:string">
+                        <p>A term relevant to the current description that can be used to query a repository for additional information.</p>
+                     </dd>
+                  </dl>
+               </div>
+            </dl>
+         </div>
+      </div>
+   </body>
+</html>

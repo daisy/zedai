@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="http://www.w3.org/MarkUp/style/xhtml2.css"?>
+<?oxygen RNGSchema="../RelaxNG/daisy-leisure-profile-driver.rng" type="xml"?>
+<!-- 
+    The sole purpose of this file is to demonstrate one possible markup of front matter
+    in a novel, so most of the book is NOT represented in this file.    
+-->
+<html xmlns="http://www.w3.org/2002/06/xhtml2/" xmlns:d="http://www.daisy.org/ns/z3986/2008/"
+    xml:lang="en">
+    <head>
+        <title>A Spot of Bother</title>
+        <meta property="title">An XHTML 2.0 test document</meta>
+        <meta property="reference">ZedAI-20081001</meta>
+    </head>
+    <d:book>
+        <d:frontmatter>
+            <d:bookcover>
+                <d:frontcover>
+                    <p>The number one bestseller</p>
+                    <d:author>Eoin Colfer</d:author>
+                    <title>Artemis Fowl</title>
+                    <d:subtitle>The Arctic Incident</d:subtitle>
+                    <blockquote cite="Independent">Wickedly brilliant</blockquote>
+                    <object src="frontcover.png">The frontcover picture shows [...]</object>
+                </d:frontcover>
+                <d:spine>
+                    <d:author>Eoin Colfer</d:author>
+                    <title>Artemis Fowl</title>
+                    <d:subtitle>The Arctic Incident</d:subtitle>
+                    <object src="puffinlogo.png">The Puffin logo</object>
+                </d:spine>
+                <d:backcover>
+                    <p>Artemis Fowl</p>
+                    <p>
+                        <quote>I knew he'd be back. I knew it.</quote>
+                    </p>
+                    <p>Someone has been supplying Class A illegal [...] this time Artemis needs
+                        help...</p>
+                    <blockquote cite="Daily Mail">Fast, funny and exciting</blockquote>
+                    <!-- And other quotes from magazines and newspapers -->
+                    <p>
+                        <l>Artemis Fowl</l>
+                        <l>Shortlisted for the Whitbread Children's Book of the Year</l>
+                        <l>Winner of the WHSmith Children's Book of the Year</l>
+                        <l>Winner of the British Book Awards</l>
+                        <l>Children's Book of the Year</l>
+                    </p>
+                </d:backcover>
+            </d:bookcover>
+            <section>
+                <d:pagebreak value="i" />
+                <h>Artemis Fowl - The Arctic Incident</h>
+                <p>Eoin Colfer was born and raised in [...] at the British Book Awards.</p>
+                <d:pagebreak value="ii" />
+                <p>Other books by Eoin Colfer</p>
+                <p>
+                    <l>Artemis Fowl</l>
+                    <l>The Wish List</l>
+                </p>
+            </section>
+            <d:titlepage>
+                <d:pagebreak value="iii" />
+                <d:author>Eoin Colfer</d:author>
+                <title>Artemis Fowl</title>
+                <d:subtitle>The Arctic Incident</d:subtitle>
+                <object src="puffinlogo.png">The Puffin logo</object>
+                <d:publisher>Puffin Books</d:publisher>
+            </d:titlepage>
+            <d:copyrightinformation>
+                <d:pagebreak value="iv" />
+                <p>Puffin Books</p>
+                <!-- very much the same kind of information as in
+                    "A Spot of Bother" (ASpotOfBother.xml), so take a look at that one, instead
+                -->
+            </d:copyrightinformation>
+            <d:dedication>
+                <d:pagebreak value="v" />
+                <p>For Betty</p>
+                <d:pagebreak value="vi" />
+                <!-- No content on this page -->
+            </d:dedication>
+            <d:toc>
+                <d:pagebreak value="vii" />
+                <h>Contents</h>
+                <d:tocentry>
+                    <d:label>Artemis Fowl: A Psychological Assessment</d:label>
+                    <d:pageref ref="p-ix">ix</d:pageref>
+                </d:tocentry>
+                <d:tocentry>
+                    <d:label>Prologue</d:label>
+                    <d:pageref ref="p-1">1</d:pageref>
+                </d:tocentry>
+                <d:tocentry>
+                    <d:label>Chapter 1: Family Ties</d:label>
+                    <d:pageref ref="p-6">6</d:pageref>
+                </d:tocentry>
+                <d:tocentry>
+                    <d:label>Chapter 2: [...]</d:label>
+                    <d:pageref ref="p-13">13</d:pageref>
+                </d:tocentry>
+                <d:tocentry>
+                    <d:label>Chapter 3: [...]</d:label>
+                    <d:pageref ref="p-40">40</d:pageref>
+                </d:tocentry>
+                <d:tocentry>
+                    <d:label>Chapter 4: [...]</d:label>
+                    <d:pageref ref="p-62">62</d:pageref>
+                </d:tocentry>
+                <d:tocentry>
+                    <d:label>Chapter 5: [...]</d:label>
+                    <d:pageref ref="p-72">72</d:pageref>
+                </d:tocentry>
+                <d:tocentry>
+                    <d:label>Chapter 6: [...]</d:label>
+                    <d:pageref ref="p-79">79</d:pageref>
+                </d:tocentry>
+                <d:tocentry>
+                    <d:label>Chapter 7: [...]</d:label>
+                    <d:pageref ref="p-102">102</d:pageref>
+                </d:tocentry>
+                <d:tocentry>
+                    <d:label>Chapter 8: [...]</d:label>
+                    <d:pageref ref="p-115">115</d:pageref>
+                </d:tocentry>
+                <d:tocentry>
+                    <d:label>Chapter 9: [...]</d:label>
+                    <d:pageref ref="p-143">143</d:pageref>
+                </d:tocentry>
+                <d:tocentry>
+                    <d:label>Chapter 10: [...]</d:label>
+                    <d:pageref ref="p-165">165</d:pageref>
+                </d:tocentry>
+                <d:tocentry>
+                    <d:label>Chapter 11: Mulch Ado About Nothing</d:label>
+                    <d:pageref ref="p-185">185</d:pageref>
+                </d:tocentry>
+                <d:pagebreak value="viii" />
+                <d:tocentry>
+                    <d:label>Chapter 12: The Boys Are Back</d:label>
+                    <d:pageref ref="p-214">214</d:pageref>
+                </d:tocentry>
+                <d:tocentry>
+                    <d:label>Chapter 13: Into the Breach</d:label>
+                    <d:pageref ref="p-229">229</d:pageref>
+                </d:tocentry>
+                <d:tocentry>
+                    <d:label>Chapter 14: Father's Day</d:label>
+                    <d:pageref ref="p-266">266</d:pageref>
+                </d:tocentry>
+                <d:tocentry>
+                    <d:label>An Epilogue or Two</d:label>
+                    <d:pageref ref="p-281">281</d:pageref>
+                </d:tocentry>
+            </d:toc>
+            <section>
+                <d:pagebreak value="ix" xml:id="p-ix" />
+                <h>Artemis Fowl: A Psychological Assessment</h>
+                <p>
+                    <strong>Extract from <em>The Teenage Years</em></strong>
+                </p>
+                <p>By the age of thirteen [...] </p>
+                <d:pagebreak value="x" />
+                <!-- text on this page -->
+                <d:pagebreak value="xi" />
+                <!-- text on this page -->
+                <p>Report compiled by: Doctor J. Argon, B. Psych, for the LEP Academy files.</p>
+                <d:pagebreak value="xii" />
+                <!-- Completely empty page -->
+            </section>
+            <d:prologue>
+                <d:pagebreak value="1" xml:id="p-1" />
+                <h>Prologue</h>
+                <p>
+                    <strong>Murmansk, Northern Russia, two years ago</strong>
+                </p>
+                <p>The two Russians [...]</p>
+                <!-- several paragraphs and pages -->
+            </d:prologue>
+        </d:frontmatter>
+        <d:bodymatter>
+            <section>
+                <d:pagebreak value="6" xml:id="p-6" />
+                <h>Chapter 1: Family Ties</h>
+                <p>The loss of her husband [...]</p>
+                <!-- many more chapters -->
+            </section>
+        </d:bodymatter>
+        <d:backmatter>
+            <d:epilogue>
+                <d:pagebreak value="281" xml:id="p-281" />
+                <h>An Epilogue or Two</h>
+                <p>
+                    <strong>Tara</strong>
+                </p>
+                <p>Artemis was heading back to [...]</p>
+            </d:epilogue>
+            <d:page>
+                <h>A rare interview with the criminal mastermind</h>
+                <p>
+                    <strong>Name:</strong> Artemis Fowl </p>
+                <p><strong>Most treasured possession:</strong> My dearest possession is [...]</p>
+                <!-- And more questions of that type -->
+                <p> To find out more about Artemis Fowl, click on to: <l>
+                        <span href="http://www.eoincolfer.com">www.eoincolfer.com</span>, <span
+                            href="http://www.puffin.co.uk">www.puffin.co.uk</span> or <span
+                            href="http://www.artemisfowl.co.uk">www.artemisfowl.co.uk</span>
+                    </l>
+                </p>
+            </d:page>
+            <d:page>
+                <p>
+                    <l>Bravo, Master Fowl ...</l>
+                    <l>you've made it this far ...</l>
+                    <l>now unlock the secrets of ...</l>
+                </p>
+                <p>
+                    <l>
+                        <strong>Artemis Fowl</strong>
+                    </l>
+                    <l>
+                        <strong>The Eternity Code</strong>
+                    </l>
+                </p>
+                <p>Don't miss the third thrilling instalment of [...] rule the world?</p>
+                <p>You know what you have to do.</p>
+                <object src="etcode.png">The front cover of the book Artemis Fowl - The Eternity
+                    Code</object>
+                <p>Estimated time of arrival: 1 may 2003</p>
+            </d:page>
+        </d:backmatter>
+    </d:book>
+</html>

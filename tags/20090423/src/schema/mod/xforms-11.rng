@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://www.w3.org/2004/xforms/"
+         xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Namespaced XForms 1.1 schema in RELAX NG</x:h1>
+
+  <x:pre>
+    Copyright &#xA9;2005 W3C&#xAE; (MIT, ERCIM, Keio), All Rights Reserved.
+
+      Revision: $Id: xforms-11.rng,v 1.1.2.1 2009/02/25 12:09:46 mgylling Exp $
+
+    Permission to use, copy, modify and distribute this RELAX NG schema
+    for XForms 1.1 and its accompanying documentation for any purpose and
+    without fee is hereby granted in perpetuity, provided that the above
+    copyright notice and this paragraph appear in all copies. The copyright
+    holders make no representation about the suitability of this RELAX NG
+    schema for any purpose.
+
+    It is provided "as is" without expressed or implied warranty.
+    For details, please refer to the W3C software license at:
+
+      <x:a href="http://www.w3.org/Consortium/Legal/copyright-software"
+      >http://www.w3.org/Consortium/Legal/copyright-software</x:a>
+  </x:pre>
+
+  <include href="xforms-nons-11.rng"/>
+
+</grammar>

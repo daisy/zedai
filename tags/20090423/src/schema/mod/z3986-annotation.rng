@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar 
+  xmlns="http://relaxng.org/ns/structure/1.0" 
+  xmlns:x="http://www.w3.org/1999/xhtml"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <x:h1>The Z39.86 Annotation module</x:h1>
+
+  	<div>
+      <x:h2>The annotation element</x:h2>
+  	  <x:div id="z3986.annotation">
+  	    <p class="description">
+  	      <em>Description: to be written ...</em>
+  	      <strong>(@id="z3986.annotation" in file z3986-annotation.rng)</strong>
+  	    </p>
+  	    <h2>Use of this element</h2>
+  	    <p>
+  	      <em>More info: to be written ...</em>
+  	      <strong>(@id="z3986.annotation" in file z3986-annotation.rng)</strong>
+  	    </p>
+  	  </x:div>
+  	  
+  	  <define name="z3986.annotation" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="annotation">
+          <ref name="z3986.annotation.attlist" />
+          <ref name="z3986.annotation.content" />
+        </element>
+      </define>
+	    	
+      <define name="z3986.annotation.attlist">
+	      <ref name="xhtml.Common.attrib"/>        
+      </define>
+	
+      <define name="z3986.annotation.content">        
+          <ref name="xhtml.Flow.model" />
+      </define>
+
+    </div>
+    
+    <!-- contribute the annotation element to the general structural level -->
+    <define name="xhtml.Structural.nosection.class" combine="choice">
+      <ref name="z3986.annotation"/>
+    </define>
+	
+</grammar>

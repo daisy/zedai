@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+  ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:xsdp="http://www.daisy.org/ns/rng-preprocess/xsd"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="code">The quote module</dcterms:title>
+      <dcterms:description>This module defines the {[[#z3986.quote.block]]} element for indicating text reproduced from another source.</dcterms:description>
+      <z:info>Two variants of the {quote} element are available: one for use in a 
+        [[#z3986.Block.class Block]] context and a second for use in a 
+        [[#z3986.Phrase.class Phrase]] context.</z:info>
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}"/>
+      <dcterms:creator>Markus Gylling</dcterms:creator>
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng"/>
+      <dcterms:requires rdf:resource="z3986-citation.rng"/>
+    </rdf:Description>
+  </rdf:RDF>
+
+  <div>
+
+    <define name="z3986.quote.block">
+      <element name="quote">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="quote (block)">The {quote} element (Block)</dcterms:title>
+            <dcterms:description z:inherit="z3986.quote"/>
+            <z:info>The {Block} variant is an adaptation for use including quotes that are intended to be offset from any surrounding block elements.</z:info>
+            <z:info z:inherit="z3986.quote"/>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>{[[#z3986.Block.class]]}</z:context>
+            <z:content>{(z3986.Block.class)+ | (text | z3986.Text.class | z3986.Phrase.class)+}</z:content> <!-- &amp;amp; z3986.citation? citation normal member of phrase, specially contributed to quote.block-->
+            <z:attlist>{[[#z3986.Block.attrib]]}</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.quote.block.attlist"/>
+        <ref name="z3986.quote.block.content"/>
+      </element>
+      <sch:rule context="default:quote">
+        <sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0"
+          >The {quote} element must neither be empty nor contain only whitespace.</sch:assert>
+      </sch:rule>
+    </define>
+
+    <define name="z3986.quote.block.attlist">
+      <ref name="z3986.Block.attrib"/>
+    </define>
+
+    <define name="z3986.quote.block.content">      
+      <choice>
+        <oneOrMore>
+          <choice>
+            <a:documentation>specialize the block model to allow linegroups and lines</a:documentation>
+            <ref name="z3986.Block.class"/>
+            <ref name="z3986.Global.extra.class" />
+            <ref name="z3986.lngroup"/>
+            <ref name="z3986.ln"/>
+          </choice>
+        </oneOrMore>
+        <ref name="z3986.Phrase.Text.mix.model"/>
+      </choice>   
+    </define>
+    
+  </div>
+ 
+  <div>
+
+    <define name="z3986.quote.phrase">
+      <element name="quote">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="quote (phrase)">The {quote} element (Phrase)</dcterms:title>
+            <dcterms:description z:inherit="z3986.quote"/>
+            <z:info>The Phrase variant is an adaptation for use embedding quotes in phrasal constructs.</z:info>
+            <z:info z:inherit="z3986.quote"/>
+            <z:info z:inherit="z3986.quote.characters"/>
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.Phrase.class]]}</z:context>          
+            <z:content>{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</z:content>          
+            <z:attlist>{[[#z3986.Phrase.attrib]]}</z:attlist>      
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.quote.phrase.attlist"/>
+        <ref name="z3986.quote.phrase.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.quote.phrase.attlist">
+      <ref name="z3986.Phrase.attrib"/>
+    </define>
+
+    <define name="z3986.quote.phrase.content">
+      <ref name="z3986.Phrase.Text.mix.model"/>
+    </define>
+
+  </div>
+  
+  <div>
+    <a:documentation>quote - default content model contribution</a:documentation>
+    
+    <define name="z3986.Block.core.class" combine="choice">
+      <ref name="z3986.quote.block"/>
+    </define>
+    
+    <define name="z3986.Phrase.core.class" combine="choice">
+      <ref name="z3986.quote.phrase"/>
+    </define>
+    
+  </div>
+  
+</grammar>

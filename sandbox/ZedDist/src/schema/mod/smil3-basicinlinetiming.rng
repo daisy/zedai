@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+
+    <div>        
+        <define name="smil3.timecontainers.attrib" combine="interleave">
+            <ref name="smil3.inlinetiming.attrib"/>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.inlinetiming.attrib">
+            <optional>
+                <ref name="smil3.dur.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.begin.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.end.attrib"/>
+            </optional>
+        </define>
+
+        <define name="smil3.dur.attrib">
+            <attribute name="dur">
+                <a:documentation>Specifies the simple duration.</a:documentation>
+                <choice>
+                    <value>media</value>
+                    <a:documentation>Specifies the simple duration as the intrinsic media duration.
+                    This is only valid for elements that define media.</a:documentation>
+                    
+                    <value>indefinite</value>
+                    <a:documentation>Specifies the simple duration as indefinite.</a:documentation>
+                    
+                    <ref name="SMIL3.clockvalue.datatype"/>
+                    <a:documentation>Specifies the length of the simple duration, measured in
+                    element active time. Value must be greater than 0.</a:documentation>
+                    
+                </choice>
+            </attribute>
+        </define>
+
+        <define name="smil3.begin.attrib">
+            <attribute name="begin">
+                <a:documentation>Defines when the element becomes active. The attribute value is
+                    either a SMIL 1.0 syncbase declaration, or a semi-colon separated list of
+                    values. </a:documentation>
+                <!-- TODO a pattern for this; eventTiming -->
+            </attribute>
+        </define>
+
+        <define name="smil3.end.attrib">
+            <attribute name="end">
+                <a:documentation>Defines an end value for the element that may constrain the active
+                    duration. The attribute value is either a SMIL 1.0 syncbase declaration, or a
+                    semi-colon separated list of values. </a:documentation>
+                <!-- TODO a pattern for this; eventTiming -->
+            </attribute>
+        </define>
+    </div>
+</grammar>

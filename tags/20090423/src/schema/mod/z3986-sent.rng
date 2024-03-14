@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <x:h1>The Z3986 Sentence module</x:h1>
+
+  	<div>
+    	<x:h2>The sentence element (s)</x:h2>
+	    
+  		<x:div id="z3986.sentence">
+  			<p class="description">
+  				<em>Description: to be written ...</em>
+  				<strong>(@id="z3986.sentence" in file z3986-text.rng)</strong>
+  			</p>
+  			<h2>Use of this element</h2>
+  			<p>
+  				<em>More info: to be written ...</em>
+  				<strong>(@id="z3986.sentence" in file z3986-text.rng)</strong>
+  			</p>
+  		</x:div>
+  		
+		<define name="z3986.sentence" ns="http://www.daisy.org/ns/z3986/2008/">
+	        <element name="s">
+	            <ref name="z3986.sentence.attlist" />
+	            <ref name="z3986.sentence.content" />
+	        </element>
+	    </define>
+	    
+	    <define name="z3986.sentence.attlist">
+	        <ref name="xhtml.Common.attrib"/>
+	    </define>
+	    
+	    <define name="z3986.sentence.content">
+	        <ref name="xhtml.Text.model"/>
+	    </define>
+    </div>
+    
+    <!-- add sentence to become an exclusive choice in xhtml.Flow.model -->	
+	<define name="z3986.Flow.choice.extra.class" combine="choice">	  
+		<ref name="z3986.sentence"/>      		
+	</define>
+	
+	<!-- add sentence to become an exclusive choice in p's model -->
+	<define name="z3986.p.choice.extra.class" combine="choice">
+      <ref name="z3986.sentence"/>
+    </define>
+    
+</grammar>

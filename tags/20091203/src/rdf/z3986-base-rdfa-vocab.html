@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" 
+      "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd"> -->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:docbook="http://docbook.org/ns/docbook"
+  xmlns:xhv="http://www.w3.org/1999/xhtml/vocab/#"
+  xmlns:x2="http://www.w3.org/TR/xhtml2/xhtml20_schema.html#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#" version="XHTML+RDFa 1.0">
+  <head>
+    <title>Z39.86 Print Republishing Base Vocabulary</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="../../z3986-2010.css"/>
+  </head>
+  <body>
+    <h1>Z39.86 Print Republishing Base Vocabulary</h1>
+    <p class="informative">This vocabulary defines the following values for use in the
+        <code>role</code> attribute:</p>
+    <div id="base-vocab" class="vocabulary">
+      <div id="aside-properties" about="#aside-properties" typeof="rdf:Bag">
+        <h2>Aside properties</h2>
+        <dl about="#aside-properties" rev="rdfs:member">
+          <dt id="sidebar" about="#sidebar" typeof="rdf:Property">sidebar</dt>
+          <dd about="#sidebar" property="rdfs:comment" datatype="xsd:string">Contains supplemental
+            information</dd>
+          <dd>
+            <dl>
+              <dt>Inherited from:</dt>
+              <dd about="#sidebar" rel="rdfs:subClassOf" resource="#aside">
+                <a href="#aside">DAISY's <code>aside</code> role</a>
+              </dd>
+            </dl>
+          </dd>
+          <dd>
+            <dl>
+              <dt>Related concepts:</dt>
+              <dd about="#sidebar" rel="rdfs:seeAlso" resource="[docbook:sidebar]">
+                <a
+                  href="http://www.oasis-open.org/docbook/documentation/reference/html/sidebar.html"
+                  >DocBook's <code>sidebar</code> element</a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="notice" about="#notice" typeof="rdf:Property">notice</dt>
+          <dd about="#notice" property="rdfs:comment" datatype="xsd:string">A notification</dd>
+          <dd>
+            <dl>
+              <dt>Inherited from:</dt>
+              <dd about="#notice" rel="rdfs:subClassOf" resource="#aside">
+                <a href="#aside">DAISY's <code>aside</code> role</a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="warning" about="#warning" typeof="rdf:Property">warning</dt>
+          <dd about="#warning" property="rdfs:comment" datatype="xsd:string">A warning</dd>
+          <dd>
+            <dl>
+              <dt>Inherited from:</dt>
+              <dd about="#warning" rel="rdfs:subClassOf" resource="#aside">
+                <a href="#aside">DAISY's <code>aside</code> role</a>
+              </dd>
+            </dl>
+            <dl>
+              <dt>Related concepts:</dt>
+              <dd about="#warning" rel="rdfs:seeAlso" resource="[docbook:warning]">
+                <a
+                  href="http://www.oasis-open.org/docbook/documentation/reference/html/warning.html"
+                  >DocBook's <code>warning</code> element</a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="practice" about="#practice" typeof="rdf:Property">practice</dt>
+          <dd about="#practice" property="rdfs:comment" datatype="xsd:string">A review exercise or
+            sample</dd>
+          <dd>
+            <dl>
+              <dt>Inherited from:</dt>
+              <dd about="#practice" rel="rdfs:subClassOf" resource="#aside">
+                <a href="#aside">DAISY's <code>aside</code> role</a>
+              </dd>
+            </dl>
+          </dd>
+        </dl>
+      </div>
+      <div id="annotation-properties" about="#annotation-properties" typeof="rdf:Bag">
+        <h2>Annotation properties</h2>
+        <dl about="#annotation-properties" rev="rdfs:member">
+          <dt id="annotation" about="#annotation" typeof="rdf:Property">annotation</dt>
+          <dd about="#annotation" property="rdfs:comment" datatype="xsd:string">A generic
+            annotation</dd>
+          <dd>
+            <dl>
+              <dt>Inherited from:</dt>
+              <dd about="#annotation" rel="rdfs:subClassOf" resource="[xhv:complementary]">
+                <a href="http://www.w3.org/1999/xhtml/vocab/#complementary">XHTML's
+                    <code>complementary</code> role</a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="authorAnno" about="#authorAnno" typeof="rdf:Property">authorAnno</dt>
+          <dd about="#authorAnno" property="rdfs:comment" datatype="xsd:string">Annotation by the
+            author</dd>
+          <dd>
+            <dl>
+              <dt>Inherited from:</dt>
+              <dd about="#authorAnno" rel="rdfs:subClassOf" resource="#annotation">
+                <a href="#annotation">The <code>annotation</code> role</a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="editorAnno" about="#editorAnno" typeof="rdf:Property">editorAnno</dt>
+          <dd about="#editorAnno" property="rdfs:comment" datatype="xsd:string">Annotation by the
+            editor</dd>
+          <dd>
+            <dl>
+              <dt>Inherited from:</dt>
+              <dd about="#editorAnno" rel="rdfs:subClassOf" resource="#annotation">
+                <a href="#annotation">The <code>annotation</code> role</a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="commentatorAnno" about="#commentatorAnno" typeof="rdf:Property"
+            >commentatorAnno</dt>
+          <dd about="#commentatorAnno" property="rdfs:comment" datatype="xsd:string">Annotation by
+            the commentator</dd>
+          <dd>
+            <dl>
+              <dt>Inherited from:</dt>
+              <dd about="#commentatorAnno" rel="rdfs:subClassOf" resource="#annotation">
+                <a href="#annotation">The <code>annotation</code> role</a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="translatorAnno" about="#translatorAnno" typeof="rdf:Property">translatorAnno</dt>
+          <dd about="#translatorAnno" property="rdfs:comment" datatype="xsd:string">Annotation by
+            the translator</dd>
+          <dd>
+            <dl>
+              <dt>Inherited from:</dt>
+              <dd about="#translatorAnno" rel="rdfs:subClassOf" resource="#annotation">
+                <a href="#annotation">The <code>annotation</code> role</a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="republisherAnno" about="#republisherAnno" typeof="rdf:Property"
+            >republisherAnno</dt>
+          <dd about="#republisherAnno" property="rdfs:comment" datatype="xsd:string">Annotation by
+            the republisher</dd>
+          <dd>
+            <dl>
+              <dt>Inherited from:</dt>
+              <dd about="#republisherAnno" rel="rdfs:subClassOf" resource="#annotation">
+                <a href="#annotation">The <code>annotation</code> role</a>
+              </dd>
+            </dl>
+          </dd>
+        </dl>
+      </div>
+      
+      <div id="title-properties" about="#title-properties" typeof="rdf:Bag">
+        <h2>Title properties</h2>
+        <dl about="#title-properties" rev="rdfs:member">
+          <dt id="halftitle" about="#halftitle" typeof="rdf:Property">halftitle</dt>
+          <dd about="#halftitle" property="rdfs:comment" datatype="xsd:string">The halftitle of the
+          publication</dd>
+          
+          <dt id="fulltitle" about="#fulltitle" typeof="rdf:Property">fulltitle</dt>
+          <dd about="#halftitle" property="rdfs:comment" datatype="xsd:string">The fulltitle of the
+          publication</dd>
+          
+          <dt id="title" about="#title" typeof="rdf:Property">title</dt>
+          <dd about="#title" property="rdfs:comment" datatype="xsd:string">The title of the
+            publication, or, when used in the context of a <a href="#fulltitle">fulltitle</a>, the primary part of the full
+            title</dd>
+          
+          <dt id="subtitle" about="#subtitle" typeof="rdf:Property">subtitle</dt>
+          <dd about="#subtitle" property="rdfs:comment" datatype="xsd:string">The secondary part of
+            the full title</dd>
+          <dd>
+            <dl>
+              <dt>Related concepts:</dt>
+              <dd about="#subtitle" rel="rdfs:seeAlso" resource="[docbook:subtitle]">
+                <a
+                  href="http://www.oasis-open.org/docbook/documentation/reference/html/subtitle.html"
+                  >DocBook's <code>subtitle</code> element</a>
+              </dd>
+            </dl>
+          </dd>
+        </dl>
+      </div>
+      
+      <div id="reference-properties" about="#reference-properties" typeof="rdf:Bag">
+        <h2>Reference properties</h2>
+        <dl about="#reference-properties" rev="rdfs:member">
+          <dt id="image-placeholder" about="#image-placeholder" typeof="rdf:Property">image-placeholder</dt>
+          <dd about="#image-placeholder" property="rdfs:comment" datatype="xsd:string">A placeholder for a reference to an image</dd>
+      	</dl>
+      </div>  
+      
+      <div id="general-properties" about="#general-properties" typeof="rdf:Bag">
+        <h2>General properties </h2>
+        <dl about="#general-properties" rev="rdfs:member">
+          <dt id="foreword" about="#foreword" typeof="rdf:Property">foreword</dt>
+          <dd about="#foreword" property="rdfs:comment" datatype="xsd:string">The foreword</dd>
+          <dd>
+            <dl>
+              <dt>Related concepts:</dt>
+              <dd about="#foreword" rel="rdfs:seeAlso" resource="[docbook:preface]">
+                <a
+                  href="http://www.oasis-open.org/docbook/documentation/reference/html/preface.html"
+                  >DocBook's <code>preface</code> element</a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="introduction" about="#introduction" typeof="rdf:Property">introduction</dt>
+          <dd about="#introduction" property="rdfs:comment" datatype="xsd:string">Introduction</dd>
+          <dt id="poem" about="#poem" typeof="rdf:Property">poem</dt>
+          <dd about="#poem" property="rdfs:comment" datatype="xsd:string">A poem</dd>
+          <dt id="letter" about="#letter" typeof="rdf:Property">letter</dt>
+          <dd about="#letter" property="rdfs:comment" datatype="xsd:string">A letter</dd>
+          <dt id="diaryEntry" about="#diaryEntry" typeof="rdf:Property">diaryEntry</dt>
+          <dd about="#diaryEntry" property="rdfs:comment" datatype="xsd:string">A diary entry</dd>
+          <dt id="epilogue" about="#epilogue" typeof="rdf:Property">epilogue</dt>
+          <dd about="#epilogue" property="rdfs:comment" datatype="xsd:string">A piece of writing at
+            the end of a work of literature or drama, usually used to bring closure to the work</dd>
+          <dt id="afterword" about="#afterword" typeof="rdf:Property">afterword</dt>
+          <dd about="#afterword" property="rdfs:comment" datatype="xsd:string">An afterword</dd>
+          <dt id="conclusion" about="#conclusion" typeof="rdf:Property">conclusion</dt>
+          <dd about="#conclusion" property="rdfs:comment" datatype="xsd:string">Concluding text</dd>
+          <dt id="biographicalNote" about="#biographicalNote" typeof="rdf:Property"
+            >biographicalNote</dt>
+          <dd about="#biographicalNote" property="rdfs:comment" datatype="xsd:string">A biographical
+            note about the author or authors (“author” here includes editors, compilers, and
+            translators)</dd>
+          <dd>
+            <dl>
+              <dt>Related concepts:</dt>
+              <dd about="#biographicalNote" rel="rdfs:seeAlso" resource="[docbook:personblurb]">
+                <a
+                  href="http://www.oasis-open.org/docbook/documentation/reference/html/personblurb.html"
+                  >DocBook's <code>personblurb</code> element</a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="abbreviationsList" about="#abbreviationsList" typeof="rdf:Property"
+            >abbreviationsList</dt>
+          <dd about="#abbreviationsList" property="rdfs:comment" datatype="xsd:string">A list of
+            abbreviations</dd>
+          <dd>
+            <dl>
+              <dt>Inherited from:</dt>
+              <dd about="#abbreviationsList" rel="rdfs:subClassOf" resource="[xhv:directory]">
+                <a href="http://www.w3.org/1999/xhtml/vocab/#directory">XHTML's
+                    <code>directory</code> role</a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="translatorNote" about="#translatorNote" typeof="rdf:Property">translatorNote</dt>
+          <dd about="#translatorNote" property="rdfs:comment" datatype="xsd:string">A note from the
+            translator</dd>
+          <dd>
+            <dl>
+              <dt>Inherited from:</dt>
+              <dd about="#translatorNote" rel="rdfs:subClassOf" resource="[xhv:note]">
+                <a href="http://www.w3.org/1999/xhtml/vocab/#note">XHTML's <code>note</code>
+                  role</a>
+              </dd>
+            </dl>
+          </dd>
+          <dd>
+            <dl>
+              <dt>Related concepts:</dt>
+              <dd about="#translatorNote" rel="rdfs:seeAlso" resource="[docbook:note]">
+                <a href="http://www.oasis-open.org/docbook/documentation/reference/html/note.html"
+                  >DocBook's <code>note</code> element</a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="errata" about="#errata" typeof="rdf:Property">errata</dt>
+          <dd about="#errata" property="rdfs:comment" datatype="xsd:string">errata</dd>
+          <dt id="timeline" about="#timeline" typeof="rdf:Property">timeline</dt>
+          <dd about="#timeline" property="rdfs:comment" datatype="xsd:string">A chronological list
+            of events</dd>
+          <dd>
+            <dl>
+              <dt>Inherited from:</dt>
+              <dd about="#timeline" rel="rdfs:subClassOf" resource="[xhv:list]">
+                <a href="http://www.w3.org/1999/xhtml/vocab/#list">XHTML's <code>list</code>
+                  role</a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="endnotes" about="#endnotes" typeof="rdf:Property">endnotes</dt>
+          <dd about="#endnotes" property="rdfs:comment" datatype="xsd:string">A collection of notes
+            appearing at the end of the work</dd>
+          <dt id="artwork" about="#artwork" typeof="rdf:Property">artwork</dt>
+          <dd about="#artwork" property="rdfs:comment" datatype="xsd:string">Cover artwork</dd>
+          <dt id="promotionalCopy" about="#promotionalCopy" typeof="rdf:Property"
+            >promotionalCopy</dt>
+          <dd about="#promotionalCopy" property="rdfs:comment" datatype="xsd:string">A description
+            of the book or quotations from reviews</dd>
+          <dt id="help" about="#help" typeof="rdf:Property">help</dt>
+          <dd about="#help" property="rdfs:comment" datatype="xsd:string">Help using the
+            publication.</dd>
+          <dt id="keyterm" about="#keyterm" typeof="rdf:Property">keyterm</dt>
+          <dd about="#keyterm" property="rdfs:comment" datatype="xsd:string">A key word or
+            phrase</dd>
+          <dt id="biblioref" about="#biblioref" typeof="rdf:Property">biblioref</dt>
+          <dd about="#biblioref" property="rfds:comment" datatype="xsd:string">A bibliographical
+            reference</dd>
+          <dd>
+            <dl>
+              <dt>Inherited from:</dt>
+              <dd about="#biblioref" rel="rdfs:subClassOf" resource="[xhv:cite]">
+                <a href="http://www.w3.org/1999/xhtml/vocab/#cite">XHTML's <code>cite</code>
+                  vocabulary item</a>
+              </dd>
+            </dl>
+          </dd>
+          <dd>
+            <dl>
+              <dt>Related concepts:</dt>
+              <dd about="#biblioref" rel="rdfs:seeAlso"
+                resource="[docbook:citerefentry
+                  html]">
+                <a
+                  href="http://www.oasis-open.org/docbook/documentation/reference/html/warning.html"
+                  >DocBook's <code>citerefentry</code> element</a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="section" about="#section" typeof="rdf:Property">section</dt>
+          <dd about="#section" property="rdfs:comment" datatype="xsd:string">A generic division of
+            content</dd>
+          <dd>
+            <dl>
+              <dt>Inherited from:</dt>
+              <dd about="#section" rel="rdfs:subClassOf" resource="[xhv:section]">
+                <a href="http://www.w3.org/1999/xhtml/vocab/#section">XHTML's <code>section</code>
+                  role</a>
+              </dd>
+            </dl>
+          </dd>
+          <dd>
+            <dl>
+              <dt>Related concepts:</dt>
+              <dd about="#section" rel="rdfs:seeAlso" resource="[docbook:section]">
+                <a
+                  href="http://www.oasis-open.org/docbook/documentation/reference/html/section.html"
+                  >DocBook's <code>section</code> element </a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="toc" about="#toc" typeof="rdf:Property">toc</dt>
+          <dd about="#toc" property="rdfs:comment" datatype="xsd:string">The table of contents</dd>
+          <dd>
+            <dl>
+              <dt>Inherited from:</dt>
+              <dd about="#toc" rel="rdfs:subClassOf" resource="[xhv:contents]">
+                <a href="http://www.w3.org/1999/xhtml/vocab/#contents">XHTML's <code>contents</code>
+                  role</a>
+              </dd>
+            </dl>
+          </dd>
+          <dd>
+            <dl>
+              <dt>Related concepts:</dt>
+              <dd about="#toc" rel="rdfs:seeAlso" resource="[docbook:toc]">
+                <a href="http://www.oasis-open.org/docbook/documentation/reference/html/toc.html"
+                  >DocBook's <code>toc</code> element</a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="aside" about="#aside" typeof="rdf:Property">aside</dt>
+          <dd about="#aside" property="rdfs:comment" datatype="xsd:string">Secondary content, often
+            formatted as an inset or box</dd>
+          <dd>
+            <dl>
+              <dt>Inherited from:</dt>
+              <dd about="#aside" rel="rdfs:subClassOf" resource="[xhv:complementary]">
+                <a href="http://www.w3.org/1999/xhtml/vocab/#complementary">XHTML's
+                    <code>complementary</code> role</a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="pagebreak" about="#pagebreak" typeof="rdf:Property">pagebreak</dt>
+          <dd about="#pagebreak" property="rdfs:comment" datatype="xsd:string">A separator denoting
+            the break between two contiguous pages</dd>
+          <dd>
+            <dl>
+              <dt>Inherited from:</dt>
+              <dd about="#pagebreak" rel="rdfs:subClassOf" resource="[xhv:separator]">
+                <a href="http://www.w3.org/1999/xhtml/vocab/#separator">XHTML's
+                    <code>separator</code> role</a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="bridgehead" about="#bridgehead" typeof="rdf:Property">bridgehead</dt>
+          <dd about="#bridgehead" property="rdfs:comment" datatype="xsd:string">A free-floating
+            heading that is not associated with the hierarchical structure of a document</dd>
+          <dd>
+            <dl>
+              <dt>Inherited from:</dt>
+              <dd about="#bridgehead" rel="rdfs:subClassOf" resource="[xhv:heading]">
+                <a href="http://www.w3.org/1999/xhtml/vocab/#heading">XHTML's <code>heading</code>
+                  role</a>
+              </dd>
+            </dl>
+          </dd>
+          <dd>
+            <dl>
+              <dt>Related concepts:</dt>
+              <dd about="#bridgehead" rel="rdfs:seeAlso" resource="[docbook:bridgehead]">
+                <a
+                  href="http://www.oasis-open.org/docbook/documentation/reference/html/bridgehead.html"
+                  >DocBook's <code>bridgehead</code> element</a>
+              </dd>
+              <dd about="#bridgehead" rel="rdfs:seeAlso" resource="[x2:h]">
+                <a href="http://www.w3.org/1999/xhtml/vocab/#h">XHTML2's <code>h</code> element</a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="footnote" about="#footnote" typeof="rdf:Property">footnote</dt>
+          <dd about="#footnote" property="rdfs:comment" datatype="xsd:string">A footnote</dd>
+          <dd>
+            <dl>
+              <dt>Inherited from:</dt>
+              <dd about="#footnote" rel="rdfs:subClassOf" resource="[xhv:contentinfo]">
+                <a href="http://www.w3.org/1999/xhtml/vocab/#contentinfo">XHTML's
+                    <code>contentinfo</code> role</a>
+              </dd>
+            </dl>
+          </dd>
+          <dd>
+            <dl>
+              <dt>Related concepts:</dt>
+              <dd about="#footnote" rel="rdfs:seeAlso" resource="[docbook:footnote]">
+                <a
+                  href="http://www.oasis-open.org/docbook/documentation/reference/html/footnote.html"
+                  >DocBook's <code>footnote</code> element</a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="actor" about="#actor" typeof="rdf:Property">actor</dt>
+          <dd about="#actor" property="rdfs:comment" datatype="xsd:string">A speaking character in a
+            story.</dd>
+          <dt id="speaks" about="#speaks" typeof="rdf:Property">speaks</dt>
+          <dd about="#speaks" property="rdfs:comment" datatype="xsd:string">Indicates that the
+            subject of an RDF triple is speaking the given piece of dialog.</dd>
+        </dl>
+      </div>
+      <div id="frontmatter-properties" about="#frontmatter-properties" typeof="rdf:Bag">
+        <h2>Properties pertaining primarily to publication frontmatter</h2>
+        <dl about="#frontmatter-properties" rev="rdfs:member">
+          <dt id="dedication" about="#dedication" typeof="rdf:Property">dedication</dt>
+          <dd about="#dedication" property="rdfs:comment" datatype="xsd:string">Inscription
+            addressed to a particular person</dd>
+          <dd>
+            <dl>
+              <dt>Related concepts:</dt>
+              <dd about="#dedication" rel="rdfs:seeAlso" resource="[docbook:dedication]">
+                <a
+                  href="http://www.oasis-open.org/docbook/documentation/reference/html/dedication.html"
+                  >DocBook's <code>dedication</code> element</a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="epigraph" about="#epigraph" typeof="rdf:Property">epigraph</dt>
+          <dd about="#epigraph" property="rdfs:comment" datatype="xsd:string">A quotation that is
+            pertinent but not integral to the text</dd>
+          <dd>
+            <dl>
+              <dt>Related concepts:</dt>
+              <dd about="#epigraph" rel="rdfs:seeAlso" resource="[docbook:epigraph]">
+                <a
+                  href="http://www.oasis-open.org/docbook/documentation/reference/html/epigraph.html"
+                  >DocBook's <code>epigraph</code> element</a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="acknowledgments" about="#acknowledgments" typeof="rdf:Property"
+            >acknowledgments</dt>
+          <dd about="#acknowledgments" property="rdfs:comment" datatype="xsd:string"
+            >Acknowledgments</dd>
+          <dd>
+            <dl>
+              <dt>Related concepts:</dt>
+              <dd about="#acknowledgments" rel="rdfs:seeAlso" resource="[docbook:ackno]">
+                <a href="http://www.oasis-open.org/docbook/documentation/reference/html/ackno.html"
+                  >DocBook's <code>ackno</code> element</a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="titlepage" about="#titlepage" typeof="rdf:Property">titlepage</dt>
+          <dd about="#titlepage" property="rdfs:comment" datatype="xsd:string">Analogous to a print
+            book's title page.</dd>
+          <dt id="halftitlepage" about="#halftitlepage" typeof="rdf:Property">halftitlepage</dt>
+          <dd about="#halftitlepage" property="rdfs:comment" datatype="xsd:string">Analogous to a
+            print book's half-title page.</dd>
+          <dt id="imprint" about="#imprint" typeof="rdf:Property">imprint</dt>
+          <dd about="#imprint" property="rdfs:comment" datatype="xsd:string">Groups information
+            relating to the publication or distribution of a bibliographic item.</dd>
+          <dt id="imprimatur" about="#imprimatur" typeof="rdf:Property">imprimatur</dt>
+          <dd about="#imprimatur" property="rdfs:comment" datatype="xsd:string">A formal statement
+            authorizing the publication of a work</dd>
+          <dt id="publisherLogo" about="#publisherLogo" typeof="rdf:Property">publisherLogo</dt>
+          <dd about="#publisherLogo" property="rdfs:comment" datatype="xsd:string">The publisher's
+            logo</dd>
+          <dt id="publisherAddress" about="#publisherAddress" typeof="rdf:Property"
+            >publisherAddress</dt>
+          <dd about="#publisherAddress" property="rdfs:comment" datatype="xsd:string">The
+            publisher's address, which can be abbreviated to city and postal code only</dd>
+          <dd>
+            <dl>
+              <dt>Related concepts:</dt>
+              <dd about="#publisherAddress" rel="rdfs:seeAlso" resource="[docbook:address]">
+                <a
+                  href="http://www.oasis-open.org/docbook/documentation/reference/html/address.html"
+                  >DocBook's <code>address</code> element</a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="otherCredits" about="#otherCredits" typeof="rdf:Property">otherCredits</dt>
+          <dd about="#otherCredits" property="rdfs:comment" datatype="xsd:string">Acknowledgments of
+            previously published parts of a book, illustration credits, and permission to quote from
+            copyrighted material</dd>
+          <dt id="grantAcknowledgment" about="#grantAcknowledgment" typeof="rdf:Property"
+            >grantAcknowledgmenet</dt>
+          <dd about="#grantAcknowledgment" property="rdfs:comment" datatype="xsd:string">Describes
+            financial assistance towards the publication</dd>
+          <dt id="contributorsList" about="#contributorsList" typeof="rdf:Property"
+            >contributorsList</dt>
+          <dd about="#contributorsList" property="rdfs:comment" datatype="xsd:string">Found in works
+            containing many authors</dd>
+          <dd>
+            <dl>
+              <dt>Inherited from:</dt>
+              <dd about="#contributorsList" rel="rdfs:subClassOf" resource="[xhv:directory]">
+                <a href="http://www.w3.org/1999/xhtml/vocab/#directory">XHTML's
+                    <code>directory</code> role</a>
+              </dd>
+            </dl>
+          </dd>
+          <dd>
+            <dl>
+              <dt>Related concepts:</dt>
+              <dd about="#contributorsList" rel="rdfs:seeAlso" resource="[docbook:authorgroup]">
+                <a
+                  href="http://www.oasis-open.org/docbook/documentation/reference/html/authorgroup.html"
+                  >DocBook's <code>authorgroup</code> element</a>
+              </dd>
+            </dl>
+          </dd>
+        </dl>
+      </div>
+      <div id="backmatter-properties" about="#backmatter-properties" typeof="rdf:Bag">
+        <h2>Properties pertaining primarily to publication backmatter</h2>
+        <dl about="#backmatter-properties" rev="rdfs:member">
+          <dt id="appendix" about="#appendix" typeof="rdf:Property">appendix</dt>
+          <dd about="#appendix" property="rdfs:comment" datatype="xsd:string">Supplemental
+            information</dd>
+          <dd>
+            <dl>
+              <dt>Inherited from:</dt>
+              <dd about="#appendix" rel="rdfs:subClassOf" resource="[xhv:appendix]">
+                <a href="http://www.w3.org/1999/xhtml/vocab/#appendix">XHTML's <code>appendix</code>
+                  vocabulary term</a>
+              </dd>
+            </dl>
+          </dd>
+          <dd>
+            <dl>
+              <dt>Related concepts:</dt>
+              <dd about="#appendix" rel="rdfs:seeAlso" resource="[docbook:appendix]">
+                <a
+                  href="http://www.oasis-open.org/docbook/documentation/reference/html/appendix.html"
+                  >DocBook's <code>appendix</code> element</a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="glossary" about="#glossary" typeof="rdf:Property">glossary</dt>
+          <dd about="#glossary" property="rdfs:comment" datatype="xsd:string">An alphabetical list
+            of terms in a particular domain of knowledge with the definitions for those terms</dd>
+          <dd>
+            <dl>
+              <dt>Inherited from:</dt>
+              <dd about="#glossary" rel="rdfs:subClassOf" resource="[xhv:glossary]">
+                <a href="http://www.w3.org/1999/xhtml/vocab/#glossary">XHTML's <code>glossary</code>
+                  vocabulary term</a>
+              </dd>
+            </dl>
+          </dd>
+          <dd>
+            <dl>
+              <dt>Related concepts:</dt>
+              <dd about="#glossary" rel="rdfs:seeAlso" resource="[docbook:glossary]">
+                <a
+                  href="http://www.oasis-open.org/docbook/documentation/reference/html/glossary.html"
+                  >DocBook's <code>glossary</code> element</a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="bibliography" about="#bibliography" typeof="rdf:Property">bibliography</dt>
+          <dd about="#bibliography" property="rdfs:comment" datatype="xsd:string">A systematic list
+            of works cited</dd>
+          <dd>
+            <dl>
+              <dt>Inherited from:</dt>
+              <dd about="#bibliography" rel="rdfs:subClassOf" resource="[xhv:directory]">
+                <a href="http://www.w3.org/1999/xhtml/vocab/#directory">XHTML's
+                    <code>directory</code> role</a>
+              </dd>
+              <dd about="#bibliography" rel="rdfs:subClassOf" resource="[xhv:complementary]">
+                <a href="http://www.w3.org/1999/xhtml/vocab/#complementary">XHTML's
+                    <code>complementary</code> role</a>
+              </dd>
+            </dl>
+          </dd>
+          <dd>
+            <dl>
+              <dt>Related concepts:</dt>
+              <dd about="#bibliography" rel="rdfs:seeAlso" resource="[docbook:bibliography]">
+                <a
+                  href="http://www.oasis-open.org/docbook/documentation/reference/html/bibliography.html"
+                  >DocBook's <code>bibliography</code> element</a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="index" about="#index" typeof="rdf:Property">index</dt>
+          <dd about="#index" property="rdfs:comment" datatype="xsd:string">A detailed list, usually
+            arranged alphabetically, of the specific information in a publication</dd>
+          <dd>
+            <dl>
+              <dt>Inherited from:</dt>
+              <dd about="#index" rel="rdfs:subClassOf" resource="[xhv:index]">
+                <a href="http://www.w3.org/1999/xhtml/vocab/#index">XHTML's <code>index</code>
+                  vocabulary term</a>
+              </dd>
+            </dl>
+          </dd>
+          <dd>
+            <dl>
+              <dt>Related concepts:</dt>
+              <dd about="#index" rel="rdfs:seeAlso" resource="[docbook:index]">
+                <a href="http://www.oasis-open.org/docbook/documentation/reference/html/index.html"
+                  >DocBook's <code>index</code> element</a>
+              </dd>
+            </dl>
+          </dd>
+          <dt id="colophon" about="#colophon" typeof="rdf:Property">colophon</dt>
+          <dd about="#colophon" property="rdfs:comment" datatype="xsd:string">A brief description
+            usually located at the end of a publication, describing production notes relevant to the
+            edition</dd>
+          <dd>
+            <dl>
+              <dt>Related concepts:</dt>
+              <dd about="#colophon" rel="rdfs:seeAlso" resource="[docbook:colophon]">
+                <a
+                  href="http://www.oasis-open.org/docbook/documentation/reference/html/colophon.html"
+                  >DocBook's <code>colophon</code> element</a>
+              </dd>
+            </dl>
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </body>
+</html>

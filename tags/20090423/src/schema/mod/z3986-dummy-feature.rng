@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml">
+
+    <x:h1>The Z3986 Dummy Feature</x:h1>
+    <div>
+        <x:div id="z3986.dummy">
+            <p class="description">
+                Just a dummy
+            </p>
+            <h2>Use of this element</h2>
+            <p>
+                There is no proper use for this element.<br />
+                It is added to the grammar just to find out how to document features, and should 
+                be removed as soon as possible.
+            </p>
+        </x:div>
+        
+        <define name="z3986.dummy" ns="http://www.daisy.org/ns/z3986/2008/dummy">
+            <element name="dummy">
+                <ref name="z3986.dummy.attlist"/>
+                <ref name="z3986.dummy.content"/>
+            </element>
+        </define>
+
+        <define name="z3986.dummy.attlist">
+            <ref name="xhtml.Common.attrib"/>
+        </define>
+        
+        <define name="z3986.dummy.content">
+            <ref name="z3986.Text.base.model"/>
+        </define>
+    </div>
+
+    <x:div id="z3986.revision.attrib">
+        <p>
+            There is no proper use for this attribute.<br />
+            It is added to the grammar just to find out how to document features, and should 
+            be removed as soon as possible.
+        </p>
+    </x:div>
+    <define name="z3986.revision">
+        <attribute name="revision" ns="http://www.daisy.org/ns/z3986/2008/dummy">
+            <text />
+        </attribute>
+    </define>
+
+    <!-- contribute dummy to frontmatter/section class -->
+    <define name="z3986.section.frontmatter.class" combine="choice">
+        <ref name="z3986.dummy"/>
+    </define>
+
+    <define name="xhtml.Common.attrib" combine="interleave">
+        <ref name="z3986.revision"/>
+    </define>
+    
+</grammar>

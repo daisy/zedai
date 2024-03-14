@@ -1,0 +1,23 @@
+*.rd files are containers for prose sections, that get 
+injected into resource directory documents built by
+util/rd/build-rd.xsl
+
+The position of the injection in the result document 
+is determined by using class attributes in the .rd
+file. The following expressions are recognized by
+build-rd.xsl:
+
+div.intro
+Contents injected to an informative introduction section,
+under a h2 "Introduction".
+
+div.normative-top
+Contents injected to the start of the normative section,
+under a h2 "Normative References".
+
+div.normative-bottom
+Contents injected to the end of the normative section
+
+div.examples
+Adds the content to the examples section, under a h2 "Examples"
+TODO add escaping support

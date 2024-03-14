@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+
+    <start>
+        <ref name="smil3.smil"/>
+    </start>
+
+    <div>
+        <define name="smil3.smil">
+            <element name="smil">
+                <ref name="smil3.smil.attlist"/>
+                <ref name="smil3.smil.content"/>
+            </element>
+        </define>
+
+        <define name="smil3.smil.attlist" combine="interleave">
+            <ref name="smil3.Core.attrib"/>
+            <attribute name="version">
+                <value>3.0</value>
+            </attribute>
+            <attribute name="baseProfile">
+                <!-- no need to say x-Daisy-classic etc here, since all Z3986 profiles
+                    are intended to be subsets of the W3C SMIL DAISY Profile. -->
+                <value>Daisy</value>
+            </attribute>
+        </define>
+
+        <define name="smil3.smil.content">
+            <ref name="smil3.head"/>
+            <ref name="smil3.body"/>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.head">
+            <element name="head">
+                <ref name="smil3.head.attlist"/>
+                <ref name="smil3.head.content"/>
+            </element>
+        </define>
+
+        <define name="smil3.head.attlist">
+            <ref name="smil3.Core.attrib"/>
+        </define>
+
+        <define name="smil3.head.content" combine="interleave">
+            <empty/>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.body">
+            <element name="body">
+                <ref name="smil3.body.attlist"/>
+                <ref name="smil3.body.content"/>
+            </element>
+        </define>
+
+        <define name="smil3.body.attlist">
+            <ref name="smil3.Core.attrib"/>
+        </define>
+
+        <define name="smil3.body.content">
+            <ref name="smil3.seq.content"/>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.Core.attrib" combine="interleave">
+            <a:documentation>Core attribs, with optional xml:id</a:documentation>
+            <optional>                
+                <ref name="smil3.xmlid.attrib"/>                
+            </optional>
+            <ref name="smil3.Core.base.attrib"/>
+        </define>
+        
+        <define name="smil3.Core.IDrequired.attrib" combine="interleave">
+            <a:documentation>Core attribs, with required xml:id</a:documentation>
+            <ref name="smil3.xmlid.attrib"/>
+            <ref name="smil3.Core.base.attrib"/>
+        </define>
+
+        <define name="smil3.Core.base.attrib" combine="interleave">
+            <a:documentation>base class for Core attribs, which excludes xml:id</a:documentation>
+            <optional>
+                <attribute name="class">
+                    <ref name="NMTOKENS.datatype"/>
+                </attribute>
+            </optional>                        
+        </define>
+        
+        <define name="smil3.xmlid.attrib">
+            <attribute name="xml:id">
+                <ref name="ID.datatype"/>
+            </attribute>
+        </define>
+    </div>
+
+</grammar>

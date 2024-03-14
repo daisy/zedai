@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" 
+  "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd"> -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#" version="XHTML+RDFa 1.0">
+  <head>
+    <title>Z3986-2010 Resource Directory Vocabulary</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="../../z3986-2010.css" />
+  </head>
+  <body>
+    <h1>Z3986-2010 Resource Directory Vocabulary</h1>
+    <div class="informative">
+      <p>This vocabulary defines a set of properties for use in the <em>Z3986-2010
+          Resource Directory</em> document type.</p>
+      <p>The base grammar for a <em>Z3986-2010 Resource Directory</em> instance is <a
+          href="http://www.w3.org/TR/rdfa-syntax/#a_xhtmlrdfa_dtd">W3C
+        XHTML+RDFa</a>, with additional RDF property usage constraints expressed by
+        the normative <a href="TODO">Z3986-2010 Resource Directory ISO Schematron
+          schema</a>.</p>
+    </div>
+
+    <div id="rd-vocab" class="vocabulary" about="#rd-vocab" typeof="rdf:Bag">
+      <dl about="#rd-vocab" rev="rdfs:member">
+
+        <dt id="maintenance-agency" about="#maintenance-agency" typeof="rdf:Property"
+          >maintenance-agency</dt>
+        <dd about="#maintenance-agency" property="rdfs:comment" datatype="xsd:string"
+          >the maintenance agency</dd>
+
+        <dt id="specification-compliance" about="#specification-compliance"
+          typeof="rdf:Property">specification-compliance</dt>
+        <dd about="#specification-compliance" property="rdfs:comment"
+          datatype="xsd:string">the specification which the profile or feature
+          conforms to</dd>
+
+        <dt id="token-identifier" about="#token-identifier" typeof="rdf:Property"
+          >token-identifier</dt>
+        <dd about="#token-identifier" property="rdfs:comment" datatype="xsd:string">A
+          canonical string identifier of the profile or feature</dd>
+
+        <dt id="normative-schema" about="#normative-schema" typeof="rdf:Property"
+          >normative-schema</dt>
+        <dd about="#normative-schema" property="rdfs:comment" datatype="xsd:string"
+          >the normative schema</dd>
+
+        <dt id="normative-prose" about="#normative-prose" typeof="rdf:Property"
+          >normative-prose</dt>
+        <dd about="#normative-prose" property="rdfs:comment" datatype="xsd:string"
+          >Normative prose regarding the use of the profile or schema.</dd>
+
+        <dt id="feature" about="#feature" typeof="rdf:Property">feature</dt>
+        <dd about="#feature" property="rdfs:comment" datatype="xsd:string">a feature
+          used by the profile</dd>
+
+        <dt id="default-vocabulary" about="#default-vocabulary" typeof="rdf:Property"
+          >default-vocabulary</dt>
+        <dd about="#default-vocabulary" property="rdfs:comment" datatype="xsd:string"
+          >the profile's default vocabulary</dd>
+
+        <dt id="schema-documentation" about="#schema-documentation"
+          typeof="rdf:Property">schema-documentation</dt>
+        <dd about="#schema-documentation" property="rdfs:comment"
+          datatype="xsd:string">the schema documentation</dd>
+
+        <dt id="informative-schema" about="#informative-schema" typeof="rdf:Property"
+          >informative-schema</dt>
+        <dd about="#informative-schema" property="rdfs:comment" datatype="xsd:string"
+          >informative schema</dd>
+
+        <dt id="default-css" about="#default-css" typeof="rdf:Property">default-css</dt>
+        <dd about="#default-css" property="rdfs:comment" datatype="xsd:string">the
+          default cascading stylesheet used for the profile</dd>
+
+        <dt id="supporting-software" about="#supporting-software"
+          typeof="rdf:Property">supporting-software</dt>
+        <dd about="#supporting-software" property="rdfs:comment"
+          datatype="xsd:string">describes software that supports this profile</dd>
+
+        <dt id="examples" about="#examples" typeof="rdf:Property">examples</dt>
+        <dd about="#examples" property="rdfs:comment" datatype="xsd:string">examples</dd>
+
+        <dt id="module" about="#module" typeof="rdf:Property">module</dt>
+        <dd about="#module" property="rdfs:comment" datatype="xsd:string">a module
+          used in this profile</dd>
+
+        <dt id="archive" about="#archive" typeof="rdf:Property">archive</dt>
+        <dd about="#archive" property="rdfs:comment" datatype="xsd:string">a
+          downloadable archive of all the profile's documents</dd>
+
+        <dt id="reference" about="#reference" typeof="rdf:Property">reference</dt>
+        <dd about="#reference" property="rdfs:comment" datatype="xsd:string">a
+          human-readable description of the profile's purpose and structure</dd>
+          
+        <dt id="prefix" about="#prefix" typeof="rdf:Property">prefix</dt>
+        <dd about="#prefix" property="rdfs:comment" datatype="xsd:string">a prefix
+        functioning as a symbolical short form for a URI</dd>
+      </dl>
+    </div>
+  </body>
+</html>

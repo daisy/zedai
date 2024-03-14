@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+  <div>
+    <define name="ruby">
+      <element name="ruby">         
+        <ref name="ruby.content"/>
+        <ref name="ruby.attlist"/>
+      </element>
+    </define>
+    
+    <define name="ruby.content">
+      <choice>
+        <ref name="ruby.content.simple"/>
+        <ref name="ruby.content.complex"/>
+      </choice>
+    </define>
+    
+    <define name="ruby.content.simple">      
+      <ref name="ruby.rb"/>
+      <choice>
+        <ref name="ruby.rt"/>
+        <group>
+          <ref name="ruby.rp"/>
+          <ref name="ruby.rt"/>
+          <ref name="ruby.rp"/>
+        </group>
+      </choice>
+    </define>
+    
+    <define name="ruby.content.complex">      
+      <ref name="ruby.rbc"/>
+      <ref name="ruby.rtc"/>
+      <optional>
+        <ref name="ruby.rtc"/>
+      </optional>
+    </define>
+    
+    <define name="ruby.attlist">
+      <ref name="xhtml.Common.attrib"/>
+    </define>
+    
+  </div>
+  
+  <div>
+    <define name="ruby.rb">
+      <element name="rb">        
+        <ref name="ruby.rb.content"/>
+        <ref name="ruby.rb.attlist"/>
+        <sch:rule context="default:rb">
+          <sch:assert test="not(descendant::default:ruby)">The rb element must not contain
+            ruby element descendants.</sch:assert>
+        </sch:rule>
+      </element>
+    </define>
+    
+    <define name="ruby.rb.content">
+      <ref name="xhtml.Text.model"/>
+    </define>
+    
+    <define name="ruby.rb.attlist">
+      <ref name="xhtml.Common.attrib"/>
+    </define>
+  </div>
+  
+  <div>
+    <define name="ruby.rt">
+      <element name="rt">       
+        <ref name="ruby.rt.content"/>
+        <ref name="ruby.rt.attlist"/>
+        <sch:rule context="default:rt">
+          <sch:assert test="not(descendant::default:ruby)">The rt element must not contain
+            ruby element descendants.</sch:assert>
+        </sch:rule>
+      </element>
+    </define>
+    
+    <define name="ruby.rt.content">
+      <ref name="xhtml.Text.model"/>
+    </define>
+    
+    <define name="ruby.rt.attlist">
+      <ref name="xhtml.Common.attrib"/>
+      <optional>
+        <ref name="ruby.rbspan.attrib"/>
+      </optional>
+    </define>
+    
+    <define name="ruby.rbspan.attrib">
+      <attribute name="rbspan">        
+        <ref name="NonNegativeInteger.datatype"/>
+        <sch:rule context="default:rt[@rbspan]">
+          <sch:assert test="not(parent::default:ruby)">The rbspan attribute must not be used on the
+            rt element in simple ruby markup.</sch:assert>
+        </sch:rule>
+      </attribute>
+    </define>
+  </div>
+  
+  <div>
+    <define name="ruby.rbc">
+      <element name="rbc">        
+        <ref name="ruby.rbc.content"/>
+        <ref name="ruby.rbc.attlist"/>
+      </element>
+    </define>
+    
+    <define name="ruby.rbc.content">
+      <oneOrMore>
+        <ref name="ruby.rb"/>
+      </oneOrMore>
+    </define>
+    
+    <define name="ruby.rbc.attlist">
+      <ref name="xhtml.Common.attrib"/>
+    </define>
+  </div>
+  
+  <div>
+    <define name="ruby.rtc">
+      <element name="rtc">        
+        <ref name="ruby.rtc.content"/>
+        <ref name="ruby.rtc.attlist"/>
+      </element>
+    </define>
+    
+    <define name="ruby.rtc.content">
+      <oneOrMore>
+        <ref name="ruby.rt"/>
+      </oneOrMore>
+    </define>
+    
+    <define name="ruby.rtc.attlist">
+      <ref name="xhtml.Common.attrib"/>
+    </define>
+  </div>
+  
+  <div>
+    <define name="ruby.rp">
+      <element name="rp">        
+        <ref name="ruby.rp.content"/>
+        <ref name="ruby.rp.attlist"/>
+      </element>
+    </define>
+    
+    <define name="ruby.rp.content">
+      <text/>
+    </define>
+    
+    <define name="ruby.rp.attlist">
+      <ref name="xhtml.Common.attrib"/>
+    </define>
+  </div>
+    
+  <div>    
+    <define name="xhtml.Text.class" combine="choice">   
+      <ref name="ruby"/>
+    </define>
+  </div>
+     
+</grammar>

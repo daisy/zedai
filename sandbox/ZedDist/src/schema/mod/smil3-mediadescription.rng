@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+
+    <div>
+        <define name="smil3.Core.base.attrib" combine="interleave">
+            <ref name="smil3.mediadescription.attrib"/>
+        </define>
+    </div>
+
+    <define name="smil3.mediadescription.attrib" combine="interleave">
+        <optional>
+            <attribute name="xml:lang">
+                <a:documentation>Used to identify the natural or formal language for the element.
+                    For a complete description, see section 2.12 Language Identification of [XML11]. </a:documentation>
+                <ref name="LanguageCode.datatype"/>
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="title">
+                <a:documentation>The title attribute offers advisory information about the element
+                    for which it is set. Values of the title attribute may be rendered by user
+                    agents in a variety of ways. For instance, visual browsers frequently display
+                    the title as a "tool tip" (a short message that appears when the pointing device
+                    pauses over an object).</a:documentation>
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="author">
+                <a:documentation>The name of the author of the content contained in the
+                    element.</a:documentation>
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="copyright">
+                <a:documentation>The copyright notice of the content contained in the
+                    element.</a:documentation>
+            </attribute>
+        </optional>
+    </define>
+
+</grammar>

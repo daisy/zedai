@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="docResources.rng" type="xml"?>
+<docResources xmlns="http://www.daisy.org/ns/z3986/2008/docResources/">
+
+	<namespace nsURI="http://www.w3.org/2002/xforms/"
+		defaultDocURL="http://www.w3.org/TR/xforms11/" feature="yes"
+		featureNicename="Print Forms">
+  
+	</namespace>
+
+</docResources>

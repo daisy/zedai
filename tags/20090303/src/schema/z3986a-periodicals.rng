@@ -1,0 +1,12 @@
+<grammar ns="http://www.w3.org/2002/06/xhtml2/"
+         xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+                 
+    <!-- For now, import genericdocument and redefine. 
+    	 This will be flattened out once the grammar stabilizes. -->
+    	 
+    <include href="z3986a-genericdocument.rng">
+    
+    </include>         
+         
+</grammar>         

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3998/authoring/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="super-subscript">The super- and subscript module</title>
+        <annotation annotates="/">
+            <para role="desc-main">This module defines the [[#z3998.sub]] and [[#z3998.sup]] elements for marking superscripts and subscripts.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3998-global-classes.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <year>2012</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2012-12-19</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="z3998.sub" xml:id="z3998.sub">
+            <element name="sub">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="sub">The {sub} element</title>
+                    <para role="desc-main">The {sub} element represents instances of subscripted text.</para>
+                    <synopsis role="def-context">{[[#z3998.Text.class]]}</synopsis>
+                    <synopsis role="def-content">{(text | [[#z3998.Text.class]])+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3998.Text.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3998.sub.attlist"/>
+                <ref name="z3998.sub.content"/>
+                <sch:rule context="default:sub">
+                    <sch:assert test="normalize-space(.) or *">The {sub} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="z3998.sub.attlist" xml:id="z3998.sub.attlist">
+            <ref name="z3998.Text.attrib"/>
+        </define>
+        <define name="z3998.sub.content" xml:id="z3998.sub.content">
+            <ref name="z3998.Text.model"/>
+        </define>
+    </div>
+    <div>
+        <define name="z3998.sup" xml:id="z3998.sup">
+            <element name="sup">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="sup">The {sup} element</title>
+                    <para role="desc-main">The {sup} element represents instances of superscripted text.</para>
+                    <synopsis role="def-context">{[[#z3998.Text.class]]}</synopsis>
+                    <synopsis role="def-content">{(text | [[#z3998.Text.class]])+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3998.Text.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3998.sup.attlist"/>
+                <ref name="z3998.sup.content"/>
+                <sch:rule context="default:sup">
+                    <sch:assert test="normalize-space(.) or *">The {sup} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="z3998.sup.attlist" xml:id="z3998.sup.attlist">
+            <ref name="z3998.Text.attrib"/>
+        </define>
+        <define name="z3998.sup.content" xml:id="z3998.sup.content">
+            <ref name="z3998.Text.model"/>
+        </define>
+    </div>
+    <div>
+        <a:documentation>sup and sub - default content model contribution</a:documentation>
+        <define name="z3998.Text.core.class" combine="choice">
+            <ref name="z3998.sub"/>
+        </define>
+        <define name="z3998.Text.core.class" combine="choice">
+            <ref name="z3998.sup"/>
+        </define>
+    </div>
+</grammar>

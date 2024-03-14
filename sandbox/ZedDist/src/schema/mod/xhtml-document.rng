@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <start>
+        <ref name="xhtml.html"/>
+    </start>
+
+    <define name="xhtml.html">
+        <element name="html">
+            <ref name="xhtml.html.attlist"/>
+            <ref name="xhtml.html.content"/>
+        </element>
+    </define>
+
+    <define name="xhtml.html.attlist" combine="interleave">
+        <ref name="xhtml.Core.attrib"/>
+        <ref name="xhtml.xml.lang.attrib"/>
+        <ref name="xhtml.lang.attrib"/>
+        <optional>
+            <attribute name="version"/>
+        </optional>
+    </define>
+
+    <define name="xhtml.html.content">
+        <ref name="xhtml.head"/>
+        <ref name="xhtml.body"/>
+    </define>
+
+    <define name="xhtml.head">
+        <element name="head">
+            <ref name="xhtml.head.attlist"/>
+            <ref name="xhtml.head.content"/>
+        </element>
+    </define>
+
+    <define name="xhtml.head.attlist" combine="interleave">
+        <ref name="xhtml.Core.attrib"/>
+        <!--
+        <optional>
+            <attribute name="profile">
+                <data type="anyURI"/>
+            </attribute>
+        </optional>
+        -->
+    </define>
+
+    <define name="xhtml.head.content">
+        <interleave>
+            <zeroOrMore>
+                <ref name="xhtml.meta"/>
+            </zeroOrMore>
+            <zeroOrMore>
+                <ref name="xhtml.link"/>
+            </zeroOrMore>
+            <optional>
+                <ref name="xhtml.base"/>
+            </optional>
+            <ref name="xhtml.title"/>
+        </interleave>
+    </define>
+
+    <define name="xhtml.title">
+        <element name="title">
+            <ref name="xhtml.title.attlist"/>
+            <text/>
+        </element>
+    </define>
+
+    <define name="xhtml.title.attlist">
+        <ref name="xhtml.I18n.attrib"/>
+    </define>
+
+    <define name="xhtml.link">
+        <element name="link">
+            <ref name="xhtml.link.attlist"/>
+        </element>
+    </define>
+
+    <define name="xhtml.link.attlist">
+        <ref name="xhtml.Core.attrib"/>
+        <optional>
+            <attribute name="charset"/>
+        </optional>
+        <optional>
+            <attribute name="href">
+                <data type="anyURI"/>
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="hreflang">
+                <data type="language"/>
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="type"/>
+        </optional>
+        <optional>
+            <attribute name="rel"/>
+        </optional>
+        <optional>
+            <attribute name="rev"/>
+        </optional>
+        <optional>
+            <attribute name="media"/>
+        </optional>
+    </define>
+
+    <define name="xhtml.meta">
+        <element name="meta">
+            <ref name="xhtml.meta.attlist"/>
+        </element>
+    </define>
+
+    <define name="xhtml.meta.attlist">
+        <ref name="xhtml.I18n.attrib"/>
+        <choice>
+            <group>
+                <attribute name="http-equiv">
+                    <data type="NMTOKEN"/>
+                </attribute>
+                <attribute name="content"/>
+            </group>
+            <group>
+                <attribute name="name">
+                    <data type="NMTOKEN"/>
+                </attribute>
+                <attribute name="content"/>
+                <optional>
+                    <attribute name="scheme"/>
+                </optional>
+            </group>
+        </choice>
+    </define>
+
+    <define name="xhtml.base">
+        <element name="base">
+            <ref name="xhtml.base.attlist"/>
+        </element>
+    </define>
+
+    <define name="xhtml.base.attlist">
+        <attribute name="href">
+            <ref name="URI.datatype"/>
+        </attribute>
+    </define>
+
+    <define name="xhtml.body">
+        <element name="body">
+            <ref name="xhtml.body.attlist"/>
+            <ref name="xhtml.body.content"/>
+        </element>
+    </define>
+
+    <define name="xhtml.body.attlist">
+        <ref name="xhtml.Core.attrib"/>
+        <ref name="xhtml.I18n.attrib"/>
+    </define>
+
+    <define name="xhtml.body.content">
+        <ref name="xhtml.section.content"/>
+    </define>
+
+</grammar>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:x="http://www.w3.org/1999/xhtml"
+  xmlns:s="http://purl.oclc.org/dsdl/schematron">
+
+  <x:h1>Z39.86 ITS Ruby Feature</x:h1>
+  <!-- TODO, in RDDL, note that span is an alias for its:span --> 
+  
+  <div>
+    <x:h2>Z39.86 ITS Ruby Feature - modules</x:h2>
+    
+    <include href="its-ruby.rng">
+      <define name="its-rb.content">
+        <ref name="z3986.Text.model"/>
+      </define>
+    
+      <define name="its-rt.content">
+        <ref name="z3986.Text.model"/>    
+      </define>
+        
+    </include>
+
+    <define name="its-att.local.no-ns.attributes">
+      <ref name="z3986.Text.attrib" />
+    </define>
+
+
+  </div>    
+    
+  <div>
+    <x:h2>Z39.86 ITS Ruby Feature - default content model contribution</x:h2>
+    
+    <define name="z3986.Text.base.class">
+      <ref name="its-ruby"/>
+    </define>
+  </div>      
+   
+   
+  <div>
+    <x:h2>Z39.86 ITS Ruby Feature - Schematron Assertions</x:h2>
+
+    <!-- ISO Schematron: no ruby descendant for its:rb or its:rt -->
+    <s:rule context="its:rb">
+      <s:assert test="not(descendant::its:*)">The rb element may not contain any Ruby descendants.</s:assert>
+    </s:rule>
+
+    <s:rule context="its:rt">
+      <s:assert test="not(descendant::its:*)">The rt element may not contain any Ruby descendants.</s:assert>
+    </s:rule>
+    
+  </div>
+  
+</grammar>

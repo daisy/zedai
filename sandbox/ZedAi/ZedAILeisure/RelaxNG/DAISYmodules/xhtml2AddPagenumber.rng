@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml">
+
+    <x:h1>The xhtml2 + pagenumber module</x:h1>
+
+
+    <x:p>This module adds the <x:span class="markup">pagenum</x:span> element to the xhtml2 document
+        model.</x:p>
+
+    <x:p>Allow pagenumber as a child of the <x:span class="markup">section</x:span> element.</x:p>
+    <define name="section.model" combine="interleave">
+        <zeroOrMore>
+            <ref name="Daisy.pagenumber"/>
+        </zeroOrMore>
+    </define>
+
+    <x:p>Allow pagenumber as a child of the <x:span class="markup">p</x:span> element.</x:p>
+    <define name="p.model" combine="interleave">
+        <zeroOrMore>
+            <ref name="Daisy.pagenumber"/>
+        </zeroOrMore>
+    </define>
+
+</grammar>

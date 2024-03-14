@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="docResources.rng" type="xml"?>
+<docResources xmlns="http://www.daisy.org/ns/z3986/2008/docResources/">
+
+	<namespace nsURI="http://www.daisy.org/z3986/2010/auth/features/select/"
+		defaultDocURL="http://www.daisy.org/z3986/2010/auth/features/select/" feature="yes"
+		feature-nicename="Content Selection">
+ 
+		<element name="select" docURI="../schema/mod/z3986-feature-select.rng#z3986.select" include="yes" />
+		<element name="when" docURI="../schema/mod/z3986-feature-select.rng#z3986.when" include="yes" />
+		<element name="otherwise" docURI="../schema/mod/z3986-feature-select.rng#z3986.otherwise" include="yes" />
+		<attribute name="expr" docURI="../schema/mod/z3986-feature-select.rng#z3986.expr" include="yes" />
+ 
+	</namespace>
+
+</docResources>

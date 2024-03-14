@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+      
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="word">The char module</dcterms:title>
+      <dcterms:description>
+        This module defines the {[[#z3986.char]]} element for inserting unique character data into a document.</dcterms:description>      
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}" />
+      <dcterms:creator>Markus Gylling</dcterms:creator>      
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng" />
+    </rdf:Description>
+  </rdf:RDF>
+    
+  <div>         
+    <define name="z3986.char" >
+      <element name="char">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="char">The {char} element</dcterms:title>
+            <dcterms:description>The {char} element represents a single instance of a special character or a character with no Unicode equivalent.</dcterms:description>
+            <z:info>The {char} element can contain a single [[#z3986.object.phrase]] tag for characters and symbols that are not part of the standard Unicode character set.</z:info>
+            <z:info>An alternate rendering of the character can be included ... TODO: how?</z:info>
+            <z:info>TODO: content model including images, character data...?</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>{[[#z3986.Text.class]]}</z:context>          
+            <z:content>{(text | z3986.object.phrase)?}</z:content>            
+            <z:attlist>{[[#z3986.Text.attrib]]}</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.char.attlist"/>
+        <ref name="z3986.char.content"/> 
+        <sch:rule context="default:char">
+          <sch:assert test="count(*|string-length(normalize-space(.)) = 1"
+            >The {char} element must contain only on a single character or image.</sch:assert>
+        </sch:rule>
+      </element>    
+    </define>
+
+    <define name="z3986.char.attlist" combine="interleave">
+      <ref name="z3986.Text.attrib"/>
+    </define>
+    
+    <define name="z3986.char.content">
+      <oneOrMore>
+        <choice>
+          <text/>
+          <ref name="z3986.char.class"/>
+        </choice> 
+      </oneOrMore>
+    </define>  
+    
+    <define name="z3986.char.class" combine="choice">
+      <ref name="z3986.Text.class"/>
+     </define> 
+    
+  </div>  
+
+  <div>
+    <a:documentation>char - default content model contribution</a:documentation>
+    
+    <define name="z3986.Text.core.base.class" combine="choice">
+      <ref name="z3986.char"/> 
+    </define>
+    
+  </div>
+
+</grammar>

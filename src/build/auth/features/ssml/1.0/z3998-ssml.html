@@ -1,0 +1,3000 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      prefix="rd: http://www.daisy.org/z3998/2012/vocab/resourcedirectory/# dcterms: http://purl.org/dc/terms/"
+      lang="en-US"
+      xml:lang="en-US">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <title>Resource Directory for the Z39.98-2012 Authoring and Interchange SSML Integration Feature, version 1.0</title>
+        <link rel="stylesheet" type="text/css" href="../../../../z3998-2012.css"/>
+    </head>
+    <body>
+        <h1 property="dcterms:title">
+            <span class="titlesub">Resource directory for the Z39.98-2012 Authoring and Interchange </span>
+            <br/>SSML Integration Feature
+            <span class="titlesub">
+                <br/> version 1.0
+            </span>
+        </h1>
+      <h2 id="toc">Table of Contents</h2>
+      <ul>
+         <li class="first">
+            <a href="#h_introduction">Introduction</a>
+         </li>
+         <li class="first">
+            <a href="#h_normativereferences">Normative References</a>
+            <ul>
+               <li>
+                  <a href="#h_versioninformation">Version information</a>
+               </li>
+               <li>
+                  <a href="#h_identification">Identification</a>
+               </li>
+               <li>
+                  <a href="#h_specificationcompliance">Specification compliance</a>
+               </li>
+               <li>
+                  <a href="#h_normativeschemata">Normative schemata</a>
+               </li>
+               <li>
+                  <a href="#h_availablecomponents">Available components</a>
+               </li>
+               <li>
+                  <a href="#h_processingagentbehaviorrequirements">Processing agent behavior requirements</a>
+                  <ul>
+                     <li>
+                        <a href="#pa-reqs-supported">Feature supported</a>
+                     </li>
+                     <li>
+                        <a href="#pa-reqs-recognized">Feature recognized</a>
+                     </li>
+                     <li>
+                        <a href="#pa-reqs-notrecognized">Feature not recognized</a>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <a href="#h_featurecomponentdefinitions">Feature component definitions</a>
+                  <ul>
+                     <li>
+                        <a href="#h_thessmlelementintegrationmodule">The SSML Element Integration Module</a>
+                        <ul>
+                           <li>
+                              <a href="#h_thessmlbreakelement">The SSML 
+                            break element
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmlphonemeelement(phrase)">The SSML 
+                            phoneme element (Phrase)
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmlphonemeelement(text)">The SSML 
+                            phoneme element (Text)
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmlprosodyelement(phrase)">The SSML 
+                            prosody element (Phrase)
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmlprosodyelement(text)">The SSML 
+                            prosody element (Text)
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmlsay-aselement(phrase)">The SSML 
+                            say-as element (Phrase)
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmlsay-aselement(text)">The SSML 
+                            say-as element (Text)
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmlsubelement(phrase)">The SSML 
+                            sub element (Phrase)
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmlsubelement(text)">The SSML 
+                            sub element (Text)
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmltokenelement(phrase)">The SSML 
+                            token element (Phrase)
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmltokenelement(text)">The SSML 
+                            token element (Text)
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmllexiconelement">The SSML 
+                            lexicon element
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmlstrengthattribute">The SSML 
+                            strength attribute
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmltimeattribute">The SSML 
+                            time attribute
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmlonlangfailureattribute">The SSML 
+                            onlangfailure attribute
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmlphattribute">The SSML 
+                            ph attribute
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmlalphabetattribute">The SSML 
+                            alphabet attribute
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmlpitchattribute">The SSML 
+                            pitch attribute
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmlcontourattribute">The SSML 
+                            contour attribute
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmlrangeattribute">The SSML 
+                            range attribute
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmlrateattribute">The SSML 
+                            rate attribute
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmldurationattribute">The SSML 
+                            duration attribute
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmlvolumeattribute">The SSML 
+                            volume attribute
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmlinterpret-asattribute">The SSML 
+                            interpret-as attribute
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmlformatattribute">The SSML 
+                            format attribute
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmldetailattribute">The SSML 
+                            detail attribute
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmlaliasattribute">The SSML 
+                            alias attribute
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmluriattribute">The SSML 
+                            uri attribute
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmltypeattribute">The SSML 
+                            type attribute
+                        </a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmlelementintegrationmodule-implementations">The SSML Element Integration Module - Implementations</a>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <a href="#h_thessmlphonemeattributemodule">The SSML phoneme attribute module</a>
+                        <ul>
+                           <li>
+                              <a href="#h_thessmlphattribute">The SSML ph attribute</a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmlalphabetattribute">The SSML alphabet attribute</a>
+                           </li>
+                           <li>
+                              <a href="#h_thessmlphonemeattributemodule-implementations">The SSML phoneme attribute module - Implementations</a>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <a href="#h_thessmldatatypesmodule">The SSML Datatypes module</a>
+                        <ul>
+                           <li>
+                              <a href="#h_thessmldatatypesmodule-implementations">The SSML Datatypes module - Implementations</a>
+                           </li>
+                        </ul>
+                     </li>
+                  </ul>
+               </li>
+            </ul>
+         </li>
+         <li class="first">
+            <a href="#h_informativereferences">Informative References</a>
+            <ul>
+               <li>
+                  <a href="#supporting-software">Supporting software</a>
+               </li>
+            </ul>
+         </li>
+         <li class="first">
+            <a href="#h_appendix1listingofmodulesinthenormativeschema">Appendix 1: Listing of modules in the normative schema</a>
+         </li>
+      </ul>
+        <div id="introduction">
+            <h2 id="h_introduction">Introduction</h2>
+            <p xmlns:xi="http://www.w3.org/2001/XInclude">The Z39.98 SSML Integration Feature recasts a subset of the W3C 
+                <a href="http://www.w3.org/TR/speech-synthesis11/">Speech Synthesis Markup Language (SSML) Version 1.1</a> as a Feature for incorporation in Z39.98-AI Profiles. 
+            </p>
+            <p xmlns:xi="http://www.w3.org/2001/XInclude">The Z39.98 SSML Integration Feature is designed to be used in authoring contexts where 
+                <em>speech output</em> is targeted. The feature's content model definitions are designed so that a processing agent can safely ignore or filter out the SSML fragments when speech-related information is not relevant. 
+            </p>
+            <p xmlns:xi="http://www.w3.org/2001/XInclude">Each element contributed by the feature inherits the corresponding semantics as defined by SSML 1.1, unless specified otherwise.</p>
+            <p id="maintenance-agency"> This feature is maintained by the 
+                <a href="http://www.daisy.org/z3998/advisory/" rel="rd:maintenance-agency">ANSI/NISO Z39.98 advisory committee</a> under the auspices of 
+                <a href="http://niso.org/">NISO</a>. 
+            </p>
+        </div>
+        <div id="normative-references">
+            <h2 id="h_normativereferences">Normative References</h2>
+            <p class="RFC2119">The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this section are to be interpreted as described in 
+                <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC2119</a>.
+            </p>
+            <div class="rd-section">
+                <h3 id="h_versioninformation">Version information</h3>
+                <p>This resource directory represents version 
+                    <code property="rd:version">1.0</code> of the SSML Integration feature:
+                </p>
+                <ul>
+                    <li>refer to the 
+                        <a href="z3998-ssml-history.html">Version history</a> for the list of changes introduced in this release. 
+                    </li>
+                    <li id="version-listing"> refer to the 
+                        <a href="../index.html">Version index</a> for the list of all public releases of this feature. 
+                    </li>
+                </ul>
+                <p id="current-version"> This release may not be the most recently published (current) version of the SSML Integration feature. The current version should always be obtained from the static URI: 
+                    <a href="../current/" rel="rd:current-version-uri">http://www.daisy.org/z3998/2012/auth/features/ssml/current/</a>
+                </p>
+            </div>
+            <div class="rd-section">
+                <h3 id="h_identification">Identification</h3>
+                <p>This feature must be identified as 
+                    <code property="rd:z3998-instance-name">ssml</code> in Z39.98-AI document feature declarations.
+                </p>
+                <p id="identity-uri"> The canonical identity URI is: 
+                    <code rel="rd:token-identifier">http://www.daisy.org/z3998/2012/auth/features/ssml/1.0/ </code>
+                </p>
+            </div>
+            <div class="rd-section">
+                <h3 id="h_specificationcompliance">Specification compliance</h3>
+                <p id="spec-ref"> This version of the feature is compliant with the 
+                    <a href="../../../../z3998-2012.html" rel="rd:specification-compliance">Z39.98-2012 Specification</a>. 
+                </p>
+            </div>
+            <div class="rd-section" property="rd:normative-schemata">
+                <h3 id="h_normativeschemata">Normative schemata</h3>
+                <p about="mod/z3998-feature-ssml.rng"> The normative 
+                    <span property="rd:schema-type" content="rng">RelaxNG</span> schema for version 
+                    <code property="rd:version">1.0</code> of the SSML Integration feature is 
+                    <a href="mod/z3998-feature-ssml.rng">z3998-feature-ssml.rng</a>. 
+                </p>
+                <p>Note - this feature schema does not represent an entire document model; it is intended for inclusion in host profiles.</p>
+                <p> The normative schema includes a number of modules and/or subschemas, which are listed in 
+                    <a href="#module-list">Appendix 1</a>. 
+                </p>
+            </div>
+            <div id="markup-components">
+                <h3 id="h_availablecomponents">Available components</h3>
+                <p>This feature makes the following 
+                    <a href="http://www.daisy.org/z3998/2012/z3998-2012.html#featureConformance">components</a> available for inclusion in host profiles:
+                </p>
+                <ul xmlns:xi="http://www.w3.org/2001/XInclude">
+                    <li>
+                        <code>
+                            <a href="#ssml.break">ssml:break</a>
+                        </code>
+                    </li>
+                    <li>
+                        <code>
+                            <a href="#ssml.phoneme">ssml:phoneme</a>
+                        </code>
+                    </li>
+                    <li>
+                        <code>
+                            <a href="#ssml.prosody">ssml:prosody</a>
+                        </code>
+                    </li>
+                    <li>
+                        <code>
+                            <a href="#ssml.say-as">ssml:say-as</a>
+                        </code>
+                    </li>
+                    <li>
+                        <code>
+                            <a href="#ssml.sub">ssml:sub</a>
+                        </code>
+                    </li>
+                    <li>
+                        <code>
+                            <a href="#ssml.token">ssml:token</a>
+                        </code>
+                    </li>
+                    <li>
+                        <code>
+                            <a href="#ssml.lexicon">ssml:lexicon</a>
+                        </code>
+                    </li>
+                    <li>
+                        <code>
+                            <a href="#ssml.onlangfailure.attrib">onlangfailure</a>
+                        </code>
+                    </li>
+                    <li>
+                        <code>
+                            <a href="#ssml.ph.ns.attrib">ssml:ph</a>
+                        </code>
+                    </li>
+                    <li>
+                        <code>
+                            <a href="#ssml.alphabet.ns.attrib">ssml:alphabet</a>
+                        </code>
+                    </li>
+                </ul>
+            </div>
+            <div class="rd-section" id="pa-reqs">
+                <h3 id="h_processingagentbehaviorrequirements">Processing agent behavior requirements</h3>
+                <p>This section defines processing agent behaviors that extend the default behaviors defined in 
+                    <a href="http://www.daisy.org/z3998/2012/z3998-2012.html#processingAgentConformance">Processing agent conformance definition</a>.
+                </p>
+                <div xmlns:xi="http://www.w3.org/2001/XInclude" class="rd-section">
+                    <h4 id="pa-reqs-supported">Feature supported</h4>
+                    <p>If a processing agent 
+                        <em>supports</em> this feature, it must comply to the following: 
+                    </p>
+                    <dl>
+                        <dt>Processing of 
+                            <code>phoneme</code>
+                        </dt>
+                        <dd>
+                            <p>The processing agent must support the SSML 
+                                <code>
+                                    <a href="#ssml.phoneme">phoneme</a>
+                                </code> element, and process it as dictated by the SSML specification. 
+                            </p>
+                            <p> Upon encountering the 
+                                <code>ssml:ph</code> and associated 
+                                <code>ssml:alphabet</code> attributes on a non-SSML namespace element, the processing agent must process the element equally to the SSML 
+                                <code>
+                                    <a href="#ssml.phoneme">phoneme</a>
+                                </code> element. 
+                            </p>
+                        </dd>
+                        <dt>Processing of 
+                            <code>token</code>
+                        </dt>
+                        <dd>
+                            <p>The processing agent must support the SSML 
+                                <code>
+                                    <a href="#ssml.token">token</a>
+                                </code> element, and process it as dictated by the SSML specification. 
+                            </p>
+                            <p>The 
+                                <code>w</code> (word) element from the Z39.98-AI default namespace must be regarded a synonym of the SSML 
+                                <code>
+                                    <a href="#ssml.token">token</a>
+                                </code> element. 
+                            </p>
+                        </dd>
+                        <dt>Processing of 
+                            <code>lexicon</code>
+                        </dt>
+                        <dd>
+                            <p>The processing agent must support the SSML 
+                                <code>
+                                    <a href="#ssml.lexicon">lexicon</a>
+                                </code> element, and process it as dictated by the SSML specification. 
+                            </p>
+                            <p>The processing agent must support the PLS ( 
+                                <code>application/pls+xml</code>) media type, and process PLS documents as dictated by 
+                                <a href="http://www.w3.org/TR/speech-synthesis11/#ref-pls">PLS</a>. 
+                            </p>
+                        </dd>
+                        <dt>Processing of 
+                            <code>prosody</code>, 
+                            <code>say-as</code>, 
+                            <code>sub</code> and 
+                            <code>break</code>
+                        </dt>
+                        <dd>
+                            <p>The processing agent should support the SSML 
+                                <code>
+                                    <a href="#ssml.prosody">prosody</a>
+                                </code>, 
+                                <code>
+                                    <a href="#ssml.say-as">say-as</a>
+                                </code>, 
+                                <code>
+                                    <a href="#ssml.sub">sub</a>
+                                </code> and 
+                                <code>
+                                    <a href="#ssml.break">break</a>
+                                </code> elements, and process them as dictated by the SSML specification. 
+                            </p>
+                            <p>If it does not support these elements, the processing agent must employ the behavior defined in 
+                                <a href="#pa-reqs-recognized-ignore">Ignore</a> below. 
+                            </p>
+                            <p>Note that the 
+                                <code>expansion</code> and 
+                                <code>name</code> elements when referenced from an 
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.abbr">abbr</a>
+                                </code> element have semantics that mean that they provide content that can be used synonomously to the content of the 
+                                <code>
+                                    <a href="#ssml.alias.attrib">alias</a>
+                                </code> attribute on the 
+                                <code>ssml:sub</code> element. 
+                            </p>
+                        </dd>
+                        <dt>Phonetic Alphabets</dt>
+                        <dd>
+                            <p>Processing agents should support the 
+                                <code>
+                                    <a href="http://www.phon.ucl.ac.uk/home/sampa/index.html">X-SAMPA</a>
+                                </code> phonetic alhabet. 
+                            </p>
+                        </dd>
+                        <dt>Processing in non-speech output contexts</dt>
+                        <dd>In a non-speech output context, the processing agent must employ one of the the behaviors defined in 
+                            <a href="#pa-reqs-recognized">Feature recognized</a> below. 
+                        </dd>
+                    </dl>
+                </div>
+                <div xmlns:xi="http://www.w3.org/2001/XInclude" class="rd-section">
+                    <h4 id="pa-reqs-recognized">Feature recognized</h4>
+                    <p>If a processing agent 
+                        <em>recognizes but does not support</em> this feature, it must employ one of the following behaviors: 
+                    </p>
+                    <dl>
+                        <dt id="pa-reqs-recognized-abort">Abort</dt>
+                        <dd>
+                            <p>Upon encountering a document instance with this feature enabled, the processing agent issues a notification, and then aborts the processing.</p>
+                        </dd>
+                        <dt id="pa-reqs-recognized-ignore">Ignore</dt>
+                        <dd>
+                            <p>While traversing the document tree, the processing agent 
+                                <em>ignores</em> any encountered XML element in the SSML namespace, and continues processing its children. 
+                            </p>
+                            <p>Any encountered attributes in the SSML namespace occuring on non-SSML namespace elements are also ignored.</p>
+                        </dd>
+                        <dt id="pa-reqs-recognized-discard">Discard</dt>
+                        <dd>
+                            <p>The processing agent 
+                                <em>discards</em> all elements and attributes contributed by this feature; 
+                            </p>
+                            <ul>
+                                <li>Encountered elements in the SSML namespace are recursively replaced by their children, or by void if no children exist;</li>
+                                <li>any encountered attributes in the SSML namespace occuring on non-SSML namespace elements are removed.</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <p xmlns="" xml:base="pa-reqs-recognized.xinc">The 
+                        <code>abort</code> behavior is the default; the 
+                        <code>ignore</code> and 
+                        <code>discard</code> behaviors must only be employed when the processing agent is explicitly instructed to do so by the client. 
+                        <br/>
+                        <br/> Processing agents that employ the 
+                        <code>ignore</code> or 
+                        <code>discard</code> behaviors should issue a notification. 
+                    </p>
+                </div>
+                <div class="rd-section">
+                    <h4 id="pa-reqs-notrecognized">Feature not recognized</h4>
+                    <p>If a processing agent 
+                        <em>does not recognize</em> this feature, it must, as dictated in 
+                        <a href="http://www.daisy.org/z3998/2012/z3998-2012.html#processingAgentConformance">Processing agent conformance definition</a>, abort processing and issue an error message.
+                    </p>
+                </div>
+            </div>
+            <h3 id="h_featurecomponentdefinitions">Feature component definitions</h3>
+            <p>The component definitions provided below follow the conventions used in 
+                <a href="../../../cm/">Core Modules</a>.
+            </p>
+            <div xmlns:xi="http://www.w3.org/2001/XInclude" class="rd-section" id="absdef">
+                <div id="ssml-11.module" class="module">
+                    <h4 id="h_thessmlelementintegrationmodule">The SSML Element Integration Module</h4>
+                    <p class="desc-main">Provides a subset of the W3C 
+                        <a href="http://www.w3.org/TR/speech-synthesis11/">Speech Synthesis Markup Language (SSML) Version 1.1</a> element set, suitable for integration in Z39.98-2012 Profiles.
+                    </p>
+                    <table id="ssml-11.module-elem-overview" class="overview">
+                        <caption>The SSML Element Integration Module: Element overview</caption>
+                        <tr>
+                            <th>Name</th>
+                            <th>Default attribute model</th>
+                            <th>Default content model</th>
+                            <th>Default usage context</th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.break">break</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="#ssml.strength.attrib">strength</a>?, 
+                                    <a href="#ssml.time.attrib">time</a>?, 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#xml.id.attrib">xml:id</a>?
+                                </code>
+                            </td>
+                            <td>
+                                <code>empty</code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.phoneme">phoneme</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="#ssml.ph.attrib">ph</a>, 
+                                    <a href="#ssml.alphabet.attrib">alphabet</a>?, 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Core.attrib">z3998.Core.attrib</a>, 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.I18n.attrib">z3998.I18n.attrib</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>(text | 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a> | 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>)+
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.phoneme.text">phoneme</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="#ssml.ph.attrib">ph</a>, 
+                                    <a href="#ssml.alphabet.attrib">alphabet</a>?, 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Core.attrib">z3998.Core.attrib</a>, 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.I18n.attrib">z3998.I18n.attrib</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>(text | 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a>)+
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.prosody">prosody</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="#ssml.pitch.attrib">pitch</a>?, 
+                                    <a href="#ssml.contour.attrib">contour</a>?, 
+                                    <a href="#ssml.range.attrib">range</a>?, 
+                                    <a href="#ssml.rate.attrib">rate</a>?, 
+                                    <a href="#ssml.duration.attrib">duration</a>?, 
+                                    <a href="#ssml.volume.attrib">volume</a>?, 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Core.attrib">z3998.Core.attrib</a>, 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.I18n.attrib">z3998.I18n.attrib</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <code>(text | 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a> | 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>)+
+                                    </code>
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.prosody.text">prosody</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="#ssml.pitch.attrib">pitch</a>?, 
+                                    <a href="#ssml.contour.attrib">contour</a>?, 
+                                    <a href="#ssml.range.attrib">range</a>?, 
+                                    <a href="#ssml.rate.attrib">rate</a>?, 
+                                    <a href="#ssml.duration.attrib">duration</a>?, 
+                                    <a href="#ssml.volume.attrib">volume</a>?, 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Core.attrib">z3998.Core.attrib</a>, 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.I18n.attrib">z3998.I18n.attrib</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <code>(text | 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a>)+
+                                    </code>
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.say-as">say-as</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="#ssml.interpret-as.attrib">interpret-as</a>, 
+                                    <a href="#ssml.format.attrib">format</a>?, 
+                                    <a href="#ssml.detail.attrib">detail</a>?, 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Core.attrib">z3998.Core.attrib</a>, 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.I18n.attrib">z3998.I18n.attrib</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>(text | 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a> | 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>)+
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.say-as.text">say-as</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="#ssml.interpret-as.attrib">interpret-as</a>, 
+                                    <a href="#ssml.format.attrib">format</a>?, 
+                                    <a href="#ssml.detail.attrib">detail</a>?, 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Core.attrib">z3998.Core.attrib</a>, 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.I18n.attrib">z3998.I18n.attrib</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>(text | 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a>)+
+                                </code>
+                            </td>
+                            <td>
+                                <code>Text.extern.class</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.sub">sub</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="#ssml.alias.attrib">alias</a>, 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Core.attrib">z3998.Core.attrib</a>, 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.I18n.attrib">z3998.I18n.attrib</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>(text | 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a> | 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>)+
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.sub.text">sub</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="#ssml.alias.attrib">alias</a>, 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Core.attrib">z3998.Core.attrib</a>, 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.I18n.attrib">z3998.I18n.attrib</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>(text | 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a>)+
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.token">token</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.attrib">Phrase.attrib</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>(text | 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a>)+
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.token.text">token</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.attrib">Text.attrib</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>(text | 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a>)+
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.lexicon">lexicon</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="#ssml.lexicon.uri.attrib">uri</a>, 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#xml.id.attrib">xml:id</a>, 
+                                    <a href="#ssml.lexicon.type.attrib">type</a>?
+                                </code>
+                            </td>
+                            <td>
+                                <code>empty</code>
+                            </td>
+                            <td>The lexicon element is allowed in the document 
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.head">head</a>
+                                </code>.
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="ssml-11.module-attr-overview" class="overview">
+                        <caption>The SSML Element Integration Module: Attribute overview</caption>
+                        <tr>
+                            <th>Name</th>
+                            <th>Default values</th>
+                            <th>Default usage context</th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.strength.attrib">strength</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>'none' | 'x-weak' | 'weak' | 'medium" | 'strong' | 'x-strong'</code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="#ssml.break">ssml:break</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.time.attrib">time</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#CSS.TimeValue.datatype">TimeValue</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="#ssml.break">ssml:break</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.onlangfailure.attrib">ssml:onlangfailure</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>'changevoice" | 'ignoretext' | 'ignorelang' | 'processorchoice'</code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Document.attrib">Document.attrib</a>
+                                </code>, 
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.attrib">Phrase.attrib</a>
+                                </code> and 
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.attrib">Text.attrib</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.ph.attrib">ph</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="#SSML.PhoneticExpression.datatype">PhoneticExpression</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="#ssml.phoneme">ssml:phoneme</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.alphabet.attrib">alphabet</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="#SSML.alphabet.datatype">alphabet</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="#ssml.phoneme">ssml:phoneme</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.pitch.attrib">pitch</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>'x-low' | 'low' | 'medium' | 'high' | 'x-high' | 'default' | 
+                                    <a href="#SSML.RelativeChange.datatype">RelativeChange</a> | 
+                                    <a href="#SSML.PitchExpression.datatype">PitchExpression</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="#ssml.prosody">ssml:prosody</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.contour.attrib">contour</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="#SSML.PitchContour.datatype">PitchContour</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="#ssml.prosody">ssml:prosody</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.range.attrib">range</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>'x-low' | 'low' | 'medium' | 'high' | 'x-high' | 'default' | 
+                                    <a href="#SSML.RelativeChange.datatype">RelativeChange</a> | 
+                                    <a href="#SSML.PitchExpression.datatype">PitchExpression</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="#ssml.prosody">ssml:prosody</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.rate.attrib">rate</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>'x-slow' | 'slow' | 'medium' | 'fast' | 'x-fast' | 'default' | 
+                                    <a href="#SSML.NonNegativePercentage.datatype">NonNegativePercentage</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="#ssml.prosody">ssml:prosody</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.duration.attrib">duration</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#CSS.TimeValue.datatype">TimeValue</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="#ssml.prosody">ssml:prosody</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.volume.attrib">volume</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>'silent' | 'x-soft' | 'soft' | 'medium' | 'loud' | 'x-loud' | 'default' | 
+                                    <a href="#SSML.VolumeExpression.datatype">VolumeExpression</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="#ssml.prosody">ssml:prosody</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.interpret-as.attrib">interpret-as</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>'date' | 'time' | 'telephone' | 'characters' | 'cardinal' | 'ordinal'</code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="#ssml.say-as">ssml:say-as</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.format.attrib">format</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>text</code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="#ssml.say-as">ssml:say-as</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.detail.attrib">detail</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>text</code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="#ssml.say-as">ssml:say-as</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.alias.attrib">alias</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>text</code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="#ssml.sub">ssml:sub</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.lexicon.uri.attrib">uri</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#URI.datatype">URI</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="#ssml.lexicon">ssml:lexicon</a>
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.lexicon.type.attrib">type</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#MediaType.datatype">MediaType</a>
+                                </code>
+                            </td>
+                            <td>
+                                <code>
+                                    <a href="#ssml.lexicon">ssml:lexicon</a>
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="ssml.break" class="details">
+                        <h5 id="h_thessmlbreakelement">The SSML 
+                            <code>break</code> element
+                        </h5>
+                        <p class="desc-main">Controls the pausing or other prosodic boundaries between tokens.</p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#S3.2.3">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.breakdetails-table" class="details">
+                            <caption>The SSML 
+                                <code>break</code> element
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>break</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>
+                                    <code>http://www.w3.org/2001/10/synthesis</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default attribute model</th>
+                                <td>
+                                    <code>
+                                        <a href="#ssml.strength.attrib">strength</a>?, 
+                                        <a href="#ssml.time.attrib">time</a>?, 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#xml.id.attrib">xml:id</a>?
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default content model</th>
+                                <td>
+                                    <code>empty</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This element must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="ssml.phoneme" class="details">
+                        <h5 id="h_thessmlphonemeelement(phrase)">The SSML 
+                            <code>phoneme</code> element (Phrase)
+                        </h5>
+                        <p class="desc-main">Provides a phonemic/phonetic pronunciation for the contained text.</p>
+                        <p class="desc-sub">The phoneme element may be empty. However, it is recommended that the element contain human-readable text that can be used for non-spoken rendering of the document.</p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#edef_phoneme">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.phonemedetails-table" class="details">
+                            <caption>The SSML 
+                                <code>phoneme</code> element (Phrase)
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>phoneme</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>
+                                    <code>http://www.w3.org/2001/10/synthesis</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default attribute model</th>
+                                <td>
+                                    <code>
+                                        <a href="#ssml.ph.attrib">ph</a>, 
+                                        <a href="#ssml.alphabet.attrib">alphabet</a>?, 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Core.attrib">z3998.Core.attrib</a>, 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.I18n.attrib">z3998.I18n.attrib</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default content model</th>
+                                <td>
+                                    <code>(text | 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a> | 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>)+
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This element must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                        <p>The following model restrictions apply to this element:</p>
+                        <ul id="ssml.phoneme-assertions" class="assertions">
+                            <li>
+                                <p>The 
+                                    <code>ssml:phoneme</code> element must not have 
+                                    <code>ssml</code> namespace element or attribute descendants.
+                                </p>
+                            </li>
+                            <li>
+                                <p>The 
+                                    <code>ssml:phoneme</code> element must neither be empty nor contain only whitespace.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="ssml.phoneme.text" class="details">
+                        <h5 id="h_thessmlphonemeelement(text)">The SSML 
+                            <code>phoneme</code> element (Text)
+                        </h5>
+                        <p class="desc-main">Provides a phonemic/phonetic pronunciation for the contained text.</p>
+                        <p class="desc-sub">The phoneme element may be empty. However, it is recommended that the element contain human-readable text that can be used for non-spoken rendering of the document.</p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#edef_phoneme">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.phoneme.textdetails-table" class="details">
+                            <caption>The SSML 
+                                <code>phoneme</code> element (Text)
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>phoneme</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>
+                                    <code>http://www.w3.org/2001/10/synthesis</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default attribute model</th>
+                                <td>
+                                    <code>
+                                        <a href="#ssml.ph.attrib">ph</a>, 
+                                        <a href="#ssml.alphabet.attrib">alphabet</a>?, 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Core.attrib">z3998.Core.attrib</a>, 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.I18n.attrib">z3998.I18n.attrib</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default content model</th>
+                                <td>
+                                    <code>(text | 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a>)+
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This element must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="ssml.prosody" class="details">
+                        <h5 id="h_thessmlprosodyelement(phrase)">The SSML 
+                            <code>prosody</code> element (Phrase)
+                        </h5>
+                        <p class="desc-main">Permits control of the pitch, speaking rate and volume of speech output.</p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#S3.2.4">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.prosodydetails-table" class="details">
+                            <caption>The SSML 
+                                <code>prosody</code> element (Phrase)
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>prosody</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>
+                                    <code>http://www.w3.org/2001/10/synthesis</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default attribute model</th>
+                                <td>
+                                    <code>
+                                        <a href="#ssml.pitch.attrib">pitch</a>?, 
+                                        <a href="#ssml.contour.attrib">contour</a>?, 
+                                        <a href="#ssml.range.attrib">range</a>?, 
+                                        <a href="#ssml.rate.attrib">rate</a>?, 
+                                        <a href="#ssml.duration.attrib">duration</a>?, 
+                                        <a href="#ssml.volume.attrib">volume</a>?, 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Core.attrib">z3998.Core.attrib</a>, 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.I18n.attrib">z3998.I18n.attrib</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default content model</th>
+                                <td>
+                                    <code>
+                                        <code>(text | 
+                                            <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a> | 
+                                            <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>)+
+                                        </code>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This element must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                        <p>The following model restrictions apply to this element:</p>
+                        <ul id="ssml.prosody-assertions" class="assertions">
+                            <li>
+                                <p>The 
+                                    <code>ssml:prosody</code> element must not have 
+                                    <code>ssml:prosody</code> descendants.
+                                </p>
+                            </li>
+                            <li>
+                                <p>The 
+                                    <code>ssml:prosody</code> element must neither be empty nor contain only whitespace.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="ssml.prosody.text" class="details">
+                        <h5 id="h_thessmlprosodyelement(text)">The SSML 
+                            <code>prosody</code> element (Text)
+                        </h5>
+                        <p class="desc-main">Permits control of the pitch, speaking rate and volume of speech output.</p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#S3.2.4">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.prosody.textdetails-table" class="details">
+                            <caption>The SSML 
+                                <code>prosody</code> element (Text)
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>prosody</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>
+                                    <code>http://www.w3.org/2001/10/synthesis</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default attribute model</th>
+                                <td>
+                                    <code>
+                                        <a href="#ssml.pitch.attrib">pitch</a>?, 
+                                        <a href="#ssml.contour.attrib">contour</a>?, 
+                                        <a href="#ssml.range.attrib">range</a>?, 
+                                        <a href="#ssml.rate.attrib">rate</a>?, 
+                                        <a href="#ssml.duration.attrib">duration</a>?, 
+                                        <a href="#ssml.volume.attrib">volume</a>?, 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Core.attrib">z3998.Core.attrib</a>, 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.I18n.attrib">z3998.I18n.attrib</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default content model</th>
+                                <td>
+                                    <code>
+                                        <code>(text | 
+                                            <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a>)+
+                                        </code>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This element must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="ssml.say-as" class="details">
+                        <h5 id="h_thessmlsay-aselement(phrase)">The SSML 
+                            <code>say-as</code> element (Phrase)
+                        </h5>
+                        <p class="desc-main">Provides information on the type of text construct contained within the element to help specify the level of detail for rendering the contained text.</p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#S3.1.9">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.say-asdetails-table" class="details">
+                            <caption>The SSML 
+                                <code>say-as</code> element (Phrase)
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>say-as</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>
+                                    <code>http://www.w3.org/2001/10/synthesis</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default attribute model</th>
+                                <td>
+                                    <code>
+                                        <a href="#ssml.interpret-as.attrib">interpret-as</a>, 
+                                        <a href="#ssml.format.attrib">format</a>?, 
+                                        <a href="#ssml.detail.attrib">detail</a>?, 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Core.attrib">z3998.Core.attrib</a>, 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.I18n.attrib">z3998.I18n.attrib</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default content model</th>
+                                <td>
+                                    <code>(text | 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a> | 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>)+
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This element must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                        <p>The following model restrictions apply to this element:</p>
+                        <ul id="ssml.say-as-assertions" class="assertions">
+                            <li>
+                                <p>The 
+                                    <code>ssml:say-as</code> element must neither be empty nor contain only whitespace.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="ssml.say-as.text" class="details">
+                        <h5 id="h_thessmlsay-aselement(text)">The SSML 
+                            <code>say-as</code> element (Text)
+                        </h5>
+                        <p class="desc-main">Provides information on the type of text construct contained within the element to help specify the level of detail for rendering the contained text.</p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#S3.1.9">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.say-as.textdetails-table" class="details">
+                            <caption>The SSML 
+                                <code>say-as</code> element (Text)
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>say-as</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>
+                                    <code>http://www.w3.org/2001/10/synthesis</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>Text.extern.class</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default attribute model</th>
+                                <td>
+                                    <code>
+                                        <a href="#ssml.interpret-as.attrib">interpret-as</a>, 
+                                        <a href="#ssml.format.attrib">format</a>?, 
+                                        <a href="#ssml.detail.attrib">detail</a>?, 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Core.attrib">z3998.Core.attrib</a>, 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.I18n.attrib">z3998.I18n.attrib</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default content model</th>
+                                <td>
+                                    <code>(text | 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a>)+
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This element must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="ssml.sub" class="details">
+                        <h5 id="h_thessmlsubelement(phrase)">The SSML 
+                            <code>sub</code> element (Phrase)
+                        </h5>
+                        <p class="desc-main">Indicates that the text in the alias attribute value replaces the contained text for pronunciation.</p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#S3.1.11">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.subdetails-table" class="details">
+                            <caption>The SSML 
+                                <code>sub</code> element (Phrase)
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>sub</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>
+                                    <code>http://www.w3.org/2001/10/synthesis</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default attribute model</th>
+                                <td>
+                                    <code>
+                                        <a href="#ssml.alias.attrib">alias</a>, 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Core.attrib">z3998.Core.attrib</a>, 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.I18n.attrib">z3998.I18n.attrib</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default content model</th>
+                                <td>
+                                    <code>(text | 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a> | 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>)+
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This element must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                        <p>The following model restrictions apply to this element:</p>
+                        <ul id="ssml.sub-assertions" class="assertions">
+                            <li>
+                                <p>The 
+                                    <code>ssml:sub</code> element must neither be empty nor contain only whitespace.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="ssml.sub.text" class="details">
+                        <h5 id="h_thessmlsubelement(text)">The SSML 
+                            <code>sub</code> element (Text)
+                        </h5>
+                        <p class="desc-main">Indicates that the text in the alias attribute value replaces the contained text for pronunciation.</p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#S3.1.11">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.sub.textdetails-table" class="details">
+                            <caption>The SSML 
+                                <code>sub</code> element (Text)
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>sub</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>
+                                    <code>http://www.w3.org/2001/10/synthesis</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default attribute model</th>
+                                <td>
+                                    <code>
+                                        <a href="#ssml.alias.attrib">alias</a>, 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Core.attrib">z3998.Core.attrib</a>, 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.I18n.attrib">z3998.I18n.attrib</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default content model</th>
+                                <td>
+                                    <code>(text | 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a>)+
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This element must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="ssml.token" class="details">
+                        <h5 id="h_thessmltokenelement(phrase)">The SSML 
+                            <code>token</code> element (Phrase)
+                        </h5>
+                        <p class="desc-main">Indicates that the content is a token in order to to eliminate token (word) segmentation ambiguities of a synthesis processor.</p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#S3.2.3">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.tokendetails-table" class="details">
+                            <caption>The SSML 
+                                <code>token</code> element (Phrase)
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>token</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>
+                                    <code>http://www.w3.org/2001/10/synthesis</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.class">Phrase.class</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default attribute model</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.attrib">Phrase.attrib</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default content model</th>
+                                <td>
+                                    <code>(text | 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a>)+
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This element must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                        <p>The following model restrictions apply to this element:</p>
+                        <ul id="ssml.token-assertions" class="assertions">
+                            <li>
+                                <p>The 
+                                    <code>ssml:token</code> element must neither be empty nor contain only whitespace.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="ssml.token.text" class="details">
+                        <h5 id="h_thessmltokenelement(text)">The SSML 
+                            <code>token</code> element (Text)
+                        </h5>
+                        <p class="desc-main">Indicates that the content is a token in order to to eliminate token (word) segmentation ambiguities of a synthesis processor.</p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#S3.2.3">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.token.textdetails-table" class="details">
+                            <caption>The SSML 
+                                <code>token</code> element (Text)
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>token</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>
+                                    <code>http://www.w3.org/2001/10/synthesis</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default attribute model</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.attrib">Text.attrib</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default content model</th>
+                                <td>
+                                    <code>(text | 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.class">Text.class</a>)+
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This element must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="ssml.lexicon" class="details">
+                        <h5 id="h_thessmllexiconelement">The SSML 
+                            <code>lexicon</code> element
+                        </h5>
+                        <p class="desc-main">Specifies a reference to a lexicon document.</p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#S3.1.5.1">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.lexicondetails-table" class="details">
+                            <caption>The SSML 
+                                <code>lexicon</code> element
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>lexicon</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>
+                                    <code>http://www.w3.org/2001/10/synthesis</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>The lexicon element is allowed in the document 
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.head">head</a>
+                                    </code>.
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default attribute model</th>
+                                <td>
+                                    <code>
+                                        <a href="#ssml.lexicon.uri.attrib">uri</a>, 
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#xml.id.attrib">xml:id</a>, 
+                                        <a href="#ssml.lexicon.type.attrib">type</a>?
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default content model</th>
+                                <td>
+                                    <code>empty</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This element must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="ssml.strength.attrib" class="details">
+                        <h5 id="h_thessmlstrengthattribute">The SSML 
+                            <code>strength</code> attribute
+                        </h5>
+                        <p class="desc-main">Indicates the prosodic strength of the break in the speech output.</p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#S3.2.3">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.strength.attribdetails-table" class="details">
+                            <caption>The SSML 
+                                <code>strength</code> attribute
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>strength</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="#ssml.break">ssml:break</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default value(s)</th>
+                                <td>
+                                    <code>'none' | 'x-weak' | 'weak' | 'medium" | 'strong' | 'x-strong'</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This attribute must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="ssml.time.attrib" class="details">
+                        <h5 id="h_thessmltimeattribute">The SSML 
+                            <code>time</code> attribute
+                        </h5>
+                        <p class="desc-main">Indicates the duration of a pause to be inserted in the output in seconds or milliseconds.</p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#S3.2.3">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.time.attribdetails-table" class="details">
+                            <caption>The SSML 
+                                <code>time</code> attribute
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>time</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="#ssml.break">ssml:break</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default value(s)</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#CSS.TimeValue.datatype">TimeValue</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This attribute must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="ssml.onlangfailure.attrib" class="details">
+                        <h5 id="h_thessmlonlangfailureattribute">The SSML 
+                            <code>onlangfailure</code> attribute
+                        </h5>
+                        <p class="desc-main">Describes the desired behavior of a synthesis processor upon language speaking failure. The value of this attribute is inherited by descendants.</p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#adef_onlangfailure">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.onlangfailure.attribdetails-table" class="details">
+                            <caption>The SSML 
+                                <code>onlangfailure</code> attribute
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>ssml:onlangfailure</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>
+                                    <code>http://www.w3.org/2001/10/synthesis</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Document.attrib">Document.attrib</a>
+                                    </code>, 
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.attrib">Phrase.attrib</a>
+                                    </code> and 
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.attrib">Text.attrib</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default value(s)</th>
+                                <td>
+                                    <code>'changevoice" | 'ignoretext' | 'ignorelang' | 'processorchoice'</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This attribute must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="ssml.ph.attrib" class="details">
+                        <h5 id="h_thessmlphattribute">The SSML 
+                            <code>ph</code> attribute
+                        </h5>
+                        <p class="desc-main">Specifies a phonemic/phonetic pronunciation for the text contained in the current element.</p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#edef_phoneme">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.ph.attribdetails-table" class="details">
+                            <caption>The SSML 
+                                <code>ph</code> attribute
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>ph</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="#ssml.phoneme">ssml:phoneme</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default value(s)</th>
+                                <td>
+                                    <code>
+                                        <a href="#SSML.PhoneticExpression.datatype">PhoneticExpression</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This attribute must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="ssml.alphabet.attrib" class="details">
+                        <h5 id="h_thessmlalphabetattribute">The SSML 
+                            <code>alphabet</code> attribute
+                        </h5>
+                        <p class="desc-main">Specifies which phonemic/phonetic pronunciation alphabet is used in the 
+                            <code>
+                                <a href="#ssml.ph.attrib">ph</a>
+                            </code> attribute.
+                        </p>
+                        <p class="desc-sub">If omitted, the implicit value 
+                            <code>x-SAMPA</code> is assumed.
+                        </p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#edef_phoneme">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.alphabet.attribdetails-table" class="details">
+                            <caption>The SSML 
+                                <code>alphabet</code> attribute
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>alphabet</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="#ssml.phoneme">ssml:phoneme</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default value(s)</th>
+                                <td>
+                                    <code>
+                                        <a href="#SSML.alphabet.datatype">alphabet</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This attribute must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="ssml.pitch.attrib" class="details">
+                        <h5 id="h_thessmlpitchattribute">The SSML 
+                            <code>pitch</code> attribute
+                        </h5>
+                        <p class="desc-main">Specifies the baseline pitch for the contained text.</p>
+                        <p class="desc-sub">The labels 
+                            <code>x-low</code> through 
+                            <code>x-high</code> represent a sequence of monotonically non-decreasing pitch levels.
+                        </p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#S3.2.4">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.pitch.attribdetails-table" class="details">
+                            <caption>The SSML 
+                                <code>pitch</code> attribute
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>pitch</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="#ssml.prosody">ssml:prosody</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default value(s)</th>
+                                <td>
+                                    <code>'x-low' | 'low' | 'medium' | 'high' | 'x-high' | 'default' | 
+                                        <a href="#SSML.RelativeChange.datatype">RelativeChange</a> | 
+                                        <a href="#SSML.PitchExpression.datatype">PitchExpression</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This attribute must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="ssml.contour.attrib" class="details">
+                        <h5 id="h_thessmlcontourattribute">The SSML 
+                            <code>contour</code> attribute
+                        </h5>
+                        <p class="desc-main">Sets the pitch contour for the contained text.</p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#S3.2.4">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.contour.attribdetails-table" class="details">
+                            <caption>The SSML 
+                                <code>contour</code> attribute
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>contour</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="#ssml.prosody">ssml:prosody</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default value(s)</th>
+                                <td>
+                                    <code>
+                                        <a href="#SSML.PitchContour.datatype">PitchContour</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This attribute must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="ssml.range.attrib" class="details">
+                        <h5 id="h_thessmlrangeattribute">The SSML 
+                            <code>range</code> attribute
+                        </h5>
+                        <p class="desc-main">Specifies the pitch range (variability) for the contained text.</p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#S3.2.4">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.range.attribdetails-table" class="details">
+                            <caption>The SSML 
+                                <code>range</code> attribute
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>range</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="#ssml.prosody">ssml:prosody</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default value(s)</th>
+                                <td>
+                                    <code>'x-low' | 'low' | 'medium' | 'high' | 'x-high' | 'default' | 
+                                        <a href="#SSML.RelativeChange.datatype">RelativeChange</a> | 
+                                        <a href="#SSML.PitchExpression.datatype">PitchExpression</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This attribute must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="ssml.rate.attrib" class="details">
+                        <h5 id="h_thessmlrateattribute">The SSML 
+                            <code>rate</code> attribute
+                        </h5>
+                        <p class="desc-main">Specifies a change in the speaking rate for the contained text.</p>
+                        <p class="desc-sub">The values 
+                            <code>x-slow</code> through 
+                            <code>x-fast</code> represent a sequence of monotonically non-decreasing speaking rates.
+                        </p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#S3.2.4">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.rate.attribdetails-table" class="details">
+                            <caption>The SSML 
+                                <code>rate</code> attribute
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>rate</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="#ssml.prosody">ssml:prosody</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default value(s)</th>
+                                <td>
+                                    <code>'x-slow' | 'slow' | 'medium' | 'fast' | 'x-fast' | 'default' | 
+                                        <a href="#SSML.NonNegativePercentage.datatype">NonNegativePercentage</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This attribute must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="ssml.duration.attrib" class="details">
+                        <h5 id="h_thessmldurationattribute">The SSML 
+                            <code>duration</code> attribute
+                        </h5>
+                        <p class="desc-main">Specifies a value in seconds or milliseconds for the desired time to take to read the contained text.</p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#S3.2.4">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.duration.attribdetails-table" class="details">
+                            <caption>The SSML 
+                                <code>duration</code> attribute
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>duration</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="#ssml.prosody">ssml:prosody</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default value(s)</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#CSS.TimeValue.datatype">TimeValue</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This attribute must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="ssml.volume.attrib" class="details">
+                        <h5 id="h_thessmlvolumeattribute">The SSML 
+                            <code>volume</code> attribute
+                        </h5>
+                        <p class="desc-main">Specifies the volume for the contained text.</p>
+                        <p class="desc-sub">If omitted, the implicit value 
+                            <code>+0.0dB</code> is assumed.
+                        </p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#S3.2.4">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.volume.attribdetails-table" class="details">
+                            <caption>The SSML 
+                                <code>volume</code> attribute
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>volume</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="#ssml.prosody">ssml:prosody</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default value(s)</th>
+                                <td>
+                                    <code>'silent' | 'x-soft' | 'soft' | 'medium' | 'loud' | 'x-loud' | 'default' | 
+                                        <a href="#SSML.VolumeExpression.datatype">VolumeExpression</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This attribute must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="ssml.interpret-as.attrib" class="details">
+                        <h5 id="h_thessmlinterpret-asattribute">The SSML 
+                            <code>interpret-as</code> attribute
+                        </h5>
+                        <p class="desc-main">Indicates the content type of the contained text construct.</p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#S3.1.9">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.interpret-as.attribdetails-table" class="details">
+                            <caption>The SSML 
+                                <code>interpret-as</code> attribute
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>interpret-as</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="#ssml.say-as">ssml:say-as</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default value(s)</th>
+                                <td>
+                                    <code>'date' | 'time' | 'telephone' | 'characters' | 'cardinal' | 'ordinal'</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This attribute must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="ssml.format.attrib" class="details">
+                        <h5 id="h_thessmlformatattribute">The SSML 
+                            <code>format</code> attribute
+                        </h5>
+                        <p class="desc-main">In addition to 
+                            <a href="#ssml.interpret-as.attrib">interpret-as</a>, provides further hints on the precise formatting of the contained text for content types that may have ambiguous formats.
+                        </p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#S3.1.9">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.format.attribdetails-table" class="details">
+                            <caption>The SSML 
+                                <code>format</code> attribute
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>format</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="#ssml.say-as">ssml:say-as</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default value(s)</th>
+                                <td>
+                                    <code>text</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This attribute must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="ssml.detail.attrib" class="details">
+                        <h5 id="h_thessmldetailattribute">The SSML 
+                            <code>detail</code> attribute
+                        </h5>
+                        <p class="desc-main">Indicates the level of detail to be read aloud or rendered.</p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#S3.2.3">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.detail.attribdetails-table" class="details">
+                            <caption>The SSML 
+                                <code>detail</code> attribute
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>detail</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="#ssml.say-as">ssml:say-as</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default value(s)</th>
+                                <td>
+                                    <code>text</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This attribute must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="ssml.alias.attrib" class="details">
+                        <h5 id="h_thessmlaliasattribute">The SSML 
+                            <code>alias</code> attribute
+                        </h5>
+                        <p class="desc-main">Specifies the string to be spoken instead of the string in the sub element.</p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#S3.1.11">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.alias.attribdetails-table" class="details">
+                            <caption>The SSML 
+                                <code>alias</code> attribute
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>alias</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="#ssml.sub">ssml:sub</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default value(s)</th>
+                                <td>
+                                    <code>text</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This attribute must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="ssml.lexicon.uri.attrib" class="details">
+                        <h5 id="h_thessmluriattribute">The SSML 
+                            <code>uri</code> attribute
+                        </h5>
+                        <p class="desc-main">Identifies the location of the lexicon document.</p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#S3.1.5.1">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.lexicon.uri.attribdetails-table" class="details">
+                            <caption>The SSML 
+                                <code>uri</code> attribute
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>uri</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="#ssml.lexicon">ssml:lexicon</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default value(s)</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#URI.datatype">URI</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This attribute must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="ssml.lexicon.type.attrib" class="details">
+                        <h5 id="h_thessmltypeattribute">The SSML 
+                            <code>type</code> attribute
+                        </h5>
+                        <p class="desc-main">Specifies the media type of the lexicon document. The implicit value of this attribute is 
+                            <code>application/pls+xml</code>, the media type associated with the 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#ref-pls">Pronunciation Lexicon Specification</a>.
+                        </p>
+                        <p class="desc-sub">Refer to 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#S3.1.5.1">SSML 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.lexicon.type.attribdetails-table" class="details">
+                            <caption>The SSML 
+                                <code>type</code> attribute
+                            </caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>type</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <code>
+                                        <a href="#ssml.lexicon">ssml:lexicon</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default value(s)</th>
+                                <td>
+                                    <code>
+                                        <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#MediaType.datatype">MediaType</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This attribute must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="ssml-11.module-impl" class="impl">
+                        <h5 id="h_thessmlelementintegrationmodule-implementations">The SSML Element Integration Module - Implementations</h5>
+                        <table>
+                            <tr>
+                                <th>Schema</th>
+                                <th>Language</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="http://www.daisy.org/z3998/2012/schema/mod/ssml-11.rng">ssml-11.rng</a>
+                                </td>
+                                <td>
+                                    <a href="http://www.daisy.org/z3998/2012/z3998-2012.html#refRelaxNG">RelaxNG</a>
+                                </td>
+                            </tr>
+                        </table>
+                        <p>Activation of this module depends on the 
+                            <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.core-attrib.module">Core</a>, 
+                            <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.datatypes.module">datatypes</a>, 
+                            <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.global-classes.module">global-classes</a>, 
+                            <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.i18n-attrib.module">I18n</a> and 
+                            <a href="#ssml-datatypes.module">ssml-datatypes</a> modules also being activated.
+                        </p>
+                        <p>The 
+                            <a href="#">SSML Feature</a> module depends on this module being activated.
+                        </p>
+                    </div>
+                </div>
+                <div id="ssml-phoneme-attrib.module" class="module">
+                    <h4 id="h_thessmlphonemeattributemodule">The SSML phoneme attribute module</h4>
+                    <p class="desc-main">Defines an adaption of the 
+                        <a href="http://www.w3.org/TR/speech-synthesis11/">SSML</a>
+                        <code>phoneme</code> element as an attribute, enabling the provision of pronounciation information on elements that are not in the SSML namespace.
+                    </p>
+                    <table id="ssml-phoneme-attrib.module-attr-overview" class="overview">
+                        <caption>The SSML phoneme attribute module: Attribute overview</caption>
+                        <tr>
+                            <th>Name</th>
+                            <th>Default values</th>
+                            <th>Default usage context</th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.ph.ns.attrib">ph</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="#SSML.PhoneticExpression.datatype">PhoneticExpression</a>
+                                </code>
+                            </td>
+                            <td>
+                                <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.attrib">Phrase.attrib</a> and 
+                                <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.attrib">Text.attrib</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>
+                                    <a href="#ssml.alphabet.ns.attrib">alphabet</a>
+                                </code>
+                            </th>
+                            <td>
+                                <code>
+                                    <a href="#SSML.alphabet.datatype">alphabet</a>
+                                </code>
+                            </td>
+                            <td>On elements where 
+                                <a href="#ssml.ph.ns.attrib">ssml:ph</a> occurs.
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="ssml.ph.ns.attrib" class="details">
+                        <h5 id="h_thessmlphattribute">The SSML ph attribute</h5>
+                        <p class="desc-main">Specifies a phonemic/phonetic pronunciation for the text contained in the current element.</p>
+                        <p class="desc-sub">This attribute inherits the semantics of the 
+                            <code>
+                                <a href="#ssml.ph.attrib">ph</a>
+                            </code> attribute on the SSML 
+                            <code>
+                                <a href="#ssml.phoneme">ssml:phoneme</a>
+                            </code> element.
+                        </p>
+                        <p class="desc-sub">Note that this attribute is namespace qualified and intended for use on non-SSML namespace elements, as opposed to the default (non-qualified) 
+                            <code>
+                                <a href="#ssml.ph.attrib">ph</a>
+                            </code> attribute, which is only allowed on the 
+                            <code>
+                                <a href="#ssml.phoneme">ssml:phoneme</a>
+                            </code> element.
+                        </p>
+                        <p class="desc-sub">Consult 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#S3.1.10">Speech Synthesis Markup Language (SSML) Version 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.ph.ns.attribdetails-table" class="details">
+                            <caption>The SSML ph attribute</caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>ph</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>
+                                    <code>http://www.w3.org/2001/10/synthesis</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Phrase.attrib">Phrase.attrib</a> and 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.Text.attrib">Text.attrib</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Value(s)</th>
+                                <td>
+                                    <code>
+                                        <a href="#SSML.PhoneticExpression.datatype">PhoneticExpression</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr class="alterability">
+                                <th>Value alterability</th>
+                                <td>The defined value(s) or datatype(s) are fixed, and must not be altered when activating this module.</td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This attribute must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                        <p>The following model restrictions apply to this attribute:</p>
+                        <ul id="ssml.ph.ns.attrib-assertions" class="assertions">
+                            <li>
+                                <p>Elements with the 
+                                    <code>ssml:ph</code> attribute element must not have 
+                                    <code>ssml:phoneme</code> descendants, nor descendants with the 
+                                    <code>ssml:ph</code> attribute.
+                                </p>
+                            </li>
+                            <li>
+                                <p>The 
+                                    <code>ssml:ph</code> attribute element must neither be empty nor contain only whitespace.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="ssml.alphabet.ns.attrib" class="details">
+                        <h5 id="h_thessmlalphabetattribute">The SSML alphabet attribute</h5>
+                        <p class="desc-main">Specifies which phonemic/phonetic pronunciation alphabet is used in the value of the 
+                            <a href="#ssml.ph.ns.attrib">ssml:ph</a> attribute.
+                        </p>
+                        <p class="desc-sub">Note that this attribute is namespace qualified and intended for use on non-SSML namespace elements in conjunction with the 
+                            <a href="#ssml.ph.ns.attrib">ssml:ph</a> attribute.
+                        </p>
+                        <p class="desc-sub">If omitted, the implicit value 
+                            <code>x-SAMPA</code> is assumed.
+                        </p>
+                        <p class="desc-sub">Consult 
+                            <a href="http://www.w3.org/TR/speech-synthesis11/#S3.1.10">Speech Synthesis Markup Language (SSML) Version 1.1</a> for further information.
+                        </p>
+                        <table id="ssml.alphabet.ns.attribdetails-table" class="details">
+                            <caption>The SSML alphabet attribute</caption>
+                            <tr>
+                                <th>Local name</th>
+                                <td>
+                                    <code>alphabet</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Namespace</th>
+                                <td>
+                                    <code>http://www.w3.org/2001/10/synthesis</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Default usage context</th>
+                                <td>On elements where 
+                                    <a href="#ssml.ph.ns.attrib">ssml:ph</a> occurs.
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Value(s)</th>
+                                <td>
+                                    <code>
+                                        <a href="#SSML.alphabet.datatype">alphabet</a>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr class="alterability">
+                                <th>Value alterability</th>
+                                <td>The defined value(s) or datatype(s) are fixed, and must not be altered when activating this module.</td>
+                            </tr>
+                            <tr>
+                                <th>Optionality</th>
+                                <td>This attribute must not be omitted when activating this module.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="ssml-phoneme-attrib.module-impl" class="impl">
+                        <h5 id="h_thessmlphonemeattributemodule-implementations">The SSML phoneme attribute module - Implementations</h5>
+                        <table>
+                            <tr>
+                                <th>Schema</th>
+                                <th>Language</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="http://www.daisy.org/z3998/2012/schema/mod/ssml-phoneme-attrib.rng">ssml-phoneme-attrib.rng</a>
+                                </td>
+                                <td>
+                                    <a href="http://www.daisy.org/z3998/2012/z3998-2012.html#refRelaxNG">RelaxNG</a>
+                                </td>
+                            </tr>
+                        </table>
+                        <p>Activation of this module depends on the 
+                            <a href="#ssml-datatypes.module">ssml-datatypes</a> module also being activated.
+                        </p>
+                        <p>The 
+                            <a href="#">SSML Feature</a> module depends on this module being activated.
+                        </p>
+                    </div>
+                </div>
+                <div id="ssml-datatypes.module" class="module">
+                    <h4 id="h_thessmldatatypesmodule">The SSML Datatypes module</h4>
+                    <p class="desc-main">This module defines a set of datatypes related to SSML</p>
+                    <table id="ssml-datatypes.module-data-overview" class="overview">
+                        <caption>The SSML Datatypes module</caption>
+                        <tr>
+                            <th>Name</th>
+                            <th>Definition</th>
+                        </tr>
+                        <tr id="SSML.PhoneticExpression.datatype">
+                            <th>
+                                <code>PhoneticExpression</code>
+                            </th>
+                            <td>A phonetic or phonemic expression.</td>
+                        </tr>
+                        <tr id="SSML.alphabet.datatype">
+                            <th>
+                                <code>alphabet</code>
+                            </th>
+                            <td>The name of a pronounciation alphabet.</td>
+                        </tr>
+                        <tr id="SSML.RelativeChange.datatype">
+                            <th>
+                                <code>RelativeChange</code>
+                            </th>
+                            <td>A relative change expression, as defined in 
+                                <a href="http://www.w3.org/TR/speech-synthesis11/#relative_values">relative change</a>.
+                            </td>
+                        </tr>
+                        <tr id="SSML.PitchExpression.datatype">
+                            <th>
+                                <code>PitchExpression</code>
+                            </th>
+                            <td>A 
+                                <a href="http://www.w3.org/TR/speech-synthesis11/#number_values">number</a> followed by the string 'Hz'.
+                            </td>
+                        </tr>
+                        <tr id="SSML.PitchContour.datatype">
+                            <th>
+                                <code>PitchContour</code>
+                            </th>
+                            <td>A pitch contour expression, as defined in 
+                                <a href="http://www.w3.org/TR/speech-synthesis11/#pitch_contour">pitch contour</a>.
+                            </td>
+                        </tr>
+                        <tr id="SSML.NonNegativePercentage.datatype">
+                            <th>
+                                <code>NonNegativePercentage</code>
+                            </th>
+                            <td>An unsigned 
+                                <a href="http://www.w3.org/TR/speech-synthesis11/#number_values">number</a> immediately followed by "%", as defined in 
+                                <a href="http://www.w3.org/TR/speech-synthesis11/#perc_values">Non-negative percentage</a>.
+                            </td>
+                        </tr>
+                        <tr id="SSML.VolumeExpression.datatype">
+                            <th>
+                                <code>VolumeExpression</code>
+                            </th>
+                            <td>A 
+                                <a href="http://www.w3.org/TR/speech-synthesis11/#number_values">number</a> preceded by "+" or "-" and immediately followed by "dB", as defined in 
+                                <a href="http://www.w3.org/TR/speech-synthesis11/#S3.2.4">prosody Element</a>.
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="ssml-datatypes.module-impl" class="impl">
+                        <h5 id="h_thessmldatatypesmodule-implementations">The SSML Datatypes module - Implementations</h5>
+                        <table>
+                            <tr>
+                                <th>Schema</th>
+                                <th>Language</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="http://www.daisy.org/z3998/2012/schema/mod/ssml-datatypes.rng">ssml-datatypes.rng</a>
+                                </td>
+                                <td>
+                                    <a href="http://www.daisy.org/z3998/2012/z3998-2012.html#refRelaxNG">RelaxNG</a>
+                                </td>
+                            </tr>
+                        </table>
+                        <p>The 
+                            <a href="#ssml-11.module">ssml-elements</a> and 
+                            <a href="#ssml-phoneme-attrib.module">ssml-ph-attribs</a> modules depends on this module being activated.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="informative-references">
+            <h2 id="h_informativereferences">Informative References</h2>
+            <div class="rd-section" property="rd:supporting-software">
+                <h3 id="supporting-software">Supporting software</h3>
+                <p>Refer to the 
+                    <a href="http://www.daisy.org/zw/ZedAI_UserPortal">Z39.98-AI community portal</a> for information on available software tools.
+                </p>
+            </div>
+        </div>
+        <div id="module-list">
+            <h2 id="h_appendix1listingofmodulesinthenormativeschema">Appendix 1: Listing of modules in the normative schema</h2>
+            <p> The below list represents the modules at the time of version 1.0 of this feature. </p>
+            <p class="RFC2119">The occurrence of the keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in documentation fields embedded in these modules are to be interpreted as described in 
+                <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC2119</a>.
+            </p>
+            <ul id="normative-schema-modules">
+                <li>
+                    <a href="./mod/ssml-11.rng" rel="rd:schema-module">ssml-11.rng</a>
+                </li>
+                <li>
+                    <a href="./mod/ssml-datatypes.rng" rel="rd:schema-module">ssml-datatypes.rng</a>
+                </li>
+                <li>
+                    <a href="./mod/ssml-phoneme-attrib.rng" rel="rd:schema-module">ssml-phoneme-attrib.rng</a>
+                </li>
+                <li>
+                    <a href="./mod/z3998-feature-ssml.rng" rel="rd:schema-module">z3998-feature-ssml.rng</a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer">
+            <p id="docinfo"> This document is a 
+                <em>Z39.98-2012 Resource Directory</em>, compliant with 
+                <a href="http://www.w3.org/TR/rdfa-syntax/">XHTML+RDFa</a> using the 
+                <a href="../../../../vocab/resourcedirectory/">Z39.98-2012 Resource Directory Vocabulary</a>. 
+            </p>
+            <p>Document generated: 2014-10-21T08:36:00.718-04:00.</p>
+        </div>
+    </body>
+</html>

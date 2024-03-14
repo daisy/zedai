@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+    xmlns:x="http://www.w3.org/1999/xhtml">
+
+    <x:h1>The Z3986 Attribution module</x:h1>
+    <x:p>   1. The act of attributing or ascribing, as a quality,
+      character, or function, to a thing or person, an effect to
+      a cause. [1913 Webster]
+    </x:p>
+  
+    <div>
+    	<x:h2>The author element</x:h2>  
+        <define name="z3986.creator" ns="http://www.daisy.org/ns/z3986/2008/">
+            <element name="creator">
+                <ref name="z3986.creator.attlist" />
+                <ref name="z3986.creator.content" />
+            </element>
+        </define>
+
+        <define name="z3986.creator.content">
+            <ref name="Text.reduced.model"/>
+        </define>
+
+        <define name="z3986.creator.attlist">
+            <ref name="Common.reduced.attrib" />
+        </define>
+    </div>
+
+	<div>
+    	<x:h2>The contributor element</x:h2>  
+        <define name="z3986.contributor" ns="http://www.daisy.org/ns/z3986/2008/">
+            <element name="contributor">
+                <ref name="z3986.contributor.attlist" />
+                <ref name="z3986.contributor.content" />
+            </element>
+        </define>
+        <define name="z3986.contributor.content">
+            <ref name="Text.reduced.model"/>
+        </define>
+        <define name="z3986.contributor.attlist">
+            <ref name="Common.reduced.attrib" />
+        </define>
+    </div>
+
+    <div>
+    	<x:h2>The publisher element</x:h2>  
+        <define name="z3986.publisher" ns="http://www.daisy.org/ns/z3986/2008/">
+            <element name="publisher">
+                <ref name="z3986.publisher.attlist" />
+                <ref name="z3986.publisher.content" />
+            </element>
+        </define>
+        <define name="z3986.publisher.content">
+            <ref name="Text.reduced.model"/>
+        </define>
+        <define name="z3986.publisher.attlist">
+            <ref name="Common.reduced.attrib" />
+        </define>
+    </div>
+    
+    <div>
+    	<x:h2>The date element</x:h2>  
+        <define name="z3986.date" ns="http://www.daisy.org/ns/z3986/2008/">
+            <element name="date">
+                <ref name="z3986.date.attlist" />
+                <ref name="z3986.date.content" />
+            </element>
+        </define>
+        <define name="z3986.date.content" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+            <data type="date"/>
+        </define>
+        <define name="z3986.date.attlist">
+            <ref name="Common.reduced.attrib" />
+        </define>
+    </div>
+    
+    <div>
+    	<x:h2>The copyright element</x:h2>  
+        <define name="z3986.copyright" ns="http://www.daisy.org/ns/z3986/2008/">
+            <element name="copyright">
+                <ref name="z3986.copyright.attlist" />
+                <ref name="z3986.copyright.content" />
+            </element>
+        </define>
+        <define name="z3986.copyright.content" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+            <ref name="Text.reduced.model"/>
+        </define>
+        <define name="z3986.copyright.attlist">
+            <ref name="Common.reduced.attrib" />
+        </define>
+    </div>
+    
+    <define name="z3986.attribution.class">
+    	<choice>
+    		<ref name="z3986.creator"/>
+    		<ref name="z3986.publisher"/>
+    		<ref name="z3986.contributor"/>
+    		<ref name="z3986.date" />
+    		<ref name="z3986.copyright" />
+    	</choice>
+    </define>
+    
+    <define name="z3986.attribution.model">
+    	<zeroOrMore>
+    		<ref name="z3986.attribution.class"/>
+    	</zeroOrMore>
+    </define>
+    
+</grammar>

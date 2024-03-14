@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+  xmlns:its="http://www.w3.org/2005/11/its"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="I18n">The I18n module</dcterms:title>
+      <dcterms:description>This module defines the [[#xml.lang.attrib]], [[#its.dir.attrib]] and
+        [[#its.translate.attrib]] attributes that constitute the I18n (Internationalization) attributes 
+        collection that is available for all elements in a profile's core markup model.
+      </dcterms:description>
+      <z:info>The I18n attributes are all optional, but the module activation process provides a mechanism
+        to require some or all of the attributes locally or globally.</z:info>
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}"/>
+      <dcterms:creator>Markus Gylling</dcterms:creator>
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:rights>Copyright 1998-2008 W3C (MIT, ERCIM, Keio), All Rights Reserved. Permission to
+        use, copy, modify and distribute the ITS schema and its accompanying documentation for any
+        purpose and without fee is hereby granted in perpetuity, provided that the above copyright
+        notice and this paragraph appear in all copies.</dcterms:rights>
+      <dcterms:rightsHolder>World Wide Web Consortium (http://www.w3.org)</dcterms:rightsHolder>
+      <dcterms:isRequiredBy rdf:resource="http://www.daisy.org/z3986/2011/auth/"/>
+      <dcterms:requires rdf:resource="z3986-datatypes.rng"/>
+    </rdf:Description>
+  </rdf:RDF>
+
+  <div>
+
+    <define name="xml.lang.attrib">
+      <attribute name="xml:lang">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="xml:lang">The {xml:lang} attribute</dcterms:title>
+            <dcterms:description>The {xml:lang} attribute identifies the natural or formal language in which the content is
+              written.</dcterms:description>
+            <z:info>The semantics of this attribute are defined by [[#refXML]]. Refer to
+              [[http://www.w3.org/TR/REC-xml/#sec-lang-tag Language Identification]] for more
+              information.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>[[#z3986.I18n.attrib]]</z:context>
+            <z:content>[[#LanguageIdentifier.datatype]]</z:content>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="xml.lang.attrib.content"/>
+      </attribute>
+    </define>
+
+    <define name="xml.lang.attrib.content" combine="choice">
+      <choice>
+        <!-- TODO check: nullable, several languages in one attr, etc against this datatype -->
+        <ref name="LanguageIdentifier.datatype"/>
+      </choice>
+    </define>
+
+  </div>
+
+  <div>
+
+    <define name="its.dir.attrib">
+      <attribute name="dir" ns="http://www.w3.org/2005/11/its">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="its:dir">The {its:dir} attribute</dcterms:title>
+            <dcterms:description>The {its:dir} attribute specifies the base writing direction of the
+              content.</dcterms:description>
+            <z:info>If omitted, the implicit value {ltr} (left-to-right) is assumed.</z:info>
+            <z:info>The semantics of this attribute are defined by [[#refITS]]. Refer to
+              [[http://www.w3.org/TR/its/#directionality Directionality]] for more
+              information.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>[[#z3986.I18n.attrib]]</z:context>
+            <z:content>{"ltr" | "rtl" | "lro" | "rlo"}</z:content>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="its.dir.attrib.content"/>
+      </attribute>
+    </define>
+
+    <define name="its.dir.attrib.content">
+      <choice>
+        <value>ltr</value>
+        <a:documentation>The writing direction is left-to-right. This is the implicit value of this
+          attribute.</a:documentation>
+        <value>rtl</value>
+        <a:documentation>The writing direction is right-to-left.</a:documentation>
+        <value>lro</value>
+        <a:documentation>The writing direction is left-to-right override.</a:documentation>
+        <value>rlo</value>
+        <a:documentation>The writing direction is right-to-left override.</a:documentation>
+      </choice>
+    </define>
+
+  </div>
+
+  <div>
+
+    <define name="its.translate.attrib">
+      <attribute name="translate" ns="http://www.w3.org/2005/11/its">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="its:translate">The {its:translate} attribute</dcterms:title>
+            <dcterms:description>The {its:translate} attribute indicates whether the content of an element
+              is translatable or not.</dcterms:description>
+            <z:info>If omitted, the implicit value {yes} is assumed.</z:info>
+            <z:info>The semantics of this attribute are defined by [[#refITS]]. Refer to
+              [[http://www.w3.org/TR/its/#trans-datacat Translate]] for more
+              information.</z:info>
+            <z:context>[[#z3986.I18n.attrib]]</z:context>
+            <z:content>{"yes" | "no"}</z:content>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="its.translate.attrib.content"/>
+      </attribute>
+    </define>
+
+    <define name="its.translate.attrib.content">
+      <choice>
+        <value>yes</value>
+        <a:documentation>The content is translatable. This is the default value of this
+          attribute.</a:documentation>
+        <value>no</value>
+        <a:documentation>The content is not translatable.</a:documentation>
+      </choice>
+    </define>
+
+  </div>
+
+  <div>
+
+    <define name="z3986.I18n.attrib" combine="interleave">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="z3986.I18n.attrib">The I18n attributes collection</dcterms:title>
+          <dcterms:description>A set of attributes, initially consisting of the
+            [[#xml.lang.attrib]], [[#its.dir.attrib]] and [[#its.translate.attrib]]
+            attributes.</dcterms:description>
+        </rdf:Description>
+      </rdf:RDF>
+      <optional>
+        <ref name="xml.lang.attrib"/>
+      </optional>
+      <optional>
+        <ref name="its.dir.attrib"/>
+      </optional>
+      <optional>
+        <ref name="its.translate.attrib"/>
+      </optional>
+      <ref name="z3986.I18n.contrib.attrib"/>
+    </define>
+
+    <define name="z3986.I18n.contrib.attrib" combine="interleave">
+      <a:documentation>A pattern for external (to this module) contributions to the
+        z3986.I18n.attrib pattern.</a:documentation>
+      <empty/>
+    </define>
+
+    <define name="z3986.I18n.attrib.xml.lang.required" combine="interleave">
+      <a:documentation>A convenience pattern.</a:documentation>
+      <ref name="xml.lang.attrib"/>
+      <optional>
+        <ref name="its.dir.attrib"/>
+      </optional>
+      <optional>
+        <ref name="its.translate.attrib"/>
+      </optional>
+      <ref name="z3986.I18n.contrib.attrib"/>
+    </define>
+
+  </div>
+
+</grammar>

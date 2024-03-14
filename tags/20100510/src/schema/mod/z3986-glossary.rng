@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+  ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+  xmlns:xsdp="http://www.daisy.org/ns/rng-preprocess/xsd">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="glossary">The glossary module</dcterms:title>
+      <dcterms:description>This module defines the {[[#z3986.glossary]]} element for defining glossaries and other sections of definitions.</dcterms:description>      
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}" />
+      <dcterms:creator>Markus Gylling</dcterms:creator> 
+      <dcterms:creator>Matt Garrish</dcterms:creator>
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng"/>
+      <dcterms:requires rdf:resource="z3986-headings.rng"/> 
+      <dcterms:requires rdf:resource="z3986-p.rng"/> 
+      <dcterms:requires rdf:resource="z3986-block.rng"/> 
+    </rdf:Description>
+  </rdf:RDF>
+  
+  <div>    
+    
+    <!-- TODO note that term@for is implied when nested inside entry -->
+    <!-- TODO SCH ?? if entry/term contains @for, its values must resolve to definitions inside the same entry -->
+    
+    <define name="z3986.glossary">
+      <element name="glossary">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="glossary">The {glossary} element</dcterms:title>
+            <dcterms:description>The {glossary} element represents a glossary, pronunciation guide or other section that exclusively defines terms or phrases.</dcterms:description>      
+            <z:info>Glossaries are typically located in the backmatter of print works.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.Section.class]]}</z:context>          
+            <z:content>{[[#z3986.h]]?, [[#z3986.glossary.entry]]*, [[#z3986.glossary.section]]*}</z:content>          
+            <z:attlist>{[[#z3986.Section.attrib]]}</z:attlist>      
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.glossary.attlist"/>
+        <ref name="z3986.glossary.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.glossary.attlist">
+      <ref name="z3986.Section.attrib"/>
+    </define>
+
+    <define name="z3986.glossary.content">
+      <ref name="z3986.glossary.model"/>
+    </define>
+
+    <define name="z3986.glossary.model" xsdp:replace="z3986.glossary.model.xsd">
+      <interleave>
+        <optional>
+          <ref name="z3986.h"/>
+        </optional>  
+        <zeroOrMore>
+          <choice>
+            <ref name="z3986.glossary.extra.class"/>
+          </choice>
+        </zeroOrMore>
+      </interleave>  
+      <choice>
+        <group>
+          <oneOrMore>
+            <ref name="z3986.glossary.entry"/>
+            <zeroOrMore>
+              <choice>
+                <ref name="z3986.glossary.extra.class"/>
+              </choice>
+            </zeroOrMore>
+          </oneOrMore>  
+          <zeroOrMore>
+            <ref name="z3986.glossary.section"/>
+          </zeroOrMore>
+        </group> 
+        <group>
+          <zeroOrMore>
+            <ref name="z3986.glossary.entry"/>            
+          </zeroOrMore>  
+          <oneOrMore>
+            <ref name="z3986.glossary.section"/>
+          </oneOrMore>
+        </group>
+      </choice>
+    </define>
+
+    <define name="z3986.glossary.extra.class" combine="choice">
+      <choice>
+        <ref name="z3986.Block.core.base.class"/>        
+        <ref name="z3986.Global.extra.class"/>
+      </choice>
+    </define>
+    
+    <define name="z3986.glossary.model.xsd">      
+      <optional>
+        <ref name="z3986.h"/>
+      </optional>
+      <zeroOrMore>
+        <choice>
+          <ref name="z3986.glossary.entry"/>
+          <ref name="z3986.glossary.extra.class"/>
+        </choice>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="z3986.glossary.section"/>
+      </zeroOrMore>
+    </define>
+        
+  </div>
+
+  <div>
+    
+    <define name="z3986.glossary.section">
+      <element name="section">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="section (glossary)">The glossary {section} element</dcterms:title>
+            <dcterms:description>The glossary {section} element represents a major structural division in a {[[#z3986.glossary]]}.</dcterms:description>      
+            <z:info>The glossary {section} element is a specialization of the {[[#z3986.section]]} element. It provides a content model to fit the unique requirements of glossary divisions.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.glossary]]}</z:context>          
+            <z:content>{[[#z3986.h]]?, [[#z3986.glossary.entry]]*, [[#z3986.glossary.section]]*}</z:content>          
+            <z:attlist>{[[#z3986.Section.attrib]]}</z:attlist>      
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.glossary.attlist"/>
+        <ref name="z3986.glossary.model"/>        
+      </element>
+    </define>
+  </div>
+  
+  <div>
+    
+    <define name="z3986.glossary.entry">
+      <element name="entry">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="entry (glossary)">The glossary {entry} element</dcterms:title>
+            <dcterms:description>The glossary {entry} element represents a single unique entry in a {[[#z3986.glossary]]}.</dcterms:description>      
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.glossary]]} and {[[#z3986.glossary.section]]}</z:context>          
+            <z:content>{(([[#z3986.Block.class]])+ | (text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+), [[#z3986.glossary.entry]]*}</z:content>          
+            <z:attlist>{[[#z3986.Block.attrib]]}</z:attlist>      
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.glossary.entry.attlist"/>
+        <ref name="z3986.glossary.entry.content"/>
+        <sch:rule context="default:glossary//default:entry">
+          <!-- TODO SCH ?? each glossary//entry must contain exactly one term and one or more definition descendants. -->
+          <sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0"
+            >The {entry} element must neither be empty nor contain only whitespace.</sch:assert>
+        </sch:rule>        
+      </element>
+    </define>
+
+    <define name="z3986.glossary.entry.attlist">
+      <ref name="z3986.Block.attrib"/>
+    </define>
+
+    <define name="z3986.glossary.entry.content">
+      <ref name="z3986.Flow.choice.model"/>
+      <zeroOrMore>
+        <ref name="z3986.glossary.entry"/>
+      </zeroOrMore>  
+    </define>
+        
+  </div>
+  
+  <div>
+    <a:documentation>glossary - default content model contribution</a:documentation>
+    <define name="z3986.backmatter.content.class" combine="choice">
+      <ref name="z3986.glossary"/>
+    </define>  
+  </div>
+  
+  
+  
+</grammar>

@@ -1,0 +1,21 @@
+<document 
+  xmlns="http://www.daisy.org/z3986/2010/" 
+  xml:lang="en" its:dir="ltr"
+  xml:base="http://daisy.org/publications/">
+  <head>
+    <link rel="z3986-profile" 
+      href="http://purl.oclc.org/z3986/auth/profiles/sciencejournal/1.0/" />
+    <mods xmlns="http://www.loc.gov/mods/v3" version="3.3">
+        <originInfo>
+            <publisher>DAISY Consortium</publisher>
+        </originInfo>
+        <titleInfo>
+            <title>Notes on the nature of minimalistic content models</title>
+        </titleInfo>
+        <identifier type="uid">12398-5674</identifier>
+    </mods>
+  </head>
+  <body xml:id="body">
+  	  [...]
+  </body>
+</document>

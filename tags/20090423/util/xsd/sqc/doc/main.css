@@ -1,0 +1,52 @@
+BODY {
+  background-color: #FFFFFF;
+  color: #000000;
+  font-family: Helvetica, Arial, Sans-serif;
+  font-size: 10pt;
+}
+p,h1,h2,h3,h4,h5,h6,center {
+  font-family: Helvetica, Arial, Sans-serif;
+}
+td,th {
+  font-family: Helvetica, Arial, Sans-serif;
+  font-size: 10pt;
+}
+/* black background, white text */
+.C1 {
+  background-color: #000000;
+  color: #FFFFFF;
+  font-family: Helvetica, Arial, Sans-serif;
+}
+/* medium blue background, white text, aka dbg */
+.C4 {
+  background-color: #6699CC;
+  color: #FFFFFF;
+  font-family: Helvetica, Arial, Sans-serif;
+}
+/* white background, black text */
+.C6 {
+  background-color: #FFFFFF;
+  color: #000000;
+  font-family: Helvetica, Arial, Sans-serif;
+}
+a:link, a:hover {
+  color: #006699;
+}
+a:visited {
+  color: #776699;
+}
+ul {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-family: Helvetica, Arial, Sans-serif;
+  list-style-type: square;
+}
+ol {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-family: Helvetica, Arial, Sans-serif;
+}

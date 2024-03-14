@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Image Module</x:h1>
+
+  <div>
+    <x:h2>The img element</x:h2>
+
+    <define name="xhtml.img">
+      <element name="img">
+        <ref name="xhtml.img.attlist"/>
+        <ref name="xhtml.img.content"/>        
+      </element>
+    </define>
+
+    <define name="xhtml.img.attlist">
+      <ref name="xhtml.Common.attrib"/>
+    </define>
+    
+    <define name="xhtml.img.content">
+      <ref name="xhtml.Text.model"/>    
+    </define>
+  </div>
+
+  <define name="xhtml.Text.class" combine="choice">
+    <ref name="xhtml.img"/>
+  </define>
+
+</grammar>

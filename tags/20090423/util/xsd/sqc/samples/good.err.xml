@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ErrorReport.xsl"?>
+<schemaAnalysis SchemaQualityCheckerVersion="2.2"
+    anyWarningsRequestedToBeSuppressed="false" cost="10"
+    haltAtFirstError="false" requireEachDocumentValid="false" schemaLanguageVersion="2001-05-02">
+    <file fileNameWithoutPath="good.xsd" filename="distRes\samples\good.xsd">
+        <startdatetime>2003-07-15T16:37:03</startdatetime>
+        <noErrorFound/>
+        <enddatetime>2003-07-15T16:37:06</enddatetime>
+    </file>
+</schemaAnalysis>

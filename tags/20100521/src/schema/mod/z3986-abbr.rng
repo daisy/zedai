@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="abbreviations">The abbreviations module</dcterms:title>
+      <dcterms:description>This module defines the {[[#z3986.abbr]]} element, {[[#z3986.abbr.type.attrib type]]} attribute and {[[#z3986.expansion]]} element for identifying and annotating abbreviations and acronyms.</dcterms:description>      
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}" />
+      <dcterms:creator>Markus Gylling</dcterms:creator>      
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng" />
+      <dcterms:requires rdf:resource="z3986-linking.rng" />
+    </rdf:Description>
+  </rdf:RDF>
+    
+  <div>
+            
+    <define name="z3986.abbr">
+      <element name="abbr">   
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="abbr">The {abbr} element</dcterms:title>
+            <dcterms:description>The {abbr} element represents the abbreviated form of a phrase, term or name.</dcterms:description>            
+            <z:info>The {[[#z3986.abbr.type.attrib]]} attribute optionally expresses whether the abbreviation is an acronym, truncation or initialism.</z:info>
+            <z:info>
+              The {[[#z3986.expansion]]} and {[[#z3986.name]]} elements provide a mechanism for associating an abbreviation 
+              with its uncontracted form. When including an expansion, the {ref} attribute on the {abbr} 
+              element links the abbreviation to an {expansion} or {name}.
+            </z:info>
+            <z:info>
+              The {ref} attribute can also be used to reference a {[[#z3986.definition]]} element when an explanatory 
+              definition of the abbreviation is also needed.
+            </z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.Phrase.class]]}</z:context>          
+            <z:content>{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</z:content>          
+            <z:attlist z:alterability="The attribute model must allow the {[[#z3986.abbr.type.attrib type]]} and {[[#z3986.ref.attrib ref]]} attributes.">{[[#z3986.Phrase.attrib]], [[#z3986.abbr.type.attrib]]?, [[#z3986.ref.attrib]]?}</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.abbr.attlist"/>
+        <ref name="z3986.abbr.content"/>          
+        <sch:rule context="default:abbr[@ref]">
+          <sch:assert test="some $exp in (//default:expansion, //default:name, //default:definition) satisfies current()/@ref eq $exp/@xml:id"
+            >The {ref} attribute on {abbr} must resolve to an {expansion}, {name} or {definition} element.</sch:assert>
+        </sch:rule>
+        <sch:rule context="default:abbr">
+          <sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0"
+            >The {abbr} element must neither be empty nor contain only whitespace.</sch:assert>
+        </sch:rule>  
+      </element>    
+    </define>
+
+    <define name="z3986.abbr.attlist">
+      <ref name="z3986.Phrase.attrib"/>
+      <optional>
+      	<ref name="z3986.ref.attrib"/>      	
+      </optional>
+  	  <optional>
+  		  <ref name="z3986.abbr.type.attrib"/>
+  	  </optional>	
+    </define>
+    
+    <define name="z3986.abbr.content">
+      <ref name="z3986.Phrase.core.base.Text.mix.model"/>   
+    </define>  
+  
+    <define name="z3986.abbr.type.attrib">          
+  	  <attribute name="type">
+  	    <rdf:RDF>
+  	      <rdf:Description>
+  	        <dcterms:title z:short="type">The abbreviation {type} attribute</dcterms:title>
+  	        <dcterms:description>The abbreviation {type} attribute expresses the formal type of the marked abbreviation.</dcterms:description> 
+  	        <z:context>{[[#z3986.abbr]]}</z:context>
+  	        <z:content fixed="true">{'acronym' | 'initialism' | 'truncation'}</z:content>            
+  	      </rdf:Description>
+  	    </rdf:RDF>
+    		<choice>
+  	  		<value>acronym</value>
+    		  <a:documentation>An abbreviation formed from initial letters of a name or expression, pronounced as a word.</a:documentation>
+  	  		<value>initialism</value>
+    		  <a:documentation>An abbreviation formed from initial letters of a name or expression, with each letter pronunced separately.</a:documentation>
+    		  <value>truncation</value>
+    		  <a:documentation>An abbreviation formed from the first part of a word.</a:documentation>
+    		</choice>	  		
+  	  </attribute>
+    </define>
+        
+  </div>  
+     
+  <div>
+         
+    <define name="z3986.expansion">
+      <element name="expansion">        
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="expansion">The {expansion} element</dcterms:title>
+            <dcterms:description>The {expansion} element represents the fully expanded form of an {[[#z3986.abbr abbreviation]]}.</dcterms:description>
+            <z:info>The {expansion} element requires an {xml:id} attribute with a unique identifier for linking from the associated abbreviation.</z:info>
+            <z:info>Expansions that are not part of the document content may be placed in the document {[[#z3986.head]]}.</z:info>            
+            <z:context>{[[#z3986.Phrase.class]]}</z:context>          
+            <z:content>{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</z:content>          
+            <z:attlist>{[[#z3986.Phrase.attrib]]}</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.expansion.attlist"/>
+        <ref name="z3986.expansion.content"/>
+        <sch:rule context="default:expansion">
+          <sch:assert test="not(descendant::default:expansion)"
+            >The {expansion} element must not have {expansion} element descendants.</sch:assert>
+          <sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0"
+            >The {expansion} element must neither be empty nor contain only whitespace.</sch:assert>
+        </sch:rule>
+      </element>    
+    </define>
+
+    <define name="z3986.expansion.attlist">
+      <ref name="z3986.Phrase.attrib"/>
+    </define>
+    
+    <define name="z3986.expansion.content">
+      <ref name="z3986.Phrase.Text.mix.model"/>    
+    </define>  
+             
+  </div>
+  
+  <div>
+    <a:documentation>abbreviations module - default content model contribution</a:documentation>
+    
+    <define name="z3986.head.class" combine="choice">
+      <ref name="z3986.expansion"/>    
+    </define>
+    
+    <define name="z3986.Phrase.core.class" combine="choice">
+      <ref name="z3986.expansion"/>    
+    </define>
+    
+    <define name="z3986.Phrase.core.class" combine="choice">
+      <ref name="z3986.abbr"/>
+    </define>
+    
+    <define name="z3986.name.extra.class" combine="choice">
+      <ref name="z3986.abbr"/>
+    </define>
+    
+  </div>
+  
+      
+ </grammar> 

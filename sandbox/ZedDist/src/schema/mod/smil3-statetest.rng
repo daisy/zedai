@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+
+    <div>
+        <!-- This profile adds the state and submission elements to the content model of the head
+            element of the Structure Module, and the setvalue, newvalue, delvalue, and send elements to
+            the content model of the body, switch, a, par, seq, excl elements. It also adds the expr
+            attribute to all elements within the content model of the body element (i.e. excluding the
+            body element itself). The content model of the state element is declared as EMPTY. The state
+            element defines the data model of the SMIL State engine using the XForms 1.0 syntax. The
+            elements are not imported into SMIL 3.0 and must be fully qualified.  -->
+        
+                  
+        <define name="smil3.mediaobjects.attrib" combine="interleave">
+            <optional>
+                <ref name="smil3.expr.attrib"/>
+            </optional>
+        </define>
+        
+        <define name="smil3.timecontainers.attrib" combine="interleave">
+            <optional>
+                <ref name="smil3.expr.attrib"/>
+            </optional>
+        </define>
+        
+        <define name="smil3.Linking.attrib" combine="interleave">
+            <optional>
+                <ref name="smil3.expr.attrib"/>
+            </optional>
+        </define>
+                
+    </div>
+
+    <div>
+        <define name="smil3.expr.attrib">
+            <attribute name="expr">
+                <a:documentation>This attribute contains an expression that is evaluated at runtime,
+                    i.e. each time the element becomes active. If the expression evaluates to false
+                    the element is ignored (including its hierarchy of descendants). If it is
+                    impossible to resolve the expression specified in the expr attribute to a
+                    boolean, user-agents must ignore the expr attribute. Any profile using this
+                    module needs to define the language used to specify the
+                    expression.</a:documentation>
+                <ref name="smil3.expr.attrib.value"/>
+            </attribute>
+        </define>
+
+        <define name="smil3.expr.attrib.value">
+            <ref name="XPath10Expression.datatype"/>
+        </define>
+    </div>
+
+</grammar>

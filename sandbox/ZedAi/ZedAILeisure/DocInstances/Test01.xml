@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="http://www.w3.org/MarkUp/style/xhtml2.css"?>
+<?oxygen RNGSchema="../RelaxNG/daisy-leisure-profile-driver.rng" type="xml"?>
+
+<html xmlns="http://www.w3.org/2002/06/xhtml2/" xmlns:d="http://www.daisy.org/ns/z3986/2008/"
+    xml:lang="en">
+
+	<!-- html@version (or, perhaps more properly, a zed namespaced root attribute) 
+	can be used to provide a URI which functions as a profile+version identifier, 
+	and resolves to an RDDL-like resource directory where schemas, taxonomies etc could be found -->
+
+    <head>
+        <title>An XHTML 2.0 test document</title>
+	<!-- Here is the slot for the IFLA document-level metadata set. 
+	We do not know if xhtml:meta will be used by IFLA at all, which is fine.
+	Note - we may want to inherit RDF/A for inline metadata as well.
+	 -->
+        <meta property="title">An XHTML 2.0 test document</meta>
+        <meta property="reference">ZedAI-20081001</meta>
+    </head>
+    <d:book>
+        <d:frontmatter>
+            <d:toc>
+                <h>Table of Contens</h>
+                <d:tocentry>
+                    <d:label>This is the title</d:label>
+                    <d:pageref ref="p1">2</d:pageref>
+                </d:tocentry>
+            </d:toc>
+        </d:frontmatter>
+        <d:bodymatter>
+            <section>
+                <d:pagebreak value="1" xml:id="p1" />
+                <h >This is the title</h>
+                <p>The first paragraph. Not very long, but there it is.</p>
+                <section>
+                    <h>A heading on a lower level (level2)</h>
+                    <!-- <h>Invalid: only one h per section</h> -->
+                    <p>We start with a list: </p>
+                    <ul>
+                        <li>This is the first item on the list.</li>
+                        <li>This is the second item on the list.</li>
+                        <li>And this is the last item on this list.</li>
+                    </ul>
+                    
+                    <d:pagebreak value="2" /> 
+                    
+                    <section>
+                        <d:pagebreak value="3" />
+                        <h>A heading</h>
+                        <p>In order for this document to be valid, some element must folow the heading.</p>
+                    </section>
+                </section>
+                
+                <section>
+                    <h>About tables</h>
+                    <p>I must create a table at this point.</p>
+                    
+                    <p> But the third page came first in a mixed content model.</p>
+                    <p>
+                        <d:pagebreak value="4" />
+                    </p>
+                    <p>A section with some text and a <d:pagebreak value="5" />, and some more text after that</p>
+                </section>
+                
+            </section>
+        </d:bodymatter>
+    </d:book>
+</html>

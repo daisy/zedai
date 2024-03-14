@@ -1,0 +1,10 @@
+<mods xmlns="http://www.loc.gov/mods/v3" version="3.3">
+    <titleInfo>
+        <title>Guide to Creating DAISY Metadata</title>
+    </titleInfo>
+    <originInfo>
+        <publisher>DAISY Consortium</publisher>
+        <dateCreated>2005-01-14</dateCreated>
+    </originInfo>
+    <identifier type="uid">daisy-1234-5678-9001</identifier>
+</mods>

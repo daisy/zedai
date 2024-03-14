@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="../../../../src/schema/z3986a-book.rng" type="xml"?>
+<document profile="http://www.daisy.org/z3986/2011/vocab/profiles/default/"
+  xmlns="http://www.daisy.org/ns/z3986/authoring/" 
+  xmlns:xforms="http://www.w3.org/2002/xforms/" 
+  xmlns:my="http://www.daisy.org/ns/z3986/authoring/xforms/instance/"
+  xml:lang="en-US">
+  <head>
+   <meta rel="z3986:profile" resource="http://www.daisy.org/z3986/2011/auth/profiles/book/0.5/">
+     <meta property="z3986:name" content="book"/>
+     <meta property="z3986:version" content="0.5"/>
+   </meta>
+   <meta rel="z3986:feature" resource="http://www.daisy.org/z3986/2011/auth/features/forms/0.4/" />
+   <meta property="dcterms:identifier" content="com.googlecode.zednext.bookforms001"/>
+   <meta property="dcterms:publisher" content="GH Braille"/>
+   <meta property="dcterms:modified" content="2010-03-27T15:50:05Z"/>
+    
+	<xforms:model>
+      <xforms:instance>
+        <my:worksheet>
+          <my:questions>
+            <my:q1 />
+            <my:q2 />
+            <my:q3 />
+            <my:q4 />
+          </my:questions>
+        </my:worksheet>
+      </xforms:instance>
+	    <xforms:submission action="page008.xml" method="put" ref="/my:worksheet" />
+    </xforms:model>
+  </head>
+  <body>
+    <frontmatter>
+      <!--Empty frontmatter information-->
+      <section>
+        <h>Forms feature test</h>
+      </section>
+    </frontmatter>
+    <bodymatter>
+      <!--Standard form controls with binding-->
+      <section>
+        <h>Standard form controls with binding</h>
+        <p>Text area in a paragraph
+          <xforms:textarea ref="my:worksheet/my:questions/my:q0">
+            <xforms:label>Text area</xforms:label>
+          </xforms:textarea>
+        </p>
+        <list>
+          <item>Input in list item
+            <xforms:input ref="my:worksheet/my:questions/my:q1">
+              <xforms:label>Input</xforms:label>
+            </xforms:input>
+          </item>
+          <item>Select1 in list item
+            <xforms:select1 ref="my:worksheet/my:questions/my:q2">
+              <xforms:label>Select1</xforms:label>
+              <xforms:item>
+                <xforms:label>select1 label 1</xforms:label>
+                <xforms:value>A</xforms:value>
+              </xforms:item>
+              <xforms:item>
+                <xforms:label>select1 label 2</xforms:label>
+                <xforms:value>B</xforms:value>
+              </xforms:item>
+              <xforms:item>
+                <xforms:label>select1 label 3</xforms:label>
+                <xforms:value>C</xforms:value>
+              </xforms:item>
+              <xforms:item>
+                <xforms:label>select1 label 4</xforms:label>
+                <xforms:value>D</xforms:value>
+              </xforms:item>
+            </xforms:select1>
+          </item>
+        </list>
+        <p>Group with secret and select</p>
+        <xforms:group>
+          <xforms:label>Group</xforms:label>
+          <xforms:secret ref="my:worksheet/my:questions/my:q3">
+            <xforms:label>Secret</xforms:label>
+          </xforms:secret>
+          <xforms:select ref="my:worksheet/my:questions/my:q4">
+            <xforms:label>Select</xforms:label>
+            <xforms:item>
+              <xforms:label>select label 1</xforms:label>
+              <xforms:value>A</xforms:value>
+            </xforms:item>
+            <xforms:item>
+              <xforms:label>select label 2</xforms:label>
+              <xforms:value>B</xforms:value>
+            </xforms:item>
+            <xforms:item>
+              <xforms:label>select label 3</xforms:label>
+              <xforms:value>C</xforms:value>
+            </xforms:item>
+            <xforms:item>
+              <xforms:label>select label 4</xforms:label>
+              <xforms:value>D</xforms:value>
+            </xforms:item>
+          </xforms:select>
+        </xforms:group>
+      </section>
+      <!--Standard form controls with no binding-->
+      <section>
+        <h>Standard form controls with no binding</h>
+        <p>Text area in a paragraph
+          <xforms:textarea>
+            <xforms:label>Text area</xforms:label>
+          </xforms:textarea>
+        </p>
+        <list>
+          <item>Input in list item
+            <xforms:input>
+              <xforms:label>Input</xforms:label>
+            </xforms:input>
+          </item>
+          <item>Select1 in list item
+            <xforms:select1>
+              <xforms:label>Select1</xforms:label>
+              <xforms:item>
+                <xforms:label>select1 label 1</xforms:label>
+                <xforms:value>A</xforms:value>
+              </xforms:item>
+              <xforms:item>
+                <xforms:label>select1 label 2</xforms:label>
+                <xforms:value>B</xforms:value>
+              </xforms:item>
+              <xforms:item>
+                <xforms:label>select1 label 3</xforms:label>
+                <xforms:value>C</xforms:value>
+              </xforms:item>
+              <xforms:item>
+                <xforms:label>select1 label 4</xforms:label>
+                <xforms:value>D</xforms:value>
+              </xforms:item>
+            </xforms:select1>
+          </item>
+        </list>
+        <p>Group with secret and select</p>
+        <xforms:group>
+          <xforms:label>Group</xforms:label>
+          <xforms:secret>
+            <xforms:label>Secret</xforms:label>
+          </xforms:secret>
+          <xforms:select>
+            <xforms:label>Select</xforms:label>
+            <xforms:item>
+              <xforms:label>select label 1</xforms:label>
+              <xforms:value>A</xforms:value>
+            </xforms:item>
+            <xforms:item>
+              <xforms:label>select label 2</xforms:label>
+              <xforms:value>B</xforms:value>
+            </xforms:item>
+            <xforms:item>
+              <xforms:label>select label 3</xforms:label>
+              <xforms:value>C</xforms:value>
+            </xforms:item>
+            <xforms:item>
+              <xforms:label>select label 4</xforms:label>
+              <xforms:value>D</xforms:value>
+            </xforms:item>
+          </xforms:select>
+        </xforms:group>
+      </section>
+    </bodymatter>
+  </body>
+</document>

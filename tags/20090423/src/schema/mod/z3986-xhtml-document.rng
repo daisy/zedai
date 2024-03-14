@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+    <x:h1>Z3986 Document Module</x:h1>
+    <x:p>This module is the Z39.86 revised XHTML2 Document Module.</x:p>
+    
+    <include href="xhtml-document-2.rng">
+    	
+    	<define name="xhtml.html.attlist">
+    	    <!-- make xml:lang required on root -->
+    		<ref name="xml.lang.attrib" />
+    		<optional>
+        	  <ref name="xhtml.version.attrib" />
+        	</optional>
+        	<optional>
+        	  <ref name="xml.base.attrib" />
+        	</optional>  
+    		<ref name="xhtml.Core.attrib"/>
+    		<ref name="xhtml.Bidi.attrib" />
+    	</define>
+    	
+    	<!-- redefine body to be a strict section -->
+    	<define name="xhtml.body.content">
+    	  <ref name="xhtml.section.strict.model"/>
+    	</define>  
+    	
+    	<!-- TODO Optionalize head/title? -->
+    	<define name="xhtml.head.content">
+    	  <optional>
+            <ref name="xhtml.title"/>
+          </optional>  
+          <zeroOrMore>
+            <choice>
+              <ref name="xhtml.head.misc"/>
+            </choice>
+          </zeroOrMore>
+        </define>
+        		
+    </include>
+    
+</grammar>

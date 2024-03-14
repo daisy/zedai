@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar 
+  xmlns="http://relaxng.org/ns/structure/1.0" 
+  xmlns:x="http://www.w3.org/1999/xhtml">
+  
+  <include href="mathml3-strict.rng">
+    <!-- override Common to make use of xml:id -->  
+    <define name="MathML.Common.attrib">
+      <optional>
+	    <ref name="xmlid.attrib"/>
+      </optional>
+      <optional>
+        <attribute name="xref"/>
+      </optional>
+      <zeroOrMore>
+        <ref name="non-mathml-attribs"/>
+      </zeroOrMore>
+    </define>  
+    
+    <!-- override the any attrib hook -->
+    <define name="non-mathml-attribs">
+      <notAllowed/>
+    </define>
+    
+    <!-- override the anyElement (or datatype conflicts) to use host grammar -->
+    <define name="anyElement">
+      <choice>
+        <ref name="xhtml.Text.class"/>
+        <ref name="xhtml.Structural.nosection.class" />     
+      </choice>
+    </define>
+  </include>
+    
+  <include href="mathml3-presentation.rng" />
+    
+  <define name="ContInPres" combine="choice">
+    <ref name="ContExp"/>
+  </define>
+  
+</grammar>

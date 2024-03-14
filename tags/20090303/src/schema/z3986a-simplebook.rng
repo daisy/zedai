@@ -1,0 +1,115 @@
+<grammar ns="http://www.w3.org/2002/06/xhtml2/"
+         xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+         
+  <x:h1>RELAX NG schema for Z39.86-2010 Part A Simple Book Profile, building on XHTML 2.0</x:h1>
+  <x:p>This is a driver, modified by DAISY, originating from the XHTML2 default driver.</x:p>
+
+  <!-- for now include genericdocument as below, to avoid duplication 
+  		of work when fixing general XHTML2 stuff -->
+  		
+  <include href="z3986a-genericdocument.rng">
+      	
+      	<!-- replace x:body with d:book -->      	
+      	<define name="body">
+      		<ref name="z3986.book" />
+    	</define>
+    	  	
+    	<!-- remove x:head/x:title -->    	
+    	<define name="head.content">      		
+      		<zeroOrMore>
+        		<choice>
+          			<ref name="head.misc"/>
+        		</choice>
+      		</zeroOrMore>
+    	</define>    	
+    	
+    	<!-- add an optional leading pagebreak to the default
+    	strict section model -->    	
+    	<define name="section.strict.prehead.slot" combine="interleave">
+    		<optional>
+    			<ref name="z3986.pagebreak"/>
+    		</optional>	
+    	</define>
+    			
+		<!-- ps20081117: Remove definitions not applicable to the Leisure Book Profile -->
+	      <define name="cite">
+	        <notAllowed />
+	      </define>
+	      <define name="code">
+	        <notAllowed />
+	      </define>
+	      <define name="dfn">
+	        <notAllowed />
+	      </define>
+	      <define name="kbd">
+	        <notAllowed />
+	      </define>
+	      <define name="samp">
+	        <notAllowed />
+	      </define>
+	      <define name="var">
+	        <notAllowed />
+	      </define>	      
+    	
+    	<!-- remove nl entirely -->
+		   <define name="List.class">
+		     <choice>
+		       <ref name="dl"/>		      
+		       <ref name="ol"/>
+		       <ref name="ul"/>
+		     </choice>
+		   </define> 
+		   
+		<!-- allow pagebreak as a sibling to tr -->
+		<define name="tr">
+		  <optional>
+		  	<ref name="z3986.pagebreak"/>
+		  </optional>
+	      <element name="tr">
+	        <ref name="tr.attlist"/>
+	        <oneOrMore>
+	          <choice>
+	            <ref name="th"/>
+	            <ref name="td"/>
+	          </choice>
+	        </oneOrMore>
+	      </element>
+    	</define>   
+    	
+    	<define name="lists.extra" combine="interleave">
+    		<optional>
+    			<ref name="z3986.pagebreak"/>
+    		</optional>	
+    	</define>
+    	
+  </include>
+  
+  <define name="l.class" combine="choice">
+  		<ref name="z3986.noteref"/>  
+		<ref name="z3986.word"/>  
+		<ref name="z3986.pagebreak"/>
+  </define>
+
+  <define name="quote.class" combine="choice">
+	<ref name="z3986.noteref"/>  
+	<ref name="z3986.word"/>  
+	<ref name="z3986.pagebreak"/>
+  </define>
+    
+  <x:h2>The Book module</x:h2>
+  <include href="mod/z3986-book.rng" />
+    
+  <x:h2>The Pagebreak module</x:h2>
+  <include href="mod/z3986-pagebreak.rng" />
+    
+  <x:h2>The TOC module</x:h2>
+  <include href="mod/z3986-toc.rng" />
+  
+  <x:h2>The Cover module</x:h2>
+  <include href="mod/z3986-cover.rng" />  
+
+  <x:h2>The Attribution module</x:h2>
+  <include href="mod/z3986-attribution.rng" />  
+         
+</grammar>         

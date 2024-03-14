@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://www.daisy.org/z3986/2010/" 
+    xmlns:z3986dec="http://www.daisy.org/z3986/2010/vocab/decl/#"
+    xml:lang="en">
+    <head>
+        <meta rel="z3986dec:profile"
+            resource="http://www.daisy.org/z3986/2010/auth/profiles/genericdocument/1.0/"/>
+        <mods xmlns="http://www.loc.gov/mods/v3" version="3.3">
+            <originInfo>
+                <publisher>DAISY Consortium</publisher>
+                <dateCreated>2009-05-29</dateCreated>
+            </originInfo>
+            <titleInfo>
+                <title>A simple document</title>
+            </titleInfo>
+            <identifier type="uid">example1</identifier>
+        </mods>
+    </head>
+    <body>
+        <h>Hello, world.</h>
+    </body>
+</document>

@@ -1,0 +1,81 @@
+<project name="build-dist" default="build-dist-all" basedir=".">
+	
+	<import file="common.xml"/>
+	
+	<!-- base dirs -->
+	<property name="build.dist.dir" value="${build.dir}/dist" />
+	<property name="test.z3986a.dir" value="${test.dir}/z3986a" />	
+	<!-- spec: docbook source paths -->
+	<property name="spec.part-b.docbook.path" value="${src.spec.dir}/Z3986-2011B.xml" />
+	<!-- feature names -->
+	<property name="dist.feature.machinename.A" value="A" />
+	<property name="dist.feature.nicename.A" value="Feature A" />
+	<property name="dist.feature.machinename.B" value="B" />
+	<property name="dist.feature.nicename.B" value="B Feature" />
+	<propertyset id="dist-feature-machinenames">
+		<propertyref prefix="dist.feature.machinename."/>
+	</propertyset>
+	<!-- profile names -->
+	<property name="dist.profile.nicename.A" value="A Profile" />
+	<property name="dist.profile.machinename.A" value="A" />
+	<property name="dist.profile.nicename.B" value="B Profile" />
+	<property name="dist.profile.machinename.B" value="B" />
+	<propertyset id="dist-profile-machinenames">
+		<propertyref prefix="dist.profile.machinename."/>
+	</propertyset>
+	
+	<target name="build-dist-all" description="build everything" depends="clean-build-dir-dist, validate-src-rng-schemas">
+		<mkdir dir="${build.dir}" />
+		
+		<!-- <antcall target="copy-schemas" /> TODO -->
+		<antcall target="build-vocabs" /> 
+		<copy file="${util.dir}/css/common.css" tofile="${build.dir}/z3986-2011.css" />
+		<!-- <antcall target="build-dist-dir-indices" /> TODO -->
+		<antcall target="build-main-index" />
+		<antcall target="build-dist-spec"/>
+
+	</target>
+	
+	<target name="build-dist-spec" depends="validate-dist-spec-sources" description="validates and builds docbook 5 sources">
+		
+		<delete file="${spec.part-b.output.path}" quiet="true"/>
+		<delete file="${build.dir}/z3986.css" quiet="true"/>
+		
+		<!-- spec: create the HTML version of the docbook5 source -->
+		<saxon9-cmd-dbxi in="${spec.part-b.docbook.path}" out="${spec.part-b.output.path}" 
+			style="${util.dir}/docbook/xslt/ZedAI_docbook2xhtml.xsl"/>
+
+		<!-- copy the docbook html css -->
+		<copy file="${util.dir}/docbook/html-css/docbook.css" tofile="${build.dir}/z3986.css" />
+
+	</target>
+
+	<target name="build-dist-dir-indices">
+		<property name="dist-features-index-title" value="${z3986.part.b.nicename.prefix}Feature Catalog" />
+		<property refid="dist-feature-machinenames" name="features"/>
+		<build-profile-or-feature-dir-index out="${build.dist.dir}/features" 
+			list="${features}" title="${dist-features-index-title}" 
+				nicename-prefix="${z3986.part.b.nicename.prefix}"/>
+
+		<property name="dist-profiles-index-title" value="${z3986.part.b.nicename.prefix}Profile Catalog" />
+		<property refid="dist-profile-machinenames" name="profiles"/>
+		<build-profile-or-feature-dir-index out="${build.dist.dir}/profiles" 
+			list="${profiles}" title="${dist-profiles-index-title}" 
+				nicename-prefix="${z3986.part.b.nicename.prefix}"/>
+
+	</target>
+	
+	<target name="validate-dist-spec-sources" description="validate the docbook spec doc sources">
+		<jing rngfile="${util.dir}/docbook/rng/docbookxi.rng" file="${spec.part-b.docbook.path}" checkid="true" failonerror="true" />
+	</target>
+	
+	<target name="clean-build-dir-dist" description="clean build dir dist">
+		<!-- since we are cohabitatet with ai, we cant do a catch-all delete -->
+		<!-- delete build/dist -->
+		<delete failonerror="false" includeemptydirs="true">
+			<fileset dir="${build.dist.dir}" />
+		</delete>
+		<mkdir dir="${build.dist.dir}" />			
+	</target>
+	
+</project>

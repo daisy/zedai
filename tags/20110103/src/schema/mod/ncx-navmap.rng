@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" ns="http://www.daisy.org/z3986/2005/ncx/"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="navMap">The navMap module</title>
+        <annotation annotates="/">
+            <para role="desc-main">This module defines the {[[#ncx.navmap]]} element for representing hierarchical lists of navigation points.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="ncx-attrib.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <author>
+            <personname>Matt Garrish</personname>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>
+                This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is 
+                available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">
+                    http://creativecommons.org/licenses/by/3.0/</link>
+            </para>
+            <para>
+                Full permission is granted to re-use this module and its associated documentation in any way 
+                and for any purpose provided the DAISY copyright notice and link to the Creative Commons license 
+                are retained. Modifications to the source are permitted so long as the author clearly indicates that 
+                the module is a derivation of the original.
+            </para>
+            <para>
+                The copyright holders make no representations about the suitability of this module for any purpose.
+                The module is provided "as is" without warranty of any kind, expressed or implied.
+            </para>
+            <para>
+                The Z3986 Advisory Committee is responsible for the maintenance of this module. All questions,
+                suggestions, bugs and other issues related to this module should be direct to the Committee. 
+                Contact information is available from the DAISY website at 
+                <link xlink:href="http://www.daisy.org">www.daisy.org</link>.
+            </para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2010-08-01</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    
+
+    <define name="ncx.navmap">
+        <element name="navMap">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="navMap">The {navMap} element</title>
+                <para role="desc-main">
+                    The {navMap} element represents the primary navigational section, and includes
+                    the list of structural navigation points.</para>
+                <para role="desc-sub"></para>
+                <para role="desc-sub">The {[[#ncx.role.attrib]]} attribute optionally expresses nature of the list.</para>
+                <synopsis role="def-context">{[[#ncx.ncx]]}</synopsis>
+                <synopsis role="def-content">{[[#ncx.label]]*, [[#ncx.target.tree]]+}</synopsis>
+                <synopsis role="def-attlist">{[[#ncx.role.attrib]]}</synopsis>
+            </annotation>
+            <ref name="ncx.navmap.attlist"/>
+            <ref name="ncx.navmap.content"/>
+        </element>
+    </define>
+    
+    <define name="ncx.navmap.attlist" combine="interleave">
+        <ref name="ncx.Common.attrib"/>
+        <ref name="ncx.role.attrib"/>
+    </define>
+    
+    <define name="ncx.navmap.content">
+        <zeroOrMore>
+            <ref name="ncx.label"/>
+        </zeroOrMore>    
+        <oneOrMore>
+            <ref name="ncx.target.tree"/>
+        </oneOrMore>
+    </define>
+    
+</grammar>

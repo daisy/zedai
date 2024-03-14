@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="caption">The caption module</dcterms:title>
+      <dcterms:description>This module defines the [[#z3986.caption]] element for adding titles and/or explanatory information to elements.</dcterms:description>
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}"/>
+      <dcterms:creator>Markus Gylling</dcterms:creator>
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng"/>
+      <dcterms:requires rdf:resource="z3986-linking.rng"/>
+    </rdf:Description>
+  </rdf:RDF>
+
+  <div>
+    
+    <define name="z3986.caption">
+      <element name="caption">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="caption">The {caption} element</dcterms:title>
+            <dcterms:description>The {caption} element represents a short explanation or description
+              accompanying a component of a publication. Captions most often occur in conjunction with
+              illustrations, photographs, tables and diagrams.</dcterms:description>
+            <z:info>The {[[#z3986.ref.attrib]]} attribute identifies the component(s) to which
+              the caption applies.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>{[[#z3986.Block.class]]}</z:context>
+            <z:content>{(z3986.Block.class)+ | (text | z3986.Text.class | z3986.Phrase.class)+}</z:content>
+            <z:attlist z:alterability="The attribute model must allow the {[[#z3986.ref.attrib ref]]} attribute.">{[[#z3986.Block.attrib]], [[#z3986.ref.attrib]]}</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.caption.attlist"/>
+        <ref name="z3986.caption.content"/>
+        <sch:rule context="default:caption">
+          <sch:assert test="not(descendant::default:caption)"
+            >The {caption} element must not have {caption} element descendants.</sch:assert>
+          <sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0"
+            >The {caption} element must neither be empty nor contain only whitespace.</sch:assert>
+        </sch:rule>
+      </element>
+    </define>
+
+    <define name="z3986.caption.attlist">
+      <ref name="z3986.Block.attrib"/>
+      <ref name="z3986.ref.attrib"/>
+    </define>
+
+    <define name="z3986.caption.content">
+      <ref name="z3986.Flow.choice.model"/>
+    </define>
+    
+  </div>
+  
+  
+
+  <div>
+    <a:documentation>caption - default content model contribution</a:documentation>
+
+    <define name="z3986.Block.core.class" combine="choice">
+      <ref name="z3986.caption"/>
+    </define>
+
+  </div>
+
+</grammar>

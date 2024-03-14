@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar  xmlns="http://relaxng.org/ns/structure/1.0"
+  ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+  
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="separator">The separator module</dcterms:title>
+      <dcterms:description>This module defines the [[#z3986.separator]] element for indicating context breaks in the narrative flow of a document.</dcterms:description>      
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}" />
+      <dcterms:creator>Markus Gylling</dcterms:creator>      
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng" />
+    </rdf:Description>
+  </rdf:RDF>
+  
+  <div>
+
+    <define name="z3986.separator">
+      <element name="separator">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="separator">The {separator} element</dcterms:title>
+            <dcterms:description>
+              The {separator} element represents a contextual break in the document content, which may appear as blank lines 
+              or gaps between content, or may be designated by three asterisks or other types of glyphs.
+            </dcterms:description>
+            <z:info absdef-only="true">
+              Refer to the {rend:symbol} attribute for more information on how to represent markers.
+            </z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>[[#z3986.Block.class]]</z:context>
+            <z:content /> <!-- by default it's empty, note that the rend feature changes this -->            
+            <z:attlist>[[#z3986.Block.attrib]]</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.separator.attlist"/>
+        <ref name="z3986.separator.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.separator.attlist" combine="interleave">
+      <ref name="z3986.Block.attrib"/>      
+    </define>
+
+    <define name="z3986.separator.content">
+      <empty/>
+    </define>
+
+  </div>
+
+  <div>
+    <a:documentation>separator - default content model contribution</a:documentation>
+
+    <define name="z3986.Block.core.base.class" combine="choice">
+      <ref name="z3986.separator"/>
+    </define>
+
+  </div>
+
+</grammar>

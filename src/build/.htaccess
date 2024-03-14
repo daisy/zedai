@@ -1,0 +1,8 @@
+# effects subdirectories unless overridden
+DirectoryIndex index.html			
+Options -Indexes
+AddType application/xml rng
+AddType application/xml sch
+AddType application/xml xsd
+AddType application/xml nvdl
+		

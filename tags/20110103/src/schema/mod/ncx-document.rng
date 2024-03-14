@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" ns="http://www.daisy.org/z3986/2005/ncx/"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="document">The document module</title>
+        <annotation annotates="/">
+            <para role="desc-main">This module defines the root {[[#ncx.ncx]]} element common to all compliant NCX profiles.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="ncx-attrib.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <author>
+            <personname>Matt Garrish</personname>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>
+                This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is 
+                available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">
+                    http://creativecommons.org/licenses/by/3.0/</link>
+            </para>
+            <para>
+                Full permission is granted to re-use this module and its associated documentation in any way 
+                and for any purpose provided the DAISY copyright notice and link to the Creative Commons license 
+                are retained. Modifications to the source are permitted so long as the author clearly indicates that 
+                the module is a derivation of the original.
+            </para>
+            <para>
+                The copyright holders make no representations about the suitability of this module for any purpose.
+                The module is provided "as is" without warranty of any kind, expressed or implied.
+            </para>
+            <para>
+                The Z3986 Advisory Committee is responsible for the maintenance of this module. All questions,
+                suggestions, bugs and other issues related to this module should be direct to the Committee. 
+                Contact information is available from the DAISY website at 
+                <link xlink:href="http://www.daisy.org">www.daisy.org</link>.
+            </para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2010-08-01</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    
+    <start>
+        <ref name="ncx.ncx"/>
+    </start>
+    
+    <define name="ncx.ncx">
+        <element name="ncx">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="ncx">The {ncx} element</title>
+                <para role="desc-main">The {ncx} element is the root element of all NCX profiles.</para>
+                <para role="desc-sub">
+                    The content of the {ncx} varies depending on the NCX type. It may only allow {[[#ncx.target.list]]}
+                    elements in the most basic instances or may permit the {[[#ncx.navmap]]} element for representing
+                    hierarchically structured navigation trees.
+                </para>
+                <synopsis role="def-context">Document element</synopsis>
+                <synopsis role="def-content">Refer to NCX profile driver files</synopsis>
+                <synopsis role="def-attlist">{[[#ncx.id.attrib]]}?, {[[#ncx.xml.lang.attrib]]}</synopsis>
+            </annotation>
+            <ref name="ncx.ncx.attlist"/>
+            <ref name="ncx.ncx.content"/>
+        </element>
+    </define>
+    
+    <define name="ncx.ncx.attlist" combine="interleave">
+        <ref name="ncx.Common.attrib"/>
+        <ref name="ncx.xml.lang.attrib"/>
+        <optional>
+            <ref name="ncx.dir.attrib"/>
+        </optional>
+    </define>
+    
+    <define name="ncx.ncx.content">
+        <empty/>
+    </define>
+</grammar>

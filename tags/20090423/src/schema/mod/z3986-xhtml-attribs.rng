@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z3986 Common Attribute Collections Module</x:h1>  
+  <x:p>This module is the Z3986 cut-down equivalent of the XHTML2 Attribute Collections Module.</x:p>
+    
+  <div>
+    <x:h2>Core Attributes Module</x:h2>
+    <include href="xhtml-core-attrib-2.rng">
+      <!-- remove @title and @layout -->
+	  <define name="xhtml.Core.attrib">
+	    <optional>
+	      <ref name="xmlid.attrib"/>
+	    </optional>    
+	    <optional>
+	      <ref name="xhtml.class.attrib"/>
+	    </optional>
+	  </define>
+    </include>
+  </div>
+
+  <div>
+    <x:h2>Internationalization Attribute Module</x:h2>
+    <include href="xhtml-i18n-attrib-2.rng" />
+  </div>
+
+  <div>
+    <x:h2>Bi-directional Text Collection</x:h2>
+    <include href="xhtml-bidi-attrib-2.rng"/>
+  </div>
+
+  <div>
+    <x:h2>Metainformation Attributes Module</x:h2>
+    <include href="xhtml-meta-attrib-2.rng" />
+  </div>
+
+  <div>
+    <x:h2>Role Attribute Module</x:h2>
+    <include href="xhtml-role-attrib-2.rng"/>
+  </div>
+
+  <div>
+    <x:h2>Hypertext Attributes Module</x:h2>
+    <include href="xhtml-hypertext-attrib-2.rng">
+      <!-- dont contribute to xhtml.Common -->
+     <define name="xhtml.Common.attrib" combine="interleave">
+       <empty/>
+     </define>     
+    </include>
+  </div>
+
+  <div>
+    <x:h2>Embedding Attributes Module</x:h2>  
+    <include href="xhtml-embed-attrib-2.rng">
+      <!-- dont contribute to xhtml.Common -->
+      <define name="xhtml.Common.attrib" combine="interleave">
+    	<empty/>
+  	  </define>
+    </include>
+  </div>
+  
+</grammar>

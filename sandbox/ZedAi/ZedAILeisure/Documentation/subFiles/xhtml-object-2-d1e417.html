@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Relax NG schema module</title>
+      <link rel="stylesheet" type="text/css" href="../css/ProfileDocumentation.css" />
+   </head>
+   <body>
+      <h1 class="title">The DAISY Leisure Profile</h1>
+      
+      
+      <h1 id="d25e3" class="xhtml">Object Module</h1>
+      
+      
+      <p>Note. Also include the Caption Module when this module is used.</p>
+      
+      
+      
+      <h2 id="d25e11" class="xhtml">The object element</h2>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">object</span>
+         
+         <div class="rng"><span class="rng">element</span>: <span class="name">object</span>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="object.attlist.html">object.attlist</a></div>
+            
+            <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="caption.html">caption</a></div>
+               
+            </div>
+            
+            <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="standby.html">standby</a></div>
+               
+            </div>
+            
+            <div class="rng"><span class="rng">zeroOrMore</span>:  Zero or more of: 
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="param.html">param</a></div>
+               
+            </div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Flow.model.html">Flow.model</a></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">object.attlist</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Common.attrib.html">Common.attrib</a></div>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">archive</span>
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="URIs.datatype.html">URIs.datatype</a></div>
+               
+            </div>
+            
+         </div>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">content-length</span>
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Number.datatype.html">Number.datatype</a></div>
+               
+            </div>
+            
+         </div>
+         
+         <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+            
+            <div class="rng"><span class="rng">attribute</span>: <span class="name">declare</span>
+               
+               <div class="rng"><span class="rng">value</span>: declare
+               </div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      
+      
+      <h2 id="d25e72" class="xhtml">The standby element</h2>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">standby</span>
+         
+         <div class="rng"><span class="rng">element</span>: <span class="name">standby</span>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="standby.attlist.html">standby.attlist</a></div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Text.model.html">Text.model</a></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">standby.attlist</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Common.attrib.html">Common.attrib</a></div>
+         
+      </div>
+      
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Text.class</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="object.html">object</a></div>
+         
+      </div>
+      
+      
+   </body>
+</html>

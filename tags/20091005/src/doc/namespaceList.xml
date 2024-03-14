@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="namespaceList.rng" type="xml"?>
+<namespaces xmlns="http://www.daisy.org/ns/z3986/2008/namespacelist/">
+    <namespace prefix="default" owner="dc" feature="no">http://www.daisy.org/z3986/2010/</namespace>
+    <namespace prefix="xml" owner="w3c" feature="no">http://www.w3.org/XML/1998/namespace</namespace>
+    <namespace prefix="x" owner="w3c" feature="no">http://www.w3.org/1999/xhtml</namespace>
+    <namespace prefix="x2" owner="w3c" feature="no">http://www.w3.org/2002/06/xhtml2/</namespace>
+    <namespace prefix="xsi" owner="w3c" feature="no">http://www.w3.org/2001/XMLSchema-instance</namespace>
+    <namespace prefix="xs" owner="w3c" feature="no">http://www.w3.org/2001/XMLSchema</namespace>
+    <namespace prefix="mods" owner="w3c	" feature="no">http://www.loc.gov/mods/v3</namespace>
+    
+    <namespace prefix="xforms" owner="w3c" feature="yes">http://www.w3.org/2002/xforms/</namespace>
+    <namespace prefix="its" owner="w3c" feature="yes" featureNicename="ITS Ruby">http://www.w3.org/2005/11/its</namespace>
+    <namespace prefix="m" owner="w3c" feature="yes" featureNicename="Mathematical notation (MathML)">http://www.w3.org/1998/Math/MathML</namespace>
+    <namespace prefix="sel" owner="dc" feature="yes" featureNicename="Content Selection">http://www.daisy.org/z3986/2010/auth/features/select/#</namespace>
+    <namespace prefix="ssml" owner="dc" feature="yes" featureNicename="SSML (Speech Synthesiser Markup Language) Integration">http://www.w3.org/2001/10/synthesis</namespace>
+    <namespace prefix="rend" owner="dc" feature="yes" featureNicename="Source Rendition">http://www.daisy.org/z3986/2010/auth/features/rend/</namespace>
+        
+    <namespace prefix="xlink" owner="w3c" feature="no">http://www.w3.org/1999/xlink</namespace>
+             
+    <namespace prefix="my" owner="dc" feature="no">http://www.daisy.org/z3986/2010/xforms/instance</namespace>      
+    <namespace prefix="d" owner="dc" feature="no">http://www.daisy.org/ns/z3986/2008/</namespace>
+    <namespace prefix="dm" owner="dc" feature="yes" featureNicename="The Dummy Feature">http://www.daisy.org/ns/z3986/2008/dummy</namespace>
+    <namespace prefix="rdf" owner="dc" feature="no">http://www.w3.org/1999/02/22-rdf-syntax-ns</namespace>
+
+</namespaces>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml">
+
+    <x:h1>The xhtml2 + poem module</x:h1>
+
+    <x:p>Allow <x:span class="markup">d:poem</x:span> as a child of the <x:span class="markup">section</x:span> element.</x:p>
+    <define name="section.model" combine="interleave">
+        <zeroOrMore>
+            <ref name="Daisy.poem"/>
+        </zeroOrMore>
+    </define>
+    
+    <x:p>Require one or more <x:span class="markup">l</x:span> as children of the <x:span class="markup">d:stanza</x:span> element.</x:p>
+    <define name="Daisy.stanza.content" combine="interleave">
+        <oneOrMore>
+            <ref name="l"/>
+        </oneOrMore>
+    </define>
+</grammar>

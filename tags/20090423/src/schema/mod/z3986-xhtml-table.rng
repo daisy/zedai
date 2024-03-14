@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+    <x:h1>Z3986 Table Module</x:h1>
+    
+    <include href="xhtml-table-2.rng" />
+       
+    <define name="xhtml.tr.content" combine="interleave">
+      <!-- interleave with table.extra -->	  
+	  <ref name="z3986.table.extra.model"/>	    
+	</define>
+    
+    <define name="xhtml.tr" combine="interleave">
+      <!-- interleave with table.extra -->	  
+	  <ref name="z3986.table.extra.model"/>	    
+	</define>
+		    	      
+	<!-- a class to contribute elements inside and outside tr -->      
+    <define name="z3986.table.extra.class">
+      <empty/>
+    </define>
+    
+    <define name="z3986.table.extra.model">
+      <zeroOrMore>        
+        <ref name="z3986.table.extra.class"/>        
+      </zeroOrMore>
+    </define>
+    
+    <define name="xhtml.table.simple.content">
+      <optional>
+        <ref name="xhtml.caption"/>
+      </optional>
+      <optional>
+        <ref name="xhtml.summary"/>
+      </optional>
+      <oneOrMore>
+        <ref name="xhtml.tr"/>
+      </oneOrMore>
+    </define>
+    
+           
+</grammar>  

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+         xmlns:x="http://www.w3.org/1999/xhtml"
+         xmlns:xsdp="http://www.daisy.org/ns/rng-preprocess/xsd">
+
+  <x:h1>The Z3986 Book module</x:h1>
+
+  <define name="z3986.book.content">
+    <optional>
+      <ref name="z3986.book.content.cover.slot"/>
+    </optional>
+    <ref name="z3986.frontmatter"/>
+    <ref name="z3986.bodymatter"/>
+    <optional>
+      <ref name="z3986.backmatter"/>
+    </optional>
+  </define>
+
+  <define name="z3986.book.content.cover.slot">
+    <notAllowed/>
+  </define>
+
+  <div>
+    <x:h2>The frontmatter element</x:h2>
+    <x:div id="z3986.frontmatter">
+      <x:p class="description">
+			The <x:code>frontmatter</x:code> element represents the initial/preliminary 
+			part of a book, and typically contains sections such as foreword, preface,
+			acknowledgements, introduction, dedications, prologue, and table of contents.	      
+	  </x:p>
+    </x:div>
+
+    <define name="z3986.frontmatter">
+      <element name="frontmatter">      
+        <ref name="z3986.frontmatter.attlist"/>
+        <ref name="z3986.frontmatter.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.frontmatter.attlist">
+      <ref name="z3986.Structural.attrib"/>
+    </define>
+
+    <define name="z3986.frontmatter.content">
+      <oneOrMore>      
+        <ref name="z3986.section.frontmatter"/>
+      </oneOrMore>
+    </define>
+    
+    <define name="z3986.section.frontmatter">
+      <element name="section">
+        <ref name="z3986.section.attlist" />
+        <ref name="z3986.section.frontmatter.content"/>
+      </element>
+    </define>
+    
+    <define name="z3986.section.frontmatter.content" xsdp:replace="z3986.section.frontmatter.content.xsd">
+      <choice>
+        <oneOrMore>
+          <ref name="z3986.section.frontmatter" />
+        </oneOrMore>
+        <group>
+          <interleave>
+            <ref name="z3986.section.extra"/>
+            <zeroOrMore>
+              <choice>
+                <ref name="z3986.section.frontmatter.class"/>
+              </choice>  
+            </zeroOrMore>
+          </interleave>
+          <zeroOrMore>
+            <ref name="z3986.section.frontmatter" />
+          </zeroOrMore>
+        </group>
+      </choice>
+    </define>
+
+    <define name="z3986.section.frontmatter.content.xsd">
+     <!-- a variant of z3986.section.content,
+        suitable for automated XSD transformation -->   
+        
+      <interleave>
+        <zeroOrMore>
+          <choice>
+            <ref name="z3986.section.frontmatter.class"/>
+          </choice>  
+        </zeroOrMore>
+        <ref name="z3986.section.extra"/>
+        <zeroOrMore>
+            <ref name="z3986.section.frontmatter" />
+        </zeroOrMore>        
+      </interleave>
+    </define>   
+    
+    <define name="z3986.section.frontmatter.class" combine="choice">
+      <ref name="z3986.Structural.class" /> 
+    </define> 
+  </div>
+
+
+  <div>
+    <x:h2>The bodymatter element</x:h2>
+    <x:div id="z3986.bodymatter">
+      <x:p class="description">
+			The <x:code>bodymatter</x:code> element represents the text proper of a book, 
+			as contrasted with preliminary material in <x:code>frontmatter</x:code> and 
+			supplementary information in <x:code>backmatter</x:code>.      
+	  </x:p>
+    </x:div>
+  
+    <define name="z3986.bodymatter">
+      <element name="bodymatter">
+        <ref name="z3986.bodymatter.attlist"/>
+        <ref name="z3986.bodymatter.content"/>
+      </element>
+    </define>
+  
+    <define name="z3986.bodymatter.attlist">
+      <ref name="z3986.Structural.attrib"/>
+    </define>
+
+    <define name="z3986.bodymatter.content">
+      <oneOrMore>
+        <ref name="z3986.section"/>
+      </oneOrMore>
+    </define>
+  </div>
+
+  <div>
+    <x:h2>The backmatter element</x:h2>
+    <x:div id="z3986.backmatter">
+      <x:p class="description">
+		The <x:code>backmatter</x:code> element represents supplementary 
+		material such as appendices, glossaries, bibliographies, and indices. 
+      </x:p>
+    </x:div>
+  
+    <define name="z3986.backmatter">
+      <element name="backmatter">      
+        <ref name="z3986.backmatter.attlist"/>
+        <ref name="z3986.backmatter.content"/>
+      </element>
+    </define>
+  
+    <define name="z3986.backmatter.attlist">
+      <ref name="z3986.Structural.attrib"/>
+    </define>
+
+    <define name="z3986.backmatter.content">
+      <oneOrMore>
+        <ref name="z3986.section"/>
+      </oneOrMore>
+    </define>  
+  </div>
+ 
+ 
+</grammar>

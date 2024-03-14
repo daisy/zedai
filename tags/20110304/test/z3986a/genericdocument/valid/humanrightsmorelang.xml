@@ -1,0 +1,1335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="../../../../src/schema/z3986a-genericdocument.rng" type="xml"?>
+<document profile="http://www.daisy.org/z3986/2011/vocab/profiles/default/" xmlns="http://www.daisy.org/ns/z3986/authoring/" xml:lang="en-us"
+    xmlns:z3986="http://www.daisy.org/z3986/2011/vocab/decl/#"
+    xmlns:res="http://www.daisy.org/z3986/2011/vocab/resourcedirectory/#"
+    xmlns:sel="http://www.daisy.org/ns/z3986/authoring/features/select/">
+    <head>
+        <meta rel="z3986:profile" resource="http://www.daisy.org/z3986/2011/auth/profiles/genericdocument/0.5/">
+            <meta property="z3986:name" content="genericdocument"/>
+            <meta property="z3986:version" content="0.5"/>
+            
+            <meta rel="z3986:feature" resource="http://www.daisy.org/z3986/2011/auth/features/select/0.3/">
+                <meta property="z3986:name" content="select"/>
+                <meta property="z3986:version" content="0.3"/>
+            </meta>
+        </meta>
+        <meta property="dcterms:identifier" content="com.googlecode.zednext.humanrights.select.lang"/>
+        <meta property="dcterms:publisher" content="CSU"/>
+        <meta property="dcterms:modified" content="2010-03-27T15:50:05Z"/>
+        <meta about="http://www.daisy.org/z3986/2011/auth/features/select/functionSets/#targetFunctionSet" 
+            property="res:prefix" content="target" />
+    </head>
+    <body>
+        <section>
+            <h>
+                <sel:select>
+                    <sel:when expr="target:language('es')">Declaración Universal de Derechos Humanos</sel:when>
+                    <sel:when expr="target:language('fr')">Déclaration universelle des droits de l'homme</sel:when>
+                    <sel:otherwise>The Universal Declaration of Human Rights</sel:otherwise>
+                </sel:select>
+            </h>
+            <section>
+                <sel:select>
+                    <sel:when expr="target:language('es')">
+                        <quote>El 10 de diciembre de 1948, la Asamblea General de las Naciones
+                            Unidas aprobó y proclamó la Declaración Universal de Derechos Humanos,
+                            cuyo texto completo figura en las páginas siguientes. Tras este acto
+                            histórico, la Asamblea pidió a todos los Países Miembros que publicaran
+                            el texto de la Declaración y dispusieran que fuera
+                            &quot;distribuido, expuesto, leído y comentado en las escuelas y
+                            otros establecimientos de enseñanza, sin distinción fundada en la
+                            condición política de los países o de los territorios&quot;.</quote>
+                    </sel:when>
+                    <sel:when expr="target:language('fr')">
+                        <quote>Le 10 décembre 1948, les 58 Etats Membres qui constituaient alors
+                            l’Assemblée générale ont adopté la Déclaration universelle des droits de
+                            l’homme à Paris au Palais de Chaillot (résolution 217 A (III)). Pour
+                            commémorer son adoption, la Journée des droits de l'homme est célébrée
+                            chaque année le 10 décembre.</quote>
+                    </sel:when>
+                    <sel:otherwise>
+                        <quote> On December 10, 1948 the General Assembly of the United Nations
+                            adopted and proclaimed the Universal Declaration of Human Rights the
+                            full text of which appears in the following pages. Following this
+                            historic act the Assembly called upon all Member countries to publicize
+                            the text of the Declaration and &quot;to cause it to be
+                            disseminated, displayed, read and expounded principally in schools and
+                            other educational institutions, without distinction based on the
+                            political status of countries or territories.&quot;</quote>
+                    </sel:otherwise>
+                </sel:select>
+            </section>
+            <section>
+                <h>Useful Links</h>
+                <!--  
+             <ul>
+                <li><a href="http://www.unhchr.ch/html/menu6/1/univdec1.htm">Other language versions</a> </li>
+                <li> <a href="http://www.un.org/events/humanrights/2007/">Human Rights Day 10 December</a> </li>
+                <li> <a href="http://www.un.org/events/humanrights/udhr60/">60th Anniversary of the Universal Declaration of Human Rights</a></li>
+            </ul> -->
+            </section>            
+            <section>
+                <h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">PREÁMBULO</sel:when>
+                        <sel:when expr="target:language('fr')">Préambule</sel:when>
+                        <sel:otherwise>PREAMBLE</sel:otherwise>
+                    </sel:select>
+                </h>
+                <sel:select>
+                    <sel:when expr="target:language('es')">
+                        <p> Considerando que la libertad, la justicia y la paz en el mundo tienen
+                            por base el reconocimiento de la dignidad intrínseca y de los derechos
+                            iguales e inalienables de todos los miembros de la familia humana; </p>
+                        <p>Considerando que el desconocimiento y el menosprecio de los derechos
+                            humanos han originado actos de barbarie ultrajantes para la conciencia
+                            de la humanidad, y que se ha proclamado, como la aspiración más elevada
+                            del hombre, el advenimiento de un mundo en que los seres humanos,
+                            liberados del temor y de la miseria, disfruten de la libertad de palabra
+                            y de la libertad de creencias;</p>
+
+                        <p>Considerando esencial que los derechos humanos sean protegidos por un
+                            régimen de Derecho, a fin de que el hombre no se vea compelido al
+                            supremo recurso de la rebelión contra la tiranía y la opresión;</p>
+                        <p>Considerando también esencial promover el desarrollo de relaciones
+                            amistosas entre las naciones;</p>
+                        <p>Considerando que los pueblos de las Naciones Unidas han reafirmado en la
+                            Carta su fe en los derechos fundamentales del hombre, en la dignidad y
+                            el valor de la persona humana y en la igualdad de derechos de hombres y
+                            mujeres, y se han declarado resueltos a promover el progreso social y a
+                            elevar el nivel de vida dentro de un concepto más amplio de la
+                            libertad;</p>
+                        <p>Considerando que los Estados Miembros se han comprometido a asegurar, en
+                            cooperación con la Organización de las Naciones Unidas, el respeto
+                            universal y efectivo a los derechos y libertades fundamentales del
+                            hombre, y</p>
+                        <p>Considerando que una concepción común de estos derechos y libertades es
+                            de la mayor importancia para el pleno cumplimiento de dicho
+                            compromiso;</p>
+                        <p>
+                            <emph>LA ASAMBLEA GENERAL proclama la presente DECLARACIÓN UNIVERSAL DE
+                                DERECHOS HUMANOS</emph> como ideal común por el que todos los
+                            pueblos y naciones deben esforzarse, a fin de que tanto los individuos
+                            como las instituciones, inspirándose constantemente en ella, promuevan,
+                            mediante la enseñanza y la educación, el respeto a estos derechos y
+                            libertades, y aseguren, por medidas progresivas de carácter nacional e
+                            internacional, su reconocimiento y aplicación universales y efectivos,
+                            tanto entre los pueblos de los Estados Miembros como entre los de los
+                            territorios colocados bajo su jurisdicción.</p>
+                    </sel:when>
+                    <sel:when expr="target:language('fr')">
+                        <p><emph>Considérant</emph> que la reconnaissance de la dignité inhérente à
+                            tous les membres de la famille humaine et de leurs droits égaux et
+                            inaliénables constitue le fondement de la liberté, de la justice et de
+                            la paix dans le monde.</p>
+                        <p><emph>Considérant</emph> que la méconnaissance et le mépris des droits de
+                            l'homme ont conduit à des actes de barbarie qui révoltent la conscience
+                            de l'humanité et que l'avènement d'un monde où les êtres humains seront
+                            libres de parler et de croire, libérés de la terreur et de la misère, a
+                            été proclamé comme la plus haute aspiration de l'homme.</p>
+
+                        <p><emph>Considérant</emph> qu'il est essentiel que les droits de l'homme
+                            soient protégés par un régime de droit pour que l'homme ne soit pas
+                            contraint, en suprême recours, à la révolte contre la tyrannie et
+                            l'oppression.</p>
+                        <p><emph>Considérant</emph> qu'il est essentiel d'encourager le
+                            développement de relations amicales entre nations.</p>
+                        <p><emph>Considérant</emph> que dans la Charte les peuples des Nations Unies
+                            ont proclamé à nouveau leur foi dans les droits fondamentaux de l'homme,
+                            dans la dignité et la valeur de la personne humaine, dans l'égalité des
+                            droits des hommes et des femmes, et qu'ils se sont déclarés résolus à
+                            favoriser le progrès social et à instaurer de meilleures conditions de
+                            vie dans une liberté plus grande.</p>
+                        <p><emph>Considérant</emph> que les Etats Membres se sont engagés à assurer,
+                            en coopération avec l'Organisation des Nations Unies, le respect
+                            universel et effectif des droits de l'homme et des libertés
+                            fondamentales.</p>
+
+                        <p><emph>Considérant</emph> qu'une conception commune de ces droits et
+                            libertés est de la plus haute importance pour remplir pleinement cet
+                            engagement.</p>
+                        <p><emph>L'Assemblée Générale proclame la présente Déclaration universelle
+                                des droits de l'homme</emph> comme l'idéal commun à atteindre par
+                            tous les peuples et toutes les nations afin que tous les individus et
+                            tous les organes de la société, ayant cette Déclaration constamment à
+                            l'esprit, s'efforcent, par l'enseignement et l'éducation, de développer
+                            le respect de ces droits et libertés et d'en assurer, par des mesures
+                            progressives d'ordre national et international, la reconnaissance et
+                            l'application universelles et effectives, tant parmi les populations des
+                            Etats Membres eux-mêmes que parmi celles des territoires placés sous
+                            leur juridiction.</p>
+                    </sel:when>
+                    <sel:otherwise>
+                        <p> Whereas recognition of the inherent dignity and of the equal and
+                            inalienable rights of all members of the human family is the foundation
+                            of freedom, justice and peace in the world, </p>
+
+                        <p> Whereas disregard and contempt for human rights have resulted in
+                            barbarous acts which have outraged the conscience of mankind, and the
+                            advent of a world in which human beings shall enjoy freedom of speech
+                            and belief and freedom from fear and want has been proclaimed as the
+                            highest aspiration of the common people, </p>
+                        <p> Whereas it is essential, if man is not to be compelled to have recourse,
+                            as a last resort, to rebellion against tyranny and oppression, that
+                            human rights should be protected by the rule of law, </p>
+                        <p> Whereas it is essential to promote the development of friendly relations
+                            between nations,</p>
+                        <p> Whereas the peoples of the United Nations have in the Charter reaffirmed
+                            their faith in fundamental human rights, in the dignity and worth of the
+                            human person and in the equal rights of men and women and have
+                            determined to promote social progress and better standards of life in
+                            larger freedom, </p>
+                        <p> Whereas Member States have pledged themselves to achieve, in
+                            co-operation with the United Nations, the promotion of universal respect
+                            for and observance of human rights and fundamental freedoms, </p>
+
+                        <p>Whereas a common understanding of these rights and freedoms is of the
+                            greatest importance for the full realization of this pledge,</p>
+                        <p><emph>Now, Therefore THE GENERAL ASSEMBLY proclaims THIS UNIVERSAL
+                                DECLARATION OF HUMAN RIGHTS</emph> as a common standard of
+                            achievement for all peoples and all nations, to the end that every
+                            individual and every organ of society, keeping this Declaration
+                            constantly in mind, shall strive by teaching and education to promote
+                            respect for these rights and freedoms and by progressive measures,
+                            national and international, to secure their universal and effective
+                            recognition and observance, both among the peoples of Member States
+                            themselves and among the peoples of territories under their
+                            jurisdiction.</p>
+                    </sel:otherwise>
+                </sel:select>
+            </section>
+            <section>
+                <section>
+                    <h>
+                        <sel:select>
+                            <sel:when expr="target:language('es')">Artículo 1.</sel:when>
+                            <sel:when expr="target:language('fr')">Article premier</sel:when>
+                            <sel:otherwise>Article 1.</sel:otherwise>
+                        </sel:select>
+                    </h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item>Todos los seres humanos nacen libres e iguales en dignidad y
+                                    derechos y, dotados como están de razón y conciencia, deben
+                                    comportarse fraternalmente los unos con los otros.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>Tous les êtres humains naissent libres et égaux en dignité et en
+                                    droits. Ils sont doués de raison et de conscience et doivent
+                                    agir les uns envers les autres dans un esprit de
+                                    fraternité.</item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item>All human beings are born free and equal in dignity and
+                                    rights.They are endowed with reason and conscience and should
+                                    act towards one another in a spirit of brotherhood.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+                </section>
+                <section>
+                    <!-- In heading both French and English use the same word for the Article and the number 2 is the same in all languages so is outside of the select. Is this the correct way to do something like this?-->
+                    <h><sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 2.</h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">                            
+                            <list>
+                                <item>Toda persona tiene todos los derechos y libertades proclamados
+                                    en esta Declaración, sin distinción alguna de raza, color, sexo,
+                                    idioma, religión, opinión política o de cualquier otra índole,
+                                    origen nacional o social, posición económica, nacimiento o
+                                    cualquier otra condición.</item>
+                                <item>Además, no se hará distinción alguna fundada en la condición
+                                    política, jurídica o internacional del país o territorio de cuya
+                                    jurisdicción dependa una persona, tanto si se trata de un país
+                                    independiente, como de un territorio bajo administración
+                                    fiduciaria, no autónomo o sometido a cualquier otra limitación
+                                    de soberanía.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>Chacun peut se prévaloir de tous les droits et de toutes les
+                                    libertés proclamés dans la présente Déclaration, sans
+                                    distinction aucune, notamment de race, de couleur, de sexe, de
+                                    langue, de religion, d'opinion politique ou de toute autre
+                                    opinion, d'origine nationale ou sociale, de fortune, de
+                                    naissance ou de toute autre situation.</item>
+                                <item>De plus, il ne sera fait aucune distinction fondée sur le statut
+                                    politique, juridique ou international du pays ou du territoire
+                                    dont une personne est ressortissante, que ce pays ou territoire
+                                    soit indépendant, sous tutelle, non autonome ou soumis à une
+                                    limitation quelconque de souveraineté.</item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item>Everyone is entitled to all the rights and freedoms set forth in
+                                    this Declaration, without distinction of any kind, such as race,
+                                    colour, sex, language, religion, political or other opinion,
+                                    national or social origin, property, birth or other status.
+                                    Furthermore, no distinction shall be made on the basis of the
+                                    political, jurisdictional or international status of the country
+                                    or territory to which a person belongs, whether it be
+                                    independent, trust, non-self-governing or under any other
+                                    limitation of sovereignty.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+
+                </section>
+                <section>
+                    <h>
+                        <sel:select>
+                            <!-- Select done with each language having its own sel:when statement also added the number 3 to each of them. -->
+                            <sel:when expr="target:language('es')">Artículo 3.</sel:when>
+                            <sel:when expr="target:language('fr')">Article 3.</sel:when>
+                            <sel:otherwise>Article 3.</sel:otherwise>
+                        </sel:select>
+                    </h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">                            
+                            <list>
+                                <item>Todo individuo tiene derecho a la vida, a la libertad y a la
+                                    seguridad de su persona.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <!-- In both English and Spanish they use bulleted list French does not -->
+                            <p>Tout individu a droit à la vie, à la liberté et à la sûreté de sa
+                                personne.</p>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item>Everyone has the right to life, liberty and security of
+                                    person.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+                </section>
+                <section>
+                    <h>
+                        <sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 4.</h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item> Nadie estará sometido a esclavitud ni a servidumbre, la
+                                    esclavitud y la trata de esclavos están prohibidas en todas sus
+                                    formas. </item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item> Nul ne sera tenu en esclavage ni en servitude; l'esclavage et
+                                    la traite des esclaves sont interdits sous toutes leurs formes.
+                                </item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item>No one shall be held in slavery or servitude; slavery and the
+                                    slave trade shall be prohibited in all their forms.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+
+                </section>
+                <section>
+                    <h><sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 5.</h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item>Nadie será sometido a torturas ni a penas o tratos crueles,
+                                    inhumanos o degradantes.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>Nul ne sera soumis à la torture, ni à des peines ou traitements
+                                    cruels, inhumains ou dégradants. </item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item>No one shall be subjected to torture or to cruel, inhuman or
+                                    degrading treatment or punishment.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+                </section>
+                <section>
+                    <h>
+                        <sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 6.</h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item>Todo ser humano tiene derecho, en todas partes, al
+                                    reconocimiento de su personalidad jurídica.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>Chacun a le droit à la reconnaissance en tous lieux de sa
+                                    personnalité juridique.</item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item>Everyone has the right to recognition everywhere as a person
+                                    before the law. </item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+                </section>
+                <section>
+                    <h><sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 7.</h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item>Todos son iguales ante la ley y tienen, sin distinción, derecho
+                                    a igual protección de la ley. Todos tienen derecho a igual
+                                    protección contra toda discriminación que infrinja esta
+                                    Declaración y contra toda provocación a tal discriminación.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>Tous sont égaux devant la loi et ont droit sans distinction à
+                                    une égale protection de la loi. Tous ont droit à une protection
+                                    égale contre toute discrimination qui violerait la présente
+                                    Déclaration et contre toute provocation à une telle
+                                    discrimination.</item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item>All are equal before the law and are entitled without any
+                                    discrimination to equal protection of the law. All are entitled
+                                    to equal protection against any discrimination in violation of
+                                    this Declaration and against any incitement to such
+                                    discrimination.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+                </section>
+                <section>
+                    <h><sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 8.</h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item>Toda persona tiene derecho a un recurso efectivo ante los
+                                    tribunales nacionales competentes, que la ampare contra actos
+                                    que violen sus derechos fundamentales reconocidos por la
+                                    constitución o por la ley.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>Toute personne a droit à un recours effectif devant les
+                                    juridictions nationales compétentes contre les actes violant les
+                                    droits fondamentaux qui lui sont reconnus par la constitution ou
+                                    par la loi.</item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item>Everyone has the right to an effective remedy by the competent
+                                    national tribunals for acts violating the fundamental rights
+                                    granted him by the constitution or by law.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+                </section>
+                <section>
+                    <h><sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 9.</h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item>Nadie podrá ser arbitrariamente detenido, preso ni
+                                    desterrado.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>Nul ne peut être arbitrairement arrêté, détenu ou exilé. </item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item>No one shall be subjected to arbitrary arrest, detention or
+                                    exile.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+                </section>
+                <section>
+                    <h><sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 10.</h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item>Toda persona tiene derecho, en condiciones de plena igualdad, a
+                                    ser oída públicamente y con justicia por un tribunal
+                                    independiente e imparcial, para la determinación de sus derechos
+                                    y obligaciones o para el examen de cualquier acusación contra
+                                    ella en materia penal.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>Toute personne a droit, en pleine égalité, à ce que sa cause
+                                    soit entendue équitablement et publiquement par un tribunal
+                                    indépendant et impartial, qui décidera, soit de ses droits et
+                                    obligations, soit du bien-fondé de toute accusation en matière
+                                    pénale dirigée contre elle.</item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item>Everyone is entitled in full equality to a fair and public
+                                    hearing by an independent and impartial tribunal, in the
+                                    determination of his rights and obligations and of any criminal
+                                    charge against him.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+
+                </section>
+                <section>
+                    <h><sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 11.</h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item>Toda persona acusada de delito tiene derecho a que se presuma su
+                                    inocencia mientras no se pruebe su culpabilidad, conforme a la
+                                    ley y en juicio público en el que se le hayan asegurado todas
+                                    las garantías necesarias para su defensa. </item>
+                                <item>Nadie será condenado por actos u omisiones que en el momento de
+                                    cometerse no fueron delictivos según el Derecho nacional o
+                                    internacional. Tampoco se impondrá pena más grave que la
+                                    aplicable en el momento de la comisión del delito. </item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>Toute personne accusée d'un acte délictueux est présumée
+                                    innocente jusqu'à ce que sa culpabilité ait été légalement
+                                    établie au cours d'un procès public où toutes les garanties
+                                    nécessaires à sa défense lui auront été assurées. </item>
+                                <item>Nul ne sera condamné pour des actions ou omissions qui, au
+                                    moment où elles ont été commises, ne constituaient pas un acte
+                                    délictueux d'après le droit national ou international. De même,
+                                    il ne sera infligé aucune peine plus forte que celle qui était
+                                    applicable au moment où l'acte délictueux a été commis.</item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item>Everyone charged with a penal offence has the right to be
+                                    presumed innocent until proved guilty according to law in a
+                                    public trial at which he has had all the guarantees necessary
+                                    for his defence.</item>
+                                <item>No one shall be held guilty of any penal offence on account of
+                                    any act or omission which did not constitute a penal offence,
+                                    under national or international law, at the time when it was
+                                    committed. Nor shall a heavier penalty be imposed than the one
+                                    that was applicable at the time the penal offence was
+                                    committed.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+                </section>
+                <section>
+                    <h>
+                        <sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 12. </h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item>Nadie será objeto de injerencias arbitrarias en su vida privada,
+                                    su familia, su domicilio o su correspondencia, ni de ataques a
+                                    su honra o a su reputación. Toda persona tiene derecho a la
+                                    protección de la ley contra tales injerencias o ataques.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>Nul ne sera l'objet d'immixtions arbitraires dans sa vie privée,
+                                    sa famille, son domicile ou sa correspondance, ni d'atteintes à
+                                    son honneur et à sa réputation. Toute personne a droit à la
+                                    protection de la loi contre de telles immixtions ou de telles
+                                    atteintes.</item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item>No one shall be subjected to arbitrary interference with his
+                                    privacy, family, home or correspondence, nor to attacks upon his
+                                    honour and reputation. Everyone has the right to the protection
+                                    of the law against such interference or attacks.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+                </section>
+                <section>
+                    <h><sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 13.</h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item>Toda persona tiene derecho a circular libremente y a elegir su
+                                    residencia en el territorio de un Estado.</item>
+                                <item>Toda persona tiene derecho a salir de cualquier país, incluso
+                                    del propio, y a regresar a su país.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>Toute personne a le droit de circuler librement et de choisir sa
+                                    résidence à l'intérieur d'un Etat.</item>
+                                <item>Toute personne a le droit de quitter tout pays, y compris le
+                                    sien, et de revenir dans son pays. </item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item>Everyone has the right to freedom of movement and residence
+                                    within the borders of each state.</item>
+                                <item>Everyone has the right to leave any country, including his own,
+                                    and to return to his country.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+
+                </section>
+                <section>
+                    <h><sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 14.</h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item>En caso de persecución, toda persona tiene derecho a buscar
+                                    asilo, y a disfrutar de él, en cualquier país.</item>
+                                <item>Este derecho no podrá ser invocado contra una acción judicial
+                                    realmente originada por delitos comunes o por actos opuestos a
+                                    los propósitos y principios de las Naciones Unidas.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>Devant la persécution, toute personne a le droit de chercher
+                                    asile et de bénéficier de l'asile en d'autres pays.</item>
+                                <item>Ce droit ne peut être invoqué dans le cas de poursuites
+                                    réellement fondées sur un crime de droit commun ou sur des
+                                    agissements contraires aux buts et aux principes des Nations
+                                    Unies.</item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item>Everyone has the right to seek and to enjoy in other countries
+                                    asylum from persecution.</item>
+                                <item>This right may not be invoked in the case of prosecutions
+                                    genuinely arising from non-political crimes or from acts
+                                    contrary to the purposes and principles of the United
+                                    Nations.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+                </section>
+                <section>
+                    <h><sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 15.</h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item>Toda persona tiene derecho a una nacionalidad.</item>
+                                <item> A nadie se privará arbitrariamente de su nacionalidad ni del
+                                    derecho a cambiar de nacionalidad.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>Tout individu a droit à une nationalité.</item>
+                                <item>Nul ne peut être arbitrairement privé de sa nationalité, ni du
+                                    droit de changer de nationalité.</item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item>Everyone has the right to a nationality.</item>
+                                <item>No one shall be arbitrarily deprived of his nationality nor
+                                    denied the right to change his nationality.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+                </section>
+                <section>
+                    <h><sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 16.</h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item>Los hombres y las mujeres, a partir de la edad núbil, tienen
+                                    derecho, sin restricción alguna por motivos de raza,
+                                    nacionalidad o religión, a casarse y fundar una familia, y
+                                    disfrutarán de iguales derechos en cuanto al matrimonio, durante
+                                    el matrimonio y en caso de disolución del matrimonio.</item>
+                                <item>Sólo mediante libre y pleno consentimiento de los futuros
+                                    esposos podrá contraerse el matrimonio.</item>
+                                <item>La familia es el elemento natural y fundamental de la sociedad y
+                                    tiene derecho a la protección de la sociedad y del Estado.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>A partir de l'âge nubile, l'homme et la femme, sans aucune
+                                    restriction quant à la race, la nationalité ou la religion, ont
+                                    le droit de se marier et de fonder une famille. Ils ont des
+                                    droits égaux au regard du mariage, durant le mariage et lors de
+                                    sa dissolution.</item>
+                                <item>Le mariage ne peut être conclu qu'avec le libre et plein
+                                    consentement des futurs époux.</item>
+                                <item>La famille est l'élément naturel et fondamental de la société et
+                                    a droit à la protection de la société et de l'Etat.</item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item>Men and women of full age, without any limitation due to race,
+                                    nationality or religion, have the right to marry and to found a
+                                    family. They are entitled to equal rights as to marriage, during
+                                    marriage and at its dissolution.</item>
+                                <item>Marriage shall be entered into only with the free and full
+                                    consent of the intending spouses.</item>
+                                <item>The family is the natural and fundamental group unit of society
+                                    and is entitled to protection by society and the State.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+                </section>
+                <section>
+                    <h><sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 17.</h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item>Toda persona tiene derecho a la propiedad, individual y
+                                    colectivamente.</item>
+                                <item>Nadie será privado arbitrariamente de su propiedad.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>Toute personne, aussi bien seule qu'en collectivité, a droit à
+                                    la propriété.</item>
+                                <item> Nul ne peut être arbitrairement privé de sa propriété.</item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item>Everyone has the right to own property alone as well as in
+                                    association with others.</item>
+
+                                <item>No one shall be arbitrarily deprived of his property.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+
+                </section>
+                <section>
+                    <h><sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 18.</h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item>Toda persona tiene derecho a la libertad de pensamiento, de
+                                    conciencia y de religión; este derecho incluye la libertad de
+                                    cambiar de religión o de creencia, así como la libertad de
+                                    manifestar su religión o su creencia, individual y
+                                    colectivamente, tanto en público como en privado, por la
+                                    enseñanza, la práctica, el culto y la observancia.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>Toute personne a droit à la liberté de pensée, de conscience et
+                                    de religion ; ce droit implique la liberté de changer de
+                                    religion ou de conviction ainsi que la liberté de manifester sa
+                                    religion ou sa conviction seule ou en commun, tant en public
+                                    qu'en privé, par l'enseignement, les pratiques, le culte et
+                                    l'accomplissement des rites. </item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item> Everyone has the right to freedom of thought, conscience and
+                                    religion; this right includes freedom to change his religion or
+                                    belief, and freedom, either alone or in community with others
+                                    and in public or private, to manifest his religion or belief in
+                                    teaching, practice, worship and observance.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+                </section>
+                <section>
+                    <h><sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 19.</h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item>Todo individuo tiene derecho a la libertad de opinión y de
+                                    expresión; este derecho incluye el de no ser molestado a causa
+                                    de sus opiniones, el de investigar y recibir informaciones y
+                                    opiniones, y el de difundirlas, sin limitación de fronteras, por
+                                    cualquier medio de expresión.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>Tout individu a droit à la liberté d'opinion et d'expression, ce
+                                    qui implique le droit de ne pas être inquiété pour ses opinions
+                                    et celui de chercher, de recevoir et de répandre, sans
+                                    considérations de frontières, les informations et les idées par
+                                    quelque moyen d'expression que ce soit. </item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+
+                                <item> Everyone has the right to freedom of opinion and expression;
+                                    this right includes freedom to hold opinions without
+                                    interference and to seek, receive and impart information and
+                                    ideas through any media and regardless of frontiers.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+                </section>
+                <section>
+                    <h><sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 20.</h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item>Toda persona tiene derecho a la libertad de reunión y de
+                                    asociación pacíficas.</item>
+                                <item>Nadie podrá ser obligado a pertenecer a una asociación.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>Toute personne a droit à la liberté de réunion et d'association
+                                    pacifiques.</item>
+                                <item>Nul ne peut être obligé de faire partie d'une association. </item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+
+                                <item>Everyone has the right to freedom of peaceful assembly and
+                                    association.</item>
+                                <item>No one may be compelled to belong to an association.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+                </section>
+                <section>
+                    <h><sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 21.</h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item>Toda persona tiene derecho a participar en el gobierno de su
+                                    país, directamente o por medio de representantes libremente
+                                    escogidos.</item>
+                                <item>Toda persona tiene el derecho de accceso, en condiciones de
+                                    igualdad, a las funciones públicas de su país.</item>
+                                <item>La voluntad del pueblo es la base de la autoridad del poder
+                                    público; esta voluntad se expresará mediante elecciones
+                                    auténticas que habrán de celebrarse periódicamente, por sufragio
+                                    universal e igual y por voto secreto u otro procedimiento
+                                    equivalente que garantice la libertad del voto.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>Toute personne a le droit de prendre part à la direction des
+                                    affaires publiques de son pays, soit directement, soit par
+                                    l'intermédiaire de représentants librement choisis.</item>
+                                <item>Toute personne a droit à accéder, dans des conditions d'égalité,
+                                    aux fonctions publiques de son pays.</item>
+                                <item>La volonté du peuple est le fondement de l'autorité des pouvoirs
+                                    publics ; cette volonté doit s'exprimer par des élections
+                                    honnêtes qui doivent avoir lieu périodiquement, au suffrage
+                                    universel égal et au vote secret ou suivant une procédure
+                                    équivalente assurant la liberté du vote.</item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item>Everyone has the right to take part in the government of his
+                                    country, directly or through freely chosen representatives.</item>
+                                <item>Everyone has the right of equal access to public service in his
+                                    country.</item>
+                                <item>The will of the people shall be the basis of the authority of
+                                    government; this will shall be expressed in periodic and genuine
+                                    elections which shall be by universal and equal suffrage and
+                                    shall be held by secret vote or by equivalent free voting
+                                    procedures.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+                </section>
+                <section>
+                    <h><sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 22.</h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item>Toda persona, como miembro de la sociedad, tiene derecho a la
+                                    seguridad social, y a obtener, mediante el esfuerzo nacional y
+                                    la cooperación internacional, habida cuenta de la organización y
+                                    los recursos de cada Estado, la satisfacción de los derechos
+                                    económicos, sociales y culturales, indispensables a su dignidad
+                                    y al libre desarrollo de su personalidad.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>Toute personne, en tant que membre de la société, a droit à la
+                                    sécurité sociale ; elle est fondée à obtenir la satisfaction des
+                                    droits économiques, sociaux et culturels indispensables à sa
+                                    dignité et au libre développement de sa personnalité, grâce à
+                                    l'effort national et à la coopération internationale, compte
+                                    tenu de l'organisation et des ressources de chaque pays.</item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item>Everyone, as a member of society, has the right to social
+                                    security and is entitled to realization, through national effort
+                                    and international co-operation and in accordance with the
+                                    organization and resources of each State, of the economic,
+                                    social and cultural rights indispensable for his dignity and the
+                                    free development of his personality.</item>
+
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+                </section>
+                <section>
+                    <h><sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 23.</h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item>Toda persona tiene derecho al trabajo, a la libre elección de su
+                                    trabajo, a condiciones equitativas y satisfactorias de trabajo y
+                                    a la protección contra el desempleo.</item>
+                                <item>Toda persona tiene derecho, sin discriminación alguna, a igual
+                                    salario por trabajo igual.</item>
+                                <item>Toda persona que trabaja tiene derecho a una remuneración
+                                    equitativa y satisfactoria, que le asegure, así como a su
+                                    familia, una existencia conforme a la dignidad humana y que será
+                                    completada, en caso necesario, por cualesquiera otros medios de
+                                    protección social.</item>
+                                <item>Toda persona tiene derecho a fundar sindicatos y a sindicarse
+                                    para la defensa de sus intereses.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>Toute personne a droit au travail, au libre choix de son
+                                    travail, à des conditions équitables et satisfaisantes de
+                                    travail et à la protection contre le chômage.</item>
+                                <item>Tous ont droit, sans aucune discrimination, à un salaire égal
+                                    pour un travail égal.</item>
+                                <item>Quiconque travaille a droit à une rémunération équitable et
+                                    satisfaisante lui assurant ainsi qu'à sa famille une existence
+                                    conforme à la dignité humaine et complétée, s'il y a lieu, par
+                                    tous autres moyens de protection sociale.</item>
+                                <item>Toute personne a le droit de fonder avec d'autres des syndicats
+                                    et de s'affilier à des syndicats pour la défense de ses
+                                    intérêts.</item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item>Everyone has the right to work, to free choice of employment, to
+                                    just and favourable conditions of work and to protection against
+                                    unemployment.</item>
+                                <item>Everyone, without any discrimination, has the right to equal pay
+                                    for equal work.</item>
+                                <item>Everyone who works has the right to just and favourable
+                                    remuneration ensuring for himself and his family an existence
+                                    worthy of human dignity, and supplemented, if necessary, by
+                                    other means of social protection.</item>
+                                <item>Everyone has the right to form and to join trade unions for the
+                                    protection of his interests.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+                </section>
+                <section>
+                    <h><sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 24.</h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item>Toda persona tiene derecho al descanso, al disfrute del tiempo
+                                    libre, a una limitación razonable de la duración del trabajo y a
+                                    vacaciones periódicas pagadas.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>Toute personne a droit au repos et aux loisirs et notamment à
+                                    une limitation raisonnable de la durée du travail et à des
+                                    congés payés périodiques.</item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item> Everyone has the right to rest and leisure, including
+                                    reasonable limitation of working hours and periodic holidays
+                                    with pay.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+                </section>
+                <section>
+                    <h><sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 25.</h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item>Toda persona tiene derecho a un nivel de vida adecuado que le
+                                    asegure, así como a su familia, la salud y el bienestar, y en
+                                    especial la alimentación, el vestido, la vivienda, la asistencia
+                                    médica y los servicios sociales necesarios; tiene asimismo
+                                    derecho a los seguros en caso de desempleo, enfermedad,
+                                    invalidez, viudez, vejez u otros casos de pérdida de sus medios
+                                    de subsistencia por circunstancias independientes de su
+                                    voluntad.</item>
+                                <item>La maternidad y la infancia tienen derecho a cuidados y
+                                    asistencia especiales. Todos los niños, nacidos de matrimonio o
+                                    fuera de matrimonio, tienen derecho a igual protección
+                                    social.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>Toute personne a droit à un niveau de vie suffisant pour assurer
+                                    sa santé, son bien-être et ceux de sa famille, notamment pour
+                                    l'alimentation, l'habillement, le logement, les soins médicaux
+                                    ainsi que pour les services sociaux nécessaires ; elle a droit à
+                                    la sécurité en cas de chômage, de maladie, d'invalidité, de
+                                    veuvage, de vieillesse ou dans les autres cas de perte de ses
+                                    moyens de subsistance par suite de circonstances indépendantes
+                                    de sa volonté.</item>
+                                <item>La maternité et l'enfance ont droit à une aide et à une
+                                    assistance spéciales. Tous les enfants, qu'ils soient nés dans
+                                    le mariage ou hors mariage, jouissent de la même protection
+                                    sociale.</item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item>Everyone has the right to a standard of living adequate for the
+                                    health and well-being of himself and of his family, including
+                                    food, clothing, housing and medical care and necessary social
+                                    services, and the right to security in the event of
+                                    unemployment, sickness, disability, widowhood, old age or other
+                                    lack of livelihood in circumstances beyond his control.</item>
+                                <item>Motherhood and childhood are entitled to special care and
+                                    assistance. All children, whether born in or out of wedlock,
+                                    shall enjoy the same social protection.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+                </section>
+                <section>
+                    <h><sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 26.</h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item>Toda persona tiene derecho a la educación. La educación debe ser
+                                    gratuita, al menos en lo concerniente a la instrucción elemental
+                                    y fundamental. La instrucción elemental será obligatoria. La
+                                    instrucción técnica y profesional habrá de ser generalizada; el
+                                    acceso a los estudios superiores será igual para todos, en
+                                    función de los méritos respectivos.</item>
+                                <item>La educación tendrá por objeto el pleno desarrollo de la
+                                    personalidad humana y el fortalecimiento del respeto a los
+                                    derechos humanos y a las libertades fundamentales; favorecerá la
+                                    comprensión, la tolerancia y la amistad entre todas las naciones
+                                    y todos los grupos étnicos o religiosos, y promoverá el
+                                    desarrollo de las actividades de las Naciones Unidas para el
+                                    mantenimiento de la paz.</item>
+                                <item>Los padres tendrán derecho preferente a escoger el tipo de
+                                    educación que habrá de darse a sus hijos.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>Toute personne a droit à l'éducation. L'éducation doit être
+                                    gratuite, au moins en ce qui concerne l'enseignement élémentaire
+                                    et fondamental. L'enseignement élémentaire est obligatoire.
+                                    L'enseignement technique et professionnel doit être généralisé ;
+                                    l'accès aux études supérieures doit être ouvert en pleine
+                                    égalité à tous en fonction de leur mérite.</item>
+                                <item>L'éducation doit viser au plein épanouissement de la
+                                    personnalité humaine et au renforcement du respect des droits de
+                                    l'homme et des libertés fondamentales. Elle doit favoriser la
+                                    compréhension, la tolérance et l'amitié entre toutes les nations
+                                    et tous les groupes raciaux ou religieux, ainsi que le
+                                    développement des activités des Nations Unies pour le maintien
+                                    de la paix.</item>
+                                <item>Les parents ont, par priorité, le droit de choisir le genre
+                                    d'éducation à donner à leurs enfants. </item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item>Everyone has the right to education. Education shall be free, at
+                                    least in the elementary and fundamental stages. Elementary
+                                    education shall be compulsory. Technical and professional
+                                    education shall be made generally available and higher education
+                                    shall be equally accessible to all on the basis of merit.</item>
+                                <item>Education shall be directed to the full development of the human
+                                    personality and to the strengthening of respect for human rights
+                                    and fundamental freedoms. It shall promote understanding,
+                                    tolerance and friendship among all nations, racial or religious
+                                    groups, and shall further the activities of the United Nations
+                                    for the maintenance of peace.</item>
+                                <item>Parents have a prior right to choose the kind of education that
+                                    shall be given to their children.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+
+                </section>
+                <section>
+                    <h><sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 27.</h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item>Toda persona tiene derecho a tomar parte libremente en la vida
+                                    cultural de la comunidad, a gozar de las artes y a participar en
+                                    el progreso científico y en los beneficios que de él
+                                    resulten.</item>
+                                <item>Toda persona tiene derecho a la protección de los intereses
+                                    morales y materiales que le correspondan por razón de las
+                                    producciones científicas, literarias o artísticas de que sea
+                                    autora.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>Toute personne a le droit de prendre part librement à la vie
+                                    culturelle de la communauté, de jouir des arts et de participer
+                                    au progrès scientifique et aux bienfaits qui en résultent.</item>
+                                <item>Chacun a droit à la protection des intérêts moraux et matériels
+                                    découlant de toute production scientifique, littéraire ou
+                                    artistique dont il est l'auteur. </item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item>Everyone has the right freely to participate in the cultural
+                                    life of the community, to enjoy the arts and to share in
+                                    scientific advancement and its benefits.</item>
+                                <item>Everyone has the right to the protection of the moral and
+                                    material interests resulting from any scientific, literary or
+                                    artistic production of which he is the author.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+                </section>
+                <section>
+                    <h><sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 28.</h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item>Toda persona tiene derecho a que se establezca un orden social e
+                                    internacional en el que los derechos y libertades proclamados en
+                                    esta Declaración se hagan plenamente efectivos.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>Toute personne a droit à ce que règne, sur le plan social et sur
+                                    le plan international, un ordre tel que les droits et libertés
+                                    énoncés dans la présente Déclaration puissent y trouver plein
+                                    effet.</item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item> Everyone is entitled to a social and international order in
+                                    which the rights and freedoms set forth in this Declaration can
+                                    be fully realized.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+                </section>
+                <section>
+                    <h><sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 29.</h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item>Toda persona tiene deberes respecto a la comunidad, puesto que
+                                    sólo en ella puede desarrollar libre y plenamente su
+                                    personalidad.</item>
+                                <item>En el ejercicio de sus derechos y en el disfrute de sus
+                                    libertades, toda persona estará solamente sujeta a las
+                                    limitaciones establecidas por la ley con el único fin de
+                                    asegurar el reconocimiento y el respeto de los derechos y
+                                    libertades de los demás, y de satisfacer las justas exigencias
+                                    de la moral, del orden público y del bienestar general en una
+                                    sociedad democrática.</item>
+                                <item>Estos derechos y libertades no podrán, en ningún caso, ser
+                                    ejercidos en oposición a los propósitos y principios de las
+                                    Naciones Unidas.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>L'individu a des devoirs envers la communauté dans laquelle
+                                    seule le libre et plein développement de sa personnalité est
+                                    possible.</item>
+                                <item>Dans l'exercice de ses droits et dans la jouissance de ses
+                                    libertés, chacun n'est soumis qu'aux limitations établies par la
+                                    loi exclusivement en vue d'assurer la reconnaissance et le
+                                    respect des droits et libertés d'autrui et afin de satisfaire
+                                    aux justes exigences de la morale, de l'ordre public et du
+                                    bien-être général dans une société démocratique.</item>
+                                <item>Ces droits et libertés ne pourront, en aucun cas, s'exercer
+                                    contrairement aux buts et aux principes des Nations Unies.</item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item>Everyone has duties to the community in which alone the free and
+                                    full development of his personality is possible.</item>
+                                <item>In the exercise of his rights and freedoms, everyone shall be
+                                    subject only to such limitations as are determined by law solely
+                                    for the purpose of securing due recognition and respect for the
+                                    rights and freedoms of others and of meeting the just
+                                    requirements of morality, public order and the general welfare
+                                    in a democratic society.</item>
+                                <item>These rights and freedoms may in no case be exercised contrary
+                                    to the purposes and principles of the United Nations.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+                </section>
+                <section>
+                    <h><sel:select>
+                            <sel:when expr="target:language('es')">Artículo</sel:when>
+                            <sel:otherwise>Article</sel:otherwise>
+                        </sel:select> 30.</h>
+                    <sel:select>
+                        <sel:when expr="target:language('es')">
+                            <list>
+                                <item>Nada en esta Declaración podrá interpretarse en el sentido de
+                                    que confiere derecho alguno al Estado, a un grupo o a una
+                                    persona, para emprender y desarrollar actividades o realizar
+                                    actos tendientes a la supresión de cualquiera de los derechos y
+                                    libertades proclamados en esta Declaración.</item>
+                            </list>
+                        </sel:when>
+                        <sel:when expr="target:language('fr')">
+                            <list>
+                                <item>Aucune disposition de la présente Déclaration ne peut être
+                                    interprétée comme impliquant pour un Etat, un groupement ou un
+                                    individu un droit quelconque de se livrer à une activité ou
+                                    d'accomplir un acte visant à la destruction des droits et
+                                    libertés qui y sont énoncés.</item>
+                            </list>
+                        </sel:when>
+                        <sel:otherwise>
+                            <list>
+                                <item> Nothing in this Declaration may be interpreted as implying for
+                                    any State, group or person any right to engage in any activity
+                                    or to perform any act aimed at the destruction of any of the
+                                    rights and freedoms set forth herein.</item>
+                            </list>
+                        </sel:otherwise>
+                    </sel:select>
+                </section>
+            </section>
+        </section>
+    </body>
+</document>

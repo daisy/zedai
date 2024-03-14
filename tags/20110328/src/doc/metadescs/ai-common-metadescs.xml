@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="ai-metadescs.rng" type="xml"?>
+
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <title>ZedAI Element Meta Shared Descriptions</title>
+
+
+
+    <!--
+                    ANNOTATION
+    -->
+
+    <section about="z3986.annotation">
+        <para role="desc-main"> The {annotation} element represents an annotation that an author, editor,
+            publisher, or other individual or agency has added to a document. </para>
+        <para role="desc-sub">Unless an {annotation} element has a {[[#z3986.role.attrib]]} value of {temporary},
+            it must reference at least one element in the document using the {[[#z3986.ref.attrib]]} attribute or be 
+            referenced by at least one {[[#z3986.annoref]]}. For annotations that apply to more than one element, 
+            use a space-separated list of {xml:id} values in the {ref} attribute.</para>
+        <para role="desc-sub">The {[[#z3986.ref.attrib]]} attribute identifies the specific element(s)
+            being annotated by referencing their {xml:id} values.</para>
+        <para role="desc-sub">The {annotation} element should not be used to add descriptions, footnotes
+            or endnotes. Refer to the {[[#z3986.description description]]} and  {[[#z3986.note]]} elements 
+            for more information.
+        </para>
+    </section>
+	
+	
+	
+<!-- 
+		ASIDE
+-->
+	
+	<section about="z3986.aside">
+		<para role="desc-main">
+			The {aside} element represents information supplementary to the main 
+			text and/or narrative flow.
+		</para>
+		<para role="desc-sub">
+			An aside typically floats separate from the main text, often in a boxed or 
+			shaded region.
+		</para>
+		<para role="desc-sub">
+			The {[[#z3986.role.attrib]]} attribute optionally expresses the 
+			semantic nature of the aside.
+		</para>
+	</section>
+	
+
+
+    <!--
+                    CITATION
+    -->
+
+    <section about="z3986.citation">
+        <para role="desc-main">The {citation} element represents an author's acknowledgment of the
+            original author and/or work of a directly or indirectly borrowed idea, quote or other
+            resource. Citations typically occur in conjunction with epigraphs, quotes,
+            illustrations, charts and diagrams.</para>
+        <para role="desc-sub">The optional {[[#z3986.ref.attrib]]} attribute on the {citation} element
+            is used to establish an explicit association between the {citation} and the passage or resource
+            it references; the placement of the {citation} does not, by default, imply an association with any 
+            element in the document. Some elements do provide a mechanism for implied relationships, however
+            (see the {[[#z3986.quote.block quote]]} element, for example). When adding citations, refer to the 
+            documentation for the element the citation is being attached to for more information.
+        </para>
+        <para role="desc-sub">A {citation} can also be linked to the work it cites by including a
+            child {[[#z3986.ref]]} element. A {[[#z3986.ref.attrib]]} attribute can be attached to the
+            nested {ref} element to reference a work in the current document's
+            {[[#z3986.bibliography]]}, for example. To reference other resources, including resources external to
+            the current document, the {[[#xlink.href.attrib]]} attribute must be used
+            instead.</para>
+    </section>
+
+
+
+    <!--
+                    CODE
+    -->
+
+    <section about="z3986.code">
+        <para role="desc-main"> The {code} element is intended for general instances of code as found in
+            works of fiction and similar non-technical documents, which includes computer
+            programming code, commands and command input/output as well as representations of
+            numeric and text coding systems, such as Morse code. </para>
+        <para role="desc-sub"> For computer programming books, manuals and specifications, specializing
+            the {code} element or using a computer markup feature is recommended. </para>
+    </section>
+
+
+
+
+    <!--
+                    CUSTOM-CONTENT
+    -->
+
+    <section about="z3986.custom-content">
+        <para role="desc-sub"> The republishing of documents often requires the insertion of content
+            that was not a part of the original source document. For example, in the case of
+            indexes, bibliographies and other ordered sections, this requirement may take the form
+            of placeholder sections to mark gaps in the alphabetic list of entries. To indicate that
+            an element presents content that is a deviation from the source, the
+            {[[#z3986.role.attrib]]} attribute can be used with the value {custom}. No behaviors are
+            defined for how a processing agent should handle sections so identified, however.
+        </para>
+    </section>
+    
+    
+    <!--
+                    DESCRIPTION
+    -->
+    
+    <section about="z3986.description">
+        <para role="desc-main">The {description} element represents an alternate accessible description of an image, video, table, etc.</para>
+        <para role="desc-sub">The {description} element can either contain the text content of the description or reference an external file in which it can be found via the {[[#xlink.href.attrib]]} attribute. It is not permitted to mix both methods, however.</para>
+        <para role="desc-sub">The {description} element does not allow elements and attributes from features to ensure the ability to render the description.</para>
+        <para role="desc-sub absdef-only">If altering the content model of the element during activation, profile creators must not allow elements from any features as some processors may ignore the elements.</para>
+    </section>
+    
+    
+    
+    <!--
+                    EMPH
+    -->
+    
+    <section about="z3986.emph">
+        <para role="desc-main">The {emph} element represents an author's emphasis.</para>
+        <para role="desc-sub">Emphasis is not restricted to italicized text, but may constitute any of a variety of typographical or styling means used to distinguish text, such as bolding, underlining, coloring, etc.</para>
+        <para role="desc-sub">Nested {emph} elements indicate extra emphasized segments within an emphasized segment.</para>
+    </section>
+    
+
+
+    <!--
+                    GLOSSARY
+    -->
+
+    <section about="z3986.glossary">
+        <para role="desc-main"> The {glossary} element represents a glossary, pronunciation guide or
+            other section that exclusively defines terms or phrases. </para>
+    </section>
+
+
+
+
+
+    <!--
+                    ITEM
+    -->
+
+    <section about="z3986.list.item">
+        <para role="desc-main"> The {item} element represents a single item in a list. </para>
+        <para role="desc-sub">
+            The number or glyph that appears before the {item} is typically controlled by the attributes specified
+            on the parent {[[#z3986.list list]]} element together with the number of preceding {item}s.
+            The Content Rendition feature's 
+            {[[http://www.daisy.org/z3986/2011/auth/features/rend/current/#z3986.rend.list.item.prefix.attrib prefix]]} 
+            attribute allows this default behaviour to be overridden for individual items, however.
+        </para>
+    </section>
+
+
+    <!--
+                    LIST
+    -->
+
+    <section about="z3986.list">
+        <para role="desc-main"> The {list} element represents a simple list of items, either ordered or
+            unordered. </para>
+        <para role="desc-sub"> The optional {type} attribute specifies the HTML-style ordered and
+            unordered nature of the list.</para>
+        <para role="desc-sub"> By default, an unordered list is prefixed by bullets and an ordered list
+            by numeric values. To change this behavior, refer to the Content Rendition feature's 
+            {[[http://www.daisy.org/z3986/2011/auth/features/rend/current/#z3986.rend.list.ordered.prefix.attrib prefix]]} 
+            attributes. </para>
+        <para role="desc-sub">If the {type} attribute is omitted, then there is no default
+            formatting.</para>
+        <para role="desc-sub">The {list} element is not intended to structure semantically meaningful
+            sets of entries as found in indexes, bibliographies and glossaries.</para>
+    </section>
+
+
+    <!--
+                    OBJECT
+    -->
+
+    <section about="z3986.object">
+        <para role="desc-main"> The {object} element contains a reference to an external resource, such
+            as a graphic or video. </para>
+        <para role="desc-sub">The referenced resource may be an image, video, XML text, or other
+            content, but its media type must be supported by the current profile and features in
+            use. The optional {srctype} attribute carries an enumeration of the allowed media
+            types.</para>
+        <para role="desc-sub">The formal behavior of the {object} element is defined by
+            {[[http://www.w3.org/TR/xhtml11 XHTML 1.1]]}.</para>
+    </section>
+
+
+    <!--
+                    QUOTE
+    -->
+
+    <section about="z3986.quote">
+        <para role="desc-main">The {quote} element represents a quotation from a real or fictitious
+        source.</para>
+        
+        <para role="desc-sub"> If a {quote} element contains only
+            a single child {citation} element, and the {citation} does not contain a {ref} attribute or child 
+            {[[#z3986.ref]]} element, the association between the two elements is implied.</para>
+
+        <para role="desc-sub">The {[[#z3986.role.attrib]]} attribute optionally expresses the semantic
+            nature of the quote. The {role} value {epigraph}, for example, indicates the quoted
+            passage or verse represents an epigraph for the document or section.</para>
+
+    </section>
+
+    <section about="z3986.quote.characters">
+        <para role="desc-sub"> Quotation marks should be included within the element if they must be
+            retained in the file. The use of CSS for appending these characters is recommended,
+            however, for the flexibility it allows to change the characters depending on the desired
+            output. </para>
+    </section>
+    
+    
+    <!--
+                    SPAN
+    -->
+    
+    <section about="z3986.span">
+        <para role="desc-main">The {span} element represents an arbitrary phrase of text.</para>
+        <para role="desc-sub">The {span} element is similar to the {[[#z3986.block]]} element in that only acts a container for its child content. It is a semantically neutral element by default, but may express some other commonality between the elements such as formatting or language.</para>
+        <para role="desc-sub">To convey a semantic connection between the child content, the optional {[[#z3986.role.attrib]]} attribute must be attached.</para>
+    </section>
+    
+    
+    <!--
+                    SSML
+    -->
+    
+    <section about="ssml.phoneme">
+        <para role="desc-main">Provides a phonemic/phonetic pronunciation for the contained text.</para>
+        <para role="desc-sub">The phoneme element may be empty. However, it is recommended that the element contain human-readable text that can be used for non-spoken rendering of the document.</para>
+        <para role="desc-sub">Refer to [[http://www.w3.org/TR/speech-synthesis11/#edef_phoneme SSML 1.1]] for further information.</para>
+    </section>
+    
+    <section about="ssml.prosody">
+        <para role="desc-main">Permits control of the pitch, speaking rate and volume of speech output.</para>
+        <para role="desc-sub">Refer to [[http://www.w3.org/TR/speech-synthesis11/#S3.2.4 SSML 1.1]] for further information.</para>
+    </section>
+    
+    <section about="ssml.say-as">
+        <para role="desc-main">Provides information on the type of text construct contained within the element to help specify the level of detail for rendering the contained text.</para>
+        <para role="desc-sub">Refer to [[http://www.w3.org/TR/speech-synthesis11/#S3.1.9 SSML 1.1]] for further information.</para>
+    </section>
+    
+    <section about="ssml.sub">
+        <para role="desc-main">Indicates that the text in the alias attribute value replaces the contained text for pronunciation.</para>
+        <para role="desc-sub">Refer to [[http://www.w3.org/TR/speech-synthesis11/#S3.1.11 SSML 1.1]] for further information.</para>
+    </section>
+    
+    <section about="ssml.token">
+        <para role="desc-main">Indicates that the content is a token in order to to eliminate token (word) segmentation ambiguities of a synthesis processor.</para>
+        <para role="desc-sub">Refer to [[http://www.w3.org/TR/speech-synthesis11/#S3.2.3 SSML 1.1]] for further information.</para>
+    </section>
+
+
+    <!--
+                    TOC
+    -->
+
+    <section about="z3986.toc">
+        <para role="desc-main">The {toc} element represents a single table of contents in a
+            document.</para>
+        <para role="desc-sub">The term "table of contents" is a generalization encompassing all of
+            tables of contents, tables of figures, tables of maps and similar guides to the contents
+            of a document.</para>
+    </section>
+
+</article>

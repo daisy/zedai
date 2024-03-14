@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+	ns="http://www.daisy.org/ns/z3986/authoring/"
+	xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	xmlns:dcterms="http://purl.org/dc/terms/"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+	xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+	<rdf:RDF>
+		<rdf:Description>
+			<dcterms:title z:short="code">The code module</dcterms:title>
+			<dcterms:description>This module defines the {[[#z3986.code.block]]} element for marking instances of computer code, commands and coded alphabets and systems.</dcterms:description>
+			<z:info>Two variants of the {code} element are available: one for use in a [[#z3986.Block.class Block]] context and a second for use
+				in a [[#z3986.Phrase.class Phrase]] context.</z:info>			
+			<dcterms:publisher>DAISY Consortium</dcterms:publisher>
+			<dcterms:license rdf:resource="{LICENSE_TODO}" />
+			<dcterms:creator>Markus Gylling</dcterms:creator>      
+			<dcterms:issued>2009-12-21</dcterms:issued>
+			<dcterms:requires rdf:resource="z3986-global-classes.rng"/>
+			<dcterms:requires rdf:resource="z3986-line.rng"/>
+		</rdf:Description>
+	</rdf:RDF>
+
+	<div>
+		<define name="z3986.code.block">
+			<element name="code">
+				<rdf:RDF>
+					<rdf:Description>
+						<dcterms:title z:short="code (block)">The {code} element (Block)</dcterms:title>
+						<dcterms:description z:inherit="z3986.code"/>
+						<z:info>The {Block} variant is an adaptation for use including code that is offset from any surrounding block elements.</z:info>
+						<z:info z:inherit="z3986.code"/>
+						<dcterms:isRequiredBy rdf:resource="."/>
+						<z:context>{[[#z3986.Block.class]]}</z:context>          
+						<z:content>{(([[#z3986.code.lngroup]] | [[#z3986.code.ln]])+ | ([[#z3986.p]] | [[#z3986.list]] | [[#z3986.block]] )+)}</z:content>          
+						<z:attlist>{[[#z3986.Block.attrib]]}</z:attlist>      
+					</rdf:Description>
+				</rdf:RDF>
+				<ref name="z3986.code.block.attlist" />
+				<ref name="z3986.code.block.content" />
+				<sch:rule context="default:code">
+					<sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0"
+						>The {code} element must neither be empty nor contain only whitespace.</sch:assert>
+				</sch:rule>
+			</element>
+		</define>
+		
+		<define name="z3986.code.block.attlist">
+			<ref name="z3986.Block.attrib" />
+		</define>
+		
+		<define name="z3986.code.block.content">
+			<choice>
+				<group>
+					<oneOrMore>
+						<choice>
+							<ref name="z3986.code.lngroup"/>
+							<ref name="z3986.code.ln"/>
+							<ref name="z3986.Global.extra.class"/>
+						</choice>
+					</oneOrMore>
+				</group>
+				<group>
+					<oneOrMore>
+						<choice>
+							<ref name="z3986.Block.core.base.class"/>
+							<ref name="z3986.Global.extra.class"/>
+						</choice>
+					</oneOrMore>
+				</group>
+			</choice>
+		</define>
+		
+		<define name="z3986.code.lngroup">
+			<element name="lngroup">
+				<rdf:RDF>
+					<rdf:Description>
+						<dcterms:title z:short="lngroup (code)">The {lngroup} element (code)</dcterms:title>
+						<dcterms:description>The {lngroup} element for code represents a grouping of {ln} code elements.</dcterms:description>
+						<z:info>Lines of code may be grouped to show a section of a coded message, a computer program, methods within a program, to separate programs from sample input/output, etc.</z:info>
+						<dcterms:isRequiredBy rdf:resource="."/>
+						<z:context z:alterability="fixed">{[[#z3986.code.block]]}</z:context>
+						<z:content z:alterability="The content model must allow {[[#z3986.code.ln ln]]} elements.">{[[#z3986.code.ln]]+}</z:content>          
+						<z:attlist>{[[#z3986.Block.attrib]]}</z:attlist>      
+					</rdf:Description>
+				</rdf:RDF>
+				<ref name="z3986.code.lngroup.attlist"/>
+				<ref name="z3986.code.lngroup.content"/>
+			</element>
+		</define>
+		
+		<define name="z3986.code.lngroup.attlist">
+			<ref name="z3986.Block.attrib" />
+		</define>
+		
+		<define name="z3986.code.lngroup.content">
+			<interleave>
+				<oneOrMore>
+					<ref name="z3986.code.ln"/>
+				</oneOrMore>
+				<zeroOrMore>	
+					<ref name="z3986.Global.extra.class"/>
+				</zeroOrMore>	
+			</interleave>	
+		</define>
+		
+		<define name="z3986.code.ln">
+			<element name="ln">
+				<rdf:RDF>
+					<rdf:Description>
+						<dcterms:title z:short="ln (code)">The {ln} element (code)</dcterms:title>
+						<dcterms:description>The {ln} element  for the {code} element represents a single line of code.</dcterms:description>      
+						<dcterms:isRequiredBy rdf:resource="."/>                     
+						<z:context z:alterability="fixed">{[[#z3986.code.block]]} and {[[#z3986.code.lngroup]]} </z:context>          
+						<z:content>{[[#z3986.lnum]]? &amp;amp; (text | [[#z3986.Text.class]])+}</z:content>          
+						<z:attlist>{[[#z3986.Phrase.attrib]]}</z:attlist>      
+					</rdf:Description>
+				</rdf:RDF>
+				<ref name="z3986.code.ln.attlist"/>
+				<ref name="z3986.code.ln.content"/>
+			</element>
+		</define>
+		
+		<define name="z3986.code.ln.attlist">
+			<ref name="z3986.Phrase.attrib" />
+		</define>
+		
+		<define name="z3986.code.ln.content">
+			<interleave>
+				<optional>
+					<ref name="z3986.lnum"/>
+				</optional>  		
+				<ref name="z3986.Text.model"/>
+			</interleave>  
+		</define>
+			
+	</div>	
+	
+	<div>
+		<define name="z3986.code.phrase">
+			<element name="code">
+				<rdf:RDF>
+					<rdf:Description>
+						<dcterms:title z:short="code (phrase)">The {code} element (Phrase)</dcterms:title>
+						<dcterms:description z:inherit="z3986.code"/>
+						<z:info>The {Phrase} variant is an adaptation for use embedding code in phrasal contexts.</z:info>
+						<z:info z:inherit="z3986.code"/>
+						<dcterms:isRequiredBy rdf:resource="."/>                     
+						<z:context>{[[#z3986.Phrase.class]]}</z:context>          
+						<z:content>{(text | [[#z3986.Text.class]])+}</z:content>          
+						<z:attlist>{[[#z3986.Phrase.attrib]]}</z:attlist>      
+					</rdf:Description>
+				</rdf:RDF>
+				<ref name="z3986.code.phrase.attlist" />
+				<ref name="z3986.code.phrase.content" />
+			</element>
+		</define>
+		
+		<define name="z3986.code.phrase.attlist">
+			<ref name="z3986.Phrase.attrib" />
+		</define>
+		
+		<define name="z3986.code.phrase.content">
+			<ref name="z3986.Text.model" />
+		</define>	
+				
+	</div>	
+
+	<div>
+		<a:documentation>code - default content model contribution</a:documentation>
+		
+		<define name="z3986.Block.core.class" combine="choice">
+			<ref name="z3986.code.block" />
+		</define>
+		
+		<define name="z3986.Phrase.core.class" combine="choice">
+			<ref name="z3986.code.phrase" />
+		</define>	
+	</div>
+
+</grammar>

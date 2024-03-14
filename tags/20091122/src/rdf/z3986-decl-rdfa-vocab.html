@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" 
+  "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd"> -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#" version="XHTML+RDFa 1.0">
+  <head>
+    <title>Z39.86 2010 Profile Declaration Vocabulary</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="../../z3986-2010.css" />
+  </head>
+  <body>
+    <h1>Z39.86 2010 Profile Declaration Vocabulary</h1>
+    <p class="informative">This vocabulary defines the following values for use in
+      the <code>meta</code> elements' <code>rel</code> attribute when declaring
+      profile adherence and feature usage in Z3986-2010 document instances:</p>
+    <dl>
+      <dt id="profile" about="#profile" typeof="rdf:Property">profile</dt>
+      <dd about="#profile" property="rdfs:comment" datatype="xsd:string">The value of
+          <code>resource</code> is the canonical URI of the profile, also referencing
+        its resource directory</dd>
+      <dt id="feature" about="#feature" typeof="rdf:Property">feature</dt>
+      <dd about="#feature" property="rdfs:comment" datatype="xsd:string">The value of
+          <code>resource</code> is the canonical URI of the feature, also referencing
+        its resource directory</dd>
+    </dl>
+  </body>
+</html>

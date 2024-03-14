@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="docResources.rng" type="xml"?>
+<docResources xmlns="http://www.daisy.org/ns/z3986/2008/docResources/"
+    xmlns:d="http://www.daisy.org/ns/z3986/2008/"
+    xmlns:x2="http://www.w3.org/2002/06/xhtml2/">
+    
+    <!-- Use the generic document schema documentation as a basis -->
+    <include subDrURI="genericdocument-doc-resources.xml"/>
+    
+    <!-- TODO: Add documentation for elements and attributes specific to this profile -->
+    <namespace nsURI="http://www.daisy.org/ns/z3986/2008/" defaultDocURL="http://www.daisy.org">
+        <element name="foo" docURI="newsfeeds-doc-prose.html#nf-foo" include="yes" />
+        
+        <attribute name="bar" context="d:foo" docURI="newsfeeds-doc-prose.html#nf-bar" include="yes"/>
+    </namespace>
+    
+</docResources>

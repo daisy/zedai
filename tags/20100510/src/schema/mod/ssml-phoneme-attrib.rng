@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="ssml-ph-attribs">The SSML phoneme attribute module</dcterms:title>
+      <dcterms:description>Defines an adaption of the [[http://www.w3.org/TR/speech-synthesis11/ SSML]] 
+        {phoneme} element as an attribute, enabling the provision of pronounciation
+        information on elements that are not in the SSML namespace.</dcterms:description>
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:creator>Markus Gylling</dcterms:creator>
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="ssml-datatypes.rng"/> 
+    </rdf:Description>
+  </rdf:RDF>
+
+  <div>
+
+    <define name="ssml.ph.ns.attrib">
+      <attribute name="ph" ns="http://www.w3.org/2001/10/synthesis">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="ssml:ph">The SSML ph attribute</dcterms:title>
+            <dcterms:description>Specifies a phonemic/phonetic pronunciation for the text contained
+              in the current element.</dcterms:description>
+            <z:info>This attribute inherits the semantics of the {[[#ssml.ph.attrib]]} attribute on the SSML
+              {[[#ssml.phoneme]]} element.</z:info>
+            <z:info>Note that this attribute is namespace qualified and intended for use on
+              non-SSML namespace elements, as opposed to the default (non-qualified) {[[#ssml.ph.attrib]]} attribute, which is only
+              allowed on the {[[#ssml.phoneme]]} element.</z:info>
+            <z:info>Consult [[http://www.w3.org/TR/speech-synthesis11/#S3.1.10 Speech Synthesis
+            Markup Language (SSML) Version 1.1]] for further information.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/> 
+            <z:context>[[#z3986.Phrase.attrib]] and [[#z3986.Text.attrib]]</z:context>
+            <z:content>{[[#SSML.PhoneticExpression.datatype]]}</z:content>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="ssml.ph.ns.attrib.content"/>
+        <sch:rule context="*[@ssml:ph]">
+          <sch:assert test="not(descendant::ssml:phoneme) and not(descendant::*[@ssml:ph])"
+            >Elements with the {ssml:ph} attribute element must not have {ssml:phoneme} descendants, nor descendants with the {ssml:ph} attribute.</sch:assert>
+          <sch:assert test="string-length(normalize-space(@ssml:ph)) > 0"
+            >The {ssml:ph} attribute element must neither be empty nor contain only whitespace.</sch:assert>
+        </sch:rule>        
+      </attribute>
+    </define>
+
+    <define name="ssml.ph.ns.attrib.content">
+      <ref name="SSML.PhoneticExpression.datatype"/>
+    </define>
+
+    <define name="ssml.alphabet.ns.attrib">
+      <attribute name="alphabet" ns="http://www.w3.org/2001/10/synthesis">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="ssml:alphabet">The SSML alphabet attribute</dcterms:title>
+            <dcterms:description>Specifies which phonemic/phonetic pronunciation alphabet is used in
+            the value of the [[#ssml.ph.ns.attrib]] attribute.</dcterms:description>
+            <z:info>Note that this attribute is namespace qualified and intended for use on
+            non-SSML namespace elements in conjunction with the [[#ssml.ph.ns.attrib]] attribute.</z:info>
+            <z:info>If omitted, the implicit value {x-SAMPA} is assumed.</z:info>
+            <z:info>Consult [[http://www.w3.org/TR/speech-synthesis11/#S3.1.10 Speech Synthesis
+            Markup Language (SSML) Version 1.1]] for further information.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>On elements where [[#ssml.ph.ns.attrib]] occurs.</z:context>
+            <z:content>{[[#SSML.alphabet.datatype]]}</z:content>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="ssml.alphabet.ns.attrib.content"/>
+      </attribute>
+    </define>
+
+    <define name="ssml.alphabet.ns.attrib.content">
+      <ref name="SSML.alphabet.datatype"/>
+    </define>
+  </div>
+
+  <div>
+    <a:documentation>The phoneme attributes - initial class declaration</a:documentation>
+
+    <define name="ssml.Phoneme.attrib" combine="interleave">
+      <optional>
+        <ref name="ssml.ph.ns.attrib"/>
+        <optional>
+          <ref name="ssml.alphabet.ns.attrib"/>
+        </optional>
+      </optional>
+    </define>
+
+  </div>
+
+</grammar>

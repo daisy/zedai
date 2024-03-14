@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="ssml-ph-attribs">The SSML phoneme attribute module</title>
+        <annotation annotates="/">
+            <para role="desc-main">Defines an adaption of the [[http://www.w3.org/TR/speech-synthesis11/ SSML]] {phoneme} element as an attribute, enabling the provision of pronounciation information on elements that are not in the SSML namespace.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="ssml-datatypes.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <year>2012</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2012-12-19</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="ssml.ph.ns.attrib">
+            <attribute name="ph" ns="http://www.w3.org/2001/10/synthesis">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="ssml:ph">The SSML ph attribute</title>
+                    <para role="desc-main">Specifies a phonemic/phonetic pronunciation for the text contained in the current element.</para>
+                    <para role="desc-sub">This attribute inherits the semantics of the {[[#ssml.ph.attrib]]} attribute on the SSML {[[#ssml.phoneme]]} element.</para>
+                    <para role="desc-sub">Note that this attribute is namespace qualified and intended for use on non-SSML namespace elements, as opposed to the default (non-qualified) {[[#ssml.ph.attrib]]} attribute, which is only allowed on the {[[#ssml.phoneme]]} element.</para>
+                    <para role="desc-sub">Consult [[http://www.w3.org/TR/speech-synthesis11/#S3.1.10 Speech Synthesis Markup Language (SSML) Version 1.1]] for further information.</para>
+                    <synopsis role="def-context">[[#z3998.Phrase.attrib]] and [[#z3998.Text.attrib]]</synopsis>
+                    <synopsis role="def-content" condition="fixed">{[[#SSML.PhoneticExpression.datatype]]}</synopsis>
+                </annotation>
+                <ref name="ssml.ph.ns.attrib.content"/>
+                <sch:rule context="*[@ssml:ph]">
+                    <sch:assert test="not(descendant::ssml:phoneme) and not(descendant::*[@ssml:ph])">Elements with the {ssml:ph} attribute element must not have {ssml:phoneme} descendants, nor descendants with the {ssml:ph} attribute.</sch:assert>
+                    <sch:assert test="string-length(normalize-space(@ssml:ph)) &gt; 0">The {ssml:ph} attribute element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </attribute>
+        </define>
+        <define name="ssml.ph.ns.attrib.content">
+            <ref name="SSML.PhoneticExpression.datatype"/>
+        </define>
+        <define name="ssml.alphabet.ns.attrib">
+            <attribute name="alphabet" ns="http://www.w3.org/2001/10/synthesis">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="ssml:alphabet">The SSML alphabet attribute</title>
+                    <para role="desc-main">Specifies which phonemic/phonetic pronunciation alphabet is used in the value of the [[#ssml.ph.ns.attrib]] attribute.</para>
+                    <para role="desc-sub">Note that this attribute is namespace qualified and intended for use on non-SSML namespace elements in conjunction with the [[#ssml.ph.ns.attrib]] attribute.</para>
+                    <para role="desc-sub">If omitted, the implicit value {x-SAMPA} is assumed.</para>
+                    <para role="desc-sub">Consult [[http://www.w3.org/TR/speech-synthesis11/#S3.1.10 Speech Synthesis Markup Language (SSML) Version 1.1]] for further information.</para>
+                    <synopsis role="def-context">On elements where [[#ssml.ph.ns.attrib]] occurs.</synopsis>
+                    <synopsis role="def-content" condition="fixed">{[[#SSML.alphabet.datatype]]}</synopsis>
+                </annotation>
+                <ref name="ssml.alphabet.ns.attrib.content"/>
+            </attribute>
+        </define>
+        <define name="ssml.alphabet.ns.attrib.content">
+            <ref name="SSML.alphabet.datatype"/>
+        </define>
+    </div>
+    <div>
+        <a:documentation>The phoneme attributes - initial class declaration</a:documentation>
+        <define name="ssml.Phoneme.attrib" combine="interleave">
+            <optional>
+                <ref name="ssml.ph.ns.attrib"/>
+                <optional>
+                    <ref name="ssml.alphabet.ns.attrib"/>
+                </optional>
+            </optional>
+        </define>
+    </div>
+</grammar>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"         
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Core Attributes Module</x:h1>
+
+  <div>
+    <x:h2>Core Attribute Collection</x:h2>
+
+    <define name="xhtml.class.attrib">
+      <attribute name="class">
+        <ref name="NMTOKENS.datatype"/>
+      </attribute>
+    </define>
+
+    <define name="xhtml.id.attrib">
+      <choice>
+        <ref name="id.attrib"/>
+        <ref name="xmlid.attrib"/>         
+      </choice>          
+    </define>
+    
+    <define name="xhtml.layout.attrib">      
+      <!-- a:defaultValue="irrelevant" -->
+      <attribute name="layout">
+        <choice>
+          <value>irrelevant</value>  
+          <value>relevant</value>  
+        </choice>
+      </attribute>      
+    </define>
+
+    <define name="xhtml.title.attrib">
+       <attribute name="title">
+        <ref name="Text.datatype"/>
+       </attribute>
+    </define>
+
+    <define name="xhtml.Core.attrib">
+      <optional>
+        <ref name="xhtml.id.attrib"/>
+      </optional>
+      <optional>
+        <ref name="xhtml.class.attrib"/>
+      </optional>
+      <optional>
+        <ref name="xhtml.layout.attrib"/>
+      </optional>
+      <optional>
+        <ref name="xhtml.title.attrib"/>
+      </optional>
+    </define>
+    
+  </div>
+
+  <define name="xhtml.Common.attrib" combine="interleave">
+    <ref name="xhtml.Core.attrib"/>
+  </define>
+  
+  <define name="id.attrib">
+    <attribute name="id">
+      <ref name="ID.datatype"/>
+    </attribute>       
+  </define>
+    
+  <define name="xmlid.attrib">
+    <attribute name="xml:id">
+      <ref name="ID.datatype"/>
+    </attribute>    
+  </define>
+
+</grammar>

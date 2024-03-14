@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="table">The table module</title>
+        <annotation annotates="/">
+            <para role="desc-main">This module defines the [[#z3986.table]] element and descendants for expressing tabular data and constructs.</para>
+            <para role="desc-sub">The table element and its descendants inherit the semantics and behavior of the [[http://www.w3.org/TR/xhtml-modularization/abstract_modules.html#s_tablemodule XHTML Modularization 1.1 tables module]] unless otherwise specified.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3986-global-classes.rng"/>
+                <member xlink:href="z3986-datatypes.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2011-03-28</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="z3986.table" xml:id="z3986.table">
+            <element name="table">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="table">The {table} element</title>
+                    <para role="desc-main">The {table} element represents a single instance of tabular data arranged in rows and columns.</para>
+                    <para role="desc-sub">A {table} may consist of one or more {tr} elements or may be divided into {[[#z3986.table.thead]]}, {[[#z3986.table.tbody]]} and {[[#z3986.table.tfoot]]} divisions.</para>
+                    <para role="desc-sub">A table may contain one or more {[[#z3986.table.colgroup]]} elements, for expressing common column formatting and properties.</para>
+                    <synopsis role="def-context">{[[#z3986.Block.class]]}</synopsis>
+                    <synopsis role="def-content" condition="The {table} element must allow the {[[#z3986.table.thead thead]]}, {[[#z3986.table.tbody tbody]]} and {[[#z3986.table.tfoot tfoot]]} elements and/or one or more {[[#z3986.table.tr tr]]} elements. The order of the {thead}, {tbody} and {tfoot} elements must not be altered.">{([[#z3986.table.col]]* | [[#z3986.table.colgroup]]*), (([[#z3986.table.thead]]?, [[#z3986.table.tbody]]+, [[#z3986.table.tfoot]]?) | [[#z3986.table.tr]]+)}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Block.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.table.attlist"/>
+                <ref name="z3986.table.content"/>
+            </element>
+        </define>
+        <define name="z3986.table.attlist" xml:id="z3986.table.attlist">
+            <ref name="z3986.Block.attrib"/>
+        </define>
+        <define name="z3986.table.content" xml:id="z3986.table.content">
+            <zeroOrMore>
+                <ref name="z3986.table.colgroup"/>
+            </zeroOrMore>
+            <choice>
+                <group>
+                    <optional>
+                        <ref name="z3986.table.thead"/>
+                    </optional>
+                    <oneOrMore>
+                        <ref name="z3986.table.tbody"/>
+                    </oneOrMore>
+                    <optional>
+                        <ref name="z3986.table.tfoot"/>
+                    </optional>
+                </group>
+                <oneOrMore>
+                    <ref name="z3986.table.tr"/>
+                </oneOrMore>
+            </choice>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.table.colgroup" xml:id="z3986.table.colgroup">
+            <element name="colgroup">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="colgroup">The {colgroup} element</title>
+                    <para role="desc-main">The {colgroup} element allows a set of properties to be defined for the cells in one or more table columns.</para>
+                    <para role="desc-sub">The {colgroup} can define a common set of properties for one or more columns using the {[[#z3986.table.span.attrib]]} attribute, in which case it must be an empty element. To specify different properties for different columns, the {colgroup} must contain one or more {[[#z3986.table.col]]} elements with the properties for those columns.</para>
+                    <para role="desc-sub">A {colgroup} must not contain both a {span} attribute and child {col} elements.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.table]]}</synopsis>
+                    <synopsis role="def-content" condition="fixed">{[[#z3986.table.col]]*}</synopsis>
+                    <synopsis role="def-attlist" condition="The attribute model must allow the {[[#z3986.table.span.attrib span]]} attribute.">{[[#z3986.Block.attrib]], [[#z3986.table.span.attrib]]?}</synopsis>
+                </annotation>
+                <ref name="z3986.table.colgroup.attlist"/>
+                <ref name="z3986.table.colgroup.content"/>
+            </element>
+        </define>
+        <define name="z3986.table.colgroup.attlist" xml:id="z3986.table.colgroup.attlist">
+            <ref name="z3986.I18n.attrib"/>
+            <ref name="z3986.Core.attrib"/>
+        </define>
+        <define name="z3986.table.colgroup.content" xml:id="z3986.table.colgroup.content">
+            <choice>
+                <ref name="z3986.table.span.attrib"/>
+                <oneOrMore>
+                    <ref name="z3986.table.col"/>
+                </oneOrMore>
+            </choice>
+        </define>
+        <define name="z3986.table.span.attrib" xml:id="z3986.table.span.attrib">
+            <attribute name="span">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="span">The {span} attribute</title>
+                    <para role="desc-main">The {span} attribute specifies the number of columns the properties defined in a {[[#z3986.table.colgroup]]} or {[[#z3986.table.col]]} apply to.</para>
+                    <para role="desc-sub">If a {colgroup} element contains child {col} elements, the span is determined automatically from the number of child {col} elements and any respective {span} values they define.</para>
+                    <para role="desc-sub">If omitted, the implicit value {1} is assumed.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.table.colgroup]]}</synopsis>
+                    <synopsis role="def-content" condition="fixed">{[[#PositiveInteger.datatype]]}</synopsis>
+                </annotation>
+                <ref name="PositiveInteger.datatype"/>
+            </attribute>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.table.col" xml:id="z3986.table.col">
+            <element name="col">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="col">The {col} element</title>
+                    <para role="desc-main">The {col} element allows a set of properties to be defined for the cells in one or more table columns.</para>
+                    <para role="desc-sub">The optional {[[#z3986.table.span.attrib]]} attribute indicates the number of adjoining columns to which the properties apply.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.table.colgroup]]}</synopsis>
+                    <synopsis role="def-content"/>
+                    <synopsis role="def-attlist" condition="The attribute model must allow the {[[#z3986.table.span.attrib]]} attribute.">{[[#z3986.Block.attrib]], [[#z3986.table.span.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.table.col.attlist"/>
+            </element>
+        </define>
+        <define name="z3986.table.col.attlist" xml:id="z3986.table.col.attlist">
+            <ref name="z3986.I18n.attrib"/>
+            <ref name="z3986.Core.attrib"/>
+            <optional>
+                <ref name="z3986.table.span.attrib"/>
+            </optional>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.table.thead" xml:id="z3986.table.thead">
+            <element name="thead">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="thead">The {thead} element</title>
+                    <para role="desc-main">The {thead} element represents the collection of {[[#z3986.table]]} header rows.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.table]]}</synopsis>
+                    <synopsis role="def-content">{[[#z3986.table.tr]]+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Block.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.table.thead.attlist"/>
+                <ref name="z3986.table.thead.content"/>
+            </element>
+        </define>
+        <define name="z3986.table.thead.attlist" xml:id="z3986.table.thead.attlist">
+            <ref name="z3986.Block.attrib"/>
+        </define>
+        <define name="z3986.table.thead.content" xml:id="z3986.table.thead.content">
+            <oneOrMore>
+                <ref name="z3986.table.tr"/>
+            </oneOrMore>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.table.tfoot" xml:id="z3986.table.tfoot">
+            <element name="tfoot">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="tfoot">The {tfoot} element</title>
+                    <para role="desc-main">The {tfoot} element represents the collection of {[[#z3986.table]]} footer rows.</para>
+                    <para role="desc-sub absdef-only">Note that contrary to the [[http://www.w3.org/TR/xhtml-modularization/abstract_modules.html#s_tablemodule XHTML Modularization 1.1 tables module {tfoot element}]], this element is placed following the {tbody} element.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.table]]}</synopsis>
+                    <synopsis role="def-content">{[[#z3986.table.tr]]+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Block.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.table.tfoot.attlist"/>
+                <ref name="z3986.table.tfoot.content"/>
+            </element>
+        </define>
+        <define name="z3986.table.tfoot.attlist" xml:id="z3986.table.tfoot.attlist">
+            <ref name="z3986.Block.attrib"/>
+        </define>
+        <define name="z3986.table.tfoot.content" xml:id="z3986.table.tfoot.content">
+            <oneOrMore>
+                <ref name="z3986.table.tr"/>
+            </oneOrMore>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.table.tbody" xml:id="z3986.table.tbody">
+            <element name="tbody">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="tbody">The {tbody} element</title>
+                    <para role="desc-main">The {tbody} element represents a collection of {[[#z3986.table]]} body rows.</para>
+                    <para role="desc-sub">Multiple {tbody} elements are allowed to enable representation of sections of rows.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.table]]}</synopsis>
+                    <synopsis role="def-content">{[[#z3986.table.tr]]+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Block.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.table.tbody.attlist"/>
+                <ref name="z3986.table.tbody.content"/>
+            </element>
+        </define>
+        <define name="z3986.table.tbody.attlist" xml:id="z3986.table.tbody.attlist">
+            <ref name="z3986.Block.attrib"/>
+        </define>
+        <define name="z3986.table.tbody.content" xml:id="z3986.table.tbody.content">
+            <oneOrMore>
+                <ref name="z3986.table.tr"/>
+            </oneOrMore>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.table.tr" xml:id="z3986.table.tr">
+            <element name="tr">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="tr">The {tr} element</title>
+                    <para role="desc-main">The {tr} element represents a single {[[#z3986.table]]} row of data.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.table]]}, {[[#z3986.table.thead]]}, {[[#z3986.table.tbody]]} and {[[#z3986.table.tfoot]]}</synopsis>
+                    <synopsis role="def-content">{(z3986.table.th | z3986.table.td)+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Block.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.table.tr.attlist"/>
+                <ref name="z3986.table.tr.content"/>
+            </element>
+        </define>
+        <define name="z3986.table.tr.attlist" xml:id="z3986.table.tr.attlist">
+            <ref name="z3986.Block.attrib"/>
+        </define>
+        <define name="z3986.table.tr.content" xml:id="z3986.table.tr.content">
+            <oneOrMore>
+                <choice>
+                    <ref name="z3986.table.th"/>
+                    <ref name="z3986.table.td"/>
+                </choice>
+            </oneOrMore>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.table.th" xml:id="z3986.table.th">
+            <element name="th">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="th">The {th} element</title>
+                    <para role="desc-main">The {th} element represents a single table cell containing header information.</para>
+                    <para role="desc-sub">The optional {[[#z3986.table.scope.attrib]]} attribute can be used to express the column(s) or row(s) to which the header applies.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.table.tr]]}</synopsis>
+                    <synopsis role="def-content">{(z3986.Block.class)+ | (text | z3986.Text.class | z3986.Phrase.class)+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Block.attrib]], [[#z3986.table.th.abbr.attrib]]?, [[#z3986.table.colspan.attrib]]?, [[#z3986.table.headers.attrib]]?, [[#z3986.table.rowspan.attrib]]?, [[#z3986.table.scope.attrib]]?}</synopsis>
+                </annotation>
+                <ref name="z3986.table.th.attlist"/>
+                <ref name="z3986.table.th.content"/>
+            </element>
+        </define>
+        <define name="z3986.table.th.attlist" xml:id="z3986.table.th.attlist">
+            <ref name="z3986.Cell.attrib"/>
+            <optional>
+                <ref name="z3986.table.th.abbr.attrib"/>
+            </optional>
+        </define>
+        <define name="z3986.table.th.abbr.attrib" xml:id="z3986.table.th.abbr.attrib">
+            <attribute name="abbr">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="abbr">The {abbr} attribute</title>
+                    <para role="desc-main">The {abbr} attribute specifies an abbreviated header value.</para>
+                    <synopsis role="def-context">{[[#z3986.table.th]]}</synopsis>
+                    <synopsis role="def-content">{[[#Characters.datatype]]}</synopsis>
+                </annotation>
+                <ref name="Characters.datatype"/>
+            </attribute>
+        </define>
+        <define name="z3986.table.th.content" xml:id="z3986.table.th.content">
+            <ref name="z3986.Flow.choice.model"/>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.table.td" xml:id="z3986.table.td">
+            <element name="td">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="td">The {td} element</title>
+                    <para role="desc-main">The {td} element represents a single table cell.</para>
+                    <para role="desc-sub">The optional {[[#z3986.table.colspan.attrib]]} and {[[#z3986.table.rowspan.attrib]]} attributes can be used to specify that a column extends across or down more than one cell, respectively.</para>
+                    <para role="desc-sub">The optional {[[#z3986.table.scope.attrib]]} attribute can be used to express that the current cell represents a header for columns(s) or row(s) defined by the attribute's value.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.table.tr]]}</synopsis>
+                    <synopsis role="def-content">{(z3986.Block.class)+ | (text | z3986.Text.class | z3986.Phrase.class)+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Block.attrib]], [[#z3986.table.colspan.attrib]]?, [[#z3986.table.headers.attrib]]?, [[#z3986.table.rowspan.attrib]]?, [[#z3986.table.scope.attrib]]?}</synopsis>
+                </annotation>
+                <ref name="z3986.table.td.attlist"/>
+                <ref name="z3986.table.td.content"/>
+            </element>
+        </define>
+        <define name="z3986.table.td.attlist" xml:id="z3986.table.td.attlist">
+            <ref name="z3986.Cell.attrib"/>
+        </define>
+        <define name="z3986.table.td.content" xml:id="z3986.table.td.content">
+            <!-- expand out Flow.choice.model in order to let ln be allowed in block context, just like in quote -->
+            <choice>
+                <oneOrMore>
+                    <choice>
+                        <ref name="z3986.table.td.Block.class"/>
+                    </choice>
+                </oneOrMore>
+                <ref name="z3986.Phrase.Text.mix.model"/>
+            </choice>
+        </define>
+        <define name="z3986.table.td.Block.class" combine="choice">
+            <choice>
+                <ref name="z3986.Block.class"/>
+                <ref name="z3986.Global.extra.class"/>
+            </choice>
+        </define>
+    </div>
+    <div>
+        <a:documentation>Common attribute definitions</a:documentation>
+        <define name="z3986.Cell.attrib" xml:id="z3986.Cell.attrib">
+            <ref name="z3986.Block.attrib"/>
+            <!-- <optional> <ref name="z3986.table.axis.attrib"/> </optional> -->
+            <optional>
+                <ref name="z3986.table.colspan.attrib"/>
+            </optional>
+            <optional>
+                <ref name="z3986.table.rowspan.attrib"/>
+            </optional>
+            <optional>
+                <ref name="z3986.table.headers.attrib"/>
+            </optional>
+            <optional>
+                <ref name="z3986.table.scope.attrib"/>
+            </optional>
+        </define>
+        <!-- <define name="z3986.table.axis.attrib" xml:id="z3986.table.axis.attrib"> <attribute name="axis"> <ref name="Characters.datatype"/> </attribute> </define> -->
+        <define name="z3986.table.colspan.attrib" xml:id="z3986.table.colspan.attrib">
+            <attribute name="colspan">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="colspan">The {colspan} attribute</title>
+                    <para role="desc-main">The {colspan} attribute specifies the number of columns spanned by the current cell.</para>
+                    <para role="desc-sub">The implicit value of this attribute is {1}. The value {0} indicates that the cell spans all columns from the current column to the last column of the {[[#z3986.table.colgroup]]} in which the cell is defined.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.table.th]]} and {[[#z3986.table.td]]}</synopsis>
+                    <synopsis role="def-content" condition="fixed">{[[#NonNegativeInteger.datatype]]}</synopsis>
+                </annotation>
+                <ref name="NonNegativeInteger.datatype"/>
+            </attribute>
+        </define>
+        <define name="z3986.table.rowspan.attrib" xml:id="z3986.table.rowspan.attrib">
+            <attribute name="rowspan">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="rowspan">The {rowspan} attribute</title>
+                    <para role="desc-main">The {rowspan} attribute specifies the number of rows spanned by the current cell.</para>
+                    <para role="desc-sub">The implicit value of this attribute is {1}. The value {0} indicates that the cell spans all rows from the current row to the last row of the current table section (rowgroup) in which the cell is defined (where the {[[#z3986.table.thead]]}, {[[#z3986.table.tbody]]}, and {[[#z3986.table.tfoot]]} elements are considered rowgroups).</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.table.th]]} and {[[#z3986.table.td]]}</synopsis>
+                    <synopsis role="def-content" condition="fixed">{[[#NonNegativeInteger.datatype]]}</synopsis>
+                </annotation>
+                <ref name="NonNegativeInteger.datatype"/>
+            </attribute>
+        </define>
+        <define name="z3986.table.scope.attrib" xml:id="z3986.table.scope.attrib">
+            <attribute name="scope">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="scope">The {scope} attribute</title>
+                    <para role="desc-main">The {scope} attribute specifies the set of data cells for which the current header cell provides header information.</para>
+                    <para role="desc-sub">This attribute may be used in place of the {[[#z3986.table.headers.attrib]]} attribute, especially for simple tables.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.table.th]]} and {[[#z3986.table.td]]}</synopsis>
+                    <synopsis role="def-content" condition="fixed">{'row' | 'col' | 'rowgroup' | 'colgroup'}</synopsis>
+                </annotation>
+                <choice>
+                    <value>row</value>
+                    <a:documentation>The current cell provides header information for the rest of the row that contains it.</a:documentation>
+                    <value>col</value>
+                    <a:documentation>The current cell provides header information for the rest of the column that contains it.</a:documentation>
+                    <value>rowgroup</value>
+                    <a:documentation>The header cell provides header information for the rest of the row group that contains it.</a:documentation>
+                    <value>colgroup</value>
+                    <a:documentation>The header cell provides header information for the rest of the column group that contains it.</a:documentation>
+                </choice>
+            </attribute>
+        </define>
+        <define name="z3986.table.headers.attrib" xml:id="z3986.table.headers.attrib">
+            <attribute name="headers">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="headers">The {headers} attribute</title>
+                    <para role="desc-main">The {headers} attribute specifies the list of header cells that provide header information for the current data cell.</para>
+                    <para role="desc-sub">This attribute requires a space separated list of valid {[[#xml.id.attrib ID]]} references that resolves to {[[#z3986.table.th th]]} elements.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.table.th]]} and {[[#z3986.table.td]]}</synopsis>
+                    <synopsis role="def-content" condition="fixed">{[[#IDREFS.datatype]]}</synopsis>
+                </annotation>
+                <ref name="IDREFS.datatype"/>
+                <!-- TODO SCH headers IDREF resolves to a th -->
+            </attribute>
+        </define>
+    </div>
+    <div>
+        <a:documentation>The table element - content model specialization</a:documentation>
+        <define name="z3986.table.tr.content" combine="interleave">
+            <a:documentation>interleave with table.extra</a:documentation>
+            <ref name="z3986.table.extra.model"/>
+        </define>
+        <define name="z3986.table.tr" combine="interleave">
+            <a:documentation>interleave with table.extra</a:documentation>
+            <ref name="z3986.table.extra.model"/>
+        </define>
+        <define name="z3986.table.extra.model" xml:id="z3986.table.extra.model">
+            <a:documentation>a class to contribute elements inside and outside tr</a:documentation>
+            <zeroOrMore>
+                <ref name="z3986.table.extra.class"/>
+            </zeroOrMore>
+        </define>
+        <define name="z3986.table.extra.class" combine="choice">
+            <ref name="z3986.Global.extra.class"/>
+        </define>
+    </div>
+    <div>
+        <a:documentation>The table element - minimal model</a:documentation>
+        <define name="z3986.table.simple.content" xml:id="z3986.table.simple.content">
+            <oneOrMore>
+                <ref name="z3986.table.tr"/>
+            </oneOrMore>
+        </define>
+    </div>
+    <div>
+        <a:documentation>table - default content model contribution</a:documentation>
+        <define name="z3986.Block.core.class" combine="choice">
+            <ref name="z3986.table"/>
+        </define>
+    </div>
+</grammar>

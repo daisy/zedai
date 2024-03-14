@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <x:h1>The DAISY Inline module</x:h1>
+
+    <define name="Daisy.inline">
+        <interleave>
+            <ref name="Daisy.sentence" />
+            <ref name="Daisy.word" />
+        </interleave>
+    </define>
+
+    <define name="Daisy.inline.attlist">
+        <empty />
+        <!--<ref name="Daisy.attlist" />-->
+    </define>
+    <define name="Daisy.sentence" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="s">
+            <ref name="Daisy.sentence.attlist" />
+            <ref name="Daisy.sentence.content" />
+        </element>
+    </define>
+    <define name="Daisy.sentence.attlist">
+        <ref name="Daisy.inline.attlist" />
+    </define>
+    <define name="Daisy.sentence.content">
+        <interleave>
+            <zeroOrMore>
+                <ref name="Daisy.word" />
+            </zeroOrMore>
+            <text />
+        </interleave>
+    </define>
+
+    <define name="Daisy.word" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="w">
+            <ref name="Daisy.word.attlist" />
+            <ref name="Daisy.word.content" />
+        </element>
+    </define>
+    <define name="Daisy.word.attlist">
+        <ref name="Daisy.inline.attlist" />
+    </define>
+    <define name="Daisy.word.content">
+        <text />
+    </define>
+
+</grammar>

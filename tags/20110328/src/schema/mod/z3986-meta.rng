@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="meta">The meta module</title>
+        <annotation annotates="/" condition="required">
+            <para role="desc-main">This module defines the {[[#z3986.meta]]} element for including metadata information.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="rdfa-attrib.rng"/>
+                <member xlink:href="z3986-core-attrib.rng"/>
+                <member xlink:href="z3986-i18n-attrib.rng"/>
+                <member xlink:href="z3986-global-classes.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2011-03-28</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="z3986.meta" xml:id="z3986.meta">
+            <element name="meta">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="meta">The {meta} element</title>
+                    <para role="desc-main">The {meta} element expresses metadata information about the document, a document fragment or an external resource associated with the document.</para>
+                    <para role="desc-sub absdef-only">The {meta} element accepts attributes from the [[#Rdfa.attrib RDFa attributes collection]] for capturing the metadata information.</para>
+                    <synopsis role="def-context">{[[#z3986.head]]}</synopsis>
+                    <synopsis role="def-content">{empty | z3986.meta+ | (text | z3986.Text.class | z3986.Phrase.class)+}</synopsis>
+                    <synopsis role="def-attlist" condition="The attribute model must allow the {[[#Rdfa.attrib RDFa]]} attributes.">{[[#Rdfa.attrib]]}, {[[#z3986.I18n.attrib]]} and {[[#z3986.Core.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.meta.attlist.content"/>
+                <sch:rule context="default:meta[@content]">
+                    <sch:assert test="string-length(normalize-space(@content)) &gt; 0">The meta {content} attribute must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="z3986.meta.attlist.content" xml:id="z3986.meta.attlist.content">
+            <ref name="z3986.Core.attrib"/>
+            <ref name="z3986.I18n.attrib"/>
+            <!-- @rel+@resource @rev+@resource @property+@content @about+@property+@content @about+@typeof+@content @property+/content @about+@property+/content @about+@typeof+/content @typeof -->
+            <choice>
+                <group>
+                    <ref name="rdfa.rel.attrib"/>
+                    <ref name="rdfa.resource.attrib"/>
+                    <zeroOrMore>
+                        <ref name="z3986.meta"/>
+                    </zeroOrMore>
+                </group>
+                <group>
+                    <ref name="rdfa.rev.attrib"/>
+                    <ref name="rdfa.resource.attrib"/>
+                    <zeroOrMore>
+                        <ref name="z3986.meta"/>
+                    </zeroOrMore>
+                </group>
+                <group>
+                    <ref name="rdfa.property.attrib"/>
+                    <ref name="rdfa.content.attrib"/>
+                    <zeroOrMore>
+                        <ref name="z3986.meta"/>
+                    </zeroOrMore>
+                </group>
+                <group>
+                    <ref name="rdfa.about.attrib"/>
+                    <ref name="rdfa.property.attrib"/>
+                    <ref name="rdfa.content.attrib"/>
+                    <zeroOrMore>
+                        <ref name="z3986.meta"/>
+                    </zeroOrMore>
+                </group>
+                <group>
+                    <ref name="rdfa.about.attrib"/>
+                    <ref name="rdfa.typeof.attrib"/>
+                    <ref name="rdfa.content.attrib"/>
+                    <zeroOrMore>
+                        <ref name="z3986.meta"/>
+                    </zeroOrMore>
+                </group>
+                <group>
+                    <ref name="rdfa.property.attrib"/>
+                    <ref name="z3986.Phrase.Text.mix.model"/>
+                </group>
+                <group>
+                    <ref name="rdfa.about.attrib"/>
+                    <ref name="rdfa.property.attrib"/>
+                    <ref name="z3986.Phrase.Text.mix.model"/>
+                </group>
+                <group>
+                    <ref name="rdfa.about.attrib"/>
+                    <ref name="rdfa.typeof.attrib"/>
+                    <ref name="z3986.Phrase.Text.mix.model"/>
+                </group>
+                <group>
+                    <ref name="rdfa.typeof.attrib"/>
+                    <zeroOrMore>
+                        <ref name="z3986.meta"/>
+                    </zeroOrMore>
+                </group>
+                <ref name="rdfa.typeof.attrib"/>
+            </choice>
+        </define>
+        <define name="z3986.meta.attlist.base" xml:id="z3986.meta.attlist.base">
+            <ref name="Rdfa.attrib"/>
+            <ref name="z3986.Core.attrib"/>
+            <ref name="z3986.I18n.attrib"/>
+        </define>
+        <define name="z3986.meta.content.base" xml:id="z3986.meta.content.base">
+            <choice>
+                <empty/>
+                <zeroOrMore>
+                    <ref name="z3986.meta"/>
+                </zeroOrMore>
+                <ref name="z3986.Phrase.Text.mix.model"/>
+            </choice>
+        </define>
+    </div>
+</grammar>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" prefix="rdfa: http://www.w3.org/ns/rdfa#" lang="en-US" xml:lang="en-US">
+    <head>
+        <title>Z39.86 Default RDFa Context</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <link rel="stylesheet" type="text/css" href="../../../z3986-2012.css"/>
+        <style type="text/css">
+            .pad { padding-top: 12px; }
+            span.property { color: #800080; font-weight: bold; font-size: 0.9em; }
+        </style>
+    </head>
+    <body>
+        <h1>Z39.86 Default RDFa Context</h1>
+        
+        <p>The Default context defines a standard set of vocabularies for use in Z39.86-AI profiles.</p>
+        
+        <h2>Default Vocabulary</h2>
+        
+        <p>
+            This context document defines the <a href="http://www.daisy.org/z3986/2012/vocab/structure/#">Z39.86-2012 Structural Semantics Vocabulary</a>
+            as its default vocabulary.
+        </p>
+        
+        <p typeof="">
+            All unprefixed CURIEs must resolve to the URI: <span class="property" property="rdfa:vocabulary">http://www.daisy.org/z3986/2012/vocab/structure/#</span>
+        </p>
+        
+        <h2>Additional Vocabularies</h2>
+        
+        <p>This context document also defines prefixes for the following additional vocabularies:</p>
+        
+        <ul>
+            <li typeof="">
+                <a href="http://www.daisy.org/z3986/2012/vocab/decl/">Z39.86-2012 Instance Metadata Vocabulary</a><br/><br/>
+                <span class="property" property="rdfa:prefix">z3986</span> must be used for the URI: <span class="property" property="rdfa:uri">http://www.daisy.org/z3986/2012/vocab/decl/#</span>
+            </li>
+            <li typeof="" class="pad">
+                <a href="http://www.dublincore.org/documents/dces/">Dublin Core Metadata Element Set, Version 1.1</a><br/><br/>
+                <span class="property" property="rdfa:prefix">dc</span> must be used for the URI: <span class="property" property="rdfa:uri">http://purl.org/dc/elements/1.1/</span>
+            </li>
+            <li typeof="" class="pad">
+                <a href="http://purl.org/dc/terms/">DCMI Metadata Terms in the /terms/ namespace</a><br/><br/>
+                <span class="property" property="rdfa:prefix">dcterms</span> must be used for the URI: <span class="property" property="rdfa:uri">http://purl.org/dc/terms/</span>
+            </li>
+            <li typeof="" class="pad">
+                <a href="http://www.daisy.org/z3986/2012/vocab/descriptions/">DIAGRAM Descriptions Vocabulary</a><br/><br/>
+                <span class="property" property="rdfa:prefix">diagram</span> must be used for the URI: <span class="property" property="rdfa:uri">http://www.daisy.org/z3986/2012/vocab/descriptions/#</span>
+            </li>
+        </ul>
+        <div class="footer">
+            <p>Document last updated: 2012-11-24T10:37:33-05:00</p>
+        </div>
+    </body>
+</html>

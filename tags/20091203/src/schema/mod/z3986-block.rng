@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 block element module</x:h1>
+
+  <div>
+    <x:h2>The block element</x:h2>
+    <x:div id="z3986.block">
+      <x:p class="description">Create an association between a group of elements.<x:br/> The
+          <x:code>block</x:code> element is subordinate to the section element as it does not have
+        an impact on the document's structural outline. The <x:code>block</x:code> element typically
+        does not represent anything in itself; it only associates its children with eachother.</x:p>
+    </x:div>
+
+    <define name="z3986.block.structural">
+      <element name="block">
+        <ref name="z3986.block.structural.attlist"/>
+        <ref name="z3986.block.structural.content"/>
+      </element>
+    </define>
+    
+    <define name="z3986.block.structural.attlist">
+      <ref name="z3986.Structural.attrib"/>
+    </define>
+    
+    <define name="z3986.block.structural.content">
+      <ref name="z3986.Structural.model"/>
+    </define>
+
+    <define name="z3986.block.flow">
+      <element name="block">
+        <ref name="z3986.block.flow.attlist"/>
+        <ref name="z3986.block.flow.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.block.flow.attlist">
+      <ref name="z3986.Text.attrib"/>
+    </define>
+
+    <define name="z3986.block.flow.content">
+      <ref name="z3986.Flow.model"/>
+    </define>
+    
+    <!--
+    <define name="z3986.block.text">
+      <element name="block">        
+        <ref name="z3986.block.text.attlist"/>
+        <ref name="z3986.block.text.content"/>  
+      </element>    
+    </define>
+    
+    <define name="z3986.block.text.attlist">
+      <ref name="z3986.Text.attrib"/>      
+    </define>
+    
+    <define name="z3986.block.text.content">
+      <ref name="z3986.Text.model" />
+    </define>
+    -->
+        
+  </div>
+
+  <div>
+    <x:h2>The block element - default content model contribution</x:h2>
+
+    <define name="z3986.Structural.class" combine="choice">
+      <ref name="z3986.block.flow"/>
+    </define>
+    
+    <define name="z3986.Flow.Specific.class" combine="choice">
+      <ref name="z3986.block.flow"/>
+    </define>
+
+  </div>
+
+</grammar>

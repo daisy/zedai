@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
+      "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+<head>
+  <title>DAISY 4.0 Simple Book Profile Roles</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="ProfileRoles.css"/>
+</head>
+<!-- this document was created as an example of what we could do if we didn't want to author in RDFa.  It also serves as an initial draft of our roles vocabulary document format -->
+<!-- Right now, this is done as pure XHTML with no RDFa.  There should be a way to convert it so it looks like the document at
+  http://www.daisy.org/zw/ZedAI_Roles_Iteration1#Written_as_RDFa 
+  
+  The div with id="daisy-simple-book-roles" will become an rdfs:member for the resource role (which itself should be an rdf container.  see how xhtml2 does it.)
+  
+  each definition term has data associated with it (including nested lists).
+  
+  the first sentence after the term (class="description") will be considered rdfs:comment
+  
+  items listed as "Inherits from" will be considered rdfs:subClassOf
+  
+  items listed as "Related concepts" will be considered rdfs:seeAlso
+  
+  the links will be merged as hrefs into the data element.
+  
+  -->
+
+<!-- gaps to fill in:
+
+1. where is our role attribute defined?  should we reference XHTML's definition of role, or do we have an internal document to point to?  for now, this page references the fictional "zed_role.html"
+
+2. do we have a common CSS file for the spec?
+
+-->
+
+<body>
+
+<h1>DAISY 4.0 Simple Book Profile Role Attribute Values</h1>
+
+<p>This profile defines the following values for use in the <code>role</code> attribute
+as specified in the <a href="zed_role.html">XHTML Role Attribute Module</a>:
+
+<div id="daisy-simple-book-roles">
+  <dl>
+    
+    <dt id="pagenum">pagenum</dt>
+    <dd class="description"><code>pagenum</code> is a separator denoting the break between two contiguous pages.</dd>
+    <dl>
+      <dt>Related concepts:</dt>
+      <dd><a href="http://www.w3.org/TR/xhtml2/xhtml20_schema.html#separator">XHTML's <code>separator</code> element.</a></dd>
+    </dl>
+  
+    <dt id="section">section</dt>
+    <dd class="description"><code>section</code> is a generic division of content.</dd>
+    <dl>
+      <dt>Inherited from:</dt>
+      <dd><a href="http://www.w3.org/WAI/PF/aria/#section">WAI-ARIA's <code>section</code> role</a></dd>
+    </dl>
+    <dl>
+      <dt>Related concepts:</dt>
+      <dd><a href="http://docbook.org/ns/docbook#section">DocBook's <code>section</code> element </a></dd>
+      <dd><a href="http://www.chicagomanualofstyle.org/ch01/ch01_sec076.html">Sections and subsections in <span class="booktitle">The Chicago Manual of Style</span></a></dd>
+    </dl>
+    
+    <dt id="bridgehead">bridgehead</dt>
+    <dd class="description"><code>bridgehead</code> is a free-floating heading that is not associated with the hierarchical structure of a document.</dd>
+    <dl>
+      <dt>Inherited from:</dt>
+      <dd><a href="http://www.w3.org/WAI/PF/aria/#heading">WAI-ARIA's <code>heading</code> role</a></dd>
+    </dl>
+    <dl>
+      <dt>Related concepts:</dt>
+      <dd><a href="http://www.w3.org/TR/xhtml2/xhtml20_schema.html#h">XHTML2's <code>h</code> element</dd>
+      <dd><a href="http://www.chicagomanualofstyle.org/ch01/ch01_sec071.html">Subheads in <span class="booktitle">The Chicago Manual of Style</span></a></dd>
+    </dl>
+    
+    <dt id="sidebar">sidebar</dt>
+    <dd class="description"><code>sidebar</code> contains supplemental information, often formatted as an inset.</dd>
+    <dl>
+      <dt>Inherited from:</dt>
+      <dd><a href="http://www.w3.org/WAI/PF/aria/#complementary">WAI-ARIA's <code>complementary</code> role</a></dd>
+    </dl>
+    <dl>
+      <dt>Related concepts:</dt>
+      <dd><a href="http://docbook.org/ns/docbook#sidebar">DocBook's <code>sidebar</code> element</dd>
+	  </dl>
+
+  </dl>
+</div>
+</body>
+</html>

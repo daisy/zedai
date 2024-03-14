@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://www.daisy.org/ns/z3986/authoring/" xml:lang=""
+    xmlns:z3986="http://www.daisy.org/z3986/2011/vocab/decl/#"
+    xmlns:dcterms="http://purl.org/dc/terms/">
+    <!-- set the value of xml:lang above to the base language of the document -->
+    <head>
+        <!-- the profile including version -->
+        <meta rel="z3986:profile" resource="xxx">
+            
+        </meta>
+                        
+        <!-- the minimally required head metadata, values for the content attribute must be supplied -->
+        <meta property="dcterms:identifier" content=""/>
+        <meta property="dcterms:publisher" content=""/>
+        <meta property="dcterms:date" content=""/>
+                
+        <!-- example: reference to additional external metadata resource: mods in local file -->
+        <!--
+            <meta rel="z3986:meta-record" resource="mods-metadata.xml" />
+            <meta property="z3986:meta-record-type" about="mods-metadata.xml" content="z3986:mods" />
+        -->
+        
+        <!-- example: this document itself as the additional metadata resource: dcterms using RDFa -->
+        <!--
+            <meta rel="z3986:meta-record" resource="." />
+            <meta property="z3986:meta-record-type" about="." content="z3986:dcterms-rdfa" />
+        -->
+        
+    </head>
+    <body>
+        <!-- document content goes here -->        
+    </body>
+</document>

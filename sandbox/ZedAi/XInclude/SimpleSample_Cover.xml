@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="file:/G:/eclipseProjects/zednext-trunk/build/z3986a-simplebook/z3986a-simplebook.rng" type="xml"?>
+<!--
+    Sample ZedAI simple profile document using XInclude:  cover chunk
+    jpritchett@rfbd.org
+    12 Jan 2009
+-->
+<!-- Namespaces are declared here so that this chunk can be edited by itself -->
+    <d:cover xmlns="http://www.w3.org/2002/06/xhtml2/" xmlns:d="http://www.daisy.org/ns/z3986/2008/" xml:lang="en">
+        <d:frontcover>
+            <title>The mythical man-month</title>
+            <p>Essays on software engineering</p>
+            <d:creator>Frederick P. Brooks, Jr.</d:creator>
+            <p>Anniversary edition with four new chapters</p>
+        </d:frontcover>
+        <d:backcover>
+            <section>
+                <p>The original book plus four additional chapters!</p>
+                <p>Few books on software project management have been as influential and timeless as 
+                    <em>The Mythical Man-Month</em>.  With a blend of software engineering facts and 
+                    thought-proviking opinions, Fred Brooks offers insight for anyone managing complex projects. . . .</p>
+            </section>
+            <section>
+                <p>20th Anniversary</p>
+                <p>The Mythical Man-Month</p>
+                <p>Frederick P. Brooks, Jr.</p>
+                <p>Frederick P. Brooks, Jr. is the recipient of the ACM's 1999 A. M. Turing Award, the most prestigious technical award in the computing field. . . .</p>
+            </section>
+        </d:backcover>
+    </d:cover>

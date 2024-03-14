@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="file:/G:/eclipseProjects/zednext-trunk/build/z3986a-simplebook/z3986a-simplebook.rng" type="xml"?>
+<!--
+    Sample ZedAI simple profile document using XInclude:  body matter chunk
+    jpritchett@rfbd.org
+    12 Jan 2009
+-->
+<!-- Namespaces are declared here so that this chunk can be edited by itself -->
+        <d:bodymatter xmlns="http://www.w3.org/2002/06/xhtml2/" xmlns:d="http://www.daisy.org/ns/z3986/2008/" xml:lang="en">
+            <section>
+                <d:pagebreak value="3" />
+                <h>1 The Tar Pit</h>
+                <p xml:lang="nl">Een schip op het strand is een baken in zee.</p>
+                <p>[A ship on the beach is a lighthouse to the sea.]</p>
+                <p>Dutch Proverb</p>
+                <d:pagebreak value="4" />
+                <p>
+                    No scene from prehistory is quite so vivid as that of the mortal struggles of the great beasts in the tar pits. . . .
+                </p>
+                <section>
+                    <h>The Programming Systems Product</h>
+                    <p>
+                        One occasionally reads newspaper accounts of how two programmers in a 
+                        remodeled garage have built an important program that surpasses the best efforts of large teams. . . .
+                    </p>
+                </section>
+                <d:pagebreak value="5 "/>
+            </section>
+        </d:bodymatter>

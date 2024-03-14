@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <x:h1>The DAISY Table of Content module</x:h1>
+
+
+    <define name="Daisy.toc" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="toc">
+            <ref name="Daisy.toc.attlist" />
+            <ref name="Daisy.toc.content" />
+        </element>
+    </define>
+
+    <define name="Daisy.toc.attlist">
+        <empty />
+    </define>
+
+    <define name="Daisy.toc.content">
+        <empty />
+    </define>
+
+    <define name="Daisy.tocentry" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="tocentry">
+            <ref name="Daisy.tocentry.attlist" />
+            <ref name="Daisy.tocentry.content" />
+        </element>
+    </define>
+
+    <define name="Daisy.tocentry.attlist">
+        <empty />
+    </define>
+
+    <define name="Daisy.tocentry.content">
+        <optional>
+            <ref name="Daisy.toclabel" />
+            <ref name="Daisy.tocpageref" />
+        </optional>
+        <zeroOrMore>
+            <ref name="Daisy.tocentry" />
+        </zeroOrMore>
+    </define>
+
+    <define name="Daisy.toclabel" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="label">
+            <ref name="Daisy.toclabel.attlist" />
+            <ref name="Daisy.toclabel.content" />
+        </element>
+    </define>
+
+    <define name="Daisy.toclabel.attlist">
+        <optional>
+            <attribute name="ref">
+                <data type="IDREF" />
+            </attribute>
+        </optional>
+    </define>
+
+    <define name="Daisy.toclabel.content">
+        <text />
+    </define>
+
+    <define name="Daisy.tocpageref" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="pageref">
+            <ref name="Daisy.tocpageref.attlist" />
+            <ref name="Daisy.tocpageref.content" />
+        </element>
+    </define>
+
+    <define name="Daisy.tocpageref.attlist">
+        <optional>
+            <attribute name="ref">
+                <data type="IDREF" />
+            </attribute>
+        </optional>
+    </define>
+
+    <define name="Daisy.tocpageref.content">
+        <text />
+    </define>
+</grammar>

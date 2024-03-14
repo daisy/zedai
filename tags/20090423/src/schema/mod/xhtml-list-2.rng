@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>List Module</x:h1>
+
+  <div>
+    <x:h2>The dl element</x:h2>
+
+    <define name="xhtml.dl">
+      <element name="dl">
+        <ref name="xhtml.dl.attlist"/>
+        <ref name="xhtml.dl.content"/>
+      </element>
+    </define>
+
+    <define name="xhtml.dl.attlist">
+      <ref name="xhtml.Common.attrib"/>
+    </define>
+
+    <define name="xhtml.dl.content">    
+      <optional>
+        <ref name="xhtml.title"/>
+      </optional>
+      <optional>
+        <ref name="xhtml.caption"/>
+      </optional>
+      <choice>
+        <oneOrMore>
+          <choice>
+            <ref name="xhtml.dt"/>
+            <ref name="xhtml.dd"/>
+          </choice>
+        </oneOrMore>
+        <oneOrMore>
+          <ref name="xhtml.di"/>
+        </oneOrMore>
+      </choice>
+    </define>   
+    
+    <!-- This pattern is not referenced by the default
+    XHTML2 content model, but provided for the convenience 
+    of language designers -->
+    <define name="xhtml.dl.content.di.required">    
+      <optional>
+        <ref name="xhtml.title"/>
+      </optional>    
+      <optional>
+        <ref name="xhtml.caption"/>
+      </optional>      
+      <oneOrMore>
+        <ref name="xhtml.di"/>
+      </oneOrMore>      
+    </define>
+        
+  </div>
+
+  <div>
+    <x:h2>The di element</x:h2>
+
+    <define name="xhtml.di">
+      <element name="di">
+        <ref name="xhtml.di.attlist"/>
+        <ref name="xhtml.di.content"/>
+      </element>
+    </define>
+
+    <define name="xhtml.di.attlist">
+      <ref name="xhtml.Common.attrib"/>
+    </define>
+
+    <define name="xhtml.di.content">    
+      <oneOrMore>
+        <ref name="xhtml.dt"/>
+      </oneOrMore>
+      <zeroOrMore>
+        <ref name="xhtml.dd"/>
+      </zeroOrMore>
+    </define>        
+  </div>
+
+  <div>
+    <x:h2>The dt element</x:h2>
+
+    <define name="xhtml.dt">
+      <element name="dt">
+        <ref name="xhtml.dt.attlist"/>
+        <ref name="xhtml.dt.content"/>
+      </element>
+    </define>
+
+    <define name="xhtml.dt.attlist">
+      <ref name="xhtml.Common.attrib"/>
+    </define>
+
+    <define name="xhtml.dt.content">
+      <ref name="xhtml.Text.model"/>
+    </define>    
+
+  </div>
+
+  <div>
+    <x:h2>The dd element</x:h2>
+
+    <define name="xhtml.dd">
+      <element name="dd">
+        <ref name="xhtml.dd.attlist"/>
+        <ref name="xhtml.dd.content"/>
+      </element>
+    </define>
+
+    <define name="xhtml.dd.attlist">
+      <ref name="xhtml.Common.attrib"/>
+    </define>
+
+    <define name="xhtml.dd.content">    
+      <ref name="xhtml.Flow.model"/>
+    </define>  
+  </div>
+
+  <div>
+    <x:h2>The ol element</x:h2>
+
+    <define name="xhtml.ol">
+      <element name="ol">
+        <ref name="xhtml.ol.attlist"/>
+        <ref name="xhtml.ol.content"/>
+      </element>
+    </define>
+
+    <define name="xhtml.ol.attlist">
+      <ref name="xhtml.Common.attrib"/>
+    </define>
+
+    <define name="xhtml.ol.content">    
+      <optional>
+        <ref name="xhtml.title"/>
+      </optional>    
+      <optional>
+        <ref name="xhtml.caption"/>
+      </optional>
+      <oneOrMore>
+        <ref name="xhtml.li-in-ol"/>
+      </oneOrMore>
+    </define>  
+  </div>
+
+  <div>
+    <x:h2>The ul element</x:h2>
+
+    <define name="xhtml.ul">
+      <element name="ul">
+        <ref name="xhtml.ul.attlist"/>
+        <ref name="xhtml.ul.content"/>
+      </element>
+    </define>
+
+    <define name="xhtml.ul.attlist">
+      <ref name="xhtml.Common.attrib"/>
+    </define>
+    
+    <define name="xhtml.ul.content">
+      <optional>
+        <ref name="xhtml.title"/>
+      </optional>        
+      <optional>
+        <ref name="xhtml.caption"/>
+      </optional>
+      <oneOrMore>
+        <ref name="xhtml.li"/>
+      </oneOrMore>    
+    </define>
+  </div>
+
+  <div>
+    <x:h2>The li element</x:h2>
+
+    <define name="xhtml.li">
+      <element name="li">
+        <ref name="xhtml.li.attlist"/>
+        <ref name="xhtml.li.content"/>
+      </element>
+    </define>  
+
+    <define name="xhtml.li.attlist">
+      <ref name="xhtml.Common.attrib"/>
+    </define>
+    
+    <define name="xhtml.li.content">
+        <ref name="xhtml.Flow.model"/>    
+    </define>
+
+    <define name="xhtml.li-in-ol">
+      <element name="li">
+        <ref name="xhtml.li-in-ol.attlist"/>
+        <ref name="xhtml.li.content"/>
+      </element>
+    </define>  
+
+    <define name="xhtml.li-in-ol.attlist">
+      <ref name="xhtml.li.attlist"/>
+      <ref name="xhtml.li-in-ol.value.attrib"/>
+    </define>
+
+    <define name="xhtml.li-in-ol.value.attrib">
+      <optional>
+        <attribute name="value">
+          <ref name="Number.datatype"/>
+        </attribute>
+      </optional>
+    </define>
+  </div>
+
+  <div>
+    <x:h2>List Content Set</x:h2>
+
+    <define name="xhtml.List.class">
+      <choice>
+        <ref name="xhtml.dl"/>
+        <ref name="xhtml.ol"/>
+        <ref name="xhtml.ul"/>
+      </choice>
+    </define>
+  </div>
+
+</grammar>

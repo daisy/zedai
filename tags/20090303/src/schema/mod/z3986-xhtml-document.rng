@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z3986 Document Module</x:h1>
+  <x:p>This module is a wrapper around the XHTML2 Document Module.</x:p>
+  <x:p>It introduces the following major changes: </x:p>
+  <x:ul>
+  	<x:li>remove xsi:schemaLocation</x:li>
+  	<x:li>require xml:lang on root</x:li>
+  	<x:li>Give body the z3986 section content model</x:li>
+  </x:ul>
+  
+  <!-- TODO: SCH: exactly one link rel="profile" href="uri" -->
+  
+  <!-- broken out to a module instead of in driver in order to 
+  		allow reuse between profiles -->
+  
+    <include href="xhtml-document-2.rng">
+    	
+    	<define name="html.attlist">
+    		<ref name="lang.attrib" />
+    		<ref name="Core.attrib"/>
+    		<ref name="Bidi.attrib" />
+        	<ref name="version.attrib" />
+        	<ref name="base.attrib" />
+    	</define>
+    	
+    	<define name="body">
+      		<element name="body">
+        		<ref name="body.attlist"/>
+        		<ref name="section.strict.model"/>
+      		</element>
+    	</define>    
+    	
+    	<define name="head.attlist">
+      		<ref name="Minimal.attrib"/>
+    	</define>
+    	
+    	<define name="body.attlist">
+      		<ref name="Minimal.attrib"/>
+    	</define>
+    	
+    	<define name="title">
+      	  <element name="title">
+        	<ref name="title.attlist"/>
+        	<ref name="Text.reduced.model"/>
+      	  </element>
+        </define>
+    		
+    </include>
+    
+    <!-- defined in hypertext.attrib 
+    <define name="base.attrib">
+    	<attribute name="xml:base">
+    		<ref name="URI.datatype"/>
+    	</attribute>
+    </define>
+    -->
+</grammar>

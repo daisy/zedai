@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:xsdp="http://www.daisy.org/ns/rng-preprocess/xsd"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="partitions">The document partitions module</dcterms:title>
+      <dcterms:description>This module defines the {[[#z3986.frontmatter]]}, {[[#z3986.bodymatter]]}
+        and {[[#z3986.backmatter]]} elements into which document content is typically partitioned
+        when representing information resources such as books and journals.</dcterms:description>
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}"/>
+      <dcterms:creator>Markus Gylling</dcterms:creator>
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng"/>
+    </rdf:Description>
+  </rdf:RDF>
+
+  <define name="z3986.partitions">
+    <rdf:RDF>
+      <rdf:Description>
+        <dcterms:title z:short="partitions">The {partitions} pattern</dcterms:title>
+        <dcterms:description>The {partitions} pattern defines a top-level partitioning structure for
+          information resources such as books and journals.</dcterms:description>
+        <dcterms:isRequiredBy rdf:resource="."/>
+        <z:context>{[[#z3986.body]]}</z:context>
+        <z:content>{[[#z3986.cover]]?, [[#z3986.frontmatter]], [[#z3986.bodymatter]], [[#z3986.backmatter]]?}</z:content>
+      </rdf:Description>
+    </rdf:RDF>
+    <optional>
+      <ref name="z3986.partitions.cover.slot"/>
+    </optional>
+    <ref name="z3986.frontmatter"/>
+    <ref name="z3986.bodymatter"/>
+    <optional>
+      <ref name="z3986.backmatter"/>
+    </optional>
+  </define>
+
+  <define name="z3986.partitions.cover.slot">
+    <empty/>
+  </define>
+
+  <div>
+    <define name="z3986.frontmatter">
+      <element name="frontmatter">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="frontmatter">The {frontmatter} element</dcterms:title>
+            <dcterms:description>The {frontmatter} element groups the initial/preliminary sections
+              of a document.</dcterms:description>
+            <z:info doc-only="true">Frontmatter typically consists of such sections as forewords,
+              prefaces, acknowledgements, introductions, dedications, prologues, and tables of
+              contents.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>{[[#z3986.body]]}</z:context>
+            <z:content>{[[#z3986.section]]+}</z:content>
+            <z:attlist>{[[#z3986.Section.attrib]]}</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.frontmatter.attlist"/>
+        <ref name="z3986.frontmatter.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.frontmatter.attlist">
+      <ref name="z3986.Section.attrib"/>
+    </define>
+
+    <define name="z3986.frontmatter.content">
+      <oneOrMore>
+        <choice>
+          <ref name="z3986.frontmatter.content.class"/>
+        </choice>
+      </oneOrMore>
+    </define>
+
+    <define name="z3986.frontmatter.content.class" combine="choice">
+      <ref name="z3986.Section.class"/>
+    </define>
+  </div>
+
+  <div>
+    <define name="z3986.bodymatter">
+      <element name="bodymatter">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="bodymatter">The {bodymatter} element</dcterms:title>
+            <dcterms:description>The {bodymatter} element groups the primary narrative of a
+              document, as contrasted with preliminary material in {frontmatter} and supplementary
+              information in {backmatter}.</dcterms:description>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>{[[#z3986.body]]}</z:context>
+            <z:content>{[[#z3986.section]]+}</z:content>
+            <z:attlist>{[[#z3986.Section.attrib]]}</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.bodymatter.attlist"/>
+        <ref name="z3986.bodymatter.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.bodymatter.attlist">
+      <ref name="z3986.Section.attrib"/>
+    </define>
+
+    <define name="z3986.bodymatter.content">
+      <oneOrMore>
+        <choice>
+          <ref name="z3986.Section.class"/>
+        </choice>
+      </oneOrMore>
+    </define>
+  </div>
+
+  <div>
+    <define name="z3986.backmatter">
+      <element name="backmatter">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="backmatter">The {backmatter} element</dcterms:title>
+            <dcterms:description>The {backmatter} element groups supplementary sections at the end
+              of a document.</dcterms:description>
+            <z:info doc-only="true">Backmatter typically consists of such sections as appendices,
+              glossaries, bibliographies and indices.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>{[[#z3986.body]]}</z:context>
+            <z:content>{[[#z3986.section]]+}</z:content>
+            <z:attlist>{[[#z3986.Section.attrib]]}</z:attlist>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.backmatter.attlist"/>
+        <ref name="z3986.backmatter.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.backmatter.attlist">
+      <ref name="z3986.Section.attrib"/>
+    </define>
+
+    <define name="z3986.backmatter.content">
+      <oneOrMore>
+        <choice>
+          <ref name="z3986.backmatter.content.class"/>
+        </choice>
+      </oneOrMore>
+    </define>
+
+    <define name="z3986.backmatter.content.class" combine="choice">
+      <ref name="z3986.Section.class"/>
+    </define>
+  </div>
+
+
+</grammar>

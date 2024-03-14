@@ -1,0 +1,579 @@
+@base  <http://www.daisy.org/z3986/2010/vocab/core/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix : <#> .
+
+<> 
+  dcterms:title "Z39-86 2010 Core Vocabulary - Structural Semantics of Written Works";
+  dcterms:publisher "DAISY Consortium";
+  dcterms:creator "mgylling";
+  dcterms:creator "mdemeglio";
+  dcterms:date "2009-12-01" .
+
+########################################
+########## major sectioning ############
+########################################
+
+:Section a rdf:class ;
+		owl:disjointWith :Block .
+
+:frontmatter a rdf:Property ; 
+		rdfs:label "frontmatter" ;
+		rdfs:subPropertyOf :section ;
+		rdfs:comment "TODO" .
+
+:bodymatter a rdf:Property ; 
+		rdfs:label "frontmatter" ;
+		rdfs:subPropertyOf :section ;
+		rdfs:comment "TODO" .
+		
+:backmatter a rdf:Property ; 
+		rdfs:label "backmatter" ;
+		rdfs:subPropertyOf :section ;
+		rdfs:comment "TODO" .
+
+:section a rdf:Property;
+  		rdfs:label "section" ;
+  		rdfs:domain :Section ;
+  		rdfs:comment "A generic structural division of content" .
+  
+:part a rdf:Property;  
+		rdfs:label "part" ;
+		rdfs:subPropertyOf :section ; 		 
+		rdfs:comment "A major structural division of a piece of writing, typically encapsulating a set of related chapters" .
+
+:chapter a rdf:Property ; 
+		rdfs:label "chapter" ;	
+		rdfs:subPropertyOf :section ;
+		rdfs:comment "A major structural division of a piece of writing" .
+
+:article a rdf:Property ; 
+		rdfs:label "article" ;
+		rdfs:subPropertyOf :section ;
+		rdfs:comment "A major independent section in a piece of writing, typically appearing in journals, magazines or newspapers" .
+
+:foreword a rdf:Property ;
+		rdfs:label "foreword" ;
+		rdfs:subPropertyOf :section ;
+		rdfs:comment "An introductory section in the beginning of the work, typically written by someone else than the work's author" .
+
+:preface a rdf:Property ;
+		rdfs:label "preface" ;
+		rdfs:subPropertyOf :section ;
+		rdfs:comment "An introductory section in the beginning of the work, typically written by the work's author" .
+	
+:introduction a rdf:Property ;
+		rdfs:label "introduction" ;
+		rdfs:subPropertyOf :section ;
+		rdfs:comment "A section in the beginning of the work, typically introducing the reader to the scope or nature of the work's content". 
+
+:preamble a rdf:Property ;
+		rdfs:label "preamble" ;
+		rdfs:subPropertyOf :introduction ;
+		rdfs:comment "A section in the beginning of the work, typically containing introductory and/or explanatory prose regarding the scope or nature of the work's content".
+
+:toc a rdf:Property ;
+		rdfs:label "toc" ;
+		rdfs:subPropertyOf :section ;
+		rdfs:comment "A table of contents, typically appearing in the work's frontmatter, or at the beginning of a section" .
+	
+:epilogue a rdf:Property ;
+		rdfs:label "epilogue" ;
+		rdfs:subPropertyOf :section ;
+		rdfs:comment "An ending section, part of the narrative" . 
+
+:afterword a rdf:Property ;
+		rdfs:label "afterword" ;
+		rdfs:subPropertyOf :section ;
+		rdfs:comment "An ending section, not part of the narrative" .
+	
+:conclusion a rdf:Property ;
+		rdfs:label "conclusion" ;
+		rdfs:subPropertyOf :section ;
+		rdfs:comment "An ending section, typically containing statements concluding the work" .
+
+
+########################################
+############ block sectioning ##########
+########################################
+
+:Block a rdf:class ;
+		owl:disjointWith :Section .
+				
+:block a rdf:Property ;
+  		rdfs:label "block" ;
+  		rdfs:domain :Block ;
+  		rdfs:comment "A generic block of content, always subordinate to a Section" ;
+  		dcterms:description "A block does not necessarily represent anything nameable in itself, and will in these cases merely create an association between its descendants" .
+  		
+:para a rdf:Property ;  
+		rdfs:label "para" ;
+		rdfs:subPropertyOf :block ; 		 
+		rdfs:comment "A paragraph, consisting of one or several sentences, preceded by an empty line in the main body of text, with the first line of the paragraph sometimes indented" .  		
+  		
+:linegroup a rdf:Property ;  
+		rdfs:label "linegroup" ;
+		rdfs:subPropertyOf :block ; 		 
+		rdfs:comment "A group of lines" .
+
+:note a rdf:Property ;  
+		rdfs:label "note" ;
+		rdfs:subPropertyOf :block ; 		 
+		rdfs:comment "A footnote or a rearnote, typically linked from the main text via a note reference" .
+
+:footnotes a rdf:Property ;  
+		rdfs:label "footnotes" ;
+		rdfs:subPropertyOf :block ; # TODO and Collection		
+		rdfs:seeAlso :footnote; 
+		rdfs:comment "A collection of notes appearing at the bottom of a page" .
+
+:footnote a rdf:Property ;  
+		rdfs:label "footnote" ;
+		rdfs:subPropertyOf :note ; 		 
+		rdfs:seeAlso :footnotes;
+		rdfs:comment "A note appearing at the bottom of a page" .
+		
+:rearnote a rdf:Property ;  
+		rdfs:label "rearnote" ;
+		rdfs:subPropertyOf :note ; 	
+		rdfs:seeAlso :rearnotes;	 
+		rdfs:comment "A note appearing in the rear (backmatter) of the work, or at the end of a section" .
+
+############ asides ##########
+
+:Aside a rdf:class ;
+		rdfs:subclassOf :Block .
+		
+:aside a rdf:Property ;
+		rdfs:label "aside" ;
+		rdfs:domain :Aside ;
+		rdfs:comment "Secondary or supplementary content" .
+
+:sidebar a rdf:Property ;
+		rdfs:label "sidebar" ;
+		rdfs:subPropertyOf :aside ;
+		rdfs:comment "Secondary or supplementary content, typically formatted as an inset or box" .
+
+:practice a rdf:Property ;
+		rdfs:label "practice" ;
+		rdfs:subPropertyOf :aside ;
+		rdfs:comment "A review exercise or sample" .
+
+:notice a rdf:Property ;
+		rdfs:label "notice" ;
+		rdfs:subPropertyOf :aside ;
+		rdfs:comment "A notification" .
+
+:warning a rdf:Property ;
+		rdfs:label "warning" ;
+		rdfs:subPropertyOf :aside ;
+		rdfs:comment "A warning" .
+
+:marginalia a rdf:Property ;
+		rdfs:label "marginalia" ;
+		rdfs:subPropertyOf :aside ; #TODO and span
+		rdfs:comment "Marginalia" .
+
+########################################
+###### backmatter sections/blocks ######
+########################################
+
+:appendix a rdf:Property ;
+		rdfs:label "appendix";		
+		rdfs:subPropertyOf :section ;
+		rdfs:comment "Supplemental information" .
+
+:glossary a rdf:Property ;
+		rdfs:label "glossary";		
+		rdfs:subPropertyOf :section ; # TODO and Collection
+		rdfs:comment "An alphabetical list of terms in a particular domain of knowledge with the definitions for those terms" .
+	 
+:bibliography a rdf:Property ;
+		rdfs:label "bibliography";		
+		rdfs:subPropertyOf :section ; # TODO and Collection
+		rdfs:comment "A systematic list of cited works" .
+
+:index a rdf:Property ;
+		rdfs:label "index";		
+		rdfs:subPropertyOf :section ; # TODO and Collection
+		rdfs:comment "A detailed list, usually arranged alphabetically, of the specific information in a publication" .
+
+:colophon a rdf:Property ;
+		rdfs:label "colophon";		
+		rdfs:subPropertyOf :section ;
+		rdfs:comment "A brief description usually located at the end of a publication, describing production notes relevant to the edition" .
+		
+:rearnotes a rdf:Property ;
+    	rdfs:label "rearnotes" ;		
+		rdfs:seeAlso :rearnote ;
+		rdfs:subPropertyOf :section ; # TODO and Collection
+		rdfs:comment "A collection of notes appearing at the rear (backmatter) of the work, or at the end of a section" .
+
+
+########################################
+###### frontmatter sections/blocks #####
+########################################
+
+:titlepage
+    	rdfs:label "titlepage" ;
+		rdfs:subPropertyOf :section ; # TODO and block
+		rdfs:comment "The title page of the work" .
+
+:halftitlepage
+    	rdfs:label "halftitlepage" ;
+    	rdfs:subPropertyOf :section ; # TODO and block
+		rdfs:comment "The half-title page of the work" .
+
+:dedication
+    	rdfs:label "dedication" ;
+		rdfs:subPropertyOf :section ; # TODO and block    	
+		rdfs:comment "An inscription addressed to one or several particular person(s)" .
+
+:epigraph
+    	rdfs:label "epigraph" ;
+		rdfs:subPropertyOf :section ; # TODO and block    	
+		rdfs:comment "A quotation that is pertinent but not integral to the text" .
+
+:acknowledgments
+    	rdfs:label "acknowledgments" ;
+		rdfs:subPropertyOf :section ; # TODO and block    	
+		rdfs:comment "A passage containing acknowledgments to entities involved in the realization of the work" .
+
+:imprint
+    	rdfs:label "imprint" ;
+		rdfs:subPropertyOf :block ;     	
+		rdfs:comment "Information relating to the publication or distribution of the work" .
+
+:imprimatur
+    	rdfs:label "imprimatur" ;
+		rdfs:subPropertyOf :block ;     	
+		rdfs:comment "A formal statement authorizing the publication of the work" .
+	
+:publisher-address
+    	rdfs:label "publisher-address" ;
+    	rdfs:subPropertyOf :block ;
+		rdfs:comment "The publisher's address, which can be abbreviated to city and postal code only" .
+
+:grant-acknowledgment
+    	rdfs:label "grant-acknowledgment" ;
+    	rdfs:subPropertyOf :block ;    	
+		rdfs:comment "Describes financial assistance towards the work" .
+
+:contributors
+    	rdfs:label "contributors" ;
+    	rdfs:subPropertyOf :block, :list ;     	  	
+		rdfs:comment "A list of contributors to the work" .
+		
+:other-credits
+    	rdfs:label "other-credits" ;
+    	rdfs:subPropertyOf :block ;    	
+		rdfs:comment "Acknowledgments of previously published parts of the work, illustration credits, and permission to quote from copyrighted material" .
+		 		
+:biographical-note
+    	rdfs:label "biographical-note" ;
+    	rdfs:subPropertyOf :block ;    	
+		rdfs:comment "A biographical note about the author or authors (“author” here includes editors, compilers, and translators)" .
+
+:translator-note
+		rdfs:label "translator-note" ;
+    	rdfs:subPropertyOf :block ;		
+		rdfs:comment "A note from the translator" .
+
+
+########################################
+################ verse #################
+########################################	
+
+:Verse a rdf:class ;
+	rdfs:subclassOf :Section, :Block .	
+	
+#poem
+#	A poem
+#song
+
+
+		
+########################################
+############### titles #################
+########################################	
+
+:Title a rdf:class .
+	
+:title a rdf:Property ;
+		rdfs:label "title" ;
+		rdfs:domain :Title ;
+		owl:sameAs dcterms:title;
+		rdfs:comment "The title of the work, or, when used in the context of a fulltitle, the primary part of the full title" .
+
+:halftitle a rdf:Property ;
+		rdfs:label "halftitle" ;
+		rdfs:subPropertyOf :title ;
+		rdfs:comment "The halftitle of the work" .
+
+:fulltitle a rdf:Property ;
+		rdfs:label "fulltitle" ;
+		rdfs:subPropertyOf :title ;
+		rdfs:comment "The fulltitle of the work" .
+
+:subtitle a rdf:Property;
+		rdfs:label "subtitle" ;
+		rdfs:subPropertyOf :title ;
+		rdfs:comment "The secondary part of the fulltitle of the work" .	
+
+
+########################################
+############### headings ###############
+########################################	
+	
+:Heading a rdf:class .	
+	
+:heading a rdf:Property;
+		rdfs:label "heading" ;
+		rdfs:domain :Heading ;
+		rdfs:comment "The title of a Section (part, chapter, subchapter, article, etc)" .	
+	
+:bridgehead a rdf:Property;
+		rdfs:label "bridgehead" ;
+		rdfs:subPropertyOf :heading ;
+		rdfs:comment "A free-floating heading that is not associated with the hierarchical structure of a document" .
+
+
+########################################
+################ lists #################
+########################################	
+	
+:Collection a rdf:class ;
+		rdfs:subclassOf :Block .
+	
+:List a rdf:class ;
+		rdfs:subclassOf :Collection .
+
+:list a rdf:Property ;
+		rdfs:label "list" ;
+		rdfs:domain :List ;
+		rdfs:comment "An ordered or unordered set of interrelated items" .	
+
+:orderedlist a rdf:Property ;
+		rdfs:label "orderedlist" ;
+		rdfs:subPropertyOf :list ;	
+		rdfs:comment "A list where the order of the list's items is significant" .
+	
+:unorderedlist a rdf:Property ;
+		rdfs:label "unorderedlist" ;
+		rdfs:subPropertyOf :list ;	
+		rdfs:comment "A list where the order of the list's items is insignificant" .	
+	
+:abbreviations a rdf:Property ;
+		rdfs:label "abbreviations" ;
+		rdfs:subPropertyOf :unorderedlist ;
+		rdfs:comment "A list of abbreviations" .
+
+:definitions a rdf:Property ;
+		rdfs:label "definitions" ;
+		rdfs:subPropertyOf :unorderedlist ;
+		rdfs:comment "A list of definitions (of terms, concepts)". 
+
+:timeline a rdf:Property ;
+		rdfs:label "timeline" ;
+		rdfs:subPropertyOf :orderedlist ;
+		rdfs:comment "A chronological list of events".
+	
+
+########################################
+############## pagination ##############
+########################################		
+	
+:pagebreak a rdf:Property ;
+		rdfs:label "pagebreak" ;
+		rdfs:comment "A separator denoting the position where a break between two contiguous pages occurs in a paginated media" .
+		
+:page-header a rdf:Property ;		
+		rdfs:label "page-header" ;
+		rdfs:subPropertyOf :block ;
+		rdfs:comment "Material, separate from the main body of text, appearing at the top of a printed page" .
+				
+:page-footer a rdf:Property ;
+		rdfs:label "page-footer" ;
+		rdfs:subPropertyOf :block ;
+		rdfs:comment "Material, separate from the main body of text, appearing at the bottom of a printed page" .
+	
+	
+########################################
+############# annotations ##############
+########################################	
+
+:Annotation a rdf:class ;
+		rdfs:subclassOf :Block, :Aside .
+	
+:annotation a rdf:Property ;
+		rdfs:label "annotation" ;
+		rdfs:domain :Annotation ;
+		rdfs:comment "Overlay information about passages in the work" .
+
+:author-anno a rdf:Property ;
+		rdfs:label "author-anno" ;
+		rdfs:subPropertyOf :annotation ;
+		rdfs:comment "An annotation contributed by an author of the work" .
+
+:editor-anno a rdf:Property ;
+		rdfs:label "editor-anno" ;
+		rdfs:subPropertyOf :annotation ;
+		rdfs:comment "An annotation contributed by an editor of the work" .
+
+:commentator-anno a rdf:Property ;
+		rdfs:label "commentator-anno" ;
+		rdfs:subPropertyOf :annotation ;
+		rdfs:comment "An annotation contributed by a commentator of the work" .
+
+:translator-anno a rdf:Property ;
+		rdfs:label "translator-anno" ;
+		rdfs:subPropertyOf :annotation ;
+		rdfs:comment "An annotation contributed by a translator of the work" .
+
+:republisher-anno a rdf:Property ;
+		rdfs:label "republisher-anno" ;
+		rdfs:subPropertyOf :annotation, :custom ;
+		rdfs:comment "An annotation contributed by a republisher" .
+	
+	
+	
+########################################
+############# references ###############
+########################################	
+
+:Reference a rdf:class .
+
+:reference a rdf:Property ;
+		rdfs:label "reference" ;
+		rdfs:domain :Reference ;
+		rdfs:comment "A reference to another entity - a resource, fragment, concept, or notion" .
+
+:resolving-reference a rdf:Property ;
+		rdfs:label "resolving-reference" ;
+		rdfs:subPropertyOf :reference ;
+		rdfs:comment "A reference which contains data intended to allow resolving the target entity" .
+
+:loose-reference a rdf:Property ;
+		rdfs:label "loose-reference" ;
+		rdfs:subPropertyOf :reference ;
+		rdfs:comment "A reference to a non-resolving target - a concept, notion or other imprecisely defined entity" .
+
+:noteref a rdf:Property ;
+		rdfs:label "noteref" ;
+		rdfs:subPropertyOf :resolving-reference ;
+		rdfs:comment "A reference to a note, typically appearing a superscripted symbol in the main body of text" ;
+		rdfs:seeAlso :note .
+
+:annoref a rdf:Property ;
+		rdfs:label "annoref" ;
+		rdfs:subPropertyOf :resolving-reference ;
+		rdfs:comment "A reference to an annotation" ;
+		rdfs:seeAlso :annotation .
+		
+:citation a rdf:Property ;
+		rdfs:label "citation" ;
+		rdfs:subPropertyOf :resolving-reference ;
+		rdfs:comment "A reference to bibliographic work, typically resolving to an entry in an identified bibliography" ;
+		rdfs:seeAlso :loose-citation ;
+		rdfs:seeAlso :bibliography .
+
+:loose-citation a rdf:Property ;
+		rdfs:label "loose-citation" ;		
+		rdfs:subPropertyOf :loose-reference ;
+		rdfs:seeAlso :citation ;
+		rdfs:comment "An imprecise reference to a bibliographic work" .
+
+:image-placeholder a rdf:Property ;
+		rdfs:label "image-placeholder" ;
+		rdfs:subPropertyOf :reference, :custom ;
+		rdfs:comment "A placeholder for a reference to a non-existing or removed image" .
+
+
+########################################
+################# text #################
+########################################	
+
+:Text a rdf:class .
+
+:span a rdf:Property ;
+		rdfs:label "span" ;		
+		rdfs:domain :Text ;
+		rdfs:comment "A range of text" .	
+
+
+########################################
+################ lines #################
+########################################	
+
+:line a rdf:Property ;
+		rdfs:label "line" .
+
+:byline a rdf:Property ;
+		rdfs:label "byline" .
+		
+:dateline a rdf:Property ;
+		rdfs:label "dateline" .
+		
+		
+########################################
+########### custom content #############
+########################################	
+
+:Custom a rdf:class .
+
+:custom a rdf:Property ;
+	rdfs:domain :Custom ;
+	rdfs:comment "Structures added or removed during republishing, thus representing a deviation from the source" ;
+	dcterms:description "Typically used to adapt the content for a particular output format" .
+
+
+################################################################################	
+#pgroup
+#tables
+#illustration, artwork
+#for verse: poem, song/lyrics, hymn -- load of poetry measures for verse, in dedicated vocab
+#byline, dateline
+#georges sentence stuff on wiki
+#word-->keyword
+#dramatis personœ, persona
+#
+#decorative (to set on say an image to indicate that it does not contain content, just layout/typographic/stylisting/rendition) role="rend"	
+#errata
+#	errata
+#essay, book etc
+#
+#diary
+#	A diary
+#
+#diaryEntry
+#	A diary entry
+#
+#issue 52: letter properties
+#letter
+#	A letter
+#
+#
+#promotional-copy
+#	A description of the book or quotations from reviews
+#
+#help
+#	Help using the publication.
+#
+#keyword
+#	A key word or phrase
+#
+#	
+#body-artwork
+#	Bodymatter artwork
+# A headline is text at the top of a newspaper article, indicating the nature of the article below it.
+# what/where? from frontmatter
+#:publisher-logo
+#    	rdfs:label "publisher-logo" ;
+#		rdfs:subPropertyOf :??? ;     	
+#		rdfs:comment "The publisher's logo" .
+#		#TODO reference?
+#:cover-artwork
+#    	rdfs:label "cover-artwork" ;
+#		rdfs:comment "Cover artwork" .

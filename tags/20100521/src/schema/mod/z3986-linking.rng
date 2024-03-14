@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+  <!-- TODO SCH need to figure out which references cannot nest (guesstimate: those that indulge in xlink) -->
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="linking">The linking and embedding module</dcterms:title>
+      <dcterms:description>This module defines the {[[#z3986.ref]]} element and the
+        {[[#z3986.ref.attrib]]}, {[[#z3986.src.attrib]]} and {[[#z3986.srctype.attrib]]} attributes
+        that enable inter- and intra-document linking and content embedding. It also defines the 
+        {[[#z3986.continuation.attrib]]} attribute that enables logical association of elements.
+      </dcterms:description>
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}"/>
+      <dcterms:creator>Markus Gylling</dcterms:creator>
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng"/>
+      <dcterms:requires rdf:resource="xlink.rng"/>
+      <dcterms:requires rdf:resource="z3986-datatypes.rng"/>
+    </rdf:Description>
+  </rdf:RDF>
+
+  <div>
+    <define name="z3986.ref">
+      <element name="ref">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="ref">The {ref} element</dcterms:title>
+            <dcterms:description>The {ref} element represents a reference to an internal or external
+              entity.</dcterms:description>
+            <z:info>The referenced entity is not required to be resolvable or includable in a
+              processing or rendering context. The {ref} element may point to conceptual or physical
+              items.</z:info>
+            <z:info>The {ref} element may employ attributes from the {[[#xlink.attrib]]} attributes
+              collection to specify the nature of the hyperlink, including or excluding expressions
+              of link activation behavior.</z:info>
+            <z:info>IDREF link relationships may also be established using the
+              {[[#z3986.ref.attrib]]} attribute, but not in conjunction with the {xlink} attributes
+              collection.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context>{[[#z3986.Phrase.class]]}</z:context>
+            <z:content>{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</z:content>
+            <z:attlist z:alterability="fixed">{([[#xlink.attrib]]? | [[#z3986.ref.attrib]]?),
+              [[#z3986.Phrase.attrib]]}</z:attlist>
+          </rdf:Description>
+          <sch:rule context="default:ref">
+            <sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0">The {ref}
+              element must neither be empty nor contain only whitespace.</sch:assert>
+          </sch:rule>
+        </rdf:RDF>
+        <ref name="z3986.ref.attlist"/>
+        <ref name="z3986.ref.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.ref.attlist">
+      <choice>
+        <optional>
+          <ref name="xlink.attrib"/>
+        </optional>
+        <optional>
+          <ref name="z3986.ref.attrib"/>
+        </optional>
+      </choice>
+      <ref name="z3986.Phrase.attrib"/>
+    </define>
+
+    <define name="z3986.ref.content">
+      <ref name="z3986.Phrase.Text.mix.model"/>
+    </define>
+
+    <define name="z3986.ref.ref.required">
+      <element name="ref">
+        <ref name="z3986.ref.attrib"/>
+        <ref name="z3986.Phrase.attrib"/>
+        <ref name="z3986.ref.content"/>
+      </element>
+    </define>
+
+  </div>
+
+  <div>
+    <define name="z3986.ref.attrib">
+      <attribute name="ref">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="ref">The {ref} attribute</dcterms:title>
+            <dcterms:description>The {ref} attribute provides a generic mechanism to establish an
+              association between the current element and one or more other elements in the document
+              scope.</dcterms:description>
+            <z:info>The {ref} attribute must contain one or more space separated references to the
+              {[[#xml.id.attrib IDs]]} of the associated elements.</z:info>
+            <z:info absdef-only="true">Elements adopting the {ref} attribute may express constraints
+              on the nature of the referenced elements.</z:info>
+            <z:context>No default context.</z:context>
+            <z:content>{[[#IDREFS.datatype]]}</z:content>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="ref.attrib.content"/>
+      </attribute>
+    </define>
+
+    <define name="ref.attrib.content">
+      <ref name="IDREFS.datatype"/>
+    </define>
+  </div>
+
+  <div>
+
+    <define name="z3986.src.attrib">
+      <attribute name="src">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="src">The {src} attribute</dcterms:title>
+            <dcterms:description>The {src} attribute contains a URI reference to an external
+              resource to embed in the document, in place of the current
+              element.</dcterms:description>
+            <z:info>Only references to resources that conform to one of the types in the
+              {[[#z3986.srctype.attrib]]} attribute enumeration are allowed.</z:info>
+            <!-- TODO is specialization of xlink:embed zlink:actuate=onload etc -->
+            <z:context>No default context.</z:context>
+            <z:content z:alterability="fixed">{[[#URI.datatype]]}</z:content>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.src.attrib.content"/>
+      </attribute>
+    </define>
+
+    <define name="z3986.src.attrib.content">
+      <ref name="URI.datatype"/>
+    </define>
+
+    <define name="z3986.srctype.attrib">
+      <attribute name="srctype">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="srctype">The {srctype} attribute</dcterms:title>
+            <dcterms:description>The {srctype} attribute contains a {[[#refRFC2046 MediaType]]}
+              expression that identifies the type of resource referenced from the
+              {[[#z3986.src.attrib]]} attribute.</dcterms:description>
+            <z:info absdef-only="true">All Z39.86-AI profiles must allow the media types {[[#refPNG
+              image/png]]}, {[[#refJPEG image/jpeg]]} and {[[#refBMP image/bmp]]}. These three image
+              types are jointly referred to as the "core image types". Z39.86-AI features may extend
+              this enumeration to support additional media types.</z:info>
+            <z:info absdef-only="true">If the {srctype} attribute is not specified, processing
+              agents must dereference the resource in the {src} attribute to identify its media
+              type.</z:info>
+            <z:context>On elements where {[[#z3986.src.attrib]]} is allowed.</z:context>
+            <z:content z:alterability="fixed">{'image/png'|'image/jpeg'|'image/bmp'}</z:content>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.srctype.attrib.content"/>
+      </attribute>
+    </define>
+
+    <define name="z3986.srctype.attrib.content" combine="choice">
+      <choice>
+        <value>image/png</value>
+        <a:documentation>The referenced resource is a [[#refPNG PNG image]].</a:documentation>
+        <value>image/jpeg</value>
+        <a:documentation>The referenced resource is a [[#refJPEG JPEG image]].</a:documentation>
+        <value>image/bmp</value>
+        <a:documentation>The referenced resource is a [[#refBMP BMP image]].</a:documentation>
+      </choice>
+    </define>
+
+    <define name="z3986.Embed.attrib">
+      <ref name="z3986.src.attrib"/>
+      <optional>
+        <ref name="z3986.srctype.attrib"/>
+      </optional>
+    </define>
+
+  </div>
+
+  <div>
+    <define name="z3986.continuation.attrib">
+      <attribute name="continuation">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="continuation">The {continuation} attribute</dcterms:title>
+            <dcterms:description> The {continuation} attribute provides a generic mechanism to
+              establish a logical continuation of the current element cross one or more other
+              elements in the document scope. </dcterms:description>
+            <z:info> The {continuation} attribute must contain one or more space separated
+              references to the {[[#xml.id.attrib IDs]]} of the associated elements. Note that the
+              element that carries the continuation attribute must not be referenced in this
+              list.</z:info>
+            <z:info>The order in which the references appear in the attribute value is not significant
+              (i.e., the reference order need not match the document order of the referenced
+              elements). Only elements with the same QName as the parent element of the attribute
+              can be referenced (e.g., a paragraph cannot list a table as a continuation).
+              Additionally, only elements following the current element in the document order may be
+              referenced as continuations. Elements that are referenced as continuations must not
+              have continuation attributes themselves. </z:info>
+            <z:info> Logical connections allow for special formatting of elements when generating
+              outputs (to establish the connection between emphasis that continues across multiple
+              paragraphs for braille formatting, for example). When the {continuation} attribute has
+              been attached to an element, all formatting instructions that apply to that element
+              also apply to all the elements referenced in the attribute. Formatting instructions on
+              the logical siblings, however, do not cascade. </z:info>
+            <z:info> A processing agent that does not recognize logical connections must be able to
+              process each individual element in the continuation without requiring special
+              knowledge of the elements that came before (i.e., inheritance of formatting cannot be
+              assumed). </z:info>
+            <z:context>No default context.</z:context>
+            <z:content z:alterability="fixed">{[[#IDREFS.datatype]]}</z:content>
+          </rdf:Description>
+          <sch:rule context="*[@continuation and @xml:id]">
+            <sch:assert test="
+              every $id in distinct-values(tokenize(string-join(//@continuation,' '),'\s+'))
+              satisfies $id ne current()/@xml:id">Elements referenced by a continuation attribute may not carry a continuation attribute</sch:assert>
+          </sch:rule>
+          <sch:rule context="*[@continuation]">
+            <sch:assert test="
+              every $id in tokenize(normalize-space(@continuation),'\s') 
+              satisfies name(//*[@xml:id eq $id]) eq name(current())">Elements referenced by a continuation attribute must have the same QName as the referencing element.</sch:assert>
+            <sch:assert test="
+              every $id in tokenize(normalize-space(@continuation),'\s') 
+              satisfies current() &lt;&lt; //*[@xml:id eq $id]">Elements referenced by a continuation attribute must be located after (in document order) the referencing element.</sch:assert>
+            <sch:assert test="
+              every $id in tokenize(normalize-space(@continuation),'\s') 
+              satisfies not(current() is //*[@xml:id eq $id])">Elements carrying a continuation attribute must not reference themselves.</sch:assert>
+          </sch:rule>
+        </rdf:RDF>
+        <ref name="continuation.attrib.content"/>
+      </attribute>
+    </define>
+
+    <define name="continuation.attrib.content">
+      <ref name="IDREFS.datatype"/>
+    </define>
+  </div>
+
+  <div>
+    <a:documentation>ref - default content model contribution</a:documentation>
+    <define name="z3986.Phrase.core.class">
+      <ref name="z3986.ref"/>
+    </define>
+
+    <define name="z3986.p.attlist" combine="interleave">
+      <optional>
+        <ref name="z3986.continuation.attrib"/>
+      </optional>
+    </define>
+
+    <define name="z3986.block.attlist" combine="interleave">
+      <optional>
+        <ref name="z3986.continuation.attrib"/>
+      </optional>
+    </define>
+
+    <define name="z3986.span.attlist" combine="interleave">
+      <optional>
+        <ref name="z3986.continuation.attrib"/>
+      </optional>
+    </define>
+
+    <define name="z3986.emph.attlist" combine="interleave">
+      <optional>
+        <ref name="z3986.continuation.attrib"/>
+      </optional>
+    </define>
+
+    <define name="z3986.article.attlist" combine="interleave">
+      <optional>
+        <ref name="z3986.continuation.attrib"/>
+      </optional>
+    </define>
+
+
+  </div>
+
+</grammar>

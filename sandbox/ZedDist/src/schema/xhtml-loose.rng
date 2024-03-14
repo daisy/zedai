@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://www.w3.org/1999/xhtml/" xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+    
+    <include href="./mod/xhtml-document.rng"/>
+    <include href="./mod/xhtml-attrib.rng"/>
+      
+    <!-- Structural -->
+    <include href="./mod/xhtml-section.rng"/>
+    <include href="./mod/xhtml-table.rng"/>
+    <include href="./mod/xhtml-list.rng"/>
+    <include href="./mod/xhtml-structural.rng"/>
+    <include href="./mod/xhtml-heading.rng"/>
+    
+    <!-- Text -->
+    <include href="./mod/xhtml-ruby.rng"/>
+    <include href="./mod/xhtml-text.rng"/>
+    <include href="./mod/xhtml-object.rng"/>
+    <include href="./mod/xhtml-hypertext.rng"/>
+    <include href="./mod/xhtml-image.rng"/>
+
+    <!-- datatypes -->
+    <include href="./mod/z3986-datatypes.rng"/>
+
+    <!-- models -->
+    <include href="./mod/xhtml-model-loose.rng"/>
+        
+</grammar>

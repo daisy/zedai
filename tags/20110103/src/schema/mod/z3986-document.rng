@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="document">The document module</title>
+        <annotation annotates="/" condition="required">
+            <para role="desc-main">This module defines the {[[#z3986.document]]}, {[[#z3986.head]]} and {[[#z3986.body]]} core structural elements common to all Z39.86-AI Profiles.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3986-i18n-attrib.rng"/>
+                <member xlink:href="z3986-role-attrib.rng"/>
+                <member xlink:href="rdfa-attrib.rng"/>
+                <member xlink:href="z3986-global-classes.rng"/>
+                <member xlink:href="z3986-meta.rng"/>
+                <member xlink:href="z3986-section.rng"/>
+                <member xlink:href="z3986-core-attrib.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2011-01-03</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <start>
+        <ref name="z3986.document"/>
+    </start>
+    <!-- TODO SCH (?) * each instance must contain <meta rel="z:profile" resource="URI" /> where z: resolves to the decl vocab (and URI must be a resolving profile uri) * each instance must contain <meta rel="z:feature" resource="URI" /> for each feature actually used in body, where z: resolves to the decl vocab (and URI must be a resolving profile uri) * each instance must not contain <meta rel="z:feature" resource="URI" /> for a feature that isnt used * the optional <meta rel="z:meta-record" href="{xsd:anyURI}" /> must if given be accompanied by a <meta property="z:meta-record-type" about="{xsd:anyURI}" content="z:mods" /> , where the the values of meta-record/@href and meta-record-type/@about resolve to the same resource and where z: resolves to the decl vocab, and meta-record-type/@content suffix is one of the values the decl vocab allows * if the optional <meta property="z:meta-record-version" is given, its @about value must resolve to the same resource as the href value on a meta with rel="z:meta-record" * each instance must contain one <meta> element each for the following three: identifier, publisher, date from the dc terms vocab (http://purl.org/dc/terms/) where date must conform to w3c dateTime or date datatypes, the other twos @content cannot be empty example: <head xmlns:dcterms="http://purl.org/dc/terms/"> <meta property="dcterms:identifier" content="{nonEmptyNorWhitespaceOnlyString}" /> <meta property="dcterms:publisher" content="{nonEmptyNorWhitespaceOnlyString}" /> <meta property="dcterms:date" content="{xsd:dateTime} or {xsd:date}" /> Alternatives to do this: * only SCH (wont be able to check that given profile/feature RD URIs resolve, may become very complex) * RNG+SCH (would need to fix meta element order, + fixed prefix for qnames in @property, @rel) * A dedicated standalone software pass (type: StAX), which could do the online checking stuff as well, keep expandable catalogs of known profile/feature URIs, etc * Only SCH + a custom RelaxNG datatype "ProfileOrFeatureResourceDirectoryURI" * RNG + SCH + a custom RelaxNG datatype "ProfileOrFeatureResourceDirectoryURI" Question for SCH approaches is if xsd:date etc is supported in the non-commercial version of Saxon. An argument for RNG and/or SCH is that its good to have as tests as possible in the "core" schema that people use. OTOH, it may be "preferable" to have the meta validation as a last step (so one does not have to worry about it in the early stages of the markup process) QNames in content w xpath: http://uszla.me.uk/space/blog/2008/04/23 http://www.w3.org/TR/xquery-operators/#func-namespace-uri-from-QName XPath2 support in Schematron http://www.schematron.com/tmp/iso-schematron-xslt2.zip -->
+    <div>
+        <define name="z3986.document" xml:id="z3986.document">
+            <element name="document">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="document">The {document} element</title>
+                    <para role="desc-main">The {document} element is the root element of all Z39.86-AI Profiles.</para>
+                    <para role="desc-sub">The {document} element must include an {xmlns} attribute declaring the Z39.86-AI Core namespace, a {[[#rdfa.profile.attrib]]} attribute declaring the default RDFa profile and an {[[#xml.lang.attrib]]} attribute specifying the language of the document.</para>
+                    <synopsis role="def-context">Document root.</synopsis>
+                    <synopsis role="def-content" condition="fixed">{[[#z3986.head]], [[#z3986.body]]}</synopsis>
+                    <synopsis role="def-attlist">[[#z3986.Document.attrib]]; the {[[#xml.lang.attrib]]} attribute required</synopsis>
+                </annotation>
+                <ref name="z3986.document.attlist"/>
+                <ref name="z3986.head"/>
+                <ref name="z3986.body"/>
+            </element>
+        </define>
+        <define name="z3986.document.attlist" xml:id="z3986.document.attlist">
+            <!-- expand out to make xml:lang required -->
+            <ref name="z3986.Core.attrib"/>
+            <ref name="z3986.I18n.attrib.xml.lang.required"/>
+            <optional>
+                <ref name="z3986.role.attrib"/>
+            </optional>
+            <ref name="rdfa.profile.attrib"/>
+            <optional>
+                <ref name="rdfa.prefix.attrib"/>
+            </optional>
+            <ref name="Rdfa.attrib"/>
+            <ref name="z3986.Document.extern.attrib"/>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.head" xml:id="z3986.head">
+            <element name="head">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="head">The {head} element</title>
+                    <para role="desc-main">The {head} element contains meta information about the complete or partial document contained in the enclosing {[[#z3986.document]]}.</para>
+                    <para role="desc-sub">The meta information in the {head} element is not document content in the context of Z39.86-AI documents, but may be used for display and other purposes when rendering documents into alternate formats.</para>
+                    <para role="desc-sub doc-only">Refer to [[#documentsMetadata Document metadata]] for the normative specification of required metadata in {head}.</para>
+                    <synopsis role="def-context" condition="fixed">[[#z3986.document]]</synopsis>
+                    <synopsis role="def-content" condition="The content model must allow {[[#z3986.meta meta]]} elements such that the [[#documentsMetadata normatively requried metadata]] can be expressed.">{[[#z3986.meta]]+}</synopsis>
+                    <synopsis role="def-attlist">[[#z3986.Document.attrib]]</synopsis>
+                    <sch:rule context="default:head[parent::default:document]">
+                        <sch:assert test="descendant::default:meta[@rel='z3986:profile']">The {head} element must include a {meta} element identifying the Z39.86-AI profile the document conforms to (z3986:profile).</sch:assert>
+                    	   <sch:assert test="descendant::default:meta[@property='dcterms:identifier']">The {head} element must include a {meta} element with a unique identifier (dcterms:identifier).</sch:assert>
+                    	   <sch:assert test="descendant::default:meta[@property='dcterms:publisher']">The {head} element must include a {meta} element identifying the document publisher (dcterms:publisher).</sch:assert>
+                    	   <sch:assert test="descendant::default:meta[@property='dcterms:date']">The {head} element must include a {meta} element indicating the document creation date (dcterms:date).</sch:assert>
+                    </sch:rule>
+                </annotation>
+                <ref name="z3986.head.attlist"/>
+                <ref name="z3986.head.content"/>
+            </element>
+        </define>
+        <define name="z3986.head.attlist" xml:id="z3986.head.attlist">
+            <ref name="z3986.Document.attrib"/>
+        </define>
+        <define name="z3986.head.content" xml:id="z3986.head.content">
+            <oneOrMore>
+                <choice>
+                    <ref name="z3986.head.class"/>
+                </choice>
+            </oneOrMore>
+        </define>
+        <define name="z3986.head.class" combine="choice">
+            <ref name="z3986.meta"/>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.body" xml:id="z3986.body">
+            <element name="body">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="body">The {body} element</title>
+                    <para role="desc-main">The {body} element contains the complete or partial content of the enclosing {[[#z3986.document]]}.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.document]]}</synopsis>
+                    <synopsis role="def-content">{([[#z3986.h]]? &amp;amp; [[#z3986.Block.class]]*), [[#z3986.Section.class]]*}</synopsis>
+                    <synopsis role="def-attlist">[[#z3986.Document.attrib]]</synopsis>
+                </annotation>
+                <ref name="z3986.body.attlist"/>
+                <ref name="z3986.body.content"/>
+            </element>
+        </define>
+        <define name="z3986.body.attlist" xml:id="z3986.body.attlist">
+            <ref name="z3986.Document.attrib"/>
+        </define>
+        <define name="z3986.body.content" xml:id="z3986.body.content">
+            <ref name="z3986.section.content"/>
+        </define>
+    </div>
+</grammar>

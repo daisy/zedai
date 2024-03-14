@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://www.w3.org/2002/06/xhtml2/" xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>RELAX NG schema for a ZedAI leisure book profile based on XHTML 2.0</x:h1>
+  <!--
+	TODO test redefine section content model to only allow one h (This is done with sch in the NVDL context)
+-->
+  <x:pre> Copyright ©2003-2005 W3C® (MIT, ERCIM, Keio), All Rights Reserved. Permission to use,
+    copy, modify and distribute this RELAX NG schema for XHTML 2.0 and its accompanying
+    documentation for any purpose and without fee is hereby granted in perpetuity, provided that the
+    above copyright notice and this paragraph appear in all copies. The copyright holders make no
+    representation about the suitability of this RELAX NG schema for any purpose. It is provided "as
+    is" without expressed or implied warranty. For details, please refer to the W3C software license
+    at: <x:a href="http://www.w3.org/Consortium/Legal/copyright-software"
+      >http://www.w3.org/Consortium/Legal/copyright-software</x:a>
+  </x:pre>
+
+  <div>
+    <x:h2>XHTML 2.0 modules</x:h2>
+    <x:p> The ZedAi Leisure Profile is based on the XHTML 2.0 standard, and uses many of the modules
+      defined in that standard. <x:a href="http://www.w3.org/TR/xhtml2" class="module-description"
+       />
+    </x:p>
+
+    <x:table>
+      <x:tr valign="top">
+        <x:th>Module</x:th>
+        <x:th>File name</x:th>
+        <x:th>Included</x:th>
+      </x:tr>
+      <x:tr valign="top">
+        <x:td>Attribute Collections Module</x:td>
+        <x:td>xhtml-attribs-2.rng</x:td>
+        <x:td>Yes</x:td>
+      </x:tr>
+
+      <x:tr valign="top">
+        <x:td>Document Module</x:td>
+        <x:td>xhtml-document-2.rng</x:td>
+        <x:td>Yes</x:td>
+      </x:tr>
+
+      <x:tr valign="top">
+        <x:td>Structural Module</x:td>
+        <x:td>xhtml-structural-2.rng</x:td>
+        <x:td>Yes</x:td>
+      </x:tr>
+
+      <x:tr valign="top">
+        <x:td>Text Module</x:td>
+        <x:td>xhtml-text-2.rng</x:td>
+        <x:td>Yes</x:td>
+      </x:tr>
+
+      <x:tr valign="top">
+        <x:td>Hypertext Module</x:td>
+        <x:td>xhtml-hypertext-2.rng</x:td>
+        <x:td>Yes</x:td>
+      </x:tr>
+
+      <x:tr valign="top">
+        <x:td>List Module</x:td>
+        <x:td>xhtml-list-2.rng</x:td>
+        <x:td>Yes</x:td>
+      </x:tr>
+
+      <x:tr valign="top">
+        <x:td>Handler Module</x:td>
+        <x:td>xhtml-handler-2.rng</x:td>
+        <x:td>No</x:td>
+      </x:tr>
+
+      <x:tr valign="top">
+        <x:td>Image Module</x:td>
+        <x:td>xhtml-image-2.rng</x:td>
+        <x:td>Yes</x:td>
+      </x:tr>
+
+      <x:tr valign="top">
+        <x:td>Metainformation Module</x:td>
+        <x:td>xhtml-meta-2.rng</x:td>
+        <x:td>Yes</x:td>
+      </x:tr>
+
+      <x:tr valign="top">
+        <x:td>Object Module</x:td>
+        <x:td>xhtml-object-2.rng</x:td>
+        <x:td>Yes</x:td>
+      </x:tr>
+
+      <x:tr valign="top">
+        <x:td>Access Module</x:td>
+        <x:td>xhtml-access-2.rng</x:td>
+        <x:td>Yes</x:td>
+      </x:tr>
+
+      <x:tr valign="top">
+        <x:td>Style Sheet Module</x:td>
+        <x:td>xhtml-style-2.rng</x:td>
+        <x:td>Yes</x:td>
+      </x:tr>
+
+      <x:tr valign="top">
+        <x:td>Tables Module</x:td>
+        <x:td>xhtml-table-2.rng</x:td>
+        <x:td>Yes</x:td>
+      </x:tr>
+
+      <x:tr valign="top">
+        <x:td>Datatypes Module</x:td>
+        <x:td>xhtml-datatypes-2.rng</x:td>
+        <x:td>Yes</x:td>
+      </x:tr>
+
+      <x:tr valign="top">
+        <x:td>Param Module</x:td>
+        <x:td>xhtml-param-2.rng</x:td>
+        <x:td>Yes</x:td>
+      </x:tr>
+
+      <x:tr valign="top">
+        <x:td>Caption Module</x:td>
+        <x:td>xhtml-caption-2.rng</x:td>
+        <x:td>Yes</x:td>
+      </x:tr>
+
+      <x:tr valign="top">
+        <x:td>XML Events module</x:td>
+        <x:td>xml-events-1.rng</x:td>
+        <x:td>Yes</x:td>
+      </x:tr>
+
+      <x:tr valign="top">
+        <x:td>Ruby module</x:td>
+        <x:td>full-ruby-1.rng</x:td>
+        <x:td>Yes</x:td>
+      </x:tr>
+
+      <x:tr valign="top">
+        <x:td>XForms module</x:td>
+        <x:td>xforms-nons-11.rng</x:td>
+        <x:td>No</x:td>
+      </x:tr>
+
+      <x:tr valign="top">
+        <x:td>XML Schema instance module</x:td>
+        <x:td>XMLSchema-instance.rng</x:td>
+        <x:td>Yes</x:td>
+      </x:tr>
+    </x:table>
+    <x:h3>Attribute Collections Module</x:h3>
+    <include href="../../w3c/rng/xhtml-attribs-2.rng" />
+    <x:a href="http://www.w3.org/TR/xhtml2/mod-attribute-collections.html"
+      class="module-description" />
+
+    <x:h3>Document Module</x:h3>
+
+    <include href="../../w3c/rng/xhtml-document-2.rng">
+      <!-- mg: redefine the html attlist to disallow xsi.
+             The xsi module must still be included for the rng to be physically correct
+	-->
+      <define name="html.attlist">
+        <ref name="Common.attrib" />
+        <ref name="version.attrib" />
+      </define>
+      <!-- ps: redefine the html content model; disallow x:body and require d:book -->
+      <define name="html">
+        <element name="html">
+          <ref name="html.attlist" />
+          <ref name="head" />
+          <!--<ref name="body"/>-->
+          <ref name="Daisy.book" />
+        </element>
+      </define>
+
+    </include>
+    <x:a href="http://www.w3.org/TR/xhtml2/mod-document.html" class="module-description" />
+
+    <x:h3>Structural Module</x:h3>
+
+    <!-- We change this module so that:
+      - a section must contain one, and only one, h element
+      - this h element must be the first child of section, apart from one optional preceding pagenum
+    -->
+    <include href="../../w3c/rng/xhtml-structural-2.rng">
+      <!-- ps20081027: We are not particularly pleased with the original content model of the section element,
+        so we create our own: -->
+      <define name="section">
+        <element name="section">
+          <ref name="section.attlist" />
+          <optional>
+            <!--<ref name="Daisy.pagenumber"/>  ps20081117: replaced by pagebreak-->
+            <ref name="Daisy.pagebreak" />
+          </optional>
+          <ref name="Heading.class" />
+          <ref name="section.model" />
+          <!-- The section.model is our own invention, defined below -->
+        </element>
+      </define>
+
+      <!-- ps20081021: Redefine the Flow.model pattern:
+          We don't use this one in the section element anymore, but we still  need to 
+          change it so that the heading elements can't be used in list items, table cells etc.
+          So we simply remove the heading.class from the flow: 
+      -->
+      <define name="Flow.model">
+        <zeroOrMore>
+          <choice>
+            <text />
+            <!--<ref name="Heading.class"/>-->
+            <ref name="Structural.class" />
+            <ref name="List.class" />
+            <ref name="Text.class" />
+            <ref name="Misc.class" />
+          </choice>
+        </zeroOrMore>
+      </define>
+
+    </include>
+
+    <!-- ps20081027: We don't want section elements to contain text, so we 
+      define a suitable section.content pattern: -->
+    <define name="section.model">
+      <oneOrMore>
+        <choice>
+          <ref name="Structural.class" />
+          <ref name="List.class" />
+        </choice>
+      </oneOrMore>
+    </define>
+
+    <x:a href="http://www.w3.org/TR/xhtml2/mod-structural.html" class="module-description" />
+
+
+    <x:h3>Text Module</x:h3>
+    <include href="../../w3c/rng/xhtml-text-2.rng">
+      <!-- ps20081117: Remove definitions not applicable to the Leisure Book Profile -->
+      <define name="cite">
+        <notAllowed />
+      </define>
+      <define name="code">
+        <notAllowed />
+      </define>
+      <define name="dfn">
+        <notAllowed />
+      </define>
+      <define name="kbd">
+        <notAllowed />
+      </define>
+      <define name="samp">
+        <notAllowed />
+      </define>
+      <!-- ps20081127: We want to keep span, sub and sup as they are, so no need to replace
+  <define name="span">
+        <empty/>
+      </define>
+      <define name="sub">
+        <empty/>
+      </define>
+      <define name="sup">
+        <empty/>
+      </define>-->
+      <define name="var">
+        <notAllowed />
+      </define>
+    </include>
+
+
+    <x:a href="http://www.w3.org/TR/xhtml2/mod-text.html" class="module-description" />
+
+    <!--  ps20081117: Removed from the this profile
+    <x:h3>Hypertext Module</x:h3>
+    <include href="../../w3c/rng/xhtml-hypertext-2.rng"/>-->
+
+    <x:h3>List Module</x:h3>
+    <include href="../../w3c/rng/xhtml-list-2.rng" />
+    <x:a href="http://www.w3.org/TR/xhtml2/mod-list.html" class="module-description" />
+
+    <!-- ps20081028: We don't need the handler module  
+  <x:h3>Handler Module</x:h3>
+    <include href="../../w3c/rng/xhtml-handler-2.rng"/>-->
+
+    <!--  ps20081117: Removed from the this profile
+    <x:h3>Image Module</x:h3>
+    <include href="../../w3c/rng/xhtml-image-2.rng"/> -->
+
+    <x:h3>Metainformation Module</x:h3>
+    <include href="../../w3c/rng/xhtml-meta-2.rng" />
+    <x:a href="http://www.w3.org/TR/xhtml2//mod-meta.html" class="module-description" />
+
+    <!--  ps20081117: Removed from the this profile
+    <x:h3>Object Module</x:h3>
+    <include href="../../w3c/rng/xhtml-object-2.rng"/> -->
+
+    <!--  ps20081117: Removed from the this profile
+    <x:h3>Access Module</x:h3>
+    <include href="../../w3c/rng/xhtml-access-2.rng"/> -->
+
+    <!--  ps20081117: Removed from the this profile
+    <x:h3>Style Sheet Module</x:h3>
+    <include href="../../w3c/rng/xhtml-style-2.rng"/> -->
+
+    <x:h3>Tables Module</x:h3>
+    <include href="../../w3c/rng/xhtml-table-2.rng" />
+    <x:a href="http://www.w3.org/TR/xhtml2/mod-tables.html" class="module-description" />
+
+    <x:h3>Support Modules</x:h3>
+
+    <x:h4>Datatypes Module</x:h4>
+    <include href="../../w3c/rng/xhtml-datatypes-2.rng" />
+
+    <!--  ps20081117: Removed from the this profile
+    <x:h4>Param Module</x:h4>
+    <include href="../../w3c/rng/xhtml-param-2.rng"/> -->
+
+    <x:h4>Caption Module</x:h4>
+    <include href="../../w3c/rng/xhtml-caption-2.rng" />
+  </div>
+
+  <div>
+    <x:h2>Ruby module</x:h2>
+
+    <include href="../../w3c/rng/full-ruby-1.rng">
+
+      <define name="Inline.class">
+        <notAllowed />
+      </define>
+
+      <define name="NoRuby.content">
+        <ref name="Text.model" />
+      </define>
+
+    </include>
+
+    <define name="Inline.model">
+      <notAllowed />
+    </define>
+
+    <define name="Text.class" combine="choice">
+      <ref name="ruby" />
+    </define>
+  </div>
+
+  <div>
+    <x:h2>XML Schema instance module</x:h2>
+    <include href="../../w3c/rng/XMLSchema-instance.rng" />
+  </div>
+
+
+  <div>
+    <x:h2>XML Events module</x:h2>
+    <include href="../../w3c/rng/xml-events-1.rng" />
+  </div>
+
+  <!-- ps: This module is not needed anymore as we contextualize in the driver 
+  <div>
+    <x:h2>DAISY Attribute module</x:h2>
+    <include href="DAISYmodules/attributes.rng"/>
+  </div>-->
+
+  <div>
+    <x:h2>DAISY Book module</x:h2>
+    <include href="DAISYmodules/book.rng" />
+    <!-- book contextualization -->
+    <define name="Daisy.book.attlist" combine="interleave">
+      <ref name="Core.attrib" />
+      <ref name="role.attrib" />
+    </define>
+    <define name="Daisy.matter.attlist" combine="interleave">
+      <ref name="Core.attrib" />
+      <ref name="role.attrib" />
+    </define>
+    <define name="Daisy.frontmatter.content" combine="interleave">
+      <zeroOrMore>
+        <ref name="section" />
+      </zeroOrMore>
+    </define>
+    <define name="Daisy.bodybackmatter.content" combine="interleave">
+      <zeroOrMore>
+        <ref name="section" />
+      </zeroOrMore>
+    </define>
+
+    <!--<include href="DAISYmodules/xhtml2AddBook.rng"/>-->
+  </div>
+
+  <div>
+    <x:h2>DAISY Book Cover Module</x:h2>
+    <include href="DAISYmodules/bookcover.rng" />
+    <!-- book cover contextualization -->
+    <define name="Daisy.book.content" combine="interleave">
+      <optional>
+        <ref name="Daisy.cover" />
+      </optional>
+    </define>
+
+    <define name="Daisy.spine.content" combine="interleave">
+      <interleave>
+        <ref name="title" />
+        <optional>
+          <ref name="Daisy.subtitle" />
+        </optional>
+        <ref name="Daisy.author" />
+        <optional>
+          <ref name="Daisy.publisher" />
+        </optional>
+      </interleave>
+    </define>
+    <define name="Daisy.spine.attlist" combine="interleave">
+      <ref name="Core.attrib" />
+      <ref name="role.attrib" />
+    </define>
+
+    <define name="Daisy.author.attlist" combine="interleave">
+      <ref name="Core.attrib" />
+      <ref name="role.attrib" />
+    </define>
+    <define name="Daisy.publisher.attlist" combine="interleave">
+      <ref name="Core.attrib" />
+      <ref name="role.attrib" />
+    </define>
+
+    <define name="Daisy.frontcover.content" combine="interleave">
+      <interleave>
+        <ref name="title" />
+        <optional>
+          <ref name="Daisy.subtitle" />
+        </optional>
+        <ref name="Daisy.author" />
+        <ref name="Daisy.publisher" />
+        <zeroOrMore>
+          <ref name="section.model" />
+        </zeroOrMore>
+      </interleave>
+      <zeroOrMore>
+        <ref name="section.optionalhead" />
+      </zeroOrMore>
+    </define>
+    <define name="Daisy.frontcover.attlist" combine="interleave">
+      <ref name="Core.attrib" />
+      <ref name="role.attrib" />
+    </define>
+
+    <define name="Daisy.backcover.content" combine="interleave">
+      <oneOrMore>
+        <ref name="section.optionalhead" />
+      </oneOrMore>
+    </define>
+    <define name="Daisy.backcover.attlist" combine="interleave">
+      <ref name="Core.attrib" />
+      <ref name="role.attrib" />
+    </define>
+
+    <define name="Daisy.flaps.content" combine="interleave">
+      <oneOrMore>
+        <ref name="section.optionalhead" />
+      </oneOrMore>
+    </define>
+    <define name="Daisy.flaps.attlist" combine="interleave">
+      <ref name="Core.attrib" />
+      <ref name="role.attrib" />
+    </define>
+
+
+    <!-- we need a section element with an optional heading -->
+    <define name="section.optionalhead">
+      <element name="section">
+        <ref name="section.optionalhead.attlist" />
+        <ref name="section.optionalhead.content" />
+      </element>
+    </define>
+    <define name="section.optionalhead.attlist">
+      <ref name="Core.attrib" />
+      <ref name="role.attrib" />
+    </define>
+    <define name="section.optionalhead.content">
+      <optional>
+        <ref name="Daisy.pagebreak" />
+      </optional>
+      <optional>
+        <ref name="Heading.class" />
+      </optional>
+      <ref name="section.model" />
+    </define>
+
+
+
+  </div>
+
+  <div>
+    <x:h2>DAISY Table of Content module</x:h2>
+    <include href="DAISYmodules/toc.rng" />
+    <!-- toc contextualization -->
+    <define name="Daisy.toc.attlist" combine="interleave">
+      <ref name="Core.attrib" />
+      <ref name="role.attrib" />
+    </define>
+    <define name="Daisy.tocentry.attlist" combine="interleave">
+      <ref name="Core.attrib" />
+      <ref name="role.attrib" />
+    </define>
+    <define name="Daisy.toclabel.attlist" combine="interleave">
+      <ref name="Core.attrib" />
+      <ref name="role.attrib" />
+    </define>
+    <define name="Daisy.tocpageref.attlist" combine="interleave">
+      <ref name="Core.attrib" />
+      <ref name="role.attrib" />
+    </define>
+    <define name="Daisy.frontmatter.content" combine="interleave">
+      <optional>
+        <ref name="Daisy.toc" />
+      </optional>
+    </define>
+    <define name="Daisy.toc.content" combine="interleave">
+      <optional>
+        <ref name="Daisy.pagebreak" />
+      </optional>
+      <optional>
+        <ref name="h" />
+      </optional>
+      <interleave>
+        <zeroOrMore>
+          <ref name="Daisy.pagebreak" />
+        </zeroOrMore>
+        <oneOrMore>
+          <ref name="Daisy.tocentry" />
+        </oneOrMore>
+      </interleave>
+    </define>
+
+  </div>
+
+  <div>
+    <x:h2>DAISY Note module</x:h2>
+    <include href="DAISYmodules/note.rng" />
+    <!-- note contextualization -->
+    <define name="Daisy.noteref.attlist" combine="interleave">
+      <ref name="Core.attrib" />
+      <ref name="role.attrib" />
+    </define>
+    <define name="Daisy.note.attlist" combine="interleave">
+      <attribute name="xml:id">
+        <!-- mandatory @xml:id -->
+        <ref name="ID.datatype" />
+      </attribute>
+      <ref name="class.attrib" />
+      <ref name="layout.attrib" />
+      <ref name="title.attrib" />
+      <ref name="role.attrib" />
+    </define>
+    <x:p>Allow note as a child of the <x:span class="markup">section</x:span> element.</x:p>
+    <define name="section.model" combine="interleave">
+      <zeroOrMore>
+        <ref name="Daisy.note" />
+      </zeroOrMore>
+    </define>
+
+    <x:p>Allow noteref as a child of the <x:span class="markup">p</x:span> element.</x:p>
+    <define name="p.model" combine="interleave">
+      <zeroOrMore>
+        <ref name="Daisy.noteref" />
+      </zeroOrMore>
+    </define>
+
+    <x:p>Allow <x:span class="markup">p</x:span> elements a children of a <x:span class="markup"
+        >note</x:span> element.</x:p>
+    <define name="Daisy.note.content" combine="interleave">
+      <oneOrMore>
+        <ref name="p" />
+      </oneOrMore>
+    </define>
+    <!--    <include href="DAISYmodules/xhtml2AddNote.rng"/>-->
+  </div>
+
+  <div>
+    <x:h2>DAISY Inline module</x:h2>
+    <include href="DAISYmodules/inline.rng" />
+    <!-- inline element contextualization -->
+    <define name="Daisy.inline.attlist" combine="interleave">
+      <ref name="Core.attrib" />
+      <ref name="role.attrib" />
+    </define>
+
+    <x:p>Allow sentence as a member of the Text.class.</x:p>
+    <define name="Text.class" combine="choice">
+      <!-- ps: I don't like using choice, but I have to, as choice is used in the ruby module -->
+      <interleave>
+        <zeroOrMore>
+          <ref name="Daisy.sentence" />
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="Daisy.word" />
+        </zeroOrMore>
+      </interleave>
+    </define>
+
+    <x:p>Allow some xhtml2 elements as children of <x:span class="markup">d:s</x:span>.</x:p>
+    <define name="Daisy.sentence.content" combine="interleave">
+      <zeroOrMore>
+        <ref name="em" />
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="strong" />
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="span" />
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="sup" />
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="sub" />
+      </zeroOrMore>
+    </define>
+
+    <x:p>Allow xhtml2 sub and sup as children of <x:span class="markup">d:w</x:span>.</x:p>
+    <define name="Daisy.word.content" combine="interleave">
+      <zeroOrMore>
+        <ref name="sup" />
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="sub" />
+      </zeroOrMore>
+    </define>
+    <!--<include href="DAISYmodules/xhtml2AddInline.rng"/>-->
+  </div>
+
+  <!-- ps: We decided not to have a poem module at this stage. Might add it later. If so contextualize in driver 
+  <div>
+    <x:h2>DAISY Poem module</x:h2>
+    <include href="DAISYmodules/poem.rng"/>
+    <include href="DAISYmodules/xhtml2AddPoem.rng"/>
+  </div>-->
+
+  <div>
+    <!--
+      ps: This comment with markus' initial TODO list is inherited from the file daisy-pagenum.rng
+      
+      mg TODO: include a formalized way of expressing to-be SG docmumentation in here
+      
+      ps: Partially done. SG comments have been added to the generic DAISYmodules/pagenumber.rng
+      and an XSLT has been written to create documentation in XHTML, see
+      sandbox/ZedAi/ZedAILeisure/Documentation/DAISYLeisure.html
+      This needs much more work, especially if we want to transform the Relax NG syntax into something
+      more meaningful, as I have tried in the doc.
+      
+      mg TODO: this module should ideally be written so that it is independent of its context.
+      Now, it imports XHTML defines, and defines itself where it is allowed in XHTML2. This 
+      should be externalized so that the pageum module can be imported into any context
+      
+      ps: I have split the handling of pagenumbers in the Leisure module into two modules:
+      * pagenumber.rng: This is the generic definition of the pagenumber element. Should be usable from any context.
+      * xhtml2AddPagenumber.rng: defines the pagenum element to be child of various xhtml2 elements
+      
+      
+      mg TODO: make a specialized restriction on pagenum.content based on 
+      the value of @page, eg if page="normal" allow only integers. 
+      Use regex datatypes (borrow from daisy pipeline svn dataypes rng)	
+      Or alternatively, use Schematron.
+      
+      ps: Done
+      
+      mg TODO: revisit committee discussion on needs to change pagenum model (types etc). This
+      was primarily a problem in SG and NCX; but may stem from the dtbook content model.
+    -->
+    <x:h2>DAISY Pagebreak module</x:h2>
+    <x:p>As pagenumbering is not a part xhtml2, this must be handled in separate modules.</x:p>
+
+    <x:h3>The generic pagebreak module</x:h3>
+    <include href="DAISYmodules/pagebreak.rng" />
+    <!-- page break contextualization -->
+    <x:p>Add xhtml2 attributes to the pagebreak attlist</x:p>
+    <define name="Daisy.pagebreak.attlist" combine="interleave">
+      <ref name="Core.attrib" />
+      <ref name="role.attrib" />
+    </define>
+
+    <x:p>Allow page break as a child of the <x:span class="markup">section</x:span> element.</x:p>
+    <define name="section.model" combine="interleave">
+      <zeroOrMore>
+        <ref name="Daisy.pagebreak" />
+      </zeroOrMore>
+    </define>
+
+    <x:p>Allow pagenumber as a child of the <x:span class="markup">p</x:span> element.</x:p>
+    <define name="p.model" combine="interleave">
+      <zeroOrMore>
+        <ref name="Daisy.pagebreak" />
+      </zeroOrMore>
+    </define>
+  </div>
+
+
+</grammar>

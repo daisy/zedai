@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://www.daisy.org/z3986/2010/" xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:x="http://www.w3.org/1999/xhtml" xmlns:xsdp="http://www.daisy.org/ns/rng-preprocess/xsd">
+  
+  <x:h1>RELAX NG driver for Z39.86-2010 Part A Periodicals and Journals Profile</x:h1>
+  
+  <x:h2>Common Document Model Modules</x:h2>
+  
+  <x:h3>Content Model Definitions</x:h3>
+  <include href="./mod/z3986-model-structural.rng"/>
+  <include href="./mod/z3986-model-text.rng"/>
+  <include href="./mod/z3986-model-flow.rng"/>
+  
+  <x:h3>Common Elements</x:h3>
+  <include href="./mod/z3986-document.rng">
+    <!-- redefine body content to be either sections or articles -->
+    <define name="z3986.body.content">
+      <ref name="z3986.periodicals.body.content"/>
+    </define>
+  </include>
+  <include href="./mod/z3986-meta.rng"/>
+  <include href="./mod/z3986-reference.rng"/>
+  <include href="./mod/mods-33.rng"/>
+  <include href="./mod/z3986-toc.rng">
+    <!-- dont allow tocs in sections  -->
+    <define name="z3986.section.extra" combine="interleave">
+      <empty/>
+    </define>
+  </include>
+  <include href="./mod/z3986-section.rng">
+    <!-- redefine section to only allow sections or articles -->
+    <define name="z3986.section.strict.content">
+      <ref name="z3986.periodicals.section.strict.content"/>
+    </define>
+  </include>
+  <include href="./mod/z3986-headings.rng"/>
+  <include href="./mod/z3986-div.rng"/>
+  <include href="./mod/z3986-p.rng"/>
+  <include href="./mod/z3986-list.rng"/>
+  <include href="./mod/z3986-table.rng"/>
+  <include href="./mod/z3986-quote.rng"/>
+  <include href="./mod/z3986-cite.rng"/>
+  <include href="./mod/z3986-object.rng"/>
+  <include href="./mod/z3986-annotation.rng"/>
+  <include href="./mod/z3986-title.rng"/>
+  <include href="./mod/z3986-caption.rng"/>
+  <include href="./mod/z3986-span.rng"/>
+  <include href="./mod/z3986-line.rng"/>
+  <include href="./mod/z3986-s.rng"/>
+  <include href="./mod/z3986-w.rng"/>
+  <include href="./mod/z3986-abbr.rng"/>
+  <include href="./mod/z3986-code.rng"/>
+  <include href="./mod/z3986-emph.rng"/>
+  <include href="./mod/z3986-date.rng"/>
+  <include href="./mod/z3986-name.rng"/>
+  <include href="./mod/z3986-place.rng"/>
+  <include href="./mod/z3986-identifier.rng"/>
+  <include href="./mod/z3986-definition.rng"/>
+  <include href="./mod/z3986-term.rng"/>
+  <include href="./mod/z3986-sub-sup.rng"/>
+  
+  <x:h3>Common Attributes</x:h3>
+  <include href="./mod/z3986-core-attrib.rng"/>
+  <include href="./mod/z3986-i18n-attrib.rng"/>
+  <include href="./mod/its-translate-attrib.rng"/>
+  <include href="./mod/z3986-for-attrib.rng"/>
+  <include href="./mod/xlink.rng"/>
+  <include href="./mod/z3986-embed-attrib.rng"/>
+  <include href="./mod/z3986-depth-attrib.rng"/>
+  <include href="./mod/rdfa-attrib.rng"/>
+  <include href="./mod/xhtml-role-attrib.rng"/>
+  
+  <x:h2>Profile Specific Modules</x:h2>
+  <include href="./mod/z3986-article.rng">   
+    <define name="z3986.article.content">
+      <ref name="z3986.article.choice.model"/>
+    </define>
+  </include>
+  <include href="./mod/z3986-byline.rng"/>
+  <include href="./mod/z3986-dateline.rng"/>
+  
+  <x:h2>Optional Feature Modules</x:h2>
+  <div x:id="its-ruby" x:class="feature">
+    <x:h2>ITS Ruby Feature</x:h2>
+    <include href="./mod/z3986-feature-its-ruby.rng"/>
+  </div>
+  
+  <x:h2>CURIE Enumeration Modules</x:h2>
+  <include href="./mod/z3986-vocab-periodicals.rng"/>
+  
+  <x:h2>Support Modules</x:h2>
+  <include href="./mod/z3986-datatypes.rng"/>
+  
+  <x:h2>Profile specific models</x:h2>
+  
+  <define name="z3986.periodicals.body.content">
+    <!-- TODO this is a temporary solution -->
+    <optional>
+      <element name="front">
+        <ref name="z3986.Structural.attrib"/>
+        <ref name="z3986.front.content"/>
+      </element>
+    </optional>
+    <choice>
+      <oneOrMore>
+        <ref name="z3986.section.strict"/>
+      </oneOrMore>
+      <oneOrMore>
+        <ref name="z3986.article"/>
+      </oneOrMore>
+    </choice>
+  </define>
+  <define name="z3986.front.content">
+    <oneOrMore>
+      <ref name="z3986.section.front"/>
+    </oneOrMore>
+  </define>
+  <define name="z3986.section.front">
+    <element name="section">
+      <ref name="z3986.section.attlist"/>
+      <ref name="z3986.section.front.content"/>
+    </element>
+  </define>
+  
+  <define name="z3986.section.front.content" xsdp:replace="z3986.section.front.content.xsd">
+    <choice>
+      <oneOrMore>
+        <ref name="z3986.section.front"/>
+      </oneOrMore>
+      <group>
+        <interleave>
+          <ref name="z3986.section.extra"/>
+          <zeroOrMore>
+            <choice>
+              <ref name="z3986.section.frontmatter.class"/>
+            </choice>
+          </zeroOrMore>
+        </interleave>
+        <zeroOrMore>
+          <ref name="z3986.section.front"/>
+        </zeroOrMore>
+      </group>
+    </choice>
+  </define>
+  
+  <define name="z3986.section.front.content.xsd">
+    <!-- a variant of z3986.section.content,
+        suitable for automated XSD transformation -->
+    <interleave>
+      <zeroOrMore>
+        <choice>
+          <ref name="z3986.section.frontmatter.class"/>
+        </choice>
+      </zeroOrMore>
+      <ref name="z3986.section.extra"/>
+      <zeroOrMore>
+        <ref name="z3986.section.front"/>
+      </zeroOrMore>
+    </interleave>
+  </define>
+  <!-- reuse the frontmatter class for now, other modules contrib to it (such as title) -->
+  <define name="z3986.section.frontmatter.class" combine="choice">
+    <ref name="z3986.Structural.class"/>
+  </define>
+  <define name="z3986.periodicals.section.strict.content">
+    <optional>
+      <ref name="z3986.h"/>
+    </optional>
+    <choice>
+      <oneOrMore>
+        <ref name="z3986.section.strict"/>
+      </oneOrMore>
+      <oneOrMore>
+        <ref name="z3986.article"/>
+      </oneOrMore>
+    </choice>
+  </define>
+</grammar>

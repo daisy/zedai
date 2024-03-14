@@ -1,0 +1,15 @@
+/* title.css */
+
+/* Some colors:
+    light blue:         rgb(176,176,255)
+    very light blue:    rgb(215,215,255) */
+
+h1.title {
+    font-size:170%;
+    text-align:center;
+    background-color:rgb(215,215,255);
+/*    border-bottom:4pt solid rgb(176,176,255);*/
+    padding:0.3em;
+    letter-spacing:1pt;
+    margin:0;
+    }

@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="ai-longdescs.rng" type="xml"?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ZedAI longdescs</title>
+    
+    <!--
+        this one too long for doc snippets... could go to longdesc
+        <snippet about="z3986.abbr" dest="doc">
+        <expansion xml:id="abbr_ESQ">Esquire</expansion>
+        <expansion xml:id="abbr_MA">Master of Arts</expansion>
+        <expansion xml:id="abbr_FRS">Fellow of the Royal Society</expansion>
+        <expansion xml:id="abbr_SECGS">Secretary of the Geological Society</expansion>
+        
+        CHARLES DARWIN, <abbr  type="truncation" ref="abbr_ESQ">ESQ.</abbr> 
+        <abbr type="initialism" ref="abbr_MA">M.A.</abbr> 
+        <abbr type="initialism" ref="abbr_FRS">F.R.S.</abbr> 
+        <abbr type="truncation" ref="abbr_SECGS">SEC. G.S.</abbr>
+        RICHARD OWEN, <abbr type="truncation" ref="abbr_ESQ">ESQ.</abbr> 
+        <abbr type="initialism" ref="abbr_FRS">F.R.S.</abbr>
+        </snippet>
+    -->
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <!--                   ABBR@type                      -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    
+    <section about="z3986.abbr.type.attrib" dest="any">
+        <para>The <code>type</code> attribute defines the following values for specifying abbreviations:</para>
+        <itemizedlist>
+            <listitem>
+                <para><code>acronym</code> &#8212; represents an abbreviation formed from initial letters of a name or expression, pronounced as a word.</para>
+            </listitem>
+            <listitem>
+                <para><code>initialism</code> &#8212; represents an abbreviation formed from initial letters of a name or expression, with each letter pronounced separately.</para>
+            </listitem>
+            <listitem>
+                <para><code>truncation</code> &#8212; represents an abbreviation formed from the first part of the word being abbreviated.</para>
+            </listitem>
+        </itemizedlist>
+    </section>
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <!--                      CITATION                    -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <section about="z3986.citation" dest="doc">        
+        <para>The following example shows how to reference an <code>entry</code> in a <code>bibliography</code> 
+            using the <code>ref</code> attribute on the nested <code>ref</code> element:</para>
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<p>By his return he was critical of the Bible as history, and wondered why all religions should 
+    not be equally valid. <citation><ref ref="darwin-1958">Darwin 1958</ref>, pp. 85–96</citation></p>   
+…
+<bibliography>    
+    <entry xml:id="darwin-1958">Darwin, Charles (1958). Barlow, Nora. ed. The Autobiography of Charles Darwin 1809–1882. London: Collins.</entry>
+</bibliography>
+        </escape>
+        
+        <para>The following example shows how to explicitly associate a citation with an excerpt, in this case a <code>quote</code>:</para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<quote xml:id="q1">
+    In The Origin, Darwin provided an alternative hypothesis for the development, 
+    diversification, and design of life. [...] In Darwin's day, the evidence for 
+    his theories was compelling but not completely decisive.
+</quote>
+<citation ref="q1">Coyne, Jerry A. (2009). Why Evolution is True. Oxford: Oxford University Press. p. 17. </citation>  
+        </escape>
+        
+    </section>
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <!--                   LIST@type                      -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    
+    <section about="z3986.list.type.attrib" dest="any">
+        <para>The <code>type</code> attribute values imply the following semantics for the list items:</para>
+        <itemizedlist>
+            <listitem>
+                <para><code>ordered</code> &#8212; the order of the items is significant 
+                    and changing the order of the items typically changes the meaning of the list.</para>
+            </listitem>
+            <listitem>
+                <para><code>unordered</code> &#8212; the order of the items is not significant 
+                    and changes the order of the items typically does not change the meaning of the list.</para>
+            </listitem>
+        </itemizedlist>
+    </section>
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <!--                      META                        -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <section about="z3986.meta" dest="any">
+        <para>Acceptable methods for specifying the value of a <code>meta</code> element include:</para>
+        <itemizedlist>
+            <listitem>
+                <para>attaching a <code>content</code> attribute; and</para>
+            </listitem>
+            <listitem>
+                <para>inlining text and non-<code>meta</code> element children.</para>
+            </listitem>
+        </itemizedlist>
+        <para>It is not valid to employ both methods for the same element. If no value is specified, the <code>meta</code> element either expresses a specialized metadata function or is a container for one or more child <code>meta</code> elements.</para>
+    </section>
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <!--                   ANNOTATION                     -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    
+    <section about="z3986.annotation" dest="any">
+        <para>The optional <code>role</code> attribute defines the source of the annotation
+            and expresses its nature:</para>
+ 
+ <programlisting xml:space="preserve">
+    &lt;annotation ref="mnt" role="republisher content-description"&gt;
+        &lt;p&gt;A picture of a small, grey mouse.&lt;/p&gt;
+    &lt;/annotation&gt;
+</programlisting>
+        
+        <para>If no <code>role</code> is specified, an implicit value of "republisher content-description" is assumed
+            for the annotation.</para>
+        
+        <para>This specification does not define <code>role</code> values for all contexts. When creating new pairings, however,
+        the first property should identify the person or organization adding the annotation (e.g., "author", "editor", 
+        "translator", "publisher", "republisher", etc.) and the second property should specify the nature of the annotation
+        (e.g., "braille-description", "comment", "production-note", etc.).</para>
+        
+        <para>Attaching more than one <code>annotation</code> element to an element is permitted, but each annotation
+            must have a unique <code>role</code>.</para>
+    </section>
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <!--                     OBJECT                       -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <section about="z3986.object.block" dest="any">
+        <para>The <code>object</code> element provides two mechanisms for adding alternate media renditions when
+            the object referenced is not available, cannot be rendered or is not in an appropriate format:</para>
+        <orderedlist>
+            <listitem>
+                <para>the direct inclusion of elements within the <code>object</code> element:</para>
+<programlisting xml:space="preserve">
+    &lt;object  xml:id="mnt" src="mouse.png"&gt;
+        &lt;p&gt;A picture of a small, grey mouse.&lt;/p&gt;
+    &lt;/object&gt;
+</programlisting>
+            </listitem>
+            <listitem>
+                <para>by attaching an <code>annotation</code> with the role "<code>republisherAnno contentDescription</code>":</para>
+<programlisting xml:space="preserve">
+    &lt;object xml:id="mnt" src="mouse.png"/&gt;
+    &lt;annotation ref="mnt" role="republisherAnno contentDescription"&gt;
+        &lt;p&gt;A picture of a small, grey mouse.&lt;/p&gt;
+    &lt;/annotation&gt;
+</programlisting>
+            </listitem>
+        </orderedlist>
+        <para>To ensure compatibility and accessibility when embeding objects, the <code>object</code> element 
+            requires an alternate rendition using one or both of the detailed mechanisms.</para>
+    </section>
+    
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <!--                        P                         -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <section about="z3986.p" dest="doc">
+        <bridgehead>Associating groups of paragraphs</bridgehead>
+        <para>It is sometimes necessary to provide information about paragraphs that are associated with each other. In a 
+            republishing context for example, paragraph association may have been expressed in the print source using 
+            some indentation convention, and for certain output formats, this association must be preserved.</para>
+        <para>The Z39.86 Structural Semantics Vocabulary contains the <link xlink:href="http://www.daisy.org/z3986/2010/vocab/structure/#pgroup"
+            ><code>pgroup</code></link> property, which is used to associate a group of paragraphs:</para>        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<block role="pgroup">
+    <p>…</p>
+    <p>…</p>
+</block>
+        </escape>
+    </section>
+           
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <!--                        NAME                      -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <section about="z3986.name" dest="doc">
+        <bridgehead>Personal name markup</bridgehead>
+        <para>In 
+            order to specify that a <code>name</code> represents a personal name, you can use the <link 
+                xlink:href="http://www.daisy.org/z3986/2010/vocab/structure/#personal-name">personal-name</link> 
+            property from the Z39.86 Structural Semantics Vocabulary.</para>
+        
+        <para>The Z39.86 Structural Semantics Vocabulary further contains a set of properties related to <link 
+            xlink:href="http://www.daisy.org/z3986/2010/vocab/structure/#names"
+            >name components</link>, supporting the representation of honorary titles, given and family names. The 
+            following example shows how to represent three typical components of a personal name:</para>
+        
+        <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+            <name role="personal-name">                
+                <span role="given-name">CHARLES</span>
+                <span role="family-name">DARWIN</span>,
+                <span role="name-title">ESQ</span>
+            </name>
+        </escape>
+        
+        <para>(Note also that the name components in the Z39.86 Structural Semantics Vocabulary are explicitly equivalent to properties in the
+            <link xlink:href="http://www.foaf-project.org">FOAF</link> vocabulary.)</para>
+        
+        <bridgehead>Proper noun markup</bridgehead>
+        
+        <para>The <code>name</code> element can be used to represent any proper noun, for example for:</para>
+        
+        <itemizedlist>
+            <listitem>
+                <para>Places</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+                    this tendency has been found incurable in dogs which have been brought home as 
+                    puppies from countries, such as <name role="place">Tierra del Fuego</name>
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Nationalities</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+                    What <name role="nationality">English</name> breeders have actually effected is proved by the enormous prices given for animals with a good pedigree;
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Organizations</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+                    I have associated with several eminent fanciers, and have been permitted to join two
+                    of the <name role="organization">London Pigeon Clubs</name>.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Taxonomic Classifications</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+                    I am fully convinced that the common opinion of naturalists is correct, namely, 
+                    that all have descended from the rock-pigeon (<name role="taxonomy">Columba livia</name>)
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Events</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+                    so that the latter, by the regulations for the <name role="event">Goodwood Races</name>, are favoured in the weights they carry
+                </escape>
+            </listitem>
+        </itemizedlist>
+        
+        <para>
+            The above example are not meant to present an exhaustive listing of proper nouns,
+            or all available values for specifying.
+            Where a role value is not available and necessary for a document type, the 
+            inherent extensibility of the <code>role</code> attribute can be extended to accommodate. 
+        </para>
+        
+    </section>
+
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <!--                        NUM                        -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <section about="z3986.num" dest="doc">
+        <para>
+            Following are examples of how the <code>num</code> element can be used to format identifiers and 
+            numbers that are not used in mathemtatical contexts:
+        </para>
+        <itemizedlist>
+            <listitem>
+                <para>Cardinal Numbers</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+<num role="cardinal" value="30,000">30.000</num> lightyears away.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Ordinal Numbers</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+The <num role="ordinal">1st</num> person on the moon was Neil Armstrong.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Roman Numerals</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+The motion picture release date is listed as <num role="roman" value="1948">mcmxlviii</num>.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Phone Numbers</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+The conference call in line was <num role="phone">+1 416-486-2500</num>
+                </escape>
+            </listitem>
+            <listitem>
+                <para>ISBN numbers</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+Lib. Binding: <num role="isbn">978-1-1234-4567-1</num>
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Postal Code</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+There is, in fact, no <num role="postal">90210</num> zip code in the United States.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Currencies</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+The US dollar is currently trading at <num role="currency">€0.731768</num> and <num role="currency">$1.02CAD</num>.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Heights</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+The tallest man ever was <num role="height">8'11.1"</num> or <num role="height">272 cm</num>.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Weights</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+He weighed in at slightly over <num role="weight">220 lbs</num> for the fight.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Percentages</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+Only <num role="percentage">15%</num> of people know that statistics are misleading.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Ratios</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+The ratio of gas to oil is <num role="ratio">3:2</num> for the lawn mower to work without sputtering.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Coordinates</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+The Great Pyramid of Giza is located at <num role="coordinate">29°58′45.03″N</num> <num role="coordinate">31°08′03.69″E</num>.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Fractions</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+Add <num role="fraction">1/2</num> cup of milk.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Mixed</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+Add <num role="mixed">2 3/4</num> cups of flour.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Decimal</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+Pi is often rounded to <num role="decimal">3.14</num> when used in equations.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Segmented</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+He made the dubious claim that his Social Insurance Number is <num role="segmented">000 000 001</num>.
+                </escape>
+            </listitem>
+        </itemizedlist>
+        
+        <para>
+            The <code>span</code> element can further be used to group related sets of numbers:
+        </para>
+        
+        <itemizedlist>
+            <listitem>
+                <para>Ranges</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+It takes between <span role="range"><num>2</num>–<num>5</num></span> cups of flour depending on the size of the loaf.
+                </escape>
+            </listitem>
+            <listitem>
+                <para>Results</para>
+                <escape xmlns="http://www.daisy.org/ns/z3986/authoring/">
+The final score was <span role="result"><num>3</num>-<num>2</num></span> for Team Canada over Team USA.
+                </escape>
+            </listitem>
+        </itemizedlist>
+        
+        
+    </section>
+
+</article>
+

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="code">The quote module</title>
+        <annotation annotates="/">
+            <para role="desc-main">This module defines the {[[#z3986.quote.block]]} element for indicating text reproduced from another source.</para>
+            <para role="desc-sub">Two variants of the {quote} element are available: one for use in a [[#z3986.Block.class Block]] context and a second for use in a [[#z3986.Phrase.class Phrase]] context.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3986-global-classes.rng"/>
+                <member xlink:href="z3986-line.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2011-01-03</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="z3986.quote.block" xml:id="z3986.quote.block">
+            <element name="quote">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="quote (block)">The {quote} element (Block)</title>
+                    <para role="desc-main" xlink:role="inherit-common" xlink:href="z3986.quote"/>
+                    <para role="desc-sub">
+                        When citing the source of a quotation, the {[[#z3986.citation.block citation]]} must be explicitly linked to the
+                        {quote} by means of the {[[#z3986.ref.attrib]]} attribute.
+                    </para>
+                    <para role="desc-sub" xlink:role="inherit-common" xlink:href="z3986.quote"/>
+                    <synopsis role="def-context">{[[#z3986.Block.class]]}</synopsis>
+                    <synopsis role="def-content">{(z3986.Block.class)+ | (text | z3986.Text.class | z3986.Phrase.class)+}</synopsis>
+                    <!-- &amp;amp; z3986.citation? citation normal member of phrase, specially contributed to quote.block-->
+                    <synopsis role="def-attlist">{[[#z3986.Block.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.quote.block.attlist"/>
+                <ref name="z3986.quote.block.content"/>
+                <sch:rule context="default:quote">
+                    <sch:assert test="normalize-space(.) or *">The {quote} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="z3986.quote.block.attlist" xml:id="z3986.quote.block.attlist">
+            <ref name="z3986.Block.attrib"/>
+        </define>
+        <define name="z3986.quote.block.content" xml:id="z3986.quote.block.content">
+            <choice>
+                <oneOrMore>
+                    <choice>
+                        <a:documentation>specialize the block model to allow linegroups and lines</a:documentation>
+                        <ref name="z3986.Block.class"/>
+                        <ref name="z3986.Global.extra.class"/>
+                        <ref name="z3986.lngroup"/>
+                        <ref name="z3986.ln"/>
+                    </choice>
+                </oneOrMore>
+                <ref name="z3986.Phrase.Text.mix.model"/>
+            </choice>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.quote.phrase" xml:id="z3986.quote.phrase">
+            <element name="quote">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="quote (phrase)">The {quote} element (Phrase)</title>
+                    <para role="desc-main" xlink:role="inherit-common" xlink:href="z3986.quote"/>
+                    <para role="desc-sub">
+                        When citing the source of a quotation, the {[[#z3986.citation citation]]} must be explicitly linked to the
+                        {quote} by means of the {[[#z3986.ref.attrib]]} attribute.
+                    </para>
+                    <para role="desc-sub" xlink:role="inherit-common" xlink:href="z3986.quote"/>
+                    <para role="desc-sub" xlink:role="inherit-common" xlink:href="z3986.quote.characters"/>
+                    <synopsis role="def-context">{[[#z3986.Phrase.class]]}</synopsis>
+                    <synopsis role="def-content">{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Phrase.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.quote.phrase.attlist"/>
+                <ref name="z3986.quote.phrase.content"/>
+            </element>
+        </define>
+        <define name="z3986.quote.phrase.attlist" xml:id="z3986.quote.phrase.attlist">
+            <ref name="z3986.Phrase.attrib"/>
+        </define>
+        <define name="z3986.quote.phrase.content" xml:id="z3986.quote.phrase.content">
+            <ref name="z3986.Phrase.Text.mix.model"/>
+        </define>
+    </div>
+    <div>
+        <a:documentation>quote - default content model contribution</a:documentation>
+        <define name="z3986.Block.core.class" combine="choice">
+            <ref name="z3986.quote.block"/>
+        </define>
+        <define name="z3986.Phrase.variant.class" combine="choice">
+            <ref name="z3986.quote.phrase"/>
+        </define>
+    </div>
+</grammar>

@@ -1,0 +1,117 @@
+==SPEC==
+* assure comments are filtered out from spec at build time
+* spec needs versioning def for vocabs
+* the section that defines the profile and feature catalog URIs must be normative; it must be clear that the entries in these catalogs are controlled by the z committee and that additions of new entries are also their prerogative
+* add ref to RDDL? GRDDL? in "relation to other specifications" to avoid "why dont you use that instead of RD" questions
+* @Matt: ensure profiles/modules make clear that modules should never be directly modified (only through activation)
+* check that biblio entries are actually used (write code)
+
+== WWW ==
+* move to /2011/
+
+== SCHEMAS overarching ==
+* recheck all dcterms module requires fields (SchemaPoolDiagnostics)
+* assure consistent use of chameleon
+* need db:revhistory in module top-level RDF || todo need version identifiers inside schemas (modules, profile drivers and feature drivers)
+* @Per: the extracted schematron does not remove wiki markup (keeps at least { and }).
+
+== MODULES ==
+* abbr@ref must resolve to expansion or definition a)sch not updated, b)this may be a bad rule; one would want to use for example <name xml:id="tpb">Talking Books and Braille</name> (<abbr ref="tpb">TPB</abbr>)
+* rend: we should consider merging z3986.rend.list.item.prefix.attrib and z3986.rend.note.prefix.attrib to one generalized define 
+* add NonEmptyString.datatype references to the attributes that should use it
+* document: take the notes from head re meta into an issue
+* biblio, index and gloss: possibly make block versions of at least biblio and gloss (while reviewing Romains issues). Think about "list of illustrations" and "other works by this author" in this context
+* annotation: possibly add a contributor attr to annotation instead of @role, generalize the -anno props by removing '-anno' (email to boris)
+* annotation: check that we get this right: An annotation has a default source and purpose (implicit values of role, and possible @contributor). 
+* annotation: add info on implied value of @role (which was, IIRC, 'content-description republisher-anno'), note possibly @contributor='republisher'
+* char: deal with, check content model, include in drivers
+* add prose in Embed.attrib that refers to xlink semantics (@src is a shortform for...)
+* <object> are we clear on the nature of innermost text vs annotation
+* assure comments are filtered out from modules at build time
+* test all sch patterns. bug warning: many matches that include @for assumes it contains a single IDREF
+* lists: @type is not required; do we specify the implicit value of @type?
+* lists: handling when no @type, prefix element, and other issues from list wiki page
+* role: alternate triple pattern: subject = @id (or the xpath to the current node if there is no @id), predicate = the special XHTML Vocabulary term role, and that the object == the value of @role interpreted as (TERM | URIorCURIE)+ . 
+* @Matt recommend or not to add quotation marks inside quotes, cite brackets inside cites, etc?
+* @markus: verify prose for @continuation matches all group requirements 
+
+
+== FEATURES ==
+* complete the feature RDs (remaining: forms), then harmonize all
+* deal with public components expressions in RDs (placeholders added)
+* ruby: the feature-recognized behavior for ruby may be wrong (rely on <rp> if present?)
+* ruby: is in text.class but absdef claims allows phrase members?
+* math: check annotation @encoding value prose in RD, silence ok?
+* make sure all feature RDs have "The namespace of all members of the Source Rendition feature element/attribute set is..."
+* Update xforms rng schema?
+* ssml: Really make x-SAMPA implicit default? SSML spec says that absence of @alphabet is processor-specific (we may want to avoid overriding that)
+
+
+== PROFILES ==
+* note that newsfeeds rd refers to periodicals vocab
+
+
+== SCHEMADOC ==
+* @markus add mucho more snippets and longdescs
+* @markus longdesc for <name> to markup person-name; the example should use @typeof and @property; core.n3 contribs all these props to <name>, whereas the sample uses span for the subcomponents.
+* @markus longdesc for bibliography/entry, show how to add dcterms metadata to an entry
+* Low prio: modernize css (use boxes a la http://www.w3.org/TR/2010/WD-html-markup-20100304/figure.html#figure))
+
+
+== RDs ==
+* perhaps a default link to DAISYPedia zedai start page instead of the inparam for external info resources
+* version interaction between profiles and features: any given version of a profile defines not only which features are allowed, but also which versions of these features. It is a document error to use a feature version that is not the feature version that the current profile version allows. The spec needs to say this, and the profile RDs need to be updated with explicit feature version information.
+
+
+== VOCABS ==
+* go over and clean up all predefined vocab names, and their URIs
+* repopulate all role contribs (TODO: section, block, aside, notes, titles, ref (continuation))
+* deal with running headers issue (<meta>) as per list
+* vocab add: verso and recto, to help with running headers.
+* clean up/decide what to do with periodicals-vocab (not even output currently), at least preserve newsfeeds metadata
+* review parking lot in core.n3
+* clean up or out references section in core.n3
+* move the 'prefix' prop from rd vocab to decl?
+* no property for other pubs by this author (perhaps partially solved by block-level bibliography)
+
+
+== XSD ==
+* update XSD generation
+* copy over new MathML3 xsd when updating XSD generation (common.xml#build-xsd-from-simplified-rng)
+* copy over new XLink 1.1 xsd when updating XSD generation (common.xml#build-xsd-from-simplified-rng)
+
+
+== POTENTIAL RENAMES ==
+book module		=> something which doesn't tie it to books (also applies to journals etc) 
+separator		=> sep
+quote			=> quotation (because we did this to cite...)
+
+== MORE SAMPLES IN /test/ ==
+http://darwin-online.org.uk/content/frameset?itemID=F9.1&viewtype=text&pageseq=1
+
+== LOW PRIO ==
+* update CSS to cover CMP and feature components
+* modules: consider using 
+* modules: how do recommend marking up addresses of different kinds?
+* vocabs: if we settle on @group, then may want to remove the pgroup and imggroup props. Note also that the longdesc on P talks about pgroup. OTOH with @groups tightened scope, this may not be necessary, OTOH2 block@pgroup does not say anything more than a block with only p's
+* <definition>: should there be a block version of definition also?
+* spec: do we need something like: "PAs are not required to recognize role values that specify semantics identical to elements in CMP, eg not required to recognize <span role="cite"> as an equivalent to <cite>.
+* ?? vocabs: must be made available in RDFa, may be made available in RDF/XML, turtle?? (this being discussed in RDFa 1.1)
+* <section>: the default <section> model is horribly complex
+* vocabs: option to establish a relation between CMP elements and core vocab: element section "is-a" core vocab #section, etc
+* table: th@abbr also on td?
+* list type="ordered" ==> these could be vocab properties instead
+* abbr @type: ==> these should be vocab properties instead, as the list is not finite
+* modules: make all occurrences of "implicit value" in module RDF a link to spec
+* modules: add more regexes for datatypes inc ssml:datatypes (perhaps port the html ones too, for dist)
+* RD: generate Oasis catalogs, add property 'oasis-catalog' in RD vocab
+* vocabs: add owl:sameAs to xhv, aria, etc (Marisa had these)
+* review RDF elements/attributes used for generating the abstract definitions from the module file
+
+== SPECIALIZATIONS ==
+The below collects all specialization info we need to add to the component defs.
+Syntax: ancestor ==> specializor
+
+section 	=> article
+name		=> expansion 	(else we need to change the rule for @for on <abbr>)
+object@src	=> *@xlink w embed and onLoad	

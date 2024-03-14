@@ -1,0 +1,450 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+       "http://www.w3.org/TR/html4/loose.dtd"> 
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META name="GENERATOR" content="IBM WebSphere Studio">
+<link href="main.css" rel=stylesheet type="text/css">
+<title>SQC via Command Line</title>
+</head>
+<body>
+<h2><a NAME="SQC via Commandline"></a>SchemaQualityChecker via Command Line</h2>
+<p>To invoke the SchemaQualityChecker use the following syntax:<br>
+&nbsp;&nbsp;<b>SchemaQualityChecker [<i>&#150;options</i>] <i>file1 file2 file3 ... fileN</i></b>
+<p>As a convenience, it is also permissible to use SQC:<br>
+&nbsp;&nbsp;<b>SQC [<i>&#150;options</i>] <i>file1 file2 file3 ... fileN</i></b>
+<p>where:</p>
+<p><b><i>file1 file2 file3 ... fileN</i></b> &#151; are either files to
+check for validity or directories containing such files.
+Wildcards can also be used, such as <i>po*.xsd</i> for all
+filenames in the current directory that begin with <i>po</i> and
+have file extension of <i>.xsd</i>.
+<b>Note:</b> Currently, SchemaQualityChecker
+does not recognize filenames containing blank spaces.
+Filenames with blank spaces will be interpreted as two (or more)
+different files.</p>
+<table cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td class="C1"><table width="100%" cellspacing=1 cellpadding=4>
+
+<tr class="C6">
+<th><i>[&#150;options]</i></th>
+
+<th>Meaning</th>
+</tr>
+
+<tr class="C6">
+<td>
+<b>&#150;r</b>
+</td>
+
+<td><p>When this option is specified, if <i>file1</I> is a directory,
+all its subdirectories will be processed recursively. By default (when
+this option is omitted), if <i>file1</i> is a directory only files
+with ".xsd" extension located in that directory will be converted;
+other files and subdirectories will be ignored.</p>
+</td>
+</tr>
+
+<tr class="C6">
+<td>
+<b>&#150;cost</b>&nbsp;<i>maxCost</i>
+</td>
+
+<td><p><i>maxCost</i> is the maximum cost of an allowed check operation.
+By default the maximum cost is 10 which allows all validity checks to be
+performed. You can increase the speed of the program by allowing only
+check operations with a small cost (you do so by reducing the
+<i>maxCost</i> value):</p>
+
+<table border=0 width="100%" cellpadding=4>
+<tr>
+<th align="left">Checks Performed</th>
+<th align="left">Cost</th>
+</tr>
+
+<tr>
+<td>Non-ambiguous content model</font></td>
+<td align="center">10</td>
+</tr>
+
+<tr>
+<td>Element declarations consistent</font></td>
+<td align="center">9</td>
+</tr>
+
+<tr>
+<td>A KeyRef is consistent with the type of the element declaration where it appears</font></td>
+<td align="center">6</td>
+</tr>
+
+<tr>
+<td>A Key or an Unique is consistent with the type of the element declaration where it appears</font></td>
+<td align="center">5</td>
+</tr>
+
+
+<tr>
+<td>Redefinition of a Model Group Definition</font></td>
+<td align="center">5</td>
+</tr>
+
+<tr>
+<td>Content type of a complex type is compatible with its basetype content type</font></td>
+<td align="center">5</td>
+</tr>
+
+<tr>
+<td>An element declaration has only one attribute whose type is derived from ID</font></td>
+<td align="center">5</td>
+</tr>
+
+<tr>
+<td>Type derivation (including circular definition check)</font></td>
+<td align="center">4</td>
+</tr>
+
+<tr>
+<td>Circular definition in an Attribute Group Definition</font></td>
+<td align="center">4</td>
+</tr>
+
+<tr>
+<td>Circular definition in a Model Group Definition</font></td>
+<td align="center">4</td>
+</tr>
+
+<tr>
+<td>Duplicated definitions</font></td>
+<td align="center">4</td>
+</tr>
+
+<tr>
+<td>A given string is in the value space of a given type</font></td>
+<td align="center">3</td>
+</tr>
+
+<tr>
+<td>Validity of XPath expressions</font></td>
+<td align="center">3</td>
+</tr>
+
+<tr>
+<td>Redefinition of an Attribute Group Definition</font></td>
+<td align="center">3</td>
+</tr>
+
+<tr>
+<td>The value of an enumeration pattern facet of a type derived from NOTATION matches a Notation declaration</font></td>
+<td align="center">3</td>
+</tr>
+
+<tr>
+<td>Reference resolution</font></td>
+<td align="center">3</td>
+</tr>
+
+<tr>
+<td>Equivalence class ok</font></td>
+<td align="center">3</td>
+</tr>
+
+<tr>
+<td>Attributes defined by a complex type are compatible with the ones defined by its basetype</font></td>
+<td align="center">3</td>
+</tr>
+
+<tr>
+<td>The attribute wildcard defined by a complex type is compatible with the one defined by its basetype</font></td>
+<td align="center">3</td>
+</tr>
+
+<tr>
+<td>Various inexpensive checks</font></td>
+<td align="center">2</td>
+</tr>
+
+<tr>
+<td>Various inexpensive checks</font></td>
+<td align="center">1</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+
+<tr class="C6">
+<td>
+<b>&#150;reportAsXML</b>&nbsp;<i>filename</i>
+</td>
+
+<td><p><i>filename</i> is the file where the error report will be
+saved as a XML document. If this option is not selected, all the
+error messages will be written on the standard output.</p>
+<p>If there is only a single file to check, and the first character
+of the argument after <b>&#150;reportAsXML</b> is the period ".",
+then SQC will behave as if the reportAsXML <i>filename</i> value
+was the specified input file followed by whatever characters were
+specified as the reportAsXML filename.</p>
+<p><b>Note:</b> an XSL stylesheet for rendering this
+file is distributed in the directory samples and is called
+ErrorReport.xsl. This stylesheet has been tested using Microsoft
+Internet Explorer 5.5 with the MSXML3 Parser update. (See
+<a href="http://msdn.microsoft.com/downloads/default.asp?URL=/code/sample.asp?url=/MSDN-FILES/027/001/591/msdncompositedoc.xml">http://msdn.microsoft.com/downloads/</a>
+for details.) It has also been tested with <a
+href="http://xml.apache.org/xalan/index.html">Xalan Java</a>
+Version 1.2D02.</p>
+</td>
+</tr>
+
+<tr class="C6">
+<td>
+<b>&#150;styleSheet</b>&nbsp;<i>uri</i>
+</td>
+
+<td><i>uri</i> is the uri of the stylesheet for the error report which will be
+used in the xml-stylesheet processing instruction used in the reportAsXML
+document. If this option is not selected, the value used will be <i>SchemaQualityCheckerDir</i>/ErrorReport.xsl.</td>
+</tr>
+
+<tr class="C6">
+<td>
+<b>&#150;errorReportDtd</b>&nbsp;<i>dtdURL</i>
+</td>
+
+<td>The reportAsXML document will include a DOCTYPE statement.&nbsp;
+<p><b>Note:</b> The latest version of the Dtd for SQC output is located at <i>SchemaQualityCheckerDir</i>/XMLSchemaQualityCheckerErrorReport.dtd.
+</td>
+</tr>
+
+<tr class="C6">
+<td>
+<b>&#150;errorReportSchema</b>&nbsp;<i>schemaURL</i>
+<img src="images/c.gif" width="210" height="1" alt="fill"/>
+</td>
+
+<td><p>Indicate that SQC should set the
+'xsi:noNamespaceSchemaLocation' attribute of the root element of the
+output document to the URL location of the schema for SQC output.</p>
+<p><b>Note:</b> The latest version of
+the Schema for SQC output is located at
+<i>SchemaQualityCheckerDir</i>/XMLSchemaQualityCheckerErrorReport.xsd.
+</td>
+</tr>
+
+<tr class="C6">
+<td>
+<b>&#150;haltAtFirstError</b>
+</td>
+
+<td>Stops validation of the schema when the first error or warning situation is encountered.</td>
+</tr>
+
+<tr class="C6">
+<td>
+<b>&#150;requireEachDocumentValid</b>
+</td>
+
+<td><p>When this option is set, SQC will check that schemas directly
+or indirectly imported, included or redefined by the main schema
+are valid by themselves. In other words, if this option is set,
+errors will be reported to indicate that if included or imported
+schemas were accessed directly, they would not be valid.</p>
+</td>
+</tr>
+
+<tr class="C6">
+<td>
+<b>&#150;entireSchemaValid</b>
+</td>
+
+<td><p>When this option is set, SQC will not check that schemas directly
+or indirectly imported, included or redefined by the main schema
+are valid by themselves. This is the default.</p>
+</td>
+</tr>
+
+<tr class="C6">
+<td>
+<b>&#150;emb</b>
+</td>
+<td><a NAME="emb"/><p>When this option is set, SQC will not complain if the root
+element of the input document is not &lt;xs:schema&gt;, where
+"xs" prefix is bounded to "http://www.w3.org/2001/XMLSchema". It
+will also check for the validity of schemas embedded in
+the input document. When this option is used, the option
+'<b>&#150;schemaLocation</b>' or '<b>&#150;noNSSchemaLocation</b>'
+must be specified to provide the location of the schema to which
+the root element conforms.</p>
+</td>
+
+<tr class="C6">
+<td>
+<b>&#150;wsdl</b>
+</td>
+<td><a NAME="wsdl"/><p>When this option is set, SQC will be able to process
+input documents whose root element is &lt;xs:schema&gt; or
+&lt;wsdl:definitions&gt;, where "xs" and "wsdl" prefixes are
+respectively bounded to "http://www.w3.org/2001/XMLSchema" and to
+"http://schemas.xmlsoap.org/wsdl/".</p>
+<p><b>Note:</b> For performance reasons, SQC uses a cached and
+slightly modified version of the schema for WSDL available at <a
+href="http://schemas.xmlsoap.org/wsdl">http://schemas.xmlsoap.org/wsdl</a>.
+If a future version of WSDL specification changes the
+namespace and/or the schema for WSDL, please use the option
+"&#150;schemaLocation newWSDLNamespace newWSDLSchemaLocation"
+to make SQC aware of the change.</p>
+</td>
+</tr>
+
+<tr class="C6">
+<td>
+<b>&#150;xform</b>
+</td>
+<td><a NAME="xform"/><p>When this option is set, SQC will be able to process
+input documents whose root element is &lt;xs:schema&gt; or
+&lt;xforms:model&gt;, where "xs" and "xforms" prefixes are
+respectively bounded to "http://www.w3.org/2001/XMLSchema" and to
+"http://www.w3.org/2002/xforms/cr".</p>
+<p><b>Note:</b> Since as of  July 15, 2003 XForms
+specification was at the stage of "Candidate Recommendation", the
+namespace of XForms or/and the schema for XForms may change
+before a new version of SQC is available. If it is the case,
+please use option '<b>&#150;schemaLocation newXFormsNamespace
+newXFormsSchemaLocation</b>' to make SQC aware of the change.</p>
+</td>
+</tr>
+
+<tr class="C6">
+<td>
+<b>&#150;schemaLocation</b> <i>namespace locationURL</i>
+</td>
+
+<td><p>This option indicates the location of the schema
+definition to use to validate an element whose <i>namespace</i>
+is "namespace". <i>locationURL</i> must be a valid <b>absolute URL</b>.
+This option is particularly important when option
+'<b>&#150;emb</b>' is specified.</p>
+</td>
+</tr>
+
+<tr class="C6">
+<td>
+<b>&#150;noNSSchemaLocation</b> <i>locationURL</i>
+</td>
+
+<td><p>This option indicates the location of the schema definition
+to use to validate unqualified elements. <i>locationURL</I> must be
+a valid <b>absolute URL</b>. This option is particularly important
+when option '<b>&#150;emb</b>' is specified.</p>
+</td>
+</tr>
+
+<tr class="C6"><a name="fullProcessingDescAxis"></a>
+<td>
+<b>&#150;fullProcessingDescAxis</b>
+</td>
+
+<td><p>This option indicates that SQC should detect warnings due to possible inconsistencies
+ in identity constraints which have at least one field xpath containing a 
+ descendant axis ('.//'). If this option is not set, SQC will not issue the following
+ warnings for previously described identity constraints :
+<ul>
+ <li> a field evaluates to an element whose type is a complex type.
+ <li> a field evaluates to a node set containing nodes that may appear at the same time.
+</ul> </p>
+</td>
+</tr>
+
+<tr class="C6"><a name="reportLocWithoutPath"></a>
+<td>
+<b>&#150;reportLocWithoutPath</b>
+</td>
+
+<td><p>print locations of errors in the message section of an error without full path information,
+but only the last part of the file or web name of the document containing the error.</p>
+</td>
+</tr>
+
+
+<tr class="C6">
+<td>
+<b>&nbsp;&#150;help</b>
+</td>
+
+<td>Outputs on stdout a reminder of the options. <b>&#150;?</b> does the same thing.&nbsp;</td>
+</tr>
+</table></td>
+</tr></table>
+
+<p></p>
+<p></p>
+
+<table cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td class="C1"><table width="100%" cellspacing=1 cellpadding=4>
+
+<tr class="C6">
+<th><i>[&#150;options]</i><br>(only for debugging SQC)</th>
+
+<th width="78%">Meaning</th>
+</tr>
+
+<tr class="C6">
+<td>
+<b>&nbsp;&#150;debugInfo</b>
+</td>
+
+<td><p>When this option is set, messages useful for debugging of the
+Quality Checker will be displayed on the standard output.</p></td>
+</tr>
+
+<tr class="C6">
+<td>
+<b>&nbsp;&#150;debugMemory</b>
+</td>
+
+<td><p>When this option is set, information about SQC's memory
+usage will be displayed on the standard output.</p></td>
+</tr>
+
+<tr class="C6">
+<td>
+<b>&nbsp;&#150;indicateProgress</b>
+</td>
+
+<td>Outputs on stdout indicators of what line of the Schema the parser
+is currently processing</td>
+</tr>
+
+<tr class="C6">
+<td>
+<b>&nbsp;&#150;outputExceptionName</b>
+</td>
+
+<td><p>When this option is set, SQC will include, in the XML
+error report file, names of exceptions corresponding to errors
+reported.</p>
+<p><b>Note:</b> if option '<b>&#150;reportAsXML</b> error.xml' is not specified, this option has no effect.</td>
+</tr>
+
+<tr class="C6">
+<td>
+<b>&nbsp;&#150;locationCorrespondence</b>&nbsp;<i>file</i>
+<img src="images/c.gif" width="210" height="1" alt="fill"/>
+</td>
+
+<td>This option allows SQC to redirect a file from one remote
+location to another. <i>file</i> is the location correspondence
+file that contains the mapping between the location specified in a
+schema and the location used during validation. 
+<font size=-1>(For more information about this option, please contact
+us at <a href="mailto:xschema@us.ibm.com">xschema@us.ibm.com</a>).</font>
+</td>
+</tr>
+</table></td>
+
+</tr></table>
+</body>
+</html>

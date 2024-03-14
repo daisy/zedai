@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" ns="http://www.daisy.org/z3986/2005/ncx/"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    
+    <start>
+        <ref name="ncx.ncx"/>
+    </start>
+    
+    <define name="ncx.ncx">
+        <a:documentation>The ncx element is the root element of NCX document
+            instances.</a:documentation>
+        <element name="ncx">
+            <ref name="ncx.ncx.attlist"/>
+            <ref name="ncx.ncx.content"/>
+        </element>
+    </define>
+    
+    <define name="ncx.ncx.attlist" combine="interleave">
+        <ref name="ncx.Common.attrib"/>
+        <ref name="ncx.xml.lang.attrib"/>
+        <optional>
+            <ref name="ncx.dir.attrib"/>
+        </optional>
+    </define>
+    
+    <define name="ncx.ncx.content">
+        <empty/>
+    </define>
+</grammar>

@@ -1,0 +1,1064 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="../../util/docbook/rng/docbook.rng" type="xml"?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- 
+      TODO area
+      - collect well know head/link types (version, z3986-feature, PLS, etc)
+      - processing agent conformance, handling unrecognized role curies, handling erroneous curies (blockcode role="poem")
+      - processing agent conformance, re the option to resolving CURIEs to discover behavioral fallbacks
+      - processing agent conformance, http://www.daisy.org/zw/ZedAI_Architecture_Overview#Processing_Termination_Rules_.5BTBD.5D
+      - profile and feature versioning, see http://www.daisy.org/zw/ZedAI_Architecture_Overview#Versioning
+      - informative section on char entity usage
+      - informative section on AI documents being one infoset, and the optional use of XInclude during authoring
+    -->
+    <title>ANSI/NISO Z39.86-2010 Part A [FIRST ALPHA WORKING DRAFT - 17 April 2009]</title>
+    <subtitle>Z39.86 Authoring and Interchange Framework Specification</subtitle>
+    <info>
+        <edition>Incomplete draft</edition>
+        <date>17 April 2009</date>
+        <editor>
+            <personname>James Pritchett</personname>
+            <email>jpritchett@rfbd.org</email>
+        </editor>
+        <abstract>
+            <title>Abstract</title>
+            <para>The Z39.86 Authoring and Interchange Framework (ZAI Framework) is a means of
+                defining markup languages to represent different kinds of information resources
+                (books, periodicals, etc.), with the intent of producing documents suitable for
+                transformation into different universally accessible formats. It uses a modular,
+                extensible architecture to permit the creation of any number of document models,
+                each custom-tailored for a particular kind of information resource.</para>
+        </abstract>
+    </info>
+    <preface conformance="informative">
+        <title>Introduction</title>
+        <para>The Z39.86 Authoring and Interchange Framework (ZAI Framework) is a means of defining
+            markup languages to represent different kinds of information resources (books,
+            periodicals, etc.), with the intent of producing documents suitable for transformation
+            into different universally accessible formats.</para>
+        <section>
+            <title>Design goals</title>
+            <para>The Framework has been created with three major design goals in mind:</para>
+            <orderedlist>
+                <listitem>
+                    <para><emphasis>Extensibility.</emphasis> Because there are so many different
+                        kinds of information resources, each with its own unique needs, it is clear
+                        that no single markup language can fit all circumstances. Instead, the
+                        Framework is designed to be inherently extensible and customizable. The
+                        Framework specifies how to create a profile that can be used when
+                        representing a particular kind of information resource. If existing profiles
+                        do not meet the needs of a particular use case, an agency can create a
+                        wholly new profile, or can easily adapt an existing profile to better fit
+                        the immediate need. As new, specialized XML markup languages appear, they
+                        can easily be incorporated into profiles.</para>
+                </listitem>
+                <listitem>
+                    <para>
+                        <emphasis>Modularity.</emphasis> Framework profiles build their models in
+                        discrete schema modules, building on existing schemas where possible. The
+                        schema modules created for specific profiles, in turn, can be used within
+                        other Framework profiles, or even in completely unrelated markup languages.
+                        This reduces the amount of work required for creating profiles through
+                        reuse.</para>
+                    <para>In addition, specialized content types such as math or music can be
+                        defined as features: a coherent set of schema modules that is maintained
+                        separately from any profile. Features included in profiles can be identified
+                        individually, and instance documents declare whether they actually reference
+                        markup defined in those features. This allows both document authors and
+                        processing agents to negotiate support for these specialized constructs.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        <emphasis>Self-describing.</emphasis> The Framework defines mechanisms that
+                        allow the markup language to document itself, without need of independent
+                        specification documents. Each profile names a resource directory (expressed
+                        in <xref linkend="refRDDL"/>) that is a machine- and human-readable
+                        inventory of associated resources to help render and process content created
+                        using the profile. The Framework also makes heavy use of RDF (via <xref
+                            linkend="refRDFa"/>) as a way of indicating the semantic function of
+                        elements in a way that is both machine- and human-readable.</para>
+                </listitem>
+            </orderedlist>
+        </section>
+        <section>
+            <title>Specification documents</title>
+            <para>The Z39.86-2010 Part A specification defines the following:</para>
+            <orderedlist>
+                <listitem>
+                    <para>What a profile is and how it must be constructed</para>
+                </listitem>
+                <listitem>
+                    <para>The requirements for a conforming document created using any given
+                        profile </para>
+                </listitem>
+                <listitem>
+                    <para>A set of predefined schema modules that may be used in creating
+                        profiles </para>
+                </listitem>
+                <listitem>
+                    <para>A set of predefined profiles that may be used in creating documents</para>
+                </listitem>
+            </orderedlist>
+            <para>Separate from this specification document there are the following support
+                documents:</para>
+            <orderedlist>
+                <listitem>
+                    <para>A Framework primer document that gives an introduction to the design
+                        concepts and structures of profiles</para>
+                </listitem>
+                <listitem>
+                    <para>A guide to profile construction that gives more technically detailed
+                        information on how to create a new Framework profile.</para>
+                </listitem>
+            </orderedlist>
+        </section>
+    </preface>
+    <chapter conformance="normative">
+        <title>Relationships to other specifications</title>
+        <para>This standard is based on the specific versions of the standards and specifications
+            referenced herein, which are used as defined except as noted by this document. Any
+            refinement or replacement of a referenced specification by a newer or different version
+            is not directly applicable to this standard. Conformance to this standard is based on
+            the versions of the standards and specifications in effect at the time of this
+            writing.</para>
+        <section>
+            <title>Relationship to Z39.86-2010 Part B</title>
+            <para>Z39.86-2010 Part B defines different end-user accessible formats for information
+                resources.  The procedures for defining markup languages and profiles given in this
+                specification are designed to create documents that are easily transformed into the
+                accessible formats described by Z39.86-2010 Part B.  However, this is not an
+                exclusive relationship.  Documents conforming to a Framework profile may be
+                transformed into many other formats not described by Z39.86-2010 Part B, and
+                accessible formats described by that specification may be created from documents in
+                formats not conforming to this specification.</para>
+        </section>
+        <section>
+            <title>Relationship to Z39.86-2005</title>
+            <para>Z39.86-2010 Part A and B jointly form a functional expansion of the Z39.86-2005
+                specification (<xref linkend="refZ39862005"/>).  Z39.86-2010 Part A represents an
+                entirely new technical direction that supersedes Section 4 “Content Format for Text”
+                of Z39.86-2005.  As such, text content files compliant under Z39.86-2005 will not be
+                compliant under Z39.86-2010 and vice versa.</para>
+        </section>
+        <section>
+            <title>Relationship to Unicode</title>
+            <para>
+                <remark role="todo">Note that Unicode version is implicitly defined by which version
+                    of XML we reference</remark>
+            </para>
+        </section>
+        <section>
+            <title>Relationship to XML</title>
+            <para>The document types defined by Z39.86-2010 Part A inherit all constraints defined
+                by Extensible Markup Language (XML) 1.0 (Fourth Edition)(<xref linkend="refXML"
+                />).</para>
+        </section>
+        <section>
+            <title>Relationship to XHTML2</title>
+            <para>
+                <remark role="todo">TODO</remark>
+            </para>
+        </section>
+
+    </chapter>
+    <chapter conformance="informative">
+        <title>Terms and definitions</title>
+        <variablelist>
+            <varlistentry>
+                <term>Profile</term>
+                <listitem>
+                    <para>An integrated markup model (element set and grammar) and RDF ontologies
+                        designed to represent information resources of a particular type.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Markup model</term>
+                <listitem>
+                    <para>The markup vocabulary (i.e., the gamut of element and attribute names,
+                        notations, etc.) and grammar (i.e., the prescribed use of that vocabulary)
+                        as defined by a schema.  The markup model is the concrete representation in
+                        markup syntax of an abstract document model, and may be defined with varying
+                        levels of strict conformity.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Module</term>
+                <listitem>
+                    <para>An abstract unit within a markup model expressed as a schema fragment,
+                        used to consolidate markup declarations to increase the flexibility,
+                        modifiability, reuse and understanding of specific logical or semantic
+                        structures.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Feature</term>
+                <listitem>
+                    <para>A markup model and associated role vocabulary designed to represent a
+                        limited, highly-specialized set of content structures.  Typically these will
+                        require specific behaviors in processing agents.  Mathematical equations,
+                        chemistry formulas, and musical notations are examples of the kinds of
+                        content structures that might be addressed by a ZAI feature.  Features share
+                        the same general structure as profiles, but are more specialized and of
+                        narrower scope and are intended to be used as discrete components within
+                        profiles.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Role vocabulary</term>
+                <listitem>
+                    <para>An ontology that provides a mechanism to annotate elements with
+                        machine-extractable semantic information about their purpose.  Role
+                        vocabularies are expressed in RDF.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Resource directory</term>
+                <listitem>
+                    <para>A package of information regarding a profile, including normative schemas,
+                        informative schemas, RDF ontologies, documentation, stylesheets, or other
+                        associated resources.  Resource directories are expressed in RDDL.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>AI document</term>
+                <listitem>
+                    <para>An XML document that conforms to a ZAI profile.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Processing Agent</term>
+                <listitem>
+                    <para>A software application that processes a ZedAI instance document for some
+                        reason. Examples include, but are not limited to, authoring tools (XML
+                        editors, XML-enabled Word processors), transformation pipelines, business
+                        transfer chains, end-user provisioning interfaces, and conformance
+                        validators.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </chapter>
+    <chapter conformance="normative">
+        <title>Conformance definition</title>
+        <para>The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+            "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described
+            in <xref linkend="refRFC2119"/>.</para>
+        <section xml:id="conformanceProfile">
+            <title>Profile conformance</title>
+            <para>A conforming profile must meet all of the following criteria:</para>
+            <orderedlist>
+                <listitem>
+                    <para>It must define an identity URI that meets the requirements of <xref
+                            linkend="profileURI"/>  </para>
+                </listitem>
+                <listitem>
+                    <para>The identity URI must resolve to a resource directory that meets the
+                        requirements of <xref linkend="profileRD"/>  </para>
+                </listitem>
+                <listitem>
+                    <para>The resource directory must identify at least one normative schema written
+                        in one of the languages identified in <xref linkend="profileSchema"/>
+                         </para>
+                </listitem>
+                <listitem>
+                    <para>The normative schema must meet all the requirements of <xref
+                            linkend="profileMarkup"/>  </para>
+                </listitem>
+                <listitem>
+                    <para>if a role vocabulary is included as part of the profile, then it must meet
+                        the requirements of <xref linkend="profileRDF"/>  </para>
+                </listitem>
+            </orderedlist>
+        </section>
+        <section xml:id="conformanceDocument">
+            <title>Document conformance</title>
+            <para>A document instance conforming to this specification must meet all of the
+                following criteria:</para>
+            <orderedlist>
+                <listitem>
+                    <para>It must be well-formed <xref linkend="refXML"/>. </para>
+                </listitem>
+                <listitem>
+                    <para>It must include a reference to exactly one conforming profile, following
+                        the means identified in <xref linkend="documentsProfilesFeatures"/>. </para>
+                </listitem>
+                <listitem>
+                    <para>It must be valid to the normative schema(s) of the referenced
+                        profile. </para>
+                </listitem>
+                <listitem>
+                    <para>The <xref linkend="refXHTML2"/> namespace must be the default namespace of
+                        the document. </para>
+                </listitem>
+                <listitem>
+                    <para>It must contain metadata that meets all the requirements of <xref
+                            linkend="documentsMetadata"/>. </para>
+                </listitem>
+            </orderedlist>
+        </section>
+        <section xml:id="conformanceProcessingAgent">
+            <title>Processing Agent conformance</title>
+            <para><remark>TBD - cross reference to all applicable statements below</remark></para>
+        </section>    
+    </chapter>
+    <chapter>
+        <title>Profiles</title>
+        <section conformance="informative">
+            <title>Introduction</title>
+
+            <para>The goal of the DAISY Authoring and Interchange Framework is to define a modular,
+                extensible way of expressing information resources of all kinds as XML documents
+                suitable for transformation into different universally accessible formats.  Because
+                information resources are of myriad types, no one XML markup language can be
+                expected to be suitable for this task.  Therefore, the Framework is based on the
+                notion of <emphasis>document profiles</emphasis>:  different markup languages
+                suitable for particular information resource types, but which all follow the same
+                overall architecture and which share many common components.</para>
+            <para>Examples of profiles might include:</para>
+            <itemizedlist>
+                <listitem>
+                    <para>A book profile for printed books of all kinds (novels, nonfiction books,
+                        student textbooks, etc.)  </para>
+                </listitem>
+                <listitem>
+                    <para>A poetry profile  </para>
+                </listitem>
+                <listitem>
+                    <para>A drama profile for plays of all kinds  </para>
+                </listitem>
+                <listitem>
+                    <para>A newsfeed profile for newspaper articles  </para>
+                </listitem>
+                <listitem>
+                    <para>A magazines and journals profile for all kinds of periodicals  </para>
+                </listitem>
+                <listitem>
+                    <para>A consumer medical information profile  </para>
+                </listitem>
+            </itemizedlist>
+            <para>By design, the Framework does not require any particular scope for a profile.  As
+                seen in the examples above, a profile can have a wide scope (such as a book profile)
+                or it can have a narrow scope (such as a consumer medical information profile).
+                 While this specification includes a number of generally-useful profiles, any number
+                of profiles may be created by any agency or individual to represent any kind of
+                information resource.  Profiles that conform to the criteria given in <xref
+                    linkend="conformanceProfile"/> are considered to be conforming profiles.</para>
+            <para>A profile consists of a markup model (element set and grammar, expressed as a
+                schema) and, optionally, a vocabulary of roles (expressed in RDF).  The role
+                vocabulary is used to provide more subtle semantic inflections on elements within
+                the markup model.  For example, a book profile might use roles defining such book
+                structures as “preface”, “introduction”, or “acknowledgements” in order to inflect a
+                generic “section” element.</para>
+            <para>Each profile has a unique URI associated with it, which serves as the profile's
+                identifier.  This URI resolves to a unique resource directory associated with the
+                profile.  This resource directory lists normative and informative resources that are
+                associated with the profile.</para>
+            <para>Profiles may also include features in their markup models.  Features themselves
+                consist of markup models and role vocabularies, but are not designed to be complete
+                markup languages in their own right.  Instead, they are designed to be included
+                as-is in any number of profiles.  The scope of features is narrower:  they define
+                markup suitable to represent specific content structures, typically of a highly
+                specialized nature (such as math or music).  Typically, a profile's included
+                features will not all be used by every document created using that profile.  In
+                order to simplify the burden on processing agents, from their perspective features
+                are <emphasis>optional</emphasis>, and documents declare which features are actually
+                used.</para>
+        </section>
+        <section xml:id="profileURI" conformance="normative">
+            <title>Identity URI</title>
+            <para>Each profile must define a URI that serves as the unique identifier of the
+                profile. This URI must be valid with respect to <xref linkend="refRFC3986"/> and
+                with respect to the following EBNF specification:</para>
+            <programlisting><remark role="todo">review</remark>
+                identity ::= protocol, home, static, name, version
+                protocol ::= 'http://'
+                home ::= urisegment
+                static ::= /z3986/2010/ai/profiles/
+                name ::= urisegment, '/'
+                version ::= [0-9.]*
+                urisegment = [A-Za-z0-9./]*
+            </programlisting>
+            <para>The provider of a profile owns the identity URI, and must assure that the profile
+                identity URI resolves and has no public access restrictions.   The profile identity
+                URI must resolve to the resource directory for the profile (see <xref
+                    linkend="profileRD"/>).</para>
+            <para>The number of integer steps to use in the version segment is unspecified. Profile
+                providers should utilize this segment to signal major and minor profile version
+                changes.</para>
+            <para>An example profile identity URI is:
+                    <code>http://www.example.org/z3986/2010/ai/profiles/myProfile/1.0</code></para>
+            <para>When comparing two profile identity URIs for equality, processing agents must
+                follow the rules specified by <xref linkend="refRFC2396"/>. <remark role="todo">RFC2396 is
+                    superceded</remark></para>
+        </section>
+        <section>
+            <title>Resource directory</title>
+            <section conformance="informative">
+                <title>Introduction</title>
+                <para>This specification uses the Resource Directory Description Language <xref
+                        linkend="refRDDL"/> as the mechanism to associate a collection of normative
+                    and informative resources with a profile.</para>
+                <para>Resource directories are human-readable documents, and thus can serve as the
+                    primary source of information for all users of a profile. Resource directories
+                    are also machine-readable documents, and thus can be sources for the discovery
+                    and retrieval of schemas, style sheets, role vocabularies and other types of
+                    resources that are needed by processing agents.</para>
+                <para>Ideally, the profile resource directory will contain a rich variety of
+                    resources useful to both human and machine users of profiles:  documentation,
+                    primers, schemas, stylesheets for both rendering and transformation of
+                    documents, role vocabularies, etc.</para>
+                <para><xref linkend="refRDDL"/> utilizes pairs of <emphasis>natures</emphasis> and
+                        <emphasis>purposes</emphasis> to describe and identify the resources
+                    provided.  The nature of a resource is a machine-readable label that identifies
+                    the type of resource it is.  All resources have natures.  The purpose of a
+                    resource is optional machine-readable label that identifies the intended usage
+                    of a resource.  In order to facilitate interoperability of processing agents,
+                    this specification defines a set of well-known natures and purposes, and how
+                    they are to be used.  This set may then be extended further by the creators of
+                    specific profiles as needed.</para>
+            </section>
+            <section xml:id="profileRD" conformance="normative">
+                <title>Resource directory requirements</title>
+                <para>The resource directory for a profile must be a document conforming to the
+                        <xref linkend="refRDDL"/> specification.</para>
+                <para>The resource directory must include at least one normative schema resource.
+                     If a role vocabulary is part of the profile, then this RDF resource must also
+                    be included in the resource directory.</para>
+                <para>It is recommended that the resource directory include at least one resource
+                    whose purpose is <emphasis>reference</emphasis> and which resolves to a
+                    human-readable description of the profile's purpose and structure.</para>
+                <para>All natures (as represented in the <code>xlink:role</code> attribute) and
+                    purposes (as represented in the <code>xlink:arcrole</code> attribute) must use
+                    the values given in the <xref linkend="refRDDL"/> lists of well-known natures
+                    and purposes, where appropriate.  Specifically, the following natures must be
+                    used when referencing resources described in this specification:</para>
+                <remark role="todo">Provide as part of the specification - a Schematron schema to validate the minimally required RDDL entries</remark>
+                <informaltable>
+                    <colgroup>
+                        <col/>
+                        <col/>
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th> Resource type </th>
+                            <th> Nature value </th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>RelaxNG schema (XML syntax)</td>
+                        <td>
+                            <code>http://relaxng.org/ns/structure/1.0</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>RelaxNG schema (compact syntax)</td>
+                        <td>
+                            <code>
+                                http://www.isi.edu/in-notes/iana/assignments/media-types/application/relax-ng-compact-syntax
+                            </code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>NVDL schema</td>
+                        <td>
+                            <code>http://purl.oclc.org/dsdl/nvdl/ns/structure/1.0</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> W3C XML Schema </td>
+                        <td>
+                            <code>http://www.w3.org/2001/XMLSchema</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ISO Schematron schema</td>
+                        <td>
+                            <code>http://purl.oclc.org/dsdl/schematron</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>RDFa vocabulary</td>
+                        <td>
+                            <remark role="todo">What goes here?</remark>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>RDF Schema vocabulary</td>
+                        <td>
+                            <remark role="todo">What goes here?</remark>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ZAI feature (see <xref linkend="features"/></td>
+                        <td>
+                            <remark role="todo">What goes here?</remark>
+                        </td>
+                    </tr>
+                </informaltable>
+            </section>
+        </section>
+        <section conformance="normative">
+            <title>Markup model</title>
+            <section xml:id="profileSchema">
+                <title>Schema</title>
+                <para>The markup model definition must be formally expressed using one or several
+                    (layered) normative schemas. One or several of the following schemata types must
+                    be used:</para>
+                <itemizedlist>
+                    <listitem>
+                        <para>RelaxNG, version 1.0 <xref linkend="refRelaxNG"/></para>
+                    </listitem>
+                    <listitem>
+                        <para>NVDL,version 1.0 <xref linkend="refNVDL"/></para>
+                    </listitem>
+                    <listitem>
+                        <para>W3C XML Schema, version 1.0 <xref linkend="refXMLSchema"/></para>
+                    </listitem>
+                    <listitem>
+                        <para>ISO Schematron, version 1.0 <xref linkend="refSchematron"/></para>
+                    </listitem>
+                </itemizedlist>
+                <para>The mechanism with which a profile references schema(s) and defines which are
+                    normative is defined in <xref linkend="profileRD"/>.</para>
+            </section>
+            <section xml:id="profileMarkup" conformance="normative">
+                <title>Markup model requirements</title>
+                <para>The markup model as defined in the normative schema(s) must meet the following
+                    requirements:</para>
+                <itemizedlist>
+                    <listitem>
+                        <para>All elements and attributes included in the document model must be
+                            bound to an XML namespace (<xref linkend="refXMLNamespaces"/>). </para>
+                    </listitem>
+                </itemizedlist>
+                <itemizedlist>
+                    <listitem>
+                        <para>The <xref linkend="refXHTML2"/> namespace
+                                (<code>http://www.w3.org/2002/06/xhtml2/</code>) must be the default
+                            namespace of the markup model. </para>
+                    </listitem>
+                    <listitem>
+                        <para>All elements included in the document model must, regardless of the
+                            namespace to which they are bound, allow the <code>xml:id</code>
+                            attribute (<xref linkend="refXMLID"/>) in their respective attribute
+                            models. </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            <code>xml:id</code> (<xref linkend="refXMLID"/>) must be the the
+                            exclusive means of uniquely identifying elements in the markup model.
+                            Other attributes with the ID datatype must be explicitly forbidden to
+                            occur. </para>
+                    </listitem>
+                    <listitem>
+                        <para>All elements included in the markup model that are not bound to the
+                                <xref linkend="refXHTML2"/> namespace should <emphasis>at a minimum
+                            </emphasis>allow the following attributes from the <xref
+                                linkend="refXHTML2"/> namespace in their respective attribute model:
+                             </para>
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    The XHTML2 <code>role</code> attribute <remark role="todo">Reference to role attribute module</remark></para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    The <code>Metainformation attributes</code> (rdf/a) <remark role="todo">Reference to role attribute module</remark> </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    The XHTML2 <code>class</code> attribute </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    The XHTML2 <code>i18n attributes</code> <remark role="todo">Reference to role attribute module</remark> </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    <remark role="todo">Ruby as feature or integral module</remark></para>
+                            </listitem>
+                        </itemizedlist>
+                    </listitem>
+                    <listitem>
+                        <para>All elements included in the markup model must allow the
+                                <code>xml:base</code> attribute (<xref linkend="refXMLBase"/>) in
+                            their respective attribute model. </para>
+                    </listitem>
+                    <listitem>
+                        <para>The markup model should enforce attributes from the <xref
+                                linkend="refXHTML2"/> namespace to use qualified names when used on
+                            elements that are not from the <xref linkend="refXHTML2"/>
+                            namespace. </para>
+                    </listitem>
+                    <listitem>
+                        <para>The markup model must include the following modules from the <xref
+                                linkend="refXHTMLMOD2"/> module collection: </para>
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    <remark role="todo">Reference XHTMLMOD2 conformance pattern</remark></para>
+                            </listitem>
+                        </itemizedlist>
+                    </listitem>
+                </itemizedlist>
+            </section>
+            <section conformance="normative">
+                <title>Included features</title>
+                <para>The markup model of a profile may reference any number of ZAI features (as
+                    defined in <xref linkend="features"/>) by inclusion through the normative
+                    schema(s).  If a feature is included, then when constructing content models, the
+                    profile's markup model must only reference the elements identified by the
+                    feature as exposed elements.</para>
+                <para>Features included in a profile must be identified in the profile's resource
+                    directory.  Links to features in the resource directory are identified by the
+                    nature (<code>xlink:role</code> attribute) value of “<remark role="todo">value
+                        goes here</remark>”, and the features themselves are identified via their
+                    identity URIs, referenced in the <code>xlink:href</code> attribute.</para>
+            </section>
+        </section>
+        <section xml:id="profileRDF">
+            <title>Role vocabularies</title>
+            <section conformance="informative">
+                <title>Introduction</title>
+                <para>The ZAI Framework encourages the use of the <xref linkend="refXHTML2"/>
+                    <code>role</code> attribute to make semantic distinctions between the uses of
+                    similar content structures in different contexts. Rather than define different
+                    elements for "chapter" and "appendix", for example, a profile might use a
+                    generic "section" container and use the <code>role</code> attribute to carry the
+                    distinction of "chapter" versus "appendix." It is for this reason that all
+                    profiles must allow the <code>role</code> attribute on all elements (per <xref
+                        linkend="profileMarkup"/>).</para>
+            </section>
+            <section xml:id="profileRoleVocab" conformance="normative">
+                <title>Role vocabulary requirements</title>
+                <para> Profiles may use values of the <xref linkend="refXHTML2"/>
+                    <code>role</code> attribute in their markup models to distinguish between
+                    different uses of the same element in different contexts. If values of the
+                        <code>role</code> attribute are identified in the profile's normative
+                    schema(s), then the profile must also provide a vocabularly of roles that
+                    defines these values using RDF. The normative role vocabulary must be included
+                    in the resource directory for the profile (see <xref linkend="profileRD"/>). All
+                    values for the <code>role</code> attribute given in the normative schema(s) must
+                    be included in the role vocabulary. </para>
+                <para> Profiles must use one of the following formats for expressing their role
+                    vocabularies: <itemizedlist>
+                        <listitem>
+                            <para> RDFa in XHTML, as defined by <xref linkend="refRDFa"/>. </para>
+                        </listitem>
+                    </itemizedlist>
+                </para>
+            </section>
+        </section>
+    </chapter>
+
+    <chapter xml:id="features">
+        <title>Features</title>
+        <section conformance="informative">
+            <title>Introduction</title>
+
+            <para>Certain kinds of content structures have highly specialized requirements for
+                representation and processing, but because of their limited scope within information
+                resources, do not merit a separate profile on their own.  ZAI
+                    <emphasis>features</emphasis> are designed to handle these kinds of structures.
+                 A classic example is that of mathematical equations.  There is specialized markup
+                available already to represent equations (MathML), but a separate “math profile”
+                would make no sense.  Instead, a “math feature” can be defined:  a markup model of
+                more limited scope that can be referenced as is by multiple profiles.</para>
+            <para>Features share the same general structure as profiles, but are more specialized
+                and of narrower scope.  Just like profiles, features consist of a markup model  and,
+                optionally, a role vocabulary.  Also like profiles, each feature has a unique URI
+                associated with it, which serves as its identifier and which resolves to a unique
+                resource directory associated with the feature.</para>
+            <para>Typically, a feature will have very few elements within its markup model that are
+                suitable for direct reference within the content models defined by profiles.  These
+                    <emphasis>exposed elements</emphasis> are defined by the feature and provide for
+                consistent usage of the feature across profiles.</para>
+        </section>
+        <section conformance="normative">
+            <title>Identity URI</title>
+            <para>Each feature must define a URI that serves as the unique identifier of the
+                feature. This URI must meet all the requirements of a profile identity URI (as
+                defined in <xref linkend="profileURI"/>), with the following change in the EBNF
+                specification:</para>
+            <programlisting>
+                static ::= /z3986/2010/ai/features/
+            </programlisting>
+            <para>The feature identity URI must resolve to the resource directory for the
+                feature.</para>
+        </section>
+        <section conformance="normative">
+            <title>Resource directory</title>
+            <para>The resource directory for the feature must meet all the same requirements for
+                profile resource directories (as defined in <xref linkend="profileRD"/>).</para>
+        </section>
+        <section conformance="normative">
+            <title>Markup model</title>
+            <section>
+                <title>Schema</title>
+                <para>Features must use one or more of the same schema types as profiles for their
+                    normative schemas (as defined in <xref linkend="profileSchema"/>).</para>
+            </section>
+            <section>
+                <title>Markup model requirements</title>
+                <para><remark role="todo">Features must be compliant with the markup model requirements as defined in <xref linkend="profileMarkup"/>), with the exception of the first namespace rule.</remark></para>
+                <para><remark role="todo">Does docbook have a way to replicate elements?</remark></para>
+                <para><remark role="todo">Define namespace rules for features - must they be in another ns than XHTML2 and Z3986</remark></para>
+                <para><remark role="todo">Add rules for staticity, see <link xlink:href="http://www.daisy.org/zw/ZedAI_Architecture_Overview#Optional_Features_and_Document_Model_Predictability"
+                    >http://www.daisy.org/zw/ZedAI_Architecture_Overview#Optional_Features_and_Document_Model_Predictability</link></remark></para>
+            </section>
+        </section>
+        <section conformance="normative">
+            <title>Role vocabularies</title>
+            <para>Features must meet all the same requirements as profiles with regards to the
+                    <code>role</code> attribute and role vocabularies (see <xref
+                    linkend="profileRoleVocab"/>). </para>
+        </section>
+    </chapter>
+    <chapter xml:id="documents">
+        <title>ZAI documents</title>
+        <section xml:id="documentsProfilesFeatures" conformance="normative">
+            <title>Referencing profiles and features</title>
+            <para>A ZAI document must reference exactly one ZAI profile, and must be valid with
+                respect to the normative schema(s) for that profile.</para>
+            <para>Documents reference profiles via the <xref linkend="refXHTML2"/>
+                <code>link</code> element, occurring as a child of the <code>head</code> element,
+                with the <code>rel</code> attribute value of “version” and the <code>href</code>
+                attribute value of the profile's identity URI.</para>
+            <para>If the referenced profile includes one or more features, then the document must
+                explicitly identify those features that are used within the document.  A feature is
+                referenced via the <xref linkend="refXHTML2"/>
+                <code>link</code> element, occurring as a child of the <code>link</code> element
+                that references the profile.  In referencing features, the <code>rel</code>
+                attribute must have the value of “z3986-feature” and the <code>href</code> attribute
+                must have the value of the feature's identity URI.</para>
+            <para>The following is an example of a compliant profile and feature reference in the <code>head</code> element for a
+                ZAI document.</para>            
+            <programlisting>
+&lt;head&gt;
+  [...]
+  &lt;link rel="version" href="http://purl.oclc.org/z3986/2010/ai/profiles/sciencejournal/1.0/"&gt;
+    &lt;link rel="z3986-feature" href="http://www.daisy.org/z3986/2010/ai/features/mathematics/3.0/"/&gt;
+    &lt;link rel="z3986-feature" href="http://www.daisy.org/z3986/2010/ai/features/chemistry/1.1/"/&gt;
+  &lt;/link&gt;  
+  [...]
+&lt;/head&gt;
+            </programlisting>
+            
+        </section>
+        <section xml:id="documentsMetadata" conformance="normative">
+            <title>Document metadata</title>
+            <para>ZAI documents must identify document metadata using terms defined by the Metadata
+                Object Description Schema (<xref linkend="refMODS"/>). Metadata must be expressed in
+                    <xref linkend="refRDFa"/> applied to the <code>meta</code> element. Top-level
+                    <xref linkend="refMODS"/> elements are identified via the <code>typeof</code>
+                attribute on <code>meta</code>. Subelements are identified via the
+                    <code>property</code> attribute on <code>meta</code> elements nested within the
+                top-level elements. See <xref linkend="documentsMetadataExample"/> for syntax
+                examples. </para>
+            <para> The values of <code>typeof</code> and <code>property</code> attributes must be
+                CURIEs that reference the RDF definition of <xref linkend="refMODS"/>. <remark
+                    role="todo">There is not yet a definitive definition of MODS in RDF. When that
+                    is complete, a reference to this will be placed here.</remark>
+            </para>
+            <para>The following specific metadata requirements must be met by every conforming ZAI
+                document: <itemizedlist>
+                    <listitem>
+                        <para>There must be exactly one top-level <code>originInfo</code> section,
+                            and it must describe the producer of the ZAI document. If the document
+                            producer is not the same as the producer of the original resource (e.g.,
+                            book publisher), the description of the producer of the original
+                            resource should be described in a <code>originInfo</code> section nested
+                            inside of a top-level <code>relatedItem</code> section.</para>
+                    </listitem>
+                    <listitem>
+                        <para>There must be exactly one <code>titleInfo</code> section identifying
+                            the primary title of the document. It must contain a <code>title</code>
+                            property and must not include a <code>type</code> property. </para>
+                    </listitem>
+                    <listitem>
+                        <para> There must be at least one <code>identifier</code> section giving a
+                            unique identifier for the document. This should include a
+                                <code>type</code> property to identify the type of identifer used.
+                        </para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section conformance="informative" xml:id="documentsMetadataExample">
+            <title>Metadata example</title>
+            <para>The following is an example of the metadata in the <code>head</code> element for a
+                ZAI document.</para>
+            <programlisting>
+&lt;head&gt;
+    &lt;meta typeof=&quot;mods:titleInfo&quot;&gt;
+        &lt;meta property=&quot;mods:title&quot; content=&quot;World Cultures and Geography&quot;/&gt;
+    &lt;/meta&gt;
+    
+    &lt;meta typeof=&quot;mods:name&quot;&gt;
+        &lt;meta property=&quot;mods:namePart&quot; content=&quot;Sarah Witham Bednarz&quot;/&gt;
+        &lt;meta property=&quot;mods:role&quot;&gt;
+            &lt;meta property=&quot;mods:roleTerm&quot; content=&quot;author&quot;&gt;
+                &lt;meta property=&quot;mods:type&quot; content=&quot;text&quot;/&gt;
+            &lt;/meta&gt;
+        &lt;/meta&gt;
+    &lt;/meta&gt;
+    
+    &lt;meta typeof=&quot;mods:name&quot;&gt;
+        &lt;meta property=&quot;mods:namePart&quot; content=&quot;Inés M. Miyares&quot;/&gt;
+        &lt;meta property=&quot;mods:role&quot;&gt;
+            &lt;meta property=&quot;mods:roleTerm&quot; content=&quot;author&quot;&gt;
+                &lt;meta property=&quot;mods:type&quot; content=&quot;text&quot;/&gt;
+            &lt;/meta&gt;
+        &lt;/meta&gt;
+    &lt;/meta&gt;
+    
+    &lt;meta typeof=&quot;mods:name&quot;&gt;
+        &lt;meta property=&quot;mods:namePart&quot; content=&quot;Mark C. Schug&quot;/&gt;
+        &lt;meta property=&quot;mods:role&quot;&gt;
+            &lt;meta property=&quot;mods:roleTerm&quot; content=&quot;author&quot;&gt;
+                &lt;meta property=&quot;mods:type&quot; content=&quot;text&quot;/&gt;
+            &lt;/meta&gt;
+        &lt;/meta&gt;
+    &lt;/meta&gt;
+    
+    &lt;meta typeof=&quot;mods:name&quot;&gt;
+        &lt;meta property=&quot;mods:namePart&quot; content=&quot;Charles S. White&quot;/&gt;
+        &lt;meta property=&quot;mods:role&quot;&gt;
+            &lt;meta property=&quot;mods:roleTerm&quot; content=&quot;author&quot;&gt;
+                &lt;meta property=&quot;mods:type&quot; content=&quot;text&quot;/&gt;
+            &lt;/meta&gt;
+        &lt;/meta&gt;
+    &lt;/meta&gt;
+    
+    &lt;meta typeof=&quot;mods:originInfo&quot;&gt;
+        &lt;meta property=&quot;mods:publisher&quot; content=&quot;DAISY Consortium&quot;/&gt;
+        &lt;meta property=&quot;mods:dateCreated&quot; content=&quot;2005-01-14/&gt;
+            &lt;meta property=&quot;mods:version&quot; content=&quot;3&quot;/&gt;
+            &lt;meta property=&quot;mods:dateModified&quot; content=&quot;2005-07-27&quot;/&gt;
+        &lt;/meta&gt;
+        
+        &lt;meta typeof=&quot;mods:relatedItem&quot;&gt;
+            &lt;meta property=&quot;mods:type&quot; content=&quot;origin&quot;/&gt;
+            &lt;meta typeof=&quot;mods:originInfo&quot;&gt;
+                &lt;meta property=&quot;mods:place&quot; content=&quot;Evanston, Illinois&quot;/&gt;
+                &lt;meta property=&quot;mods:publisher&quot; content=&quot;McDougal Littell&quot;/&gt;
+                &lt;meta property=&quot;mods:creationDate&quot; content=&quot;2003&quot;/&gt;
+            &lt;/meta&gt;
+        &lt;/meta&gt;
+        
+        &lt;meta property=&quot;mods:identifier&quot; content=&quot;daisy-dtbook2005-exemplar-01&quot;&gt;
+            &lt;meta property=&quot;mods:type&quot; content=&quot;uid&quot;/&gt;
+        &lt;/meta&gt;
+        
+        &lt;meta property=&quot;mods:identifier&quot; content=&quot;0618168419&quot;&gt;
+            &lt;meta property=&quot;mods:type&quot; content=&quot;isbn10&quot;/&gt;
+        &lt;/meta&gt;
+        
+        &lt;meta property=&quot;mods:typeOfResource&quot; content=&quot;text&quot;/&gt;
+        
+        &lt;meta typeof=&quot;mods:physicalDescription&quot;&gt;
+            &lt;meta property=&quot;mods:form&quot; content=&quot;Hardcover print&quot;/&gt;
+        &lt;/meta&gt;
+        
+        &lt;meta property=&quot;mods:subject&quot; content=&quot;Geography&quot;/&gt;
+        
+        &lt;meta property=&quot;mods:language&quot; content=&quot;en&quot;/&gt;
+        
+        &lt;meta property=&quot;mods:note&quot; content=&quot;Culture and geography textbook for highschool&quot;&gt;
+            &lt;meta property=&quot;mods:type&quot; content=&quot;description&quot;/&gt;
+        &lt;/meta&gt;
+        
+&lt;/head&gt;
+            </programlisting>
+        </section>
+        <section conformance="informative" xml:id="documentsMetadataInline">
+            <title>Inline metadata</title>
+            <remark role="todo">Notes on the usage of RDF/a</remark>
+        </section>    
+    </chapter>
+
+    <chapter conformance="informative">
+        <title>Defined components</title>
+        <section>
+            <title>Schema modules</title>
+            <para> As a resource for profile designers, the ZAI Framework defines a number of core
+                schema modules that are appropriate for use in a variety of profiles. Profiles are
+                required to use a subset of these modules. For reasons of interoperability the
+                practice of reuse beyond the requirements is encouraged wherever possible. </para>
+            <para> The catalog of ZAI Framework core schema modules is located at <remark
+                    role="todo">Location TBD</remark>. </para>
+        </section>
+        <section>
+            <title>Profiles</title>
+            <para> The ZAI Framework defines a number of profiles that are considered to be
+                generally useful to document creators. These profiles have no special standing with
+                regards to the Framework specification, and their content should not be considered
+                in any way normative for that specification. </para>
+            <para> The catalog of ZAI Framework profiles is located at <remark role="todo">Location
+                    TBD</remark>. </para>
+        </section>
+    </chapter>
+
+    <bibliography>
+        <title>References</title>
+        <biblioentry xml:id="refMODS">
+            <abbrev>MODS</abbrev>
+            <title>
+                <link xlink:href="http://www.loc.gov/standards/mods/">Metadata Object Description
+                    Schema (MODS)</link>
+            </title>
+        </biblioentry>
+        <biblioentry xml:id="refNVDL">
+            <abbrev>NVDL</abbrev>
+            <title>
+                <link xlink:href="http://nvdl.org/">ISO/IEC 19757-4 NVDL (Namespace-based Validation
+                    Dispatching Language)</link>
+            </title>
+        </biblioentry>
+        <biblioentry xml:id="refRDDL">
+            <abbrev>RDDL</abbrev>
+            <title>
+                <link xlink:href="http://www.rddl.org/">Resource Directory Description Language
+                    (RDDL)</link>
+            </title>
+            <editor>
+                <personname>J. Borden, T. Bray</personname>
+            </editor>
+            <date>1 March 2001</date>
+        </biblioentry>
+        <biblioentry xml:id="refRDFa">
+            <abbrev>RDFa</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/rdfa-syntax/">RDFa in XHTML: Syntax and
+                    Processing</link>
+            </title>
+            <editor>
+                <personname>B. Adida, et al.</personname>
+            </editor>
+            <date>14 October 2008</date>
+        </biblioentry>
+        <biblioentry xml:id="refRelaxNG">
+            <abbrev>RelaxNG1</abbrev>
+            <title>
+                <link xlink:href="http://relaxng.org/spec-20011203.html">RELAX NG
+                    Specification</link>
+            </title>
+            <date>3 December 2001</date>
+        </biblioentry>
+        <biblioentry xml:id="refRFC2119">
+            <abbrev>RFC2119</abbrev>
+            <title>
+                <link xlink:href="http://www.ietf.org/rfc/rfc2119.txt">Key words for use in RFCs to
+                    Indicate Requirement Levels (RFC2119)</link>
+            </title>
+            <date>March 1997</date>
+        </biblioentry>
+        <biblioentry xml:id="refRFC2396">
+            <abbrev>RFC2396</abbrev>
+            <title>
+                <link xlink:href="http://www.ietf.org/rfc/rfc2396.txt">Uniform Resource Identifiers
+                    (URI): Generic Syntax</link>
+            </title>
+            <author>
+                <personname>Berners-Lee, et al.</personname>
+            </author>
+            <date>August 1998</date>
+        </biblioentry>
+        <biblioentry xml:id="refRFC3986">
+            <abbrev>RFC3986</abbrev>
+            <title>
+                <link xlink:href="http://www.ietf.org/rfc/rfc3986.txt">Uniform Resource Identifier
+                    (URI): Generic Syntax</link>
+            </title>
+            <author>
+                <personname>Berners-Lee, et al.</personname>
+            </author>
+            <date>January 2005</date>
+        </biblioentry>
+        <biblioentry xml:id="refSchematron">
+            <abbrev>Schematron</abbrev>
+            <title>
+                <link
+                    xlink:href="http://standards.iso.org/ittf/PubliclyAvailableStandards/c040833_ISO_IEC_19757-3_2006(E).zip"
+                    >Information technology -- Document Schema Definition Language (DSDL) -- Part 3:
+                    Rule-based validation -- Schematron</link>
+            </title>
+        </biblioentry>
+        <biblioentry xml:id="refXHTML2">
+            <abbrev>XHTML2</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/xhtml2/">XHTML 2.0</link>
+            </title>
+            <author>
+                <personname>J. Axelsson, et al</personname>
+            </author>
+            <date>2009 [DRAFT]</date>
+        </biblioentry>
+        <biblioentry xml:id="refXHTMLMOD2">
+            <abbrev>XHTML Modularization 2.0</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/MarkUp/2009/ED-xhtml-modularization2-20090123/">Modularization of XHTML™ 2.0</link>
+            </title>
+            <author>
+                <personname>M. Birbeck, et al</personname>
+            </author>
+            <date>2009 [DRAFT]</date>
+        </biblioentry>        
+        <biblioentry xml:id="refXML">
+            <abbrev>XML</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/2006/REC-xml-20060816/">Extensible Markup
+                    Language (XML) 1.0 (Fourth Edition)</link>
+            </title>
+            <author>
+                <personname>T. Bray, et al</personname>
+            </author>
+            <date>November 2008</date>
+        </biblioentry>
+        <biblioentry xml:id="refXMLBase">
+            <abbrev>XMLBase</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/xmlbase/">XML Base (Second Edition)</link>
+            </title>
+            <date>28 January 2009</date>
+        </biblioentry>
+        <biblioentry xml:id="refXMLID">
+            <abbrev>XMLID</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/xml-id/">xml:id Version 1.0</link>
+            </title>
+            <date>9 September 2005</date>
+        </biblioentry>
+        <biblioentry xml:id="refXMLNamespaces">
+            <abbrev>XMLNamespaces</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/REC-xml-names/">Namespaces in XML 1.0 (Second
+                    Edition)</link>
+            </title>
+            <date>16 August 2006</date>
+        </biblioentry>
+        <biblioentry xml:id="refXMLSchema">
+            <abbrev>XMLSchema</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/XML/Schema#dev">XML Schema:
+                    Specifications</link>
+            </title>
+        </biblioentry>
+        <biblioentry xml:id="refZ39862005">
+            <abbrev>Z3986-2005</abbrev>
+            <title>
+                <link xlink:href="http://www.niso.org/standards/resources/Z39-86-2005.html"
+                    >ANSI/NISO Z39.86-2005: Specifications for the Digital Talking Book</link>
+            </title>
+            <author>
+                <personname>M. Moodie, et al.</personname>
+            </author>
+            <date>2005</date>
+        </biblioentry>
+    </bibliography>
+
+    <acknowledgements>
+        <title>Acknowledgements</title>
+        <remark role="todo">Put acknowledgements here</remark>
+    </acknowledgements>
+</book>

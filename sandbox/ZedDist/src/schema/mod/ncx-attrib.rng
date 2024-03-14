@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+    
+    <define name="ncx.id.attrib"> <!-- TODO should reference the standard z3986-core? -->
+        <attribute name="xml:id">
+            <ref name="ID.datatype"/>
+        </attribute>
+    </define>
+    
+    <define name="ncx.role.attrib"><!-- TODO should reference the standard z3986-role -->
+        <attribute name="role">
+            <ref name="QNames.datatype"/>
+        </attribute>
+    </define>
+    
+    <define name="ncx.targetRole.attrib"><!-- TODO should reference the standard z3986-targetRole ? -->
+        <attribute name="targetRole">
+            <ref name="QNames.datatype"/>
+        </attribute>
+    </define>
+    
+    <define name="ncx.xml.lang.attrib"><!-- TODO should reference the standard z3986-i18n -->
+        <attribute name="xml:lang">
+            <ref name="LanguageCode.datatype"/>
+        </attribute>
+    </define>
+    
+    <define name="ncx.ord.attrib">
+        <attribute name="ord"> <!-- TODO was: playOrder, really bad name -->
+            <ref name="NonNegativeInteger.datatype"/> <!-- TODO SCH same as zedval -->
+        </attribute>
+    </define>    
+    
+    <define name="ncx.label.img.attrib">
+        <a:documentation>Represents an image modality of a label</a:documentation>
+        <attribute name="label-img">
+            <ref name="URI.datatype"/>
+        </attribute>    
+    </define>    
+     
+    <define name="ncx.dir.attrib"> <!-- TODO should reference the standard z3986-i18n -->
+        <attribute name="dir">
+            <choice>
+                <value>ltr</value>
+                <value>rtl</value>
+                <value>lro</value>
+                <value>rlo</value>
+            </choice>
+        </attribute>
+    </define> 
+     
+    <define name="ncx.Common.attrib" combine="interleave">
+        <optional>
+            <ref name="ncx.id.attrib"/>
+        </optional>
+    </define>
+    
+</grammar>

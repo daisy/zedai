@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"
+         datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+  <x:h1>XML Scripting Module in RELAX NG</x:h1>
+  <x:p>This module depends on xhtml-datatypes-2.rng</x:p>
+  
+  <x:pre>
+    This is the RELAX NG Schema for the XML Events 2 Scripting module.
+        
+    Copyright &#xA9;2009 W3C&#xAE; (MIT, ERCIM, Keio), All Rights Reserved.
+
+    URI: http://www.w3.org/MarkUp/RELAXNG/xml-script-2.rng
+    Editor:   Markus Gylling &lt;markus.gylling@tpb.se&gt;
+    Revision: $Id: xml-script-2.rng,v 1.1.2.3 2009/02/25 12:09:46 mgylling Exp $
+
+    Permission to use, copy, modify and distribute this RELAX NG schema
+    for XML Scripting and its accompanying documentation for any purpose and
+    without fee is hereby granted in perpetuity, provided that the above
+    copyright notice and this paragraph appear in all copies. The copyright
+    holders make no representation about the suitability of this RELAX NG
+    schema for any purpose.
+
+    It is provided "as is" without expressed or implied warranty.
+    For details, please refer to the W3C software license at:
+
+    <x:a href="http://www.w3.org/Consortium/Legal/copyright-software"
+    >http://www.w3.org/Consortium/Legal/copyright-software</x:a>
+  </x:pre>
+    
+  <define name="xmlScripting.script">
+    <element name="script">
+      <ref name="xmlScripting.script.attlist"/>
+      <ref name="xmlScripting.script.model"/>    	
+    </element>  
+  </define>
+
+  <define name="xmlScripting.script.attlist">
+    <ref name="xmlScripting.encoding.attrib"/>
+    <ref name="xmlScripting.charset.attrib"/>
+    <ref name="xmlScripting.defer.attrib"/>    
+    <ref name="xmlScripting.implements.attrib"/>
+    <ref name="xmlScripting.src.attrib"/>
+    <ref name="xmlScripting.type.attrib"/> 
+    <ref name="xmlScripting.Common.attrib"/>           
+  </define>         
+
+  <define name="xmlScripting.script.model">
+  	<text/>
+  </define>
+
+  <define name="xmlScripting.encoding.attrib">
+    <optional>
+      <attribute name="encoding">      	
+        <ref name="Encodings.datatype"/>  	
+      </attribute>
+    </optional>
+  </define>
+  
+  <define name="xmlScripting.charset.attrib">
+    <optional>
+      <attribute name="charset">      	
+  	    <ref name="Charset.datatype"/>
+      </attribute>
+    </optional>
+  </define>
+
+  <define name="xmlScripting.defer.attrib">
+    <optional>
+      <attribute name="defer">
+      	<value>defer</value>
+      </attribute>
+    </optional>  	
+  </define>
+  
+  <define name="xmlScripting.Common.attrib">
+    <!-- The host grammar must contribute an
+    attribute of type ID to this class -->
+    <empty/>
+  </define>
+  
+  <define name="xmlScripting.implements.attrib">
+    <optional>
+      <attribute name="implements">        
+        <ref name="URIorSafeCURIEs.datatype"/>          
+      </attribute>
+    </optional>  	
+  </define>
+    
+  <define name="xmlScripting.src.attrib">
+    <optional>
+      <attribute name="src">
+        <ref name="URI.datatype"/>      
+      </attribute>
+    </optional>  	
+  </define>
+  
+   <define name="xmlScripting.type.attrib">
+    <attribute name="type">
+      <ref name="ContentType.datatype"/>
+    </attribute>      	
+  </define>
+              
+</grammar>         

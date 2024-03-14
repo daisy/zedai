@@ -1,0 +1,1494 @@
+@base  <http://www.daisy.org/z3986/2011/vocab/structure/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix zt:  <http://www.daisy.org/ns/rdf/property#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix jena: <http://www.daisy.org/ns/rdf/jena#> .
+@prefix foaf: <http://xmlns.com/foaf/spec/#term_> .
+@prefix : <#> .
+
+<>
+  dcterms:title "Z39.86-2011 Structural Semantics Vocabulary" ;
+  dcterms:description "This RDF vocabulary, a part of [[http://www.daisy.org/z3986/2011/Z3986-2011A.html ANSI/NISO Z39.86-2011 Part A]], defines a set of terms relating to the description of structural semantics of documents in general, and written works in particular." ;
+  dcterms:publisher "DAISY Consortium" ;
+  dcterms:date "2009-12-01" ;
+  dcterms:creator "mgylling" ;
+  dcterms:creator "mgarrish" ;
+  dcterms:creator "mdemeglio" .
+
+
+########################################
+########## document structure #########
+########################################
+
+:document-structure	a rdf:Bag ;
+					jena:bag-sort "10" ;
+					dcterms:title "Major document structures" ;
+					dcterms:description "Standard terms used for the classification, partitioning and dividing of a document." .
+
+
+
+########## types #########
+
+:document-types	a rdf:Bag ;
+					jena:bag-sort "20" ;
+					rdf:member :document-structure ;
+					dcterms:title "Document types" .
+
+:fiction			a rdf:Property ;
+					rdfs:label "fiction" ;
+					rdf:member :document-types ;
+					rdfs:comment "A work of fiction." .
+
+:non-fiction		a rdf:Property ;
+					rdfs:label "non-fiction" ;
+					rdf:member :document-types ;
+					rdfs:comment "A work of non-fiction." .
+
+:article			a rdf:Property ;
+					rdfs:label "article" ;
+					rdf:member :document-types ;
+					rdfs:comment "A major independent section in a piece of writing, typically appearing in journals, magazines or newspapers." .
+
+:essay				a rdf:Property ;
+					rdfs:label "essay" ;
+					rdf:member :document-types ;
+					rdfs:comment "An essay." .
+
+:textbook		a rdf:Property ;
+					rdfs:label "textbook" ;
+					rdf:member :document-types ;
+					rdfs:comment "A textbook." .
+
+:catalogue		a rdf:Property ;
+					rdfs:label "catalogue" ;
+					rdf:member :document-types ;
+					rdfs:comment "A catalogue." .
+
+
+
+
+########## partitions #########
+
+:document-partitions	a rdf:Bag ;
+					jena:bag-sort "30" ;
+					rdf:member :document-structure ;
+					dcterms:title "Document partitions" .
+
+:frontmatter		a rdf:Property ;
+					rdfs:label "frontmatter";
+					rdf:member :document-partitions ;
+					rdfs:comment "Preliminary material to the content, such as tables of contents, dedications, etc." .
+
+:bodymatter		a rdf:Property ;
+					rdfs:label "bodymatter";
+					rdf:member :document-partitions ;
+					rdfs:comment "The body content of a document." .
+
+:backmatter		a rdf:Property ;
+					rdfs:label "backmatter";
+					rdf:member :document-partitions ;
+					rdfs:comment "Ancillary material occurring after the document body, such as indices, appendices, etc.." .
+
+
+########## divisions #########
+
+:document-divisions	a rdf:Bag ;
+					jena:bag-sort "30" ;
+					rdf:member :document-structure ;
+					dcterms:title "Document divisions" .
+
+
+:volume		a rdf:Property ;
+					rdfs:label "volume";
+					rdf:member :document-divisions ;
+					rdfs:comment "A component of a collection." .
+
+:part			a rdf:Property;
+					rdfs:label "part";
+					rdf:member :document-divisions ;
+					rdfs:comment "A major structural division of a piece of writing, typically encapsulating a set of related chapters." .
+
+:chapter		a rdf:Property ;
+					rdfs:label "chapter";
+					rdf:member :document-divisions ;
+					rdfs:comment "A major structural division of a piece of writing." .
+
+:subchapter		a rdf:Property ;
+					rdfs:label "subchapter";
+					rdf:member :document-divisions ;
+					rdfs:comment "A major sub-division of a chapter." .
+
+:division		a rdf:Property ;
+					rdfs:label "division";
+					rdf:member :document-divisions ;
+					rdfs:comment "A major structural division that may also appear as a substructure of a part (esp. in legislation)." .
+
+:section		a rdf:Property ;
+					rdfs:label "section";
+					rdf:member :document-divisions ;
+					rdfs:comment "A structural division typically subordinate in importance to a part or division (esp. in textbooks and legislation)." .
+
+:subsection		a rdf:Property ;
+					rdfs:label "subsection";
+					rdf:member :document-divisions ;
+					rdfs:comment "A major sub-division of a section." .
+
+
+
+
+
+########## sections #########
+
+:document-sections	a rdf:Bag ;
+					jena:bag-sort "40" ;
+					rdf:member :document-structure ;
+					dcterms:title "Document sections" .
+
+:foreword		a rdf:Property ;
+					rdfs:label "foreword";
+					rdf:member :document-sections ;
+					rdfs:comment "An introductory section that precedes the work, typically not written by the work's author." .
+
+:preface		a rdf:Property ;
+					rdfs:label "preface";
+					rdf:member :document-sections ;
+					rdfs:comment "An introductory section that precedes the work, typically written by the work's author." .
+
+:prologue		a rdf:Property ;
+					rdfs:label "prologue" ;
+					rdf:member :document-sections ;
+					rdfs:comment "An introductory section that sets the background to a story, typically part of the narrative." .
+
+:introduction		a rdf:Property ;
+					rdfs:label "introduction";
+					rdf:member :document-sections ;
+					rdfs:comment "A section in the beginning of the work, typically introducing the reader to the scope or nature of the work's content".
+
+:preamble		a rdf:Property ;
+					rdfs:label "preamble" ;
+					rdf:member :document-sections ;
+					rdfs:comment "A section in the beginning of the work, typically containing introductory and/or explanatory prose regarding the scope or nature of the work's content".
+
+:conclusion		a rdf:Property ;
+					rdfs:label "conclusion" ;
+					rdf:member :document-sections ;
+					rdfs:comment "An ending section that typically wraps up the work." .
+
+:epilogue		a rdf:Property ;
+					rdfs:label "epilogue" ;
+					rdf:member :document-sections ;
+					rdfs:comment "A concluding section that is typically written from a later point in time than the main story, although still part of the narrative." .
+
+:afterword		a rdf:Property ;
+					rdfs:label "afterword" ;
+					rdf:member :document-sections ;
+					rdfs:comment "An ending section that typically details the history of the story or its significance." .
+
+
+
+
+
+########## reference sections #########
+
+
+:document-reference	a rdf:Bag ;
+					jena:bag-sort "50" ;
+					rdf:member :document-structure ;
+					dcterms:title "Document reference sections" .
+
+:toc			a rdf:Property ;
+					rdfs:label "toc" ;
+					rdf:member :document-reference ;
+					rdfs:comment "A table of contents, typically appearing in the work's frontmatter, or at the beginning of a section." .
+
+:appendix		a rdf:Property ;
+					rdfs:label "appendix" ;
+					rdf:member :document-reference ;
+					rdfs:comment "Supplemental information." .
+
+:glossary		a rdf:Property ;
+					rdfs:label "glossary" ;
+					rdf:member :document-reference ;
+					rdfs:comment "An alphabetical list of terms in a particular domain of knowledge with the definitions for those terms." .
+
+:bibliography		a rdf:Property ;
+					rdfs:label "bibliography" ;
+					rdf:member :document-reference ;
+					rdfs:comment "A list of works cited." .
+
+:discography		a rdf:Property ;
+					rdfs:label "discography" ;
+					rdf:member :document-reference ;
+					rdfs:comment "A list of albums and/or songs by a performer." .
+
+:filmography		a rdf:Property ;
+					rdfs:label "filmography" ;
+					rdf:member :document-reference ;
+					rdfs:comment "A list of acting roles by a performer." .
+
+:index			a rdf:Property ;
+					rdfs:label "index" ;
+					rdf:member :document-reference ;
+					rdfs:comment "A detailed list, usually arranged alphabetically, of the specific information in a publication." .
+
+:colophon		a rdf:Property ;
+					rdfs:label "colophon" ;
+					rdf:member :document-reference ;
+					rdfs:comment "A brief description usually located at the end of a publication, describing production notes relevant to the edition." .
+
+
+############### titles ##############
+
+:titles			a rdf:Bag ;
+					jena:bag-sort "60" ;
+					rdf:member :document-structure ;
+					dcterms:title "Titles" .
+
+:title			a rdf:Property ;
+					rdfs:label "title" ;
+					rdf:member :titles ;
+					rdfs:comment "The title of the work, or, when used in the context of a [[#fulltitle]], the primary part of the full title." .
+
+:halftitle		a rdf:Property ;
+					rdfs:label "halftitle" ;
+					rdfs:subPropertyOf :title ;
+					rdf:member :titles ;
+					rdfs:comment "The title appearing that appears on the first page of a work or immediately before the text." .
+
+:fulltitle			a rdf:Property ;
+					rdfs:label "fulltitle" ;
+					rdfs:subPropertyOf :title ;
+					rdf:member :titles ;
+					owl:sameAs dcterms:title;
+					rdfs:comment "The full title of the work, either simple, in which case it is identical to [[#title]], or compound, in which case it consists of a [[#title]] and a [[#subtitle]]." .
+
+:subtitle		a rdf:Property;
+					rdfs:label "subtitle" ;
+					rdfs:subPropertyOf :title ;
+					rdf:member :titles ;
+					rdfs:comment "An explanatory or alternate title for the work." .
+
+:covertitle		a rdf:Property;
+					rdfs:label "covertitle" ;
+					rdfs:subPropertyOf :title ;
+					rdf:member :titles ;
+					rdfs:comment "The title of the work as displayed on the work's cover." .
+
+
+
+########## preliminary materials #########
+
+:document-preliminaries	a rdf:Bag ;
+					jena:bag-sort "70" ;
+					rdf:member :document-structure ;
+					dcterms:title "Preliminary sections and components" .
+
+:titlepage		a rdf:Property ;
+					rdfs:label "titlepage" ;
+					rdf:member :document-preliminaries ;
+					rdfs:comment "The title page of the work." .
+
+:halftitlepage		a rdf:Property ;
+					rdfs:label "halftitlepage" ;
+					rdf:member :document-preliminaries ;
+					rdfs:comment "The half title page of the work." .
+
+:acknowledgments	a rdf:Property ;
+					rdfs:label "acknowledgments" ;
+					rdf:member :document-preliminaries ;
+					rdfs:comment "A passage containing acknowledgments to entities involved in the realization of the work." .
+
+:imprint		a rdf:Property ;
+					rdfs:label "imprint" ;
+					rdf:member :document-preliminaries ;
+					rdfs:comment "Information relating to the publication or distribution of the work." .
+
+:imprimatur		a rdf:Property ;
+					rdfs:label "imprimatur" ;
+					rdf:member :document-preliminaries ;
+					rdfs:comment "A formal statement authorizing the publication of the work." .
+
+:illustrations-list	a rdf:Property ;
+					rdfs:label "illustrations-list" ;
+					rdf:member :document-preliminaries ;
+					rdfs:comment "A listing if of illustrations included in the work." .
+
+:tables-list		a rdf:Property ;
+					rdfs:label "tables-list" ;
+					rdf:member :document-preliminaries ;
+					rdfs:comment "A listing of tables included in the work." .
+
+:publisher-address	a rdf:Property ;
+					rdfs:label "publisher-address" ;
+					rdf:member :document-preliminaries ;
+					rdfs:comment "The publisher's address, which can be abbreviated to city and postal code only." .
+
+:publisher-note		a rdf:Property ;
+					rdfs:label "publisher-address" ;
+					rdf:member :document-preliminaries ;
+					rdfs:comment "A note from the publisher." .
+
+:editorial-note		a rdf:Property ;
+					rdfs:label "editorial-note" ;
+					rdf:member :document-preliminaries ;
+					rdfs:comment "An explanation of an editor’s method, or a discussion of variant texts." .
+
+:grant-acknowledgment	a rdf:Property ;
+					rdfs:label "grant-acknowledgment" ;
+					rdf:member :document-preliminaries ;
+					rdfs:comment "Describes financial assistance towards the work." .
+
+:contributors		a rdf:Property ;
+					rdfs:label "contributors" ;
+					rdf:member :document-preliminaries ;
+					rdfs:comment "A list of contributors to the work." .
+
+:other-credits		a rdf:Property ;
+					rdfs:label "other-credits" ;
+					rdf:member :document-preliminaries ;
+					rdfs:comment "Acknowledgments of previously published parts of the work, illustration credits, and permission to quote from copyrighted material." .
+
+:biographical-note	a rdf:Property ;
+					rdfs:label "biographical-note" ;
+					rdf:member :document-preliminaries ;
+					rdfs:comment "A biographical note about the author or authors, here including editors, compilers, and translators)." .
+
+:translator-note	a rdf:Property ;
+					rdfs:label "translator-note" ;
+					rdf:member :document-preliminaries ;
+					rdfs:comment "An introductory note from the translator(s)." .
+
+:errata			a rdf:Property ;
+					rdfs:label "errata" ;
+					rdf:member :document-preliminaries ;
+					rdfs:comment "Publication errata, in printed works typically a loose sheet inserted by hand; sometimes a bound page." .
+
+:promotional		a rdf:Property ;
+					rdfs:label "promotional-copy" ;
+					rdf:member :document-preliminaries ;
+					rdfs:comment "A promotional description of the book, often containing quotations from reviews." .
+
+:dedication		a rdf:Property ;
+					rdfs:label "dedication" ;
+					rdf:member :document-preliminaries ;
+					rdfs:comment "An inscription addressed to one or several particular person(s)." .
+
+
+
+
+
+
+
+
+
+
+
+
+########################################
+########## document components #########
+########################################
+
+:document-components	a rdf:Bag ;
+					jena:bag-sort "30" ;
+					dcterms:title "Document components" ;
+					dcterms:description "Non-structural components that occur within documents, such as letters, poems, quotations, etc." .
+
+
+
+
+############# annotations ##############
+
+:annotations		a rdf:Bag ;
+					jena:bag-sort "35" ;
+					rdf:member :document-components ;
+					dcterms:title "Annotations" .
+
+:annotation		a rdf:Property ;
+					rdfs:label "annotation" ;
+					rdf:member :annotations ;
+					rdfs:comment "Explanatory information about passages in the work." .
+
+:author-anno		a rdf:Property ;
+					rdfs:label "author-anno" ;
+					rdfs:subPropertyOf :annotation ;
+					rdf:member :annotations ;
+					zt:for "z3986.annotation" ;
+					rdfs:comment "An annotation contributed by an author of the work." .
+
+:editor-anno		a rdf:Property ;
+					rdfs:label "editor-anno" ;
+					rdfs:subPropertyOf :annotation ;
+					rdf:member :annotations ;
+					zt:for "z3986.annotation" ;
+					rdfs:comment "An annotation contributed by an editor of the work." .
+
+:commentator-anno	a rdf:Property ;
+					rdfs:label "commentator-anno" ;
+					rdfs:subPropertyOf :annotation ;
+					rdf:member :annotations ;
+					zt:for "z3986.annotation" ;
+					rdfs:comment "An annotation contributed by a commentator of the work." .
+
+:translator-anno	a rdf:Property ;
+					rdfs:label "translator-anno" ;
+					rdfs:subPropertyOf :annotation ;
+					rdf:member :annotations ;
+					zt:for "z3986.annotation" ;
+					rdfs:comment "An annotation contributed by a translator of the work." .
+
+:republisher-anno	a rdf:Property ;
+					rdfs:label "republisher-anno" ;
+					rdfs:subPropertyOf :annotation, :custom ;
+					rdf:member :annotations ;
+					zt:for "z3986.annotation" ;
+					rdfs:comment "An annotation contributed by a republisher." .
+
+:structure-description	a rdf:Property ;
+					rdfs:label "structure-description" ;
+					rdfs:subPropertyOf :annotation ;
+					rdf:member :annotations ;
+					zt:for "z3986.annotation" ;
+					rdfs:comment "An annotation whose purpose is to provide a description of a structure (e.g., a table structure summary)." .
+
+:content-description	a rdf:Property ;
+					rdfs:label "content-description" ;
+					rdfs:subPropertyOf :annotation ;
+					rdf:member :annotations ;
+					zt:for "z3986.annotation" ;
+					rdfs:comment "An annotation whose purpose is to provide a description of content  (e.g., an image description)." .
+
+:introductory-note	a rdf:Property ;
+					rdfs:label "introductory-note" ;
+					rdfs:subPropertyOf :annotation ;
+					rdf:member :annotations ;
+					zt:for "z3986.annotation" ;
+					rdfs:comment "An annotation whose purpose is to provide an introductory note." .
+
+:commentary		a rdf:Property ;
+					rdfs:label "commentary" ;
+					rdfs:subPropertyOf :annotation ;
+					rdf:member :annotations ;
+					zt:for "z3986.annotation" ;
+					rdfs:comment "An annotation whose purpose is to provide commentary." .
+
+:clarification		a rdf:Property ;
+					rdfs:label "clarification" ;
+					rdfs:subPropertyOf :annotation ;
+					rdf:member :annotations ;
+					zt:for "z3986.annotation" ;
+					rdfs:comment "An annotation whose purpose is to provide a clarification." .
+
+:correction		a rdf:Property ;
+					rdfs:label "correction" ;
+					rdfs:subPropertyOf :annotation ;
+					rdf:member :annotations ;
+					zt:for "z3986.annotation" ;
+					rdfs:comment "An annotation whose purpose is to provide a correction." .
+
+:attribution		a rdf:Property ;
+					rdfs:label "attribution" ;
+					rdfs:subPropertyOf :annotation ;
+					rdf:member :annotations ;
+					zt:for "z3986.annotation" ;
+					rdfs:comment "An annotation whose purpose is to provide a source or attribution." .
+
+
+
+############ asides ##########
+
+:asides			a rdf:Bag ;
+					jena:bag-sort "40" ;
+					rdf:member :document-components ;
+					dcterms:title "Asides" .
+
+:aside			a rdf:Property ;
+					rdfs:label "aside" ;
+					rdf:member :asides ;
+					rdfs:comment "Secondary or supplementary content." .
+
+:sidebar		a rdf:Property ;
+					rdfs:label "sidebar" ;
+					rdfs:subPropertyOf :aside ;
+					rdf:member :asides ;
+					rdfs:comment "Secondary or supplementary content, typically formatted as an inset or box." .
+
+:practice		a rdf:Property ;
+					rdfs:label "practice" ;
+					rdfs:subPropertyOf :aside ;
+					rdf:member :asides ;
+					rdfs:comment "A review exercise or sample." .
+
+:notice			a rdf:Property ;
+					rdfs:label "notice" ;
+					rdfs:subPropertyOf :aside ;
+					rdf:member :asides ;
+					rdfs:comment "A notification." .
+
+:warning		a rdf:Property ;
+					rdfs:label "warning" ;
+					rdfs:subPropertyOf :aside ;
+					rdf:member :asides ;
+					rdfs:comment "A warning." .
+
+:marginalia		a rdf:Property ;
+					rdfs:label "marginalia" ;
+					rdfs:subPropertyOf :aside ;
+					rdf:member :asides ;
+					rdfs:comment "Marginalia." .
+
+:help			a rdf:Property ;
+					rdfs:label "help" ;
+					rdfs:subPropertyOf :aside ;
+					rdf:member :asides ;
+					rdfs:comment "Instructions/advice to the reader on using the work." .
+
+
+
+############## dialogue/drama ##########
+
+:dialogue-drama	a rdf:Bag ;
+					jena:bag-sort "45" ;
+					rdf:member :document-components ;
+					dcterms:title "Dialogue/Drama" .
+
+:drama			a rdf:Property ;
+					rdf:member :dialogue-drama ;
+					rdfs:label "drama" ;
+					rdfs:comment "A work of fiction intended for performance." .
+
+:scene			a rdf:Property ;
+					rdf:member :dialogue-drama ;
+					rdfs:label "scene" ;
+					rdfs:comment "A structurally significant segment of a drama." .
+
+:stage-direction	a rdf:Property ;
+					rdfs:label "stage-direction" ;
+					rdf:member :dialogue-drama ;
+					rdfs:comment "An instruction to an actor or director, included in the work." .
+
+:dramatis-personae	a rdf:Property ;
+					rdf:member :dialogue-drama ;
+					rdfs:label "dramatis-personae" ;
+					rdfs:subPropertyOf :collection ;
+					rdfs:seeAlso :persona ;
+					rdfs:comment "A listing of the roles or characters appearing in the work." .
+
+:persona		a rdf:Property ;
+					rdf:member :dialogue-drama ;
+					rdfs:label "persona" ;
+					rdfs:seeAlso :dramatis-personae ;
+					rdfs:comment "The name or identity of an individual role or character appearing in the work." .
+
+:actor			a rdf:Property ;
+					rdf:member :dialogue-drama ;
+					rdfs:label "actor" ;
+					rdfs:seeAlso :dramatis-personae ;
+					rdfs:comment "The name of the actor who plays a character in the work." .
+
+:role-description	a rdf:Property ;
+					rdf:member :dialogue-drama ;
+					rdfs:label "role-description" ;
+					rdfs:seeAlso :dramatis-personae ;
+					rdfs:comment "A description of a character in the work." .
+
+:speech		a rdf:Property ;
+					rdf:member :dialogue-drama ;
+					rdfs:label "speech" ;
+					rdfs:seeAlso :persona ;
+					rdfs:comment "An utterance by a [[#persona]]." .
+
+
+
+############ diaries ##########
+
+
+:diaries			a rdf:Bag ;
+					jena:bag-sort "50" ;
+					rdf:member :document-components ;
+					dcterms:title "Diaries" .
+
+:diary			a rdf:Property ;
+					rdfs:label "diary" ;
+					rdf:member :diaries ;
+					rdfs:comment "A diary." .
+
+:diary-entry		a rdf:Property ;
+					rdfs:label "diary-entry" ;
+					rdf:member :diaries ;
+					rdfs:comment "A diary entry." .
+
+
+
+########### epigraphs ###############
+
+:epigraph		a rdf:Property ;
+					rdfs:label "epigraph" ;
+					rdf:member :document-components ;
+					rdfs:comment "A quotation that is pertinent but not integral to the text." .
+
+
+
+################ letters ###############
+
+:letters		a rdf:Bag ;
+					jena:bag-sort "55" ;
+					rdf:member :document-components ;
+					dcterms:title "Letters" .
+
+:letter			a rdf:Property ;
+					rdf:member :letters ;
+					rdfs:label "letter" ;
+					rdfs:comment "An instance of a formal, informal or business letter." .
+
+:sender		a rdf:Property ;
+					rdf:member :letters ;
+					rdfs:label "sender" ;
+					rdfs:comment "The name and address of the sender of a letter." .
+
+:recipient		a rdf:Property ;
+					rdf:member :letters ;
+					rdfs:label "recipient" ;
+					rdfs:comment "The name and address of the recipient of a letter." .
+
+:salutation		a rdf:Property ;
+					rdf:member :letters ;
+					rdfs:label "salutation" ;
+					rdfs:comment "An expression of greeting at the start of a letter." .
+
+:valediction		a rdf:Property ;
+					rdf:member :letters ;
+					rdfs:label "valediction" ;
+					rdfs:comment "An expression of farewell at the end of a letter." .
+
+:signature		a rdf:Property ;
+					rdf:member :letters ;
+					rdfs:label "signature" ;
+					rdfs:comment "The signature(s) of the person(s) who sent a letter." .
+
+:postscript		a rdf:Property ;
+					rdf:member :letters ;
+					rdfs:label "postscript" ;
+					rdfs:comment "An additional paragraph or note occurring after a signature in a letter." .
+
+#### emails ####
+
+:emails			a rdf:Bag ;
+					jena:bag-sort "60" ;
+					rdf:member :letters ;
+					dcterms:title "Emails" .
+
+:email			a rdf:Property ;
+					rdf:member :emails ;
+					rdfs:label "email" ;
+					rdfs:comment "An instance of a email message." .
+
+:to			a rdf:Property ;
+					rdf:member :emails ;
+					rdfs:label "to" ;
+					rdfs:comment "The recipient(s) email address line." .
+
+:from			a rdf:Property ;
+					rdf:member :emails ;
+					rdfs:label "from" ;
+					rdfs:comment "The sender's email address line." .
+
+:cc			a rdf:Property ;
+					rdf:member :emails ;
+					rdfs:label "cc" ;
+					rdfs:comment "The carbon copy email address line." .
+
+:bcc			a rdf:Property ;
+					rdf:member :emails ;
+					rdfs:label "bcc" ;
+					rdfs:comment "The blind carbon copy email address line." .
+
+:subject		a rdf:Property ;
+					rdf:member :emails ;
+					rdfs:label "subject" ;
+					rdfs:comment "The email subject line." .
+
+
+
+################ lists #################
+
+:collections		a rdf:Bag ;
+					jena:bag-sort "65" ;
+					rdf:member :document-components ;
+					dcterms:title "Lists" .
+
+:collection		a rdf:Property ;
+					rdfs:label "collection" ;
+					rdf:member :collections ;
+					rdfs:comment "A set of interrelated items." .
+
+:orderedlist		a rdf:Property ;
+					rdfs:label "orderedlist" ;
+					rdfs:subPropertyOf :collection ;
+					rdf:member :collections ;
+					rdfs:comment "A list where the order of the list's items is significant." .
+
+:unorderedlist		a rdf:Property ;
+					rdfs:subPropertyOf :collection ;
+					rdfs:label "unorderedlist" ;
+					rdf:member :collections ;
+					rdfs:comment "A list where the order of the list's items is not significant." .
+
+:abbreviations		a rdf:Property ;
+					rdfs:subPropertyOf :unorderedlist ;
+					rdfs:label "abbreviations" ;
+					rdf:member :collections ;
+					rdfs:comment "A list of abbreviations." .
+
+:definitions		a rdf:Property ;
+					rdfs:subPropertyOf :unorderedlist ;
+					rdfs:label "definitions" ;
+					rdfs:comment "A list of definitions (of terms, concepts)".
+
+:timeline		a rdf:Property ;
+					rdfs:subPropertyOf :orderedlist ;
+					rdfs:label "timeline" ;
+					rdf:member :collections ;
+					rdfs:comment "A chronological list of events".
+
+
+
+############# notes ##############
+
+:notes			a rdf:Bag ;
+					jena:bag-sort "70" ;
+					rdf:member :document-components ;
+					dcterms:title "Notes" .
+
+:note			a rdf:Property ;
+					rdfs:label "note" ;
+					rdf:member :notes ;
+					rdfs:comment "A footnote or a rearnote, linked from the main text via a note reference" ;
+					rdfs:seeAlso :noteref .
+
+:footnotes		a rdf:Property ;
+					rdfs:label "footnotes" ;
+					rdfs:subPropertyOf :collection ;
+					rdfs:seeAlso :footnote;
+					rdf:member :notes ;
+					rdfs:comment "A collection of notes appearing at the bottom of a page." .
+
+:footnote		a rdf:Property ;
+					rdfs:label "footnote" ;
+					rdfs:subPropertyOf :note ;
+					rdf:member :notes ;
+					rdfs:seeAlso :footnotes;
+					rdfs:comment "A note appearing at the bottom of a page." .
+
+:rearnote		a rdf:Property ;
+					rdfs:label "rearnote" ;
+					rdfs:subPropertyOf :note ;
+					rdf:member :notes ;
+					rdfs:seeAlso :rearnotes;
+					rdfs:comment "A note appearing in the rear (backmatter) of the work, or at the end of a section." .
+
+:rearnotes		a rdf:Property ;
+					rdfs:label "rearnotes" ;
+					rdf:member :notes ;
+					rdfs:seeAlso :rearnote ;
+					rdfs:subPropertyOf :collection ;
+					rdfs:comment "A collection of notes appearing at the rear (backmatter) of the work, or at the end of a section." .
+
+
+
+################ verse #################
+
+:verses			a rdf:Bag ;
+					jena:bag-sort "75" ;
+					rdf:member :document-components ;
+					dcterms:title "Verse" .
+
+:verse			a rdf:Property ;
+					rdfs:label "verse" ;
+					rdf:member :verses ;
+					rdfs:comment "A work typically composed of metered or rhyming lines (as opposed to prose)." .
+
+:poem			a rdf:Property ;
+					rdfs:label "poem" ;
+					rdfs:subPropertyOf :verse ;
+					rdf:member :verses ;
+					zt:for "z3986.verse z3986.verse.block" ;
+					rdfs:comment "A poem." .
+
+:song			a rdf:Property ;
+					rdfs:label "song" ;
+					rdfs:subPropertyOf :verse ;
+					rdf:member :verses ;
+					zt:for "z3986.verse z3986.verse.block" ;
+					rdfs:comment "A song." .
+
+:hymn			a rdf:Property ;
+					rdfs:label "hymn" ;
+					rdfs:subPropertyOf :song ;
+					rdf:member :verses ;
+					zt:for "z3986.verse z3986.verse.block" ;
+					rdfs:comment "A hymn." .
+
+:lyrics			a rdf:Property ;
+					rdfs:label "lyrics" ;
+					rdfs:subPropertyOf :verse ;
+					rdf:member :verses ;
+					zt:for "z3986.verse z3986.verse.block" ;
+					rdfs:seeAlso :song ;
+					rdfs:comment "The text of a song." .
+
+
+
+########## general groups ##########
+
+:pgroup		a rdf:Property ;
+					rdfs:label "pgroup" ;
+					rdf:member :document-components ;
+					rdfs:comment "A group of interrelated paragraphs." .
+
+:imggroup		a rdf:Property ;
+					rdfs:label "imggroup" ;
+					rdf:member :document-components ;
+					rdfs:comment "A group of interrelated images." .
+
+
+
+
+
+
+
+
+
+
+
+
+########################################
+############# document text #############
+########################################
+
+:document-text	a rdf:Bag ;
+					jena:bag-sort "100" ;
+					dcterms:title "Document text" ;
+					dcterms:description "Terms for describing text elements." .
+
+
+:text			a rdf:Property ;
+					rdfs:label "text" ;
+					rdf:member :document-text ;
+					rdfs:comment "A segment of text." .
+
+:phrase			a rdf:Property ;
+					rdfs:label "phrase" ;
+					rdf:member :document-text ;
+					rdfs:subPropertyOf :text, :collection ;
+					rdfs:comment "A group of lexical words, comprising a single unit within a sentence." .
+
+:keyword		a rdf:Property ;
+					rdfs:label "keyword" ;
+					rdf:member :document-text ;
+					rdfs:comment "A key word or phrase." .
+
+:sentence		a rdf:Property ;
+					rdfs:label "sentence" ;
+					rdf:member :document-text ;
+					rdfs:subPropertyOf :phrase ;
+					rdfs:comment "A group of lexical words comprising a lexical sentence." .
+
+:topic-sentence	a rdf:Property ;
+					rdfs:label "topic-sentence" ;
+					rdf:member :document-text ;
+					rdfs:comment "A phrase or sentence serving as an introductory summary of the containing paragraph." .
+
+:concluding-sentence	a rdf:Property ;
+					rdfs:label "concluding-sentence" ;
+					rdf:member :document-text ;
+					rdfs:comment "A phrase or sentence serving as a concluding summary of the containing paragraph." .
+
+:t-form			a rdf:Property ;
+					rdfs:label "t-form" ;
+					rdf:member :document-text ;
+					rdfs:subPropertyOf :phrase ;
+					zt:for "z3986.w z3986.span" ;
+					rdfs:comment "An informal second-person pronoun." .
+
+:v-form			a rdf:Property ;
+					rdfs:label "v-form" ;
+					rdf:member :document-text ;
+					rdfs:subPropertyOf :phrase ;
+					zt:for "z3986.w z3986.span" ;
+					rdfs:comment "A formal second-person pronoun." .
+
+
+################ numerals ##############
+
+:numerals		a rdf:Bag ;
+					jena:bag-sort "110" ;
+					rdf:member :document-text ;
+					dcterms:title "Numerals" .
+
+:cardinal		a rdf:Property ;
+					rdf:member :numerals ;
+					rdfs:label "cardinal" ;
+					zt:for "z3986.num" ;
+					rdfs:comment "A value indicating quantity." .
+
+:ordinal			a rdf:Property ;
+					rdf:member :numerals ;
+					rdfs:label "ordinal" ;
+					zt:for "z3986.num" ;
+					rdfs:comment "A value indicating rank or position." .
+
+:ratio			a rdf:Property ;
+					rdf:member :numerals ;
+					rdfs:label "ratio" ;
+					zt:for "z3986.num" ;
+					rdfs:comment "An expression of the magnitude of two quantities relative to each other." .
+
+
+:percentage		a rdf:Property ;
+					rdf:member :numerals ;
+					rdfs:label "percentage" ;
+					zt:for "z3986.num" ;
+					rdfs:comment "A value that defines proportionality to a whole, including percent sign if present." .
+
+:phone			a rdf:Property ;
+					rdf:member :numerals ;
+					rdfs:label "phone" ;
+					zt:for "z3986.num" ;
+					rdfs:comment "A phone number, including area code and international dialing code." .
+
+:isbn			a rdf:Property ;
+					rdf:member :numerals ;
+					rdfs:label "isbn" ;
+					zt:for "z3986.num" ;
+					rdfs:comment "An International Standard Book Number." .
+
+:currency		a rdf:Property ;
+					rdf:member :numerals ;
+					rdfs:label "currency" ;
+					zt:for "z3986.num" ;
+					rdfs:comment "A currency value, including the denomination indicator." .
+
+:postal			a rdf:Property ;
+					rdf:member :numerals ;
+					rdfs:label "postal" ;
+					zt:for "z3986.num" ;
+					rdfs:comment "A postal or zip code." .
+
+:segmented		a rdf:Property ;
+					rdf:member :numerals ;
+					rdfs:label "result" ;
+					zt:for "z3986.num" ;
+					rdfs:comment "A single value that includes two or more sets of numbers separated by spaces." .
+
+:fraction		a rdf:Property ;
+					rdf:member :numerals ;
+					rdfs:label "fraction" ;
+					zt:for "z3986.num" ;
+					rdfs:comment "A single fraction with a numerator and denominator, and without a preceding whole number." .
+
+:mixed			a rdf:Property ;
+					rdf:member :numerals ;
+					rdfs:label "mixed" ;
+					zt:for "z3986.num" ;
+					rdfs:comment "A whole number followed by a fraction with a numerator and denominator." .
+
+:decimal		a rdf:Property ;
+					rdf:member :numerals ;
+					rdfs:label "decimal" ;
+					zt:for "z3986.num" ;
+					rdfs:comment "A single value where the integral number is separated from the fractional value by a decimal point or comma." .
+
+:roman			a rdf:Property ;
+					rdf:member :numerals ;
+					rdfs:label "roman" ;
+					zt:for "z3986.num" ;
+					rdfs:comment "A single value expressed using roman numerals." .
+
+:weight			a rdf:Property ;
+					rdf:member :numerals ;
+					rdfs:label "weight" ;
+					zt:for "z3986.num" ;
+					rdfs:comment "A single weight value, including units." .
+
+:measure		a rdf:Property ;
+					rdf:member :numerals ;
+					rdfs:label "measure" ;
+					zt:for "z3986.num" ;
+					rdfs:comment "A single value of measure, including units." .
+
+:coordinate		a rdf:Property ;
+					rdf:member :numerals ;
+					rdfs:label "coordinate" ;
+					zt:for "z3986.num" ;
+					rdfs:comment "A value expressing the location of a point in n-dimensional space, including degree, minute and other indicators if specified." .
+
+
+
+#### value groups ####
+
+:value-groups		a rdf:Bag ;
+					jena:bag-sort "120" ;
+					rdf:member :document-text ;
+					dcterms:title "Value Groups" .
+
+:range			a rdf:Property ;
+					rdf:member :value-groups ;
+					rdfs:label "range" ;
+					rdfs:comment "A numeric, spatial or temporal range of values, as expressed by the start and end values." .
+
+:result			a rdf:Property ;
+					rdf:member :value-groups ;
+					rdfs:label "result" ;
+					rdfs:comment "The outcome of an event, such as a sporting match or vote." .
+
+
+########### proper  nouns ##############
+
+:proper-nouns		a rdf:Bag ;
+					jena:bag-sort "130" ;
+					rdf:member :document-text ;
+					dcterms:title "Names" .
+
+
+#### names ####
+
+:names		a rdf:Bag ;
+					jena:bag-sort "135" ;
+					rdf:member :proper-nouns ;
+					dcterms:title "Personal names" .
+
+:personal-name	a rdf:Property ;
+					rdf:member :names ;
+					rdfs:label "personal-name" ;
+					zt:for "z3986.name" ;
+					rdfs:subPropertyOf foaf:name ;
+					rdfs:comment "A proper name identifying a person, often composed of a given name and a family name." .
+
+:given-name		a rdf:Property ;
+					rdf:member :names ;
+					rdfs:label "given-name" ;
+					zt:for "z3986.name" ;
+					owl:equivalentProperty foaf:givenName ;
+					rdfs:comment "The part of a personal name that distinguishes the person from a group of persons sharing the same surname. Also known as 'forename' or 'first name'. ." .
+
+:surname		a rdf:Property ;
+					rdf:member :names ;
+					rdfs:label "surname" ;
+					zt:for "z3986.name" ;
+					rdfs:seeAlso :family-name ;
+					rdfs:comment "The part of a personal name that associates the person with a group of persons sharing the same surname. Also known as 'last name'." .
+
+:family-name		a rdf:Property ;
+					rdf:member :names ;
+					rdfs:label "family-name" ;
+					zt:for "z3986.name" ;
+					rdfs:subPropertyOf :surname ;
+					rdfs:seeAlso :surname ;
+					owl:equivalentProperty foaf:familyName ;
+					rdfs:comment "The part of a personal name that indicates the family to which the person belongs. Often used in conjunction with a honorific." .
+
+:name-title		a rdf:Property ;
+					rdf:member :names ;
+					rdfs:label "name-title" ;
+					zt:for "z3986.name" ;
+					owl:equivalentProperty foaf:title ;
+					rdfs:comment "The part of a personal name that signifies veneration, an official position or a professional or academic qualification. ." .
+
+
+
+#### other proper nouns ####
+
+:place			a rdf:Property ;
+					rdf:member :proper-nouns ;
+					rdfs:label "place" ;
+					zt:for "z3986.name" ;
+					rdfs:comment "The name of a city, state, province, country or other geographic or political entity. ." .
+
+:nationality		a rdf:Property ;
+					rdf:member :proper-nouns ;
+					rdfs:label "nationality" ;
+					zt:for "z3986.name" ;
+					rdfs:comment "The name of a nationality, national group, or other designator of association. ." .
+
+:organization		a rdf:Property ;
+					rdf:member :proper-nouns ;
+					rdfs:label "organization" ;
+					zt:for "z3986.name" ;
+					rdfs:comment "The name of an organization, corporation, or other business entity. ." .
+
+:taxonomy		a rdf:Property ;
+					rdf:member :proper-nouns ;
+					rdfs:label "taxonomy" ;
+					zt:for "z3986.name" ;
+					rdfs:comment "The name of a species, genus or other taxonomic classification. ." .
+
+:product		a rdf:Property ;
+					rdf:member :proper-nouns ;
+					rdfs:label "product" ;
+					zt:for "z3986.name" ;
+					rdfs:comment "The brand name of a product, medication, etc. ." .
+
+:event			a rdf:Property ;
+					rdf:member :proper-nouns ;
+					rdfs:label "event" ;
+					zt:for "z3986.name" ;
+					rdfs:comment "The name of a religious, sporting, or other event, holiday or festival. ." .
+
+:award			a rdf:Property ;
+					rdf:member :proper-nouns ;
+					rdfs:label "award" ;
+					zt:for "z3986.name" ;
+					rdfs:comment "The name of an award or prize. ." .
+
+
+
+################ words #################
+
+:words			a rdf:Bag ;
+					rdf:member :document-text ;
+					jena:bag-sort "150" ;
+					dcterms:title "Words" .
+
+:word			a rdf:Property ;
+					rdfs:label "word" ;
+					rdf:member :words ;
+					rdfs:subPropertyOf :text ;
+					rdfs:comment "A lexical word." .
+
+:compound		a rdf:Property ;
+					rdf:member :words ;
+					rdfs:label "compound" ;
+					zt:for "z3986.w" ;
+					rdfs:comment "A word created by the combination of two or more stems." .
+
+:homograph		a rdf:Property ;
+					rdf:member :words ;
+					rdfs:label "homograph" ;
+					zt:for "z3986.w" ;
+					rdfs:comment "An instance of a set of words with the same spelling but different etymologies and often pronunciations (e.g. bass the instrument and bass the fish)." .
+
+:portmanteau		a rdf:Property ;
+					rdf:member :words ;
+					rdfs:label "portmanteau" ;
+					zt:for "z3986.w" ;
+					rdfs:comment "A word created from the merging of two other words (e.g. brunch from breakfast and lunch)." .
+
+
+
+############# word parts ###############
+
+:word-parts		a rdf:Bag ;
+					jena:bag-sort "155" ;
+					rdf:member :document-text ;
+					dcterms:title "Word Parts" .
+
+
+:root			a rdf:Property ;
+					rdf:member :word-parts ;
+					rdfs:label "root" ;
+					zt:for "z3986.wpart" ;
+					rdfs:comment "The primary lexical unit of a word." .
+
+:stem			a rdf:Property ;
+					rdf:member :word-parts ;
+					rdfs:label "stem" ;
+					zt:for "z3986.wpart" ;
+					rdfs:comment "The word form common to all its inflected variants." .
+
+:prefix			a rdf:Property ;
+					rdf:member :word-parts ;
+					rdfs:label "prefix" ;
+					zt:for "z3986.wpart" ;
+					rdfs:comment "An affix attached to the front of a stem." .
+
+:suffix			a rdf:Property ;
+					rdf:member :word-parts ;
+					rdfs:label "suffix" ;
+					zt:for "z3986.wpart" ;
+					rdfs:comment "An affix attached to the end of a stem." .
+
+:morpheme		a rdf:Property ;
+					rdf:member :word-parts ;
+					rdfs:label "morpheme" ;
+					zt:for "z3986.wpart" ;
+					rdfs:comment "The smallest linguistic unit of a word with semantic meaning." .
+
+:phoneme		a rdf:Property ;
+					rdf:member :word-parts ;
+					rdfs:label "phoneme" ;
+					zt:for "z3986.wpart" ;
+					rdfs:comment "The smallest linguistic unit of a word that forms a sound." .
+
+:grapheme		a rdf:Property ;
+					rdf:member :word-parts ;
+					rdfs:label "grapheme" ;
+					zt:for "z3986.wpart" ;
+					rdfs:comment "The smallest linguistic unit of a written word." .
+
+
+
+
+
+
+
+
+
+
+
+
+
+########################################
+################ document artwork ###############
+########################################
+
+:artwork		a rdf:Bag ;
+					jena:bag-sort "175" ;
+					dcterms:title "Artwork" .
+
+:illustration		a rdf:Property ;
+					rdfs:label "illustration" ;
+					rdf:member :artwork ;
+					rdfs:comment "An illustration." .
+
+:photograph		a rdf:Property ;
+					rdfs:label "photograph" ;
+					rdf:member :artwork ;
+					rdfs:comment "A photograph." .
+
+:decorative		a rdf:Property ;
+					rdfs:label "decorative" ;
+					rdf:member :artwork ;
+					rdfs:comment "Artwork serving only a decorative purpose, not contributing relevant information." .
+
+:publisher-logo		a rdf:Property ;
+					rdfs:label "publisher-logo" ;
+					rdfs:subPropertyOf :decorative ;
+					rdf:member :artwork ;
+					rdfs:comment "The publisher's logo." .
+
+:frontispiece		a rdf:Property ;
+					rdfs:label "frontispiece" ;
+					rdf:member :artwork ;
+					rdfs:subPropertyOf :illustration ;
+					rdfs:comment "A frontmatter illustration." .
+
+
+
+
+
+
+
+########################################
+############# references ###############
+########################################
+
+:references		a rdf:Bag ;
+					jena:bag-sort "200" ;
+					dcterms:title "References" .
+
+:reference		a rdf:Property ;
+					rdfs:label "reference" ;
+					rdf:member :references ;
+					rdfs:comment "A reference to another information entity - a resource, fragment, concept, or notion." .
+
+:resolving-reference	a rdf:Property ;
+					rdfs:label "resolving-reference" ;
+					rdfs:subPropertyOf :reference ;
+					rdf:member :references ;
+					rdfs:comment "A reference which contains data intended to allow resolving the target entity." .
+
+:nonresolving-reference	a rdf:Property ;
+					rdfs:label "nonresolving-reference" ;
+					rdfs:subPropertyOf :reference ;
+					rdf:member :references ;
+					rdfs:comment "A reference to a non-resolving target - a concept, notion or other imprecisely defined entity." .
+
+:noteref		a rdf:Property ;
+					rdfs:label "noteref" ;
+					rdfs:subPropertyOf :resolving-reference ;
+					rdf:member :references ;
+					rdfs:comment "A reference to a note, typically appearing a superscripted symbol in the main body of text" ;
+					rdfs:seeAlso :note .
+
+:annoref		a rdf:Property ;
+					rdfs:label "annoref" ;
+					rdfs:subPropertyOf :resolving-reference ;
+					rdf:member :references ;
+					rdfs:comment "A reference to an annotation" ;
+					rdfs:seeAlso :annotation .
+
+:citation		a rdf:Property ;
+					rdfs:label "citation" ;
+					rdfs:subPropertyOf :resolving-reference ;
+					rdf:member :references ;
+					rdfs:comment "A reference to bibliographic work, resolving to an entry in a directly or indirectly identified bibliography" ;
+					rdfs:seeAlso :nonresolving-citation ;
+					rdfs:seeAlso :bibliography .
+
+:nonresolving-citation	a rdf:Property ;
+					rdfs:label "nonresolving-citation" ;
+					rdfs:subPropertyOf :nonresolving-reference ;
+					rdf:member :references ;
+					rdfs:seeAlso :citation ;
+					rdfs:comment "An imprecise reference to a bibliographic work." .
+
+:continuation		a rdf:Property ;
+					rdfs:label "continuation" ;
+					rdfs:subPropertyOf :resolving-reference ;
+					rdf:member :references ;
+					rdfs:comment "A reference to another segment of the current work that constitutes the logical continuation of the current segment." .
+
+:continuation-of	a rdf:Property ;
+					rdfs:label "continuation-of" ;
+					rdfs:subPropertyOf :resolving-reference ;
+					rdf:member :references ;
+					rdfs:comment "A reference to another segment of the current work that the current segment is a continuation of." .
+
+
+
+
+
+
+
+########################################
+############## pagination ##############
+########################################
+
+:pagination		a rdf:Bag ;
+					jena:bag-sort "225" ;
+					dcterms:title "Pagination" .
+
+:pagebreak		a rdf:Property ;
+					rdfs:label "pagebreak" ;
+					rdf:member :pagination ;
+					rdfs:comment "A (sometimes valued) separator denoting the position where a break between two contiguous pages occurs in a paginated media." .
+
+:page-header		a rdf:Property ;
+					rdfs:label "page-header" ;
+					rdf:member :pagination ;
+					rdfs:comment "Material, separate from the main body of text, appearing at the top of a printed page." .
+
+:page-footer		a rdf:Property ;
+					rdfs:label "page-footer" ;
+					rdf:member :pagination ;
+					rdfs:comment "Material, separate from the main body of text, appearing at the bottom of a printed page." .
+
+
+
+
+
+
+########################################
+########### custom content #############
+########################################
+
+:custom-content	a rdf:Bag ;
+					jena:bag-sort "250" ;
+					dcterms:title "Custom Content (Republishing)" .
+
+:custom		a rdf:Property ;
+					rdfs:label "custom" ;
+					rdf:member :custom-content ;
+					rdfs:comment "A structure or segment added or removed during republishing, representing a deviation from the source." .
+
+:image-placeholder	a rdf:Property ;
+					rdfs:label "image-placeholder" ;
+					rdfs:subPropertyOf :custom, :nonresolving-reference ;
+					rdf:member :custom-content ;
+					rdfs:comment "A placeholder for a reference to a non-existing or deliberately removed image." .
+
+
+
+
+
+
+
+
+
+
+
+################################################################################
+## news stuff ##
+#byline
+#dateline
+#kicker
+#headline	text at the top of a newspaper article, indicating the nature of the article below it
+
+################################################################################
+## TODO ##
+#clean up periodicals vocab (some can be moved over, inc credits, photocredits)
+#drop nonresolving-reference use instead role="reference nonresolving" ?
+#previousEditionsList
+#A list of previous editions
+#currentEdition Specifies the edition (can be current or previous)
+#previousEdition Specifies the edition (can be current or previous)
+
+################################################################################
+## DROPPED ##
+#:headings		a rdf:Bag ;
+#				jena:sort "70" ;
+#				dcterms:title "Headings" .
+#
+#:heading		a rdf:Property;
+#						rdfs:label "heading" ;
+#						rdf:member :headings ;
+#						rdfs:comment "The title of a section (part, chapter, subchapter, article, etc). Headings are structurally significant, thus contributing to the hierarchical structure (outline) of the work." .
+#
+#:bridgehead	a rdf:Property;
+#						rdfs:label "bridgehead" ;
+#						rdf:member :headings ;
+#						rdfs:comment "A non-structurally significant heading that does not contribute to the hierarchical structure (outline) of the work." .
+#:para			a rdf:Property ;
+#						rdfs:label "para" ;
+#						rdfs:subPropertyOf :block ;
+#						rdf:member :blocks ;
+#						rdfs:comment "A paragraph, consisting of one or several sentences, preceded by an empty line in the main body of text, with the first line of the paragraph sometimes indented." .
+#:linegroup		a rdf:Property ;
+#						rdfs:label "linegroup" ;
+#						rdfs:subPropertyOf :block ;
+#						rdf:member :blocks ;
+#						rdfs:seeAlso :line ;
+#						rdfs:comment "A group of lines." .
+#:line				a rdf:Property ;
+#					rdfs:label "line" ;
+#					rdf:member :phrasal ;
+#					rdfs:subPropertyOf :text ;
+#					rdfs:comment "A single line of text." .
+
+
+
+
+
+
+################################################################
+#
+#   Following are references to numerals written in prose form
+#   These roles are not being included as part of the initial set, but may be activated at
+#   a later date if necessary. They may be better modifying the w element.
+#
+# :partitive			a rdf:Property ;
+#					rdf:member :numerals ;
+#					rdfs:label "partitive" ;
+#					zt:for "z3986.num" ;
+#					rdfs:comment "A fraction expressed in descriptive terms, for example: half, two-fifths, third, etc." .
+#
+# :multiplicative	a rdf:Property ;
+#					rdf:member :numerals ;
+#					rdfs:label "multiplicative" ;
+#					zt:for "z3986.num" ;
+#					rdfs:comment "A repetition expressed in descriptive terms, for example: once, twice, thrice, etc." .
+#
+# :collective		a rdf:Property ;
+#					rdf:member :numerals ;
+#					rdfs:label "collective" ;
+#					zt:for "z3986.num" ;
+#					rdfs:comment "The quantity of parts in a collection expressed in descriptive terms, for example: single, double, quadruple, etc." .
+#
+# :distributive		a rdf:Property ;
+#					rdf:member :numerals ;
+#					rdfs:label "distributive" ;
+#					zt:for "z3986.num" ;
+#					rdfs:comment "The distribution or portioning of a whole expressed in descriptive terms." .
+

@@ -1,0 +1,1223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:zt="http://www.daisy.org/ns/rdf/property#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:dcterms="http://purl.org/dc/terms/">
+   <rdf:Description rdf:about="http://www.daisy.org/z3998/2012/vocab/structure/">
+      <dcterms:modified>2012-12-19</dcterms:modified>
+      <dcterms:creator>mdemeglio</dcterms:creator>
+      <dcterms:creator>mgarrish</dcterms:creator>
+      <dcterms:creator>mgylling</dcterms:creator>
+      <dcterms:issued>2009-12-01</dcterms:issued>
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:description>This RDF vocabulary, a part of NISO Z39.98-2012(http://www.daisy.org/z3998/2012/z3998-2012.html), defines a set of terms relating to the description of structural semantics of documents in general, and written works in particular.</dcterms:description>
+      <dcterms:title>Z39.98-2012 Structural Semantics Vocabulary</dcterms:title>
+  </rdf:Description>
+   <rdf:Bag rdf:ID="document-structure">
+      <dcterms:title>Major document structures</dcterms:title>
+      <dcterms:description>Standard terms used for the classification, partitioning and dividing of a document.</dcterms:description>
+      <rdf:Bag rdf:ID="document-types">
+         <dcterms:title>Document types</dcterms:title>
+         <rdf:Description rdf:about="#fiction" rdf:ID="fiction">
+            <rdfs:label>fiction</rdfs:label>
+            <rdfs:comment>A work of fiction.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#non-fiction" rdf:ID="non-fiction">
+            <rdfs:label>non-fiction</rdfs:label>
+            <rdfs:comment>A work of non-fiction.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#article" rdf:ID="article">
+            <rdfs:label>article</rdfs:label>
+            <rdfs:comment>A major independent section in a piece of writing, typically appearing in journals, magazines or newspapers.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#essay" rdf:ID="essay">
+            <rdfs:label>essay</rdfs:label>
+            <rdfs:comment>An essay.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#textbook" rdf:ID="textbook">
+            <rdfs:label>textbook</rdfs:label>
+            <rdfs:comment>A textbook.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#catalogue" rdf:ID="catalogue">
+            <rdfs:label>catalogue</rdfs:label>
+            <rdfs:comment>A catalogue.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+      </rdf:Bag>
+      <rdf:Bag rdf:ID="document-partitions">
+         <dcterms:title>Document partitions</dcterms:title>
+         <rdf:Description rdf:about="#frontmatter" rdf:ID="frontmatter">
+            <rdfs:label>frontmatter</rdfs:label>
+            <rdfs:comment>Preliminary material to the content, such as tables of contents, dedications, etc.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#bodymatter" rdf:ID="bodymatter">
+            <rdfs:label>bodymatter</rdfs:label>
+            <rdfs:comment>The body content of a document.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#backmatter" rdf:ID="backmatter">
+            <rdfs:label>backmatter</rdfs:label>
+            <rdfs:comment>Ancillary material occurring after the document body, such as indices, appendices, etc..</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+      </rdf:Bag>
+      <rdf:Bag rdf:ID="document-divisions">
+         <dcterms:title>Document divisions</dcterms:title>
+         <rdf:Description rdf:about="#volume" rdf:ID="volume">
+            <rdfs:label>volume</rdfs:label>
+            <rdfs:comment>A component of a collection.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#part" rdf:ID="part">
+            <rdfs:label>part</rdfs:label>
+            <rdfs:comment>A major structural division of a piece of writing, typically encapsulating a set of related chapters.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#chapter" rdf:ID="chapter">
+            <rdfs:label>chapter</rdfs:label>
+            <rdfs:comment>A major structural division of a piece of writing.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#subchapter" rdf:ID="subchapter">
+            <rdfs:label>subchapter</rdfs:label>
+            <rdfs:comment>A major sub-division of a chapter.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#division" rdf:ID="division">
+            <rdfs:label>division</rdfs:label>
+            <rdfs:comment>A major structural division that may also appear as a substructure of a part (esp. in legislation).</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#section" rdf:ID="section">
+            <rdfs:label>section</rdfs:label>
+            <rdfs:comment>A structural division typically subordinate in importance to a part or division (esp. in textbooks and legislation).</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#subsection" rdf:ID="subsection">
+            <rdfs:label>subsection</rdfs:label>
+            <rdfs:comment>A major sub-division of a section.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+      </rdf:Bag>
+      <rdf:Bag rdf:ID="document-sections">
+         <dcterms:title>Document sections</dcterms:title>
+         <rdf:Description rdf:about="#foreword" rdf:ID="foreword">
+            <rdfs:label>foreword</rdfs:label>
+            <rdfs:comment>An introductory section that precedes the work, typically not written by the work's author.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#preface" rdf:ID="preface">
+            <rdfs:label>preface</rdfs:label>
+            <rdfs:comment>An introductory section that precedes the work, typically written by the work's author.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#prologue" rdf:ID="prologue">
+            <rdfs:label>prologue</rdfs:label>
+            <rdfs:comment>An introductory section that sets the background to a story, typically part of the narrative.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#introduction" rdf:ID="introduction">
+            <rdfs:label>introduction</rdfs:label>
+            <rdfs:comment>A section in the beginning of the work, typically introducing the reader to the scope or nature of the work's content</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#preamble" rdf:ID="preamble">
+            <rdfs:label>preamble</rdfs:label>
+            <rdfs:comment>A section in the beginning of the work, typically containing introductory and/or explanatory prose regarding the scope or nature of the work's content</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#conclusion" rdf:ID="conclusion">
+            <rdfs:label>conclusion</rdfs:label>
+            <rdfs:comment>An ending section that typically wraps up the work.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#epilogue" rdf:ID="epilogue">
+            <rdfs:label>epilogue</rdfs:label>
+            <rdfs:comment>A concluding section that is typically written from a later point in time than the main story, although still part of the narrative.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#afterword" rdf:ID="afterword">
+            <rdfs:label>afterword</rdfs:label>
+            <rdfs:comment>An ending section that typically details the history of the story or its significance.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+      </rdf:Bag>
+      <rdf:Bag rdf:ID="document-reference">
+         <dcterms:title>Document reference sections</dcterms:title>
+         <rdf:Description rdf:about="#toc" rdf:ID="toc">
+            <rdfs:label>toc</rdfs:label>
+            <rdfs:comment>A table of contents, typically appearing in the work's frontmatter, or at the beginning of a section.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#appendix" rdf:ID="appendix">
+            <rdfs:label>appendix</rdfs:label>
+            <rdfs:comment>Supplemental information.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#glossary" rdf:ID="glossary">
+            <rdfs:label>glossary</rdfs:label>
+            <rdfs:comment>An alphabetical list of terms in a particular domain of knowledge with the definitions for those terms.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#bibliography" rdf:ID="bibliography">
+            <rdfs:label>bibliography</rdfs:label>
+            <rdfs:comment>A list of works cited.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#discography" rdf:ID="discography">
+            <rdfs:label>discography</rdfs:label>
+            <rdfs:comment>A list of albums and/or songs by a performer.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#filmography" rdf:ID="filmography">
+            <rdfs:label>filmography</rdfs:label>
+            <rdfs:comment>A list of acting roles by a performer.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#index" rdf:ID="index">
+            <rdfs:label>index</rdfs:label>
+            <rdfs:comment>A detailed list, usually arranged alphabetically, of the specific information in a publication.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#colophon" rdf:ID="colophon">
+            <rdfs:label>colophon</rdfs:label>
+            <rdfs:comment>A brief description usually located at the end of a publication, describing production notes relevant to the edition.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+      </rdf:Bag>
+      <rdf:Bag rdf:ID="titles">
+         <dcterms:title>Titles</dcterms:title>
+         <rdf:Description rdf:about="#title" rdf:ID="title">
+            <rdfs:label>title</rdfs:label>
+            <rdfs:comment>The title of the work, or, when used in the context of a #fulltitle, the primary part of the full title.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#halftitle" rdf:ID="halftitle">
+            <rdfs:label>halftitle</rdfs:label>
+            <rdfs:comment>The title appearing that appears on the first page of a work or immediately before the text.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:subPropertyOf rdf:resource="#title"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#fulltitle" rdf:ID="fulltitle">
+            <rdfs:label>fulltitle</rdfs:label>
+            <rdfs:comment>The full title of the work, either simple, in which case it is identical to #title, or compound, in which case it consists of a #title and a #subtitle.</rdfs:comment>
+            <owl:sameAs rdf:resource="http://purl.org/dc/terms/title"/>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:subPropertyOf rdf:resource="#title"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#subtitle" rdf:ID="subtitle">
+            <rdfs:label>subtitle</rdfs:label>
+            <rdfs:comment>An explanatory or alternate title for the work.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:subPropertyOf rdf:resource="#title"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#covertitle" rdf:ID="covertitle">
+            <rdfs:label>covertitle</rdfs:label>
+            <rdfs:comment>The title of the work as displayed on the work's cover.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:subPropertyOf rdf:resource="#title"/>
+         </rdf:Description>
+      </rdf:Bag>
+      <rdf:Bag rdf:ID="document-preliminaries">
+         <dcterms:title>Preliminary sections and components</dcterms:title>
+         <rdf:Description rdf:about="#published-works" rdf:ID="published-works">
+            <rdfs:label>published-works</rdfs:label>
+            <rdfs:comment>A list of additional works by the author.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#title-page" rdf:ID="title-page">
+            <rdfs:label>title-page</rdfs:label>
+            <rdfs:comment>The title page of the work.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#halftitle-page" rdf:ID="halftitle-page">
+            <rdfs:label>halftitle-page</rdfs:label>
+            <rdfs:comment>The half title page of the work.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#acknowledgments" rdf:ID="acknowledgments">
+            <rdfs:label>acknowledgments</rdfs:label>
+            <rdfs:comment>A passage containing acknowledgments to entities involved in the realization of the work.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#imprint" rdf:ID="imprint">
+            <rdfs:label>imprint</rdfs:label>
+            <rdfs:comment>Information relating to the publication or distribution of the work.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#imprimatur" rdf:ID="imprimatur">
+            <rdfs:label>imprimatur</rdfs:label>
+            <rdfs:comment>A formal statement authorizing the publication of the work.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#loi" rdf:ID="loi">
+            <rdfs:label>loi</rdfs:label>
+            <rdfs:comment>A listing of illustrations included in the work.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#lot" rdf:ID="lot">
+            <rdfs:label>lot</rdfs:label>
+            <rdfs:comment>A listing of tables included in the work.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#publisher-address" rdf:ID="publisher-address">
+            <rdfs:label>publisher-address</rdfs:label>
+            <rdfs:comment>The publisher's address, which can be abbreviated to city and postal code only.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#publisher-note" rdf:ID="publisher-note">
+            <rdfs:label>publisher-address</rdfs:label>
+            <rdfs:comment>A note from the publisher.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#editorial-note" rdf:ID="editorial-note">
+            <rdfs:label>editorial-note</rdfs:label>
+            <rdfs:comment>An explanation of an editor’s method, or a discussion of variant texts.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#grant-acknowledgment" rdf:ID="grant-acknowledgment">
+            <rdfs:label>grant-acknowledgment</rdfs:label>
+            <rdfs:comment>Describes financial assistance towards the work.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#contributors" rdf:ID="contributors">
+            <rdfs:label>contributors</rdfs:label>
+            <rdfs:comment>A list of contributors to the work.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#other-credits" rdf:ID="other-credits">
+            <rdfs:label>other-credits</rdfs:label>
+            <rdfs:comment>Acknowledgments of previously published parts of the work, illustration credits, and permission to quote from copyrighted material.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#biographical-note" rdf:ID="biographical-note">
+            <rdfs:label>biographical-note</rdfs:label>
+            <rdfs:comment>A biographical note about the author or authors, here including editors, compilers, and translators).</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#translator-note" rdf:ID="translator-note">
+            <rdfs:label>translator-note</rdfs:label>
+            <rdfs:comment>An introductory note from the translator(s).</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#errata" rdf:ID="errata">
+            <rdfs:label>errata</rdfs:label>
+            <rdfs:comment>Publication errata, in printed works typically a loose sheet inserted by hand; sometimes a bound page.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#promotional" rdf:ID="promotional">
+            <rdfs:label>promotional-copy</rdfs:label>
+            <rdfs:comment>A promotional description of the book, often containing quotations from reviews.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#dedication" rdf:ID="dedication">
+            <rdfs:label>dedication</rdfs:label>
+            <rdfs:comment>An inscription addressed to one or several particular person(s).</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+      </rdf:Bag>
+   </rdf:Bag>
+   <rdf:Bag rdf:ID="document-components">
+      <dcterms:title>Document components</dcterms:title>
+      <dcterms:description>Non-structural components that occur within documents, such as letters, poems, quotations, etc.</dcterms:description>
+      <rdf:Description rdf:about="#pgroup" rdf:ID="pgroup">
+         <rdfs:label>pgroup</rdfs:label>
+         <rdfs:comment>A group of interrelated paragraphs.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#example" rdf:ID="example">
+         <rdfs:label>example</rdfs:label>
+         <rdfs:comment>A sample, model, illustration or template representative of some aspect of the narrative.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#epigraph" rdf:ID="epigraph">
+         <rdfs:label>epigraph</rdfs:label>
+         <rdfs:comment>A quotation at the start of a document or section that typically introduces or sets the theme for what follows.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Bag rdf:ID="annotations">
+         <dcterms:title>Annotations</dcterms:title>
+         <rdf:Description rdf:about="#annotation" rdf:ID="annotation">
+            <rdfs:label>annotation</rdfs:label>
+            <rdfs:comment>Explanatory information about passages in the work.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#introductory-note" rdf:ID="introductory-note">
+            <rdfs:label>introductory-note</rdfs:label>
+            <rdfs:comment>An annotation whose purpose is to provide an introductory note.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:subPropertyOf rdf:resource="#annotation"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#commentary" rdf:ID="commentary">
+            <rdfs:label>commentary</rdfs:label>
+            <rdfs:comment>An annotation whose purpose is to provide commentary.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:subPropertyOf rdf:resource="#annotation"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#clarification" rdf:ID="clarification">
+            <rdfs:label>clarification</rdfs:label>
+            <rdfs:comment>An annotation whose purpose is to provide a clarification.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:subPropertyOf rdf:resource="#annotation"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#correction" rdf:ID="correction">
+            <rdfs:label>correction</rdfs:label>
+            <rdfs:comment>An annotation whose purpose is to provide a correction.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:subPropertyOf rdf:resource="#annotation"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#alteration" rdf:ID="alteration">
+            <rdfs:label>alteration</rdfs:label>
+            <rdfs:comment>An annotation whose purpose is to indicate an alteration made to the source document, such as the re-arrangement or removal of content.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:subPropertyOf rdf:resource="#annotation"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#presentation" rdf:ID="presentation">
+            <rdfs:label>presentation</rdfs:label>
+            <rdfs:comment>An annotation whose purpose is to describe some aspect of the document layout, such as the formatting of a page or conventions used in rendering the content.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:subPropertyOf rdf:resource="#annotation"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#temporary" rdf:ID="temporary">
+            <rdfs:label>production</rdfs:label>
+            <rdfs:comment>A temporary annotation not intended as part of the finished document, such as a production note</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:subPropertyOf rdf:resource="#annotation"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#attribution" rdf:ID="attribution">
+            <rdfs:label>attribution</rdfs:label>
+            <rdfs:comment>An annotation whose purpose is to provide a source or attribution.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:subPropertyOf rdf:resource="#annotation"/>
+         </rdf:Description>
+      </rdf:Bag>
+      <rdf:Bag rdf:ID="production-roles">
+         <dcterms:title>Production roles</dcterms:title>
+         <rdf:Description rdf:about="#author" rdf:ID="author">
+            <rdfs:label>author</rdfs:label>
+            <rdfs:comment>An author of a work.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#editor" rdf:ID="editor">
+            <rdfs:label>editor</rdfs:label>
+            <rdfs:comment>An editor of a work.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#general-editor" rdf:ID="general-editor">
+            <rdfs:label>general-editor</rdfs:label>
+            <rdfs:comment>The general editor of a work.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#commentator" rdf:ID="commentator">
+            <rdfs:label>commentator</rdfs:label>
+            <rdfs:comment>A commentator on a work.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#translator" rdf:ID="translator">
+            <rdfs:label>translator</rdfs:label>
+            <rdfs:comment>A translator of a work.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#republisher" rdf:ID="republisher">
+            <rdfs:label>republisher</rdfs:label>
+            <rdfs:comment>A republisher of a work.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+      </rdf:Bag>
+      <rdf:Bag rdf:ID="descriptions">
+         <dcterms:title>Description types</dcterms:title>
+         <rdf:Description rdf:about="#structure" rdf:ID="structure">
+            <rdfs:label>structure</rdfs:label>
+            <rdfs:comment>A structural description for a piece of content (e.g., a table structure summary).</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+      </rdf:Bag>
+      <rdf:Bag rdf:ID="addresses">
+         <dcterms:title>Addresses</dcterms:title>
+         <rdf:Bag rdf:ID="physical-addr">
+            <dcterms:title>Physical</dcterms:title>
+            <rdf:Description rdf:about="#geographic" rdf:ID="geographic">
+               <rdfs:label>geographic</rdfs:label>
+               <rdfs:comment>A positional location, typically expressed by coordinates.</rdfs:comment>
+               <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="#postal" rdf:ID="postal">
+               <rdfs:label>postal</rdfs:label>
+               <rdfs:comment>A postal or mailing address.</rdfs:comment>
+               <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            </rdf:Description>
+         </rdf:Bag>
+         <rdf:Bag rdf:ID="virtual-addr">
+            <dcterms:title>Virtual</dcterms:title>
+            <rdf:Description rdf:about="#email" rdf:ID="email">
+               <rdfs:label>email</rdfs:label>
+               <rdfs:comment>An email address.</rdfs:comment>
+               <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="#ftp" rdf:ID="ftp">
+               <rdfs:label>ftp</rdfs:label>
+               <rdfs:comment>A file transfer protocol address.</rdfs:comment>
+               <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="#http" rdf:ID="http">
+               <rdfs:label>http</rdfs:label>
+               <rdfs:comment>A hypertext transfer protocol address.</rdfs:comment>
+               <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="#ip" rdf:ID="ip">
+               <rdfs:label>ip</rdfs:label>
+               <rdfs:comment>An internet protocol address.</rdfs:comment>
+               <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            </rdf:Description>
+         </rdf:Bag>
+      </rdf:Bag>
+      <rdf:Bag rdf:ID="asides">
+         <dcterms:title>Asides</dcterms:title>
+         <rdf:Description rdf:about="#aside" rdf:ID="aside">
+            <rdfs:label>aside</rdfs:label>
+            <rdfs:comment>Secondary or supplementary content.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#sidebar" rdf:ID="sidebar">
+            <rdfs:label>sidebar</rdfs:label>
+            <rdfs:comment>Secondary or supplementary content, typically formatted as an inset or box.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:subPropertyOf rdf:resource="#aside"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#practice" rdf:ID="practice">
+            <rdfs:label>practice</rdfs:label>
+            <rdfs:comment>A review exercise or sample.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:subPropertyOf rdf:resource="#aside"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#notice" rdf:ID="notice">
+            <rdfs:label>notice</rdfs:label>
+            <rdfs:comment>A notification.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:subPropertyOf rdf:resource="#aside"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#warning" rdf:ID="warning">
+            <rdfs:label>warning</rdfs:label>
+            <rdfs:comment>A warning.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:subPropertyOf rdf:resource="#aside"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#marginalia" rdf:ID="marginalia">
+            <rdfs:label>marginalia</rdfs:label>
+            <rdfs:comment>Marginalia.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:subPropertyOf rdf:resource="#aside"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#help" rdf:ID="help">
+            <rdfs:label>help</rdfs:label>
+            <rdfs:comment>Instructions/advice to the reader on using the work.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:subPropertyOf rdf:resource="#aside"/>
+         </rdf:Description>
+      </rdf:Bag>
+      <rdf:Bag rdf:ID="dialogue-drama">
+         <dcterms:title>Dialogue/Drama</dcterms:title>
+         <rdf:Description rdf:about="#drama" rdf:ID="drama">
+            <rdfs:label>drama</rdfs:label>
+            <rdfs:comment>A work of fiction intended for performance.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#scene" rdf:ID="scene">
+            <rdfs:label>scene</rdfs:label>
+            <rdfs:comment>A structurally significant segment of a drama.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#stage-direction" rdf:ID="stage-direction">
+            <rdfs:label>stage-direction</rdfs:label>
+            <rdfs:comment>An instruction to an actor or director, included in the work.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#dramatis-personae" rdf:ID="dramatis-personae">
+            <rdfs:label>dramatis-personae</rdfs:label>
+            <rdfs:comment>A listing of the roles or characters appearing in the work.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:seeAlso rdf:resource="#persona"/>
+            <rdfs:subPropertyOf rdf:resource="#collection"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#persona" rdf:ID="persona">
+            <rdfs:label>persona</rdfs:label>
+            <rdfs:comment>The name or identity of an individual role or character appearing in the work.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:seeAlso rdf:resource="#dramatis-personae"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#actor" rdf:ID="actor">
+            <rdfs:label>actor</rdfs:label>
+            <rdfs:comment>The name of the actor who plays a character in the work.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:seeAlso rdf:resource="#dramatis-personae"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#role-description" rdf:ID="role-description">
+            <rdfs:label>role-description</rdfs:label>
+            <rdfs:comment>A description of a character in the work.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:seeAlso rdf:resource="#dramatis-personae"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#speech" rdf:ID="speech">
+            <rdfs:label>speech</rdfs:label>
+            <rdfs:comment>An utterance by a #persona.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:seeAlso rdf:resource="#persona"/>
+         </rdf:Description>
+      </rdf:Bag>
+      <rdf:Bag rdf:ID="diaries">
+         <dcterms:title>Diaries</dcterms:title>
+         <rdf:Description rdf:about="#diary" rdf:ID="diary">
+            <rdfs:label>diary</rdfs:label>
+            <rdfs:comment>A diary.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#diary-entry" rdf:ID="diary-entry">
+            <rdfs:label>diary-entry</rdfs:label>
+            <rdfs:comment>A diary entry.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+      </rdf:Bag>
+      <rdf:Bag rdf:ID="figures">
+         <dcterms:title>Figures</dcterms:title>
+         <rdf:Description rdf:about="#figure" rdf:ID="figure">
+            <rdfs:label>figure</rdfs:label>
+            <rdfs:comment>An instance of a figure, which may include a title, caption and credits in addition to an image or table.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#plate" rdf:ID="plate">
+            <rdfs:label>plate</rdfs:label>
+            <rdfs:comment>A figure or image typically printed on a coated unnumbered page.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#gallery" rdf:ID="gallery">
+            <rdfs:label>gallery</rdfs:label>
+            <rdfs:comment>A section of a document containing more than one image, figure or plate. Gallery pages may be numbered or unnumbered, and on regular or special stock.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+      </rdf:Bag>
+      <rdf:Bag rdf:ID="letters">
+         <dcterms:title>Letters</dcterms:title>
+         <rdf:Description rdf:about="#letter" rdf:ID="letter">
+            <rdfs:label>letter</rdfs:label>
+            <rdfs:comment>An instance of a formal, informal or business letter.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#sender" rdf:ID="sender">
+            <rdfs:label>sender</rdfs:label>
+            <rdfs:comment>The name and address of the sender of a letter.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#recipient" rdf:ID="recipient">
+            <rdfs:label>recipient</rdfs:label>
+            <rdfs:comment>The name and address of the recipient of a letter.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#salutation" rdf:ID="salutation">
+            <rdfs:label>salutation</rdfs:label>
+            <rdfs:comment>An expression of greeting at the start of a letter.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#valediction" rdf:ID="valediction">
+            <rdfs:label>valediction</rdfs:label>
+            <rdfs:comment>An expression of farewell at the end of a letter.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#postscript" rdf:ID="postscript">
+            <rdfs:label>postscript</rdfs:label>
+            <rdfs:comment>An additional paragraph or note occurring after a signature in a letter.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Bag rdf:ID="emails">
+            <dcterms:title>Emails</dcterms:title>
+            <rdf:Description rdf:about="#email-message" rdf:ID="email-message">
+               <rdfs:label>email-message</rdfs:label>
+               <rdfs:comment>An instance of a email message.</rdfs:comment>
+               <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="#to" rdf:ID="to">
+               <rdfs:label>to</rdfs:label>
+               <rdfs:comment>The recipient(s) email address line.</rdfs:comment>
+               <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="#from" rdf:ID="from">
+               <rdfs:label>from</rdfs:label>
+               <rdfs:comment>The sender's email address line.</rdfs:comment>
+               <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="#cc" rdf:ID="cc">
+               <rdfs:label>cc</rdfs:label>
+               <rdfs:comment>The carbon copy email address line.</rdfs:comment>
+               <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="#bcc" rdf:ID="bcc">
+               <rdfs:label>bcc</rdfs:label>
+               <rdfs:comment>The blind carbon copy email address line.</rdfs:comment>
+               <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="#subject" rdf:ID="subject">
+               <rdfs:label>subject</rdfs:label>
+               <rdfs:comment>The email subject line.</rdfs:comment>
+               <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            </rdf:Description>
+         </rdf:Bag>
+      </rdf:Bag>
+      <rdf:Bag rdf:ID="collections">
+         <dcterms:title>Lists</dcterms:title>
+         <rdf:Description rdf:about="#collection" rdf:ID="collection">
+            <rdfs:label>collection</rdfs:label>
+            <rdfs:comment>A set of interrelated items.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#orderedlist" rdf:ID="orderedlist">
+            <rdfs:label>orderedlist</rdfs:label>
+            <rdfs:comment>A list where the order of the list's items is significant.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:subPropertyOf rdf:resource="#collection"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#unorderedlist" rdf:ID="unorderedlist">
+            <rdfs:label>unorderedlist</rdfs:label>
+            <rdfs:comment>A list where the order of the list's items is not significant.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:subPropertyOf rdf:resource="#collection"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#abbreviations" rdf:ID="abbreviations">
+            <rdfs:label>abbreviations</rdfs:label>
+            <rdfs:comment>A list of abbreviations.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:subPropertyOf rdf:resource="#unorderedlist"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#timeline" rdf:ID="timeline">
+            <rdfs:label>timeline</rdfs:label>
+            <rdfs:comment>A chronological list of events</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:subPropertyOf rdf:resource="#orderedlist"/>
+         </rdf:Description>
+      </rdf:Bag>
+      <rdf:Bag rdf:ID="notes">
+         <dcterms:title>Notes</dcterms:title>
+         <rdf:Description rdf:about="#note" rdf:ID="note">
+            <rdfs:label>note</rdfs:label>
+            <rdfs:comment>A footnote or a rearnote, linked from the main text via a note reference</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:seeAlso rdf:resource="#noteref"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#footnotes" rdf:ID="footnotes">
+            <rdfs:label>footnotes</rdfs:label>
+            <rdfs:comment>A collection of notes appearing at the bottom of a page.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:seeAlso rdf:resource="#footnote"/>
+            <rdfs:subPropertyOf rdf:resource="#collection"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#footnote" rdf:ID="footnote">
+            <rdfs:label>footnote</rdfs:label>
+            <rdfs:comment>A note appearing at the bottom of a page.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:seeAlso rdf:resource="#footnotes"/>
+            <rdfs:subPropertyOf rdf:resource="#note"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#rearnote" rdf:ID="rearnote">
+            <rdfs:label>rearnote</rdfs:label>
+            <rdfs:comment>A note appearing in the rear (backmatter) of the work, or at the end of a section.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:seeAlso rdf:resource="#rearnotes"/>
+            <rdfs:subPropertyOf rdf:resource="#note"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#rearnotes" rdf:ID="rearnotes">
+            <rdfs:label>rearnotes</rdfs:label>
+            <rdfs:comment>A collection of notes appearing at the rear (backmatter) of the work, or at the end of a section.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:seeAlso rdf:resource="#rearnote"/>
+            <rdfs:subPropertyOf rdf:resource="#collection"/>
+         </rdf:Description>
+      </rdf:Bag>
+      <rdf:Bag rdf:ID="verses">
+         <dcterms:title>Verse</dcterms:title>
+         <rdf:Description rdf:about="#verse" rdf:ID="verse">
+            <rdfs:label>verse</rdfs:label>
+            <rdfs:comment>A work typically composed of metered or rhyming lines (as opposed to prose).</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#poem" rdf:ID="poem">
+            <rdfs:label>poem</rdfs:label>
+            <rdfs:comment>A poem.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:subPropertyOf rdf:resource="#verse"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#song" rdf:ID="song">
+            <rdfs:label>song</rdfs:label>
+            <rdfs:comment>A song.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:subPropertyOf rdf:resource="#verse"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#hymn" rdf:ID="hymn">
+            <rdfs:label>hymn</rdfs:label>
+            <rdfs:comment>A hymn.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:subPropertyOf rdf:resource="#song"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#lyrics" rdf:ID="lyrics">
+            <rdfs:label>lyrics</rdfs:label>
+            <rdfs:comment>The text of a song.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:seeAlso rdf:resource="#song"/>
+            <rdfs:subPropertyOf rdf:resource="#verse"/>
+         </rdf:Description>
+      </rdf:Bag>
+   </rdf:Bag>
+   <rdf:Bag rdf:ID="document-text">
+      <dcterms:title>Document text</dcterms:title>
+      <dcterms:description>Terms for describing text elements.</dcterms:description>
+      <rdf:Description rdf:about="#text" rdf:ID="text">
+         <rdfs:label>text</rdfs:label>
+         <rdfs:comment>A segment of text.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#phrase" rdf:ID="phrase">
+         <rdfs:label>phrase</rdfs:label>
+         <rdfs:comment>A group of lexical words, comprising a single unit within a sentence.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         <rdfs:subPropertyOf rdf:resource="#collection"/>
+         <rdfs:subPropertyOf rdf:resource="#text"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#keyword" rdf:ID="keyword">
+         <rdfs:label>keyword</rdfs:label>
+         <rdfs:comment>A key word or phrase.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#sentence" rdf:ID="sentence">
+         <rdfs:label>sentence</rdfs:label>
+         <rdfs:comment>A group of lexical words comprising a lexical sentence.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         <rdfs:subPropertyOf rdf:resource="#phrase"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#topic-sentence" rdf:ID="topic-sentence">
+         <rdfs:label>topic-sentence</rdfs:label>
+         <rdfs:comment>A phrase or sentence serving as an introductory summary of the containing paragraph.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#concluding-sentence" rdf:ID="concluding-sentence">
+         <rdfs:label>concluding-sentence</rdfs:label>
+         <rdfs:comment>A phrase or sentence serving as a concluding summary of the containing paragraph.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#t-form" rdf:ID="t-form">
+         <rdfs:label>t-form</rdfs:label>
+         <rdfs:comment>An informal second-person pronoun.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         <rdfs:subPropertyOf rdf:resource="#phrase"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#v-form" rdf:ID="v-form">
+         <rdfs:label>v-form</rdfs:label>
+         <rdfs:comment>A formal second-person pronoun.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         <rdfs:subPropertyOf rdf:resource="#phrase"/>
+      </rdf:Description>
+      <rdf:Bag rdf:ID="abbrs">
+         <dcterms:title>Abbreviations</dcterms:title>
+         <rdf:Description rdf:about="#acronym" rdf:ID="acronym">
+            <rdfs:label>acronym</rdfs:label>
+            <rdfs:comment>An abbreviation formed from initial letters of a name or expression, pronounced as a word.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#initialism" rdf:ID="initialism">
+            <rdfs:label>initialism</rdfs:label>
+            <rdfs:comment>An abbreviation formed from initial letters of a name or expression, with each letter pronunced separately.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#truncation" rdf:ID="truncation">
+            <rdfs:label>truncation</rdfs:label>
+            <rdfs:comment>An abbreviation formed from the first part of a word.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+      </rdf:Bag>
+      <rdf:Bag rdf:ID="numerals">
+         <dcterms:title>Numerals</dcterms:title>
+         <rdf:Description rdf:about="#cardinal" rdf:ID="cardinal">
+            <rdfs:label>cardinal</rdfs:label>
+            <rdfs:comment>A value indicating quantity.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#ordinal" rdf:ID="ordinal">
+            <rdfs:label>ordinal</rdfs:label>
+            <rdfs:comment>A value indicating rank or position.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#ratio" rdf:ID="ratio">
+            <rdfs:label>ratio</rdfs:label>
+            <rdfs:comment>An expression of the magnitude of two quantities relative to each other.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#percentage" rdf:ID="percentage">
+            <rdfs:label>percentage</rdfs:label>
+            <rdfs:comment>A value that defines proportionality to a whole, including percent sign if present.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#phone" rdf:ID="phone">
+            <rdfs:label>phone</rdfs:label>
+            <rdfs:comment>A phone number, including area code and international dialing code.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#isbn" rdf:ID="isbn">
+            <rdfs:label>isbn</rdfs:label>
+            <rdfs:comment>An International Standard Book Number.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#currency" rdf:ID="currency">
+            <rdfs:label>currency</rdfs:label>
+            <rdfs:comment>A currency value, including the denomination indicator.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#postal-code" rdf:ID="postal-code">
+            <rdfs:label>postal-code</rdfs:label>
+            <rdfs:comment>A postal or zip code.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#segmented" rdf:ID="segmented">
+            <rdfs:label>result</rdfs:label>
+            <rdfs:comment>A single value that includes two or more sets of numbers separated by spaces.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#fraction" rdf:ID="fraction">
+            <rdfs:label>fraction</rdfs:label>
+            <rdfs:comment>A single fraction with a numerator and denominator, and without a preceding whole number.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#mixed" rdf:ID="mixed">
+            <rdfs:label>mixed</rdfs:label>
+            <rdfs:comment>A whole number followed by a fraction with a numerator and denominator.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#decimal" rdf:ID="decimal">
+            <rdfs:label>decimal</rdfs:label>
+            <rdfs:comment>A single value where the integral number is separated from the fractional value by a decimal point or comma.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#roman" rdf:ID="roman">
+            <rdfs:label>roman</rdfs:label>
+            <rdfs:comment>A single value expressed using roman numerals.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#weight" rdf:ID="weight">
+            <rdfs:label>weight</rdfs:label>
+            <rdfs:comment>A single weight value, including units.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#measure" rdf:ID="measure">
+            <rdfs:label>measure</rdfs:label>
+            <rdfs:comment>A single value of measure, including units.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#coordinate" rdf:ID="coordinate">
+            <rdfs:label>coordinate</rdfs:label>
+            <rdfs:comment>A value expressing the location of a point in n-dimensional space, including degree, minute and other indicators if specified.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+      </rdf:Bag>
+      <rdf:Bag rdf:ID="value-groups">
+         <dcterms:title>Value Groups</dcterms:title>
+         <rdf:Description rdf:about="#range" rdf:ID="range">
+            <rdfs:label>range</rdfs:label>
+            <rdfs:comment>A numeric, spatial or temporal range of values, as expressed by the start and end values.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#result" rdf:ID="result">
+            <rdfs:label>result</rdfs:label>
+            <rdfs:comment>The outcome of an event, such as a sporting match or vote.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+      </rdf:Bag>
+      <rdf:Bag rdf:ID="proper-nouns">
+         <dcterms:title>Proper Nouns</dcterms:title>
+         <rdf:Description rdf:about="#place" rdf:ID="place">
+            <rdfs:label>place</rdfs:label>
+            <rdfs:comment>The name of a city, state, province, country or other geographic or political entity. .</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#nationality" rdf:ID="nationality">
+            <rdfs:label>nationality</rdfs:label>
+            <rdfs:comment>The name of a nationality, national group, or other designator of association. .</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#organization" rdf:ID="organization">
+            <rdfs:label>organization</rdfs:label>
+            <rdfs:comment>The name of an organization, corporation, or other business entity. .</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#taxonomy" rdf:ID="taxonomy">
+            <rdfs:label>taxonomy</rdfs:label>
+            <rdfs:comment>The name of a species, genus or other taxonomic classification. .</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#product" rdf:ID="product">
+            <rdfs:label>product</rdfs:label>
+            <rdfs:comment>The brand name of a product, medication, etc. .</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#event" rdf:ID="event">
+            <rdfs:label>event</rdfs:label>
+            <rdfs:comment>The name of a religious, sporting, or other event, holiday or festival. .</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#award" rdf:ID="award">
+            <rdfs:label>award</rdfs:label>
+            <rdfs:comment>The name of an award or prize. .</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Bag rdf:ID="names">
+            <dcterms:title>Personal names</dcterms:title>
+            <rdf:Description rdf:about="#personal-name" rdf:ID="personal-name">
+               <rdfs:label>personal-name</rdfs:label>
+               <rdfs:comment>A proper name identifying a person, often composed of a given name and a family name.</rdfs:comment>
+               <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+               <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/spec/#term_name"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="#given-name" rdf:ID="given-name">
+               <rdfs:label>given-name</rdfs:label>
+               <rdfs:comment>The part of a personal name that distinguishes the person from a group of persons sharing the same surname. Also known as 'forename' or 'first name'. .</rdfs:comment>
+               <owl:equivalentProperty rdf:resource="http://xmlns.com/foaf/spec/#term_givenName"/>
+               <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="#surname" rdf:ID="surname">
+               <rdfs:label>surname</rdfs:label>
+               <rdfs:comment>The part of a personal name that associates the person with a group of persons sharing the same surname. Also known as 'last name'.</rdfs:comment>
+               <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+               <rdfs:seeAlso rdf:resource="#family-name"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="#family-name" rdf:ID="family-name">
+               <rdfs:label>family-name</rdfs:label>
+               <rdfs:comment>The part of a personal name that indicates the family to which the person belongs. Often used in conjunction with a honorific.</rdfs:comment>
+               <owl:equivalentProperty rdf:resource="http://xmlns.com/foaf/spec/#term_familyName"/>
+               <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+               <rdfs:seeAlso rdf:resource="#surname"/>
+               <rdfs:subPropertyOf rdf:resource="#surname"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="#name-title" rdf:ID="name-title">
+               <rdfs:label>name-title</rdfs:label>
+               <rdfs:comment>The part of a personal name that signifies veneration, an official position or a professional or academic qualification. .</rdfs:comment>
+               <owl:equivalentProperty rdf:resource="http://xmlns.com/foaf/spec/#term_title"/>
+               <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="#signature" rdf:ID="signature">
+               <rdfs:label>signature</rdfs:label>
+               <rdfs:comment>The handwritten, digital or stamped representation of a person's name.</rdfs:comment>
+               <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            </rdf:Description>
+         </rdf:Bag>
+      </rdf:Bag>
+      <rdf:Bag rdf:ID="words">
+         <dcterms:title>Words</dcterms:title>
+         <rdf:Description rdf:about="#word" rdf:ID="word">
+            <rdfs:label>word</rdfs:label>
+            <rdfs:comment>A lexical word.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:subPropertyOf rdf:resource="#text"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#compound" rdf:ID="compound">
+            <rdfs:label>compound</rdfs:label>
+            <rdfs:comment>A word created by the combination of two or more stems.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#homograph" rdf:ID="homograph">
+            <rdfs:label>homograph</rdfs:label>
+            <rdfs:comment>An instance of a set of words with the same spelling but different etymologies and often pronunciations (e.g. bass the instrument and bass the fish).</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#portmanteau" rdf:ID="portmanteau">
+            <rdfs:label>portmanteau</rdfs:label>
+            <rdfs:comment>A word created from the merging of two other words (e.g. brunch from breakfast and lunch).</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+      </rdf:Bag>
+      <rdf:Bag rdf:ID="word-parts">
+         <dcterms:title>Word Parts</dcterms:title>
+         <rdf:Description rdf:about="#root" rdf:ID="root">
+            <rdfs:label>root</rdfs:label>
+            <rdfs:comment>The primary lexical unit of a word.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#stem" rdf:ID="stem">
+            <rdfs:label>stem</rdfs:label>
+            <rdfs:comment>The word form common to all its inflected variants.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#prefix" rdf:ID="prefix">
+            <rdfs:label>prefix</rdfs:label>
+            <rdfs:comment>An affix attached to the front of a stem.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#suffix" rdf:ID="suffix">
+            <rdfs:label>suffix</rdfs:label>
+            <rdfs:comment>An affix attached to the end of a stem.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#morpheme" rdf:ID="morpheme">
+            <rdfs:label>morpheme</rdfs:label>
+            <rdfs:comment>The smallest linguistic unit of a word with semantic meaning.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#phoneme" rdf:ID="phoneme">
+            <rdfs:label>phoneme</rdfs:label>
+            <rdfs:comment>The smallest linguistic unit of a word that forms a sound.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+         <rdf:Description rdf:about="#grapheme" rdf:ID="grapheme">
+            <rdfs:label>grapheme</rdfs:label>
+            <rdfs:comment>The smallest linguistic unit of a written word.</rdfs:comment>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         </rdf:Description>
+      </rdf:Bag>
+   </rdf:Bag>
+   <rdf:Bag rdf:ID="artwork">
+      <dcterms:title>Artwork</dcterms:title>
+      <rdf:Description rdf:about="#illustration" rdf:ID="illustration">
+         <rdfs:label>illustration</rdfs:label>
+         <rdfs:comment>An illustration.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#photograph" rdf:ID="photograph">
+         <rdfs:label>photograph</rdfs:label>
+         <rdfs:comment>A photograph.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#decorative" rdf:ID="decorative">
+         <rdfs:label>decorative</rdfs:label>
+         <rdfs:comment>Artwork serving only a decorative purpose, not contributing relevant information.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#publisher-logo" rdf:ID="publisher-logo">
+         <rdfs:label>publisher-logo</rdfs:label>
+         <rdfs:comment>The publisher's logo.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         <rdfs:subPropertyOf rdf:resource="#decorative"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#frontispiece" rdf:ID="frontispiece">
+         <rdfs:label>frontispiece</rdfs:label>
+         <rdfs:comment>A frontmatter illustration.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         <rdfs:subPropertyOf rdf:resource="#illustration"/>
+      </rdf:Description>
+   </rdf:Bag>
+   <rdf:Bag rdf:ID="references">
+      <dcterms:title>References</dcterms:title>
+      <rdf:Description rdf:about="#reference" rdf:ID="reference">
+         <rdfs:label>reference</rdfs:label>
+         <rdfs:comment>A reference to another information entity - a resource, fragment, concept, or notion.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#resolving-reference" rdf:ID="resolving-reference">
+         <rdfs:label>resolving-reference</rdfs:label>
+         <rdfs:comment>A reference which contains data intended to allow resolving the target entity.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         <rdfs:subPropertyOf rdf:resource="#reference"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#nonresolving-reference" rdf:ID="nonresolving-reference">
+         <rdfs:label>nonresolving-reference</rdfs:label>
+         <rdfs:comment>A reference to a non-resolving target - a concept, notion or other imprecisely defined entity.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         <rdfs:subPropertyOf rdf:resource="#reference"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#noteref" rdf:ID="noteref">
+         <rdfs:label>noteref</rdfs:label>
+         <rdfs:comment>A reference to a note, typically appearing a superscripted symbol in the main body of text</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         <rdfs:seeAlso rdf:resource="#note"/>
+         <rdfs:subPropertyOf rdf:resource="#resolving-reference"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#annoref" rdf:ID="annoref">
+         <rdfs:label>annoref</rdfs:label>
+         <rdfs:comment>A reference to an annotation</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         <rdfs:seeAlso rdf:resource="#annotation"/>
+         <rdfs:subPropertyOf rdf:resource="#resolving-reference"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#citation" rdf:ID="citation">
+         <rdfs:label>citation</rdfs:label>
+         <rdfs:comment>A reference to bibliographic work, resolving to an entry in a directly or indirectly identified bibliography</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         <rdfs:seeAlso rdf:resource="#bibliography"/>
+         <rdfs:seeAlso rdf:resource="#nonresolving-citation"/>
+         <rdfs:subPropertyOf rdf:resource="#resolving-reference"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#nonresolving-citation" rdf:ID="nonresolving-citation">
+         <rdfs:label>nonresolving-citation</rdfs:label>
+         <rdfs:comment>An imprecise reference to a bibliographic work.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         <rdfs:seeAlso rdf:resource="#citation"/>
+         <rdfs:subPropertyOf rdf:resource="#nonresolving-reference"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#continuation" rdf:ID="continuation">
+         <rdfs:label>continuation</rdfs:label>
+         <rdfs:comment>A reference to another segment of the current work that constitutes the logical continuation of the current segment.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         <rdfs:subPropertyOf rdf:resource="#resolving-reference"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#continuation-of" rdf:ID="continuation-of">
+         <rdfs:label>continuation-of</rdfs:label>
+         <rdfs:comment>A reference to another segment of the current work that the current segment is a continuation of.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         <rdfs:subPropertyOf rdf:resource="#resolving-reference"/>
+      </rdf:Description>
+   </rdf:Bag>
+   <rdf:Bag rdf:ID="pagination">
+      <dcterms:title>Pagination</dcterms:title>
+      <rdf:Description rdf:about="#pagebreak" rdf:ID="pagebreak">
+         <rdfs:label>pagebreak</rdfs:label>
+         <rdfs:comment>A (sometimes valued) separator denoting the position where a break between two contiguous pages occurs in a paginated media.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#page-header" rdf:ID="page-header">
+         <rdfs:label>page-header</rdfs:label>
+         <rdfs:comment>Material, separate from the main body of text, appearing at the top of a printed page.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#page-footer" rdf:ID="page-footer">
+         <rdfs:label>page-footer</rdfs:label>
+         <rdfs:comment>Material, separate from the main body of text, appearing at the bottom of a printed page.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#recto" rdf:ID="recto">
+         <rdfs:label>recto</rdfs:label>
+         <rdfs:comment>The front side of a page.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#verso" rdf:ID="verso">
+         <rdfs:label>verso</rdfs:label>
+         <rdfs:comment>The back side of a page.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+   </rdf:Bag>
+   <rdf:Bag rdf:ID="custom-content">
+      <dcterms:title>Custom Content (Republishing)</dcterms:title>
+      <rdf:Description rdf:about="#image-placeholder" rdf:ID="image-placeholder">
+         <rdfs:label>image-placeholder</rdfs:label>
+         <rdfs:comment>A placeholder for a reference to a non-existing or deliberately removed image.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+         <rdfs:subPropertyOf rdf:resource="#nonresolving-reference"/>
+      </rdf:Description>
+   </rdf:Bag>
+   <rdf:Bag rdf:ID="priority">
+      <dcterms:title>Priority</dcterms:title>
+      <rdf:Description rdf:about="#primary" rdf:ID="primary">
+         <rdfs:label>primary</rdfs:label>
+         <rdfs:comment>Indicates the current element has primary importance (for example, may identify the primary table of contents for a work or a primary source).</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#secondary" rdf:ID="secondary">
+         <rdfs:label>secondary</rdfs:label>
+         <rdfs:comment>Indicates the current element has secondary importance.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="#tertiary" rdf:ID="tertiary">
+         <rdfs:label>tertiary</rdfs:label>
+         <rdfs:comment>Indicates the current element has tertiary importance.</rdfs:comment>
+         <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </rdf:Description>
+   </rdf:Bag>
+</rdf:RDF>

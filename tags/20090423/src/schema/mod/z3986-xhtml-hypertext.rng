@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z3986 Hypertext Module</x:h1>  
+  
+  <x:p>This module is the Z3986 equivalent of the XHTML2 Hypertext Module.</x:p>
+  <x:p>It is intended to be used in profiles which do not employ the "href anywhere"
+    approach of XHTML 2, but instead reserves the a element for hyperlinking.</x:p>
+    
+    <include href="xhtml-hypertext-2.rng" />
+    
+    <define name="xhtml.a.attlist" combine="interleave"> 
+      <!-- bring in attributes from xhtml-hypertext-attrib-2 -->       
+      <ref name="xhtml.href.attrib"/>        
+      <optional>
+        <ref name="xhtml.hreflang.attrib"/>
+      </optional>
+      <optional>
+        <ref name="xhtml.hrefmedia.attrib"/>
+      </optional>
+      <optional>
+        <ref name="xhtml.hreftype.attrib"/>
+      </optional>
+    </define>
+  
+</grammar>

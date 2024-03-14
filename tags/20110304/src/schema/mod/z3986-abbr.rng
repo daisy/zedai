@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="abbreviations">The abbreviations module</title>
+        <annotation annotates="/">
+            <para role="desc-main">This module defines the {[[#z3986.abbr]]} and {[[#z3986.expansion]]} elements for identifying and annotating abbreviations and acronyms.</para>
+            <simplelist role="def-dependencies">                                
+                <member xlink:href="z3986-global-classes.rng"/>
+                <member xlink:href="z3986-linking.rng"/>                
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2011-03-04</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="z3986.abbr" xml:id="z3986.abbr">
+            <element name="abbr">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="abbr">The {abbr} element</title>
+                    <para role="desc-main">The {abbr} element represents the abbreviated form of a phrase, term or name.</para>
+                    <para role="desc-sub">The {[[#z3986.role.attrib]]} attribute optionally expresses whether the type of abbreviation.</para>
+                    <para role="desc-sub">The {[[#z3986.expansion]]} and {[[#z3986.name]]} elements provide a mechanism for associating an abbreviation with its uncontracted form. When including an expansion, the {ref} attribute on the {abbr} element links the abbreviation to an {expansion} or {name}.</para>
+                    <para role="desc-sub">The {ref} attribute can also be used to reference a {[[#z3986.definition]]} element when an explanatory definition of the abbreviation is also needed.</para>
+                    <synopsis role="def-context">{[[#z3986.Phrase.class]]}</synopsis>
+                    <synopsis role="def-content">{(text | Phrase.core.class | Text.core.class)+}</synopsis>
+                    <synopsis role="def-attlist" condition="The attribute model must allow the {[[#z3986.role.attrib role]]} and {[[#z3986.ref.attrib ref]]} attributes.">{[[#z3986.Phrase.attrib]], [[#z3986.ref.attrib]]?}</synopsis>
+                </annotation>
+                <ref name="z3986.abbr.attlist"/>
+                <ref name="z3986.abbr.content"/>
+                <sch:rule context="default:abbr[@ref]">
+                    <sch:assert test="some $exp in (//default:expansion, //default:name, //default:definition) satisfies current()/@ref eq $exp/@xml:id">The {ref} attribute on an {abbr} element must resolve to an {expansion}, {name} or {definition} element.</sch:assert>
+                </sch:rule>
+                <sch:rule context="default:abbr">
+                    <sch:assert test="normalize-space(.) or *">The {abbr} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="z3986.abbr.attlist" xml:id="z3986.abbr.attlist">
+            <!-- expand out Phrase.attrib in order to allow value suggestion injections on @role -->
+            <ref name="z3986.global.core.attrib"/>
+            <optional>
+                <ref name="z3986.abbr.role.attrib"/>
+            </optional>
+            <optional>
+                <ref name="z3986.ref.attrib"/>
+            </optional>
+            <ref name="z3986.Phrase.extern.attrib"/>
+        </define>
+        <define name="z3986.abbr.content" xml:id="z3986.abbr.content">
+            <ref name="z3986.Text.model"/>
+        </define>
+        <define name="z3986.abbr.role.attrib" xml:id="z3986.num.role.attrib">
+            <attribute name="role">
+                <list>
+                    <oneOrMore>
+                        <ref name="z3986.abbr.role.attrib.content.enum"/>
+                    </oneOrMore>
+                </list>
+            </attribute>
+        </define>
+        <define name="z3986.abbr.role.attrib.content.enum" combine="choice">
+            <ref name="QName.datatype"/>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.expansion" xml:id="z3986.expansion">
+            <element name="expansion">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="expansion">The {expansion} element</title>
+                    <para role="desc-main">The {expansion} element represents the fully expanded form of an {[[#z3986.abbr abbreviation]]}.</para>
+                    <para role="desc-sub">The {expansion} element requires an {xml:id} attribute with a unique identifier for linking from the associated abbreviation.</para>
+                    <para role="desc-sub">Expansions that are not part of the document content must be placed in the document {[[#z3986.head]]}.</para>
+                    <synopsis role="def-context">{[[#z3986.Phrase.class]]}</synopsis>
+                    <synopsis role="def-content">{(text | [[#z3986.Text.class]] | Phrase.core.class | Phrase.extern.class)+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Phrase.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.expansion.attlist"/>
+                <ref name="z3986.expansion.content"/>
+                <sch:rule context="default:expansion">
+                    <sch:assert test="not(descendant::default:expansion)">The {expansion} element must not contain descendant {expansion} elements.</sch:assert>
+                    <sch:assert test="normalize-space(.) or *">The {expansion} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="z3986.expansion.attlist" xml:id="z3986.expansion.attlist">
+            <ref name="z3986.Phrase.attrib"/>
+        </define>
+        <define name="z3986.expansion.content" xml:id="z3986.expansion.content">
+            <ref name="z3986.Phrase.core.Text.mix.model"/>
+        </define>
+    </div>
+    <div>
+        <a:documentation>abbreviations module - default content model contribution</a:documentation>
+        <define name="z3986.head.class" combine="choice">
+            <ref name="z3986.expansion"/>
+        </define>
+        <define name="z3986.Phrase.core.class" combine="choice">
+            <ref name="z3986.expansion"/>
+        </define>
+        <define name="z3986.Phrase.core.class" combine="choice">
+            <ref name="z3986.abbr"/>
+        </define>
+        <define name="z3986.name.extra.class" combine="choice">
+            <ref name="z3986.abbr"/>
+        </define>
+    </div>
+</grammar>

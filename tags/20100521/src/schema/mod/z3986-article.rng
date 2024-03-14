@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+  ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="article">The article module</dcterms:title>
+      <dcterms:description>This module defines the [[#z3986.article]] element for the inclusion and embedding of articles.</dcterms:description>
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}"/>
+      <dcterms:creator>Markus Gylling</dcterms:creator>
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng"/>
+      <dcterms:requires rdf:resource="z3986-meta.rng"/>       
+      <dcterms:requires rdf:resource="z3986-headings.rng"/>       
+      <dcterms:requires rdf:resource="z3986-byline.rng"/>       
+      <dcterms:requires rdf:resource="z3986-dateline.rng"/>        
+    </rdf:Description>
+  </rdf:RDF>
+
+  <define name="z3986.article">
+    <element name="article">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="article">The {article} element</dcterms:title>
+          <dcterms:description>The {article} element represents an article in an electronic or print journal, magazine, news source or encyclopedia.</dcterms:description>
+          <z:info absdef-only="true">The simplest use for the {article} element is as a specialization of
+            the {[[#z3986.section]]} element for reproducing full articles or extracts. It is additionally possible to include {[[#z3986.article.head]]} 
+            and {[[#z3986.article.body]]} children for more formally structured articles.</z:info>
+          <dcterms:isRequiredBy rdf:resource="."/>
+          <z:context>{[[#z3986.Section.class]]}</z:context>
+          <z:content z:alterability="The content model must not allow more than one {[[#z3986.h h]]} element.">{[[#z3986.article.head]], [[#z3986.article.body]]} 
+            or {([[#z3986.h]] &amp;amp; [[#z3986.Block.class]]* &amp;amp; [[#z3986.byline]]? &amp;amp; [[#z3986.dateline]]?), [[#z3986.article.section]]*}</z:content>
+          <z:attlist>{[[#z3986.Section.attrib]]}</z:attlist>
+        </rdf:Description>
+      </rdf:RDF>
+      <ref name="z3986.article.attlist"/>
+      <ref name="z3986.article.content"/>
+    </element>
+  </define>
+
+  <define name="z3986.article.attlist">
+    <ref name="z3986.Section.attrib"/>
+  </define>
+
+  <define name="z3986.article.content">
+    <ref name="z3986.article.document.model"/>
+  </define>
+
+  <define name="z3986.article.document.model">
+    <a:documentation>The document-like model choice for article</a:documentation>
+    <ref name="z3986.article.head"/>
+    <ref name="z3986.article.body"/>
+  </define>
+
+  <define name="z3986.article.simple.model">
+    <a:documentation>The section-like model choice for article</a:documentation>
+    <ref name="z3986.article.body.content"/>
+  </define>
+
+  <define name="z3986.article.head">
+    <element name="head">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="head (article)">The article {head} element</dcterms:title>
+          <dcterms:description>The article {head} element contains meta information about the 
+          complete or partial article contained in the enclosing {article} element.</dcterms:description>
+          <z:info>The meta information in the article {head} element is not document content
+            in the context of Z39.86-AI documents, but may be used for display and other purposes when
+            rendering documents into alternate formats.</z:info>
+          <z:context>{[[#z3986.article]]}</z:context>
+          <z:content>{[[#z3986.meta]]+}</z:content>
+          <z:attlist>{[[#z3986.Document.attrib]]}</z:attlist>
+        </rdf:Description>
+      </rdf:RDF>
+      <ref name="z3986.article.head.attlist"/>
+      <ref name="z3986.article.head.content"/>
+    </element>
+  </define>
+
+  <define name="z3986.article.head.attlist">
+    <ref name="z3986.Document.attrib"/>
+  </define>
+
+  <define name="z3986.article.head.content">
+    <oneOrMore>
+      <choice>
+        <ref name="z3986.article.head.class"/>
+      </choice>
+    </oneOrMore>
+  </define>
+
+  <define name="z3986.article.head.class" combine="choice">
+    <choice>
+      <!-- TODO expand meta for specialized values -->
+      <ref name="z3986.meta"/>
+    </choice>
+  </define>
+
+  <define name="z3986.article.body">
+    <element name="body">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="body (article)">The article {body} element</dcterms:title>
+          <dcterms:description>The article {body} element contains the complete or partial content of the {[[#z3986.article]]}.</dcterms:description>
+          <z:context>{[[#z3986.article]]}</z:context>
+          <z:content>{([[#z3986.h]] &amp;amp; [[#z3986.Block.class]]* &amp;amp; [[#z3986.byline]]? &amp;amp; [[#z3986.dateline]]?), [[#z3986.article.section]]*}</z:content>
+          <z:attlist>{[[#z3986.Document.attrib]]}</z:attlist>
+        </rdf:Description>
+      </rdf:RDF>
+      <ref name="z3986.article.body.attlist"/>
+      <ref name="z3986.article.body.content"/>
+    </element>
+  </define>
+
+  <define name="z3986.article.body.attlist">
+    <ref name="z3986.Document.attrib"/>
+  </define>
+
+  <define name="z3986.article.body.content">
+    <choice>
+      <group>
+        <interleave>          
+          <ref name="z3986.h"/>
+          <oneOrMore>
+            <ref name="z3986.article.body.body.class"/>
+          </oneOrMore>  
+          <optional>
+            <ref name="z3986.byline"/>
+          </optional>
+          <optional>
+            <ref name="z3986.dateline"/>
+          </optional>  
+        </interleave>
+        <zeroOrMore>
+          <ref name="z3986.article.section"/>
+        </zeroOrMore>          
+      </group>  
+      <group>
+        <interleave>          
+          <ref name="z3986.h"/>
+          <zeroOrMore>
+            <ref name="z3986.article.body.body.class"/>
+          </zeroOrMore>  
+          <optional>
+            <ref name="z3986.byline"/>
+          </optional>
+          <optional>
+            <ref name="z3986.dateline"/>
+          </optional>
+        </interleave>
+        <oneOrMore>
+          <ref name="z3986.article.section"/>
+        </oneOrMore>          
+      </group>      
+    </choice> 
+  </define> 
+
+  <define name="z3986.article.body.body.class" combine="choice">
+  	<choice>
+      <ref name="z3986.Block.class"/>
+      <ref name="z3986.Global.extra.class"/>
+    </choice>  
+  </define>
+  
+  <define name="z3986.article.section">
+    <element name="section">
+      <rdf:RDF>
+        <rdf:Description>
+          <dcterms:title z:short="section (article)">The article {section} element</dcterms:title>
+          <dcterms:description>The article {section} element represents a major structural division in an {[[#z3986.article]]}.</dcterms:description>
+          <z:info>The article {section} element is a specialization of the {[[#z3986.section]]} element. It provides a content model to fit the unique requirements of article divisions.</z:info>
+          <z:info z:inherit="z3986.section-h-note"/>
+          <z:context>{[[#z3986.article]]}</z:context>          
+          <z:content z:alterability="The content model must not allow more than one {[[#z3986.h h]]} element.">{([[#z3986.h]]? &amp;amp; [[#z3986.Block.class]]*), [[#z3986.article.section]]*}</z:content>          
+          <z:attlist>{[[#z3986.Section.attrib]]}</z:attlist>      
+        </rdf:Description>
+      </rdf:RDF>
+      <ref name="z3986.article.section.attlist"/>
+      <ref name="z3986.article.section.content"/>
+    </element>
+  </define>
+
+  <define name="z3986.article.section.attlist">
+    <ref name="z3986.Section.attrib"/>
+  </define>  
+
+  <define name="z3986.article.section.content">    
+    <choice>
+      <group>
+        <interleave>
+          <optional>
+            <ref name="z3986.h"/>
+          </optional>  
+          <oneOrMore>
+            <ref name="z3986.article.body.body.class"/>
+          </oneOrMore>  
+        </interleave>
+        <zeroOrMore>
+          <ref name="z3986.article.section"/>
+        </zeroOrMore>          
+      </group>  
+      <group>
+        <interleave>
+          <optional>
+            <ref name="z3986.h"/>
+          </optional>  
+          <zeroOrMore>
+            <ref name="z3986.article.body.body.class"/>
+          </zeroOrMore>  
+        </interleave>
+        <oneOrMore>
+          <ref name="z3986.article.section"/>
+        </oneOrMore>          
+      </group>      
+    </choice>      
+  </define>
+
+</grammar>

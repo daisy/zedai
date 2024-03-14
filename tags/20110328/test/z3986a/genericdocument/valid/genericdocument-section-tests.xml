@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="../../../../src/schema/z3986a-genericdocument.rng" type="xml"?>
+<document xmlns="http://www.daisy.org/ns/z3986/authoring/" xml:lang="en" xml:id="doc"
+  profile="http://www.daisy.org/z3986/2011/vocab/profiles/default/">
+  <head>
+    <meta rel="z3986:profile" resource="http://www.daisy.org/z3986/2011/auth/profiles/genericdocument/0.5/">
+      <meta property="z3986:name" content="genericdocument"/>
+      <meta property="z3986:version" content="0.5"/>
+    </meta>
+
+    <meta property="dcterms:identifier" content="com.googlecode.zednext.section.tests"/>
+    <meta property="dcterms:publisher" content="DAISY Consortium"/>
+    <meta property="dcterms:modified" content="2010-03-27T15:50:05Z"/>    
+    
+  </head>
+  <body>
+    <h property="dcterms:title">Section tests</h>
+    
+    <section xml:id="valid">
+      <h>Sections that should validate</h>
+      
+      <section>
+        <h>A section with only a heading</h>
+      </section>
+                  
+      <section>
+        <pagebreak/>
+        <h>A section with a heading and global extra</h>
+      </section>
+      
+      <section>
+        <h>A section with a heading and global extra</h>
+        <pagebreak/>
+      </section>
+                  
+      <section>        
+        <h>A section with a heading and block content</h>
+        <p>...<span>...</span>...</p>
+      </section>
+      
+      <section>     
+        <pagebreak/>
+        <h>A section with a heading and block content interleaved with global extra content [1]</h>        
+        <p>...<span>...</span>...</p>
+        <pagebreak/>
+        <block>
+          <p>...<span>...</span>...</p>
+        </block>
+        <pagebreak/>
+      </section>
+      
+      <section>        
+        <h>A section with a heading and block content interleaved with global extra content [2]</h>
+        <p>...<span>...</span>...</p>
+        <pagebreak/>
+        <block>
+          <p>...<span>...</span>...</p>
+        </block>
+      </section>
+      
+      <section>        
+        <h>A section with a heading and block content followed by subsection</h>
+        <p>...<span>...</span>...</p>
+        <section>
+          <h>A subsection</h>
+        </section>
+      </section>
+      
+      <section>        
+        <h>A section with a heading followed by subsections</h>        
+        <section>
+          <h>A subsection</h>
+        </section>
+        <section>
+          <h>A subsection</h>
+        </section>
+      </section>
+      
+      <section>        
+        <h>A section with a heading followed by subsections and interleaved global extra</h>        
+        <section>
+          <h>A subsection</h>
+        </section>
+        <pagebreak/>
+        <section>
+          <h>A subsection</h>
+        </section>
+      </section>
+      
+      <section>        
+        <h>A section with a heading followed by blocks and interleaved global extra, followed by 
+        subsections and interleaved global extra</h>  
+        <p>...<span>...</span>...</p>        
+        <pagebreak/>
+        <p>...<span>...</span>...</p>
+        <section>
+          <h>A subsection</h>
+        </section>
+        <pagebreak/>
+        <section>
+          <h>A subsection</h>
+        </section>
+      </section>
+    </section>
+    
+    <!--
+    <section xml:id="invalid">
+      <h>Sections that should not validate - uncomment to enjoy</h>    
+            
+      <section />
+      
+      <section>        
+        <pagebreak/>
+      </section>
+      
+      <section>        
+        <h>A section with a heading and section content followed by block content</h>
+        <section>
+          <h>A subsection</h>
+        </section>
+        <p>...</p>        
+      </section>   
+            
+    </section>  
+     -->
+  </body>
+</document>

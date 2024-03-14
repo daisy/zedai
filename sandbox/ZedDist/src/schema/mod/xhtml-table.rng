@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+  
+  <include href="xhtml-table-basic.rng">
+    
+    <define name="xhtml.table">
+      <element name="table">
+        <ref name="xhtml.table.attlist"/>
+        <optional>
+          <ref name="xhtml.caption"/>
+        </optional>
+        <choice>
+          <zeroOrMore>
+            <ref name="xhtml.col"/>
+          </zeroOrMore>
+          <zeroOrMore>
+            <ref name="xhtml.colgroup"/>
+          </zeroOrMore>
+        </choice>
+        <choice>
+          <group>
+            <optional>
+              <ref name="xhtml.thead"/>
+            </optional>
+            <optional>
+              <ref name="xhtml.tfoot"/>
+            </optional>
+            <oneOrMore>
+              <ref name="xhtml.tbody"/>
+            </oneOrMore>
+          </group>
+          <oneOrMore>
+            <ref name="xhtml.tr"/>
+          </oneOrMore>
+        </choice>
+      </element>
+    </define>
+    
+    <define name="xhtml.th">
+      <element name="th">
+        <ref name="xhtml.th.attlist"/>
+        <ref name="xhtml.Flow.model"/>
+      </element>
+    </define>
+    
+    <define name="xhtml.td">
+      <element name="td">
+        <ref name="xhtml.td.attlist"/>
+        <ref name="xhtml.Flow.model"/>
+      </element>
+    </define>
+    <define name="xhtml.CellHAlign.attrib">
+      <optional>
+        <attribute name="align">
+          <choice>
+            <value>left</value>
+            <value>center</value>
+            <value>right</value>
+            <value>justify</value>
+            <value>char</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="char">
+          <ref name="Character.datatype"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="charoff">
+          <ref name="Length.datatype"/>
+        </attribute>
+      </optional>
+    </define>
+    <define name="xhtml.CellVAlign.attrib">
+      <optional>
+        <attribute name="valign">
+          <choice>
+            <value>top</value>
+            <value>middle</value>
+            <value>bottom</value>
+            <value>baseline</value>
+          </choice>
+        </attribute>
+      </optional>
+    </define>
+    <define name="xhtml.scope.attrib">
+      <optional>
+        <attribute name="scope">
+          <choice>
+            <value>row</value>
+            <value>col</value>
+            <value>rowgroup</value>
+            <value>colgroup</value>
+          </choice>
+        </attribute>
+      </optional>
+    </define>
+  </include>
+  
+  <define name="xhtml.table.attlist" combine="interleave">
+    <optional>
+      <attribute name="width">
+        <ref name="Length.datatype"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="border">
+        <ref name="Pixels.datatype"/>
+      </attribute>
+    </optional>
+    <ref name="xhtml.frame.attrib"/>
+    <ref name="xhtml.rules.attrib"/>
+    <optional>
+      <attribute name="cellspacing">
+        <ref name="Length.datatype"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="cellpadding">
+        <ref name="Length.datatype"/>
+      </attribute>
+    </optional>
+  </define>
+  
+  <define name="xhtml.col">
+    <element name="col">
+      <ref name="xhtml.col.attlist"/>
+    </element>
+  </define>
+  
+  <define name="xhtml.col.attlist">
+    <ref name="xhtml.Common.attrib"/>
+    <optional>
+      <attribute name="span">
+        <ref name="NonNegativeInteger.datatype"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="width">
+        <ref name="MultiLength.datatype"/>
+      </attribute>
+    </optional>
+    <ref name="xhtml.CellHAlign.attrib"/>
+    <ref name="xhtml.CellVAlign.attrib"/>
+  </define>
+  
+  <define name="xhtml.colgroup">
+    <element name="colgroup">
+      <ref name="xhtml.colgroup.attlist"/>
+      <zeroOrMore>
+        <ref name="xhtml.col"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  
+  <define name="xhtml.colgroup.attlist">
+    <ref name="xhtml.Common.attrib"/>
+    <optional>
+      <attribute name="span">
+        <ref name="NonNegativeInteger.datatype"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="width">
+        <ref name="MultiLength.datatype"/>
+      </attribute>
+    </optional>
+    <ref name="xhtml.CellHAlign.attrib"/>
+    <ref name="xhtml.CellVAlign.attrib"/>
+  </define>
+  
+  <define name="xhtml.tbody">
+    <element name="tbody">
+      <ref name="xhtml.tbody.attlist"/>
+      <oneOrMore>
+        <ref name="xhtml.tr"/>
+      </oneOrMore>
+    </element>
+  </define>
+  
+  <define name="xhtml.tbody.attlist">
+    <ref name="xhtml.Common.attrib"/>
+    <ref name="xhtml.CellHAlign.attrib"/>
+    <ref name="xhtml.CellVAlign.attrib"/>
+  </define>
+  
+  <define name="xhtml.thead">
+    <element name="thead">
+      <ref name="xhtml.thead.attlist"/>
+      <oneOrMore>
+        <ref name="xhtml.tr"/>
+      </oneOrMore>
+    </element>
+  </define>
+  
+  <define name="xhtml.thead.attlist">
+    <ref name="xhtml.Common.attrib"/>
+    <ref name="xhtml.CellHAlign.attrib"/>
+    <ref name="xhtml.CellVAlign.attrib"/>
+  </define>
+  
+  <define name="xhtml.tfoot">
+    <element name="tfoot">
+      <ref name="xhtml.tfoot.attlist"/>
+      <oneOrMore>
+        <ref name="xhtml.tr"/>
+      </oneOrMore>
+    </element>
+  </define>
+  
+  <define name="xhtml.tfoot.attlist">
+    <ref name="xhtml.Common.attrib"/>
+    <ref name="xhtml.CellHAlign.attrib"/>
+    <ref name="xhtml.CellVAlign.attrib"/>
+  </define>
+  
+  <define name="xhtml.frame.attrib">
+    <optional>
+      <attribute name="frame">
+        <choice>
+          <value>void</value>
+          <value>above</value>
+          <value>below</value>
+          <value>hsides</value>
+          <value>lhs</value>
+          <value>rhs</value>
+          <value>vsides</value>
+          <value>box</value>
+          <value>border</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  
+  <define name="xhtml.rules.attrib">
+    <optional>
+      <attribute name="rules">
+        <choice>
+          <value>none</value>
+          <value>groups</value>
+          <value>rows</value>
+          <value>cols</value>
+          <value>all</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  
+</grammar>

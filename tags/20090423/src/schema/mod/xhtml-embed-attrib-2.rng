@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Embedding Attributes Module</x:h1>
+
+  <div>
+    <x:h2>Embedding Attributes Collection</x:h2>
+
+    <define name="xhtml.src.attrib">      
+      <attribute name="src">
+        <ref name="URI.datatype"/>
+      </attribute>      
+    </define>
+
+    <define name="xhtml.encoding.attrib">      
+      <attribute name="encoding">
+        <ref name="Encodings.datatype"/>
+      </attribute>
+    </define>
+
+    <define name="xhtml.srctype.attrib">      
+      <attribute name="srctype">
+        <ref name="ContentTypes.datatype"/>
+      </attribute>      
+    </define>
+
+    <define name="xhtml.Embedding.attrib">
+      <optional>
+        <ref name="xhtml.src.attrib"/>
+      </optional>
+      <optional>  
+        <ref name="xhtml.encoding.attrib"/>
+      </optional>
+      <optional>  
+        <ref name="xhtml.srctype.attrib"/>
+      </optional>  
+    </define>
+  </div>
+
+  <define name="xhtml.Common.attrib" combine="interleave">
+    <ref name="xhtml.Embedding.attrib"/>
+  </define>
+
+</grammar>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 Caption Module</x:h1>
+
+  <div>
+    <x:h2>The caption element</x:h2>
+    <x:div id="z3986.caption">
+      <x:p class="description"> The <x:code>caption</x:code> elements represents a title, short
+        explanation, or description accompanying a component of a publication. Captions are often
+        used in conjunction with illustrations, photographs, tables and diagrams. <x:br/> The
+          <x:code>for</x:code>attribute is used to identify the component(s) to which the caption
+        applies. </x:p>
+    </x:div>
+
+    <define name="z3986.caption.structural">
+      <element name="caption">
+        <ref name="z3986.caption.attlist"/>
+        <ref name="z3986.caption.structural.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.caption.attlist">
+      <ref name="z3986.Text.attrib"/>
+      <ref name="z3986.for.attrib"/>
+    </define>
+
+    <define name="z3986.caption.structural.content">
+      <ref name="z3986.Flow.model"/>
+    </define>
+
+    <define name="z3986.caption.text">
+      <element name="caption">
+        <ref name="z3986.caption.attlist"/>
+        <ref name="z3986.caption.text.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.caption.text.content">
+      <ref name="z3986.Text.model"/>
+    </define>
+
+  </div>
+  
+  <div>
+    <x:h2>The caption element - default content model contribution</x:h2>
+    
+    <define name="z3986.Text.class" combine="choice">
+      <ref name="z3986.caption.text"/>
+    </define>
+    
+    <define name="z3986.Structural.class" combine="choice">
+      <ref name="z3986.caption.structural"/>
+    </define>
+    
+  </div>
+
+</grammar>

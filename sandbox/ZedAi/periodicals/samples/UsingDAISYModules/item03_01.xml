@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/2002/06/xhtml2/" xml:lang="da" xmlns:zai="http://www.daisy.org/ns/z3986/2008/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <head>
+    <title>Weekendavisen den 4. december 2008</title>
+    <meta property="dc:title">Weekendavisen den 4. december 2008</meta>
+    <meta property="dc:date" datatype="xsd:date">04-12-2008</meta>
+  </head>
+  <body>
+    <section>
+      <h>Kultur</h>
+      <zai:article>
+        <zai:articleHead>
+          <meta property="zai:positionSection">3</meta>
+          <meta property="zai:positionSequence">1</meta>
+          <meta property="dc:copyright">Weekendavisen 2008</meta>
+          <meta property="dc:subject">KUL-KOONS</meta>
+          <meta property="dc:title">Dybt barokt</meta>
+          <meta property="zai:kicker">Excesser. Jeff Koons på Versailles. Hvad ville Solkongen mon have syntes om det? Her er det ikke folket, men kunstneren, der har fortrængt kongen fra piedestalen.</meta>
+          <meta property="dc:date" datatype="xsd:date">04-12-2008</meta>
+          <meta property="zai:proofReader">FLEMMING GERTZ</meta>
+          <meta property="zai:destEdition">København</meta>
+          <meta property="zai:destEdition">Jylland</meta>
+          <meta property="zai:destEdition">Øerne</meta>
+        </zai:articleHead>
+        <zai:articleBody>
+					<zai:headline>Dybt barokt</zai:headline>
+					<zai:byline>Af Anders Ehlers Dam</zai:byline>
+					<p>Article content...</p>
+					<img src="pinkpanther.jpg">Jeff Koons: Pink Panther.</img>
+	      </zai:articleBody>
+      </zai:article>
+    </section>
+  </body>
+</html>

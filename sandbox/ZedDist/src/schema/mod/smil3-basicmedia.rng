@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+
+    <div>
+        <define name="smil3.mediaobjects.class" combine="choice">
+            <choice>
+                <ref name="smil3.ref"/>
+                <ref name="smil3.audio"/>
+                <ref name="smil3.text"/>
+                <ref name="smil3.img"/>
+                <ref name="smil3.textstream"/>
+                <ref name="smil3.video"/>
+                <ref name="smil3.animation"/>
+            </choice>    
+        </define>
+        
+        <define name="smil3.timecontainers.content.class" combine="choice">
+            <ref name="smil3.mediaobjects.class"/>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.mediaobjects.content" combine="interleave">
+            <a:documentation>Common content model for ref and its synonyms</a:documentation>
+            <empty/>
+        </define>
+        <define name="smil3.mediaobjects.attrib" combine="interleave">
+            <a:documentation>Common attributes class for ref and its synonyms</a:documentation>
+            <optional>
+                <ref name="smil3.basicmedia.src.attrib"/>
+                <!-- TODO may want to make src required in our profiles -->
+            </optional>
+            <optional>
+                <ref name="smil3.basicmedia.type.attrib"/>
+            </optional>
+            <ref name="smil3.Core.attrib"/>
+        </define>
+    </div>
+
+    <div>
+
+        <define name="smil3.basicmedia.src.attrib">
+            <attribute name="src">
+                <a:documentation>The value of the src attribute is the IRI of the media element,
+                    used for locating and fetching the associated media. The attribute supports
+                    fragment identifiers and the '#' connector in the IRI value. Note that this
+                    attribute is not required. A media object with no src attribute has an intrinsic
+                    duration of zero, and participates in timing just as any other media element. No
+                    media will be fetched by the SMIL implementation for a media element without a
+                    src attribute.</a:documentation>
+                <ref name="IRI.datatype"/>
+            </attribute>
+        </define>
+
+        <define name="smil3.basicmedia.type.attrib">
+            <attribute name="type">
+                <a:documentation>Content type of the media object referenced by the src attribute.
+                    The usage of this attribute depends on the protocol of the src attribute. </a:documentation>
+                <choice>
+                    <value>HTTP</value>
+                    <a:documentation>The type attribute is used as an alternative method of content
+                        selection and when the type of the referenced media is not otherwise
+                        available. It may override the contents of the "Content-type" field in an
+                        HTTP exchange only if a user has allowed such overrides, as specified in the
+                        TAG Finding Authoritative Metadata [AM]. The nominal precedence order for
+                        type resolution is: via the HTTP content-type field, via the type attribute,
+                        and then by using other clues (such as file inspection or use of the file
+                        extension).</a:documentation>
+
+                    <value>FTP</value>
+                    <a:documentation>FTP [FTP] and local file playback IRI [URI] The type attribute
+                        value takes precedence over other possible sources of the media type (for
+                        instance, the file extension).</a:documentation>
+
+                    <value>RTSP</value>
+                    <a:documentation>The type attribute is used for purposes of content selection
+                        and when the type of the referenced media is not otherwise available. It may
+                        be overridden by the contents of the RTSP DESCRIBE response or by the static
+                        RTP payload number.</a:documentation>
+                </choice>
+            </attribute>
+        </define>
+
+    </div>
+
+    <div>
+        <define name="smil3.video">
+            <element name="video">
+                <ref name="smil3.video.attlist"/>
+                <ref name="smil3.video.content"/>
+            </element>
+        </define>
+
+        <define name="smil3.video.attlist" combine="interleave">
+            <ref name="smil3.mediaobjects.attrib"/>
+        </define>
+
+        <define name="smil3.video.content">
+            <ref name="smil3.mediaobjects.content"/>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.textstream">
+            <element name="textstream">
+                <ref name="smil3.textstream.attlist"/>
+                <ref name="smil3.textstream.content"/>
+            </element>
+        </define>
+
+        <define name="smil3.textstream.attlist" combine="interleave">
+            <ref name="smil3.mediaobjects.attrib"/>
+        </define>
+
+        <define name="smil3.textstream.content">
+            <ref name="smil3.mediaobjects.content"/>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.text">
+            <element name="text">
+                <ref name="smil3.text.attlist"/>
+                <ref name="smil3.text.content"/>
+            </element>
+        </define>
+
+        <define name="smil3.text.attlist" combine="interleave">
+            <ref name="smil3.mediaobjects.attrib"/>
+        </define>
+
+        <define name="smil3.text.content">
+            <ref name="smil3.mediaobjects.content"/>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.img">
+            <element name="img">
+                <ref name="smil3.img.attlist"/>
+                <ref name="smil3.img.content"/>
+            </element>
+        </define>
+
+        <define name="smil3.img.attlist" combine="interleave">
+            <ref name="smil3.mediaobjects.attrib"/>
+        </define>
+
+        <define name="smil3.img.content">
+            <ref name="smil3.mediaobjects.content"/>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.audio">
+            <element name="audio">
+                <ref name="smil3.audio.attlist"/>
+                <ref name="smil3.audio.content"/>
+            </element>
+        </define>
+
+        <define name="smil3.audio.attlist" combine="interleave">
+            <ref name="smil3.mediaobjects.attrib"/>
+        </define>
+
+        <define name="smil3.audio.content">
+            <ref name="smil3.mediaobjects.content"/>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.animation">
+            <element name="animation">
+                <ref name="smil3.animation.attlist"/>
+                <ref name="smil3.animation.content"/>
+            </element>
+        </define>
+
+        <define name="smil3.animation.attlist" combine="interleave">
+            <ref name="smil3.mediaobjects.attrib"/>
+        </define>
+
+        <define name="smil3.animation.content">
+            <ref name="smil3.mediaobjects.content"/>
+        </define>
+    </div>
+
+    <div>
+        <define name="smil3.ref">
+            <element name="ref">
+                <ref name="smil3.ref.attlist"/>
+                <ref name="smil3.ref.content"/>
+            </element>
+        </define>
+
+        <define name="smil3.ref.attlist" combine="interleave">
+            <ref name="smil3.mediaobjects.attrib"/>
+        </define>
+
+        <define name="smil3.ref.content">
+            <ref name="smil3.mediaobjects.content"/>
+        </define>
+    </div>
+
+</grammar>

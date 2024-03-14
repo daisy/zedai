@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 emphasis element module</x:h1>
+    
+  <div>
+    <x:h2>The emph element</x:h2>
+    <x:div id="z3986.emph">
+      <x:p class="description">
+        The <x:code>emph</x:code> represents an authors emphasis, which
+        may be have been signalled by the author of the source document using a 
+        variety of typographical or styling means.
+	    <x:br/> 
+        The <x:code>emph</x:code> element is <x:strong>not</x:strong> used
+        to specify italicized text.
+      </x:p>
+    </x:div>
+         
+    <define name="z3986.emph">
+      <element name="emph">       
+        <ref name="emph.attlist"/>
+        <ref name="emph.content"/>  
+      </element>    
+    </define>
+
+    <define name="emph.attlist">
+      <ref name="z3986.Text.attrib"/>
+    </define>
+    
+    <define name="emph.content">
+      <ref name="z3986.Text.model" />
+    </define>  
+    
+  </div>  
+  
+  <div>
+    <x:h2>The emph element - default content model contribution</x:h2>
+    
+    <define name="z3986.Text.class" combine="choice">
+      <ref name="z3986.emph"/>
+    </define>
+    
+  </div>
+
+</grammar>

@@ -1,0 +1,122 @@
+/* ProfileDocumentation.css */
+
+/*
+    20081003: Per Sennels (ps): Created
+*/
+@import url(_positioning.css);
+@import url(_title.css);
+@import url(_links.css);
+@import url(_menu.css);
+@import url(_rng.css);
+
+
+body {
+    padding:2mm 2em 3mm 2em;
+    font-family:verdana, helvetica, sans-serif;
+    }
+
+   
+h1.xhtml, h2.xhtml, h3.xhtml, h4.xhtml {
+    }
+h1 {
+    font-size:140%;
+    }
+
+h2 {
+    font-size:120%;
+    }
+
+
+span.name, a {
+    color:rgb(120,0,60);
+    }
+
+span.name {font-family:monospace;}
+
+span.uri {
+    font-family:monospace;
+    color:rgb(90,0,0);
+    }
+
+span.element{
+    font-family:monospace;
+    color:rgb(190,90,0);
+    font-weight:bold;
+    }
+p {
+    margin:0pt 0pt 0.3em 0pt;
+    }
+
+hr {
+    color:rgb(238,238,238);
+    
+    }
+
+ol li {
+    margin-bottom:1em;
+    }
+    
+span.markup, pre {
+    font-family:courier, fixed, monospace;
+    color:rgb(140,80,45);
+    }
+
+table {
+    margin:1em;
+    border-collapse:collapse;
+    width:90%;
+    }
+td, th {
+    padding-left:1mm;
+    border:1pt solid rgb(215,215,255);
+    }
+th {
+    background-color:rgb(215,215,255);
+}
+/*
+ul.toc {
+    width:100%;
+    list-style-type:square;
+    }
+
+li.toc-h2 {
+    font-weight:bold;
+    }
+li.toc-h3 {
+    margin-left:1em;
+    font-size:85%;
+    }    
+li.toc-h4 {
+    margin-left:3em;
+    font-size:70%;
+    }    
+ul.toc a {
+    color:rgb(0,0,120);
+    text-decoration:none;
+    }*/
+
+
+    
+/* div.rng {
+    
+    border:1pt dashed rgb(200,180,220);
+    padding:2mm;
+    }
+
+div.element {
+    border:3pt solid rgb(0,0,255);
+    padding:2mm;
+    margin-bottom:2mm;
+    }
+div.ref {
+    border:3pt solid rgb(220,40,25);
+    padding:2mm;
+    margin-bottom:2mm;
+    }
+    
+div.define {
+    border:3pt solid rgb(100,0,155);
+    padding:2mm;
+    margin-bottom:2mm;
+    }
+*/

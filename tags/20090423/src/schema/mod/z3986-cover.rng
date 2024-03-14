@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+  <x:h1>The Z3986 Book Cover module</x:h1>
+  <x:p>This module is an optional addon to the Z3986 Book Module </x:p> 
+
+  <div>
+    <x:h2>The cover element</x:h2>
+    <x:div id="z3986.cover">
+      <p class="description">
+        <em>Description: to be written ...</em>
+        <strong>(@id="z3986.cover" in file z3986-cover.rng)</strong>
+      </p>
+      <h2>Use of this element</h2>
+      <p>
+        <em>More info: to be written ...</em>
+        <strong>(@id="z3986.cover" in file z3986-cover.rng)</strong>
+      </p>
+    </x:div>
+    
+    <define name="z3986.cover" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="cover">
+          <ref name="z3986.cover.attlist"/>
+          <ref name="z3986.cover.content" />
+        </element>
+    </define>
+
+    <define name="z3986.cover.attlist">
+      <ref name="xhtml.Common.attrib" />
+    </define>
+
+    <define name="z3986.cover.content">
+        <optional>
+            <ref name="z3986.spine" />
+        </optional>
+        <optional>
+          <ref name="z3986.frontcover" />
+        </optional>
+        <optional>
+          <ref name="z3986.backcover" />
+        </optional>
+        <optional>
+            <ref name="z3986.flaps" />
+        </optional>        
+    </define>
+  </div>
+  
+  <div>
+    <x:h2>The spine element</x:h2>
+    <x:div id="z3986.spine">
+      <p class="description"><em>Description: to be written ...</em> <strong>(@id="z3986.spine"  in file z3986-cover.rng)</strong></p>
+      <h2>Use of this element</h2>
+      <p><em>More info: to be written ...</em> <strong>(@id="z3986.spine" in file z3986-cover.rng)</strong></p>
+    </x:div>
+    
+    <define name="z3986.spine" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="spine">
+            <ref name="z3986.spine.attlist" />
+            <ref name="z3986.spine.content" />
+        </element>
+    </define>
+
+    <define name="z3986.spine.attlist">
+        <ref name="xhtml.Common.attrib" />
+    </define>
+
+    <define name="z3986.spine.content">      
+      <oneOrMore>    	  
+    	<ref name="z3986.spine.content.class"/>                              			      	  
+      </oneOrMore>      		      	   
+    </define>
+    
+    <define name="z3986.spine.content.class">
+      <choice>
+        <!-- TODO check if reasonable; a subset of Flow.model -->
+        <ref name="xhtml.object"/>
+        <ref name="xhtml.p"/>
+        <ref name="xhtml.div"/>        
+        <ref name="xhtml.blockquote"/>
+        <ref name="xhtml.span"/> 
+      </choice>
+    </define>
+  </div>
+    
+  <div>
+    <x:h2>The frontcover element</x:h2>  
+    <x:div id="z3986.frontcover">
+        <p class="description"><em>Description: to be written ...</em> <strong>(@id="z3986.frontcover"  in file z3986-cover.rng)</strong></p>
+        <h2>Use of this element</h2>
+        <p><em>More info: to be written ...</em> <strong>(@id="z3986.frontcover" in file z3986-cover.rng)</strong></p>
+    </x:div>
+    
+    <define name="z3986.frontcover" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="frontcover">
+            <ref name="z3986.frontcover.attlist" />
+            <ref name="z3986.frontcover.content" />
+        </element>
+    </define>
+
+	<define name="z3986.frontcover.attlist">
+        <ref name="xhtml.Common.attrib" />
+    </define>
+
+    <define name="z3986.frontcover.content" combine="interleave">
+      <!-- same content model as that defined for frontmatter/section -->						
+      <ref name="z3986.section.frontmatter.content"/>		
+    </define>
+  </div>
+
+  <div>
+    <x:h2>The backcover element</x:h2>      
+    <x:div id="z3986.backcover">
+        <p class="description"><em>Description: to be written ...</em> <strong>(@id="z3986.backcover"  in file z3986-cover.rng)</strong></p>
+        <h2>Use of this element</h2>
+        <p><em>More info: to be written ...</em> <strong>(@id="z3986.backcover" in file z3986-cover.rng)</strong></p>
+    </x:div>
+  
+    <define name="z3986.backcover" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="backcover">
+            <ref name="z3986.backcover.attlist" />
+            <ref name="z3986.backcover.content" />
+        </element>
+    </define>
+
+	<define name="z3986.backcover.attlist" combine="interleave">
+     	<ref name="xhtml.Common.attrib" />
+    </define>
+                    
+    <define name="z3986.backcover.content" combine="interleave">              
+      <!-- same content model as that defined for frontmatter/section -->						
+      <ref name="z3986.section.frontmatter.content"/>
+    </define>
+  </div>
+
+  <div>  
+    <x:h2>The flaps element</x:h2>
+    <x:div id="z3986.flaps">
+        <p class="description"><em>Description: to be written ...</em> <strong>(@id="z3986.flaps" in file z3986-cover.rng)</strong></p>
+        <h2>Use of this element</h2>
+        <p><em>More info: to be written ...</em> <strong>(@id="z3986.flaps" in file z3986-cover.rng)</strong></p>
+    </x:div>
+    
+    <define name="z3986.flaps" ns="http://www.daisy.org/ns/z3986/2008/">
+    	<element name="flaps">      			
+			<ref name="z3986.flaps.attlist"/>
+			<ref name="z3986.flaps.content"/>
+      	</element>
+    </define>
+
+    <define name="z3986.flaps.attlist">
+        <ref name="xhtml.Common.attrib" />
+    </define>
+            
+    <define name="z3986.flaps.content" combine="interleave">
+      <!-- same content model as that defined for frontmatter/section -->						
+      <ref name="z3986.section.frontmatter.content"/>      
+    </define>
+  </div>  
+    
+  <!-- contribute cover into the dedicated slot in the book module -->
+  <define name="z3986.book.content.cover.slot" combine="choice">
+    <ref name="z3986.cover"/>
+  </define>
+
+</grammar>

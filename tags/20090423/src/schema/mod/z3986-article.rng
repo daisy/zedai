@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar 
+  xmlns="http://relaxng.org/ns/structure/1.0" 
+  xmlns:x="http://www.w3.org/1999/xhtml">
+  
+  <x:h1>The Z3986 Article module</x:h1>
+  <x:p>The article element is a simple specialization of the XHTML2 <code>section</code> element, 
+    and inherits all of its basic properties.
+  </x:p>
+  
+  <!-- TODO lift byline dateline copyright to individual modules -->
+    
+  <define name="z3986.article" ns="http://www.daisy.org/ns/z3986/2008/">
+    <element name="article">
+      <ref name="z3986.article.attlist"/>
+      <ref name="z3986.article.content"/>
+    </element>  
+  </define>  
+
+  <define name="z3986.article.attlist">
+    <ref name="xhtml.Common.attrib"/>
+  </define>
+
+  <define name="z3986.article.content">
+    <optional>
+      <ref name="xhtml.head"/>
+    </optional>  
+    <ref name="z3986.article.body"/>
+  </define>
+
+  <define name="z3986.article.body">
+    <element name="body">
+      <ref name="z3986.article.body.attlist" />
+      <ref name="z3986.article.body.content" />
+    </element>
+  </define>
+
+  <define name="z3986.article.body.attlist">
+    <ref name="xhtml.Common.attrib"/>
+  </define>
+
+  <define name="z3986.article.body.content">
+    <ref name="xhtml.h"/>
+    <interleave>
+      <optional>
+        <ref name="z3986.byline"/>
+      </optional>
+      <optional>
+        <ref name="z3986.dateline"/>
+      </optional>
+      <optional>
+        <ref name="z3986.copyright"/>
+      </optional>      
+      <ref name="z3986.article.body.body.model"/>      
+    </interleave>
+  </define>
+    
+  <define name="z3986.article.body.body.model">
+    <oneOrMore>
+      <ref name="z3986.article.body.body.class"/>
+    </oneOrMore>
+  </define>  
+  
+  <define name="z3986.article.body.body.class">
+    <choice>
+      <ref name="xhtml.Structural.nosection.class"/>
+      <ref name="z3986.article.section"/>
+    </choice>  
+  </define>
+  
+  <define name="z3986.article.section">    
+    <element name="section">
+      <ref name="xhtml.section.attlist"/>
+      <ref name="z3986.article.section.content"/>
+    </element>    
+  </define>
+  
+  <define name="z3986.article.section.content">
+    <ref name="xhtml.h"/>
+    <oneOrMore>
+      <ref name="z3986.article.body.body.class"/>
+    </oneOrMore>
+  </define>    
+        
+  <define name="z3986.byline" ns="http://www.daisy.org/ns/z3986/2008/">
+    <element name="byline">
+      <ref name="z3986.byline.attlist"/>
+      <ref name="z3986.byline.content"/>    
+    </element>
+  </define>  
+
+  <define name="z3986.byline.attlist">
+    <ref name="xhtml.Common.attrib"/>
+  </define>
+  
+  <define name="z3986.byline.content">
+    <ref name="z3986.Text.base.model"/>
+  </define> 
+  
+  <define name="z3986.dateline" ns="http://www.daisy.org/ns/z3986/2008/">
+    <element name="dateline">
+      <ref name="z3986.dateline.attlist"/>
+      <ref name="z3986.dateline.content"/>    
+    </element>
+  </define>
+
+  <define name="z3986.dateline.attlist">    
+    <ref name="xhtml.Common.attrib"/>
+  </define>
+  
+  <define name="z3986.dateline.content">
+    <!-- allow any syntax in the text node, to specify a machine-readable
+    date, use rdf/a from common attribute collection on this element. -->
+    <text/>
+  </define> 
+
+  <define name="z3986.copyright" ns="http://www.daisy.org/ns/z3986/2008/">
+    <element name="copyright">
+      <ref name="z3986.copyright.attlist"/>
+      <ref name="z3986.copyright.content"/>    
+    </element>
+  </define>
+
+  <define name="z3986.copyright.attlist">    
+    <ref name="xhtml.Common.attrib"/>
+  </define>
+  
+  <define name="z3986.copyright.content">    
+    <ref name="z3986.Text.base.model" />
+  </define>
+
+  <define name="z3986.article.body.content.alt">
+    <choice>
+      <group>
+        <interleave>
+          <optional>
+            <ref name="z3986.byline"/>
+          </optional>
+          <optional>
+            <ref name="z3986.dateline"/>
+          </optional>
+          <ref name="xhtml.h"/>
+        </interleave>
+        <ref name="z3986.article.body.body.model"/>
+      </group>
+      <group>
+        <ref name="xhtml.h"/>
+        <ref name="z3986.article.body.body.model"/>
+        <interleave>
+          <optional>
+            <ref name="z3986.byline"/>
+          </optional>
+          <optional>
+            <ref name="z3986.dateline"/>
+          </optional>        
+        </interleave>        
+      </group>
+      <group>
+        <interleave>      
+          <optional>
+            <ref name="z3986.dateline"/>
+          </optional>
+          <ref name="xhtml.h"/>
+        </interleave>
+        <ref name="z3986.article.body.body.model"/>
+        <optional>
+          <ref name="z3986.byline"/>
+        </optional>        
+      </group>      
+      <group>
+        <interleave>      
+          <optional>
+            <ref name="z3986.byline"/>
+          </optional>
+          <ref name="xhtml.h"/>
+        </interleave>
+        <ref name="z3986.article.body.body.model"/>
+        <optional>
+          <ref name="z3986.dateline"/>
+        </optional>        
+      </group>
+    </choice>    
+  </define>
+
+
+</grammar>

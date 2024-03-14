@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="definition">The definition module</dcterms:title>
+      <dcterms:description>This module defines the {[[#z3986.definition]]} element for including formal definitions for words, terms and phrases.</dcterms:description>      
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}" />
+      <dcterms:creator>Markus Gylling</dcterms:creator>      
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng"/>
+    </rdf:Description>
+  </rdf:RDF>
+    
+  <div>
+    
+    <define name="z3986.definition">
+      <element name="definition">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="definition">The {definition} element</dcterms:title>
+            <dcterms:description>The {definition} element represents a formal description of the meaning of a word, term, 
+              phrase, or other construct.</dcterms:description>
+            <z:info>The {definition} element requires an {xml:id} attribute with a unique identifier for linking from the associated term.</z:info>
+            <z:info>The document {[[#z3986.head]]} should contain all definitions that are not part of the document content.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.Phrase.class]]} and {[[#z3986.head]]}</z:context>          
+            <z:content>{(text | [[#z3986.Text.class]] | [[#z3986.Phrase.class]])+}</z:content>          
+            <z:attlist>{[[#z3986.Phrase.attrib]]}</z:attlist>      
+          </rdf:Description>
+        </rdf:RDF>        
+        <ref name="z3986.definition.attlist"/>
+        <ref name="z3986.definition.content"/>  
+        <sch:rule context="default:definition">
+          <sch:assert test="count(*) > 0 or string-length(normalize-space(.)) > 0"
+            >The {definition} element must neither be empty nor contain only whitespace.</sch:assert>
+        </sch:rule>
+      </element>    
+    </define>
+
+    <define name="z3986.definition.attlist">
+        <ref name="z3986.Phrase.attrib"/>
+    </define>
+       
+    <define name="z3986.definition.content">
+      <ref name="z3986.Phrase.Text.mix.model"/>  
+    </define>  
+    
+  </div>
+  
+  <div>
+    <a:documentation>definition - default content model contribution</a:documentation>
+        
+    <define name="z3986.Phrase.core.class" combine="choice">
+      <ref name="z3986.definition"/>    
+    </define>
+
+    <define name="z3986.head.class" combine="choice">
+      <ref name="z3986.definition"/>    
+    </define>
+
+  </div>
+
+</grammar>

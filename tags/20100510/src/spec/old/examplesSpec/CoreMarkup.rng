@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/"
+		 xmlns="http://relaxng.org/ns/structure/1.0"
+
+  <start>
+    <ref name="document" />
+  </start>
+  
+  <define name="document">
+    <element name="document">
+      <ref name="core.attrib" />
+      <ref name="head"/>
+      <ref name="body"/>
+    </element>
+  </define>
+
+  <define name="head">
+      <ref name="core.attrib" />
+      <interleave>
+        <ref name="profile.link" />
+        <ref name="mods" />
+      </interleave>  
+  </define>
+
+  <define name="profile.link">
+    <element name="link">
+      <attribute name="rel">
+        <value>z3986-profile</value>
+      </attribute>
+      <attribute name="href" />
+      <optional>
+        <oneOrMore>
+          <ref name="feature.link" />
+        </oneOrMore>
+      </optional>
+    <element>
+  </define>
+
+  <define name="feature.link">
+    <element name="link">
+      <attribute name="rel">
+        <value>z3986-feature</value>
+      </attribute>
+      <attribute name="href" />
+      <empty/>
+    </element>  
+  </define>
+  
+  <define name="mods">
+  </define>
+
+  <define name="body">
+    <element name="body">
+      <ref name="core.attrib" />
+      <ref name="body.slot/>
+    </element>  
+  </define>
+
+  <define name="head.slot">
+    <!-- extension point for concrete markup models -->
+    <zeroOrMore>
+      <anyElement/> 
+    </zeroOrMore>  
+  </define>
+
+  <define name="body.slot">
+    <!-- extension point for concrete markup models -->
+    <oneOrMore>
+      <anyElement/> 
+    </oneOrMore>  
+  </define>
+
+  <define name="core.attrib">
+    <interleave>
+    </interleave>
+  </define>
+
+</grammar>

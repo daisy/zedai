@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="dist-examples.rng" type="xml"?>
+
+<snippets xmlns="http://www.daisy.org/ns/z3986/distribution/" xmlns:xi="http://www.w3.org/2001/XInclude">
+    
+    <snippet about="dist-audio-ncx" dest="spec">
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" xml:lang="en">
+    <target fragment="darwin-part1.mp3#mp(/~time('npt','1','1800'))" dir="ltr" label-img="c1.png">Chapter 1</target>
+    <target fragment="darwin-part1.mp3#mp(/~time('npt','1801','2752'))" dir="ltr" label-img="c2.png">Chapter 2</target>
+    ...
+</ncx>
+    </snippet>
+    
+    <snippet about="dist-package" dest="spec">
+<package xmlns="http://www.idpf.org/2007/opf" version="2.0" unique-identifier="uid-daisy123">
+    <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" 
+        xmlns:opf="http://www.idpf.org/2007/opf">
+        <dc:identifier id="uid-daisy123">isbn9760101010101</dc:identifier>
+        <dc:language>en</dc:language>
+        <dc:title>Valentin Haüy - the father of the education for the blind</dc:title>
+        <dc:creator>Beatrice Christensen Sköld</dc:creator>
+        ...
+    </metadata>
+    <manifest>
+        <item id="opf1" href="valentin.jpg" media-type="image/jpeg" />
+        <item id="opf2" href="dtbook.2005.basic.css" media-type="text/css" />
+        <item id="opf3" href="hauy-2005-1.xml" media-type="application/x-dtbook+xml" />
+        <item id="ncx" href="navigation.ncx" media-type="application/x-dtbncx+xml" />
+    </manifest>
+    <spine toc="ncx">
+        <itemref idref="opf3" />
+    </spine>
+    <guide>
+        <reference type="toc" title="Table of Contents" href="hauy-2005-1.xml#toc" />
+    </guide>
+</package>
+    </snippet>
+
+</snippets>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"
+         ns="http://www.w3.org/2001/10/synthesis">
+
+  <x:h1>SSML prosody element module</x:h1>
+    
+  <div>
+    <x:h2>The prosody element</x:h2>
+    <x:div id="ssml.prosody">
+      <x:p class="description">
+        The <x:code>prosody</x:code> element permits control of the pitch, 
+        speaking rate and volume of speech output.
+        <x:br/>
+        Consult <x:a href="http://www.w3.org/TR/speech-synthesis11/#S3.2.4"
+        >Speech Synthesis Markup Language (SSML) Version 1.1</x:a> 
+        for further information.         
+      </x:p>
+    </x:div>
+         
+    <define name="ssml.prosody">
+      <element name="prosody">        
+        <ref name="ssml.prosody.attlist"/>
+        <ref name="ssml.prosody.content"/>
+      </element>
+    </define>
+
+    <define name="ssml.prosody.attlist" combine="interleave">
+      <optional>
+        <ref name="ssml.pitch.attrib"/>
+      </optional>
+      <optional>
+        <ref name="ssml.contour.attrib"/>
+      </optional>
+      <optional>
+        <ref name="ssml.range.attrib"/>
+      </optional>
+      <optional>
+        <ref name="ssml.rate.attrib"/>
+      </optional>
+      <optional>
+        <ref name="ssml.duration.attrib"/>
+      </optional>
+      <optional>
+        <ref name="ssml.volume.attrib"/>
+      </optional>
+      <ref name="z3986.Core.attrib"/>           
+      <ref name="z3986.I18n.attrib"/>
+    </define>
+    
+    <define name="ssml.pitch.attrib">
+      <attribute name="pitch"/><!-- TODO datatype -->
+    </define>
+    
+    <define name="ssml.contour.attrib">
+      <attribute name="contour"/><!-- TODO datatype -->
+    </define>
+    
+    <define name="ssml.range.attrib">
+      <attribute name="range"/><!-- TODO datatype -->
+    </define>
+    
+    <define name="ssml.rate.attrib">
+      <attribute name="rate"/><!-- TODO datatype -->
+    </define>
+    
+    <define name="ssml.duration.attrib">
+      <attribute name="duration"/><!-- TODO datatype -->
+    </define>
+    
+    <define name="ssml.volume.attrib">
+      <attribute name="volume"/><!-- TODO datatype -->
+    </define>
+    
+    <define name="ssml.prosody.content">
+      <ref name="z3986.Text.model" />
+    </define>
+        
+  </div>  
+  
+  <div>
+    <x:h2>The prosody element - default content model contribution</x:h2>
+    
+    <define name="z3986.Text.class"  combine="choice">
+      <ref name="ssml.prosody"/>
+    </define>
+        
+  </div>
+
+</grammar>

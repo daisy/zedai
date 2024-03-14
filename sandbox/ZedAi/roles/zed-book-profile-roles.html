@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" 
+  "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html version="XHTML+RDFa 1.0" 
+ xmlns="http://www.w3.org/1999/xhtml" 
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:docbook="http://docbook.org/ns/docbook#"
+ xmlns:cmos="http://www.chicagomanualofstyle.org/ch01/ch01_sec"
+ xmlns:waiaria="http://www.w3.org/WAI/PF/aria/#"
+ xmlns:xhv="http://www.w3.org/1999/xhtml/vocab/#"
+ xmlns:x2="http://www.w3.org/TR/xhtml2/xhtml20_schema.html#">
+<head>
+  <title>DAISY 4.0 Book Profile Roles</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="ProfileRoles.css"/>
+<!-- 
+gaps to fill in:
+
+  1. Where is our role attribute defined?  Should we reference XHTML's definition of role, or do we have an internal document to point to?  For now, this page references the fictional "zed_role.html".  
+
+  2. If we define "role", it should be an rdf:Container (see XHTML's vocab).
+
+  3. do we have a common CSS file for the spec?
+  
+  4. Review xmlns links
+  
+  
+-->
+
+</head>
+
+<body>
+
+<h1>DAISY 4.0 Book Profile Roles</h1>
+
+<p class="informative">This profile defines the following values for use in the <code>role</code> attribute:</p>
+
+<!-- we can make this div a member of the role collection by adding  about="#role" rev="rdfs:member"-->
+<div id="zed-book-roles">
+  <!-- this is an arbitrary division of "our" roles vs. roles from other sources (e.g. Chicago Manual of Style) -->
+  <div id="daisy-roles">
+    <h2>Inspired by Zed</h2>
+    <dl class="roleslist">
+    
+      <dt id="pagebreak" about="#pagebreak" typeof="rdf:Property">pagebreak</dt>
+      <dd about="#pagebreak" property="rdfs:comment" datatype="xsd:string">A separator denoting the break between two contiguous pages</dd>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#pagebreak" rel="rdfs:seeAlso" resource="[xhv:separator]"><a href="http://www.w3.org/1999/xhtml/vocab/#separator">XHTML's <code>separator</code> element</a></dd>
+      </dl>
+    
+      <dt id="section" about="#section" typeof="rdf:Property">section</dt>
+      <dd about="#section" property="rdfs:comment" datatype="xsd:string">A generic division of content</dd>
+      <dl>
+        <dt>Inherited from:</dt>
+        <dd about="#section" rel="rdfs:subClassOf" resource="[waiaria:section]">WAI-ARIA's <code>section</code> role</dd>
+      </dl>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#section" rel="rdfs:seeAlso" resource="[docbook:section]">DocBook's <code>section</code> element </dd>
+        <dd about="#section" rel="rdfs:seeAlso" resource="[cmos:076.html]">Sections and subsections in The Chicago Manual of Style</dd>
+        <dd about="#section" rel="rdfs:seeAlso" resource="[cmos:sec061.html]">The Chicago Manual of Style's "Division into parts" section</dd>
+      </dl>
+  
+      <dt id="bridgehead" about="#bridgehead" typeof="rdf:Property">bridgehead</dt>
+      <dd about="#bridgehead" property="rdfs:comment" datatype="xsd:string">A free-floating heading that is not associated with the hierarchical structure of a document</dd>
+      <dl>
+        <dt>Inherited from:</dt>
+        <dd about="#bridgehead" rel="rdfs:subClassOf" resource="[waiaria:heading]">WAI-ARIA's <code>heading</code> role</dd>
+      </dl>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#bridgehead" rel="rdfs:seeAlso" resource="[docbook:bridgehead]">DocBook's <code>bridgehead</code> element</dd>
+        <dd about="#bridgehead" rel="rdfs:seeAlso" resource="[x2:h]">XHTML2's <code>h</code> element</dd>
+        <dd about="#bridgehead" rel="rdfs:seeAlso" resource="[cmos:071.html]">The Chicago Manual of Style's "Use of subheads" section</dd>
+      </dl>
+    
+      <dt id="sidebar" about="#sidebar" typeof="rdf:Property">sidebar</dt>
+      <dd about="#sidebar" property="rdfs:comment" datatype="xsd:string">Contains supplemental information, often formatted as an inset</dd>
+      <dl>
+        <dt>Inherited from:</dt>
+        <dd about="#sidebar" rel="rdfs:subClassOf" resource="[waiaria:complementary]">WAI-ARIA's <code>complementary</code> role</dd>
+      </dl>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#sidebar" rel="rdfs:seeAlso" resource="[docbook:sidebar]">DocBook's <code>sidebar</code> element</dd>
+  	  </dl>
+  	  
+  	  <dt id="footnote" about="#footnote" typeof="rdf:Property">footnote</dt>
+      <dd about="#footnote" property="rdfs:comment" datatype="xsd:string">A footnote</dd>
+      <dl>
+        <dt>Inherited from:</dt>
+        <dd about="#footnote" rel="rdfs:subClassOf" resource="[waiaria:contentinfo]">WAI-ARIA's <code>contentinfo</code> role</dd>
+        <dd about="#footnote" rel="rdfs:subClassOf" resource="[waiaria:note]">WAI-ARIA's <code>note</code> role</dd>
+      </dl>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#footnote" rel="rdfs:seeAlso" resource="[docbook:footnote]">DocBook's <code>footnote</code> element</dd>
+      </dl>
+        
+    </dl>
+  </div>
+  
+  <div id="cmos-roles">
+    <h2>Inspired by the Chicago Manual of Style</h2>
+    <dl class="roleslist">
+      
+      <dt id="halftitle" about="#halftitle" typeof="rdf:Property">halftitle</dt>
+      <dd about="#halftitle" property="rdfs:comment" datatype="xsd:string">The main title of the publication</dd>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#halftitle" rel="rdfs:seeAlso" resource="[cmos:005.html]">The Chicago Manual of Style's "half title"</dd>
+      </dl>
+      
+      <dt id="subtitle" about="#subtitle" typeof="rdf:Property">subtitle</dt>
+      <dd about="#subtitle" property="rdfs:comment" datatype="xsd:string">The secondary part of the full title</dd>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#subtitle" rel="rdfs:seeAlso" resource="[docbook:subtitle]">DocBook's <code>subtitle</code> element</dd>
+        <dd about="#subtitle" rel="rdfs:seeAlso" resource="[cmos:009.html]">The Chicago Manual of Style's "subtitle"</dd>
+      </dl>
+      
+      <dt id="frontispiece" about="#frontispiece" typeof="rdf:Property">frontispiece</dt>
+      <dd about="#frontispiece" property="rdfs:comment" datatype="xsd:string">A front-matter illustration</dd>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#frontispiece" rel="rdfs:seeAlso" resource="[cmos:008.html]">The Chicago Manual of Style's "frontispiece"</dd>
+      </dl>
+      
+      <dt id="publisherLogo" about="#publisherLogo" typeof="rdf:Property">publisherLogo</dt>
+      <dd about="#publisherLogo" property="rdfs:comment" datatype="xsd:string">The publisher's logo</dd>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#publisherLogo" rel="rdfs:seeAlso" resource="[cmos:013.html]">The Chicago Manual of Style's section on publisher information</dd>
+      </dl>
+      
+      <dt id="biographicalNote" about="#biographicalNote" typeof="rdf:Property">biographicalNote</dt>
+      <dd about="#biographicalNote" property="rdfs:comment" datatype="xsd:string">A biographical note about the author or authors (“author” here includes editors, compilers, and translators)</dd>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#biographicalNote" rel="rdfs:seeAlso" resource="[docbook:personblurb]">DocBook's <code>personblurb</code> element</dd>
+        <dd about="#biographicalNote" rel="rdfs:seeAlso" resource="[cmos:014.html]">The Chicago Manual of Style's section on biographical notes</dd>
+      </dl>
+      
+      <dt id="publisherAddress" about="#publisherAddress" typeof="rdf:Property">publisherAddress</dt>
+      <dd about="#publisherAddress" property="rdfs:comment" datatype="xsd:string">The publisher's address, which can be abbreviated to city and postal code only</dd>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#publisherAddress" rel="rdfs:seeAlso" resource="[docbook:address]">DocBook's <code>address</code> element</dd>
+        <dd about="#publisherAddress" rel="rdfs:seeAlso" resource="[cmos:015.html]">The Chicago Manual of Style's section on the publisher's address</dd>
+      </dl>
+      
+      <dt id="otherCredits" about="#otherCredits" typeof="rdf:Property">otherCredits</dt>
+      <dd about="#otherCredits" property="rdfs:comment" datatype="xsd:string">Acknowledgments of previously published parts of a book, illustration credits, and permission to quote from copyrighted material</dd>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd>TODO: anything from docbook?</dd>
+        <dd about="#otherCredits" rel="rdfs:seeAlso" resource="[cmos:030.html]">The Chicago Manual of Style's "Acknowledgments, permissions, and other credits" section</dd>
+      </dl>
+      
+      <dt id="grantAcknowledgment" about="#grantAcknowledgment" typeof="rdf:Property">grantAcknowledgmenet</dt>
+      <dd about="#grantAcknowledgment" property="rdfs:comment" datatype="xsd:string">Describes financial assistance towards the publication</dd>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#grantAcknowledgment" rel="rdfs:seeAlso" resource="[cmos:031.html]">The Chicago Manual of Style's section on grants</dd>
+      </dl>
+      
+      <dt id="dedication" about="#dedication" typeof="rdf:Property">dedication</dt>
+      <dd about="#dedication" property="rdfs:comment" datatype="xsd:string">Inscription addressed to a particular person</dd>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#dedication" rel="rdfs:seeAlso" resource="[docbook:dedication]">DocBook's <code>dedication</code> element</dd>
+        <dd about="#dedication" rel="rdfs:seeAlso" resource="[cmos:036.html]">The Chicago Manual of Style's "Dedication" section</dd>
+      </dl>
+      
+      <dt id="epigraph" about="#epigraph" typeof="rdf:Property">epigraph</dt>
+      <dd about="#epigraph" property="rdfs:comment" datatype="xsd:string">A quotation that is pertinent but not integral to the text</dd>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#epigraph" rel="rdfs:seeAlso" resource="[docbook:epigraph]">DocBook's <code>epigraph</code> element</dd>
+        <dd about="#epigraph" rel="rdfs:seeAlso" resource="[cmos:038.html]">The Chicago Manual of Style's section on the placement of the epigraph</dd>
+      </dl>
+      
+      <dt id="toc" about="#toc" typeof="rdf:Property">toc</dt>
+      <dd about="#toc" property="rdfs:comment" datatype="xsd:string">The table of contents</dd>
+      <dl>
+        <dt>Inherited from:</dt>
+        <dd about="#toc" rel="rdfs:subClassOf" resource="[waiaria:directory]">WAI-ARIA's <code>directory</code> role</dd>
+        <dd about="#toc" rel="rdfs:subClassOf" resource="[xhv:contents]">XHTML's <code>contents</code> role</dd>
+      </dl>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#toc" rel="rdfs:seeAlso" resource="[docbook:toc]">DocBook's <code>toc</code> element</dd>
+        <dd about="#toc" rel="rdfs:seeAlso" resource="[cmos:040.html]">The Chicago Manual of Style's section on the table of contents</dd>
+      </dl>
+      
+      <dt id="illustrationsList" about="#illustrationsList" typeof="rdf:Property">illustrationsList</dt>
+      <dd about="#illustrationsList" property="rdfs:comment" datatype="xsd:string">A list of illustrations</dd>
+      <dl>
+        <dt>Inherited from:</dt>
+        <dd about="#illustrationsList" rel="rdfs:subClassOf" resource="[waiaria:directory]">WAI-ARIA's <code>directory</code> role</dd>
+      </dl>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#illustrationsList" rel="rdfs:seeAlso" resource="[cmos:045.html]">The Chicago Manual of Style's "List of Illustrations" section</dd>
+      </dl>
+      
+      <dt id="tablesList" about="#tablesList" typeof="rdf:Property">tablesList</dt>
+      <dd about="#tablesList" property="rdfs:comment" datatype="xsd:string">A list of tables</dd>
+      <dl>
+        <dt>Inherited from:</dt>
+        <dd about="#toc" rel="rdfs:subClassOf" resource="[waiaria:directory]">WAI-ARIA's <code>directory</code> role</dd>
+      </dl>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#tablesList" rel="rdfs:seeAlso" resource="[cmos:047.html]">The Chicago Manual of Style's "List of Tables" section</dd>
+      </dl>
+      
+      <dt id="foreword" about="#foreword" typeof="rdf:Property">foreword</dt>
+      <dd about="#foreword" property="rdfs:comment" datatype="xsd:string">The foreword</dd>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#foreword" rel="rdfs:seeAlso" resource="[docbook:preface]">DocBook's <code>preface</code> element</dd>
+        <dd about="#foreword" rel="rdfs:seeAlso" resource="[cmos:048.html]">The Chicago Manual of Style's "Foreword" section</dd>
+      </dl>
+      
+      <dt id="preface" about="#preface" typeof="rdf:Property">preface</dt>
+      <dd about="#preface" property="rdfs:comment" datatype="xsd:string">The preface</dd>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#preface" rel="rdfs:seeAlso" resource="[docbook:preface]">DocBook's <code>preface</code> element</dd>
+        <dd about="#preface" rel="rdfs:seeAlso" resource="[cmos:049.html]">The Chicago Manual of Style's "Preface" section</dd>
+      </dl>
+      
+      <dt id="acknowledgments" about="#acknowledgments" typeof="rdf:Property">acknowledgments</dt>
+      <dd about="#acknowledgments" property="rdfs:comment" datatype="xsd:string">Acknowledgments</dd>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#acknowledgments" rel="rdfs:seeAlso" resource="[docbook:ackno]">DocBook's <code>ackno</code> element</dd>
+        <dd about="#acknowledgments" rel="rdfs:seeAlso" resource="[cmos:052.html]">The Chicago Manual of Style's "Acknowledgments" section</dd>
+      </dl>
+      
+      <dt id="introduction" about="#introduction" typeof="rdf:Property">introduction</dt>
+      <dd about="#introduction" property="rdfs:comment" datatype="xsd:string">Introduction</dd>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#introduction" rel="rdfs:seeAlso" resource="[cmos:053.html]">The Chicago Manual of Style's frontmatter "Introduction" section</dd>
+        <dd about="#introduction" rel="rdfs:seeAlso" resource="[cmos:060.html">The Chicago Manual of Style's text body "Introduction" section</dd>
+      </dl>
+      
+      <dt id="abbreviationsList" about="#abbreviationsList" typeof="rdf:Property">abbreviationsList</dt>
+      <dd about="#abbreviationsList" property="rdfs:comment" datatype="xsd:string">A list of abbreviations</dd>
+      <dl>
+        <dt>Inherited from:</dt>
+        <dd about="#abbreviationsList" rel="rdfs:subClassOf" resource="[waiaria:directory]">WAI-ARIA's <code>directory</code> role</dd>
+      </dl>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#abbreviationsList" rel="rdfs:seeAlso" resource="[cmos:055.html]">The Chicago Manual of Style's "List of Abbreviations" section</dd>
+      </dl>
+      
+      <dt id="publisherNote" about="#publisherNote" typeof="rdf:Property">publisherNote</dt>
+      <dd about="#publisherNote" property="rdfs:comment" datatype="xsd:string">A note from the publisher</dd>
+      <dl>
+        <dt>Inherited from:</dt>
+        <dd about="#note" rel="rdfs:subClassOf" resource="[waiaria:note]">WAI-ARIA's <code>note</code> role</dd>
+      </dl>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#publisherNote" rel="rdfs:seeAlso" resource="[docbook:note]">DocBook's <code>note</code> element</dd>
+        <dd about="#publisherNote" rel="rdfs:seeAlso" resource="[cmos:056.html]">The Chicago Manual of Style's "Publisher's or translator's note" section</dd>
+      </dl>
+      
+      <dt id="translatorNote" about="#translatorNote" typeof="rdf:Property">translatorNote</dt>
+      <dd about="#translatorNote" property="rdfs:comment" datatype="xsd:string">A note from the translator</dd>
+      <dl>
+        <dt>Inherited from:</dt>
+        <dd about="#translatorNote" rel="rdfs:subClassOf" resource="[waiaria:note]">WAI-ARIA's <code>note</code> role</dd>
+      </dl>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#translatorNote" rel="rdfs:seeAlso" resource="[docbook:note]">DocBook's <code>note</code> element</dd>
+        <dd about="#translatorNote" rel="rdfs:seeAlso" resource="[cmos:056.html]">The Chicago Manual of Style's "Publisher's or translator's note" section</dd>
+      </dl>
+      
+      <dt id="editorialMethodNote" about="#editorialMethodNote" typeof="rdf:Property">editorialMethodNote</dt>
+      <dd about="#editorialMethodNote" property="rdfs:comment" datatype="xsd:string">An explanation of an editor’s method or a discussion of variant texts</dd>
+      <dl>
+        <dt>Inherited from:</dt>
+        <dd about="#editorialMethodNote" rel="rdfs:subClassOf" resource="[waiaria:note]">WAI-ARIA's <code>note</code> role</dd>
+      </dl>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#editorialMethodNote" rel="rdfs:seeAlso" resource="[docbook:note]">DocBook's <code>note</code> element</dd>
+        <dd about="#editorialMethodNote" rel="rdfs:seeAlso" resource="[cmos:057.html]">The Chicago Manual of Style's "Editorial method" section</dd>
+      </dl>
+
+      <dt id="poem" about="#poem" typeof="rdf:Property">poem</dt>
+      <dd about="#poem" property="rdfs:comment" datatype="xsd:string">A poem</dd>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#poem" rel="rdfs:seeAlso" resource="[cmos:069.html]">The Chicago Manual of Style's "Poetry" section</dd>
+      </dl>
+      
+      <dt id="letter" about="#letter" typeof="rdf:Property">letter</dt>
+      <dd about="#letter" property="rdfs:comment" datatype="xsd:string">A letter</dd>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#letter" rel="rdfs:seeAlso" resource="[cmos:070.html]">The Chicago Manual of Style's "Letters and diaries" section</dd>
+      </dl>
+      
+      <dt id="diaryEntry" about="#diaryEntry" typeof="rdf:Property">diaryEntry</dt>
+      <dd about="#diaryEntry" property="rdfs:comment" datatype="xsd:string">A diary entry</dd>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#diaryEntry" rel="rdfs:seeAlso" resource="[cmos:070.html]">The Chicago Manual of Style's "Letters and diaries" section</dd>
+      </dl>
+      
+      <dt id="epilogue" about="#epilogue" typeof="rdf:Property">epilogue</dt>
+      <dd about="#epilogue" property="rdfs:comment" datatype="xsd:string">An epilogue</dd>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#epilogue" rel="rdfs:seeAlso" resource="[cmos:080.html]">The Chicago Manual of Style's "Concluding elements" section</dd>
+      </dl>
+      
+      <dt id="afterword" about="#afterword" typeof="rdf:Property">afterword</dt>
+      <dd about="#afterword" property="rdfs:comment" datatype="xsd:string">An afterword</dd>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#afterword" rel="rdfs:seeAlso" resource="[cmos:080.html]">The Chicago Manual of Style's "Concluding elements" section</dd>
+      </dl>
+      
+      <dt id="conclusion" about="#conclusion" typeof="rdf:Property">conclusion</dt>
+      <dd about="#conclusion" property="rdfs:comment" datatype="xsd:string">Concluding text</dd>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#conclusion" rel="rdfs:seeAlso" resource="[cmos:080.html]">The Chicago Manual of Style's "Concluding elements" section</dd>
+      </dl>
+      
+      <dt id="appendix" about="#appendix" typeof="rdf:Property">appendix</dt>
+      <dd about="#appendix" property="rdfs:comment" datatype="xsd:string">Supplemental information</dd>
+      <dl>
+        <dt>Inherited from:</dt>
+        <dd about="#appendix" rel="rdfs:subClassOf" resource="[waiaria:complementary]">WAI-ARIA's <code>complementary</code> role</dd>
+        <dd about="#appendix" rel="rdfs:subClassOf" resource="[xhv:appendix]">XHTML's <code>appendix</code> vocabulary term</dd>
+      </dl>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#appendix" rel="rdfs:seeAlso" resource="[docbook:appendix]">DocBook's <code>appendix</code> element</dd>
+        <dd about="#appendix" rel="rdfs:seeAlso" resource="[cmos:081.html]">The Chicago Manual of Style's "Content of an appendix" section</dd>
+      </dl>
+      
+      <dt id="timeline" about="#timeline" typeof="rdf:Property">timeline</dt>
+      <dd about="#timeline" property="rdfs:comment" datatype="xsd:string">A chronological list of events</dd>
+      <dl>
+        <dt>Inherited from:</dt>
+        <dd about="#timeline" rel="rdfs:subClassOf" resource="[waiaria:list]">WAI-ARIA's <code>list</code> role</dd>
+      </dl>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#timeline" rel="rdfs:seeAlso" resource="[cmos:085.html]">The Chicago Manual of Style's section about Chronologies</dd>
+      </dl>
+      
+      <dt id="endnotes" about="#endnote" typeof="rdf:Property">endnotes</dt>
+      <dd about="#endnotes" property="rdfs:comment" datatype="xsd:string">A note appearing at the end of the work</dd>
+      <dl>
+        <dt>Inherited from:</dt>
+        <dd about="#endnotes" rel="rdfs:subClassOf" resource="[waiaria:note]">WAI-ARIA's <code>note</code> role</dd>
+        <dd about="#endnotes" rel="rdfs:subClassOf" resource="[xhv:note]">XHTML's <code>note</code> role</dd>
+      </dl>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#endnotes" rel="rdfs:seeAlso" resource="[docbook:note]">DocBook's <code>note</code> element</dd>
+        <dd about="#endnotes" rel="rdfs:seeAlso" resource="[cmos:086.html]">The Chicago Manual of Style's section about endnotes</dd>
+      </dl>
+      
+      <dt id="glossary" about="#glossary" typeof="rdf:Property">glossary</dt>
+      <dd about="#glossary" property="rdfs:comment" datatype="xsd:string">An alphabetical list of terms in a particular domain of knowledge with the definitions for those terms</dd>
+      <dl>
+        <dt>Inherited from:</dt>
+        <dd about="#glossary" rel="rdfs:subClassOf" resource="[waiaria:directory]">WAI-ARIA's <code>directory</code> role</dd>
+        <dd about="#glossary" rel="rdfs:subClassOf" resource="[xhv:glossary]">XHTML's <code>glossary</code> vocabulary term</dd>
+      </dl>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#glossary" rel="rdfs:seeAlso" resource="[docbook:glossary]">DocBook's <code>glossary</code> element</dd>
+        <dd about="#glossary" rel="rdfs:seeAlso" resource="[cmos:087.html]">The Chicago Manual of Style's section about glossaries</dd>
+      </dl>
+      
+      <dt id="bibliography" about="#bibliography" typeof="rdf:Property">bibliography</dt>
+      <dd about="#bibliography" property="rdfs:comment" datatype="xsd:string">A systematic list of works cited</dd>
+      <dl>
+        <dt>Inherited from:</dt>
+        <dd about="#bibliography" rel="rdfs:subClassOf" resource="[waiaria:directory]">WAI-ARIA's <code>directory</code> role</dd>
+        <dd about="#bibliography" rel="rdfs:subClassOf" resource="[waiaria:complementary]">WAI-ARIA's <code>complementary</code> role</dd>
+      </dl>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#bibliography" rel="rdfs:seeAlso" resource="[docbook:bibliography]">DocBook's <code>bibliography</code> element</dd>
+        <dd about="#bibliography" rel="rdfs:seeAlso" resource="[cmos:088.html]">The Chicago Manual of Style's section about bibliographies</dd>
+      </dl>
+      
+      <dt id="contributorsList" about="#contributorsList" typeof="rdf:Property">contributorsList</dt>
+      <dd about="#contributorsList" property="rdfs:comment" datatype="xsd:string">Found in works containing many authors</dd>
+      <dl>
+        <dt>Inherited from:</dt>
+        <dd about="#contributorsList" rel="rdfs:subClassOf" resource="[waiaria:directory]">WAI-ARIA's <code>directory</code> role</dd>
+      </dl>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#contributorsList" rel="rdfs:seeAlso" resource="[docbook:authorgroup]">DocBook's <code>authorgroup</code> element</dd>
+        <dd about="#contributorsList" rel="rdfs:seeAlso" resource="[cmos:089.html]">The Chicago Manual of Style's "Many contributors" section</dd>
+      </dl>
+      
+      <dt id="index" about="#index" typeof="rdf:Property">index</dt>
+      <dd about="#index" property="rdfs:comment" datatype="xsd:string">A detailed list, usually arranged alphabetically, of the specific information in a publication</dd>
+      <dl>
+        <dt>Inherited from:</dt>
+        <dd about="#index" rel="rdfs:subClassOf" resource="[waiaria:directory]">WAI-ARIA's <code>directory</code> role</dd>
+        <dd about="#index" rel="rdfs:subClassOf" resource="[xhv:index]">XHTML's <code>index</code> vocabulary term</dd>
+      </dl>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#index" rel="rdfs:seeAlso" resource="[docbook:index]">DocBook's <code>index</code> element</dd>
+        <dd about="#index" rel="rdfs:seeAlso" resource="[cmos:091.html]">The Chicago Manual of Style's section about indexes</dd>
+      </dl>
+      
+      <dt id="colophon" about="#colophon" typeof="rdf:Property">colophon</dt>
+      <dd about="#colophon" property="rdfs:comment" datatype="xsd:string">A brief description usually located at the end of a book, describing production notes relevant to the edition</dd>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#colophon" rel="rdfs:seeAlso" resource="[docbook:colophon]">DocBook's <code>colophon</code> element</dd>
+        <dd about="#colophon" rel="rdfs:seeAlso" resource="[cmos:092.html]">The Chicago Manual of Style's section about colophons</dd>
+      </dl>
+      
+      <dt id="artwork" about="#artwork" typeof="rdf:Property">artwork</dt>
+      <dd about="#artwork" property="rdfs:comment" datatype="xsd:string">Cover artwork</dd>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#artwork" rel="rdfs:seeAlso" resource="[cmos:111.html]">The Chicago Manual of Style's section about material found on exterior covers</dd>
+      </dl>
+      
+      <dt id="promotionalCopy" about="#promotionalCopy" typeof="rdf:Property">promotionalCopy</dt>
+      <dd about="#promotionalCopy" property="rdfs:comment" datatype="xsd:string">A description of the book or quotations from reviews</dd>
+      <dl>
+        <dt>Related concepts:</dt>
+        <dd about="#promotionalCopy" rel="rdfs:seeAlso" resource="[cmos:111.html]">The Chicago Manual of Style's section about material found on exterior covers</dd>
+      </dl>
+      
+    </dl>
+  </div>
+</div>
+<!--
+  entry template 
+  
+  <dt id="TODO" about="#TODO" typeof="rdf:Property">TODO</dt>
+  <dd about="#TODO" property="rdfs:comment" datatype="xsd:string">TODO</dd>
+  <dl>
+    <dt>Inherited from:</dt>
+    <dd about="#TODO" rel="rdfs:subClassOf" resource="[waiaria:TODO]">WAI-ARIA's <code>TODO</code> role</dd>
+    <dd about="#TODO" rel="rdfs:subClassOf" resource="[xhv:TODO]">XHTML's <code>TODO</code> role</dd>
+  </dl>
+  <dl>
+    <dt>Related concepts:</dt>
+    <dd about="#TODO" rel="rdfs:seeAlso" resource="[docbook:TODO]">DocBook's <code>TODO</code> element</dd>
+    <dd about="#TODO" rel="rdfs:seeAlso" resource="[cmos:TODO.html]">The Chicago Manual of Style's "TODO" section</dd>
+  </dl>
+-->
+</body>
+</html>

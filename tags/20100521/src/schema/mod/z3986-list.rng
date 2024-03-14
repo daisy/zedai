@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"  
+  ns="http://www.daisy.org/ns/z3986/authoring/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+  
+  <rdf:RDF>
+    <rdf:Description>
+      <dcterms:title z:short="list">The list module</dcterms:title>
+      <dcterms:description>This module defines the {list} element for structuring ordered and unordered simple sets of items.</dcterms:description>  
+      <dcterms:publisher>DAISY Consortium</dcterms:publisher>
+      <dcterms:license rdf:resource="{LICENSE_TODO}" />
+      <dcterms:creator>Markus Gylling</dcterms:creator>      
+      <dcterms:issued>2009-12-21</dcterms:issued>
+      <dcterms:requires rdf:resource="z3986-global-classes.rng"/>
+      <dcterms:requires rdf:resource="z3986-datatypes.rng"/>
+    </rdf:Description>
+  </rdf:RDF>
+
+  <div>    
+    <define name="z3986.list">
+      <element name="list">
+        <rdf:RDF>
+          <rdf:Description>
+            <!-- <dcterms:title z:short="list (block)">The {list} element (Block)</dcterms:title> -->
+            <dcterms:title z:short="list">The {list} element</dcterms:title>
+            <dcterms:description z:inherit="z3986.list"/>
+            <!-- <z:info>
+              The {Block} variant is an adaptation for use including lists where each item is offset its 
+              siblings.
+            </z:info> -->
+            <z:info z:inherit="z3986.list"/>
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.Block.class]]}</z:context>          
+            <z:content z:alterability="The content model must allow {[[#z3986.list.item.block item]]} elements.">{[[#z3986.list.item.block]]+}</z:content>          
+            <z:attlist z:alterability="The attribute model must allow the {[[#z3986.list.type.attrib type]]} and [[#z3986.list.type.attrib type]] attributes.">{[[#z3986.Block.attrib]], [[#z3986.list.type.attrib]]?, [[#z3986.list.start.attrib]]?}</z:attlist>      
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.list.block.attlist"/>
+        <ref name="z3986.list.block.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.list.phrase">
+      <element name="list">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="list (phrase)">The {list} element (Phrase)</dcterms:title>
+            <dcterms:description z:inherit="z3986.list"/>
+            <z:info>
+              The {Phrase} variant is an adaptation for use embedding lists where the items flow together
+              as part of the document narrative. 
+            </z:info>
+            <z:info z:inherit="z3986.list"/>
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.Phrase.class]]}</z:context>          
+            <z:content z:alterability="The content model must allow {[[#z3986.list.item.phrase item]]} elements.">{[[#z3986.list.item.phrase]]+}</z:content>          
+            <z:attlist z:alterability="The attribute model must allow the {[[#z3986.list.type.attrib type]]} and [[#z3986.list.type.attrib type]] attributes.">{[[#z3986.Phrase.attrib]], [[#z3986.list.type.attrib]]?, [[#z3986.list.start.attrib]]?}</z:attlist>      
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.list.phrase.attlist"/>
+        <ref name="z3986.list.phrase.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.list.block.attlist" combine="interleave">
+      <ref name="z3986.Block.attrib"/>
+      <ref name="z3986.list.attrib"/>
+    </define>
+    
+    <define name="z3986.list.phrase.attlist" combine="interleave">
+        <ref name="z3986.Phrase.attrib"/>
+        <ref name="z3986.list.attrib"/>
+    </define>
+    
+    <define name="z3986.list.attrib">
+      <choice>
+        <ref name="z3986.list.attlist.ordered"/>
+        <ref name="z3986.list.attlist.unordered"/>
+        <ref name="z3986.list.attlist.unspecified"/>
+      </choice>
+    </define>
+
+    <define name="z3986.list.attlist.ordered" combine="interleave">
+      <ref name="z3986.list.type.ordered.attrib"/>
+      <optional>
+        <ref name="z3986.list.start.attrib"/>
+      </optional>
+    </define>
+
+    <define name="z3986.list.attlist.unordered" combine="interleave">
+      <ref name="z3986.list.type.unordered.attrib"/>
+    </define>
+
+    <define name="z3986.list.type.attrib" combine="interleave">
+      <!-- note: this isnt referenced from the defines, just here for doc purposes... -->
+      <attribute name="type">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="type">The {type} attribute</dcterms:title>
+            <dcterms:description>The {type} attribute specifies whether the {item}s in the list are ordered or
+            unordered.</dcterms:description>
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context>{[[#z3986.list]]}</z:context>          
+            <z:content>{'ordered'|'unordered'}</z:content>
+          </rdf:Description>
+        </rdf:RDF>
+        <choice>
+          <value>unordered</value>
+          <a:documentation>The order of the items in this list is significant.</a:documentation>
+          <value>unordered</value>
+          <a:documentation>The order of the items in this list is insignificant.</a:documentation>
+        </choice>
+      </attribute>
+    </define>
+
+    <define name="z3986.list.type.unordered.attrib" combine="interleave">
+      <attribute name="type">
+        <a:documentation>Specifies whether the {item}s in the list are ordered or
+          unordered.</a:documentation>
+        <value>unordered</value>
+        <a:documentation>The order of the items in this list is insignificant.</a:documentation>
+      </attribute>
+    </define>
+
+    <define name="z3986.list.type.ordered.attrib" combine="interleave">
+      <attribute name="type">
+        <a:documentation>Specifies whether the {item}s in the list are ordered or
+          unordered.</a:documentation>
+        <value>ordered</value>
+        <a:documentation>The order of the items in this list is significant.</a:documentation>
+      </attribute>
+    </define>
+
+    <define name="z3986.list.attlist.unspecified">
+      <empty/>
+    </define>
+
+    <define name="z3986.list.block.content">
+      <interleave>
+        <oneOrMore>
+          <ref name="z3986.list.item.block"/>
+        </oneOrMore>
+        <zeroOrMore>
+          <ref name="z3986.list.extra.class"/>
+        </zeroOrMore>
+      </interleave>      
+    </define>
+    
+    <define name="z3986.list.phrase.content">
+      <interleave>
+        <oneOrMore>
+          <ref name="z3986.list.item.phrase"/>
+        </oneOrMore>
+        <zeroOrMore>
+          <ref name="z3986.list.extra.class"/>
+        </zeroOrMore>
+      </interleave>
+    </define>
+  </div>
+
+  <div>    
+    <define name="z3986.list.start.attrib">
+      <attribute name="start">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="start">The {start} attribute</dcterms:title>
+            <dcterms:description>The {start} attribute specifies the ordinal value for the first list {item}'s
+            prefix.</dcterms:description> 
+            <z:info>If omitted, the implicit value {1} is assumed.</z:info>
+            <z:info>This attribute is only valid when used with ordered lists (as defined by the presence and value of the {type} attribute).</z:info>              
+            <dcterms:isRequiredBy rdf:resource="."/>                   
+            <z:context>{[[#z3986.list]]}</z:context>          
+            <z:content>{[[#Integer.datatype]]}</z:content>
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="Integer.datatype"/>
+      </attribute>
+    </define>
+  </div>
+
+  <div>
+    
+    <define name="z3986.list.item.block">
+      <element name="item">        
+        <rdf:RDF>
+          <rdf:Description>
+            <!-- <dcterms:title z:short="item (block)">The {item} element (Block)</dcterms:title> -->
+            <dcterms:title z:short="item">The {item} element</dcterms:title>
+            <dcterms:description z:inherit="z3986.list.item"/>
+            <!-- <z:info>The {Block} variant is an adaptation for use as a child of the {Block}-layer {[[#z3986.list list]]} element.</z:info> -->
+            <dcterms:isRequiredBy rdf:resource="."/>                     
+            <z:context z:alterability="fixed">{[[#z3986.list]]}</z:context>          
+            <z:content>{(z3986.Block.class)+ | (text | z3986.Text.class | z3986.Phrase.class)+}</z:content>          
+            <z:attlist>{[[#z3986.Phrase.attrib]]}</z:attlist>      
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.list.item.attlist"/>
+        <ref name="z3986.list.item.block.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.list.item.phrase">
+      <element name="item">
+        <rdf:RDF>
+          <rdf:Description>
+            <dcterms:title z:short="item (phrase)">The {item} element (Phrase)</dcterms:title>
+            <dcterms:description z:inherit="z3986.list.item"/>
+            <z:info>The {Phrase} variant is an adaptation for use as a child of the {Phrase}-layer {[[#z3986.list.phrase list]]} element.</z:info>
+            <dcterms:isRequiredBy rdf:resource="."/>
+            <z:context z:alterability="fixed">{[[#z3986.list.phrase]]}</z:context>          
+            <z:content>{(text | z3986.Text.class | z3986.Phrase.class)+}</z:content>          
+            <z:attlist>{[[#z3986.Phrase.attrib]]}</z:attlist>      
+          </rdf:Description>
+        </rdf:RDF>
+        <ref name="z3986.list.item.attlist"/>
+        <ref name="z3986.list.item.phrase.content"/>
+      </element>
+    </define>
+
+    <define name="z3986.list.item.attlist" combine="interleave">
+      <ref name="z3986.Phrase.attrib"/>
+    </define>
+
+    <define name="z3986.list.item.block.content">
+      <ref name="z3986.Flow.choice.model"/>
+    </define>
+
+    <define name="z3986.list.item.phrase.content">
+      <ref name="z3986.Phrase.Text.mix.model"/>
+    </define>
+
+  </div>
+
+  <div>
+    <a:documentation>List module - content model specializations</a:documentation>    
+    <define name="z3986.list.extra.class" combine="choice">
+        <a:documentation>class for contributing siblings to the list items</a:documentation>
+        <ref name="z3986.Global.extra.class"/>      
+    </define>
+  </div>
+
+  <div>
+    <a:documentation>List module - default content model contribution</a:documentation>
+
+    <!-- Note: z3986.list.phrase is not contributed by default -->
+
+    <define name="z3986.Block.core.class" combine="choice">
+      <ref name="z3986.list"/>
+    </define>
+  </div>
+
+</grammar>

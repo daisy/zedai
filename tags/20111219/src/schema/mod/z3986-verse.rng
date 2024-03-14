@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="verse">The verse module</title>
+        <annotation annotates="/">
+            <para role="desc-main">This module defines the {[[#z3986.verse]]} element for representing lines of verse embedded in prose contexts.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3986-headings.rng"/>
+                <member xlink:href="z3986-line.rng"/>
+                <member xlink:href="z3986-transition.rng"/>
+                <member xlink:href="z3986-core-attrib.rng"/>
+                <member xlink:href="z3986-i18n-attrib.rng"/>
+                <member xlink:href="rdfa-attrib.rng"/>
+                <member xlink:href="z3986-global-classes.rng"/>
+                <member xlink:href="z3986-datatypes.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <year>2012</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2012-12-19</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="z3986.verse" xml:id="z3986.verse">
+            <element name="verse">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="verse (block)">The {verse} element</title>
+                    <para role="desc-main">The {verse} element represents a non-prose passage such as a poem, song, hymn etc., with or without metrical structure.</para>
+                    <para role="desc-sub">The {verse} element consists of one or more {[[#z3986.ln lines]]} and may lines may be broken up into division such as stanzas and cantos using the {[[#z3986.lngroup]]} and {[[#z3986.verse.section]]} elements.</para>
+                    <synopsis role="def-context">{[[#z3986.Block.class]]}</synopsis>
+                    <synopsis role="def-content">{([[#z3986.ln]] | [[#z3986.lngroup]] | [[#z3986.transition]] | [[#z3986.hd]])+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Block.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.verse.attlist"/>
+                <ref name="z3986.verse.content"/>
+            </element>
+        </define>
+        <define name="z3986.verse.attlist" xml:id="z3986.verse.attlist">
+            <ref name="z3986.Section.attrib"/>
+        </define>
+        <define name="z3986.verse.content" xml:id="z3986.verse.content">
+            <ref name="z3986.verse.content.base"/>
+        </define>
+        <define name="z3986.verse.content.base" xml:id="z3986.verse.content.base">
+            <choice>
+                <group>
+                    <interleave>
+                        <optional>
+                            <ref name="z3986.h"/>
+                        </optional>
+                        <oneOrMore>
+                            <choice>
+                                <ref name="z3986.verse.content.class"/>
+                            </choice>
+                        </oneOrMore>
+                    </interleave>
+                    <zeroOrMore>
+                        <ref name="z3986.verse.section"/>
+                    </zeroOrMore>
+                </group>
+                <group>
+                    <interleave>
+                        <optional>
+                            <ref name="z3986.h"/>
+                        </optional>
+                        <zeroOrMore>
+                            <choice>
+                                <ref name="z3986.verse.content.class"/>
+                            </choice>
+                        </zeroOrMore>
+                    </interleave>
+                    <oneOrMore>
+                        <ref name="z3986.verse.section"/>
+                    </oneOrMore>
+                </group>
+            </choice>
+        </define>
+        <define name="z3986.verse.content.class" combine="choice">
+            <choice>
+                <ref name="z3986.ln"/>
+                <ref name="z3986.lngroup"/>
+                <ref name="z3986.hd"/>
+                <ref name="z3986.Global.extra.class"/>
+            </choice>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.verse.section" xml:id="z3986.verse.section">
+            <element name="section">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="section (verse)">The verse {section} element</title>
+                    <para role="desc-main">The {section} element represents a major structural division of a {[[#z3986.verse verse]]}, such as a canto.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.verse]]}</synopsis>
+                    <synopsis role="def-content">{([[#z3986.h]]? &amp;amp; ([[#z3986.ln]] | [[#z3986.lngroup]] | [[#z3986.transition]] | [[#z3986.hd]])*), [[#z3986.verse.section]]*}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Section.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.verse.section.attlist"/>
+                <ref name="z3986.verse.section.content"/>
+            </element>
+        </define>
+        <define name="z3986.verse.section.attlist" xml:id="z3986.verse.section.attlist">
+            <!-- expand out Section.attrib in order to allow value suggestion injections on @role -->
+            <ref name="z3986.global.core.attrib"/>
+            <optional>
+                <ref name="z3986.verse.role.attrib"/>
+            </optional>
+            <ref name="z3986.Block.extern.attrib"/>
+        </define>
+        <define name="z3986.verse.role.attrib" xml:id="z3986.verse.role.attrib">
+            <attribute name="role">
+                <list>
+                    <oneOrMore>
+                        <ref name="z3986.verse.role.attrib.content.enum"/>
+                    </oneOrMore>
+                </list>
+            </attribute>
+        </define>
+        <define name="z3986.verse.role.attrib.content.enum" combine="choice">
+            <ref name="CURIE.datatype"/>
+        </define>
+        <define name="z3986.verse.section.content" xml:id="z3986.verse.section.content">
+            <ref name="z3986.verse.content.base"/>
+        </define>
+    </div>
+    <div>
+        <a:documentation>verse - default content model contribution</a:documentation>
+        <define name="z3986.Block.core.class" combine="choice">
+            <ref name="z3986.verse"/>
+        </define>
+    </div>
+</grammar>

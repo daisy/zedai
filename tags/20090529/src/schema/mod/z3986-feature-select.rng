@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml"
+  ns="http://www.daisy.org/z3986/2010/auth/features/select/"
+  xmlns:s="http://purl.oclc.org/dsdl/schematron">
+
+  <!--  TODO add to prose: no select descendant of when or otherwise -->
+  <x:h1>Z39.86 Content Selection Feature</x:h1>
+  <div>
+    <x:h2>Z39.86 select element</x:h2>
+
+    <define name="z3986.select.text">
+      <element name="select">
+        <ref name="z3986.select.attlist" />
+        <ref name="z3986.select.text.content" />
+      </element>
+    </define>
+
+    <define name="z3986.select.structural">
+      <element name="select">
+        <ref name="z3986.select.attlist" />
+        <ref name="z3986.select.structural.content" />
+      </element>
+    </define>
+
+    <define name="z3986.select.text.content">
+      <oneOrMore>
+        <ref name="z3986.when.text" />
+      </oneOrMore>
+      <ref name="z3986.otherwise.text" />
+    </define>
+
+    <define name="z3986.select.structural.content">
+      <oneOrMore>
+        <ref name="z3986.when.structural" />
+      </oneOrMore>
+      <ref name="z3986.otherwise.structural" />
+    </define>
+
+    <define name="z3986.select.attlist">
+      <optional>
+        <ref name="xml.id.attrib" />
+      </optional>
+      <optional>
+        <ref name="xml.base.attrib" />
+      </optional>
+    </define>
+
+  </div>
+
+  <div>
+    <x:h2>Z39.86 when element</x:h2>
+
+    <define name="z3986.when.text">
+      <element name="when">
+        <ref name="z3986.when.attlist" />
+        <ref name="z3986.when.text.content" />
+      </element>
+    </define>
+
+    <define name="z3986.when.structural">
+      <element name="when">
+        <ref name="z3986.when.attlist" />
+        <ref name="z3986.when.structural.content" />
+      </element>
+    </define>
+
+    <define name="z3986.when.attlist">
+      <optional>
+        <ref name="xml.id.attrib" />
+      </optional>
+      <ref name="z3986.expr.attrib" />
+    </define>
+
+    <define name="z3986.when.text.content">
+      <ref name="z3986.Text.model" />
+    </define>
+
+    <define name="z3986.when.structural.content">
+      <ref name="z3986.Structural.model" />
+    </define>
+
+  </div>
+
+  <div>
+    <x:h2>Z39.86 otherwise element</x:h2>
+
+    <define name="z3986.otherwise.text">
+      <element name="otherwise">
+        <ref name="z3986.otherwise.attlist" />
+        <ref name="z3986.otherwise.text.content" />
+      </element>
+    </define>
+
+    <define name="z3986.otherwise.structural">
+      <element name="otherwise">
+        <ref name="z3986.when.attlist" />
+        <ref name="z3986.when.structural.content" />
+      </element>
+    </define>
+
+    <define name="z3986.otherwise.text.content">
+      <ref name="z3986.Text.model" />
+    </define>
+
+    <define name="z3986.otherwise.structural.content">
+      <ref name="z3986.Structural.model" />
+    </define>
+
+    <define name="z3986.otherwise.attlist">
+      <optional>
+        <ref name="xml.id.attrib" />
+      </optional>
+    </define>
+
+  </div>
+
+  <div>
+    <x:h2>Z39.86 expr attribute</x:h2>
+    <define name="z3986.expr.attrib">
+      <attribute name="expr">
+        <ref name="select-expr.datatype" />
+      </attribute>
+    </define>
+
+    <define name="select-expr.datatype">
+      <text />
+      <!--  TODO -->
+    </define>
+
+  </div>
+
+  <div>
+    <x:h2>Z39.86 Content Selection feature - content model contribution</x:h2>
+
+    <define name="z3986.Structural.class" combine="choice">
+      <ref name="z3986.select.structural" />
+    </define>
+
+    <define name="z3986.Text.class" combine="choice">
+      <ref name="z3986.select.text" />
+    </define>
+
+    <define name="z3986.covers.content.class" combine="choice">
+      <ref name="z3986.select.structural" />
+    </define>
+
+    <define name="z3986.spine.content.class" combine="choice">
+      <ref name="z3986.select.structural" />
+    </define>
+
+  </div>
+
+
+  <div>
+    <x:h2>Z39.86 Content Selection Feature - Schematron Assertions</x:h2>
+    
+    <!-- ISO Schematron: no select descendant -->
+    <s:rule context="sel:when">
+      <s:assert
+        test="not(descendant::sel:select)"
+        >The sel:when element may not have a sel:select descendant.</s:assert>
+    </s:rule>
+
+    <s:rule
+      context="sel:otherwise">
+      <s:assert
+        test="not(descendant::sel:select)"
+        >The sel:otherwise element may not have a sel:select descendant.</s:assert>
+    </s:rule>
+  </div>
+</grammar>

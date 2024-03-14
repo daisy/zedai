@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="../../util/docbook/rng/docbook.rng" type="xml"?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+   <title>ANSI/NISO Z39.86-2010 Part A [FIRST ALPHA WORKING DRAFT - 17 April 2009]</title>
+   <subtitle>DAISY Authoring and Interchange Framework:  Primer</subtitle>
+
+   <info>
+      <edition>Incomplete draft </edition>
+      <date>17 April 2009</date>
+      <editor>
+         <personname>James Pritchett</personname>
+         <email>jpritchett@rfbd.org</email>
+      </editor>
+      <abstract>
+         <title>Abstract</title>
+         <para>The ZedAI Primer is a non-normative document that provides an easily understood
+            introduction to the technologies and concepts behind the DAISY Authoring and Interchange
+            Framework.</para>
+      </abstract>
+   </info>
+
+   <preface>
+      <title>Introduction</title>
+      <para>This document provides an easily understood introduction to the technologies and
+         concepts behind the DAISY Authoring and Interchange Framework.  It is intended to be read
+         along with the normative specification documents.  The intended audience includes
+         developers who will be creating and working with systems that operate on ZedAI document
+         instances, or who will be developing new ZedAI profiles.  It assumes a basic understanding
+         of:
+         <itemizedlist>
+            <listitem>
+               <para>
+                  XML
+               </para>
+            </listitem>
+            <listitem>
+               <para>
+                  XML namespaces
+               </para>
+            </listitem>
+            <!--
+            <listitem>
+               <para>
+                  XML schemas
+               </para>
+            </listitem>
+            -->
+            <listitem>
+               <para><remark role="todo">And ...?</remark></para>
+            </listitem>
+         </itemizedlist>
+         </para>
+   </preface>
+
+   <chapter>
+      <title>ZedAI profiles</title>
+
+      <section>
+         <title>A simple ZedAI document</title>
+         <para>We will begin with an example ZedAI document, MinimalDocument.xml.  This is the
+            simplest possible valid ZedAI document:</para>
+         <example>
+            <title>A minimal ZedAI document</title>
+            <programlisting>        
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;html xmlns=&quot;http://www.w3.org/2002/06/xhtml2/&quot; 
+               xmlns:d=&quot;http://www.daisy.org/ns/z3986/2008/&quot;  
+               xml:lang=&quot;en&quot;&gt;
+   &lt;head&gt;
+      &lt;link rel=&quot;profile&quot; href=&quot;http://www.daisy.org/z3986/2010/book/1.0/&quot;/&gt;
+      &lt;meta typeof=&quot;mods:originInfo&quot;&gt;
+         &lt;meta property=&quot;mods:publisher&quot; content=&quot;DAISY Consortium&quot; /&gt;
+      &lt;/meta&gt;
+      &lt;meta typeof=&quot;mods:titleInfo&quot;&gt;
+         &lt;meta property=&quot;mods:title&quot; content=&quot;A simple document&quot; /&gt;
+      &lt;/meta&gt;
+      &lt;meta typeof=&quot;mods:identifier&quot; content=&quot;example1&quot;&gt;
+         &lt;meta property=&quot;mods:type&quot; content=&quot;uid&quot; /&gt;
+      &lt;/meta&gt;
+   &lt;/head&gt;
+   &lt;body&gt;
+      &lt;d:frontmatter /&gt;
+      &lt;d:bodymatter&gt;
+         &lt;section&gt;
+            &lt;h&gt;Hello, world.&lt;/h&gt;
+         &lt;/section&gt;
+      &lt;/d:bodymatter&gt;
+   &lt;/body&gt;
+&lt;/html&gt;            
+            </programlisting>
+         </example>
+      </section>
+      
+      <section>
+         <title>Identifying profiles</title>
+         <para>Every ZedAI document references a ZedAI profile.  A profile defines markup designed to support
+            the creation of XML documents from a particular type of information resource.  Simple
+            books, periodicals, newspapers, textbooks, and examinations all might require different
+            XML vocabularies in order to be fully and clearly expressed in an XML document.
+             Therefore, each of these kinds of resources could have a different ZedAI profile that
+            provides the tools necessary for document authors.</para>
+         <para>Our example document references the "book" profile, one of the profiles
+            defined by the Z39.86-2010 specification, using the <code>link</code>
+            element:</para>
+         <example>
+            <title>Identifying the profile</title>
+            <programlisting>
+                 &lt;head&gt;
+                   &lt;link rel="version" 
+                         href="http://www.daisy.org/z3986/2010/ai/profiles/book/1.0/&gt;
+                 &lt;/head&gt;
+            </programlisting>
+         </example>
+         <para>As its name implies, the book profile is designed to accommodate the XML
+            representation of  a variety of print books:  novels, nonfiction, student textbooks,
+            etc.</para>
+      </section>
+      
+      <section>
+         <title>Profile resources</title>
+         <para>At its core, a profile defines specific XML markup to be used for documents.
+             This markup is defined using a single, normative schema, written in a schema language such as
+            RelaxNG.  There may be other resources associated with
+            a profile, such as translated W3C XML Schemas, and stylesheets.</para>
+         <para>As you can see in the example, profiles are identified by a unique URI.  The URI for
+            each profile is defined by the agency that created and maintains that profile (in this
+            case, the DAISY Consortium).</para>
+         <para>Beyond uniquely identifying the profile, the profile URI points to a location on the
+            Internet that contains a resource directory for the profile.  This resource directory
+            contains all the information related to the profile and is described using the Resource
+            Directory Description Language (RDDL).  RDDL documents are based on XHTML, which means
+            that they can be viewed in a web browser.  The document will typically have a
+            description of the purpose of the profile, links to the normative schema and other
+            profile resources, and to any associated specification documents.  RDDL documents are
+            also machine-readable, which means that they can be used by systems that process ZedAI
+            documents to discover necessary schemas and other resources at run time.  In sum, by
+            following the profile link appearing in the head of the document, any person or
+            processing system can find all the information available about that profile.</para>
+      </section>
+   </chapter>
+
+   <chapter>
+      <title>XHTML2 and ZedAI</title>
+
+      <section>
+         <title>Every ZedAI profile is based on XHTML2</title>
+         <para>In our example document, you will notice that the document element is <code
+               >html</code>, and the default namespace for the document is the XHTML2
+            namespace:</para>
+         <example>
+            <title>Document element (html) and default namespace</title>
+             <programlisting>        
+                &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                     &lt;html xmlns="http://www.w3.org/2002/06/xhtml2/"
+                      xmlns:d="http://www.daisy.org/ns/z3986/2008/"
+                           xml:lang="en"&gt;
+             </programlisting>
+         </example>
+         <para>Every ZedAI profile -- and hence every ZedAI document -- is based on the XHTML2
+            markup language.
+             XHTML2 is modular in design, which means that a ZedAI profile need not include all of
+            the elements and attributes defined in XHTML2, but at a minimum each profile must
+            include a few fundamental elements:  <code>html</code>, <code>head</code>,
+            <code>link</code>, and <code>meta</code>.</para>
+         <para>Because every ZedAI profile takes the XHTML2 vocabulary as its base, the XHTML2
+            namespace is always the default namespace for a ZedAI document.  This means that
+            elements in the document that come from XHTML2 will not have namespace prefixes.  In the
+            case of our example document, these include the <code>html</code>, <code>head</code>,
+               <code>link</code>, <code>body</code>, <code>section</code>, and <code>h</code> elements.</para>
+      </section>
+
+      <section>
+         <title>Schemas and modules</title>
+         <para>Earlier vocabularies such as XHTML 1.0 (used in DAISY 2.02) and dtbook (used in
+            ANSI/NISO Z39.86-2005) were based on Document Type Definitions (DTDs).  XHTML2 is based
+            on a modularly-constructed schema.  Schemas can do more than DTDs:  for example, they
+            can specify data types for element and attribute contents, which DTDs could not do at
+            all.  All ZedAI profiles define their markup using schemas using one of four
+            different schema languages:  RelaxNG, NVDL, W3C XML Schema, or ISO Schematron.</para>
+         <para>Schema languages lend themselves to modular designs for markup languages.  This means
+            that there are multiple independent schema documents, each of which defines a set
+            of elements and/or attributes that form a functional group.  These modules can then be
+            combined (composed) into a single vocabulary through a master "driver" schema document
+            that brings the individual modules together and defines their interrelations.  This kind
+            of architecture will be familiar to those accustomed to object-oriented software design.</para>
+         <para>As noted above, every ZedAI profile is based on the XHTML2 markup language.  This means
+            that every profile will use some set of XHTML2 modules in its master schema.  While
+            there are a very few elements that must be included in every profile (e.g., the document
+            element <code>html</code>), profiles are free to include whatever XHTML2
+            modules are appropriate to the kind of information resource the profile is designed to
+            handle.  In the case of the book profile, the main XHTML2 modules used are:</para>
+         <itemizedlist>
+            <listitem>
+               <para>Document module:  Defines the document element and other top-level
+               structures</para>
+            </listitem>
+            <listitem>
+               <para> Structural module:  Defines sections, paragraphs, and other block
+               structures</para>
+            </listitem>
+            <listitem>
+               <para>Text module:  Defines the common inline structures such as span, em, abbr,
+                  etc.</para>
+            </listitem>
+            <listitem>
+               <para>Hypertext module:  Defines the link element (a) </para>
+            </listitem>
+            <listitem>
+               <para>List module:  Defines all kinds of lists (ordered, unordered,
+               definition)</para>
+            </listitem>
+            <listitem>
+               <para>Tables module:  Defines elements for markup of tables</para>
+            </listitem>
+            <listitem>
+               <para>Metainformation module:  Defines elements that allow the definition of
+                  relationships (link, meta)</para>
+            </listitem>
+            <listitem>
+               <para> Object module:  Defines elements that are used for general-purpose object
+                  inclusion, such as images and other media</para>
+            </listitem>
+         </itemizedlist>
+         <para>This means that a document created using the simple book profile can include all the
+            basic XHTML2 text elements, inline and block, along with lists, tables, images, and
+            other media objects.  The markup (element and attribute names) for these will be exactly
+            the same as for any other XHTML2 document.</para>
+         <para>
+            <remark role="todo">[Maybe an example here of a book document (or fragment thereof)
+               with nothing but XHTML2 markup?]</remark>
+         </para>
+      </section>
+
+      <section>
+         <title>Changing XHTML2 elements</title>
+         <para>The modular design of XHTML2 allows for modifications to the standard markup language.
+             This means that a ZedAI profile can make modifications to the XHTML2 modules that it
+            includes.  It is possible to omit particular elements, change the content models of
+            elements, to omit particular attributes, to add other attributes, or to modify the data
+            types for attributes.  This is done in the profile's schema, which is where the XHTML2
+            modules are included.</para>
+         <para>In the case of the book profile, these are some of the changes made to the
+            included XHTML2 modules:</para>
+         <itemizedlist>
+            <listitem>
+               <para>The <code>title</code> element is not required for <code>head</code></para>
+            </listitem>
+            <listitem>
+               <para>The definition item element (<code>di</code>) is required in definition lists (<code>dl</code>)</para>
+            </listitem>
+            <listitem>
+               <para>Pagebreak references may occur inbetween table cells and table rows, and inbetween list items in lists</para>
+            </listitem>
+            <listitem>
+               <para>The section element must start with a heading, only preceded by an optional pagebreak reference</para>
+            </listitem>
+         </itemizedlist>
+         <para>The power of modularization and schemas means that each ZedAI profile can have the
+            best of both worlds.  On the one hand, profiles can include pre-existing markup
+            definitions from XHTML2, thus avoiding "reinventing the wheel".  At the same time,
+            profiles can make specific alterations to that base XHTML2 markup to very closely tailor
+            the vocabulary to the needs of the information resources being represented.</para>
+      </section>
+   </chapter>
+
+   <chapter>
+      <title>Adding new elements to XHTML2</title>
+
+      <section>
+         <title>A more complex document</title>
+         <para>Here is a slightly more complex ZedAI document, still based on the book
+            profile.  It includes three page numbers, two very brief chapters, and a table of
+            contents:</para>
+         <example>
+            <title>A more complex document</title>
+            <programlisting>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;html xmlns=&quot;http://www.w3.org/2002/06/xhtml2/&quot; 
+               xmlns:d=&quot;http://www.daisy.org/ns/z3986/2008/&quot;  
+               xml:lang=&quot;en&quot;&gt;
+   &lt;head&gt;
+      &lt;link rel=&quot;profile&quot; href=&quot;http://www.daisy.org/z3986/2010/simplebook/0.1/&quot;/&gt;
+   &lt;/head&gt;
+   &lt;body&gt;
+      &lt;d:frontmatter &gt;
+         &lt;d:toc&gt;
+            &lt;h&gt;Table of contents&lt;/h&gt;
+            &lt;d:tocentry&gt;
+               &lt;d:label&gt;Chapter 1&lt;/d:label&gt;
+               &lt;d:pageref ref=&quot;p1&quot;&gt;1&lt;/d:pageref&gt;
+            &lt;/d:tocentry&gt;
+            &lt;d:tocentry&gt;
+               &lt;d:label&gt;Chapter 2&lt;/d:label&gt;
+               &lt;d:pageref ref=&quot;p3&quot;&gt;3&lt;/d:pageref&gt;
+            &lt;/d:tocentry&gt;
+         &lt;/d:toc&gt;
+      &lt;/d:frontmatter&gt;
+      &lt;d:bodymatter&gt;
+         &lt;section&gt;
+            &lt;d:pagebreak xml:id=&quot;p1&quot; value=&quot;1&quot; /&gt;
+            &lt;h&gt;Chapter 1&lt;/h&gt;
+            &lt;p&gt;
+               This is the first chapter of this document.
+            &lt;/p&gt;
+            &lt;d:pagebreak value=&quot;2&quot; /&gt;
+         &lt;/section&gt;
+         &lt;section&gt;
+            &lt;d:pagebreak xml:id=&quot;p3&quot; value=&quot;3&quot; /&gt;
+            &lt;h&gt;Chapter 2&lt;/h&gt;
+            &lt;p&gt;
+               And this is the second chapter of this document
+            &lt;/p&gt;
+         &lt;/section&gt;
+      &lt;/d:bodymatter&gt;
+   &lt;/body&gt;
+ &lt;/html&gt;
+            </programlisting>
+         </example>
+      </section>
+
+      <section>
+         <title>Including other elements:  namespaces</title>
+         <para>The book structures described in this document -- front matter, body matter, page
+            break, table of contents, etc. -- are not part of XHTML2, of course.  These are elements
+            defined by DAISY as part of the Z39.86 specification.  They are identified in the
+            document by their own namespace, which has been bound to the prefix <code>d:</code> in the document element:</para>
+         <example>
+            <title>Document element (html) and DAISY namespace declaration</title>
+            <programlisting>
+               &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+               &lt;html xmlns="http://www.w3.org/2002/06/xhtml2/"
+                     xmlns:d="http://www.daisy.org/ns/z3986/2008/"
+                     xml:lang="en"&gt;
+               </programlisting>
+         </example>
+         <para> The schema modules within the DAISY namespace define these elements, their
+            attributes and content models.  Each element or group of related elements are defined in
+            their own schema module.  For example, the page break schema module (<code>z3986-pagebreak.rng</code>) defines the <code>pagebreak</code> element:  it is empty and, in addition to the attributes common to all
+            elements, includes the <code>value</code> attribute to carry the value of
+            the page number.</para>
+         <para>The book profile schema, then, redefines the content models of XHTML2 to
+            indicate what DAISY elements can be included, and where.  As one would expect, <code>pagebreak</code> can
+            occur in a wide variety of contexts, including as a first child of <code>section</code> (as in our
+            example).  The <code>toc</code> element, on the other hand, is much more restricted, being allowed
+            only within <code>frontmatter</code>.  In this manner, the profile schema brings the various schema
+            modules together to form a single document model that combines the various markup
+            elements.</para>
+         <para>There is no limitation to the number of different schema modules that can be combined
+            in a profile, and there is no limitation to the number of namespaces from which these
+            may draw.  Schema modules can be taken from non-DAISY namespaces (MathML, for
+         example).</para>
+      </section>
+
+      <section>
+         <title>Integrating markup languages</title>
+         <para>When integrating different markup languages, the controlling principle should be to
+            minimize duplication of effort.  A good example of this can be seen in the table of
+            contents of our sample document:</para>
+         <example>
+               <title>Table of contents markup</title>
+               <programlisting>
+                       &lt;d:toc&gt;
+                           &lt;h&gt;Table of contents&lt;/h&gt;
+                           &lt;d:tocentry&gt;
+                               &lt;d:label&gt;Chapter 1&lt;/d:label&gt;
+                               &lt;d:pageref ref="p1"&gt;1&lt;/d:pageref&gt;
+                           &lt;/d:tocentry&gt;
+                           &lt;d:tocentry&gt;
+                               &lt;d:label&gt;Chapter 2&lt;/d:label&gt;
+                               &lt;d:pageref ref="p3"&gt;3&lt;/d:pageref&gt;
+                           &lt;/d:tocentry&gt;
+                       &lt;/d:toc&gt;
+            </programlisting>
+         </example>
+         <para>The DAISY table of contents module (<code>z3986-toc.rng</code>)
+            defines three new elements:  <code>toc</code> (the container for the
+            table of contents), <code>tocentry</code> (the container for a specific
+            entry within the table), <code>label</code> (the text identifying the target of the
+            entry), and <code>pageref</code> (the page reference
+            part of the entry).  However, the content model also includes the <code>h</code> from the XHTML2
+            vocabulary for the table of contents heading.
+             Because the XHTML2 <code>h</code> element fit the need to represent a heading, there was no need
+            to create a new "table of contents heading" element.  This example shows how elements
+            from the different schema modules can be closely integrated within the profile document
+            model.</para>
+      </section>
+   </chapter>
+
+   <chapter>
+      <title>Adding semantic inflections</title>
+      <para>
+         <remark role="todo">A document that includes @role, RDF/a and CURIEs.  Lessons to be
+         learned:</remark>
+      </para>
+      <orderedlist>
+         <listitem>
+            <para>
+               <remark role="todo">Purpose of @role attribute</remark>
+            </para>
+         </listitem>
+         <listitem>
+            <para>
+               <remark role="todo">Usage of RDF/a (take annotation as an example)</remark>
+            </para>
+         </listitem>         
+         <listitem>
+            <para>
+               <remark role="todo">CURIE syntax, etc.</remark>
+            </para>
+         </listitem>
+         <listitem>
+            <para>
+               <remark role="todo">RDF taxonomies:  where to find, how are used.</remark>
+            </para>
+         </listitem>
+      </orderedlist>
+      <para>
+         <remark role="todo">More complex document using custom CURIEs.  Lessons to be
+         learned:</remark>
+      </para>
+      <orderedlist>
+         <listitem>
+            <para>
+               <remark role="todo">Adding custom/local RDF taxonomies:  how to do this.</remark>
+            </para>
+         </listitem>
+      </orderedlist>
+   </chapter>
+   
+   <chapter>
+      <title>Advanced functions of profiles:  features</title>
+      <para>
+         <remark role="todo">Concept of features; a sample with MathML; declaring features;
+            informative schemas without features</remark>
+      </para>
+   </chapter>
+   
+   <chapter>
+      <title>Metadata</title>
+      <para>
+         <remark role="todo">How metadata is represented; required metadata</remark>
+      </para>
+   </chapter>
+
+   <chapter>
+      <title>Other profiles</title>
+      <para>
+         <remark role="todo">Examples of other profiles defined by the spec.  Plus how a third-party
+            profile might look.</remark>
+      </para>
+   </chapter>
+</book>

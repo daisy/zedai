@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"
+      prefix="      dcterms: http://purl.org/dc/terms/      owl: http://www.w3.org/2002/07/owl#      rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#      rdfs: http://www.w3.org/2000/01/rdf-schema#      xsd: http://www.w3.org/2001/XMLSchema       ">
+   <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+      <meta property="dcterms:modified" content="2012-12-19"/>
+      <meta property="dcterms:creator" content="mgylling"/>
+      <meta property="dcterms:issued" content="2009-12-01"/>
+      <meta property="dcterms:publisher" content="DAISY Consortium"/>
+      <title>Z39.98-2012 Resource Directory Vocabulary</title>
+      <link rel="stylesheet" type="text/css" href="../../z3998-2012.css"/>
+   </head>
+   <body>
+      <h1 property="dcterms:title">Z39.98-2012 Resource Directory Vocabulary</h1>
+      <h2 id="toc">Table of Contents</h2>
+      <ul>
+         <li class="first">
+            <a href="#h_aboutthisvocabulary">About this vocabulary</a>
+         </li>
+         <li class="first">
+            <a href="#h_nature-identity">Nature and Identity</a>
+         </li>
+         <li class="first">
+            <a href="#h_instance-conformance">Instance Conformance</a>
+            <ul>
+               <li>
+                  <a href="#h_instance-conformance-profile">Instance Conformance (Z39.98-2012 Profile Specific)</a>
+               </li>
+            </ul>
+         </li>
+         <li class="first">
+            <a href="#h_auxiliary">Auxiliary Resources</a>
+         </li>
+      </ul>
+      <div>
+         <h2 id="h_aboutthisvocabulary">About this vocabulary</h2>
+         <div property="dcterms:description">
+            <p>This RDF vocabulary is a normative part of 
+ <a href="http://www.daisy.org/z3998/2012/z3998-2012.html">NISO Z39.98-2012</a>. It defines a set of properties for use in the Z39.98-2012 Resource Directory document type.</p>
+         </div>
+         <p id="vocab-forms">You are currently reading the normative <a href="http://www.w3.org/TR/rdfa-syntax/">W3C XHTML+RDFa</a> expression of this vocabulary. It is also available in informative <a href="z3998-rd-vocab.n3">Notation3</a> and <a href="z3998-rd-vocab.xml">RDF/XML</a> syntax versions.</p>
+         <p class="vocab-date">Document last modified: 2012-12-19. Refer to the <a href="history-z3998-rd-vocab.html">revision history</a> for details.</p>
+      </div>
+      <div id="vocab" class="vocabulary">
+   
+         <div id="nature-identity" about="#nature-identity" typeof="rdf:Bag">
+            <h2 id="h_nature-identity" about="#nature-identity" rev="dcterms:title">Nature and Identity</h2>
+            <dl about="#nature-identity" rev="rdfs:member">
+      
+               <dt id="reference" about="#reference" typeof="rdf:Property">reference</dt>
+               <dd about="#reference" property="dcterms:description" datatype="xsd:string">
+                  <p>A human-readable description of the purpose and structure of the entity described by this directory</p>
+               </dd>
+               <dt id="token-identifier" about="#token-identifier" typeof="rdf:Property">token-identifier</dt>
+               <dd about="#token-identifier" property="dcterms:description" datatype="xsd:string">
+                  <p>A canonical string identifier for the entity described by this directory</p>
+               </dd>
+               <dt id="maintenance-agency" about="#maintenance-agency" typeof="rdf:Property">maintenance-agency</dt>
+               <dd about="#maintenance-agency" property="dcterms:description"
+                   datatype="xsd:string">
+                  <p>The identity of agency responsible for maintaining the entity described by this directory</p>
+               </dd>
+               <dt id="specification-compliance" about="#specification-compliance"
+                   typeof="rdf:Property">specification-compliance</dt>
+               <dd about="#specification-compliance" property="dcterms:description"
+                   datatype="xsd:string">
+                  <p>A reference to a specification which the entity described by this directory conforms to</p>
+               </dd>
+               <dt id="version" about="#version" typeof="rdf:Property">version</dt>
+               <dd about="#version" property="dcterms:description" datatype="xsd:string">
+                  <p>A version identifier for the entity described by this directory</p>
+               </dd>
+               <dt id="current-version-uri" about="#current-version-uri" typeof="rdf:Property">current-version-uri</dt>
+               <dd about="#current-version-uri" property="dcterms:description"
+                   datatype="xsd:string">
+                  <p>A URI resolving to the resource directory of the most recently published (current) version of the entity described by this directory</p>
+               </dd>
+               <dt id="version-history" about="#version-history" typeof="rdf:Property">version-history</dt>
+               <dd about="#version-history" property="dcterms:description" datatype="xsd:string">
+                  <p>A reference to list of URIs that contains all available versions of the entity described by this directory</p>
+               </dd>
+            </dl>
+         </div>
+         <div id="instance-conformance" about="#instance-conformance" typeof="rdf:Bag">
+            <h2 id="h_instance-conformance" about="#instance-conformance" rev="dcterms:title">Instance Conformance</h2>
+            <p about="#instance-conformance" rev="dcterms:description">Resources related to testing whether instances satisfies the constraints expressed in this directory</p>
+            <dl about="#instance-conformance" rev="rdfs:member">
+      
+      
+               <dt id="normative-schemata" about="#normative-schemata" typeof="rdf:Property">normative-schemata</dt>
+               <dd about="#normative-schemata" property="dcterms:description"
+                   datatype="xsd:string">
+                  <p>The normative schema(ta) for validation of instances satisfying the constraints expressed in this directory</p>
+               </dd>
+               <dt id="normative-prose" about="#normative-prose" typeof="rdf:Property">normative-prose</dt>
+               <dd about="#normative-prose" property="dcterms:description" datatype="xsd:string">
+                  <p>Normative prose regarding the application of the entity described by this directory</p>
+               </dd>
+               <dt id="schema-documentation" about="#schema-documentation" typeof="rdf:Property">schema-documentation</dt>
+               <dd about="#schema-documentation" property="dcterms:description"
+                   datatype="xsd:string">
+                  <p>Human-readable documentation of a schema</p>
+               </dd>
+               <dt id="prefix" about="#prefix" typeof="rdf:Property">prefix</dt>
+               <dd about="#prefix" property="dcterms:description" datatype="xsd:string">
+                  <p>A prefix functioning as a symbolical short form for a URI</p>
+               </dd>
+               <dt id="conformance" about="#conformance" typeof="rdf:Property">conformance</dt>
+               <dd about="#conformance" property="dcterms:description" datatype="xsd:string">
+                  <p>The conformance requirement of a resource: normative or informative</p>
+               </dd>
+               <dt id="schema-type" about="#schema-type" typeof="rdf:Property">format</dt>
+               <dd about="#schema-type" property="dcterms:description" datatype="xsd:string">
+                  <p>The language in which a schema is expressed</p>
+               </dd>
+               <div id="instance-conformance-profile" about="#instance-conformance-profile"
+                    typeof="rdf:Bag">
+                  <h3 id="h_instance-conformance-profile" about="#instance-conformance-profile"
+                      rev="dcterms:title">Instance Conformance (Z39.98-2012 Profile Specific)</h3>
+                  <p about="#instance-conformance-profile" rev="dcterms:description">Resources related to testing whether instances satisfies the constraints expressed in this directory</p>
+                  <dl about="#instance-conformance-profile" rev="rdfs:member">
+         
+         
+                     <dt id="z3998-instance-name" about="#z3998-instance-name" typeof="rdf:Property">z3998-instance name</dt>
+                     <dd about="#z3998-instance-name" property="dcterms:description"
+                         datatype="xsd:string">
+                        <p>The name by which a profile or feature must be identified in Z39.98-AI document declarations.</p>
+                     </dd>
+                     <dt id="z3998-feature" about="#z3998-feature" typeof="rdf:Property">z3998-feature</dt>
+                     <dd about="#z3998-feature" property="dcterms:description" datatype="xsd:string">
+                        <p>A Feature supported by the Profile</p>
+                     </dd>
+                     <dt id="z3998-rdfa-context" about="#z3998-rdfa-context" typeof="rdf:Property">z3998-rdfa-context</dt>
+                     <dd about="#z3998-rdfa-context" property="dcterms:description"
+                         datatype="xsd:string">
+                        <p>The canonical URI of the RDFa initial context document</p>
+                     </dd>
+                  </dl>
+               </div>
+            </dl>
+         </div>
+         <div id="auxiliary" about="#auxiliary" typeof="rdf:Bag">
+            <h2 id="h_auxiliary" about="#auxiliary" rev="dcterms:title">Auxiliary Resources</h2>
+            <dl about="#auxiliary" rev="rdfs:member">
+      
+               <dt id="examples" about="#examples" typeof="rdf:Property">examples</dt>
+               <dd about="#examples" property="dcterms:description" datatype="xsd:string">
+                  <p>Examples of instances satisfying the constraints expressed in this directory</p>
+               </dd>
+               <dt id="informative-schema-alt" about="#informative-schema-alt"
+                   typeof="rdf:Property">informative-schema-alt</dt>
+               <dd about="#informative-schema-alt" property="dcterms:description"
+                   datatype="xsd:string">
+                  <p>An informative schema, alternative to 
+ <a href="#normative-schemata">normative schemas</a>, for validation of instances satisfying the constraints expressed in this directory</p>
+               </dd>
+               <dt id="informative-schema-add" about="#informative-schema-add"
+                   typeof="rdf:Property">informative-schema-add</dt>
+               <dd about="#informative-schema-add" property="dcterms:description"
+                   datatype="xsd:string">
+                  <p>An informative schema, for use in addition to 
+ <a href="#normative-schemata">normative schemas</a>
+                  </p>
+               </dd>
+               <dt id="schema-module" about="#schema-module" typeof="rdf:Property">module</dt>
+               <dd about="#schema-module" property="dcterms:description" datatype="xsd:string">
+                  <p>A subcomponent of a schema</p>
+               </dd>
+               <dt id="default-css" about="#default-css" typeof="rdf:Property">default-css</dt>
+               <dd about="#default-css" property="dcterms:description" datatype="xsd:string">
+                  <p>A cascading stylesheet suitable for use in instances satisfying the constraints expressed in this directory</p>
+               </dd>
+               <dt id="supporting-software" about="#supporting-software" typeof="rdf:Property">supporting-software</dt>
+               <dd about="#supporting-software" property="dcterms:description"
+                   datatype="xsd:string">
+                  <p>Software that supports the entity described by this directory or instances satisfying the constraints expressed herein</p>
+               </dd>
+               <dt id="archive" about="#archive" typeof="rdf:Property">archive</dt>
+               <dd about="#archive" property="dcterms:description" datatype="xsd:string">
+                  <p>A downloadable archive of documents and resources referenced from this directory</p>
+               </dd>
+            </dl>
+         </div>
+      </div>
+   </body>
+</html>

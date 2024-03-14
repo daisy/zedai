@@ -1,0 +1,118 @@
+@base  <http://www.daisy.org/z3998/2012/vocab/decl/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix jena: <http://www.daisy.org/ns/rdf/jena#> .
+@prefix : <#> .
+
+<> 
+  dcterms:title "Z39.98-2012 Instance Metadata Vocabulary" ;
+  dcterms:description "This RDF vocabulary is a normative part of NISO Z39.98-2012(http://www.daisy.org/z3998/2012/z3998-2012.html)." ;
+  dcterms:publisher "DAISY Consortium" ;
+  dcterms:issued "2009-12-01" ;    
+  dcterms:creator "mgylling" ;
+  dcterms:modified "2010-05-21" .
+  
+
+########################################
+########## nature properties ###########
+########################################
+
+:nature-properties  a rdf:Bag ; 
+     dcterms:title "Document Instance Nature Properties" ;
+     dcterms:description "The following properties are used to declare the Z39.98-2012 document instance nature in terms of which profile it adheres to, which optional features it makes use of and which RDFa document defines its default context. The properties must be used in the rel attribute of the meta element in the document instance head." .
+
+:profile   a rdf:Property ;
+     rdfs:label "profile";
+     rdf:member :nature-properties ;
+     rdfs:comment "The associated resource reference is the canonical URI of the profile this document instance adheres to, also resolving to its Resource Directory." .
+
+:feature   a rdf:Property ;
+     rdfs:label "feature";
+     rdf:member :nature-properties ;
+     rdfs:comment "The associated resource reference is the canonical URI of a feature used in this document instance, also resolving to its Resource Directory." .
+
+:rdfa-context  a rdf:Property ;
+     rdfs:label "rdfa-context";
+     rdf:member :nature-properties ;
+     rdfs:comment "The associated resource reference is the default RDFa context for this document instance." .
+
+
+########################################
+# profile reference properties         #
+########################################
+
+:profile-feature-properties a rdf:Bag ; 
+     dcterms:title "Profile and Feature Reference Properties" ;
+     dcterms:description "The following properties are used to fully identify a referenced profile or feature." .
+
+:name     a rdf:Property ;
+     rdfs:label "name";
+     rdf:member :profile-feature-properties ;
+     rdfs:comment "The name that uniquely identifies the referenced profile or feature." .
+
+:version    a rdf:Property ;
+     rdfs:label "version";
+     rdf:member :profile-feature-properties ;
+     rdfs:comment "The version number of the referenced profile or feature." .
+
+
+########################################
+# metadata record reference properties #
+########################################
+
+:meta-record-properties a rdf:Bag ; 
+     dcterms:title "Metadata Record Reference Properties" ;
+     dcterms:description "The following properties are used when referencing external metadata records from a Z39.98-2012 document instance. The properties must be used on attributes of the meta element in the document instance head element." .
+
+:meta-record   a rdf:Property ;
+     rdfs:label "meta-record";
+     rdf:member :meta-record-properties ;
+     rdfs:comment "The referenced resource is a metadata record describing the document instance." .
+
+:meta-record-type  a rdf:Property ;
+     rdfs:label "meta-record-type";
+     rdf:member :meta-record-properties ;
+     rdfs:comment "The referenced metadata record is of the given type(#meta-record-types)." .
+
+:meta-record-version a rdf:Property ;
+     rdfs:label "meta-record-version";
+     rdf:member :meta-record-properties ;
+     rdfs:comment "The referenced metadata record is expressed using the given version of the given type(#meta-record-type)." .
+
+
+
+########################################
+######## metadata record types #########
+########################################
+
+     
+:meta-record-types a rdf:Bag ; 
+     dcterms:title "Metadata Record Types" ;
+     dcterms:description "The following properties represent well-known metadata record types." .
+
+:mods     a rdf:Property ;
+     rdfs:label "mods" ;
+     rdf:member :meta-record-types ;
+     rdfs:comment "The referenced metadata record is of the type Metadata Object Description Schema(http://www.loc.gov/standards/mods/) (MODS)." .
+
+:onix-books   a rdf:Property ;
+     rdfs:label "onix-books";
+     rdf:member :meta-record-types ;
+     rdfs:comment "The referenced metadata record is of the type ONIX for Books(http://www.editeur.org/)." .
+
+:marc21-xml   a rdf:Property ;
+     rdfs:label "marc21-xml";
+     rdf:member :meta-record-types ;
+     rdfs:comment "The referenced metadata record is of the type MARC 21 XML(http://www.loc.gov/standards/marcxml/)." .
+
+:dcterms-rdf   a rdf:Property ;
+     rdfs:label "dcterms-rdf";
+     rdf:member :meta-record-types ;
+     rdfs:comment "The referenced metadata record is an RDF XML(http://www.w3.org/TR/REC-rdf-syntax/) record using properties from http://purl.org/dc/terms/." .
+
+:dcterms-rdfa   a rdf:Property ;
+     rdfs:label "dcterms-rdfa" ;
+     rdf:member :meta-record-types ;
+     rdfs:comment "The referenced metadata record is an RDFa(http://www.w3.org/TR/rdfa-syntax/) document using properties from http://purl.org/dc/terms/." .

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+
+    <div>
+        <define name="smil3.timecontainers.class" combine="choice">
+            <ref name="smil3.excl"/>
+        </define>
+    </div>
+
+    <div>
+
+        <define name="smil3.excl">
+            <element name="excl">
+                <ref name="smil3.excl.attlist"/>
+                <ref name="smil3.excl.content"/>
+            </element>
+        </define>
+
+        <define name="smil3.excl.attlist" combine="interleave">
+            <ref name="smil3.timecontainers.attrib" />
+            <optional>
+                <ref name="smil3.fill.attrib"/>
+            </optional>
+            <optional>
+                <ref name="smil3.endsync.attrib"/>
+            </optional>
+        </define>
+
+        <define name="smil3.excl.content">
+            <oneOrMore>
+                <choice>
+                    <ref name="smil3.excl.content.class"/>
+                </choice>
+             </oneOrMore>   
+        </define>
+        
+        <define name="smil3.excl.content.class" combine="choice">
+            <ref name="smil3.timecontainers.content.class"/>
+        </define>
+    </div>
+
+</grammar>

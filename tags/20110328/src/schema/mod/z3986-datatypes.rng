@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes" 
+    xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" 
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="datatypes">The datatypes module</title>
+        <annotation annotates="/" condition="required">
+            <para role="desc-main">This module defines a set of core datatypes for reference globally.</para>
+            <simplelist role="def-dependencies"/>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2011-03-28</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div xml:id="datatypes-xml">
+        <a:documentation>Datatypes defined in XML 1.0</a:documentation>
+        <define name="ID.datatype" xml:id="ID.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="ID">The ID datatype</title>
+                <para role="desc-main">An ID TokenizedType, as defined in section 3.3.1 of [[#refXML]].</para>
+            </annotation>
+            <data type="ID"/>
+        </define>
+        <define name="IDREF.datatype" xml:id="IDREF.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="IDREF">The IDREF datatype</title>
+                <para role="desc-main">An IDREF TokenizedType, as defined in section 3.3.1 of [[#refXML]].</para>
+            </annotation>
+            <data type="IDREF"/>
+        </define>
+        <define name="IDREFS.datatype" xml:id="IDREFS.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="IDREFS">The IDREFS datatype</title>
+                <para role="desc-main">A space-separated list of [[http://www.daisy.org/z3986/2011/auth/cm/#IDREF.datatype IDREF]] TokenizedTypes.</para>
+            </annotation>
+            <data type="IDREFS"/>
+        </define>
+        <define name="NMTOKEN.datatype" xml:id="NMTOKEN.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="NMTOKEN">The NMTOKEN datatype</title>
+                <para role="desc-main">An NMTOKEN TokenizedType, as defined in section 3.3.1 of [[#refXML]].</para>
+            </annotation>
+            <data type="NMTOKEN"/>
+        </define>
+        <define name="NMTOKENS.datatype" xml:id="NMTOKENS.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="NMTOKENS">The NMTOKENS datatype</title>
+                <para role="desc-main">A space-separated list of [[#NMTOKEN.datatype]] TokenizedTypes.</para>
+            </annotation>
+            <data type="NMTOKENS"/>
+        </define>
+        <define name="NCName.datatype" xml:id="NCName.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="NCName">The NCName datatype</title>
+                <para role="desc-main">An XML non-colonized Name, as defined in section 3.3.7 of [[#refXML]].</para>
+            </annotation>
+            <data type="NCName"/>
+        </define>
+        <define name="Character.datatype" xml:id="Character.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="Character">The {Character} datatype</title>
+                <para role="desc-main">A single character, as per section 2.2 of [[#refXML]].</para>
+            </annotation>
+            <data type="string">
+                <param name="length">1</param>
+            </data>
+        </define>
+        <define name="Characters.datatype" xml:id="Characters.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="Characters">The {Characters} datatype</title>
+                <para role="desc-main">A range (0..n) of characters, as per section 2.2 of [[#refXML]].</para>
+            </annotation>
+            <text/>
+        </define>
+        <define name="LanguageIdentifier.datatype" xml:id="LanguageIdentifier.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="LanguageIdentifier">The {LanguageIdentifier} datatype</title>
+                <para role="desc-main">A language identifier, as per [[http://www.w3.org/TR/REC-xml/#sec-lang-tag Language Identification]] in [[#refXML]].</para>
+            </annotation>
+            <choice>
+                <data type="language"/>
+                <data type="string">
+                    <param name="length">0</param>
+                </data>
+            </choice>
+        </define>
+        <!-- <define name="CDATA.datatype" xml:id="CDATA.datatype"> <text/> </define> <define name="PCDATA.datatype" xml:id="PCDATA.datatype"> <text/> </define> <define name="NAME.datatype" xml:id="NAME.datatype"> <data type="Name"/> </define> -->
+    </div>
+    <div xml:id="datatypes-xsd">
+        <a:documentation>Datatypes defined in or derived from XSD datatypes</a:documentation>
+        <define name="NonEmptyString.datatype" xml:id="NonEmptyString.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="NonEmptyString">The {NonEmptyString} datatype</title>
+                <para role="desc-main">Specifies a value that must contain at least one non-whitespace character after whitespace normalization rules have been applied to the attribute value, as expressed through the [[#refXMLSchemaPart2 XSD]] {normalizedString} datatype.</para>
+            </annotation>
+            <data type="normalizedString">
+                <param name="pattern">.+</param>
+            </data>
+        </define>
+        <define name="Time.datatype" xml:id="Time.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="Time">The {Time} datatype</title>
+                <para role="desc-main">A date and/or time statement, expressed using any of the [[#refXMLSchemaPart2 XSD]] {gYear}, {gYearMonth}, {gMonthDay}, {gDay}, {gMonth}, {date}, {time} or {dateTime} datatypes, or the Z39.86-defined {[[#TimeNoSeconds.datatype]]} datatype.</para>
+            </annotation>
+            <choice>
+                <data type="gYear"/>
+                <data type="gYearMonth"/>
+                <data type="gMonthDay"/>
+                <data type="gDay"/>
+                <data type="gMonth"/>
+                <data type="date"/>
+                <data type="time"/>
+                <data type="dateTime"/>
+                <ref name="TimeNoSeconds.datatype"/>
+            </choice>
+        </define>
+        <define name="TimeNoSeconds.datatype" xml:id="TimeNoSeconds.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="TimeNoSeconds">The TimeNoSeconds datatype</title>
+                <para role="desc-main">A derivation of the [[#refXMLSchemaPart2 XSD]] {time} datatype that only includes hour and minute specifications. The lexical expression is {hh:mm}.</para>
+            </annotation>
+            <data type="string">
+                <param name="pattern">\d\d:\d\d</param>
+            </data>
+        </define>
+        <define name="Datetime.datatype" xml:id="Datetime.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="dateTime">The {dateTime} datatype</title>
+                <para role="desc-main">Date and time information, as defined by the {dateTime} type in [[#refXMLSchemaPart2]].</para>
+            </annotation>
+            <data type="dateTime"/>
+        </define>
+        <define name="NonNegativeInteger.datatype" xml:id="NonNegativeInteger.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="nonNegativeInteger">The {NonNegativeInteger} datatype</title>
+                <para role="desc-main">A non-negative integer.</para>
+            </annotation>
+            <data type="nonNegativeInteger">
+                <param name="pattern">[0-9]+</param>
+            </data>
+        </define>
+        <define name="PositiveInteger.datatype" xml:id="PositiveInteger.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="positiveInteger">The {PositiveInteger} datatype</title>
+                <para role="desc-main">A positive integer.</para>
+            </annotation>
+            <data type="positiveInteger">
+                <param name="pattern">[0-9]+</param>
+            </data>
+        </define>
+        <define name="Integer.datatype" xml:id="Integer.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="integer">The {Integer} datatype</title>
+                <para role="desc-main">An integer.</para>
+            </annotation>
+            <data type="integer"/>
+        </define>
+        <define name="URI.datatype" xml:id="URI.datatype">
+            <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="URI">The anyURI datatype</title>
+                <para role="desc-main">A Uniform Resource Identifier Reference, as defined by the {anyURI} type in [[#refXMLSchemaPart2]].</para>
+            </annotation>
+            <data type="anyURI"/>
+        </define>
+        <define name="URIs.datatype" xml:id="URIs.datatype">
+            <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="URIs">The URIs datatype</title>
+                <para role="desc-main">A space-separated list of {[[#URI.datatype]]}s.</para>
+            </annotation>
+            <list>
+                <oneOrMore>
+                    <ref name="URI.datatype"/>
+                </oneOrMore>
+            </list>
+        </define>
+    </div>
+    <div xml:id="datatypes-xmlns">
+        <define name="QName.datatype" xml:id="QName.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="QName">The {QName} datatype</title>
+                <para role="desc-main">A namespace qualified name as per [[#refXMLNamespaces]].</para>
+            </annotation>
+            <data type="QName"/>
+        </define>
+        <define name="QNames.datatype" xml:id="QNames.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="QNames">The {QNames} datatype</title>
+                <para role="desc-main">One or more whitespace separated {[[#QName.datatype]]}s.</para>
+            </annotation>
+            <list>
+                <oneOrMore>
+                    <data type="QName"/>
+                </oneOrMore>
+            </list>
+        </define>
+        <define name="prefixedQName.datatype" xml:id="prefixedQName.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="prefixedQName">The {prefixedQName} datatype</title>
+                <para role="desc-main">A prefixed {[[#QName.datatype]]}.</para>
+            </annotation>
+            <data type="QName">
+                <param name="pattern">[\i-[:]][\c-[:]]*:[\i-[:]][\c-[:]]*</param>
+            </data>
+        </define>
+    </div>
+    <div xml:id="datatypes-contentType">
+        <a:documentation>ContentType and MediaType Datatypes</a:documentation>
+        <define name="MediaType.datatype" xml:id="MediaType.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="MediaType">The {MediaType} datatype</title>
+                <para role="desc-main">Media type, as per [[#refRFC2046]].</para>
+            </annotation>
+            <text/>
+            <!-- TODO regex for rfc2046 -->
+        </define>
+    </div>
+    <div xml:id="datatypes-css">
+        <a:documentation>CSS Datatypes</a:documentation>
+        <define name="CSS.TimeValue.datatype" xml:id="CSS.TimeValue.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="TimeValue">The {CSS.TimeValue} datatype</title>
+                <para role="desc-main">A {time value} as defined in CSS 2.1 [[http://www.w3.org/TR/CSS2/aural.html#times Times]], e.g. {250ms}, {3s}.</para>
+            </annotation>
+            <text/>
+            <!-- TODO regex : number followed by 'ms' or 's', if not '0'-->
+        </define>
+    </div>
+    <div xml:id="datatypes-curie">
+        <a:documentation>CURIE Datatypes</a:documentation>
+        <define name="CURIE.datatype" xml:id="CURIE.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="CURIE">The {CURIE} datatype</title>
+                <para role="desc-main">A single CURIE, as defined in [[#refRDFa11]].</para>
+            </annotation>
+            <data type="string">
+                <param name="pattern">(([\i-[:]][\c-[:]]*)?:)?[\i-[:]][\c-[:]]*</param>
+            </data>
+        </define>
+        <define name="CURIEs.datatype" xml:id="CURIEs.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="CURIEs">The {CURIEs} datatype</title>
+                <para role="desc-main">A whitespace separated list of [[#CURIE.datatype]]s.</para>
+            </annotation>
+            <list>
+                <oneOrMore>
+                    <ref name="CURIE.datatype"/>
+                </oneOrMore>
+            </list>
+        </define>
+        <define name="SafeCURIE.datatype" xml:id="SafeCURIE.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="SafeCURIE">The {SafeCURIE} datatype</title>
+                <para role="desc-main">A single {safe CURIE}, as defined in [[#refRDFa11]].</para>
+            </annotation>
+            <data type="string">
+                <param name="pattern">\[(([\i-[:]][\c-[:]]*)?:)?.+\]</param>
+                <param name="minLength">3</param>
+            </data>
+        </define>
+        <define name="SafeCURIEs.datatype" xml:id="SafeCURIEs.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="SafeCURIEs">The {SafeCURIEs} datatype</title>
+                <para role="desc-main">A whitespace separated list of [[#SafeCURIE.datatype]]s.</para>
+            </annotation>
+            <list>
+                <oneOrMore>
+                    <ref name="SafeCURIE.datatype"/>
+                </oneOrMore>
+            </list>
+        </define>
+        <define name="URIorSafeCURIE.datatype" xml:id="URIorSafeCURIE.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="URIorSafeCURIE">The {URIorSafeCURIE} datatype</title>
+                <para role="desc-main">A [[#URI.datatype]] or a [[#SafeCURIE.datatype]].</para>
+            </annotation>
+            <choice>
+                <ref name="URI.datatype"/>
+                <ref name="CURIE.datatype"/>
+            </choice>
+        </define>
+        <define name="URIorSafeCURIEs.datatype" xml:id="URIorSafeCURIEs.datatype">
+            <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                <title xreflabel="URIorSafeCURIEs">The {URIorSafeCURIEs} datatype</title>
+                <para role="desc-main">A whitespace separated list of [[#URIorSafeCURIE.datatype]]s.</para>
+            </annotation>
+            <list>
+                <oneOrMore>
+                    <ref name="URIorSafeCURIE.datatype"/>
+                </oneOrMore>
+            </list>
+        </define>
+    </div>
+    <!-- <define name="Number.datatype" xml:id="Number.datatype"> <a:documentation>One or more digits (NUMBER).</a:documentation> <data type="nonNegativeInteger"> <param name="pattern">[0-9]+</param> </data> </define> <define name="spanNumber.datatype" xml:id="spanNumber.datatype"> <a:documentation>span: this attribute value must be an integer > 0; the implicit value is 1.</a:documentation> <data type="positiveInteger"> <param name="pattern">[0-9]+</param> </data> </define> <define name="Text.datatype" xml:id="Text.datatype"> <a:documentation>Arbitrary textual data, including whitespace only and the empty string.</a:documentation> <text/> </define> <define name="Coordinates.datatype" xml:id="Coordinates.datatype"> <a:documentation>Comma separated list of Lengths used in defining areas.</a:documentation> <data type="string"> <param name="pattern">(\d+|\d+(\.\d+)?%)(,\s*(\d+|\d+(\.\d+)?%))*</param> </data> </define> <define name="HrefTarget.datatype" xml:id="HrefTarget.datatype"> <a:documentation>Name used as destination for results of certain actions.</a:documentation> <ref name="NMTOKEN.datatype"/> </define> <define name="Length.datatype" xml:id="Length.datatype"> <a:documentation>The value may be either in pixels or a percentage of the available horizontal or vertical space. Thus, the value "50%" means half of the available space.</a:documentation> <data type="string"> <param name="pattern">(\d+|\d+(\.\d+)?%)</param> </data> </define> <define name="LocationPath.datatype" xml:id="LocationPath.datatype"> <a:documentation>A location path as defined in [XPATH].</a:documentation> <text/> </define> <define name="MediaDesc.datatype" xml:id="MediaDesc.datatype"> <a:documentation>A comma-separated list of media descriptors as described by [CSS]. The default is all.</a:documentation> <data type="string"> <param name="pattern">[^,]+(,\s*[^,]+)*</param> </data> </define> <define name="Shape.datatype" xml:id="Shape.datatype"> <a:documentation>The shape of a region.</a:documentation> <choice> <value>default</value> <value>rect</value> <value>circle</value> <value>poly</value> </choice> </define> <define name="Boolean.datatype" xml:id="Boolean.datatype"> <choice> TODO get this from WXSDT <value>true</value> <value>false</value> </choice> </define> <define name="Charset.datatype" xml:id="Charset.datatype"> <a:documentation>A character encoding, as per [RFC2045]</a:documentation> <text/> </define> <define name="Encodings.datatype" xml:id="Encodings.datatype"> <a:documentation>A comma-separated list of 'charset's with optional q parameters, as defined in section 14.2 of [RFC2616] as the field value of the Accept-Charset request header.</a:documentation> <text/> </define> <define name="ContentTypes.datatype" xml:id="ContentTypes.datatype"> <a:documentation>A list of media ranges with optional accept parameters, as defined in section 14.1 of [RFC2616] as the field value of the accept request header.</a:documentation> <text/> </define> <define name="LanguageCodes.datatype" xml:id="LanguageCodes.datatype"> <a:documentation>A comma-separated list of language ranges.</a:documentation> <text/> </define> <define name="ContentType.datatype" xml:id="ContentType.datatype"> <a:documentation>Media type, as per [RFC2045]</a:documentation> <text/> </define> -->
+</grammar>

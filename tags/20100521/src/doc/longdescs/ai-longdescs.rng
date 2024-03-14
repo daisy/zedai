@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  
+  <!-- Longer discussions on module components. Each entry is a db:section
+    where the about attribute refers to the RNG define name. The custom <escape>
+    element is used to add zedai namespace examples (which are autoescaped by DocXIncludeProcessor).    
+    -->
+    
+  <include href="../../../util/docbook/rng/docbook.rng">    
+    <define name="db._any.mml">
+      <empty/>
+    </define>
+    <define name="db._any">
+      <empty/>
+    </define>
+    <define name="db.section.info">
+      <optional>
+        <ref name="db._info.title.req"/>
+      </optional>    
+    </define>
+  </include>
+  
+  <include href="../../schema/_z3986a-all.rng">
+    <start combine="interleave">
+      <empty />
+    </start>        
+  </include>
+  
+  <define name="db.all.blocks" combine="choice">
+    <ref name="escape"/>
+  </define>
+
+  <define name="db.section.attlist" combine="interleave">
+    <ref name="rdfa.about.attrib"/>
+    <attribute name="dest">
+      <choice>        
+        <value>doc</value>
+        <value>absdef</value>
+        <value>any</value>
+      </choice>  
+    </attribute>  
+  </define>
+
+  <define name="escape">
+    <element name="escape" ns="http://www.daisy.org/ns/z3986/authoring/">  
+      <oneOrMore>
+        <choice>
+          <text/>           
+          <ref name="z3986.Section.class"/>   
+          <ref name="z3986.Block.class"/>          
+          <ref name="z3986.Phrase.class"/>
+          <ref name="z3986.Text.class"/>
+        </choice>  
+      </oneOrMore>  
+    </element>
+  </define>
+
+  <!-- <include href="../../../util/rng/xhtml/xhtml-strict.rng" /> -->
+  <!-- <define name="xhtml.Structural.class" combine="choice">
+    <ref name="z3986.code.block"/>
+    </define> -->
+
+</grammar>

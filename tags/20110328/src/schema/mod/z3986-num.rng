@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="num">The num module</title>
+        <annotation annotates="/">
+            <para role="desc-main">This module defines the {[[#z3986.num]]} element for marking numbers that are not mathematical in nature.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3986-datatypes.rng"/>
+                <member xlink:href="z3986-core-attrib.rng"/>
+                <member xlink:href="z3986-i18n-attrib.rng"/>
+                <member xlink:href="rdfa-attrib.rng"/>
+                <member xlink:href="z3986-global-classes.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2011-03-28</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="z3986.num" xml:id="z3986.num">
+            <element name="num">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="num">The {num} element</title>
+                    <para role="desc-main">The {num} element represents a set of Arabic or Roman numerals that taken together indicate a single value or represent a single number in a standardized format.</para>
+                    <para role="desc-sub">Examples of numbers include: cardinal and ordinal values, weights, measures, currency values, postal codes, telephone numbers, ISBN numbers, scores and results, etc. Where these values include units of measure or other symbols integral to their understanding, the units and symbols must be included as a part of the {num} element.</para>
+                    <para role="desc-sub">The {[[#z3986.role.attrib]]} attribute optionally expresses the semantic nature of the number. If omitted, the implicit value {cardinal} is assumed.</para>
+                    <para role="desc-sub">If the value of the {num} element is not in a machine-readable format, the {[[#z3986.num.value.attrib]]} attribute optionally allows the inclusion of an alternate representation.</para>
+                    <para role="desc-sub">The MathML feature is intended for marking proper mathematical statements within documents and should be used in preference over the {num} element whenever equations, formulae or other formal mathematic constructs or operators are being marked.</para>
+                    <para role="desc-sub">The {num} element must not be used to mark instances of dates and times. Refer to the {[[#z3986.time]]} element for more information.</para>
+                    <synopsis role="def-context">{[[#z3986.Phrase.class]]}</synopsis>
+                    <synopsis role="def-content" condition="The content model must not allow elements from MathML.">{(text | z3986.Text.class)+}</synopsis>
+                    <synopsis role="def-attlist" condition="The attribute model must allow the {[[#z3986.num.value.attrib value]]} attribute.">{[[#z3986.Phrase.attrib]], [[#z3986.num.value.attrib]]?}</synopsis>
+                </annotation>
+                <ref name="z3986.num.attlist"/>
+                <ref name="z3986.num.content"/>
+                <sch:rule context="default:num">
+                    <sch:assert test="normalize-space(.) or *">The {num} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="z3986.num.attlist" xml:id="z3986.num.attlist">
+            <optional>
+                <ref name="z3986.num.value.attrib"/>
+            </optional>
+            <!-- expand out Phrase.attrib in order to allow value suggestion injections on @role -->
+            <ref name="z3986.global.core.attrib"/>
+            <optional>
+                <ref name="z3986.num.role.attrib"/>
+            </optional>
+            <ref name="z3986.Phrase.extern.attrib"/>
+        </define>
+        <define name="z3986.num.value.attrib" xml:id="z3986.num.value.attrib">
+            <attribute name="value">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="value (num)">The {value} attribute</title>
+                    <para role="desc-main">The {value} attribute provides the value of the {num} element in a machine-readable form.</para>
+                    <para role="desc-sub absdef-only">A processing agent's interpretation of the value depends on the specific type of numeral, as specified by the {role} attribute.</para>
+                    <synopsis role="def-context" condition="fixed">{[[#z3986.num]]}</synopsis>
+                    <synopsis role="def-content">{text}</synopsis>
+                </annotation>
+                <ref name="NonEmptyString.datatype"/>
+            </attribute>
+        </define>
+        <define name="z3986.num.role.attrib" xml:id="z3986.num.role.attrib">
+            <attribute name="role">
+                <list>
+                    <oneOrMore>
+                        <ref name="z3986.num.role.attrib.content.enum"/>
+                    </oneOrMore>
+                </list>
+            </attribute>
+        </define>
+        <define name="z3986.num.role.attrib.content.enum" combine="choice">
+            <ref name="QName.datatype"/>
+        </define>
+        <define name="z3986.num.content" xml:id="z3986.num.content">
+            <ref name="z3986.Text.model"/>
+        </define>
+    </div>
+    <div>
+        <a:documentation>num - default content model contribution</a:documentation>
+        <define name="z3986.Phrase.core.class" combine="choice">
+            <ref name="z3986.num"/>
+        </define>
+    </div>
+</grammar>

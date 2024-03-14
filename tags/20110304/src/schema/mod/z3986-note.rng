@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar ns="http://www.daisy.org/ns/z3986/authoring/" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="note">The note module</title>
+        <annotation annotates="/">
+            <para role="desc-main">This module defines the {[[#z3986.note]]} and {[[#z3986.noteref]]} elements for the referencing and inclusion of footnotes and endnotes.</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3986-global-classes.rng"/>
+                <member xlink:href="z3986-linking.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2011-03-04</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="z3986.note" xml:id="z3986.note">
+            <element name="note">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="note">The {note} element</title>
+                    <para role="desc-main">The {note} element represents a single footnote or endnote.</para>
+                    <para role="desc-sub">Notes provide or reference sources of additional information, or acknowledge the source of a quotation or idea. In printed matter, they are usually distinguishable from annotations by their location either at the bottom of print pages, at the end of sections or in the back matter of a document.</para>
+                    <para role="desc-sub">Each {note} is typically referenced by a {[[#z3986.noteref]]} or prefixed by a page location (when explicit references have been omitted from the text). If the {note} does not have a referent in a Z39.86-AI document, it must include a {[[#z3986.ref.attrib]]} attribute that references back to the nearest element in the document to the content to which it applies.</para>
+                    <para role="desc-sub">The {[[#z3986.role.attrib]]} attribute optionally expresses the semantic nature of the note. The value can be either {footnote} or {endnote}. If omitted, the implicit value {footnote} is assumed.</para>
+                    <para role="desc-sub">When a note is prefixed by a number or symbol, that identifier should be included using the Content Rendition feature's {[[http://www.daisy.org/z3986/2011/auth/features/rend/current/#z3986.rend.prefix.attrib prefix]]} attribute.</para>
+                    <synopsis role="def-context">{[[#z3986.Block.class]]}</synopsis>
+                    <synopsis role="def-content">{(z3986.Block.class)+ | (text | z3986.Text.class | z3986.Phrase.class)+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3986.Block.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3986.note.attlist"/>
+                <ref name="z3986.note.content"/>
+                <sch:rule context="default:note">
+                    <sch:assert test="key('noterefs', @xml:id) or id(current()/@ref)">The {note} element must either be referenced by a {noteref} or reference another element in the document.</sch:assert>
+                    <sch:assert test="normalize-space(.) or *">The {note} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="z3986.note.content" xml:id="z3986.note.content">
+            <ref name="z3986.Flow.choice.model"/>
+        </define>
+        <define name="z3986.note.attlist" combine="interleave">
+            <ref name="z3986.Block.attrib"/>
+            <optional>
+                <ref name="z3986.ref.attrib"/>
+            </optional>
+        </define>
+    </div>
+    <div>
+        <define name="z3986.noteref" xml:id="z3986.noteref">
+            <element name="noteref">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="noteref">The {noteref} element</title>
+                    <para role="desc-main">The {noteref} element represents a textual reference to a {[[#z3986.note]]}.</para>
+                    <para role="desc-sub doc-only">Note references typically appear as superscripted numbers or symbols within the narrative flow but may also appear as linked words, especially in electronic formats.</para>
+                    <para role="desc-sub">The {[[#z3986.ref.attrib]]} attribute is used to establish the link between the note reference and its associated {note}.</para>
+                    <para role="desc-sub">By default, the text content of the {noteref} represents the link reference and is treated as document content. When superscripted numbers or symbols are used to identify the corresponding {note}, the {[[#z3986.noteref.value.attrib]]} attribute should be used. The {noteref} must be an empty element when attaching a {value} attribute; it it not permitted to include text content and a {value} attribute.</para>
+                    <synopsis role="def-context">{[[#z3986.Phrase.class]]}</synopsis>
+                    <synopsis role="def-content">{(empty | (text | [[#z3986.Text.class]] | Phrase.core.class | Phrase.extern.class)+)}</synopsis>
+                    <synopsis role="def-attlist" condition="The attribute model must allow the {[[#z3986.ref.attrib ref]]} attribute.">{[[#z3986.Phrase.attrib]], [[#z3986.ref.attrib]], [[#z3986.noteref.value.attrib]]?}</synopsis>
+                    <para role="def-specialization">This element is a specialization of the {[[#z3986.ref]]} element.</para>
+                </annotation>
+                <ref name="z3986.noteref.attlist"/>
+                <ref name="z3986.noteref.content"/>
+                <sch:rule context="default:noteref">
+                    <sch:report test="@value and (count(*|text()[normalize-space()]) &gt; 0)">The {value} attribute can only be used on empty {noteref} elements.</sch:report>
+                    <sch:report test="not(@value) and (count(*|text()[normalize-space()]) = 0)">A {noteref} element cannot be empty and not include a {value} attribute.</sch:report>
+                    <sch:report role="warning" test="(count(node()[normalize-space()]) = 1) and child::default:sup">Superscripted referents should be included in a {value} attribute, not as text content.</sch:report>
+                    <sch:assert test="every $ref in tokenize(current()/@ref, ' +') satisfies key('notes', $ref)">The IDREF(s) in the {ref} attribute must resolve to {note} elements.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="z3986.noteref.value.attrib" xml:id="z3986.noteref.value.attrib">
+            <attribute name="value">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="value">The noteref {value} attribute</title>
+                    <para role="desc-main">The noteref {value} attribute provides the number or symbol that represents the current {note} reference.</para>
+                    <para role="desc-sub">The {value} attribute allows any text string as an identifier.</para>
+                    <synopsis role="def-context">{[[#z3986.noteref]]}</synopsis>
+                    <synopsis role="def-content">{text}</synopsis>
+                </annotation>
+                <ref name="NonEmptyString.datatype"/>
+            </attribute>
+        </define>
+        <define name="z3986.noteref.attlist" xml:id="z3986.noteref.attlist">
+            <ref name="z3986.Phrase.attrib"/>
+            <ref name="z3986.ref.attrib"/>
+            <optional>
+                <ref name="z3986.noteref.value.attrib"/>
+            </optional>
+        </define>
+        <define name="z3986.noteref.content" xml:id="z3986.noteref.content">
+            <choice>
+                <empty/>
+                <ref name="z3986.Phrase.core.Text.mix.model"/>
+            </choice>
+        </define>
+    </div>
+    <div>
+        <a:documentation>note, noteref - default content model contribution</a:documentation>
+        <define name="z3986.Phrase.core.class" combine="choice">
+            <ref name="z3986.noteref"/>
+        </define>
+        <define name="z3986.Block.core.class" combine="choice">
+            <ref name="z3986.note"/>
+        </define>
+    </div>
+</grammar>

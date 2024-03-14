@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 p element module</x:h1>
+    
+  <div>
+    <x:h2>The p element</x:h2>
+    <x:div id="z3986.p">
+      <x:p class="description">
+        The <x:code>p</x:code> element represents a parapraph.
+      </x:p>
+    </x:div>
+         
+    <define name="z3986.p">
+      <element name="p">        
+        <ref name="z3986.p.attlist"/>
+        <ref name="z3986.p.content"/>  
+      </element>    
+    </define>
+
+    <define name="z3986.p.attlist">
+      <ref name="z3986.Structural.attrib"/>
+    </define>
+    
+    <define name="z3986.p.content">
+      <!-- we dont use plain Text.model since p allows lists 
+      and other block elements as well -->      
+      <oneOrMore>
+        <choice>
+          <text/>
+          <ref name="z3986.p.content.class" />
+        </choice>
+      </oneOrMore>
+    </define>  
+    
+    <define name="z3986.p.content.class" combine="choice">
+      <ref name="z3986.Text.class"/>          
+    </define>
+    
+  </div>  
+  
+  <div>
+    <x:h2>The p element - default content model contribution</x:h2>
+    
+    <define name="z3986.Structural.class" combine="choice">
+      <ref name="z3986.p"/>
+    </define>
+    
+    <define name="z3986.Flow.class" combine="choice">
+      <ref name="z3986.p" />
+    </define>
+
+    <define name="z3986.covers.content.class" combine="choice">
+	  <ref name="z3986.p" />
+    </define>
+
+    <define name="z3986.spine.content.class" combine="choice">
+ 	  <ref name="z3986.p" />
+    </define>
+    
+  </div>
+
+</grammar>

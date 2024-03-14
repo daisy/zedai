@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    ns="http://www.daisy.org/ns/z3998/authoring/features/description/"
+    xmlns:d="http://www.daisy.org/ns/z3998/authoring/features/description/"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+    xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:x="http://www.w3.org/1999/xhtml">
+    <info xmlns="http://docbook.org/ns/docbook">
+        <title xreflabel="select">The DIAGRAM Description Feature</title>
+        <annotation annotates="/">
+            <para role="desc-main">The DIAGRAM <code>Description</code> feature supports traditional long descriptions and also 
+                includes markup for including summaries and simplified language descriptions. It also allows the embedding of 
+                simplified image versions of the source and also tactile printing-ready equivalents.</para>
+            <para role="desc-sub">The age and/or education level of the intended audience can be set in the description metadata, 
+                and the content model also includes mechanisms to target prose within a description to specific subsets of those users
+                (e.g., a description may be generally usable by children from grades three to seven, but the description may
+                include prose that only children in the upper range will be expected to be familiar with).</para>
+            <para role="desc-sub">This feature makes available a single public element: the {[[#z3998.feature.description description]]} element. 
+                Other components defined in this feature are intended for use augmenting this element.</para>
+            <para role="desc-sub">This feature inherits elements, attributes and additional features from the 
+                [[http://www.daisy.org/z3998/2012/auth/cm/ Z39.98-2012 Core Modules]].</para>
+            <simplelist role="def-dependencies">
+                <member xlink:href="z3998-global-classes.rng"/>
+                <member xlink:href="z3998-core-attrib.rng"/>
+            </simplelist>
+        </annotation>
+        <author>
+            <personname>Markus Gylling</personname>
+            <email>mgylling@daisy.org</email>
+        </author>
+        <copyright>
+            <year>2011</year>
+            <year>2012</year>
+            <holder>DAISY Consortium</holder>
+        </copyright>
+        <legalnotice>
+            <para>This module is licensed under a Creative Commons Attribution 3.0 license, a copy of which is available at <link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></para>
+            <para>For complete licensing information, please refer to the LICENSE file that came with this distribution, a copy of which is also available from the DAISY web site at <link xlink:href="http://www.daisy.org">www.daisy.org</link></para>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <date>2012-12-19</date>
+                <authorinitials>MGy</authorinitials>
+                <revdescription>
+                    <para>Initial version</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </info>
+    <div>
+        <define name="z3998.feature.description" xml:id="z3998.feature.description">
+            <element name="description">
+                <annotation annotates=".." condition="required" xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="d:description">The description element</title>
+                    <para role="desc-main">The {description} element is the root container element for a description. It consists
+                        of an optional container element for metadata information (the {[[#z3998.feature.description.head head]]}) and a 
+                        required container for the different description types and alternate image renditions (the {[[#z3998.feature.description.body body]]}).</para>
+                    <para role="desc-sub">The language of the description can be specified by attaching an {[[#xml.lang.attrib]]}
+                        attribute to the {description} element. If the description will be made available in a standalone context (i.e., in which 
+                        its language cannot be inherited from a host content document), the language should always be specified.</para>
+                    <para role="desc-sub">The [[http://www.daisy.org/z3998/2012/auth/profiles/descriptions/current/z3998-descriptions.html DIAGRAM Description profile]]
+                        provides the ability to compile one or more {description} elements into a single document for distribution 
+                        (e.g., to accompany an EPUB).</para>
+                    <para role="desc-sub">When storing a description in a standalone context, the Description feature namespace 
+                        {http://www.daisy.org/ns/z3998/authoring/features/description/} should be declared on the {description} element
+                        using the xmlns namespace association mechanism defined in {[[#refXMLNamespaces]]}. 
+                        Although not required, the prefix {d} is recommended.</para>
+                    <synopsis role="def-context">{[[#z3998.Block.class]]}</synopsis>
+                    <synopsis role="def-content" condition="fixed">{[[#z3998.feature.description.head]]?, [[#z3998.feature.description.body]]}</synopsis>
+                    <synopsis role="def-attlist">{[[#xml.id.attrib]]?,[[#xml.base.attrib]]?}</synopsis>
+                </annotation>
+                <ref name="z3998.feature.description.attlist"/>
+                <ref name="z3998.feature.description.content"/>
+            </element>
+        </define>
+        <define name="z3998.feature.description.attlist" xml:id="z3998.feature.description.attlist">
+            <optional>
+                <ref name="xml.id.attrib"/>
+            </optional>
+            <optional>
+                <ref name="xml.lang.attrib"/>
+            </optional>
+            <optional>
+                <ref name="xml.base.attrib"/>
+            </optional>
+        </define>
+        <define name="z3998.feature.description.content" xml:id="z3998.feature.description.content">
+            <ref name="z3998.feature.description.document.model"/>
+        </define>
+        <define name="z3998.feature.description.document.model" xml:id="z3998.feature.description.document.model">
+            <a:documentation>The document-like model choice for description</a:documentation>
+            <optional>
+                <ref name="z3998.feature.description.head"/>
+            </optional>
+            <ref name="z3998.feature.description.body"/>
+        </define>
+    </div>
+    <div>
+        <define name="z3998.feature.description.head" xml:id="z3998.feature.description.head">
+            <element name="head">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="d:head">The description {head} element</title>
+                    <para role="desc-main">The description {head} element contains meta information about the 
+                        enclosing {[[#z3998.feature.description description]]} element.</para>
+                    <para role="desc-sub">The meta information in the description {head} element should not be
+                        treated as document content, but may be used for display and other purposes when 
+                        rendering descriptions.</para>
+                    <para role="desc-sub">Although all metadata is optional, descriptions should, at a minimum, include
+                        an identifier, the intended reader age and/or school grade level. See the 
+                        [[http://www.daisy.org/z3998/2012/vocab/descriptions/ DIAGRAM Descriptions Vocabulary]]
+                        for a set of predefined RDF properties. Properties from other RDF vocabularies can
+                        also be included, provided their prefix is declared.</para>
+                    <para role="desc-sub">If age and grade-level metadata is omitted, the containing {description}
+                        should be assumed to be applicable to all readers.</para>
+                    <synopsis role="def-context">{[[#z3998.feature.description]]}</synopsis>
+                    <synopsis role="def-content">{[[#z3998.meta]]+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3998.Document.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3998.feature.description.head.attlist"/>
+                <ref name="z3998.feature.description.head.content"/>
+            </element>
+        </define>
+        <define name="z3998.feature.description.head.attlist" xml:id="z3998.feature.description.head.attlist">
+            <ref name="z3998.Document.attrib"/>
+        </define>
+        <define name="z3998.feature.description.head.content" xml:id="z3998.feature.description.head.content">
+            <oneOrMore>
+                <choice>
+                    <ref name="z3998.feature.description.head.class"/>
+                </choice>
+            </oneOrMore>
+        </define>
+        <define name="z3998.feature.description.head.class" combine="choice">
+            <choice>
+                <ref name="z3998.meta"/>
+            </choice>
+        </define>
+    </div>
+    <div>
+        <define name="z3998.feature.description.body" xml:id="z3998.feature.description.body">
+            <element name="body">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="d:body">The description {body} element</title>
+                    <para role="desc-main">The description {body} element contains the accessible 
+                        description forms that readers can select from depending on their needs.</para>
+                    <para role="desc-sub">The description {body} must minimally contain the primary description of the associated
+                        content in a child {[[#z3998.feature.description.body.longdesc longdesc]]} element.</para>
+                    <para role="desc-sub">The description body may also optionally compliment the primary description with 
+                        a briefer [[#z3998.feature.description.body.summary summary]] and a 
+                        [[#z3998.feature.description.body.simplifiedLanguageDescription simplified language 
+                        representation]].</para>
+                    <para role="desc-sub">The {body} of the description can also be used to carry alternative images
+                        for users unable to adequately interact with the source image. The
+                        {[[#z3998.feature.description.body.tactile tactile]]} element can be used to include
+                        a tactile image and accompanying [[#z3998.feature.description.tour tour]], and the 
+                        {[[#z3998.feature.description.body.simplifiedImage simplifiedImage]]} element can be used to include
+                        images more accessible to various reader needs.</para>
+                    <synopsis role="def-context">{[[#z3998.feature.description]]}</synopsis>
+                    <synopsis role="def-content">{([[#z3998.h]], [[#z3998.Block.class]]*}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3998.Document.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3998.feature.description.body.attlist"/>
+                <ref name="z3998.feature.description.body.content"/>
+            </element>
+        </define>
+        <define name="z3998.feature.description.body.attlist" xml:id="z3998.feature.description.body.attlist">
+            <ref name="z3998.Document.attrib"/>
+        </define>
+        <define name="z3998.feature.description.body.content" xml:id="z3998.feature.description.body.content">
+            <optional>
+                <ref name="z3998.feature.description.body.summary"/>
+            </optional>
+            <ref name="z3998.feature.description.body.longdesc"/>
+            <optional>
+                <ref name="z3998.feature.description.body.simplifiedLanguageDescription"/>
+            </optional>
+            <optional>
+                <ref name="z3998.feature.description.body.tactile"/>
+            </optional>
+            <optional>
+                <ref name="z3998.feature.description.body.simplifiedImage"/>
+            </optional>
+        </define>
+    </div>
+    <div>
+        <!-- define all root block elements -->
+        <define name="z3998.feature.description.body.summary">
+            <element name="summary">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="d:summary">The {summary} element</title>
+                    <para role="desc-main">The {summary} element contains a shorter, more succinct version of
+                        the primary description in the {[[#z3998.feature.description.body.longdesc longdesc]]} element.</para>
+                    <synopsis role="def-context">{[[#z3998.feature.description.body]]}</synopsis>
+                    <synopsis role="def-content">{(text | z3998.Text.class | z3998.Phrase.class)+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3998.Block.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3998.Block.attrib"/>
+                <ref name="z3998.feature.description.body.summary.content"/>
+                <sch:rule context="d:summary">
+                    <sch:assert test="normalize-space(.) or *">The {summary} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="z3998.feature.description.body.summary.content" xml:id="z3998.feature.description.body.summary.content">
+            <choice>
+                <ref name="z3998.Phrase.Text.mix.model"/>
+                <ref name="z3998.Block.core.class"/>
+            </choice>
+        </define>
+        <define name="z3998.feature.description.body.longdesc">
+            <element name="longdesc">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="d:longdesc">The {longdesc} element</title>
+                    <para role="desc-main">The {longdesc} element contains the primary description
+                        of the associated image, graphic or visually-oriented structure.</para>
+                    <para role="desc-sub">The {longdesc} should contain a comprehensive explanation
+                        of the referenced item. See the {[[#z3998.feature.description.body.summary summary]]}
+                        element for information on how to include a compact description.</para>
+                    <para role="desc-sub">As a description may be useful to readers across a wide age spectrum, the 
+                        {[[#z3998.feature.description.age.attrib age]]} and 
+                        {[[#z3998.feature.description.grade.attrib grade]]} attributes may be attached
+                        to the child content elements of the {longdesc} as a guide to selectively presenting
+                        information to subset reader groups.</para>
+                    <synopsis role="def-context">{[[#z3998.feature.description.body]]}</synopsis>
+                    <synopsis role="def-content">{(z3998.Block.class)+ | (text | z3998.Text.class | z3998.Phrase.class)+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3998.Block.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3998.Block.attrib"/>
+                <ref name="z3998.Flow.choice.model"/>
+                <sch:rule context="d:longdesc">
+                    <sch:assert test="normalize-space(.) or *">The {longdesc} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="z3998.feature.description.body.simplifiedLanguageDescription">
+            <element name="simplifiedLanguageDescription">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="d:simplifiedLanguageDescription">The {simplifiedLanguageDescription} element</title>
+                    <para role="desc-main">The {simplifiedLanguageDescription} element contains a simplified 
+                        language version of the primary description in the {[[#z3998.feature.description.body.longdesc longdesc]]} element.</para>
+                    <synopsis role="def-context">{[[#z3998.feature.description.body]]}</synopsis>
+                    <synopsis role="def-content">{(z3998.Block.class)+ | (text | z3998.Text.class | z3998.Phrase.class)+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3998.Block.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3998.Block.attrib"/>
+                <ref name="z3998.Flow.choice.model"/>
+                <sch:rule context="d:simplifiedLanguageDescription">
+                    <sch:assert test="normalize-space(.) or *">The {simplifiedLanguageDescription} element must neither be empty nor contain only whitespace.</sch:assert>
+                </sch:rule>
+            </element>
+        </define>
+        <define name="z3998.feature.description.body.tactile">
+            <element name="tactile">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="d:tactile">The {tactile} element</title>
+                    <para role="desc-main">The {tactile} element contains an alternative tactile image and an optional 
+                        {[[#z3998.feature.description.tour tour]]} that describes it.</para>
+                    <para role="desc-sub">Tactile images are associated with their {tour}s by the order of the elements
+                        in the {tactile} element: each image must be followed by its {tour}. Multiple
+                        images may share the same {tour}(s) (i.e., one or more {[[#z3998.object.block object]]} elements 
+                        may precede the {tour}(s) that define them).</para>
+                    <para role="desc-sub">This specification does not place any restrictions on the format used to
+                        represent the tactile image, but images should be final-form representations for output rendering
+                        by end users.</para>
+                    <synopsis role="def-context">{[[#z3998.feature.description.body]]}</synopsis>
+                    <synopsis role="def-content">{(z3998.object.block, z3998.feature.description.tour*)+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3998.Block.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3998.Block.attrib"/>
+                <ref name="z3998.feature.description.body.tactile.content"/>
+            </element>
+        </define>
+        <define name="z3998.feature.description.body.tactile.content" xml:id="z3998.feature.description.body.tactile.content">
+            <oneOrMore>
+                <ref name="z3998.feature.description.tour.model"/>
+            </oneOrMore>
+        </define>
+        <define name="z3998.feature.description.tour.model" xml:id="z3998.feature.description.tour.model">
+            <group>
+                <oneOrMore>
+                    <ref name="z3998.object.block"/>
+                </oneOrMore>
+                <zeroOrMore>
+                    <ref name="z3998.feature.description.tour"/>
+                </zeroOrMore>
+            </group>
+        </define>
+        <define name="z3998.feature.description.tour">
+            <element name="tour">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="d:tour">The {tour} element</title>
+                    <para role="desc-main">The {tour} element is associated with a tactile graphic or a simplified alternative image, 
+                        and provides orientation. In addition, the tour can explain how to explore the tactile or simplified image.</para>
+                    <para role="desc-sub">The {[[#z3998.feature.description.age.attrib age]]} and {[[#z3998.feature.description.grade.attrib grade]]}
+                        attributes can be attached to a {tour} if the information it provides is targeted entirely to a specific subset of readers.</para>
+                    <synopsis role="def-context">{[[#z3998.feature.description.body.tactile]]}, {[[#z3998.feature.description.body.simplifiedImage]]}</synopsis>
+                    <synopsis role="def-content">{(z3998.Block.class)+ | (text | z3998.Text.class | z3998.Phrase.class)+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3998.Block.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3998.Block.attrib"/>
+                <ref name="z3998.block.content"/>
+            </element>
+        </define>
+        <define name="z3998.feature.description.body.simplifiedImage">
+            <element name="simplifiedImage">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="d:simplifiedImage">The {simplifiedImage} element</title>
+                    <para role="desc-main">The {simplifiedImage} element contains simplified version(s) of the associated
+                        image for users with different needs. Simplified images may also include explanatory 
+                        {[[#z3998.feature.description.tour tour]]}s.</para>
+                    <para role="desc-sub">Simplified images are associated with their {tour}s by the order of the elements
+                        in the {simplifiedImage} element: each image must be followed by its {tour}. Multiple
+                        images may share the same {tour}(s) (i.e., multiple consecutive {[[#z3998.object.block]]} elements 
+                        may precede the {tour}(s) that define them).</para>
+                    <synopsis role="def-context">{[[#z3998.feature.description.body]]}</synopsis>
+                    <synopsis role="def-content">{(z3998.object.block, z3998.feature.description.tour*)+}</synopsis>
+                    <synopsis role="def-attlist">{[[#z3998.Block.attrib]]}</synopsis>
+                </annotation>
+                <ref name="z3998.Block.attrib"/>
+                <ref name="z3998.feature.description.body.simplifiedImage.content"/>
+            </element>
+        </define>
+        <define name="z3998.feature.description.body.simplifiedImage.content" xml:id="z3998.feature.description.body.simplifiedImage.content">
+            <oneOrMore>
+                <ref name="z3998.feature.description.tour.model"/>
+            </oneOrMore>
+        </define>
+    </div>
+    <div>
+        <define name="z3998.feature.description.age.attrib">
+            <attribute name="age">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="audience">The {age} attribute</title>
+                    <para role="desc-main">The {age} attribute indicates the target age, or age range, the content is applicable to.</para>
+                    <para role="desc-sub">The {age} attribute is used to refine the age range specified in the 
+                        {[[#z3998.feature.description.head head]]} element metadata, allowing content to be filtered
+                        by processing and user agents (e.g., to allow age-inappropriate descriptions to be skipped).</para>
+                    <para role="desc-sub">The {age} attribute can be attached to any content element in a 
+                        {[[#z3998.feature.description description]]} to indicate its target reading age. The attribute cannot be 
+                        attached to child elements of the description {[[#z3998.feature.description.body body]]};
+                        the global age range for the {description} must be specified in the {head} metadata.</para>
+                    <para role="desc-sub">This attribute is informative. Processing and user agents may ignore age restrictions 
+                        and render all content in a description. Processing and user agents should ignore age-related restrictions 
+                        when they do not recognize the attribute's value, the value conflicts with, or is outside, the metadata-specified 
+                        age range, or no age information is available about the reader.</para>
+                    <para role="desc-sub">The value of the {age} attribute must be a single positive number, or two positive numbers separated by a dash for a range.</para>
+                    <synopsis role="def-context">All [[#z3998.global-classes.module global attribute classes]]</synopsis>
+                    <synopsis role="def-content">{[[#PositiveNumberOrRange.datatype]]}</synopsis>
+                </annotation>
+                <ref name="z3998.feature.description.age.attrib.value"/>
+                <sch:rule context="*[@age]">
+                    <sch:assert test="ancestor::d:body and not(parent::d:body)">The {age} attribute must only be used on content elements in a {description}.</sch:assert>
+                </sch:rule>
+            </attribute>
+        </define>
+        <define name="z3998.feature.description.age.attrib.value" combine="choice">
+            <ref name="PositiveNumberOrRange.datatype"/>
+        </define>
+    </div>
+    <div>
+        <define name="z3998.feature.description.grade.attrib">
+            <attribute name="grade">
+                <annotation annotates=".." xmlns="http://docbook.org/ns/docbook">
+                    <title xreflabel="audience">The {grade} attribute</title>
+                    <para role="desc-main">The {grade} attribute indicates the target school grade level, or grade range, the content is applicable to.</para>
+                    <para role="desc-sub">The {grade} attribute is used to refine the grade range specified in the 
+                        {[[#z3998.feature.description.head head]]} element metadata, allowing content to be filtered
+                        by processing and user agents (e.g., to allow grade-inappropriate descriptions to be skipped).</para>
+                    <para role="desc-sub">The {grade} attribute can be attached to any content element in a 
+                        {[[#z3998.feature.description description]]} to indicate its target reading age. The attribute cannot be 
+                        attached to child elements of the description {[[#z3998.feature.description.body body]]};
+                        the global grade range for the {description} must be specified in the {head} metadata.</para>
+                    <para role="desc-sub">This attribute is informative. Processing and user agents may ignore grade level restrictions 
+                        and render all content in a description. Processing and user agents should ignore grade level-related restrictions 
+                        when they do not recognize the attribute's value, the value conflicts with, or is outside, the metadata-specified 
+                        grade level range, or no grade level information is available about the reader.</para>
+                    <synopsis role="def-context">All [[#z3998.global-classes.module global attribute classes]]</synopsis>
+                    <synopsis role="def-content">{text}</synopsis>
+                </annotation>
+                <ref name="z3998.feature.description.grade.attrib.value"/>
+                <sch:rule context="*[@grade]">
+                    <sch:assert test="ancestor::d:body and not(parent::d:body)">The {grade} attribute must only be used on content elements in a {description}.</sch:assert>
+                </sch:rule>
+            </attribute>
+        </define>
+        <define name="z3998.feature.description.grade.attrib.value" combine="choice">
+            <ref name="NonEmptyString.datatype"/>
+        </define>
+    </div>
+    <div>
+        <a:documentation>Z39.98 Content Selection feature - content model contribution</a:documentation>
+        <define name="z3998.global.core.attrib" combine="interleave">
+            <optional>
+                <ref name="z3998.feature.description.age.attrib"/>
+            </optional>
+        </define>
+        <define name="z3998.global.core.attrib" combine="interleave">
+            <optional>
+                <ref name="z3998.feature.description.grade.attrib"/>
+            </optional>
+        </define>
+        <define name="z3998.Block.extern.class" combine="choice">
+            <ref name="z3998.feature.description"/>
+        </define>
+    </div>
+</grammar>

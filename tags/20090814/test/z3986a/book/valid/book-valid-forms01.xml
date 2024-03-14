@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="../../../../src/schema/z3986a-book.rng" type="xml"?>
+<document xmlns="http://www.daisy.org/z3986/2010/" 
+  xmlns:xforms="http://www.w3.org/2002/xforms/" 
+  xmlns:my="http://www.daisy.org/z3986/2010/xforms/instance"
+  xml:lang="en-US">
+  <head>
+   <link rel="z3986-profile" href="http://www.daisy.org/z3986/2010/auth/profiles/book/0.4/" />
+   <mods xmlns="http://www.loc.gov/mods/v3" version="3.3">  
+	   <titleInfo>
+	        <title>Forms Feature sample 1</title>
+	    </titleInfo>
+	    <originInfo>
+	        <publisher>DAISY Consortium</publisher>
+	        <dateCreated>2009-05-28</dateCreated>
+	    </originInfo>
+	    <identifier type="uid">gh-altherr-001</identifier>
+	</mods>    
+	<xforms:model>
+      <xforms:instance>
+        <my:worksheet>
+          <my:questions>
+            <my:q1 />
+            <my:q2 />
+            <my:q3 />
+            <my:q4 />
+          </my:questions>
+        </my:worksheet>
+      </xforms:instance>
+	    <xforms:submission action="page008.xml" method="put" ref="/my:worksheet" />
+    </xforms:model>
+  </head>
+  <body>
+    <frontmatter>
+      <!--Empty frontmatter information-->
+      <section />
+    </frontmatter>
+    <bodymatter>
+      <!--Standard form controls with binding-->
+      <section>
+        <h>Standard form controls with binding</h>
+        <p>Text area in a paragraph
+          <xforms:textarea ref="my:worksheet/my:questions/my:q0">
+            <xforms:label>Text area</xforms:label>
+          </xforms:textarea>
+        </p>
+        <ol>
+          <li>Input in list item
+            <xforms:input ref="my:worksheet/my:questions/my:q1">
+              <xforms:label>Input</xforms:label>
+            </xforms:input>
+          </li>
+          <li>Select1 in list item
+            <xforms:select1 ref="my:worksheet/my:questions/my:q2">
+              <xforms:label>Select1</xforms:label>
+              <xforms:item>
+                <xforms:label>select1 label 1</xforms:label>
+                <xforms:value>A</xforms:value>
+              </xforms:item>
+              <xforms:item>
+                <xforms:label>select1 label 2</xforms:label>
+                <xforms:value>B</xforms:value>
+              </xforms:item>
+              <xforms:item>
+                <xforms:label>select1 label 3</xforms:label>
+                <xforms:value>C</xforms:value>
+              </xforms:item>
+              <xforms:item>
+                <xforms:label>select1 label 4</xforms:label>
+                <xforms:value>D</xforms:value>
+              </xforms:item>
+            </xforms:select1>
+          </li>
+        </ol>
+        <p>Group with secret and select</p>
+        <xforms:group>
+          <xforms:label>Group</xforms:label>
+          <xforms:secret ref="my:worksheet/my:questions/my:q3">
+            <xforms:label>Secret</xforms:label>
+          </xforms:secret>
+          <xforms:select ref="my:worksheet/my:questions/my:q4">
+            <xforms:label>Select</xforms:label>
+            <xforms:item>
+              <xforms:label>select label 1</xforms:label>
+              <xforms:value>A</xforms:value>
+            </xforms:item>
+            <xforms:item>
+              <xforms:label>select label 2</xforms:label>
+              <xforms:value>B</xforms:value>
+            </xforms:item>
+            <xforms:item>
+              <xforms:label>select label 3</xforms:label>
+              <xforms:value>C</xforms:value>
+            </xforms:item>
+            <xforms:item>
+              <xforms:label>select label 4</xforms:label>
+              <xforms:value>D</xforms:value>
+            </xforms:item>
+          </xforms:select>
+        </xforms:group>
+      </section>
+      <!--Standard form controls with no binding-->
+      <section>
+        <h>Standard form controls with no binding</h>
+        <p>Text area in a paragraph
+          <xforms:textarea>
+            <xforms:label>Text area</xforms:label>
+          </xforms:textarea>
+        </p>
+        <ol>
+          <li>Input in list item
+            <xforms:input>
+              <xforms:label>Input</xforms:label>
+            </xforms:input>
+          </li>
+          <li>Select1 in list item
+            <xforms:select1>
+              <xforms:label>Select1</xforms:label>
+              <xforms:item>
+                <xforms:label>select1 label 1</xforms:label>
+                <xforms:value>A</xforms:value>
+              </xforms:item>
+              <xforms:item>
+                <xforms:label>select1 label 2</xforms:label>
+                <xforms:value>B</xforms:value>
+              </xforms:item>
+              <xforms:item>
+                <xforms:label>select1 label 3</xforms:label>
+                <xforms:value>C</xforms:value>
+              </xforms:item>
+              <xforms:item>
+                <xforms:label>select1 label 4</xforms:label>
+                <xforms:value>D</xforms:value>
+              </xforms:item>
+            </xforms:select1>
+          </li>
+        </ol>
+        <p>Group with secret and select</p>
+        <xforms:group>
+          <xforms:label>Group</xforms:label>
+          <xforms:secret>
+            <xforms:label>Secret</xforms:label>
+          </xforms:secret>
+          <xforms:select>
+            <xforms:label>Select</xforms:label>
+            <xforms:item>
+              <xforms:label>select label 1</xforms:label>
+              <xforms:value>A</xforms:value>
+            </xforms:item>
+            <xforms:item>
+              <xforms:label>select label 2</xforms:label>
+              <xforms:value>B</xforms:value>
+            </xforms:item>
+            <xforms:item>
+              <xforms:label>select label 3</xforms:label>
+              <xforms:value>C</xforms:value>
+            </xforms:item>
+            <xforms:item>
+              <xforms:label>select label 4</xforms:label>
+              <xforms:value>D</xforms:value>
+            </xforms:item>
+          </xforms:select>
+        </xforms:group>
+      </section>
+    </bodymatter>
+  </body>
+</document>

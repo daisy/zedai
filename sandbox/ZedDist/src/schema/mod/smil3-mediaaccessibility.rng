@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+    
+    <div>        
+        <define name="smil3.Core.base.attrib" combine="interleave">
+            <ref name="smil3.mediaaccessibility.attrib"/>
+        </define>
+    </div>
+    
+    <define name="smil3.mediaaccessibility.attrib" combine="interleave">
+        <optional>
+            <attribute name="alt"/>
+        </optional>
+        <optional>
+            <attribute name="longdesc">
+                <ref name="IRI.datatype"/>
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="readindex">
+                <ref name="NonNegativeInteger.datatype"/>
+            </attribute>
+        </optional>
+    </define>
+    
+</grammar>

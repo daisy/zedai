@@ -1,0 +1,85 @@
+==SPEC==
+* spec needs versioning def for vocabs. 
+* [part of PA feature behavior workover]: need a general informative statement about PAs having a pass-through mode for supported features due to the nature of pipelines. This would logically sit on top of the behavioral fallbacks that the Feature RDs define.
+* [wait with until we know more about RDFa 1.1 adoption] what do we say about PA reqs re RDFa (separation of @role vs RDFa behavioral reqs... section 10.4 ) 
+* verify whether the static segment of the profile URI is still needed now that profiles are explicitly identified in the meta
+
+== WWW ==
+* @markus replace RD css link with a link to SVN
+
+== SAMPLE DOCS ==
+
+== SCHEMAS overarching ==
+* @markus: recheck all dcterms module requires fields (diagnostics.xml)
+* @markus write test: assure consistent use of chameleon
+* [part of note/annotation/object redesign]: consider allowing annotation in head (when they are not intended to be part of the document content generally)
+* @Matt run the rng-element-schematron-text-test target in diagnostics.xml and add the non-empty sch test to elements that need it (which is not all that are listed, and ignore all mathml elements)
+
+== MODULES ==
+* @markus applies  to <name> and <abbr>: 
+<define name="z3986.name.extra.class" combine="choice">
+      <choice>
+        <ref name="z3986.span"/> <!-- TODO this needs to be fixed, this reopens Phrase.class, if anything a Text.class variant of span is needed -->
+      </choice>
+</define>
+* every instance doc must contain at least one <h>??
+* are the semantics of the separator element clear (consider another name for context break aspect)
+
+== FEATURES ==
+* ruby: the feature-recognized behavior for ruby may be wrong (rely on <rp> if present?)
+* ruby: is in text.class but absdef claims allows phrase members?
+* make sure all feature RDs have "The namespace of all members of the Source Rendition feature element/attribute set is..."
+* Update xforms rng schema?
+* [asking Dedicon and TPB] ssml: Really make x-SAMPA implicit default? SSML spec says that absence of @alphabet is processor-specific (we may want to avoid overriding that)
+* ?? ssml: make Text.class versions of phoneme and token, replacing the contrib to name.extra.class => no, the problem is the content model of name
+* select: could reserve prefixes for the built-in function sets as to not have to declare them in the instance. Any other function set <-> prefix assoc must be explicitly declared in head using the prescribed mechanism.
+* review and standardize the prose in the feature definitions, esp. use of ignore/remove
+
+== PROFILES ==
+
+== CM =
+
+== SCHEMADOC ==
+* need snippets for more attributes
+* need longdesc for <name> to markup person-name; the example should use @typeof and @property; core.n3 contribs all these props to <name>, whereas the sample uses span for the subcomponents.
+* need longdesc for bibliography/entry, show how to add dcterms metadata to an entry
+
+
+== RDs ==
+
+== VOCABS ==
+* repopulate all role contribs (TODO: section, block, aside, notes, titles, ref (continuation))
+* deal with running headers issue (<meta>) as per list
+* [note may be able to use RDFa 1.1 constructs] move the 'prefix' prop from rd vocab to decl?
+* [@markus add issue] decl: remove the ability to define external function sets, just have the built-in functions
+
+== XSD ==
+
+== MORE SAMPLES IN /test/ ==
+http://darwin-online.org.uk/content/frameset?itemID=F9.1&viewtype=text&pageseq=1
+
+== LOW PRIO ==
+* update CSS to cover CMP and feature components
+* modules: how do recommend marking up addresses of different kinds?
+* vocabs: Note that the longdesc on <p> talks about pgroup. OTOH block@pgroup does not say anything more than a block with only p children
+* <definition>: should there be a block version of definition also?
+* spec: do we need something like: "PAs are not required to recognize role values that specify semantics identical to elements in CMP, eg not required to recognize <span role="cite"> as an equivalent to <cite>.
+* vocabs: option to establish a relation between CMP elements and core vocab: element section "is-a" core vocab #section, etc
+* table: th@abbr also on td?
+* list type="ordered" ==> these could be vocab properties instead
+* abbr @type: ==> these should be vocab properties instead, as the list is not finite
+* modules: make all occurrences of "implicit value" in module RDF a link to spec
+* modules: add more regexes for datatypes inc ssml:datatypes (perhaps port the html ones too, for dist)
+* RD: generate Oasis catalogs, add property 'oasis-catalog' in RD vocab
+* vocabs: add owl:sameAs to xhv, aria, etc (Marisa had these)
+* add ref to RDDL? GRDDL? in "relation to other specifications" to avoid "why dont you use that instead of RD" questions
+
+
+== NEEDED LONGDESCS ==
+the multiple facets of annotation
+the ref element (using it for both resolving and unresolving references, and re links for both IDREFs and URIs)
+object 
+
+
+== SPECIALIZATIONS ==
+

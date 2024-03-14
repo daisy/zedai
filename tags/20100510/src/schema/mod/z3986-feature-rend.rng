@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+	ns="http://www.daisy.org/ns/z3986/authoring/features/rend/"
+	xmlns:rend="http://www.daisy.org/ns/z3986/authoring/features/rend/"
+	xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:z="http://www.daisy.org/ns/z3986/annotations/#"
+	xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+	datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+	<!-- NOTE: this feature's resource directory promises to not use any elements, only attributes -->
+
+	<rdf:RDF>
+		<rdf:Description>
+			<dcterms:title z:short="rend">The Source Rendition Feature</dcterms:title>
+			<dcterms:description>The Source Rendition Feature provides support for the
+				representation of a limited set of typographic/stylistic properties of a source
+				document.</dcterms:description>
+			<dcterms:publisher>DAISY Consortium</dcterms:publisher>
+			<dcterms:license rdf:resource="{LICENSE_TODO}"/>
+			<dcterms:creator>Markus Gylling</dcterms:creator>
+			<dcterms:requires rdf:resource="z3986-global-classes.rng"/>
+			<dcterms:requires rdf:resource="z3986-linking.rng"/>
+		</rdf:Description>
+	</rdf:RDF>
+
+	<div>
+
+		<define name="z3986.rend.attrib">
+			<attribute name="rend:rend">
+				<rdf:RDF>
+					<rdf:Description>
+						<dcterms:title z:short="rend:rend">The rend attribute</dcterms:title>
+						<dcterms:description>The {rend:rend} attribute indicates how the text within
+							the element was rendered or presented in the source
+							document.</dcterms:description>
+						<z:info>The given value is inherited by descendants. In terms of the
+							[[http://www.w3.org/TR/CSS2/cascade.html#cascade CSS cascade]], values
+							provided here must be considered as of author origin.</z:info>
+						<dcterms:isRequiredBy rdf:resource="."/>
+						<z:context>[[#z3986.Block.attrib]] and [[#z3986.Phrase.attrib]]</z:context>
+						<z:content>One or several of the values {'text-decoration:
+							underline'|'font-weight: bold'|'font-style: italic'}, separated by a
+							single space + a semicolon.</z:content>
+					</rdf:Description>
+				</rdf:RDF>
+				<ref name="z3986.rend.attrib.content"/>
+			</attribute>
+		</define>
+
+		<define name="z3986.rend.attrib.content" combine="choice">
+			<choice>
+				<value>text-decoration: underline</value>
+				<a:documentation>underlined text</a:documentation>
+				<value>font-weight: bold</value>
+				<a:documentation>bold text</a:documentation>
+				<value>font-style: italic</value>
+				<a:documentation>italicized text</a:documentation>
+				<value>font-weight: bold; font-style: italic</value>
+				<a:documentation>bold and italicized text</a:documentation>
+				<value>text-decoration: underline; font-weight: bold</value>
+				<a:documentation>underlined and bold text</a:documentation>
+				<value>text-decoration: underline; font-style: italic</value>
+				<a:documentation>underlined and italicized text</a:documentation>
+			</choice>
+		</define>
+	</div>
+
+	<div>
+		<define name="z3986.rend.symbol.attrib">
+			<attribute name="rend:symbol">
+				<rdf:RDF>
+					<rdf:Description>
+						<dcterms:title z:short="rend:symbol">The symbol attribute</dcterms:title>
+						<dcterms:description>The {rend:symbol} attribute specifies the textual
+							symbol used to represent a context break in the source
+							document.</dcterms:description>
+						<z:info>This attribute has the predefined value {blank} used to specify that
+							whitespace alone was used to represent the context break.</z:info>
+						<z:info>As an alternative to {rend:symbol}, the {[[#z3986.src.attrib src
+							attribute]]} may be used to include an image symbol. Note that allowed
+							media types in the {src} attribute are limited to the same set as the
+							media types allowed on the {object} element. The {rend:symbol} and {src}
+							attributes must not occur simultaneously on the same element.</z:info>
+						<dcterms:isRequiredBy rdf:resource="."/>
+						<z:context>[[#z3986.separator]]</z:context>
+						<z:content>{text|'blank'}</z:content>
+					</rdf:Description>
+				</rdf:RDF>
+				<ref name="z3986.rend.symbol.attrib.content"/>
+			</attribute>
+		</define>
+
+		<define name="z3986.rend.symbol.attrib.content">
+			<choice>
+				<value>blank</value>
+				<text/>
+			</choice>
+		</define>
+
+	</div>
+
+	<div>
+
+		<define name="z3986.rend.list.ordered.prefix.attrib">
+			<attribute name="rend:prefix">
+				<rdf:RDF>
+					<rdf:Description>
+						<dcterms:title z:short="rend:prefix (ordered)">The ordered list prefix
+							attribute</dcterms:title>
+						<dcterms:description>The {rend:prefix} attribute specifies the symbol used
+							as prefixes to the {item} children of an ordered {list} in the source
+							document.</dcterms:description>
+						<z:info>The semantics of the allowed values of this attribute are defined by
+							the [[http://www.w3.org/TR/CSS2/generate.html#propdef-list-style-type
+							CSS list-style-type property]].</z:info>
+						<z:info>The value specified in {rend:prefix} is inherited by any descendant
+							{list}s, unless such descendant {list}s specify a {rend:prefix}
+							attribute themselves. In terms of the
+							[[http://www.w3.org/TR/CSS2/cascade.html#cascade CSS cascade]], values
+							provided here must be considered as of author origin.</z:info>
+						<z:info>For more specialized symbols than the ones supported by the
+							{rend:prefix} attribute on {list}, the
+							[[#z3986.rend.list.item.prefix.attrib {rend:prefix} attribute on
+							{item}]] can be used.</z:info>
+						<dcterms:isRequiredBy rdf:resource="."/>
+						<z:context>Ordered [[#z3986.list]]s</z:context>
+						<z:content>{'decimal' | 'decimal-leading-zero' | 'lower-alpha' |
+							'lower-greek' | 'lower-latin' | 'lower-roman' | 'upper-alpha' |
+							'upper-greek' | 'upper-latin' | 'upper-roman '}</z:content>
+					</rdf:Description>
+				</rdf:RDF>
+				<choice>
+					<value>decimal</value>
+					<value>decimal-leading-zero</value>
+					<value>lower-alpha</value>
+					<value>lower-greek</value>
+					<value>lower-latin</value>
+					<value>lower-roman</value>
+					<value>upper-alpha</value>
+					<value>upper-greek</value>
+					<value>upper-latin</value>
+					<value>upper-roman </value>
+				</choice>
+			</attribute>
+
+		</define>
+
+		<define name="z3986.rend.list.unordered.prefix.attrib">
+			<attribute name="rend:prefix">
+				<rdf:RDF>
+					<rdf:Description>
+						<dcterms:title z:short="rend:prefix (unordered)">The unordered list prefix
+							attribute</dcterms:title>
+						<dcterms:description>The {rend:prefix} attribute specifies the symbol used
+							as prefixes to the {item} children of an unordered {list} in the source
+							document.</dcterms:description>
+						<z:info>The semantics of the allowed values of this attribute are defined by
+							the [[http://www.w3.org/TR/CSS2/generate.html#propdef-list-style-type
+							CSS list-style-type property]].</z:info>
+						<z:info>The value specified in {rend:prefix} is inherited by any descendant
+							{list}s, unless such descendant {list}s specify a {rend:prefix}
+							attribute themselves. In terms of the
+							[[http://www.w3.org/TR/CSS2/cascade.html#cascade CSS cascade]], values
+							provided here must be considered as of author origin.</z:info>
+						<z:info>For more specialized symbols than the ones supported by the
+							{rend:prefix} attribute on {list}, the
+							[[#z3986.rend.list.item.prefix.attrib {rend:prefix} attribute on
+							{item}]] can be used.</z:info>
+						<dcterms:isRequiredBy rdf:resource="."/>
+						<z:context>Unordered [[#z3986.list]]s</z:context>
+						<z:content>{'none' | 'box' | 'check' | 'circle' | 'diamond' | 'disc' | 'hyphen' |
+							'square'}</z:content>
+					</rdf:Description>
+				</rdf:RDF>
+				<choice>
+					<value>none</value>
+					<value>box</value>
+					<value>check</value>
+					<value>circle</value>
+					<value>diamond</value>
+					<value>disc</value>
+					<value>hyphen</value>
+					<value>square</value>
+				</choice>
+			</attribute>
+		</define>
+
+	</div>
+
+	<div>
+
+		<define name="z3986.rend.list.item.prefix.attrib">
+			<attribute name="rend:prefix">
+				<!-- TODO why aren't we allowing src here as with separator? -->
+				<rdf:RDF>
+					<rdf:Description>
+						<dcterms:title z:short="rend:prefix (item)">The list item prefix
+							attribute</dcterms:title>
+						<dcterms:description>The {rend:prefix} attribute specifies the symbol used
+							as a prefix to the content of the list {item}
+							element.</dcterms:description>
+						<z:info>The occurence of this attribute results in the prefix inheritance,
+							as set by the {prefix} attribute on a {list} ancestor, ceases to be
+							active, for this {item}, any following {item} siblings, and any child
+							{list}s. </z:info>
+						<z:info>To specify prefix symbols common to multiple list items, see
+							{[[#z3986.rend.list.unordered.prefix.attrib]]} and
+							{[[#z3986.rend.list.ordered.prefix.attrib]]}.</z:info>
+						<dcterms:isRequiredBy rdf:resource="."/>
+						<z:context>[[#z3986.list.item.block item]]</z:context>
+						<z:content>{text}</z:content>
+					</rdf:Description>
+				</rdf:RDF>
+				<ref name="Characters.datatype"/>
+			</attribute>
+		</define>
+
+	</div>
+	
+	<div>
+		
+		<define name="z3986.rend.note.prefix.attrib">
+			<attribute name="rend:prefix">
+				<rdf:RDF>
+					<rdf:Description>
+						<dcterms:title z:short="rend:prefix (note)">The note prefix
+							attribute</dcterms:title>
+						<dcterms:description>The {rend:prefix} attribute specifies the characters or symbols used
+							as a prefix to the content of the {note} element.</dcterms:description>
+						<dcterms:isRequiredBy rdf:resource="."/>
+						<z:context>[[#z3986.note note]]</z:context>
+						<z:content>{text}</z:content>
+					</rdf:Description>
+				</rdf:RDF>
+				<ref name="Characters.datatype"/>
+			</attribute>
+		</define>
+		
+	</div>
+	
+	<div>
+		
+		<define name="z3986.rend.indent.attrib">
+			<attribute name="rend:indent">
+				<rdf:RDF>
+					<rdf:Description>
+						<dcterms:title z:short="rend:indent">The indent attribute</dcterms:title>
+						<dcterms:description>
+							The {rend:indent} attribute specifies the amount of indentation to apply when rendering the 
+							first line of text for an element, and is only intended for use when default formatting rules 
+							must be overriden.
+						</dcterms:description>
+						<z:info>
+							The value of the {rend:indent} attribute must be a valid 
+							[[http://www.w3.org/TR/CSS2/syndata.html#length-units CSS length]] specified in units of
+							em, ex or pixel.
+						</z:info>
+						<z:info>
+							The {rend:indent} is not inherited by the children of the elements it is attached to. Consequently,
+							the attribute cannot be used to apply formatting via container elements.
+						</z:info>
+						<z:info>
+							If only a general indication of whether the text should begin indented or not is needed (for example,
+							for some braille outputting), all positive, non-zero values should be treated as indicating  
+							indentation. No implicit value should be assumed in the absence of the attribute; 
+							the default formatting rules must be investigated insetead to determine whether elements 
+							are indented or not.
+						</z:info>
+						<dcterms:isRequiredBy rdf:resource="."/>
+						<z:context>[[#z3986.p p]]</z:context>
+						<z:content>{text}</z:content>
+					</rdf:Description>
+				</rdf:RDF>
+				<data type="normalizedString">
+					<param name="pattern">-?([0-9]*\.?[0-9]+)([Pp][Xx]|[Ee][MmXx])</param>
+				</data>
+			</attribute>
+		</define>
+		
+	</div>
+
+	<div>
+		<a:documentation>Z39.86 Source Rendition Feature - default content model contribution </a:documentation>
+
+		<define name="z3986.separator.attlist" combine="interleave">
+			<optional>
+				<choice>
+					<ref name="z3986.rend.symbol.attrib"/>
+					<ref name="z3986.Embed.attrib"/>
+				</choice>
+			</optional>
+		</define>
+
+		<define name="z3986.Phrase.contrib.attrib" combine="interleave">
+			<optional>
+				<ref name="z3986.rend.attrib"/>
+			</optional>
+		</define>
+
+		<define name="z3986.Block.contrib.attrib" combine="interleave">
+			<optional>
+				<ref name="z3986.rend.attrib"/>
+			</optional>
+		</define>
+
+		<define name="z3986.list.attlist.ordered" combine="interleave">
+			<optional>
+				<ref name="z3986.rend.list.ordered.prefix.attrib"/>
+			</optional>
+		</define>
+
+		<define name="z3986.list.attlist.unordered" combine="interleave">
+			<optional>
+				<ref name="z3986.rend.list.unordered.prefix.attrib"/>
+			</optional>
+		</define>
+
+		<define name="z3986.list.item.attlist" combine="interleave">
+			<optional>
+				<ref name="z3986.rend.list.item.prefix.attrib"/>
+			</optional>
+		</define>
+		
+		<define name="z3986.p.attlist" combine="interleave">
+			<optional>
+				<ref name="z3986.rend.indent.attrib"/>
+			</optional>
+		</define>
+		
+		<define name="z3986.block.attlist" combine="interleave">
+			<optional>
+				<ref name="z3986.rend.indent.attrib"/>
+			</optional>
+		</define>
+		
+	</div>
+
+</grammar>

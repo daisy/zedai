@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      prefix="rd: http://www.daisy.org/z3998/2012/vocab/resourcedirectory/# dcterms: http://purl.org/dc/terms/"
+      lang="en-US"
+      xml:lang="en-US">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <title>Resource Directory for the Z39.98-2012 Authoring and Interchange MathML Feature, version 1.0</title>
+        <link rel="stylesheet" type="text/css" href="../../../../z3998-2012.css"/>
+    </head>
+    <body>
+        <h1 property="dcterms:title">
+            <span class="titlesub">Resource directory for the Z39.98-2012 Authoring and Interchange </span>
+            <br/>MathML Feature
+            <span class="titlesub">
+                <br/> version 1.0
+            </span>
+        </h1>
+      <h2 id="toc">Table of Contents</h2>
+      <ul>
+         <li class="first">
+            <a href="#h_introduction">Introduction</a>
+         </li>
+         <li class="first">
+            <a href="#h_normativereferences">Normative References</a>
+            <ul>
+               <li>
+                  <a href="#h_generaldocumentmodelrequirements">General document model requirements</a>
+               </li>
+               <li>
+                  <a href="#h_deviationsfromthez39.98globalattributesclass">Deviations from the Z39.98 Global Attributes class</a>
+               </li>
+               <li>
+                  <a href="#h_versioninformation">Version information</a>
+               </li>
+               <li>
+                  <a href="#h_identification">Identification</a>
+               </li>
+               <li>
+                  <a href="#h_specificationcompliance">Specification compliance</a>
+               </li>
+               <li>
+                  <a href="#h_normativeschemata">Normative schemata</a>
+               </li>
+               <li>
+                  <a href="#h_availablecomponents">Available components</a>
+               </li>
+               <li>
+                  <a href="#h_processingagentbehaviorrequirements">Processing agent behavior requirements</a>
+                  <ul>
+                     <li>
+                        <a href="#pa-reqs-supported">Feature supported</a>
+                     </li>
+                     <li>
+                        <a href="#pa-reqs-recognized">Feature recognized</a>
+                     </li>
+                     <li>
+                        <a href="#pa-reqs-notrecognized">Feature not recognized</a>
+                     </li>
+                  </ul>
+               </li>
+            </ul>
+         </li>
+         <li class="first">
+            <a href="#h_informativereferences">Informative References</a>
+            <ul>
+               <li>
+                  <a href="#supporting-software">Supporting software</a>
+               </li>
+            </ul>
+         </li>
+         <li class="first">
+            <a href="#h_appendix1listingofmodulesinthenormativeschema">Appendix 1: Listing of modules in the normative schema</a>
+         </li>
+      </ul>
+        <div id="introduction">
+            <h2 id="h_introduction">Introduction</h2>
+            <p xmlns:xi="http://www.w3.org/2001/XInclude"> The Z39.98 MathML Feature defines the W3C 
+                <a href="http://www.w3.org/TR/MathML3/">Mathematical Markup Language (MathML) Version 3.0</a> as a feature for use in Z39.98-AI Profiles. 
+            </p>
+            <p xmlns:xi="http://www.w3.org/2001/XInclude">Each element contributed by this feature inherits the corresponding semantics as defined by MathML 3.</p>
+            <p id="maintenance-agency"> This feature is maintained by the 
+                <a href="http://www.daisy.org/z3998/advisory/" rel="rd:maintenance-agency">ANSI/NISO Z39.98 advisory committee</a> under the auspices of 
+                <a href="http://niso.org/">NISO</a>. 
+            </p>
+        </div>
+        <div id="normative-references">
+            <h2 id="h_normativereferences">Normative References</h2>
+            <p class="RFC2119">The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this section are to be interpreted as described in 
+                <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC2119</a>.
+            </p>
+            <div xmlns:xi="http://www.w3.org/2001/XInclude" class="rd-section">
+                <h3 id="h_generaldocumentmodelrequirements">General document model requirements</h3>
+                <p>As compared to 
+                    <a href="http://www.w3.org/Math/RelaxNG/mathml3/mathml3.rnc">the W3C Full MathML 3 schema</a>, this feature adds the following constraints to the use of MathML within Z39.98-AI profiles: 
+                </p>
+                <dl>
+                    <dt id="primary-representation">Presentation MathML as primary expression form</dt>
+                    <dd>
+                        <p> In this feature, the MathML 3 
+                            <a href="http://www.w3.org/TR/MathML3/chapter3.html">Presentation elements</a> constitute the primary expression form for mathematical notation. The 
+                            <code>math</code> element only allows descendants from the Presentation elements group, with the exception of the optional 
+                            <code>annotation-xml</code> element, inside which 
+                            <a href="http://www.w3.org/TR/MathML3/chapter4.html">Content markup</a> is allowed. 
+                        </p>
+                    </dd>
+                    <dt>Deprecated elements attributes not allowed</dt>
+                    <dd>
+                        <p> Elements and attributes deprecated by MathML 3 must not occur. </p>
+                    </dd>
+                    <dt>Use of the 
+                        <code>annotation framework</code>
+                    </dt>
+                    <dd>
+                        <p>This feature allows the use of the MathML 
+                            <a href="http://www.w3.org/TR/MathML3/chapter5.html">annotation framework</a> for providing 
+                            <em>parallell markup</em>, i.e. alternate representations of the primary representation. 
+                        </p>
+                        <p>The following restrictions apply to the use of the annotation framework:</p>
+                        <dl>
+                            <dt>Use of 
+                                <code>alttext</code> and 
+                                <code>altimg</code> on 
+                                <code>math</code>
+                            </dt>
+                            <dd>
+                                <p>Processing agents must not consider the the 
+                                    <code>alttext</code> and 
+                                    <code>altimg</code> attributes on the 
+                                    <code>math</code> element as sources for alternate representations, instead recognizing the 
+                                    <code>annotation</code> and 
+                                    <code>annotation-xml</code> elements for this purpose. 
+                                </p>
+                            </dd>
+                            <dt>Restriction on image content types</dt>
+                            <dd>
+                                <p> When providing images as alternate representations to MathML markup, the image content types used must not be other than those globally allowed by the Z39.98-AI profile. Concretely, this means that image references appearing on or inside a 
+                                    <code>math</code> element are restricted to the same set as specified by the 
+                                    <code>srctype</code> attribute on the 
+                                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.object.module">object</a> element in the given profile. 
+                                </p>
+                            </dd>
+                            <dt>Restriction on allowed content types in 
+                                <code>annotation-xml</code>
+                            </dt>
+                            <dd>
+                                <p> The MathML 
+                                    <a href="http://www.w3.org/TR/MathML3/chapter5.html#mixing.elements.annotation.xml">annotation-xml</a> element provides a mechanism to provide alternate XML representation forms of the primary representation. 
+                                </p>
+                                <p> This feature restricts the XML languages that are allowed inside the 
+                                    <code>annotation-xml</code> element. This restriction holds regardless of whether the 
+                                    <a href="http://www.w3.org/TR/MathML3/chapter5.html#mixing.annotation.keys">annotation key</a> used is 
+                                    <code>alternate-representation</code> or 
+                                    <code>contentequiv</code>. 
+                                </p>
+                                <p> In this version of this feature, the allowed XML content types are: </p>
+                                <dl>
+                                    <dt>Content MathML</dt>
+                                    <dd>
+                                        <p>Documents must use and processing agents must recognize the values 
+                                            <code>application/mathml-content+xml</code> and 
+                                            <code>MathML-Content</code> as 
+                                            <code>encoding</code> identifiers for this content type. (See further 
+                                            <a href="http://www.w3.org/TR/MathML3/chapter6.html#encoding-names">Names of MathML Encodings</a>.) 
+                                        </p>
+                                        <p>The XML content inside an 
+                                            <code>annotation-xml</code> element using the 
+                                            <code>Content MathML</code> encoding is restricted to the 
+                                            <a href="http://www.w3.org/TR/MathML3/appendixa.html#parsing.rnc.content">Grammar for Content MathML</a>. 
+                                        </p>
+                                    </dd>
+                                    <dt>Presentation Mathml</dt>
+                                    <dd>
+                                        <p>Documents must use and processing agents must recognize the values 
+                                            <code>application/mathml-presentation+xml</code> and 
+                                            <code>MathML-Presentation</code> as 
+                                            <code>encoding</code> identifiers for this content type. (See further 
+                                            <a href="http://www.w3.org/TR/MathML3/chapter6.html#encoding-names">Names of MathML Encodings</a>.) 
+                                        </p>
+                                        <p>The XML content inside an 
+                                            <code>annotation-xml</code> element using the 
+                                            <code>Presentation MathML</code> encoding is restricted to the 
+                                            <a href="http://www.w3.org/TR/MathML3/appendixa.html#parsing.rnc.pres">Grammar for Presentation MathML</a>. 
+                                        </p>
+                                    </dd>
+                                    <dt>Z39.98-AI Core markup</dt>
+                                    <dd>
+                                        <p>Documents must use and processing agents must recognize the string 
+                                            <code>Z39.98-AI</code> as the 
+                                            <code>encoding</code> identifier for this content type. 
+                                        </p>
+                                        <p>The XML content inside an 
+                                            <code>annotation-xml</code> element using the 
+                                            <code>Z39.98-AI</code> encoding is restricted to elements from the 
+                                            <a href="http://www.daisy.org/z3998/2012/z3998-2012.html#coreNamespace">Z39.98-AI Core namespace</a>, and elements in other namespaces from features supported by the given profile. However, elements from the MathML namespace must not occur within an 
+                                            <code>annotation-xml</code> element that declares the 
+                                            <code>Z39.98-AI</code> content type. Use of elements from other Z39.98-AI features is discouraged. 
+                                        </p>
+                                    </dd>
+                                </dl>
+                                <p> Note that subsequent versions of this feature may extend this set to include additional XML content types. </p>
+                                <p> Refer to 
+                                    <a href="#pa-reqs">processing agent requirements</a> below for information on requirements regarding processing of the 
+                                    <code>annotation</code> and 
+                                    <code>annotation-xml</code> elements. 
+                                </p>
+                            </dd>
+                            <dt>Restriction on annotation keys</dt>
+                            <dd>
+                                <p> Processing agents are not required to recognize any other annotation keys than 
+                                    <code>alternate-representation</code> and 
+                                    <code>contentequiv</code>. Refer to 
+                                    <a href="http://www.w3.org/TR/MathML3/chapter5.html#mixing.annotation.keys">Annotation keys</a> for information on the semantics of these keys. 
+                                </p>
+                            </dd>
+                        </dl>
+                    </dd>
+                </dl>
+                <h3 id="h_deviationsfromthez39.98globalattributesclass">Deviations from the Z39.98 Global Attributes class</h3>
+                <p> This features overrides the following attribute contributions from the Z39.98-AI 
+                    <a href="http://www.daisy.org/z3998/2012/auth/cm/z3998-2012-CM.html#z3998.global.attrib">Global attributes</a> class: 
+                </p>
+                <ul>
+                    <li>The MathML-native 
+                        <code>id</code> attribute is used instead of the Z39.98-AI-global 
+                        <code>xml:id</code> attribute 
+                    </li>
+                    <li>The MathML-native 
+                        <code>href</code> attribute is used instead of the Z39.98-AI-global 
+                        <code>xlink:href</code> attribute 
+                    </li>
+                    <li>The Z39.98-AI-global 
+                        <code>meta</code> and 
+                        <code>i18n</code> attribute classes are not contributed to elements in the MathML namespace 
+                    </li>
+                </ul>
+            </div>
+            <div class="rd-section">
+                <h3 id="h_versioninformation">Version information</h3>
+                <p>This resource directory represents version 
+                    <code property="rd:version">1.0</code> of the MathML feature:
+                </p>
+                <ul>
+                    <li>refer to the 
+                        <a href="z3998-mathml-history.html">Version history</a> for the list of changes introduced in this release. 
+                    </li>
+                    <li id="version-listing"> refer to the 
+                        <a href="../index.html">Version index</a> for the list of all public releases of this feature. 
+                    </li>
+                </ul>
+                <p id="current-version"> This release may not be the most recently published (current) version of the MathML feature. The current version should always be obtained from the static URI: 
+                    <a href="../current/" rel="rd:current-version-uri">http://www.daisy.org/z3998/2012/auth/features/mathml/current/</a>
+                </p>
+            </div>
+            <div class="rd-section">
+                <h3 id="h_identification">Identification</h3>
+                <p>This feature must be identified as 
+                    <code property="rd:z3998-instance-name">mathml</code> in Z39.98-AI document feature declarations.
+                </p>
+                <p id="identity-uri"> The canonical identity URI is: 
+                    <code rel="rd:token-identifier">http://www.daisy.org/z3998/2012/auth/features/mathml/1.0/ </code>
+                </p>
+            </div>
+            <div class="rd-section">
+                <h3 id="h_specificationcompliance">Specification compliance</h3>
+                <p id="spec-ref"> This version of the feature is compliant with the 
+                    <a href="../../../../z3998-2012.html" rel="rd:specification-compliance">Z39.98-2012 Specification</a>. 
+                </p>
+            </div>
+            <div class="rd-section" property="rd:normative-schemata">
+                <h3 id="h_normativeschemata">Normative schemata</h3>
+                <p about="mod/z3998-feature-mathml.rng"> The normative 
+                    <span property="rd:schema-type" content="rng">RelaxNG</span> schema for version 
+                    <code property="rd:version">1.0</code> of the MathML feature is 
+                    <a href="mod/z3998-feature-mathml.rng">z3998-feature-mathml.rng</a>. 
+                </p>
+                <p>Note - this feature schema does not represent an entire document model; it is intended for inclusion in host profiles.</p>
+                <p> The normative schema includes a number of modules and/or subschemas, which are listed in 
+                    <a href="#module-list">Appendix 1</a>. 
+                </p>
+            </div>
+            <div id="markup-components">
+                <h3 id="h_availablecomponents">Available components</h3>
+                <p>This feature makes the following 
+                    <a href="http://www.daisy.org/z3998/2012/z3998-2012.html#featureConformance">components</a> available for inclusion in host profiles:
+                </p>
+                <ul xmlns:xi="http://www.w3.org/2001/XInclude">
+                    <li>
+                        <code>
+                            <a href="http://www.w3.org/TR/MathML3/chapter2.html#interf.toplevel">math</a>
+                        </code>
+                    </li>
+                </ul>
+            </div>
+            <div class="rd-section" id="pa-reqs">
+                <h3 id="h_processingagentbehaviorrequirements">Processing agent behavior requirements</h3>
+                <p>This section defines processing agent behaviors that extend the default behaviors defined in 
+                    <a href="http://www.daisy.org/z3998/2012/z3998-2012.html#processingAgentConformance">Processing agent conformance definition</a>.
+                </p>
+                <div xmlns:xi="http://www.w3.org/2001/XInclude" class="rd-section">
+                    <h4 id="pa-reqs-supported">Feature supported</h4>
+                    <p>If a processing agent 
+                        <em>supports</em> this feature, it must comply to the following: 
+                    </p>
+                    <p> The processing agent must process the 
+                        <a href="#primary-representation">primary representation</a> as defined by the MathML 3 specification. 
+                    </p>
+                    <p> The processing agent may support an operating mode where it lets the client invoke processing behaviors that includes utilization of 
+                        <code>annotation</code> and/or 
+                        <code>annotation-xml</code> elements in a way that effectively leaves the 
+                        <a href="#primary-representation">primary representation</a> unused. 
+                    </p>
+                    <p> The processing agent may support content types beyond that of the 
+                        <a href="#primary-representation">primary representation</a> in annotations that has a 
+                        <code>contentequiv</code> relationship to the main expression. When a processing agent encounters a 
+                        <code>contentequiv</code> annotation that it does not support, it must abort the processing unless the client has explicitly expressed that the given 
+                        <code>contentequiv</code> annotation is ignorable. (This is because, as stated in 
+                        <cite>
+                            <a href="http://www.w3.org/TR/MathML3/chapter5.html#mixing.content.equiv">5.1.4 Content equivalents</a>
+                        </cite>, 
+                        <q>annotations with the contentequiv key cannot be ignored without potentially changing the behavior of an expression.</q>) 
+                    </p>
+                </div>
+                <div xmlns:xi="http://www.w3.org/2001/XInclude" class="rd-section">
+                    <h4 id="pa-reqs-recognized">Feature recognized</h4>
+                    <p>If a processing agent 
+                        <em>recognizes but does not support</em> this feature, it must employ one of the following behaviors: 
+                    </p>
+                    <dl>
+                        <dt id="pa-reqs-recognized-abort">Abort</dt>
+                        <dd>
+                            <p> Upon encountering a document instance with this feature enabled, the processing agent issues a notification, and then aborts the processing. </p>
+                        </dd>
+                        <dt id="pa-reqs-recognized-fallback">Fallback</dt>
+                        <dd>
+                            <p>While traversing the document tree and encountering an 
+                                <code>math</code> element, the processing agent evaluates the content-type of any 
+                                <code>annotation</code> and 
+                                <code>annotation-xml</code> element descendants of the given 
+                                <code>math</code> element: 
+                            </p>
+                            <ul>
+                                <li>
+                                    <p> If no 
+                                        <code>annotation</code> or 
+                                        <code>annotation-xml</code> elements with a supported content type are given, the processing agent issues a notification, and then aborts the processing. 
+                                    </p>
+                                </li>
+                                <li>
+                                    <p> If 
+                                        <code>annotation</code> or 
+                                        <code>annotation-xml</code> elements with a supported content type are given, the processing agent replaces the current 
+                                        <code>math</code> element with the content of the supported 
+                                        <code>annotation</code> or 
+                                        <code>annotation-xml</code> element. 
+                                    </p>
+                                    <p> The following precedence order must be followed in the case where multiple supported 
+                                        <code>annotation</code> or 
+                                        <code>annotation-xml</code> are given, and if the client has provided no explicit instructions on fallback prioritization: 
+                                    </p>
+                                    <ol>
+                                        <li>
+                                            <code>annotation-xml</code> takes precedence over 
+                                            <code>annotation</code>; 
+                                        </li>
+                                        <li>Among multiple 
+                                            <code>annotation-xml</code> elements, the first element in document order takes precedence; 
+                                        </li>
+                                        <li>Among multiple 
+                                            <code>annotation</code> elements, the first element in document order takes precedence. 
+                                        </li>
+                                    </ol>
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <p> The 
+                        <code>abort</code> behavior is the default; the 
+                        <code>fallback</code> behavior must only be employed when the processing agent is explicitly instructed to do so by the client. 
+                        <br/> Processing agents that employ the 
+                        <code>fallback</code> behavior should issue a notification. 
+                    </p>
+                </div>
+                <div class="rd-section">
+                    <h4 id="pa-reqs-notrecognized">Feature not recognized</h4>
+                    <p>If a processing agent 
+                        <em>does not recognize</em> this feature, it must, as dictated in 
+                        <a href="http://www.daisy.org/z3998/2012/z3998-2012.html#processingAgentConformance">Processing agent conformance definition</a>, abort processing and issue an error message.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div id="informative-references">
+            <h2 id="h_informativereferences">Informative References</h2>
+            <div class="rd-section" property="rd:supporting-software">
+                <h3 id="supporting-software">Supporting software</h3>
+                <p>Refer to the 
+                    <a href="http://www.daisy.org/zw/ZedAI_UserPortal">Z39.98-AI community portal</a> for information on available software tools.
+                </p>
+            </div>
+        </div>
+        <div id="module-list">
+            <h2 id="h_appendix1listingofmodulesinthenormativeschema">Appendix 1: Listing of modules in the normative schema</h2>
+            <p> The below list represents the modules at the time of version 1.0 of this feature. </p>
+            <p class="RFC2119">The occurrence of the keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in documentation fields embedded in these modules are to be interpreted as described in 
+                <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC2119</a>.
+            </p>
+            <ul id="normative-schema-modules">
+                <li>
+                    <a href="./mod/mathml3-common.rng" rel="rd:schema-module">mathml3-common.rng</a>
+                </li>
+                <li>
+                    <a href="./mod/mathml3-content.rng" rel="rd:schema-module">mathml3-content.rng</a>
+                </li>
+                <li>
+                    <a href="./mod/mathml3-presentation.rng" rel="rd:schema-module">mathml3-presentation.rng</a>
+                </li>
+                <li>
+                    <a href="./mod/mathml3-strict-content.rng" rel="rd:schema-module">mathml3-strict-content.rng</a>
+                </li>
+                <li>
+                    <a href="./mod/z3998-feature-mathml.rng" rel="rd:schema-module">z3998-feature-mathml.rng</a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer">
+            <p id="docinfo"> This document is a 
+                <em>Z39.98-2012 Resource Directory</em>, compliant with 
+                <a href="http://www.w3.org/TR/rdfa-syntax/">XHTML+RDFa</a> using the 
+                <a href="../../../../vocab/resourcedirectory/">Z39.98-2012 Resource Directory Vocabulary</a>. 
+            </p>
+            <p>Document generated: 2014-10-21T08:36:11.858-04:00.</p>
+        </div>
+    </body>
+</html>

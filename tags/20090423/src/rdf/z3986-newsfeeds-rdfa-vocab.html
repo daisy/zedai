@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" version="XHTML+RDFa 1.0">
+  <head>
+    <title>DAISY 4.0 Periodicals Vocabulary</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="../../util/rddl/xrd.css"/>
+  </head>
+  <body>
+    <h1>DAISY 4.0 Periodicals Vocabulary</h1>
+    <p class="informative">These metadata items take an <code>xsd:string</code> value unless otherwise specified.</p>
+    <div id="newsfeeds-vocab" class="vocabulary">
+      <div>
+        <h2>Publication-wide metadata for electronic feed republishing</h2>
+
+        <dl class="elecfeedlist">
+          
+<dt id="edition" about="#edition" typeof="rdf:Property">edition</dt>
+          
+<dd about="#edition" property="rdfs:comment" datatype="xsd:string">The edition number of the publication.</dd>
+
+<dd about="#edition" property="rdfs:datatype" content="xsd:string">string</dd>
+
+        </dl>
+        
+<h2>Article-specific metadata for electronic feed republishing</h2>
+        
+<dl>
+          
+<dt id="positionSection" about="#positionSection" typeof="rdf:Property">positionSection</dt>
+          
+<dd about="#positionSection" property="rdfs:comment" datatype="xsd:string">the ordinal value of the section within the publication that the article appears in; e.g. 1.2, where 1 is the position of the parent section in the publication, and 2 is the position of the parent sub section within the particular section.</dd>
+
+<dd about="#positionSection" property="rdfs:datatype" content="xsd:decimal">decimal</dd>
+
+
+<dt id="positionSequence" about="#positionSequence" typeof="rdf:Property">positionSequence</dt>
+          
+<dd about="#positionSequence" property="rdfs:comment" datatype="xsd:string">The ordinal value for the article within a parent section</dd>
+
+          <dd about="#positionSequence" property="rdfs:datatype" content="xsd:int">integer</dd>
+
+
+<dt id="kicker" about="#kicker" typeof="rdf:Property">kicker</dt>
+          
+<dd about="#kicker" property="rdfs:comment" datatype="xsd:string">A piece of text that draws attention to the article.</dd>           <dd about="#kicker" property="rdfs:datatype" content="xsd:string">string</dd>
+
+
+<dt id="positionPage" about="#positionPage" typeof="rdf:Property">positionPage</dt>
+          
+<dd about="#positionPage" property="rdfs:comment" datatype="xsd:string">The page number of the pubblication that the article appears on.</dd> 
+
+          <dd about="#positionPage" property="rdfs:datatype" content="xsd:int">integer</dd>
+
+
+<dt id="revision" about="#revision" typeof="rdf:Property">revision</dt>
+          
+<dd about="#revision" property="rdfs:comment" datatype="xsd:string">The revision number for the article.</dd>
+
+          <dd about="#revision" property="rdfs:datatype" content="xsd:decimal">decimal</dd>
+
+
+<dt id="destEdition" about="#destEdition" typeof="rdf:Property">destEdition</dt>
+          
+<dd about="#destEdition" property="rdfs:comment" datatype="xsd:string">The edition of the publication that the article appears in.</dd>
+
+          <dd about="#destEdition" property="rdfs:datatype" content="xsd:string">string</dd>
+
+
+        </dl>
+      </div>
+    </div>
+<!--
+  entry template 
+  (datatype is optional - omit that entire element if it is xsd:string)
+  
+  <dt id="TODO" about="#TODO" typeof="rdf:Property">TODO: name of property</dt>
+  <dd about="#TODO" property="rdfs:comment" datatype="xsd:string">TODO: description</dd>
+  <dd about="#TODO" property="rdfs:datatype" content="xsd:TODO">TODO: human-readable datatype name</dd>
+-->
+  </body>
+</html>

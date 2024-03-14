@@ -1,0 +1,11 @@
+<sel:select xmlns:sel="http://www.daisy.org/z3986/2010/auth/features/select/#">
+      <sel:when expr="ptfs:parameterTest('publisher','nlb')">
+            <p>Copyright &#169; 2009 Norsk lyd- og blindeskriftbibliotek</p>
+      </sel:when>
+      <sel:when expr="ptfs:parameterTest('publisher','hks')">
+            <p>Copyright &#169; 2009 Huseby kompetansesenter</p>
+      </sel:when>
+      <sel:otherwise>
+            <p>Copyright &#169; 2009</p>
+      </sel:otherwise>
+</sel:select>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <x:h1>The DAISY Poem module</x:h1>
+
+
+    <define name="Daisy.poem" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="poem">
+            <ref name="Daisy.poem.attlist" />
+            <ref name="Daisy.poem.content" />
+        </element>
+    </define>
+    <define name="Daisy.stanza" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="stanza">
+            <ref name="Daisy.stanza.attlist" />
+            <ref name="Daisy.stanza.content" />
+        </element>
+    </define>
+
+    <define name="Daisy.poem.attlist">
+        <ref name="Daisy.attlist" />
+    </define>
+
+    <define name="Daisy.stanza.attlist">
+        <ref name="Daisy.attlist" />
+    </define>
+
+    <define name="Daisy.poem.content">
+        <interleave>
+            <zeroOrMore>
+                <ref name="Daisy.pagebreak" />
+            </zeroOrMore>
+            <oneOrMore>
+                <ref name="Daisy.stanza" />
+            </oneOrMore>
+        </interleave>
+    </define>
+
+    <define name="Daisy.stanza.content">
+        <empty />
+    </define>
+
+</grammar>

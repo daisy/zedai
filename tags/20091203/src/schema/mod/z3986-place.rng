@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml">
+
+  <x:h1>Z39.86 place element module</x:h1>
+    
+  <div>
+    <x:h2>The place element</x:h2>
+    <x:div id="z3986.place">
+      <x:p class="description">
+        The <x:code>place</x:code> element represents the name of a locus.
+        <!-- TODO can be said to specialize name -->
+      </x:p>
+    </x:div>
+         
+    <define name="z3986.place">
+      <element name="place">        
+        <ref name="z3986.place.attlist"/>
+        <ref name="z3986.place.content"/>  
+      </element>    
+    </define>
+
+    <define name="z3986.place.attlist">
+      <ref name="z3986.Text.attrib"/>
+    </define>
+    
+    <define name="z3986.place.content">
+      <ref name="z3986.Text.base.model"/>
+    </define>  
+    
+  </div>  
+
+  <div>
+    <x:h2>The place element - default content model contribution</x:h2>
+    
+    <define name="z3986.Text.class" combine="choice">
+      <ref name="z3986.place"/>    
+    </define>
+    
+  </div>
+
+</grammar>

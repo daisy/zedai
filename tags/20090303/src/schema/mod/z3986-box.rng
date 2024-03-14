@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:x="http://www.w3.org/1999/xhtml"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <x:h1>The Z39.86 Box module</x:h1>
+
+    <define name="z3986.box" ns="http://www.daisy.org/ns/z3986/2008/">
+        <element name="box">
+            <ref name="z3986.box.attlist" />
+            <ref name="z3986.box.content" />
+        </element>
+    </define>
+
+    <define name="z3986.box.attlist">
+      <ref name="Common.reduced.attrib"/>        
+    </define>
+
+    <define name="z3986.box.content">
+        <ref name="Flow.model"/>
+    </define>
+
+	<define name="Structural.class" combine="choice">
+  		<ref name="z3986.box"/>
+  	</define>
+
+	<define name="Structural.nosection.class" combine="choice">
+  		<ref name="z3986.box"/>
+  	</define>
+
+</grammar>

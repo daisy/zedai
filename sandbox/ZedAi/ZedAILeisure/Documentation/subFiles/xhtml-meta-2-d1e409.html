@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Relax NG schema module</title>
+      <link rel="stylesheet" type="text/css" href="../css/ProfileDocumentation.css" />
+   </head>
+   <body>
+      <h1 class="title">The DAISY Leisure Profile</h1>
+      
+      
+      <h1 id="d24e3" class="xhtml">Metainformation Module</h1>
+      
+      
+      
+      <h2 id="d24e8" class="xhtml">The link element</h2>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">link</span>
+         
+         <div class="rng"><span class="rng">element</span>: <span class="name">link</span>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="link.attlist.html">link.attlist</a></div>
+            
+            <div class="rng"><span class="rng">zeroOrMore</span>:  Zero or more of: 
+               
+               <div class="rng"><span class="rng">choice</span>:  A choice between at least one of:
+                  			
+                  
+                  <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="link.html">link</a></div>
+                  
+                  <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="meta.html">meta</a></div>
+                  
+               </div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">link.attlist</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Common.attrib.html">Common.attrib</a></div>
+         
+      </div>
+      
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">head.misc</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="link.html">link</a></div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Misc.class</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="link.html">link</a></div>
+         
+      </div>
+      
+      
+      
+      <h2 id="d24e47" class="xhtml">The meta element</h2>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">meta</span>
+         
+         <div class="rng"><span class="rng">element</span>: <span class="name">meta</span>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="meta.attlist.html">meta.attlist</a></div>
+            
+            <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Text.model.html">Text.model</a></div>
+            
+         </div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">meta.attlist</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="Common.attrib.html">Common.attrib</a></div>
+         
+      </div>
+      
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">head.misc</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="meta.html">meta</a></div>
+         
+      </div>
+      
+      
+      <div class="rng"><span class="rng">define</span>: <span class="name">Misc.class</span>
+         
+         <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="meta.html">meta</a></div>
+         
+      </div>
+      
+      
+   </body>
+</html>

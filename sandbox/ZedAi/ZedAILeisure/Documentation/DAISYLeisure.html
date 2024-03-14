@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>The DAISY Leisure Profile</title>
+      <link rel="stylesheet" type="text/css" href="css/ProfileDocumentation.css" />
+   </head>
+   <body id="topp">
+      <h1 class="title">The DAISY Leisure Profile</h1>
+      <div id="main-container">
+         <div id="menu-and-info">
+            <div id="menu-container">
+               <ul id="menu">
+                  <li id="item-selected"><a href="DAISYLeisure.html">Main documentation</a></li>
+                  <li><a href="RelaxNGFileset.html">Relax NG Fileset</a></li>
+                  <li><a href="Elements.html">Elements</a></li>
+                  <li><a href="Defintions.html">Pattern definitions</a></li>
+               </ul>
+            </div>
+            <p>This profile documentation was automatically generated from the schema files used in this
+               			profile. Be sure to regenerate the documentation if any of the files in the schema file
+               			set is being changed. 
+            </p>
+            <p> Last generated: 29th October 2008 at 15:07</p>
+         </div>
+         <div id="content">
+            
+            
+            <h1 id="d1e3" class="xhtml">RELAX NG schema for a ZedAI leisure book profile based on XHTML 2.0</h1>
+            
+            <pre> Copyright ©2003-2005 W3C® (MIT, ERCIM, Keio), All Rights Reserved. Permission to use,
+    copy, modify and distribute this RELAX NG schema for XHTML 2.0 and its accompanying
+    documentation for any purpose and without fee is hereby granted in perpetuity, provided that the
+    above copyright notice and this paragraph appear in all copies. The copyright holders make no
+    representation about the suitability of this RELAX NG schema for any purpose. It is provided "as
+    is" without expressed or implied warranty. For details, please refer to the W3C software license
+    at: <a href="http://www.w3.org/Consortium/Legal/copyright-software">http://www.w3.org/Consortium/Legal/copyright-software</a>
+  </pre>
+            
+            
+            <h2 id="d1e16" class="xhtml">XHTML 2.0 modules</h2>
+            
+            <p> The ZedAi Leisure Profile is based on the XHTML 2.0 standard, and uses many of the modules
+               defined in that standard. Follow the link to <a href="http://www.w3.org/TR/xhtml2" target="_blank">«XHTML 2.0 modules»</a> to learn more.
+               
+            </p>
+            
+            
+            <table>
+               
+               <tr valign="top">
+                  
+                  <th>Module</th>
+                  
+                  <th>File name</th>
+                  
+                  <th>Included</th>
+                  
+               </tr>
+               
+               <tr valign="top">
+                  
+                  <td>Attribute Collections Module</td>
+                  
+                  <td>xhtml-attribs-2.rng</td>
+                  
+                  <td>Yes</td>
+                  
+               </tr>
+               
+               
+               <tr valign="top">
+                  
+                  <td>Document Module</td>
+                  
+                  <td>xhtml-document-2.rng</td>
+                  
+                  <td>Yes</td>
+                  
+               </tr>
+               
+               
+               <tr valign="top">
+                  
+                  <td>Structural Module</td>
+                  
+                  <td>xhtml-structural-2.rng</td>
+                  
+                  <td>Yes</td>
+                  
+               </tr>
+               
+               
+               <tr valign="top">
+                  
+                  <td>Text Module</td>
+                  
+                  <td>xhtml-text-2.rng</td>
+                  
+                  <td>Yes</td>
+                  
+               </tr>
+               
+               
+               <tr valign="top">
+                  
+                  <td>Hypertext Module</td>
+                  
+                  <td>xhtml-hypertext-2.rng</td>
+                  
+                  <td>Yes</td>
+                  
+               </tr>
+               
+               
+               <tr valign="top">
+                  
+                  <td>List Module</td>
+                  
+                  <td>xhtml-list-2.rng</td>
+                  
+                  <td>Yes</td>
+                  
+               </tr>
+               
+               
+               <tr valign="top">
+                  
+                  <td>Handler Module</td>
+                  
+                  <td>xhtml-handler-2.rng</td>
+                  
+                  <td>No</td>
+                  
+               </tr>
+               
+               
+               <tr valign="top">
+                  
+                  <td>Image Module</td>
+                  
+                  <td>xhtml-image-2.rng</td>
+                  
+                  <td>Yes</td>
+                  
+               </tr>
+               
+               
+               <tr valign="top">
+                  
+                  <td>Metainformation Module</td>
+                  
+                  <td>xhtml-meta-2.rng</td>
+                  
+                  <td>Yes</td>
+                  
+               </tr>
+               
+               
+               <tr valign="top">
+                  
+                  <td>Object Module</td>
+                  
+                  <td>xhtml-object-2.rng</td>
+                  
+                  <td>Yes</td>
+                  
+               </tr>
+               
+               
+               <tr valign="top">
+                  
+                  <td>Access Module</td>
+                  
+                  <td>xhtml-access-2.rng</td>
+                  
+                  <td>Yes</td>
+                  
+               </tr>
+               
+               
+               <tr valign="top">
+                  
+                  <td>Style Sheet Module</td>
+                  
+                  <td>xhtml-style-2.rng</td>
+                  
+                  <td>Yes</td>
+                  
+               </tr>
+               
+               
+               <tr valign="top">
+                  
+                  <td>Tables Module</td>
+                  
+                  <td>xhtml-table-2.rng</td>
+                  
+                  <td>Yes</td>
+                  
+               </tr>
+               
+               
+               <tr valign="top">
+                  
+                  <td>Datatypes Module</td>
+                  
+                  <td>xhtml-datatypes-2.rng</td>
+                  
+                  <td>Yes</td>
+                  
+               </tr>
+               
+               
+               <tr valign="top">
+                  
+                  <td>Param Module</td>
+                  
+                  <td>xhtml-param-2.rng</td>
+                  
+                  <td>Yes</td>
+                  
+               </tr>
+               
+               
+               <tr valign="top">
+                  
+                  <td>Caption Module</td>
+                  
+                  <td>xhtml-caption-2.rng</td>
+                  
+                  <td>Yes</td>
+                  
+               </tr>
+               
+               
+               <tr valign="top">
+                  
+                  <td>XML Events module</td>
+                  
+                  <td>xml-events-1.rng</td>
+                  
+                  <td>Yes</td>
+                  
+               </tr>
+               
+               
+               <tr valign="top">
+                  
+                  <td>Ruby module</td>
+                  
+                  <td>full-ruby-1.rng</td>
+                  
+                  <td>Yes</td>
+                  
+               </tr>
+               
+               
+               <tr valign="top">
+                  
+                  <td>XForms module</td>
+                  
+                  <td>xforms-nons-11.rng</td>
+                  
+                  <td>No</td>
+                  
+               </tr>
+               
+               
+               <tr valign="top">
+                  
+                  <td>XML Schema instance module</td>
+                  
+                  <td>XMLSchema-instance.rng</td>
+                  
+                  <td>Yes</td>
+                  
+               </tr>
+               
+            </table>
+            
+            <h3 id="d1e282" class="xhtml">Attribute Collections Module</h3>
+            
+            <p>This module is defined in <span class="uri">http://zednext.googlecode.com/svn/sandbox/ZedAi/w3c/rng/xhtml-attribs-2.rng</span>. You can find more information about this module in its <a href="subFiles/xhtml-attribs-2-d1e285.html" target="_blank">associated documentation file (xhtml-attribs-2-d1e285.html)</a>.
+               		
+            </p>
+            <div class="rng"><span class="rng">include</span>: <span class="uri">../../w3c/rng/xhtml-attribs-2.rng</span></div>
+            
+            <p>Follow the link to <a href="http://www.w3.org/TR/xhtml2/mod-attribute-collections.html"
+                  target="_blank">«Attribute Collections Module»</a> to learn more.
+            </p>
+            
+            
+            <h3 id="d1e290" class="xhtml">Document Module</h3>
+            
+            
+            <p>This module is defined in <span class="uri">http://zednext.googlecode.com/svn/sandbox/ZedAi/w3c/rng/xhtml-document-2.rng</span>. You can find more information about this module in its <a href="subFiles/xhtml-document-2-d1e293.html" target="_blank">associated documentation file (xhtml-document-2-d1e293.html)</a>.
+               		
+            </p>
+            <div class="rng"><span class="rng">include</span>: <span class="uri">../../w3c/rng/xhtml-document-2.rng</span>
+               
+               
+               <div class="rng"><span class="rng">define</span>: <span class="name">html.attlist</span><br /><em>This defintion replaces the similar definition in the included file.</em>
+                  
+                  <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="subFiles/Common.attrib.html" target="_blank">Common.attrib</a></div>
+                  
+                  <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="subFiles/version.attrib.html" target="_blank">version.attrib</a></div>
+                  
+               </div>
+               
+            </div>
+            
+            <p>Follow the link to <a href="http://www.w3.org/TR/xhtml2/mod-document.html" target="_blank">«Document Module»</a> to learn more.
+            </p>
+            
+            
+            <h3 id="d1e307" class="xhtml">Structural Module</h3>
+            
+            
+            
+            <p>This module is defined in <span class="uri">http://zednext.googlecode.com/svn/sandbox/ZedAi/w3c/rng/xhtml-structural-2.rng</span>. You can find more information about this module in its <a href="subFiles/xhtml-structural-2-d1e313.html" target="_blank">associated documentation file (xhtml-structural-2-d1e313.html)</a>.
+               		
+            </p>
+            <div class="rng"><span class="rng">include</span>: <span class="uri">../../w3c/rng/xhtml-structural-2.rng</span>
+               
+               
+               <div class="rng"><span class="rng">define</span>: <span class="name">section</span><br /><em>This defintion replaces the similar definition in the included file.</em>
+                  
+                  <div class="rng"><span class="rng">element</span>: <span class="name">section</span>
+                     
+                     <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="subFiles/section.attlist.html" target="_blank">section.attlist</a></div>
+                     
+                     <div class="rng"><span class="rng">optional</span>:  The following is optional: 
+                        
+                        <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="subFiles/Daisy.pagenumber.html" target="_blank">Daisy.pagenumber</a></div>
+                        
+                     </div>
+                     
+                     <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="subFiles/Heading.class.html" target="_blank">Heading.class</a></div>
+                     
+                     <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="subFiles/section.model.html" target="_blank">section.model</a></div>
+                     
+                     
+                  </div>
+                  
+               </div>
+               
+               
+               
+               <div class="rng"><span class="rng">define</span>: <span class="name">Flow.model</span><br /><em>This defintion replaces the similar definition in the included file.</em>
+                  
+                  <div class="rng"><span class="rng">zeroOrMore</span>:  Zero or more of: 
+                     
+                     <div class="rng"><span class="rng">choice</span>:  A choice between at least one of:
+                        			
+                        
+                        <div class="rng"><span class="rng">text</span>:  Zero or more text nodes. 
+                        </div>
+                        
+                        
+                        <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="subFiles/Structural.class.html" target="_blank">Structural.class</a></div>
+                        
+                        <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="subFiles/List.class.html" target="_blank">List.class</a></div>
+                        
+                        <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="subFiles/Text.class.html" target="_blank">Text.class</a></div>
+                        
+                        <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="subFiles/Misc.class.html" target="_blank">Misc.class</a></div>
+                        
+                     </div>
+                     
+                  </div>
+                  
+               </div>
+               
+               
+            </div>
+            
+            
+            
+            <div class="rng"><span class="rng">define</span>: <span class="name">section.model</span>
+               
+               <div class="rng"><span class="rng">oneOrMore</span>:  One or more of: 
+                  
+                  <div class="rng"><span class="rng">choice</span>:  A choice between at least one of:
+                     			
+                     
+                     <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="subFiles/Structural.class.html" target="_blank">Structural.class</a></div>
+                     
+                     <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="subFiles/List.class.html" target="_blank">List.class</a></div>
+                     
+                  </div>
+                  
+               </div>
+               
+            </div>
+            
+            
+            <p>Follow the link to <a href="http://www.w3.org/TR/xhtml2/mod-structural.html" target="_blank">«Structural Module»</a> to learn more.
+            </p>
+            
+            
+            
+            <h3 id="d1e378" class="xhtml">Text Module</h3>
+            
+            <p>This module is defined in <span class="uri">http://zednext.googlecode.com/svn/sandbox/ZedAi/w3c/rng/xhtml-text-2.rng</span>. You can find more information about this module in its <a href="subFiles/xhtml-text-2-d1e381.html" target="_blank">associated documentation file (xhtml-text-2-d1e381.html)</a>.
+               		
+            </p>
+            <div class="rng"><span class="rng">include</span>: <span class="uri">../../w3c/rng/xhtml-text-2.rng</span></div>
+            
+            <p>Follow the link to <a href="http://www.w3.org/TR/xhtml2/mod-text.html" target="_blank">«Text Module»</a> to learn more.
+            </p>
+            
+            
+            <h3 id="d1e386" class="xhtml">Hypertext Module</h3>
+            
+            <p>This module is defined in <span class="uri">http://zednext.googlecode.com/svn/sandbox/ZedAi/w3c/rng/xhtml-hypertext-2.rng</span>. You can find more information about this module in its <a href="subFiles/xhtml-hypertext-2-d1e389.html" target="_blank">associated documentation file (xhtml-hypertext-2-d1e389.html)</a>.
+               		
+            </p>
+            <div class="rng"><span class="rng">include</span>: <span class="uri">../../w3c/rng/xhtml-hypertext-2.rng</span></div>
+            
+            
+            <h3 id="d1e391" class="xhtml">List Module</h3>
+            
+            <p>This module is defined in <span class="uri">http://zednext.googlecode.com/svn/sandbox/ZedAi/w3c/rng/xhtml-list-2.rng</span>. You can find more information about this module in its <a href="subFiles/xhtml-list-2-d1e394.html" target="_blank">associated documentation file (xhtml-list-2-d1e394.html)</a>.
+               		
+            </p>
+            <div class="rng"><span class="rng">include</span>: <span class="uri">../../w3c/rng/xhtml-list-2.rng</span></div>
+            
+            <p>Follow the link to <a href="http://www.w3.org/TR/xhtml2/mod-list.html" target="_blank">«List Module»</a> to learn more.
+            </p>
+            
+            
+            
+            
+            <h3 id="d1e401" class="xhtml">Image Module</h3>
+            
+            <p>This module is defined in <span class="uri">http://zednext.googlecode.com/svn/sandbox/ZedAi/w3c/rng/xhtml-image-2.rng</span>. You can find more information about this module in its <a href="subFiles/xhtml-image-2-d1e404.html" target="_blank">associated documentation file (xhtml-image-2-d1e404.html)</a>.
+               		
+            </p>
+            <div class="rng"><span class="rng">include</span>: <span class="uri">../../w3c/rng/xhtml-image-2.rng</span></div>
+            
+            
+            <h3 id="d1e406" class="xhtml">Metainformation Module</h3>
+            
+            <p>This module is defined in <span class="uri">http://zednext.googlecode.com/svn/sandbox/ZedAi/w3c/rng/xhtml-meta-2.rng</span>. You can find more information about this module in its <a href="subFiles/xhtml-meta-2-d1e409.html" target="_blank">associated documentation file (xhtml-meta-2-d1e409.html)</a>.
+               		
+            </p>
+            <div class="rng"><span class="rng">include</span>: <span class="uri">../../w3c/rng/xhtml-meta-2.rng</span></div>
+            
+            <p>Follow the link to <a href="http://www.w3.org/TR/xhtml2//mod-meta.html" target="_blank">«Metainformation Module»</a> to learn more.
+            </p>
+            
+            
+            <h3 id="d1e413" class="xhtml">Object Module</h3>
+            
+            <p>This module is defined in <span class="uri">http://zednext.googlecode.com/svn/sandbox/ZedAi/w3c/rng/xhtml-object-2.rng</span>. You can find more information about this module in its <a href="subFiles/xhtml-object-2-d1e417.html" target="_blank">associated documentation file (xhtml-object-2-d1e417.html)</a>.
+               		
+            </p>
+            <div class="rng"><span class="rng">include</span>: <span class="uri">../../w3c/rng/xhtml-object-2.rng</span></div>
+            
+            
+            <h3 id="d1e419" class="xhtml">Access Module</h3>
+            
+            <p>This module is defined in <span class="uri">http://zednext.googlecode.com/svn/sandbox/ZedAi/w3c/rng/xhtml-access-2.rng</span>. You can find more information about this module in its <a href="subFiles/xhtml-access-2-d1e422.html" target="_blank">associated documentation file (xhtml-access-2-d1e422.html)</a>.
+               		
+            </p>
+            <div class="rng"><span class="rng">include</span>: <span class="uri">../../w3c/rng/xhtml-access-2.rng</span></div>
+            
+            
+            <h3 id="d1e424" class="xhtml">Style Sheet Module</h3>
+            
+            <p>This module is defined in <span class="uri">http://zednext.googlecode.com/svn/sandbox/ZedAi/w3c/rng/xhtml-style-2.rng</span>. You can find more information about this module in its <a href="subFiles/xhtml-style-2-d1e427.html" target="_blank">associated documentation file (xhtml-style-2-d1e427.html)</a>.
+               		
+            </p>
+            <div class="rng"><span class="rng">include</span>: <span class="uri">../../w3c/rng/xhtml-style-2.rng</span></div>
+            
+            
+            <h3 id="d1e429" class="xhtml">Tables Module</h3>
+            
+            <p>This module is defined in <span class="uri">http://zednext.googlecode.com/svn/sandbox/ZedAi/w3c/rng/xhtml-table-2.rng</span>. You can find more information about this module in its <a href="subFiles/xhtml-table-2-d1e433.html" target="_blank">associated documentation file (xhtml-table-2-d1e433.html)</a>.
+               		
+            </p>
+            <div class="rng"><span class="rng">include</span>: <span class="uri">../../w3c/rng/xhtml-table-2.rng</span></div>
+            
+            <p>Follow the link to <a href="http://www.w3.org/TR/xhtml2/mod-tables.html" target="_blank">«Tables Module»</a> to learn more.
+            </p>
+            
+            
+            <h3 id="d1e437" class="xhtml">Support Modules</h3>
+            
+            
+            <h4 id="d1e440" class="xhtml">Datatypes Module</h4>
+            
+            <p>This module is defined in <span class="uri">http://zednext.googlecode.com/svn/sandbox/ZedAi/w3c/rng/xhtml-datatypes-2.rng</span>. You can find more information about this module in its <a href="subFiles/xhtml-datatypes-2-d1e443.html" target="_blank">associated documentation file (xhtml-datatypes-2-d1e443.html)</a>.
+               		
+            </p>
+            <div class="rng"><span class="rng">include</span>: <span class="uri">../../w3c/rng/xhtml-datatypes-2.rng</span></div>
+            
+            
+            <h4 id="d1e445" class="xhtml">Param Module</h4>
+            
+            <p>This module is defined in <span class="uri">http://zednext.googlecode.com/svn/sandbox/ZedAi/w3c/rng/xhtml-param-2.rng</span>. You can find more information about this module in its <a href="subFiles/xhtml-param-2-d1e449.html" target="_blank">associated documentation file (xhtml-param-2-d1e449.html)</a>.
+               		
+            </p>
+            <div class="rng"><span class="rng">include</span>: <span class="uri">../../w3c/rng/xhtml-param-2.rng</span></div>
+            
+            
+            <h4 id="d1e451" class="xhtml">Caption Module</h4>
+            
+            <p>This module is defined in <span class="uri">http://zednext.googlecode.com/svn/sandbox/ZedAi/w3c/rng/xhtml-caption-2.rng</span>. You can find more information about this module in its <a href="subFiles/xhtml-caption-2-d1e454.html" target="_blank">associated documentation file (xhtml-caption-2-d1e454.html)</a>.
+               		
+            </p>
+            <div class="rng"><span class="rng">include</span>: <span class="uri">../../w3c/rng/xhtml-caption-2.rng</span></div>
+            
+            
+            
+            
+            <h2 id="d1e459" class="xhtml">Ruby module</h2>
+            
+            
+            <p>This module is defined in <span class="uri">http://zednext.googlecode.com/svn/sandbox/ZedAi/w3c/rng/full-ruby-1.rng</span>. You can find more information about this module in its <a href="subFiles/full-ruby-1-d1e462.html" target="_blank">associated documentation file (full-ruby-1-d1e462.html)</a>.
+               		
+            </p>
+            <div class="rng"><span class="rng">include</span>: <span class="uri">../../w3c/rng/full-ruby-1.rng</span>
+               
+               
+               <div class="rng"><span class="rng">define</span>: <span class="name">Inline.class</span><br /><em>This defintion replaces the similar definition in the included file.</em>
+                  
+                  <div class="rng"><span class="rng">notAllowed</span>: 
+                  </div>
+                  
+               </div>
+               
+               
+               <div class="rng"><span class="rng">define</span>: <span class="name">NoRuby.content</span><br /><em>This defintion replaces the similar definition in the included file.</em>
+                  
+                  <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="subFiles/Text.model.html" target="_blank">Text.model</a></div>
+                  
+               </div>
+               
+               
+            </div>
+            
+            
+            <div class="rng"><span class="rng">define</span>: <span class="name">Inline.model</span>
+               
+               <div class="rng"><span class="rng">notAllowed</span>: 
+               </div>
+               
+            </div>
+            
+            
+            <div class="rng"><span class="rng">define</span>: <span class="name">Text.class</span>
+               
+               <div class="rng"><span class="rng">ref</span>:  Referencing <a class="ref" href="subFiles/ruby.html" target="_blank">ruby</a></div>
+               
+            </div>
+            
+            
+            
+            
+            <h2 id="d1e489" class="xhtml">XML Schema instance module</h2>
+            
+            <p>This module is defined in <span class="uri">http://zednext.googlecode.com/svn/sandbox/ZedAi/w3c/rng/XMLSchema-instance.rng</span>. You can find more information about this module in its <a href="subFiles/XMLSchema-instance-d1e492.html" target="_blank">associated documentation file (XMLSchema-instance-d1e492.html)</a>.
+               		
+            </p>
+            <div class="rng"><span class="rng">include</span>: <span class="uri">../../w3c/rng/XMLSchema-instance.rng</span></div>
+            
+            
+            
+            
+            <h2 id="d1e497" class="xhtml">XML Events module</h2>
+            
+            <p>This module is defined in <span class="uri">http://zednext.googlecode.com/svn/sandbox/ZedAi/w3c/rng/xml-events-1.rng</span>. You can find more information about this module in its <a href="subFiles/xml-events-1-d1e500.html" target="_blank">associated documentation file (xml-events-1-d1e500.html)</a>.
+               		
+            </p>
+            <div class="rng"><span class="rng">include</span>: <span class="uri">../../w3c/rng/xml-events-1.rng</span></div>
+            
+            
+            
+            
+            
+            
+            <h2 id="d1e507" class="xhtml">DAISY Pagenumber module</h2>
+            
+            <p>As pagenumbering is not a part xhtml2, this must be handled in separate modules.</p>
+            
+            
+            <h3 id="d1e513" class="xhtml">The generic pagenumber module</h3>
+            
+            <p>This module is defined in <span class="uri">http://zednext.googlecode.com/svn/sandbox/ZedAi/ZedAILeisure/RelaxNG/DAISYmodules/pagenumber.rng</span>. You can find more information about this module in its <a href="subFiles/pagenumber-d1e516.html" target="_blank">associated documentation file (pagenumber-d1e516.html)</a>.
+               		
+            </p>
+            <div class="rng"><span class="rng">include</span>: <span class="uri">DAISYmodules/pagenumber.rng</span></div>
+            
+            
+            
+            <h3 id="d1e521" class="xhtml">The xhtml2 + pagenumber module</h3>
+            
+            <p>This module is defined in <span class="uri">http://zednext.googlecode.com/svn/sandbox/ZedAi/ZedAILeisure/RelaxNG/DAISYmodules/xhtml2AddPagenumber.rng</span>. You can find more information about this module in its <a href="subFiles/xhtml2AddPagenumber-d1e524.html" target="_blank">associated documentation file (xhtml2AddPagenumber-d1e524.html)</a>.
+               		
+            </p>
+            <div class="rng"><span class="rng">include</span>: <span class="uri">DAISYmodules/xhtml2AddPagenumber.rng</span></div>
+            
+            
+            
+            <h2 id="d1e528" class="xhtml">DAISY Datatype module</h2>
+            
+            <p>This module is defined in <span class="uri">http://zednext.googlecode.com/svn/sandbox/ZedAi/ZedAILeisure/RelaxNG/DAISYmodules/datatypes.rng</span>. You can find more information about this module in its <a href="subFiles/datatypes-d1e531.html" target="_blank">associated documentation file (datatypes-d1e531.html)</a>.
+               		
+            </p>
+            <div class="rng"><span class="rng">include</span>: <span class="uri">DAISYmodules/datatypes.rng</span></div>
+            
+            
+            
+            
+            
+         </div>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+
+    <define name="xhtml.Heading.class">
+        <choice>
+            <ref name="xhtml.h1"/>
+            <ref name="xhtml.h2"/>
+            <ref name="xhtml.h3"/>
+            <ref name="xhtml.h4"/>
+            <ref name="xhtml.h5"/>
+            <ref name="xhtml.h6"/>
+        </choice>
+    </define>
+
+    <define name="xhtml.h1">
+        <element name="h1">
+            <ref name="xhtml.Heading.attrib"/>
+            <ref name="xhtml.Heading.content"/>
+        </element>
+    </define>
+
+    <define name="xhtml.h2">
+        <element name="h2">
+            <ref name="xhtml.Heading.attrib"/>
+            <ref name="xhtml.Heading.content"/>
+        </element>
+    </define>
+
+    <define name="xhtml.h3">
+        <element name="h3">
+            <ref name="xhtml.Heading.attrib"/>
+            <ref name="xhtml.Heading.content"/>
+        </element>
+    </define>
+
+    <define name="xhtml.h4">
+        <element name="h4">
+            <ref name="xhtml.Heading.attrib"/>
+            <ref name="xhtml.Heading.content"/>
+        </element>
+    </define>
+
+    <define name="xhtml.h5">
+        <element name="h5">
+            <ref name="xhtml.Heading.attrib"/>
+            <ref name="xhtml.Heading.content"/>
+        </element>
+    </define>
+
+    <define name="xhtml.h6">
+        <element name="h6">
+            <ref name="xhtml.Heading.attrib"/>
+            <ref name="xhtml.Heading.content"/>
+        </element>
+    </define>
+
+    <define name="xhtml.Heading.attrib" combine="interleave">
+        <ref name="xhtml.Structural.attlist"/>
+    </define>
+
+    <define name="xhtml.Heading.content" combine="interleave">
+        <ref name="xhtml.Text.model"/>
+    </define>
+
+</grammar>

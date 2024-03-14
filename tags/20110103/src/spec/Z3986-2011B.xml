@@ -1,0 +1,1750 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="../../util/docbook/rng/docbook.rng" type="xml"?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>ANSI/NISO Z39.86-2011 Part B</title>
+    <subtitle>Z39.86 Distribution Framework Specification</subtitle>
+    <info>
+        <releaseinfo>Internal Working Draft</releaseinfo>
+        <pubdate>2010</pubdate>
+        <annotation xml:id="editors">
+            <para>
+                <personname>Markus Gylling</personname>, <orgname>DAISY Consortium</orgname>
+            </para>
+            <para>
+                <personname>Daniel Weck</personname>, <orgname>DAISY Consortium</orgname>
+            </para>
+            <para>
+                <personname>Matt Garrish</personname>, <orgname>Invited Expert</orgname>
+            </para>
+        </annotation>
+        <abstract>
+            <title>Abstract</title>
+            <para>The Z39.86 Distribution Framework (Z39.86-Dist) specifies the content and format for the distribution 
+                of accessible multimedia publications. It defines four content types &#8212; an audio book
+                format, an eBook format and both a light and rich multimedia format &#8212; each 
+                targetted to the needs and requirements of persons who would otherwise not be able
+                to access traditional print equivalents. The specification provides content producers with 
+                the flexibility to tailor their content to meet the needs of their consumers, while at the 
+                same time opening up the reading experience to a much broader range of individuals.
+            </para>
+        </abstract>
+    </info>
+
+    <chapter xml:id="introduction" conformance="informative">
+        <title>Introduction</title>
+
+        <section xml:id="introductionAudience">
+            <title>Audience</title>
+            <para> This document is intended for organizations that create and distribute DAISY
+                multimedia publications &#8212; commonly known as <link linkend="termDTB">DTBs</link>
+                &#8212; and for implementors of <link linkend="termProductionSystem"
+                    >Production Systems</link> and <link linkend="termReadingDevice">Reading
+                    Devices</link>.</para>
+            
+            <para>
+                Although knowledge of previous versions of this specification will be helpful in understanding
+                the concepts and requirements outlined in this document, no prior knowledge is required 
+                or expected. Knowledge of audio, video and image formats and XML schemas and markup
+                is required, depending on the content type to be produced or device or system development
+                anticipated.
+            </para>
+        </section>
+
+        <section xml:id="introductionDesignGoals">
+            <title>Design goals</title>
+            <para><remark role="todo">TODO</remark></para>
+        </section>
+        
+        <section xml:id="introductionOverview">
+            <title>Overview</title>
+            
+            <para> The acronym 
+                <link linkend="termDTB">DTB</link> (which originally stood for "Digital Talking Book") has outgrown
+                its legacy as a replacement for analog audio books and in the process has become
+                synonymous with accessible reading materials of all kinds. This specification 
+                re-establishes and expands on the previous definition of a DTB to
+                reflect this continuing shift. It provides new flexibility in terms of both the
+                production and the consumption of multimedia publications, adapting and
+                incorporating existing and new standards to enhance content, navigation and overall
+                usability by visually-impaired persons and otherwise by people with learning or
+                reading disabilities.</para>
+            
+            <para>
+                Realizing that the size and scope of the specification may be intimidating as a result of its expanded
+                nature, this section
+                aims to provide a quick orientation to the concepts outlined in the document. The primary point 
+                to bear in mind when starting to read this document is that it defines four unique DTB types, 
+                and its layout is based on building on the information you will need to create or process any of 
+                these types to minimize overlap and redundancy. As not all producers will be creating all DTB content types, 
+                and not all developers will be targetting them, reading the entire specification from start to finish
+                will consequently only be of interest to a small group of producers and developers. For the rest, the
+                remainder of this section highlights key knowledge areas.
+            </para>
+            
+            <para>
+                The specification then moves into defining the common functionality that is variously employed
+                by the DTB types. Reading all of these sections, while useful, may not be necessary for many readers.
+                Which sections to review depends on the DTB types you intend to create or process. It should also
+                be noted that these sections cannot be read independently of the DTB definitions, as the definitions
+                will, in many cases, introduce new requirements and/or supersede requirements.
+            </para>
+            
+            <para>
+                All readers will need to be familiar with the following sections, however:
+            </para>
+            
+            <itemizedlist>
+                <listitem>
+                    <para>
+                        <xref linkend="dtbLogicPackageFile"/>, which defines the package file that all DTBs must include;
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        <xref linkend="ncx"/>, which defines the NCX file format (the actual implementation of the NCX standard
+                        is highly dependent on the type of DTB reproduced, so this section should always be read in conjunction
+                        with a DTB definition); and
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        <xref linkend="dtbDistroContainer"/>, which defines the container format for packaging all the DTB 
+                        resources into a single file (use of the container format is optional, however).
+                    </para>
+                </listitem>
+            </itemizedlist>
+            
+            <para>
+                Which of the remaining sections in <xref linkend="dtbLogic"/>, <xref linkend="dtbContent"/> and
+                <xref linkend="dtbDistro"/> to review depends on the type of DTB you intend to create or process:
+            </para>
+            
+            <itemizedlist>
+                <listitem>
+                    <para>
+                        for audio books with no text, image or video content and
+                        with simple playlist navigation, the Audio DTB format defined in <xref linkend="dtbAudio"/>
+                        should be read in conjunction with <xref linkend="dtbContentAudio"/>.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        for eBooks, with no synchronized
+                        audio or video, the eBook DTB format defined in <xref linkend="dtbEbook"/> should
+                        be read in conjunction with <remark role="todo">text definition link</remark>. Depending
+                        on your eBook requirements, you may also need to review <xref linkend="dtbContentImages"/>
+                        and <xref linkend="dtbContentVideo"/>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        for multimedia playback that allows the inclusion and synchronization of text and 
+                        audio, the Classic and Pro DTB 
+                        formats defined in <xref linkend="dtbClassic"/> and <xref linkend="dtbPro"/> should be 
+                        read. Creation and processing of these formats will require knowledge of most of the sections
+                        in <xref linkend="dtbLogic"/>, <xref linkend="dtbContent"/> and <xref linkend="dtbDistro"/>.
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </section>
+        
+        <section xml:id="relationships">
+            <title>Relationships to other specifications</title>
+
+            <para>This standard is based on the specific versions of the standards and
+                specifications referenced herein, which are used as defined except as noted by this
+                document. Any refinement or replacement of a referenced specification by a newer or
+                different version is not directly applicable to this standard. Conformance to this
+                standard is based on the versions of the standards and specifications in effect at
+                the time of publication.</para>
+
+            <section xml:id="relationshipsZ39862010B">
+                <title>Relationship to Z39.86-2011 Part A</title>
+                <para> Z39.86-2011 Part A defines a framework for constructing XML grammars to
+                    represent the structure and semantics of single-file documents. The goal of Part
+                    A is to facilitate the transformation of text markup (including images) into a
+                    wide variety of accessible formats, ideally including the text components
+                    defined in this part of the specification. The ability to transform a Z39.86-AI
+                    document into a format compatible with Part B of the specification is not a
+                    requirement, however. </para>
+            </section>
+
+            <section xml:id="relationshipsZ39862005">
+                <title>Relationship to Z39.86-2005</title>
+                <para>Z39.86-2011 Part A and B jointly form a functional expansion of the <citation
+                        linkend="refZ39862005">Z39.86-2005</citation> specification (otherwise known
+                    as "DAISY 3"). Whereas Z39.86-2011 Part A supports the concept of a single file
+                    dedicated to representing a "text" document, Z39.86-2011 Part B supports the
+                    full fileset that defines a multimedia publication (externalized hierarchical
+                    navigation and synchronization, packaging format, etc.)</para>
+            </section>
+
+            <section xml:id="relationshipsXML">
+                <title>Relationship to XML</title>
+                <para>The document types defined by Z39.86-2011 Part A inherit all constraints
+                    defined by <citation linkend="refXML">Extensible Markup Language (XML) 1.0
+                        (Fourth Edition)</citation>. Note that the later Fifth Edition of XML 1.0 is
+                    intentionally not referenced here, due to a change in the XML specification that
+                    relaxes Unicode restrictions on element and attribute names.</para>
+            </section>
+
+            <section xml:id="relationshipsUnicode">
+                <title>Unicode</title>
+                <para>This specification inherits its relation to Unicode from <xref
+                        linkend="refXML"/>.</para>
+            </section>
+        </section>
+
+        <section xml:id="definitions">
+            <title>Terms and definitions</title>
+            <variablelist>
+                <varlistentry xml:id="termDTB">
+                    <term>DTB</term>
+                    <listitem>
+                        <para> DTB originally stands for "Digital Talking Book" (i.e. audio books),
+                            but it is used in the context of this document to represent the wider
+                            concept of DAISY accessible multimedia publications. A DTB is therefore
+                            an abstract concept. Particular types of DTBs are formally described in
+                            this specification, based on XML schemas, resource directories, and
+                            normative prose.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry xml:id="termReadingDevice">
+                    <term>Reading Device</term>
+                    <listitem>
+                        <para> The hardware/software platform that processes and renders the
+                            contents of a <link linkend="termDTB">DTB</link>, for consumption by a
+                            (human) reader. Sometimes also called "playback device", notably for
+                            audio books. </para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry xml:id="termProductionSystem">
+                    <term>Production System</term>
+                    <listitem>
+                        <para> The hardware/software platform that produces a <link
+                                linkend="termDTB">DTB</link> fileset via human-driven authoring or
+                            through automated transformations (or a chained workflow that comprises
+                            a mix of the aforementioned content production methods).
+                        </para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </section>
+
+        <xi:include href="./xinc/conformanceexpressions.xml" parse="xml"/>
+
+    </chapter>
+    
+    <chapter xml:id="dtbLogic">
+        <title>DTB logic</title>
+        <section xml:id="dtbLogicPackageFile">
+            <title>Package file</title>
+            
+            <section xml:id="dtbLogicPackageFile_intro">
+                <title>Introduction</title>
+                
+                <para>
+                    The Open Packaging Format v. 2.0 (<xref linkend="refOPF"/>) specification defines the format for compliant
+                    DTB package files. The package file is an XML file that contains administrative information about the DTB, the files that 
+                    comprise it and how these files interrelate.
+                </para>
+                
+                <para>
+                    The OPF specification represents a continuation of OEBPS v.1.2, which was previously used as the basis
+                    for DTB package files. All implementers should familiarize themselves with the new standard, as this 
+                    specification only provides an overview of the sections required to create conformant files.
+                </para>
+                
+            </section>
+            
+            
+            <section xml:id="dtbLogicPackageFile_impl">
+                <title>Implementation</title>
+                
+                <para>
+                    A package file is a valid XML document that conforms to the requirements outlined 
+                    in the OPF specification (<xref linkend="refOPF"/>) and validates against the official 
+                    schema  provided in  
+                    <link xlink:href="http://www.idpf.org/2007/opf/opf2.0/download/#AppendixA">Appendix A</link>
+                    of the specification. Some DTB definitions amend the requirements for compliance,
+                    however, so please refer to each definition for additional requirements not outlined 
+                    in this section.
+                </para>
+                
+                <para>
+                    The package file should use the extension <code>.opf</code> to identify itself, but other
+                    extensions are permitted. 
+                    If a DTB spans multiple media units, the identical Package File must be present on each 
+                    media unit.
+                </para>
+                
+                <example>
+                    <title>An example of a package file (informative)</title>
+                    <remark role="todo">TODO: update to not be dtbook ref</remark>
+                    <programlisting xml:space="preserve"><?example id='dist-package'?></programlisting>
+                </example>
+                
+                <section xml:id="dtbLogicPackageFile_implRootIdentity">
+                    <title>Package root and identity</title>
+                    <para>
+                        The <code>package</code> element must be the root element in all compliant 
+                        package files. The <code>package</code> element must reference the OPF namespace 
+                        <code>http://www.idpf.org/2007/opf</code> in its <code>xmlns</code> attribute
+                        as well as declare support for version 2.0 in its <code>version</code> attribute.
+                    </para>
+                    
+                    <para>
+                        Each package file must also declare a package identity, a unique identifier for the 
+                        publication as a whole. This identifier is contained in the <code>unique-identifier</code>
+                        attribute on the root <code>package</code> element. It is not permitted to omit this
+                        attribute or enter an empty value for it.
+                    </para>
+                    
+                    <para>
+                        The <code>unique-identifier</code> value is also used to identify the primary 
+                        identifier for the DTB in the 
+                        <link linkend="dtbLogicPackageFile_implMetadata">package metadata section</link>.
+                    </para>
+                    
+                    <para>
+                        The <code>package</code> element is itself made up of three required and one optional
+                        section. The required elements, in the order in which they must appear, are:  
+                        <code>metadata</code>, <code>manifest</code> and <code>spine</code>.
+                        These elements may be followed by an optional <code>guide</code> element.
+                        Note that the <code>tours</code> element has been deprecated and its use
+                        is no longer permitted in DTBs. The requirements for each element are explained
+                        in the following subsections.
+                    </para>
+                    
+                </section>
+                
+                <section xml:id="dtbLogicPackageFile_implMetadata">
+                    <title>Package metadata</title>
+                    <para>
+                        This metadata section of the package file typically provides publication metadata, 
+                        such as the title, author and publisher of a document. It may also contain information
+                        about the source document (publisher, copyright statement, edition, etc.).
+                        All package files must include a single <code>metadata</code> element containing
+                        this information.
+                    </para>
+                    
+                    <para>
+                        The <code>metadata</code> element must contain a single Dublin Core 
+                        <code>identifier</code> element containing the primary identifier for the DTB.
+                        This <code>identifier</code> element must have an <code>id</code>
+                        attribute with the same value as the <code>unique-identifier</code> attribute
+                        for the package (see <xref linkend="dtbLogicPackageFile_implRootIdentity"/>).
+                    </para>
+                    
+                    <remark role="todo">Matt: detail metadata elements and usage per new rev. of the spec.</remark>
+                    
+                </section>
+                
+                <section xml:id="dtbLogicPackageFile_implManifest">
+                    <title>Manifest</title>
+                    <para> The manifest section provides a complete list of all the resources
+                        (documents, images, style sheets, etc.) that make up the publication,
+                        including the package file. </para>
+                    
+                    <para>
+                        All compliant package files must include a single <code>manifest</code>
+                        element as a child of the root <code>package</code> element. The 
+                        <code>manifest</code> in turn consists of a list of one or more <code>item</code> 
+                        elements, one for each resource in the DTB, that specify the location 
+                        (<code>href</code> attribute) and the MIME type (<code>media-type</code> attribute)
+                        of the resource in the DTB. The <code>href</code> values must be
+                        valid URIs (<xref linkend="refRFC3986"/>) and the <code>media-type</code>
+                        values must conform to <link linkend="refRFC2046">RFC 2046</link>.
+                    </para>
+                    
+                    <para>
+                        Each <code>item</code> must point to a unique resource in the DTB; fragment identifiers 
+                        are not allowed in the resource URIs. Relative URIs are permitted and are 
+                        resolved relative to the location of the package file.
+                    </para>
+                    
+                    <para>
+                        If a MIME media type is not available for a resource in the DTB, then an appropriate "x-" MIME 
+                        media type must be used following the rules of  <link linkend="refRFC2046">RFC 2046</link>.
+                        In the case of WAV files, the media type value <code>audio/x-wav</code> should be used.
+                        This specification defines the following media types for file types defined in the specification:
+                    </para>
+                    
+                    <variablelist>
+                        <varlistentry>
+                            <term>application/x-dtbncx+xml</term>
+                            <listitem>
+                                <para>for identifying the NCX file;</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>application/x-dtbresource+xml</term>
+                            <listitem>
+                                <para>for identifying the resource file.</para>
+                            </listitem>
+                        </varlistentry>
+                    </variablelist>
+                    
+                    <para>
+                        The order of <code>item</code> elements within the manifest section is not significant, unlike in the 
+                        <link linkend="dtbLogicPackageFile_implSpine">spine</link> where the order of resources references
+                        defines the order of the DTB. There are two requirements for the identification of <code>item</code> 
+                        elements, however: the NCX entry must include an <code>id</code> attribute with the value 
+                        <code>ncx</code> and the resource file must have value <code>resource</code>. 
+                    </para>
+                    
+                    <para> The distInfo file and any associated audio changeMsgs (or any other files
+                        listed only in the distInfo file) are not considered part of the DTB and
+                        are not listed in the manifest (see <remark role="todo">Matt: link needed if keeping</remark>).
+                        The resource file and any associated media files must also be listed.
+                    </para>
+                    
+                    <para>
+                        A DTB may be packaged along with resources that represent an alternate rendition or 
+                        that belong to another included DTB type (for example, a Pro DTB may be bundled with 
+                        an Audio DTB). All such additional resources must only be listed in the manifest for the DTB to
+                        which they belong. Two DTBs packaged together may have manifests that point
+                        to the same resources, however (to shared audio files, for example).
+                    </para>
+                    
+                    <para>
+                        The manifest may also include fallback declarations to allow players to choose 
+                        among alternative presentation formats. Support for the fallback mechanism is 
+                        not required by this specification, however.
+                    </para>
+                </section>
+                
+                <section xml:id="dtbLogicPackageFile_implSpine">
+                    <title>Spine</title>
+                    <para>
+                        The <code>spine</code> element provides the linear reading order of the documents in the 
+                        DTB. A compliant package file must include a single <code>spine</code> element after
+                        the <code>manifest</code> element.
+                    </para>
+                    
+                    <para>
+                        The <code>spine</code> consists of a list of one or more <code>itemref</code> elements, each
+                        of which must contain an <code>idref</code> attribute pointing to the id of an <code>item</code>
+                        in the <code>manifest</code>. Restrictions on the type of resources that can be referenced in the
+                        are specified per DTB definition (a DTB may only allow reference to SMIL elements or only to audio 
+                        resources, for example). The restrictions outlined in section 2.3 of the OPF specification are superseded
+                        by the individual DTB definitions.
+                    </para>
+                    
+                    <para>
+                        The <code>itemref</code>s must be listed in the order in which the resources are to be presented. 
+                        A reading system must consult the spine when it reaches the end of one resource in order to determine 
+                        which to render next.
+                    </para>
+                    
+                    <para>
+                        Primary and auxiliary content can be declared in the <code>spine</code> by the optional 
+                        <code>linear</code> attribute. There is no requirement for a reading system to display this content
+                        differently, however. References to auxiliary content should also be included in the 
+                        <link linkend="ncx">NCX</link>.
+                    </para>
+                </section>
+                
+                <section xml:id="dtbLogicPackageFile_implGuide">
+                    <title>Guide</title>
+                    <para>
+                        The <code>guide</code> element provides a set of references to fundamental structural 
+                        features of the publication (such as the table of contents, foreword, bibliography, etc.),
+                        simplifying access to them.
+                    </para>
+                    <para>
+                        The inclusion of a <code>guide</code> element is optional and in most cases unnecessary,
+                        as it provides functionality already covered in more detail by the NCX. Refer to the OPF
+                        specification (<xref linkend="refOPF"/>) for more information.
+                    </para>
+                </section>
+                
+            </section>
+            
+            <section xml:id="dtbLogicPackageFile_parent">
+                <title>Activator(s)</title>
+                
+                <para>All DTB definitions enable the package file component.</para>
+                
+            </section>
+        </section>
+        
+        <section xml:id="dtbLogicSynchronization">
+            <title>Synchronization</title>
+            
+            <section xml:id="dtbLogicSynchronization_intro">
+                <title>Introduction</title>
+                <para>The DTB SMIL files define a sequence of media events. During each event, text
+                    elements and corresponding audio clips as well as any additional visual elements are
+                    presented simultaneously. DTB players use the synchronization information to both
+                    access points in the audio presentation and to track, during audio playback, the
+                    corresponding position in the textual content file.</para>
+                <para><remark role="todo">TODO</remark></para>
+            </section>
+        </section>
+    </chapter>
+    
+    <chapter xml:id="dtbContent">
+        <title>DTB content</title>
+        <section xml:id="dtbContentAudio">
+            <title>Audio media</title>
+            
+            <section xml:id="dtbContentAudio_intro" conformance="informative">
+                <title>Introduction</title>
+                <para> This section enumerates the audio encoding formats supported by a DTB.
+                    Note that not all types of DTBs contain audio content, so this section only
+                    applies to DTBs that effectively include audio data. </para>
+                
+            </section>
+            
+            <section xml:id="dtbContentAudio_impl">
+                <title>Requirements</title>
+
+                <para> Reading systems must be capable of decoding at least one of the following
+                    audio compression formats. Reading systems should be capable of decoding all of the following formats. </para>
+                <para>Content must be delivered using one of the following formats, or may be
+                encoded using a mix of the following formats. </para>
+                
+                <itemizedlist>
+                    <listitem>
+                        <para>MPEG-1/2 Layer III (MP3) [<xref linkend="refMPEG"/>].</para>
+                    </listitem>
+                    <listitem>
+                        <para>Speex <remark role="todo">add reference link</remark></para>
+                    </listitem>
+                    <listitem>
+                        <para>AMR-WB+ <remark role="todo">add reference link</remark></para>
+                    </listitem>
+                </itemizedlist>
+                
+                <para>Reading systems must ensure that playback of content encoded using a mix
+                    different formats occurs without additional perceivable break in the playback
+                    flow other than the noticeable change of audio quality (for example: difference
+                    in bitrate). </para>
+                <para> Reading systems must support mono audio formats (single channel).</para>
+                <para> Reading systems must support rendering stereo audio formats (two channels) in
+                    monoaural mode.</para>
+                <para> Reading systems should support rendering stereo audio formats in binaural
+                    mode.</para>
+                <para> Reading systems may support multi-channel audio formats (more than two
+                    channels).</para>
+                <para> Content may include audio encoded with any number of channels.</para>
+                <para>Content must not include audio encoded (at the file level) using variable
+                    bitrate (VBR), audio must only be encoded using a constant bitrate for a given
+                    file.</para>
+                <para> Reading systems must support playback of audio at a depth of 16 bits per
+                    sample, with sample rates of 44.1, 22.05, and 11.025 kHz.</para>
+                <para> Content must use audio formats with sample rates of 44.1, 22.05, and 11.025
+                    kHz (no other sample rate is allowed).</para>
+         
+
+                <para> Production Systems must support lossless uncompressed audio using raw PCM WAV
+                    format (using single "fmt" and "data" subchunks) and may support other RIFF
+                    media types. </para>
+
+                <para>Reading systems may support audio encoded using WAV uncompressed PCM
+                    format.</para>
+            </section>
+        </section>
+        <section xml:id="dtbContentImages">
+            <title>Image media</title>
+            
+            <section xml:id="dtbContentImages_intro" conformance="informative">
+                <title>Introduction</title>
+                <para>
+                    The image component enumerates the image formats that 
+                    are supported by a DTB. The inclusion of this component in a DTB definition
+                    requires that conforming DTB players must support the display of images.
+                </para>
+            </section>
+            
+            <section xml:id="dtbContentImages_impl">
+                <title>Implementation</title>
+                
+                <para>
+                    The inclusion of the image component permits the use of any of the following image formats 
+                    in the creation of compliant DTBs:
+                </para>
+                
+                <itemizedlist>
+                    <listitem>
+                        <para>Portable Network Graphics (<xref linkend="refPNG"/>), as expressed by the MIME type image/png</para>
+                    </listitem>
+                    <listitem>
+                        <para>JPEG JFIF (<xref linkend="refJPEG"/>), as expressed by the MIME type image/jpeg</para>
+                    </listitem>
+                </itemizedlist>
+                
+                <para>
+                    Although some formats may support animation, compliant DTBs must only include single-image graphics.
+                    <remark role="todo">Matt: remove this if we don't add gif or a format that does support animation</remark>
+                </para>
+                
+                <para>
+                    The inclusion of the image component in a DTB definition does not include support for SVG images
+                    by itself. Support for SVG is enabled separately through the <link linkend="featureSVG">SVG feature</link>.
+                    The SVG feature cannot be activated if a DTB does not include the image component, however.
+                </para>
+                
+                <para>
+                    The inclusion of the image component in a DTB definition does not
+                    require that a conforming DTB include image resources.
+                </para>
+                
+            </section>    
+            
+            <section xml:id="dtbContentImages_parent">
+                <title>Activator(s)</title>
+                
+                <para>The following DTB definitions enable the image component:</para>
+                
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="dtbClassic">Classic DTB</link></para>
+                    </listitem>
+                    <listitem>
+                        <para><link linkend="dtbPro">Pro DTB</link></para>
+                    </listitem>
+                    <listitem>
+                        <para><link linkend="dtbEbook">eBook DTB</link></para>
+                    </listitem>
+                </itemizedlist>
+                
+            </section>
+            
+            <section xml:id="dtbContentImages_ext">
+                <title>Extensibility</title>
+                
+                <para>The image component can be extended by other features to include additional formats.</para>
+            </section>
+        </section>
+        <section xml:id="dtbContentVideo">
+            <title>Video media</title>
+            
+            <section xml:id="dtbContentVideo_intro" conformance="informative">
+                <title>Introduction</title>
+                <para>
+                    The video component enumerates the video types supported by a DTB. 
+                    The inclusion of this component in a DTB definition
+                    requires that conforming DTB players must support the playback of video content
+                </para>
+            </section>
+            
+            <section xml:id="dtbContentVideo_impl">
+                <title>Implementation</title>
+                
+                <para>
+                    The inclusion of the video component permits the use of any of the following video formats 
+                    in the creation of compliant DTBs:
+                </para>
+                
+                <itemizedlist>
+                    <listitem>
+                        <para>Ogg Theora (<xref linkend="refTHEORA"/>), as expressed by the MIME type video/ogg</para>
+                    </listitem>
+                    <listitem>
+                        <para>MPEG1 (<xref linkend="refMPEG"/>), as expressed by the MIME type video/mpeg</para>
+                    </listitem>
+                </itemizedlist>
+                
+                <para>
+                    Video formats not included in the above list are not permitted to be used.
+                </para>
+                
+                <para>
+                    Note that the inclusion of the video component in a DTB definition does not
+                    require that a conforming DTB include video resources.
+                </para>
+                
+            </section>
+            
+            <section xml:id="dtbContentVideo_parent">
+                <title>Activator(s)</title>
+                
+                <para>The following DTB definitions enable the video component:</para>
+                
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="dtbClassic">Classic DTB</link></para>
+                    </listitem>
+                    <listitem>
+                        <para><link linkend="dtbPro">Pro DTB</link></para>
+                    </listitem>
+                    <listitem>
+                        <para><link linkend="dtbEbook">eBook DTB</link></para>
+                    </listitem>
+                </itemizedlist>
+                
+            </section>
+            
+            <section xml:id="dtbContentVideo_ext">
+                <title>Extensibility</title>
+                
+                <para>The video component is fixed and cannot be extended or modified by other features.</para>
+            </section>
+        </section>
+    </chapter>
+    
+    <chapter xml:id="dtbDistro">
+        <title>DTB distribution</title>
+        
+        <section xml:id="dtbDistroContainer">
+            <title>Container</title>
+            
+            <section xml:id="container_intro" conformance="informative">
+                <title>Introduction</title>
+                
+                <para>
+                    The packaging of DTB resources is not a new issue, but is one that has not
+                    been formally defined in previous versions of the specification. As a result,
+                    producers have had the freedom to package their document sets in any of a variety of
+                    formats as their needs required, while user agent developers have been left with the
+                    problem of handling this variation when processing packaged DTBs.
+                </para>
+                
+                <para>
+                    This specification seeks to redress this issue by formally defining the packaging
+                    format and mime type for bundling the local resources in a DTB, as
+                    well as to propose a common file extension format for the identification of
+                    container files. This approach will allow the rapid deployment and exchange of
+                    container files by removing the unnecessary ambiguity and investigation that has
+                    existed regarding their format and structure.
+                </para>
+                
+                <note>
+                    <para>
+                        Although remote resources are an integral part of a DTB, they are
+                        referenced and obtained from their remote location by reading systems. Remote
+                        resources can be obtained and included as local resources within the
+                        container for distribution purposes, but any references to them in
+                        the should be updated to point to their new local location to
+                        prevent repeat requests by processing agents. </para>
+                </note>
+                
+            </section>
+            
+            <section xml:id="container_format">
+                <title>Format</title>
+                <para> The DTB container format is a simplified version of the OEBPS Container
+                    Format (<xref linkend="refOCF"/>) for bundling the various local resources that
+                    constitute a DTB together into a single file. All the
+                    requirements detailed in the OCF specification apply to the creation of DTB
+                    container files, except where modified by this section. </para>
+                
+                <para> The DTB container format employs the modified version of the ZIP format
+                    detailed in Section 4 of the OCF specification for packaging files. For identifying
+                    that the file is a DTB container, however, the following MIME type must be
+                    used instead: <code>application/z3986-dtb+zip</code> (see <xref
+                        linkend="container_mediaTypes"/>). </para>
+                
+                <para> Each conformant container file must include a <code>META-INF</code> directory at
+                    the root of the container as per Section 3.5 of the OCF specification. This
+                    directory must include the required <code>container.xml</code> file detailed in
+                    Section 3.5.1, which in turn must contain a <code>rootfile</code> element
+                    that points to the DTB's <link linkend="dtbLogicPackageFile">package file</link>.
+                </para>
+                
+                <para> The container may contain alternate renditions of a document, including alternate 
+                    DTB playback formats, but must not contain more than a single document. </para>
+                
+                <para> The following conditions apply to the optional reserved files allowed by the OCF
+                    specification: </para>
+                
+                <remark role="todo">Matt: any special conditions</remark>
+                <!--
+                    <itemizedlist>
+                    <listitem>
+                    <para>
+                    <code>metadata.xml</code>, <code>manifest.xml</code>
+                    and<code>signatures.xml</code> are not a normative part of the Z39.86-AI
+                    container format, but may be included if desired. Processing agent support
+                    must not be expected for these files or for the signing of container files,
+                    however. </para>
+                    </listitem>
+                    <listitem>
+                    <para> The contents of a Z39.86-AI container file must never be encrypted or
+                    have digital rights management schemes applied to them, so the
+                    <code>encryption.xml</code> and <code>rights.xml</code> files must never
+                    be included. Where security is an issue, alternate means of protecting the
+                    container file should be pursued instead. </para>
+                    </listitem>
+                    </itemizedlist>
+                -->
+                
+                <para>The following is an example of the structure of a typical DTB container
+                    file. </para>
+                <remark role="todo">Matt: update with better example</remark>
+                <example conformance="informative">
+                    <title>DTB container file structure (informative)</title>
+                    
+                    <programlisting xml:space="preserve">
+mimetype
+META-INF/
+    container.xml
+DTB/
+    origin.opf
+    On the Origin of Species.xml
+resources/
+    audio/
+        origin1.mp3
+        origin2.mp3
+    images/
+        darwin.png
+    video/
+        evolution.mpg
+                    </programlisting>
+                </example>
+                
+                <para> The <code>container.xml</code> file in the previous example would include the
+                    following mark up pointing to the root DTB package file: </para>
+                
+                <example conformance="informative">
+                    <title><code>container.xml</code> file mark up (informative)</title>
+                    
+                    <programlisting xml:space="preserve">
+                        <![CDATA[
+<?xml version="1.0"?>
+<container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container">
+  <rootfiles>
+    <rootfile full-path="DTB/origin.opf" media-type="application/oebps-package+xml" />
+  </rootfiles>
+</container>
+]]>
+                    </programlisting>
+                </example>
+                
+            </section>
+            
+            <section xml:id="container_extension">
+                <title>File extension</title>
+                <para> To facilitate the identification of the DTB container files, containers
+                    should use the extension <code>.dtb</code>. Alternate file extension are permitted
+                    so long as the container conforms with the ZIP requirements outlined in <xref
+                        linkend="container_format"/>. </para>
+                <para> File extensions are only a hint to the format of a container; the container's
+                    <code>mimetype</code> file is the primary designator of the contents. </para>
+            </section>
+            
+            <section xml:id="container_mediaTypes">
+                <title>Media types</title>
+                <para> This specification defines the following new media type: </para>
+                
+                <variablelist>
+                    <varlistentry>
+                        <term><code>application/z3986-dtb+zip</code></term>
+                        <listitem><para>identifies a DTB container.</para></listitem>
+                    </varlistentry>
+                </variablelist>
+                
+                <para>Refer to <xref linkend="mediaTypeRegistration"/> for more information.</para>
+            </section>
+            
+        </section>
+        
+        <section xml:id="dtbDistroAnno">
+            <title>Annotations</title>
+            
+            <section xml:id="dtbDistroAnnoBookmark_intro">
+                <title>Introduction</title>
+                
+                <para>
+                    The annotations and bookmarks component enables readers to append notes to a DTB
+                    and to utlilize bookmarking functionality to highlight passages of interest.
+                </para>
+            </section>
+            
+            <section xml:id="dtbDistroAnno_impl">
+                <title>Implementation</title>
+                
+                <para>
+                    <remark role="todo">Matt: lifted from 2005. needs rework or deletion depending on implementation</remark>
+                </para>
+                
+                <para>
+                    A reading system may allow readers to set bookmarks and to mark passages in a document, 
+                    label the marked sections with text or audio notes, and export the resulting collection of marks 
+                    and notes to other compliant playback devices. The inclusion of this component does not require
+                    reading systems to support all of the functionality specified, however.
+                </para>
+                
+                <para>
+                    This standard does not require that compliant players support all of the functionality described 
+                    above. In addition, this standard places no constraints on a playback system's internal system 
+                    for storing or manipulating the information in the bookmark file. However, if a player supports 
+                    the export of bookmarks and highlights and their associated notes, the player must format the 
+                    information as a valid XML file conforming to bookmark-2005-1.dtd.
+                    Similarly, a player with bookmark/highlight import capabilities must correctly process bookmarks 
+                    and highlights and their associated notes that are formatted in accordance with 
+                    bookmark-2005-1.dtd.
+                </para>
+                
+                <para>
+                    Export-capable players must be able to set bookmarks and highlight starts and ends at any point 
+                    in a DTB, whether based on the position in the audio presentation or the textual content file. That 
+                    is, players shall not be limited to capturing location information only at element boundaries. Offsets 
+                    from element boundaries in the audio presentation shall be identified by <code>timeOffset</code>,
+                    with a clock value relative to the start of the SMIL time container referenced in the URI. The value 
+                    syntax is defined by the SMIL 2.0 Timing and Synchronization Module [SMIL]. See section 7.7, 
+                    "Media Clipping and Clock Values." Offsets from element boundaries in textual content files shall be 
+                    identified by <code>charOffset</code>, measured in characters, counting from the start of the 
+                    content of the referenced element; start- and end-tags are not counted, white space is then 
+                    normalized (collapsed to one character).
+                </para>
+                
+                <para>
+                    If a playback device supports user-recording of audio notes on bookmarks or highlights that may be 
+                    exported, the recording may be in any format supported by the standard. When generating the filename 
+                    for a note, the playback device must generate a filename extension appropriate to the recording format. 
+                    (See Section 5, "Audio File Formats" for supported formats and Section 3.3, "Manifest" for filename extension 
+                    requirements.)
+                </para>
+                
+                <para>
+                    Bookmark files (which may include highlights) shall be named, by default, with the value from the bookmark 
+                    element uid and the extension ".bmk". For example: "se-tpb-14339.bmk". Players may allow users to apply 
+                    their own filenames to accommodate character limitations in other filesystems and to avoid filename collisions. 
+                    To accommodate user-supplied names, players with bookmark import capabilities must be able to open 
+                    bookmark files and read the uid value to match the correct bookmark file with a DTB. It is recommended 
+                    that if more than one bookmark file is present for a given DTB, players allow the user to choose among them.
+                </para>
+                
+                <para>
+                    Players may implement a variety of systems for numbering or otherwise identifying bookmarks or highlighted 
+                    sections so the user can step through and choose from a group of them. However, when preparing a 
+                    bookmark file for export, players must sort the bookmarks and highlights into document order and write 
+                    them in that order.
+                </para>
+            </section>
+        </section>
+        
+    </chapter>
+    
+    <chapter xml:id="dtbAudio">
+        <title>The Audio DTB</title>
+        
+        <section xml:id="dtbAudio_intro">
+            <title>Introduction</title>
+            
+            <para> The Audio <link linkend="termDTB">DTB</link> defines a type of audio book
+                that enables flat (e.g. page-by-page, foot notes) or hierarchical (e.g.
+                chapters, table of contents) navigation, whilst providing compatibility with
+                mainstream playback devices thanks to packaging and architectural conventions
+                such as the use of basic audio file playlists. </para>
+        </section>
+        
+        <section xml:id="dtbAudioDef">
+            <title>Definition</title>
+            
+            <para>
+                The Audio DTB format supports only the functionality outlined in the following sections. If no
+                reference is made to a particular functionality set, support must not be assumed.
+            </para>
+            
+            <section xml:id="dtbAudioDef_audio">
+                <title>Audio support</title>
+                
+                <para>
+                    The Audio DTB fully supports the audio formats outlined in 
+                    <xref linkend="dtbContentAudio"/>, as well as all requirements for their creation.
+                </para>
+                
+                <para>
+                    It is recommended that Audio DTB content be created in MP3 format
+                    for maximum compatibility with playback devices.
+                </para>
+                
+                <para>
+                    It is recommended that audio content be split into structurally significant sections
+                    (e.g., one file per chapter/section). Further, the naming of audio resources should
+                    allow for the automatic ordering by name by reading systems that will not support
+                    navigation by NCX or package file spine. To avoid the problems that arise with 
+                    reading systems that use simple text filename sorting algorithms, padding of 
+                    numeric identifiers on resource names so that they are equal length should be 
+                    employed (e.g., starting with 01 if there are up to 99 audio resources in the DTB).
+                </para>
+            </section>
+            
+            <section xml:id="dtbAudioDef_packageFile">
+                <title>Package file support</title>
+                
+                <para>
+                    The Audio DTB fully supports the package file format outlined in
+                    <xref linkend="dtbLogicPackageFile"/>, as well as all requirements for their creation.
+                </para>
+                
+                <para>
+                    Unlike section 2.3 of the OPF specification (<xref linkend="refOPF"/>), 
+                    the Audio DTB only supports references to audio resources in the <code>spine</code>.
+                    The DTB may include resources in other formats in the <code>manifest</code>
+                    where those resources serve a function other than as content (e.g. cover art).
+                </para>
+            </section>
+            
+            <section xml:id="dtbAudioDef_ncx">
+                <title>Navigation support</title>
+                
+                <para>
+                    The Audio DTB supports the following subset of the NCX functionality outlined in 
+                    <xref linkend="ncx"/>:
+                </para>
+                
+                <itemizedlist>
+                    <listitem>
+                        <para>the root <code linkend="ncx.ncx">ncx</code> element must only contain child
+                            <code linkend="ncx.target.list">target</code> elements;</para>
+                    </listitem>
+                    <listitem>
+                        <para>the nesting of <code>target</code> elements is 
+                            not permitted. Reading systems may create hierarchies from the list of targets to facilitate navigation
+                            by readers, but it is not a requirement for conformance.
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            Each <code>target</code> must contain a text label consisting of one or
+                            more characters (the <code>label</code> element is implied).
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            Each <code>target</code>'s <code>fragment</code> attribute must point to an audio resource
+                            that complies with (see <xref linkend="dtbAudioDef_audio"/>).
+                        </para>
+                    </listitem>
+                </itemizedlist>
+                
+                <para>
+                    The normative schema definition for audio-only DTBs is available at
+                    <link xlink:href="http://www.daisy.org/z3986/2011/ncx/">http://www.daisy.org/z3986/2011/auth/profiles/</link>.
+                    <remark role="todo">Matt: add link to schema when available</remark>
+                </para>
+                
+                <example conformance="informative">
+                    <title>Sample Audio DTB NCX file (informative)</title>
+                    <programlisting><?example id="dist-audio-ncx" ?></programlisting>
+                </example>
+                
+            </section>
+            
+            <section xml:id="dtbAudioDef_container">
+                <title>Container support</title>
+                
+                <para>
+                    The Audio DTB allows the packaging of DTBs via the container format detailed in
+                    <xref linkend="dtbDistroContainer"/>. Reading systems must be able to identify, unpack and
+                    play resources so packaged.
+                </para>
+            </section>
+        </section>
+        
+        <section xml:id="dtbAudioFeatures">
+            <title>Feature support</title>
+            <remark role="todo">todo</remark>
+        </section>
+    </chapter>
+    
+    <chapter xml:id="dtbClassic">
+        <title>The Classic DTB</title>
+        
+        <section xml:id="dtbClassic_intro">
+            <title>Introduction</title>
+            <remark role="todo">TODO</remark>
+        </section>
+    </chapter>
+    
+    <chapter xml:id="dtbPro">
+        <title>The Pro DTB</title>
+        
+        <section xml:id="dtbPro_intro">
+            <title>Introduction</title>
+            <remark role="todo">TODO</remark>
+        </section>
+    </chapter>
+    
+    <chapter xml:id="dtbEbook">
+        <title>The eBook DTB</title>
+        
+        <remark role="todo">TODO - this is intended to be a reference to, or a
+            specification infoset-compatible with EPUB 3.0</remark>
+        
+        <section xml:id="dtbEbook_intro">
+            <title>Introduction</title>
+            <remark role="todo">TODO</remark>
+        </section>
+    </chapter>
+    
+    <chapter xml:id="features">
+        <title>Features</title>
+        
+        <section xml:id="featureIntro">
+            <title>Introduction</title>
+            <para><remark role="todo">TODO</remark></para>
+        </section>
+       
+        <section xml:id="featureSVG">
+            <title>SVG feature</title>
+            <para><remark role="todo">TODO</remark></para>
+        </section>
+        
+    </chapter>
+        
+    <appendix xml:id="ncx" conformance="normative">
+        <title>Navigation Control for XML Applications (NCX)</title>
+
+        <section xml:id="ncxIntro" conformance="informative">
+            <title>Introduction</title>
+            
+            <para>
+                The Navigation Control for XML Applications, commonly referred to as the NCX,
+                exposes the hierarchical structure of a document to facilitate its navigation. The NCX is similar 
+                to a table of contents in that it enables the reader to jump directly to any of the major 
+                structural elements of the document (e.g., parts, chapters, sections, etc.). 
+                The NCX typically contains more of the structure of a document than is included in a print 
+                table of contents, however, and facilitates much finer-grained navigation, down
+                to the page level in many instances.
+            </para>
+            
+            <para>
+                The development of the NCX has been driven by the need to provide quick access 
+                to the main structural elements of a document, especially in case where the complete
+                resource may not be available before playback begins and/or would require expensive 
+                parsing of the DOM to determine the structure (which in many cases might not render
+                a usable hierarchy). 
+            </para>
+            
+            <para>
+                The format of the NCX was originally defined in an XML DTD included as part of the 
+                Z39.86-2005 Specification for Talking Books (<xref linkend="refZ39862005"/>). 
+                All DTBs and XML applications were required to fully implement the NCX standard in order
+                to be compliant, which hindered the development of simple playback devices.
+                In keeping with the profile approach to DTBs empployed in this specification, the NCX specification 
+                has been modularized to allow different NCX profiles to be developed to more adequately and 
+                efficiently address the specific needs of the new DTB types.
+            </para>
+        </section>
+        
+        <section xml:id="ncxNamespaceURI">
+            <title>NCX namespace URI</title>
+            
+            <para xml:id="ncxNamespace" xreflabel="NCX namespace URI">The NCX namespace URI is
+                <code>http://www.daisy.org/z3986/2005/ncx/</code>.</para>
+            
+            <para>This is the default namespace URI of all elements defined in the NCX modules.</para>
+        </section>
+        
+        <section xml:id="ncxModules">
+            <title>NCX module and component definitions</title>
+            
+            <para>
+                The following sections document each of the modules used to compose the various NCX profiles.
+                This documentation indicates the default state and nature of each element prior to its activation
+                in a module, so must not be read as a normative reference to creating a compliant NCX document.
+                Each DTB definition provides a summary of the variations from the default states expressed here,
+                as well as provides a link to the location of the normative schema that must be used for validation.
+            </para>
+            
+            <para>
+                The documentation provided here has been extracted from documentation contained in each 
+                of the NCX module files. In the case of any discrepancies between this documentation and the
+                actual schema definitions, the latter shall be taken as authoritative.
+            </para>
+            
+            <?absdef src="/mod/ncx-document.rng" ?>
+            <?absdef src="/mod/ncx-attrib.rng" ?>
+            <?absdef src="/mod/ncx-navmap.rng" ?>
+            <?absdef src="/mod/ncx-navlist.rng" ?>
+            <?absdef src="/mod/ncx-target.rng" ?>
+            <?absdef src="/mod/ncx-label.rng" ?>
+            
+        </section>
+
+<!--            
+            <section xml:id="ncx_elementHead">
+                <title>head</title>
+                
+                <para>
+                    Contains metadata and other information about the NCX file.
+                </para>
+            </section>
+            
+            <section xml:id="ncx_elementSmilCustomTest">
+                <title>smilCustomTest</title>
+                
+                <para>
+                    Duplicates customTest data found in SMIL files. Each unique customTest element that 
+                    appears in one or more SMIL files and has been referenced at least once by a customTest 
+                    attribute will have three of its attributes (id, override, and defaultState) duplicated in a 
+                    smilCustomTest element in the NCX. The NCX thus gathers in one place all customTest 
+                    elements used in the SMIL files, along with their defaultState setting, for presentation to 
+                    the user. When a customTest element in SMIL has been applied to a time container holding 
+                    one of the book structures defined in section 8.4.4 "smilCustomTest Element", the bookStruct 
+                    attribute must be applied to the corresponding smilCustomTest and contain the appropriate 
+                    value from the enumerated list.
+                </para>
+            </section>
+            
+            <section xml:id="ncx_elementMeta">
+                <title>meta</title>
+                
+                <para>
+                    Each <code>meta</code> element contains metadata information applicable to the NCX file.
+                </para>
+            </section>
+            
+            <section xml:id="ncx_elementDocTitle">
+                <title>docTitle</title>
+                
+                <para>
+                    The title of the document. The <code>docTitle</code> element may also allow optional audio, video 
+                    and image renderings of the title.
+                </para>
+            </section>
+            
+            <section xml:id="ncx_elementDocAuthor">
+                <title>docAuthor</title>
+                
+                <para>
+                    The author of the document. The <code>docAuthor</code> element may also allow optional audio, video 
+                    and image renderings of the author.
+                </para>
+            </section>
+            
+
+            <section xml:id="ncx_elementNavPoint">
+                <title>navPoint</title>
+                
+                <para>
+                    The <code>navPoint</code> element represents a single navigational point within the 
+                    <code>navMap</code> (i.e., a major structure within the DTB). It provides a description 
+                    of the target content together with a pointer to its location. Depending on the type of
+                    DTB, <code>navPoint</code> elements may be allowed to nest to represent the hierarchical
+                    structure of a document.
+                </para>
+            </section>
+            
+            <section xml:id="ncx_elementNavLabel">
+                <title>navLabel</title>
+                
+                <para>
+                    The <code>navLabel</code> element provides a brief, text description for its containing element.
+                    The <code>navLabel</code> contains the section heading of the referenced section when 
+                    used as the child of a <code>navPoint</code>. Multiple occurrences of the <code>navLabel</code>
+                    element are typically allowed, for including labels in more than one language (the <code>xml:lang</code>
+                    attribute must appear on each label to differentiate).
+                </para>
+            </section>
+            
+            <section xml:id="ncx_elementNavInfo">
+                <title>navInfo</title>
+                
+                <para>
+                    The <code>navInfo</code> element allows the producer of a DTB to attach informative information
+                    and comments about a target location.
+                </para>
+            </section>
+            
+            <section xml:id="ncx_elementContent">
+                <title>content</title>
+                
+                <para>
+                    The <code>content</code> element provides a pointer to the location of the content. The element 
+                    may point to an entry in a SMIL file, where synchronization is necessary, or to a location directly 
+                    in a resource. Refer to each DTB definition for more information.
+                </para>
+            </section>
+            
+            <section xml:id="ncx_elementPageList">
+                <title>pageList</title>
+                
+                <para>
+                    The <code>pageList</code> element provides a listing of all the pages in a document,
+                    facilitating page-by-page navigation and direct jumping to specific pages within documents.
+                </para>
+            </section>
+            
+            <section xml:id="ncx_elementPageTarget">
+                <title>pageTarget</title>
+                
+                <para>
+                    The <code>pageTarget</code> element represents a single page location within a 
+                    <code>pageList</code>.
+                </para>
+            </section>
+            
+-->
+
+        <section xml:id="ncxConformance">
+            <title>Conformance requirements</title>
+            
+            <para>
+                Every compliant DTB must contain exactly one NCX document that validates to
+                the normative NCX schema for the DTB type.  In order to be conformant, an NCX document
+                must meet the following criteria:
+            </para>
+            
+            <itemizedlist>
+                <listitem>
+                    <para>
+                        It must be a well-formed XML Document as defined by <xref linkend="refXML"/>.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        It must be namespace well-formed as defined by <xref linkend="refXMLNamespaces"/>.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        It must constitute a single XML Infoset as defined in <xref linkend="refXMLInfoset"/>.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        The root <code linkend="ncx.ncx">ncx.ncx</code> element of the document must explicitly contain a 
+                        <xref linkend="refXMLNamespaces"/> compliant  declaration for the NCX namespace, as defined in 
+                        <xref linkend="ncxNamespaceURI"/>. 
+                    </para>
+                </listitem>
+            </itemizedlist>
+            
+        </section>
+        
+    </appendix>
+    
+    <appendix xml:id="mediaTypeRegistration" conformance="normative">
+        <title>Media type registration</title>
+        
+        <section xml:id="mediaTypeRegistration_container">
+            <title>DTB container format</title>
+            
+            <variablelist>
+                <varlistentry>
+                    <term>Type name</term>
+                    <listitem>
+                        <para>application</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>Subtype name</term>
+                    <listitem>
+                        <para> z3986-dtb+zip </para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>Required parameters</term>
+                    <listitem>
+                        <para>None.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>Optional parameters</term>
+                    <listitem>
+                        <para>None.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>Encoding considerations</term>
+                    <listitem>
+                        <para>DTB container files are binary files in ZIP format.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>Security considerations</term>
+                    <listitem>
+                        <para> The file size and validity of container file data should always be
+                            rigorously verified by processors. </para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>Interoperability considerations</term>
+                    <listitem>
+                        <para>None.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>Published specification</term>
+                    <listitem>
+                        <para> This media type registration is extracted from Appendix A of the
+                            <link linkend="introduction">Z39.86 Distribution
+                                Framework Specification</link>. </para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>Applications which use this media type</term>
+                    <listitem>
+                        <para> There are no applications that currently recognize this media type.
+                            This new type is being registered to enable operation within reading systems.
+                        </para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>Additional information</term>
+                    <listitem>
+                        <variablelist>
+                            <varlistentry>
+                                <term>Magic number(s):</term>
+                                <listitem>
+                                    <para> None. </para>
+                                </listitem>
+                            </varlistentry>
+                            <varlistentry>
+                                <term>File extension(s):</term>
+                                <listitem>
+                                    <para>
+                                        <code>.dtb</code>
+                                    </para>
+                                </listitem>
+                            </varlistentry>
+                            <varlistentry>
+                                <term>Macintosh file type code(s)</term>
+                                <listitem>
+                                    <para>ZIP</para>
+                                </listitem>
+                            </varlistentry>
+                        </variablelist>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>Intended usage</term>
+                    <listitem>
+                        <para>COMMON</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>Restrictions on usage</term>
+                    <listitem>
+                        <para>None.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>Person to contact for further information</term>
+                    <listitem>
+                        <variablelist>
+                            <varlistentry>
+                                <term>Name</term>
+                                <listitem>
+                                    <para>Markus Gylling</para>
+                                </listitem>
+                            </varlistentry>
+                            <varlistentry>
+                                <term>Email</term>
+                                <listitem>
+                                    <para>mgylling@daisy.org</para>
+                                </listitem>
+                            </varlistentry>
+                            <varlistentry>
+                                <term>Author/Change controller</term>
+                                <listitem>
+                                    <para> The Z39.86 Distribution Framework specification is maintained by the Z39.86
+                                        Advisory Committee of the DAISY Consortium. </para>
+                                </listitem>
+                            </varlistentry>
+                        </variablelist>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </section>
+        
+    </appendix>
+
+    <appendix xml:id="appendixChanges" conformance="informative">
+        <title>Summary of changes</title>
+        <para>The following is a summary of the changes introduced by this specification as compared
+            to the previous version of the ANSI/NISO Z39.86 standard (<xref linkend="refZ39862005"
+            />).</para>
+
+        <section xml:id="appendixChangesOverarching">
+            <title>Overarching changes</title>
+            <remark role="todo">TODO</remark>
+        </section>
+
+        <section xml:id="appendixChangesNCX">
+            <title>Changes to the NCX document type</title>
+            <remark role="todo">TODO</remark>
+        </section>
+
+    </appendix>
+    
+    <appendix xml:id="acknowledgements" role="acknowledgements" conformance="informative">
+        <title>Acknowledgements</title>
+        <para> The following are the members of the Z39.86-2011 Distribution Working Group
+            responsible for the creation of this specification:
+            <bibliolist>
+                <bibliomixed>
+                    <personname>Markus Gylling</personname>, <title>Lead</title>, <orgname>DAISY Consortium</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Josh Altherr</personname>, <orgname>gh, LLC</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Douglas Blane</personname>, <orgname>Open University / Digital Audio Project</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>John Brugge</personname>, <orgname>Benetech</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Marisa DeMeglio</personname>, <orgname>DAISY Consortium</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Wolfram Eberius</personname>, <orgname>Invited Expert</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Keith Fahlgren</personname>, <orgname>O'Reilly</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Reuben Firmin</personname>, <orgname>Benetech</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Geoff Freed</personname>, <orgname>WGBH</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Boris Goldowsky</personname>, <orgname>CAST, Inc.</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Sean Hayes</personname>, <orgname>Microsoft</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Ole Holst Andersen</personname>, <orgname>Nota</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Kenny Johar</personname>, <orgname>Vision Australia</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>George Kerscher</personname>, <orgname>DAISY</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Dominic Labbé</personname>, <orgname>Humanware</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Patric Larsson</personname>, <orgname>SPSM (The National Agency for Special Needs Education and Schools, Sweden)</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Dennis Leas</personname>, <orgname>gh, LLC</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Björn Nyqvist</personname>, <orgname>SPSM (The National Agency for Special Needs Education and Schools, Sweden)</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Sam Ogami</personname>, <orgname>CSU</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Guillaume Olivrin</personname>, <orgname>Meraka</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Silvia Pfeiffer</personname>, <orgname>VQuence</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>James Pritchett</personname>, <orgname>RFB&amp;D</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Gregory J. Rosmaita</personname>, <orgname>Open Accessibility at the Linux Foundation</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Christian Wallin</personname>, <orgname>NOTA</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>Daniel Weck</personname>, <orgname>DAISY Consortium</orgname>
+                </bibliomixed>
+                <bibliomixed>
+                    <personname>
+                        <remark role="todo">TODO add all contributors</remark>
+                    </personname>
+                </bibliomixed>
+            </bibliolist>
+        </para>
+        
+        <para>
+            The working group also extends its thanks to Michael Moodie and all the members of the 
+            Z39.86-2005 working group.
+        </para>
+    </appendix>
+    
+    <bibliography>
+        <title>References</title>
+        
+        <bibliodiv>
+            <title>Normative</title>
+            
+            <biblioentry xml:id="refJPEG">
+                <abbrev>JPEG</abbrev>
+                <title>
+                    <link xlink:href="http://www.jpeg.org/public/jfif.pdf">JPEG JFIF V1.02</link>
+                </title>
+                <author><personname>Eric Hamilton</personname></author>
+                <date>September 1, 1992</date>
+            </biblioentry>
+            
+            <biblioentry xml:id="refMPEG">
+                <abbrev>MPEG</abbrev>
+                <title>
+                    ISO/IEC 11172-3:1993 - Information technology &#8212; Coding of moving pictures and associated 
+                    audio for digital storage media at up to about 1,5 Mbit/s &#8212; Part 3: Audio
+                </title>
+                <date>1993</date>
+            </biblioentry>
+            
+            <biblioentry xml:id="refOCF">
+                <abbrev>OCF</abbrev>
+                <title>
+                    <link xlink:href="http://idpf.org/ocf/ocf1.0/download/ocf10.htm">OEBPS Container
+                        Format (OCF) 1.0</link>
+                </title>
+                <date>11 September 2006</date>
+            </biblioentry>
+            
+            <biblioentry xml:id="refOPF">
+                <abbrev>OPF</abbrev>
+                <title>
+                    <link xlink:href="http://www.idpf.org/2007/opf/OPF_2.0_final_spec.html">Open Packaging Format (OPF) 2.0</link>
+                </title>
+                <date>11 September 2007</date>
+            </biblioentry>
+            
+            <biblioentry xml:id="refRelaxNG">
+                <abbrev>RelaxNG</abbrev>
+                <title>
+                    <link
+                        xlink:href="http://standards.iso.org/ittf/PubliclyAvailableStandards/c052348_ISO_IEC_19757-2_2008(E).zip"
+                        >ISO/IEC 19757-2: Regular-grammar-based validation &#8212; RELAX NG</link>
+                </title>
+                <date>3 December 2001</date>
+            </biblioentry>
+            
+            <biblioentry xml:id="refRFC2046">
+                <abbrev>RFC2046</abbrev>
+                <title>
+                    <link xlink:href="http://www.ietf.org/rfc/rfc2046.txt">Multipurpose Internet
+                        Mail Extensions (MIME) Part Two: Media Types</link>
+                </title>
+                <author>
+                    <personname>N. Freed, N. Borenstein</personname>
+                </author>
+                <date>November 1996</date>
+            </biblioentry>
+            
+            <biblioentry xml:id="refPNG">
+                <abbrev>RFC2083</abbrev>
+                <title>
+                    <link xlink:href="http://www.ietf.org/rfc/rfc2083.txt">Portable Network Graphics, Version 1.0</link>
+                </title>
+                <author>
+                    <personname>T. Boutell, et. al.</personname>
+                </author>
+                <date>March 1997</date>
+            </biblioentry>
+            
+            <biblioentry xml:id="refRFC2119">
+                <abbrev>RFC2119</abbrev>
+                <title>
+                    <link xlink:href="http://www.ietf.org/rfc/rfc2119.txt">Key words for use in RFCs to
+                        Indicate Requirement Levels (RFC2119)</link>
+                </title>
+                <date>March 1997</date>
+            </biblioentry>
+            
+            <biblioentry xml:id="refRFC3986">
+                <abbrev>RFC3986</abbrev>
+                <title>
+                    <link xlink:href="http://www.ietf.org/rfc/rfc3986.txt">Uniform Resource
+                        Identifier (URI): Generic Syntax</link>
+                </title>
+                <author>
+                    <personname>Berners-Lee, et al</personname>
+                </author>
+                <date>January 2005</date>
+            </biblioentry>
+            
+            <biblioentry xml:id="refSMIL">
+                <abbrev>SMIL</abbrev>
+                <title>
+                    <link xlink:href="http://www.w3.org/TR/SMIL3/">Synchronized Multimedia Integration Language (SMIL 3.0)</link>
+                </title>
+                <date>December 1, 2008</date>
+            </biblioentry>
+            
+            <biblioentry xml:id="refSVG">
+                <abbrev>SVG</abbrev>
+                <title>
+                    <link xlink:href="http://www.w3.org/TR/2001/REC-SVG-20010904/">Scalable Vector Graphics (SVG) 1.0 Specification</link>
+                </title>
+                <date>September 4, 2001</date>
+            </biblioentry>
+            
+            <biblioentry xml:id="refTHEORA">
+                <abbrev>Theora</abbrev>
+                <title>
+                    <link xlink:href="http://www.theora.org/doc/Theora.pdf">Theora Specification</link>
+                </title>
+                <date>August 5, 2009</date>
+            </biblioentry>
+            
+            <biblioentry xml:id="refXML">
+                <abbrev>XML</abbrev>
+                <title>
+                    <link xlink:href="http://www.w3.org/TR/2006/REC-xml-20060816/">Extensible Markup
+                        Language (XML) 1.0 (Fourth Edition)</link>
+                </title>
+                <author>
+                    <personname>T. Bray, et al</personname>
+                </author>
+                <date>November 2008</date>
+            </biblioentry>
+            <biblioentry xml:id="refXMLID">
+                <abbrev>XMLID</abbrev>
+                <title>
+                    <link xlink:href="http://www.w3.org/TR/xml-id/">xml:id Version 1.0</link>
+                </title>
+                <date>9 September 2005</date>
+            </biblioentry>
+            <biblioentry xml:id="refXMLInfoset">
+                <abbrev>XMLInfoset</abbrev>
+                <title>
+                    <link xlink:href="http://www.w3.org/TR/xml-infoset/">XML Information Set (Second
+                        Edition)</link>
+                </title>
+                <author>
+                    <personname>J. Cowan, et al</personname>
+                </author>
+                <date>4 February 2004</date>
+            </biblioentry>
+            <biblioentry xml:id="refXMLNamespaces">
+                <abbrev>XMLNAMES</abbrev>
+                <title>
+                    <link xlink:href="http://www.w3.org/TR/REC-xml-names/">Namespaces in XML 1.0
+                        (Second Edition)</link>
+                </title>
+                <date>16 August 2006</date>
+            </biblioentry>
+        </bibliodiv>
+        
+        <bibliodiv>
+            <title>Informative</title>
+            
+            <biblioentry xml:id="refZ39862005">
+                <abbrev>Z3986-2005</abbrev>
+                <title>
+                    <link xlink:href="http://www.niso.org/standards/resources/Z39-86-2005.html"
+                        >ANSI/NISO Z39.86-2005: Specifications for the Digital Talking Book</link>
+                </title>
+                <author>
+                    <personname>M. Moodie, et al.</personname>
+                </author>
+                <date>2005</date>
+            </biblioentry>
+        </bibliodiv>
+    </bibliography>
+
+    <appendix xml:id="TEMP_PLACEHOLDER">
+        <title>TEMP PLACEHOLDER</title>
+        <para>
+            <remark role="todo">This is a temporary placeholder for IDs that dont
+                resolve until the abstract definition is in place. If you see this in
+                a built version of this doc, then something is wrong with the
+                build.</remark>
+        </para>
+        <remark xml:id="ncx.ncx" />
+        <remark xml:id="ncx.target.list" />
+    </appendix>
+    
+</book>

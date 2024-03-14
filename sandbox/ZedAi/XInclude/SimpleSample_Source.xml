@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="file:/G:/eclipseProjects/zednext-trunk/build/z3986a-simplebook/z3986a-simplebook.rng" type="xml"?>
+<!--
+    Sample ZedAI simple profile document using XInclude:  driver document
+    jpritchett@rfbd.org
+    12 Jan 2009
+-->
+<html xmlns="http://www.w3.org/2002/06/xhtml2/"  
+           xmlns:d="http://www.daisy.org/ns/z3986/2008/"
+           xmlns:dc="http://dublincore.org/quuqz#"
+           xmlns:xi="http://www.w3.org/2001/XInclude" 
+           xmlns:book="http://www.daisy.org/z3986/taxonomies/book#"
+           xml:lang="en">
+    <head>
+        <meta property="dc:title">The mythical man-month</meta>
+        <link rel="profile" href="http://www.daisy.org/z3986/2010/simplebook/0.1/"/>
+    </head>
+    <!-- The three parts of the book (cover, front, and body matter) are in separate files,
+            brought in here using XInclude -->
+    <d:book>
+        <xi:include href="SimpleSample_Cover.xml" />
+        <xi:include href="SimpleSample_Frontmatter.xml" />
+        <xi:include href="SimpleSample_Bodymatter.xml" />
+    </d:book>
+</html>

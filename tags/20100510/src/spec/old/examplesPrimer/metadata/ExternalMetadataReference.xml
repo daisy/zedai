@@ -1,0 +1,10 @@
+<head>
+  …
+  <meta rel="z:meta-record" resource="daisy-z2010-exemplar-01-mods.xml">
+        <meta property="z:meta-record-type" 
+            about="daisy-z2010-exemplar-01-mods.xml" content="z:mods" />
+        <meta property="z:meta-record-version" 
+            about="daisy-z2010-exemplar-01-mods.xml" content="3.3" />
+  </meta>   
+  …    
+</head>

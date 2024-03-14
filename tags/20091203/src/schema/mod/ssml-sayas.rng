@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:x="http://www.w3.org/1999/xhtml"
+         ns="http://www.w3.org/2001/10/synthesis">
+
+  <x:h1>SSML say-as element module</x:h1>
+    
+  <div>
+    <x:h2>The say-as element</x:h2>
+    <x:div id="ssml.say-as">
+      <x:p class="description">
+        The say-as element allows the author to indicate information on the 
+        type of text construct contained within the element and to help 
+        specify the level of detail for rendering the contained text.
+        <x:br/>
+        Consult <x:a href="http://www.w3.org/TR/speech-synthesis11/#edef_say-as"
+        >Speech Synthesis Markup Language (SSML) Version 1.1</x:a> 
+        for further information.         
+      </x:p>
+    </x:div>
+         
+    <define name="ssml.say-as">
+      <element name="say-as">        
+        <ref name="ssml.say-as.attlist"/>
+        <ref name="ssml.say-as.content"/>
+      </element>    
+    </define>
+
+    <define name="ssml.say-as.attlist" combine="interleave">      
+      <ref name="ssml.interpret-as.attrib"/>
+      <optional>
+        <ref name="ssml.format.attrib"/>
+      </optional>
+      <optional>
+        <ref name="ssml.detail.attrib"/>
+      </optional>
+      <ref name="z3986.Core.attrib"/>
+      <ref name="z3986.I18n.attrib"/>
+    </define>
+    
+    <define name="ssml.interpret-as.attrib">
+      <attribute name="interpret-as"/>
+    </define>
+    
+    <define name="ssml.format.attrib">
+      <attribute name="format"/>
+    </define>
+
+    <define name="ssml.detail.attrib">
+      <attribute name="detail"/>
+    </define>
+    
+    <define name="ssml.say-as.content">
+      <text/>
+    </define>
+    
+  </div>  
+  
+  <div>
+    <x:h2>The say-as element - default content model contribution</x:h2>
+    
+    <define name="z3986.Text.class"  combine="choice">
+      <ref name="ssml.say-as"/>
+    </define>
+        
+  </div>
+
+</grammar>
